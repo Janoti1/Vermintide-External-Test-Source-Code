@@ -2111,7 +2111,7 @@ ConflictDirector._post_spawn_unit = function (self, ai_unit, go_id, breed, spawn
 	if breed.boss then
 		local dialogue_system = Managers.state.entity:system("dialogue_system")
 
-		dialogue_system:trigger_mission_giver_event("vs_mg_new_spawn_monster")
+		dialogue_system:queue_mission_giver_event("vs_mg_new_spawn_monster")
 	end
 end
 

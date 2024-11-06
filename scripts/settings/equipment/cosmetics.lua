@@ -3207,6 +3207,9 @@ Cosmetics.frame_geheimnisnacht_2024 = {
 Cosmetics.frame_gotwf_01 = {
 	icon = "unit_frame_02"
 }
+Cosmetics.frame_gotwf_2024 = {
+	icon = "unit_frame_02"
+}
 Cosmetics.pose_template = {
 	icon = "icons_placeholder"
 }

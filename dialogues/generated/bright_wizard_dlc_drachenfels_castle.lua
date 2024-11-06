@@ -1,5 +1,6 @@
 return function ()
 	define_rule({
+		probability = 1,
 		name = "pbw_castle_intro_line_a",
 		response = "pbw_castle_intro_line_a",
 		criterias = {
@@ -44,6 +45,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_castle_intro_line_b",
 		response = "pbw_castle_intro_line_b",
 		criterias = {
@@ -88,6 +90,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_castle_intro_line_c",
 		response = "pbw_castle_intro_line_c",
 		criterias = {
@@ -137,6 +140,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_castle_vo_approaching_throne_room",
 		response = "pbw_castle_vo_approaching_throne_room",
 		criterias = {
@@ -181,6 +185,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_castle_vo_blockage",
 		response = "pbw_castle_vo_blockage",
 		criterias = {
@@ -225,6 +230,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_castle_vo_blood_pool",
 		response = "pbw_castle_vo_blood_pool",
 		criterias = {
@@ -269,6 +275,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_castle_vo_crypt_discovered",
 		response = "pbw_castle_vo_crypt_discovered",
 		criterias = {
@@ -313,6 +320,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_castle_vo_crypt_not_discovered",
 		response = "pbw_castle_vo_crypt_not_discovered",
 		criterias = {
@@ -357,6 +365,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_castle_vo_do_not_recognize",
 		response = "pbw_castle_vo_do_not_recognize",
 		criterias = {
@@ -401,6 +410,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_castle_vo_door_open",
 		response = "pbw_castle_vo_door_open",
 		criterias = {
@@ -445,6 +455,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_castle_vo_drop_down",
 		response = "pbw_castle_vo_drop_down",
 		criterias = {
@@ -489,6 +500,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_castle_vo_enter",
 		response = "pbw_castle_vo_enter",
 		criterias = {
@@ -533,6 +545,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_castle_vo_find_a_way_up",
 		response = "pbw_castle_vo_find_a_way_up",
 		criterias = {
@@ -577,6 +590,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_castle_vo_halls",
 		response = "pbw_castle_vo_halls",
 		criterias = {
@@ -621,6 +635,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_castle_vo_hello",
 		response = "pbw_castle_vo_hello",
 		criterias = {
@@ -665,6 +680,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_castle_vo_landed",
 		response = "pbw_castle_vo_landed",
 		criterias = {
@@ -709,6 +725,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_castle_vo_meet_sorcerer",
 		response = "pbw_castle_vo_meet_sorcerer",
 		criterias = {
@@ -753,6 +770,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_castle_vo_recognize",
 		response = "pbw_castle_vo_recognize",
 		criterias = {
@@ -797,6 +815,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_castle_vo_search_again",
 		response = "pbw_castle_vo_search_again",
 		criterias = {
@@ -841,6 +860,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_castle_vo_secret_door",
 		response = "pbw_castle_vo_secret_door",
 		criterias = {
@@ -885,6 +905,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_castle_vo_sorcerer_slain",
 		response = "pbw_castle_vo_sorcerer_slain",
 		criterias = {
@@ -929,6 +950,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_castle_vo_this_way",
 		response = "pbw_castle_vo_this_way",
 		criterias = {
@@ -973,6 +995,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_castle_vo_throne_room_approach",
 		response = "pbw_castle_vo_throne_room_approach",
 		criterias = {
@@ -1017,6 +1040,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_castle_vo_traces_one",
 		response = "pbw_castle_vo_traces_one",
 		criterias = {
@@ -1061,6 +1085,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_castle_vo_trap_switch",
 		response = "pbw_castle_vo_trap_switch",
 		criterias = {
@@ -1105,6 +1130,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_castle_vo_vista",
 		response = "pbw_castle_vo_vista",
 		criterias = {

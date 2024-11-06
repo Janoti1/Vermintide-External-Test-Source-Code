@@ -280,6 +280,8 @@ MatchmakingStateFlexmatchHost._start_matchmaking_cb = function (self, result, co
 		self._game_session_id = data.gameSessionId
 		self._connection_info = data.connectionInfo
 		self._state = MatchmakingState.Succeeded
+
+		flexmatch_printf("Matchmaking successful. ipAddress: %s | port: %s | name: %s", self._connection_info.ipAddress, self._connection_info.port, self._connection_info.name or "???")
 	else
 		return self:_cancel_matchmaking("Got unexpected queue status: %s", self._queue_status)
 	end
@@ -304,6 +306,8 @@ MatchmakingStateFlexmatchHost._fetch_matchmaking_cb = function (self, result, co
 		self._game_session_id = data.gameSessionId
 		self._connection_info = data.connectionInfo
 		self._state = MatchmakingState.Succeeded
+
+		flexmatch_printf("Matchmaking successful. ipAddress: %s | port: %s | name: %s", self._connection_info.ipAddress, self._connection_info.port, self._connection_info.name or "???")
 	elseif self._queue_status == FlexmatchQueueStatus.Queued then
 		local t = Managers.time:time("main")
 

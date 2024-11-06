@@ -263,7 +263,12 @@ MatchmakingStateRequestJoinGame.update = function (self, dt, t)
 				self.lobby_client:set_steam_lobby_reconnectable(false)
 			end
 
-			local friend_join = not not self.state_context.friend_join
+			local friend_join = false
+
+			if IS_PS4 then
+				friend_join = not not self.state_context.friend_join
+			end
+
 			local unlocked_dlcs_array = self:_gather_dlc_ids()
 
 			self._network_transmit:send_rpc("rpc_matchmaking_request_join_lobby", host, lobby_id, friend_join, unlocked_dlcs_array)

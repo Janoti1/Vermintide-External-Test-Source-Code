@@ -7696,11 +7696,6 @@ UIWidgets.create_dark_pact_selection_widget = function (scenegraph_id)
 				},
 				{
 					pass_type = "texture",
-					style_id = "selection_mask",
-					texture_id = "selection_mask"
-				},
-				{
-					pass_type = "texture",
 					style_id = "portrait",
 					texture_id = "portrait"
 				},
@@ -7720,50 +7715,27 @@ UIWidgets.create_dark_pact_selection_widget = function (scenegraph_id)
 			portrait = "icons_placeholder",
 			portrait_frame_selected = "pactsworn_frame_highlight",
 			portrait_frame = "pactsworn_frame_iron",
-			selection_mask = "dark_pact_selection_portrait_mask",
 			selected = false,
 			hotspot = {}
 		},
 		style = {
-			selection_mask = {
-				texture_size = {
-					140,
-					140
-				},
-				default_size = {
-					140,
-					140
-				},
-				color = Colors.get_color_table_with_alpha("white", 255),
-				offset = {
-					0,
-					0,
-					4
-				},
-				default_offset = {
-					0,
-					0,
-					4
-				}
-			},
 			portrait = {
-				masked = true,
 				texture_size = {
-					104.5,
-					123.5
+					140,
+					140
 				},
 				default_size = {
-					104.5,
-					123.5
+					140,
+					140
 				},
 				color = Colors.get_color_table_with_alpha("white", 255),
 				offset = {
-					17,
+					0,
 					0,
 					3
 				},
 				default_offset = {
-					17,
+					0,
 					0,
 					3
 				}

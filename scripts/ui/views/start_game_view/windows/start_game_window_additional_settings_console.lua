@@ -39,8 +39,6 @@ StartGameWindowAdditionalSettingsConsole.on_enter = function (self, params, offs
 
 	self._is_focused = false
 	self._versus_custom_lobby_view_active = params.versus_custom_lobby_view_active
-
-	Managers.state.event:register(self, "versus_custom_lobby_state_changed", "on_versus_custom_lobby_state_changed")
 end
 
 StartGameWindowAdditionalSettingsConsole._start_transition_animation = function (self, animation_name)
@@ -99,8 +97,6 @@ StartGameWindowAdditionalSettingsConsole.on_exit = function (self, params)
 	print("[StartGameWindow] Exit Substate StartGameWindowAdditionalSettingsConsole")
 
 	self.ui_animator = nil
-
-	Managers.state.event:unregister("versus_custom_lobby_state_changed", self)
 end
 
 StartGameWindowAdditionalSettingsConsole.set_focus = function (self, focused)
@@ -114,10 +110,6 @@ StartGameWindowAdditionalSettingsConsole.set_focus = function (self, focused)
 end
 
 StartGameWindowAdditionalSettingsConsole.update = function (self, dt, t)
-	if self._mechanism_name == "versus" and Managers.matchmaking:is_matchmaking_versus() then
-		return
-	end
-
 	if self._additional_option_enabled then
 		self:_update_additional_options()
 	end
@@ -423,10 +415,4 @@ StartGameWindowAdditionalSettingsConsole._handle_gamepad_activity = function (se
 
 		self.render_settings.alpha_multiplier = 1
 	end
-end
-
-StartGameWindowAdditionalSettingsConsole.on_versus_custom_lobby_state_changed = function (self, activated)
-	self._versus_custom_lobby_view_active = activated
-
-	self:_set_additional_options_enabled_state(not activated)
 end

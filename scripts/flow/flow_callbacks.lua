@@ -1382,34 +1382,12 @@ function flow_callback_projectile_bounce(params)
 	locomotion_extension:bounce(touching_unit, position, normal, separation_distance, impulse_force)
 end
 
-local temp = {}
-
 function flow_callback_get_random_player(params)
-	local players = Managers.player:human_and_bot_players()
+	local unit = PlayerUtils.get_random_alive_hero() or Unit.null_reference()
 
-	table.clear(temp)
+	flow_return_table.playerunit = unit
 
-	local unit_list = temp
-	local unit_list_n = 0
-
-	for _, player in pairs(players) do
-		local unit = player.player_unit
-
-		if HEALTH_ALIVE[unit] then
-			unit_list_n = unit_list_n + 1
-			unit_list[unit_list_n] = unit
-		end
-	end
-
-	if unit_list_n > 0 then
-		local unit = unit_list[math.random(1, unit_list_n)]
-
-		flow_return_table.playerunit = unit
-
-		return flow_return_table
-	end
-
-	return nil
+	return flow_return_table
 end
 
 function flow_callback_get_local_player_unit(params)
@@ -1425,24 +1403,22 @@ function flow_callback_get_local_player_unit(params)
 	return flow_return_table
 end
 
-function flow_callback_get_random_player_or_global_observer(params)
-	local players = Managers.player:human_and_bot_players()
-	local surrounding_aware_system = Managers.state.entity:system("surrounding_aware_system")
-	local global_observers = surrounding_aware_system.global_observers
+local temp = {}
 
+function flow_callback_get_random_player_or_global_observer(params)
 	table.clear(temp)
 
 	local unit_list = temp
 	local unit_list_n = 0
+	local player_unit = PlayerUtils.get_random_alive_hero()
 
-	for _, player in pairs(players) do
-		local unit = player.player_unit
-
-		if HEALTH_ALIVE[unit] then
-			unit_list_n = unit_list_n + 1
-			unit_list[unit_list_n] = unit
-		end
+	if player_unit then
+		unit_list[1] = player_unit
+		unit_list_n = 1
 	end
+
+	local surrounding_aware_system = Managers.state.entity:system("surrounding_aware_system")
+	local global_observers = surrounding_aware_system.global_observers
 
 	for unit in pairs(global_observers) do
 		unit_list_n = unit_list_n + 1
@@ -1453,11 +1429,11 @@ function flow_callback_get_random_player_or_global_observer(params)
 		local unit = unit_list[math.random(1, unit_list_n)]
 
 		flow_return_table.unit = unit
-
-		return flow_return_table
+	else
+		flow_return_table.unit = Unit.null_reference()
 	end
 
-	return nil
+	return flow_return_table
 end
 
 function flow_callback_get_random_global_observer(params)

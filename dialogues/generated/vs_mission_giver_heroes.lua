@@ -2,12 +2,19 @@ return function ()
 	define_rule({
 		response = "nde_vs_about_to_early_loss_a",
 		name = "nde_vs_about_to_early_loss_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
 				"concept",
 				OP.EQ,
 				"vs_mg_about_to_early_loss"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"query_context",
@@ -20,12 +27,19 @@ return function ()
 	define_rule({
 		response = "nde_vs_about_to_early_win_a",
 		name = "nde_vs_about_to_early_win_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
 				"concept",
 				OP.EQ,
 				"vs_mg_about_to_early_win"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"query_context",
@@ -38,6 +52,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_early_loss_a",
 		name = "nde_vs_early_loss_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -56,6 +71,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_early_win_a",
 		name = "nde_vs_early_win_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -74,12 +90,19 @@ return function ()
 	define_rule({
 		response = "nde_vs_gather_up_a",
 		name = "nde_vs_gather_up_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
 				"concept",
 				OP.EQ,
 				"vs_mg_gather_up"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"query_context",
@@ -92,12 +115,25 @@ return function ()
 	define_rule({
 		response = "nde_vs_heroes_last_man_standing_a",
 		name = "nde_vs_heroes_last_man_standing_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
 				"concept",
 				OP.EQ,
-				"vs_mg_heroes_last_man_standing"
+				"heard_speak"
+			},
+			{
+				"query_context",
+				"dialogue_name_nopre",
+				OP.EQ,
+				"last_hero_standing"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"query_context",
@@ -110,6 +146,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_heroes_team_wipe_a",
 		name = "nde_vs_heroes_team_wipe_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -128,6 +165,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_match_draw_a",
 		name = "nde_vs_match_draw_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -146,6 +184,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_new_objective_intro_a",
 		name = "nde_vs_new_objective_intro_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -160,10 +199,22 @@ return function ()
 				"nde_vs_objective_completed_agnostic_a"
 			},
 			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
+			},
+			{
 				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
+			},
+			{
+				"global_context",
+				"current_objective",
+				OP.EQ,
+				"new_objective_intro"
 			},
 			{
 				"global_context",
@@ -182,12 +233,19 @@ return function ()
 	define_rule({
 		response = "nde_vs_objective_completed_agnostic_a",
 		name = "nde_vs_objective_completed_agnostic_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
 				"concept",
 				OP.EQ,
 				"vs_mg_heroes_objective_completed"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"query_context",
@@ -200,6 +258,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_objective_completed_final_safe_room_b",
 		name = "nde_vs_objective_completed_final_safe_room_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -212,6 +271,12 @@ return function ()
 				"dialogue_name",
 				OP.EQ,
 				"nde_vs_objective_completed_agnostic_a"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"query_context",
@@ -230,6 +295,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_objective_completed_final_waystone_b",
 		name = "nde_vs_objective_completed_final_waystone_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -242,6 +308,12 @@ return function ()
 				"dialogue_name",
 				OP.EQ,
 				"nde_vs_objective_completed_agnostic_a"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"query_context",
@@ -260,6 +332,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_reached_safe_room_a",
 		name = "nde_vs_reached_safe_room_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -278,6 +351,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_reached_waystone_a",
 		name = "nde_vs_reached_waystone_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -296,12 +370,19 @@ return function ()
 	define_rule({
 		response = "nde_vs_safe_room_near_a",
 		name = "nde_vs_safe_room_near_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
 				"concept",
 				OP.EQ,
 				"vs_mg_heroes_safe_room_near"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"query_context",
@@ -314,6 +395,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_safe_room_round_started_a",
 		name = "nde_vs_safe_room_round_started_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -332,6 +414,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_safe_room_start_a",
 		name = "nde_vs_safe_room_start_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -350,12 +433,19 @@ return function ()
 	define_rule({
 		response = "nde_vs_waystone_near_a",
 		name = "nde_vs_waystone_near_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
 				"concept",
 				OP.EQ,
 				"vs_mg_heroes_waystone_near"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"query_context",
@@ -588,12 +678,13 @@ return function ()
 		},
 		nde_vs_heroes_last_man_standing_a = {
 			only_allies = true,
-			randomize_indexes_n = 0,
+			additional_trigger = "last_man_standing_pact_dummy",
 			face_animations_n = 3,
 			database = "vs_mission_giver_heroes",
-			sound_events_n = 3,
+			randomize_indexes_n = 0,
 			category = "npc_talk",
 			dialogue_animations_n = 3,
+			sound_events_n = 3,
 			dialogue_animations = {
 				"dialogue_talk",
 				"dialogue_talk",

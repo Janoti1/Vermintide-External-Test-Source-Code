@@ -15,18 +15,16 @@ HandbookPopup.init = function (self, ui_context, hint_name, hint_settings)
 	self._input_manager = ui_context.input_manager
 	self._render_settings = {
 		alpha_multiplier = 1,
-		snap_pixel_positions = true
+		snap_pixel_positions = false
 	}
-
-	local page_name = hint_settings.page
-
-	self._active_pages = {
-		page_name
-	}
+	self._active_pages = hint_settings.pages
 	self._current_page = 1
 	self._total_pages = #self._active_pages
+
+	local first_page = hint_settings.pages[1]
+
 	SaveData.seen_handbook_pages = SaveData.seen_handbook_pages or {}
-	SaveData.seen_handbook_pages[page_name] = true
+	SaveData.seen_handbook_pages[first_page] = true
 	self._has_widget_been_closed = false
 end
 
@@ -88,6 +86,35 @@ HandbookPopup._handle_input = function (self, dt)
 
 	local widgets_by_name = self._widgets_by_name
 	local input_service = self:_get_input_service()
+	local page_button_next = widgets_by_name.page_button_next
+	local page_button_previous = widgets_by_name.page_button_previous
+
+	UIWidgetUtils.animate_arrow_button(page_button_next, dt)
+	UIWidgetUtils.animate_arrow_button(page_button_previous, dt)
+
+	if UIUtils.is_button_hover_enter(page_button_next) or UIUtils.is_button_hover_enter(page_button_previous) then
+		self:play_sound("play_gui_inventory_next_hover")
+	end
+
+	if UIUtils.is_button_pressed(page_button_next) or input_service:get("cycle_next") then
+		local next_page_index = self._current_page + 1
+
+		if next_page_index <= self._total_pages then
+			self:_go_to_page(next_page_index)
+			self:play_sound("play_gui_cosmetics_inventory_next_click")
+		end
+	elseif UIUtils.is_button_pressed(page_button_previous) or input_service:get("cycle_previous") then
+		local next_page_index = self._current_page - 1
+
+		if next_page_index >= 1 then
+			self:_go_to_page(next_page_index)
+			self:play_sound("play_gui_cosmetics_inventory_next_click")
+		end
+	end
+
+	if self._content_widgets then
+		self:_update_mouse_scroll_input()
+	end
 
 	if UIUtils.is_button_pressed(widgets_by_name.exit_button) or input_service:get("back", true) or input_service:get("toggle_menu", true) then
 		self:hide()
@@ -111,12 +138,13 @@ HandbookPopup._go_to_page = function (self, page_index)
 
 	local entry_widgets, total_height = self._handbook_logic:create_entry_widgets(page_settings)
 
+	total_height = total_height + 150
 	self._content_widgets = entry_widgets
-
-	local scrollbar_bottom_inset = 150
-
-	self._total_scroll_height = math.max(total_height + scrollbar_bottom_inset - ACHIEVEMENT_WINDOW_HEIGHT, 0)
+	self._total_scroll_height = math.max(total_height - ACHIEVEMENT_WINDOW_HEIGHT, 0)
 	self._scroll_value = nil
+
+	self:_setup_scrollbar(total_height)
+
 	self._current_page = page_index
 
 	self:_update_page_info()
@@ -158,5 +186,67 @@ HandbookPopup.update = function (self, dt)
 	if self:should_show() and not self._has_widget_been_closed then
 		self:show()
 		self:_go_to_page(1)
+	end
+end
+
+HandbookPopup._setup_scrollbar = function (self, height, optional_value)
+	local widget = self._widgets_by_name.achievement_scrollbar
+	local scenegraph_id = widget.scenegraph_id
+	local scrollbar_size_y = self._ui_scenegraph[scenegraph_id].size[2]
+	local percentage = math.min(scrollbar_size_y / height, 1)
+
+	widget.content.scroll_bar_info.bar_height_percentage = percentage
+
+	self:_set_scrollbar_value(optional_value or 0)
+
+	local scroll_step_multiplier = 2
+	local scroll_amount = math.max(110 / self._total_scroll_height, 0) * scroll_step_multiplier
+
+	self._widgets_by_name.achievement_window.content.scroll_amount = scroll_amount
+end
+
+HandbookPopup._set_scrollbar_value = function (self, value)
+	if value then
+		local widgets_by_name = self._widgets_by_name
+		local widget = widgets_by_name.achievement_scrollbar
+		local widget_scroll_bar_info = widget.content.scroll_bar_info
+
+		widget_scroll_bar_info.value = value
+		widgets_by_name.achievement_window.content.scroll_value = value
+
+		local total_scroll_height = self._total_scroll_height
+		local height_scrolled = total_scroll_height * value
+
+		self._ui_scenegraph.achievement_root.position[2] = math.floor(height_scrolled)
+		self._scroll_value = value
+	end
+end
+
+HandbookPopup._update_mouse_scroll_input = function (self)
+	local using_scrollbar = true
+
+	if using_scrollbar then
+		local widgets_by_name = self._widgets_by_name
+		local widget = widgets_by_name.achievement_scrollbar
+		local achievement_window_widget = widgets_by_name.achievement_window
+
+		if widget.content.scroll_bar_info.on_pressed then
+			achievement_window_widget.content.scroll_add = nil
+		end
+
+		local mouse_scroll_value = achievement_window_widget.content.scroll_value
+
+		if not mouse_scroll_value then
+			return
+		end
+
+		local scroll_bar_value = widget.content.scroll_bar_info.value
+		local current_scroll_value = self._scroll_value
+
+		if current_scroll_value ~= mouse_scroll_value then
+			self:_set_scrollbar_value(mouse_scroll_value)
+		elseif current_scroll_value ~= scroll_bar_value then
+			self:_set_scrollbar_value(scroll_bar_value)
+		end
 	end
 end

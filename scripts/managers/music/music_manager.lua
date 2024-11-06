@@ -945,12 +945,13 @@ MusicManager._update_versus_game_state = function (self, music_player, dt, t)
 
 	local win_conditions = Managers.mechanism:game_mechanism():win_conditions()
 	local side_close_to_winning = win_conditions:get_side_close_to_winning()
+	local heroes_close_to_safe_zone = win_conditions:heroes_close_to_safe_zone()
 
-	if side_close_to_winning then
+	if side_close_to_winning or heroes_close_to_safe_zone then
 		local state
-		local side_name = self:_get_side_name()
+		local player_team_close_to_safe_zone = heroes_close_to_safe_zone and side_name == "heroes"
 
-		state = side_name == side_close_to_winning and "close_to_win" or "time_is_running_out"
+		state = not (side_name ~= side_close_to_winning and not player_team_close_to_safe_zone) and "close_to_win" or "time_is_running_out"
 
 		music_player:set_group_state("versus_state", state)
 	elseif is_dark_pact then

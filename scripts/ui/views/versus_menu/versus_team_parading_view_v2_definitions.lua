@@ -313,7 +313,7 @@ function create_player_name_career_text(scenegraph_id)
 end
 
 local bottom_widgets_definitions = {
-	bottom_background = UIWidgets.create_simple_rect("bottom_bar", Colors.get_color_table_with_alpha("black", 185)),
+	bottom_background = UIWidgets.create_simple_rect("bottom_bar", Colors.get_color_table_with_alpha("black", 100)),
 	bottom_background_detail = UIWidgets.create_parading_screen_divider("bottom_bar_detail", scenegraph_definition.bottom_bar_detail.size)
 }
 local top_widgets_definitions = {

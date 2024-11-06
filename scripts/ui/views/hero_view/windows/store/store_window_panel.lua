@@ -592,7 +592,7 @@ StoreWindowPanel._sync_wallet_matchmaking_location = function (self)
 			local currency_type = currency_types[i]
 			local node_name = "currency_node_" .. currency_type
 
-			ui_scenegraph[node_name].position[1] = ui_scenegraph[node_name].position[1] - offset_value
+			ui_scenegraph[node_name].position[1] = scenegraph_definition[node_name].position[1] - offset_value
 		end
 	end
 end
@@ -635,12 +635,12 @@ StoreWindowPanel._sync_player_wallet = function (self)
 			local background_size = total_length + background_margin
 
 			ui_scenegraph["currency_node_" .. currency_type].size[1] = background_size
-			ui_scenegraph["currency_node_" .. currency_type].position[1] = -92 - background_total_size
+			scenegraph_definition["currency_node_" .. currency_type].position[1] = -92 - background_total_size
 
 			local is_game_matchmaking = Managers.matchmaking:is_game_matchmaking()
 			local offset_value = is_game_matchmaking and 390 or 0
 
-			ui_scenegraph["currency_node_" .. currency_type].position[1] = ui_scenegraph["currency_node_" .. currency_type].position[1] - offset_value
+			ui_scenegraph["currency_node_" .. currency_type].position[1] = scenegraph_definition["currency_node_" .. currency_type].position[1] - offset_value
 			background_total_size = background_total_size + background_size
 		end
 	end

@@ -289,7 +289,9 @@ MatchmakingUI._draw = function (self, ui_renderer, input_service, is_matchmaking
 
 	if self._show_detailed_matchmaking_info then
 		if self._active_mechanism == "versus" then
-			UIRenderer.draw_all_widgets(ui_renderer, self._versus_input_widgets)
+			if not Managers.state.voting:cancel_disabled() then
+				UIRenderer.draw_all_widgets(ui_renderer, self._versus_input_widgets)
+			end
 		elseif self._allow_cancel_matchmaking then
 			UIRenderer.draw_all_widgets(ui_renderer, self._cancel_input_widgets)
 		end

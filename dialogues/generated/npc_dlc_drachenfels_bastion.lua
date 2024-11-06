@@ -2,6 +2,7 @@ return function ()
 	define_rule({
 		response = "ncv1_bastion_vo_first_villager",
 		name = "ncv1_bastion_vo_first_villager",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -26,6 +27,7 @@ return function ()
 	define_rule({
 		response = "ncv2_bastion_vo_last_villager",
 		name = "ncv2_bastion_vo_last_villager",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -50,6 +52,7 @@ return function ()
 	define_rule({
 		response = "ncv_bastion_vo_freed_villager",
 		name = "ncv_bastion_vo_freed_villager",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -74,6 +77,7 @@ return function ()
 	define_rule({
 		response = "nngl_bastion_vo_sorcerer_greeting",
 		name = "nngl_bastion_vo_sorcerer_greeting",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -92,6 +96,7 @@ return function ()
 	define_rule({
 		response = "nngl_bastion_vo_sorcerer_taunt",
 		name = "nngl_bastion_vo_sorcerer_taunt",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -108,6 +113,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_bastion_vo_finale_sorcerer",
 		response = "pbw_bastion_vo_finale_sorcerer",
 		criterias = {
@@ -152,6 +158,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_bastion_vo_finale_sorcerer",
 		response = "pdr_bastion_vo_finale_sorcerer",
 		criterias = {
@@ -196,6 +203,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_bastion_vo_finale_sorcerer",
 		response = "pes_bastion_vo_finale_sorcerer",
 		criterias = {
@@ -240,6 +248,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_bastion_vo_finale_sorcerer",
 		response = "pwe_bastion_vo_finale_sorcerer",
 		criterias = {
@@ -284,6 +293,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_bastion_vo_finale_sorcerer",
 		response = "pwh_bastion_vo_finale_sorcerer",
 		criterias = {

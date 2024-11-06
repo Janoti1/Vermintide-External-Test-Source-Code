@@ -475,6 +475,11 @@ IngameUI.handle_menu_hotkeys = function (self, dt, input_service, hotkeys_enable
 							menu_state_name = mapping_data.transition_state,
 							menu_sub_state_name = mapping_data.transition_sub_state
 						}
+						local inject_transition_params_func = mapping_data.inject_transition_params_func
+
+						if inject_transition_params_func then
+							inject_transition_params_func(transition_params)
+						end
 
 						self:transition_with_fade(transition, transition_params)
 					end

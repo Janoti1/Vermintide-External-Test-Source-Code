@@ -259,6 +259,10 @@ local scenegraph_size = {
 		1920,
 		1080
 	},
+	local_player_flame_highlight = {
+		1820,
+		440
+	},
 	hero_name_text_anchor = {
 		0,
 		0
@@ -465,6 +469,13 @@ local scenegraph_definition = {
 		horizontal_alignment = "center",
 		size = scenegraph_size.local_player_picking_frame,
 		position = scenegraph_position.local_player_picking_frame
+	},
+	local_player_flame_highlight = {
+		vertical_alignment = "bottom",
+		parent = "bottom_bar",
+		horizontal_alignment = "center",
+		size = scenegraph_size.local_player_flame_highlight,
+		position = scenegraph_position.local_player_flame_highlight
 	},
 	hero_name_text_anchor = {
 		vertical_alignment = "top",

@@ -2,6 +2,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_fort_set1_briefing_a",
 		name = "nde_vs_fort_set1_briefing_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -16,7 +17,7 @@ return function ()
 				"nde_vs_safe_room_start_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
@@ -44,6 +45,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_fort_set1_obj1_a",
 		name = "nde_vs_fort_set1_obj1_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -58,7 +60,7 @@ return function ()
 				"nde_vs_safe_room_round_started_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
@@ -74,18 +76,13 @@ return function ()
 				"current_set",
 				OP.EQ,
 				1
-			},
-			{
-				"global_context",
-				"current_objective",
-				OP.EQ,
-				"one"
 			}
 		}
 	})
 	define_rule({
 		response = "nde_vs_fort_set1_obj1_reached",
 		name = "nde_vs_fort_set1_obj1_reached",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -94,10 +91,16 @@ return function ()
 				"vs_mg_heroes_objective_reached"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"global_context",
@@ -122,6 +125,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_fort_set1_obj2_a",
 		name = "nde_vs_fort_set1_obj2_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -133,13 +137,19 @@ return function ()
 				"query_context",
 				"dialogue_name",
 				OP.EQ,
-				"nde_vs_new_objective_intro_a"
+				"nde_vs_objective_completed_agnostic_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"global_context",
@@ -164,6 +174,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_fort_set1_obj2_reached",
 		name = "nde_vs_fort_set1_obj2_reached",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -172,10 +183,16 @@ return function ()
 				"vs_mg_heroes_objective_reached"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"global_context",
@@ -200,6 +217,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_fort_set1_safe_room_reminder",
 		name = "nde_vs_fort_set1_safe_room_reminder",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -208,10 +226,16 @@ return function ()
 				"vs_mg_heroes_objective_reached"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"global_context",
@@ -236,6 +260,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_fort_set2_obj1_a",
 		name = "nde_vs_fort_set2_obj1_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -250,7 +275,7 @@ return function ()
 				"nde_vs_safe_room_round_started_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
@@ -266,18 +291,13 @@ return function ()
 				"current_set",
 				OP.EQ,
 				2
-			},
-			{
-				"global_context",
-				"current_objective",
-				OP.EQ,
-				"one"
 			}
 		}
 	})
 	define_rule({
 		response = "nde_vs_fort_set2_obj1_reached_p1",
 		name = "nde_vs_fort_set2_obj1_reached_p1",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -286,10 +306,16 @@ return function ()
 				"vs_mg_heroes_objective_reached"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"global_context",
@@ -320,6 +346,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_fort_set2_obj1_reached_p2",
 		name = "nde_vs_fort_set2_obj1_reached_p2",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -328,10 +355,16 @@ return function ()
 				"vs_mg_heroes_objective_reached"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"global_context",
@@ -362,6 +395,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_fort_set2_obj2_a",
 		name = "nde_vs_fort_set2_obj2_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -373,13 +407,50 @@ return function ()
 				"query_context",
 				"dialogue_name",
 				OP.EQ,
-				"nde_vs_new_objective_intro_a"
+				"nde_vs_fort_set2_obj2_a_BRIDGE"
 			},
 			{
-				"user_context",
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
+			},
+			{
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
+			}
+		}
+	})
+	define_rule({
+		response = "nde_vs_fort_set2_obj2_a_BRIDGE",
+		name = "nde_vs_fort_set2_obj2_a_BRIDGE",
+		probability = 1,
+		criterias = {
+			{
+				"query_context",
+				"concept",
+				OP.EQ,
+				"heard_speak_self"
+			},
+			{
+				"query_context",
+				"dialogue_name",
+				OP.EQ,
+				"nde_vs_objective_completed_agnostic_a"
+			},
+			{
+				"query_context",
+				"source_name",
+				OP.EQ,
+				"vs_heroes_mission_giver"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"global_context",
@@ -404,6 +475,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_fort_set2_obj2_reached",
 		name = "nde_vs_fort_set2_obj2_reached",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -412,10 +484,16 @@ return function ()
 				"vs_mg_heroes_objective_reached"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"global_context",
@@ -440,6 +518,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_fort_set3_obj1_a",
 		name = "nde_vs_fort_set3_obj1_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -454,7 +533,7 @@ return function ()
 				"nde_vs_safe_room_round_started_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
@@ -470,18 +549,13 @@ return function ()
 				"current_set",
 				OP.EQ,
 				3
-			},
-			{
-				"global_context",
-				"current_objective",
-				OP.EQ,
-				"one"
 			}
 		}
 	})
 	define_rule({
 		response = "nde_vs_fort_set3_obj2_a",
 		name = "nde_vs_fort_set3_obj2_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -493,13 +567,19 @@ return function ()
 				"query_context",
 				"dialogue_name",
 				OP.EQ,
-				"nde_vs_new_objective_intro_a"
+				"nde_vs_objective_completed_agnostic_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"global_context",
@@ -524,6 +604,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_fort_set3_obj2_reached_p1",
 		name = "nde_vs_fort_set3_obj2_reached_p1",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -532,10 +613,16 @@ return function ()
 				"vs_mg_heroes_objective_reached"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"global_context",
@@ -566,6 +653,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_fort_set3_obj2_reached_p2",
 		name = "nde_vs_fort_set3_obj2_reached_p2",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -574,10 +662,16 @@ return function ()
 				"vs_mg_heroes_objective_reached"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"global_context",
@@ -608,6 +702,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_fort_set3_obj3_reached",
 		name = "nde_vs_fort_set3_obj3_reached",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -616,10 +711,16 @@ return function ()
 				"vs_mg_heroes_objective_reached"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"global_context",
@@ -642,6 +743,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_level_fort_cannonballs_PVP",
 		response = "pbw_level_fort_cannonballs_PVP",
 		criterias = {
@@ -686,6 +788,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_level_fort_fire_cannon_final_hit_PVP",
 		response = "pbw_level_fort_fire_cannon_final_hit_PVP",
 		criterias = {
@@ -730,6 +833,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_level_fort_fire_cannon_first_hit_PVP",
 		response = "pbw_level_fort_fire_cannon_first_hit_PVP",
 		criterias = {
@@ -774,6 +878,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_level_fort_fire_cannon_second_hit_PVP",
 		response = "pbw_level_fort_fire_cannon_second_hit_PVP",
 		criterias = {
@@ -820,6 +925,7 @@ return function ()
 	define_rule({
 		response = "pbw_vs_safe_room_fort_01_b",
 		name = "pbw_vs_safe_room_fort_01_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -844,6 +950,7 @@ return function ()
 	define_rule({
 		response = "pbw_vs_safe_room_fort_02_a",
 		name = "pbw_vs_safe_room_fort_02_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -858,7 +965,7 @@ return function ()
 				"nde_vs_fort_set1_briefing_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"bright_wizard"
@@ -892,6 +999,7 @@ return function ()
 	define_rule({
 		response = "pbw_vs_safe_room_fort_03_b",
 		name = "pbw_vs_safe_room_fort_03_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -916,6 +1024,7 @@ return function ()
 	define_rule({
 		response = "pbw_vs_safe_room_fort_04_b",
 		name = "pbw_vs_safe_room_fort_04_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -940,6 +1049,7 @@ return function ()
 	define_rule({
 		response = "pbw_vs_safe_room_fort_05_b",
 		name = "pbw_vs_safe_room_fort_05_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -964,6 +1074,7 @@ return function ()
 	define_rule({
 		response = "pbw_vs_safe_room_fort_06_b",
 		name = "pbw_vs_safe_room_fort_06_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -988,6 +1099,7 @@ return function ()
 	define_rule({
 		response = "pbw_vs_safe_room_fort_07_a",
 		name = "pbw_vs_safe_room_fort_07_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1002,7 +1114,7 @@ return function ()
 				"nde_vs_fort_set1_briefing_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"bright_wizard"
@@ -1036,6 +1148,7 @@ return function ()
 	define_rule({
 		response = "pbw_vs_safe_room_fort_08_b",
 		name = "pbw_vs_safe_room_fort_08_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1060,6 +1173,7 @@ return function ()
 	define_rule({
 		response = "pbw_vs_safe_room_fort_09_b",
 		name = "pbw_vs_safe_room_fort_09_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1084,6 +1198,7 @@ return function ()
 	define_rule({
 		response = "pbw_vs_safe_room_fort_10_b",
 		name = "pbw_vs_safe_room_fort_10_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1106,6 +1221,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_level_fort_cannonballs_PVP",
 		response = "pdr_level_fort_cannonballs_PVP",
 		criterias = {
@@ -1150,6 +1266,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_level_fort_fire_cannon_final_hit_PVP",
 		response = "pdr_level_fort_fire_cannon_final_hit_PVP",
 		criterias = {
@@ -1194,6 +1311,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_level_fort_fire_cannon_first_hit_PVP",
 		response = "pdr_level_fort_fire_cannon_first_hit_PVP",
 		criterias = {
@@ -1238,6 +1356,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_level_fort_fire_cannon_second_hit_PVP",
 		response = "pdr_level_fort_fire_cannon_second_hit_PVP",
 		criterias = {
@@ -1282,6 +1401,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_level_fort_plague_claw_shelling_move_PVP",
 		response = "pdr_level_fort_plague_claw_shelling_move_PVP",
 		criterias = {
@@ -1326,6 +1446,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_level_fort_under_attack_PVP",
 		response = "pdr_level_fort_under_attack_PVP",
 		criterias = {
@@ -1372,6 +1493,7 @@ return function ()
 	define_rule({
 		response = "pdr_vs_safe_room_fort_01_b",
 		name = "pdr_vs_safe_room_fort_01_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1396,6 +1518,7 @@ return function ()
 	define_rule({
 		response = "pdr_vs_safe_room_fort_02_b",
 		name = "pdr_vs_safe_room_fort_02_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1420,6 +1543,7 @@ return function ()
 	define_rule({
 		response = "pdr_vs_safe_room_fort_03_a",
 		name = "pdr_vs_safe_room_fort_03_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1434,7 +1558,7 @@ return function ()
 				"nde_vs_fort_set1_briefing_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"dwarf_ranger"
@@ -1468,6 +1592,7 @@ return function ()
 	define_rule({
 		response = "pdr_vs_safe_room_fort_04_b",
 		name = "pdr_vs_safe_room_fort_04_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1492,6 +1617,7 @@ return function ()
 	define_rule({
 		response = "pdr_vs_safe_room_fort_05_b",
 		name = "pdr_vs_safe_room_fort_05_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1516,6 +1642,7 @@ return function ()
 	define_rule({
 		response = "pdr_vs_safe_room_fort_06_b",
 		name = "pdr_vs_safe_room_fort_06_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1540,6 +1667,7 @@ return function ()
 	define_rule({
 		response = "pdr_vs_safe_room_fort_07_b",
 		name = "pdr_vs_safe_room_fort_07_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1564,6 +1692,7 @@ return function ()
 	define_rule({
 		response = "pdr_vs_safe_room_fort_08_a",
 		name = "pdr_vs_safe_room_fort_08_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1578,7 +1707,7 @@ return function ()
 				"nde_vs_fort_set1_briefing_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"dwarf_ranger"
@@ -1612,6 +1741,7 @@ return function ()
 	define_rule({
 		response = "pdr_vs_safe_room_fort_09_b",
 		name = "pdr_vs_safe_room_fort_09_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1636,6 +1766,7 @@ return function ()
 	define_rule({
 		response = "pdr_vs_safe_room_fort_10_b",
 		name = "pdr_vs_safe_room_fort_10_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1658,6 +1789,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_level_fort_cannonballs_PVP",
 		response = "pes_level_fort_cannonballs_PVP",
 		criterias = {
@@ -1702,6 +1834,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_level_fort_fire_cannon_final_hit_PVP",
 		response = "pes_level_fort_fire_cannon_final_hit_PVP",
 		criterias = {
@@ -1746,6 +1879,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_level_fort_fire_cannon_first_hit_PVP",
 		response = "pes_level_fort_fire_cannon_first_hit_PVP",
 		criterias = {
@@ -1790,6 +1924,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_level_fort_fire_cannon_second_hit_PVP",
 		response = "pes_level_fort_fire_cannon_second_hit_PVP",
 		criterias = {
@@ -1834,6 +1969,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_level_fort_plague_claw_shelling_move_PVP",
 		response = "pes_level_fort_plague_claw_shelling_move_PVP",
 		criterias = {
@@ -1878,6 +2014,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_level_fort_under_attack_PVP",
 		response = "pes_level_fort_under_attack_PVP",
 		criterias = {
@@ -1924,6 +2061,7 @@ return function ()
 	define_rule({
 		response = "pes_vs_safe_room_fort_01_b",
 		name = "pes_vs_safe_room_fort_01_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1948,6 +2086,7 @@ return function ()
 	define_rule({
 		response = "pes_vs_safe_room_fort_02_b",
 		name = "pes_vs_safe_room_fort_02_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1972,6 +2111,7 @@ return function ()
 	define_rule({
 		response = "pes_vs_safe_room_fort_03_b",
 		name = "pes_vs_safe_room_fort_03_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1996,6 +2136,7 @@ return function ()
 	define_rule({
 		response = "pes_vs_safe_room_fort_04_b",
 		name = "pes_vs_safe_room_fort_04_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2020,6 +2161,7 @@ return function ()
 	define_rule({
 		response = "pes_vs_safe_room_fort_05_a",
 		name = "pes_vs_safe_room_fort_05_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2034,7 +2176,7 @@ return function ()
 				"nde_vs_fort_set1_briefing_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"empire_soldier"
@@ -2068,6 +2210,7 @@ return function ()
 	define_rule({
 		response = "pes_vs_safe_room_fort_06_b",
 		name = "pes_vs_safe_room_fort_06_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2092,6 +2235,7 @@ return function ()
 	define_rule({
 		response = "pes_vs_safe_room_fort_07_b",
 		name = "pes_vs_safe_room_fort_07_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2116,6 +2260,7 @@ return function ()
 	define_rule({
 		response = "pes_vs_safe_room_fort_08_b",
 		name = "pes_vs_safe_room_fort_08_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2140,6 +2285,7 @@ return function ()
 	define_rule({
 		response = "pes_vs_safe_room_fort_09_b",
 		name = "pes_vs_safe_room_fort_09_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2164,6 +2310,7 @@ return function ()
 	define_rule({
 		response = "pes_vs_safe_room_fort_10_a",
 		name = "pes_vs_safe_room_fort_10_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2178,7 +2325,7 @@ return function ()
 				"nde_vs_fort_set1_briefing_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"empire_soldier"
@@ -2210,6 +2357,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_level_fort_cannonballs_PVP",
 		response = "pwe_level_fort_cannonballs_PVP",
 		criterias = {
@@ -2254,6 +2402,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_level_fort_fire_cannon_final_hit_PVP",
 		response = "pwe_level_fort_fire_cannon_final_hit_PVP",
 		criterias = {
@@ -2298,6 +2447,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_level_fort_fire_cannon_first_hit_PVP",
 		response = "pwe_level_fort_fire_cannon_first_hit_PVP",
 		criterias = {
@@ -2342,6 +2492,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_level_fort_fire_cannon_second_hit_PVP",
 		response = "pwe_level_fort_fire_cannon_second_hit_PVP",
 		criterias = {
@@ -2386,6 +2537,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_level_fort_plague_claw_shelling_move_PVP",
 		response = "pwe_level_fort_plague_claw_shelling_move_PVP",
 		criterias = {
@@ -2432,6 +2584,7 @@ return function ()
 	define_rule({
 		response = "pwe_vs_safe_room_fort_01_b",
 		name = "pwe_vs_safe_room_fort_01_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2456,6 +2609,7 @@ return function ()
 	define_rule({
 		response = "pwe_vs_safe_room_fort_02_b",
 		name = "pwe_vs_safe_room_fort_02_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2480,6 +2634,7 @@ return function ()
 	define_rule({
 		response = "pwe_vs_safe_room_fort_03_b",
 		name = "pwe_vs_safe_room_fort_03_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2504,6 +2659,7 @@ return function ()
 	define_rule({
 		response = "pwe_vs_safe_room_fort_04_a",
 		name = "pwe_vs_safe_room_fort_04_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2518,7 +2674,7 @@ return function ()
 				"nde_vs_fort_set1_briefing_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"wood_elf"
@@ -2552,6 +2708,7 @@ return function ()
 	define_rule({
 		response = "pwe_vs_safe_room_fort_05_b",
 		name = "pwe_vs_safe_room_fort_05_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2576,6 +2733,7 @@ return function ()
 	define_rule({
 		response = "pwe_vs_safe_room_fort_06_b",
 		name = "pwe_vs_safe_room_fort_06_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2600,6 +2758,7 @@ return function ()
 	define_rule({
 		response = "pwe_vs_safe_room_fort_07_b",
 		name = "pwe_vs_safe_room_fort_07_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2624,6 +2783,7 @@ return function ()
 	define_rule({
 		response = "pwe_vs_safe_room_fort_08_b",
 		name = "pwe_vs_safe_room_fort_08_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2648,6 +2808,7 @@ return function ()
 	define_rule({
 		response = "pwe_vs_safe_room_fort_09_a",
 		name = "pwe_vs_safe_room_fort_09_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2662,7 +2823,7 @@ return function ()
 				"nde_vs_fort_set1_briefing_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"wood_elf"
@@ -2696,6 +2857,7 @@ return function ()
 	define_rule({
 		response = "pwe_vs_safe_room_fort_10_b",
 		name = "pwe_vs_safe_room_fort_10_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2718,6 +2880,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_level_fort_cannonballs_PVP",
 		response = "pwh_level_fort_cannonballs_PVP",
 		criterias = {
@@ -2762,6 +2925,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_level_fort_fire_cannon_final_hit_PVP",
 		response = "pwh_level_fort_fire_cannon_final_hit_PVP",
 		criterias = {
@@ -2806,6 +2970,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_level_fort_fire_cannon_first_hit_PVP",
 		response = "pwh_level_fort_fire_cannon_first_hit_PVP",
 		criterias = {
@@ -2850,6 +3015,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_level_fort_fire_cannon_second_hit_PVP",
 		response = "pwh_level_fort_fire_cannon_second_hit_PVP",
 		criterias = {
@@ -2894,6 +3060,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_level_fort_plague_claw_shelling_move_PVP",
 		response = "pwh_level_fort_plague_claw_shelling_move_PVP",
 		criterias = {
@@ -2938,6 +3105,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_level_fort_under_attack_PVP",
 		response = "pwh_level_fort_under_attack_PVP",
 		criterias = {
@@ -2984,6 +3152,7 @@ return function ()
 	define_rule({
 		response = "pwh_vs_safe_room_fort_01_a",
 		name = "pwh_vs_safe_room_fort_01_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2998,7 +3167,7 @@ return function ()
 				"nde_vs_fort_set1_briefing_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"witch_hunter"
@@ -3032,6 +3201,7 @@ return function ()
 	define_rule({
 		response = "pwh_vs_safe_room_fort_02_b",
 		name = "pwh_vs_safe_room_fort_02_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3056,6 +3226,7 @@ return function ()
 	define_rule({
 		response = "pwh_vs_safe_room_fort_03_b",
 		name = "pwh_vs_safe_room_fort_03_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3080,6 +3251,7 @@ return function ()
 	define_rule({
 		response = "pwh_vs_safe_room_fort_04_b",
 		name = "pwh_vs_safe_room_fort_04_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3104,6 +3276,7 @@ return function ()
 	define_rule({
 		response = "pwh_vs_safe_room_fort_05_b",
 		name = "pwh_vs_safe_room_fort_05_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3128,6 +3301,7 @@ return function ()
 	define_rule({
 		response = "pwh_vs_safe_room_fort_06_a",
 		name = "pwh_vs_safe_room_fort_06_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3142,7 +3316,7 @@ return function ()
 				"nde_vs_fort_set1_briefing_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"witch_hunter"
@@ -3176,6 +3350,7 @@ return function ()
 	define_rule({
 		response = "pwh_vs_safe_room_fort_07_b",
 		name = "pwh_vs_safe_room_fort_07_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3200,6 +3375,7 @@ return function ()
 	define_rule({
 		response = "pwh_vs_safe_room_fort_08_b",
 		name = "pwh_vs_safe_room_fort_08_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3224,6 +3400,7 @@ return function ()
 	define_rule({
 		response = "pwh_vs_safe_room_fort_09_b",
 		name = "pwh_vs_safe_room_fort_09_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3248,6 +3425,7 @@ return function ()
 	define_rule({
 		response = "pwh_vs_safe_room_fort_10_b",
 		name = "pwh_vs_safe_room_fort_10_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3634,6 +3812,41 @@ return function ()
 				3.7451040744781,
 				4.5869793891907,
 				5.8270626068115
+			}
+		},
+		nde_vs_fort_set2_obj2_a_BRIDGE = {
+			only_allies = true,
+			randomize_indexes_n = 0,
+			face_animations_n = 3,
+			database = "vs_level_fort_pvp",
+			sound_events_n = 3,
+			category = "npc_talk",
+			dialogue_animations_n = 3,
+			dialogue_animations = {
+				"dialogue_talk",
+				"dialogue_talk",
+				"dialogue_talk"
+			},
+			face_animations = {
+				"face_neutral",
+				"face_neutral",
+				"face_neutral"
+			},
+			localization_strings = {
+				"nde_vs_new_objective_intro_a_03",
+				"nde_vs_new_objective_intro_a_04",
+				"nde_vs_new_objective_intro_a_05"
+			},
+			randomize_indexes = {},
+			sound_events = {
+				"nde_vs_new_objective_intro_a_03",
+				"nde_vs_new_objective_intro_a_04",
+				"nde_vs_new_objective_intro_a_05"
+			},
+			sound_events_duration = {
+				2.8559999465942,
+				2.7655208110809,
+				2.8721873760223
 			}
 		},
 		nde_vs_fort_set2_obj2_reached = {

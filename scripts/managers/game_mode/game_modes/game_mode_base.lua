@@ -537,6 +537,8 @@ GameModeBase.is_about_to_end_game_early = function (self)
 end
 
 GameModeBase.set_about_to_end_game_early = function (self, about_to_end_game_early)
+	Managers.state.entity:system("dialogue_system"):set_global_context("game_about_to_end", about_to_end_game_early and 1 or 0)
+
 	self._about_to_end_game_early = about_to_end_game_early
 end
 

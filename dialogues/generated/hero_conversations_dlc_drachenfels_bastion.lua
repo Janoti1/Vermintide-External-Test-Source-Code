@@ -1,5 +1,6 @@
 return function ()
 	define_rule({
+		probability = 1,
 		name = "pbw_bastion_conversation_eleven_01",
 		response = "pbw_bastion_conversation_eleven_01",
 		criterias = {
@@ -80,6 +81,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_bastion_conversation_eleven_02",
 		response = "pbw_bastion_conversation_eleven_02",
 		criterias = {
@@ -117,6 +119,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_bastion_conversation_seven_01",
 		response = "pbw_bastion_conversation_seven_01",
 		criterias = {
@@ -197,6 +200,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_bastion_conversation_seven_02",
 		response = "pbw_bastion_conversation_seven_02",
 		criterias = {
@@ -234,6 +238,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_bastion_conversation_three_01",
 		response = "pbw_bastion_conversation_three_01",
 		criterias = {
@@ -314,6 +319,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_bastion_conversation_three_02",
 		response = "pbw_bastion_conversation_three_02",
 		criterias = {
@@ -351,6 +357,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_bastion_conversation_three_03",
 		response = "pbw_bastion_conversation_three_03",
 		criterias = {
@@ -388,6 +395,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_bastion_conversation_twelve_01",
 		response = "pbw_bastion_conversation_twelve_01",
 		criterias = {
@@ -425,6 +433,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_bastion_conversation_twelve_02",
 		response = "pbw_bastion_conversation_twelve_02",
 		criterias = {
@@ -462,6 +471,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_bastion_conversation_two_01",
 		response = "pbw_bastion_conversation_two_01",
 		criterias = {
@@ -499,6 +509,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_bastion_conversation_five_01",
 		response = "pdr_bastion_conversation_five_01",
 		criterias = {
@@ -536,6 +547,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_bastion_conversation_five_02",
 		response = "pdr_bastion_conversation_five_02",
 		criterias = {
@@ -573,6 +585,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_bastion_conversation_four_01",
 		response = "pdr_bastion_conversation_four_01",
 		criterias = {
@@ -610,6 +623,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_bastion_conversation_one_01",
 		response = "pdr_bastion_conversation_one_01",
 		criterias = {
@@ -696,6 +710,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_bastion_conversation_three_01",
 		response = "pdr_bastion_conversation_three_01",
 		criterias = {
@@ -733,6 +748,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_bastion_conversation_three_02",
 		response = "pdr_bastion_conversation_three_02",
 		criterias = {
@@ -770,6 +786,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_bastion_conversation_eight_01",
 		response = "pes_bastion_conversation_eight_01",
 		criterias = {
@@ -807,6 +824,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_bastion_conversation_nine_01",
 		response = "pes_bastion_conversation_nine_01",
 		criterias = {
@@ -887,6 +905,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_bastion_conversation_nine_02",
 		response = "pes_bastion_conversation_nine_02",
 		criterias = {
@@ -924,6 +943,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_bastion_conversation_nine_03",
 		response = "pes_bastion_conversation_nine_03",
 		criterias = {
@@ -961,6 +981,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_bastion_conversation_one_01",
 		response = "pes_bastion_conversation_one_01",
 		criterias = {
@@ -998,6 +1019,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_bastion_conversation_one_02",
 		response = "pes_bastion_conversation_one_02",
 		criterias = {
@@ -1035,6 +1057,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_bastion_conversation_six_01",
 		response = "pes_bastion_conversation_six_01",
 		criterias = {
@@ -1072,6 +1095,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_bastion_conversation_six_02",
 		response = "pes_bastion_conversation_six_02",
 		criterias = {
@@ -1109,6 +1133,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_bastion_conversation_twelve_01",
 		response = "pes_bastion_conversation_twelve_01",
 		criterias = {
@@ -1189,6 +1214,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_bastion_conversation_twelve_02",
 		response = "pes_bastion_conversation_twelve_02",
 		criterias = {
@@ -1226,6 +1252,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_bastion_conversation_eight_01",
 		response = "pwe_bastion_conversation_eight_01",
 		criterias = {
@@ -1306,6 +1333,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_bastion_conversation_eleven_01",
 		response = "pwe_bastion_conversation_eleven_01",
 		criterias = {
@@ -1343,6 +1371,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_bastion_conversation_four_01",
 		response = "pwe_bastion_conversation_four_01",
 		criterias = {
@@ -1423,6 +1452,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_bastion_conversation_seven_01",
 		response = "pwe_bastion_conversation_seven_01",
 		criterias = {
@@ -1460,6 +1490,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_bastion_conversation_six_01",
 		response = "pwe_bastion_conversation_six_01",
 		criterias = {
@@ -1540,6 +1571,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_bastion_conversation_six_02",
 		response = "pwe_bastion_conversation_six_02",
 		criterias = {
@@ -1577,6 +1609,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_bastion_conversation_six_03",
 		response = "pwe_bastion_conversation_six_03",
 		criterias = {
@@ -1614,6 +1647,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_bastion_conversation_five_01",
 		response = "pwh_bastion_conversation_five_01",
 		criterias = {
@@ -1694,6 +1728,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_bastion_conversation_five_02",
 		response = "pwh_bastion_conversation_five_02",
 		criterias = {
@@ -1731,6 +1766,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_bastion_conversation_nine_01",
 		response = "pwh_bastion_conversation_nine_01",
 		criterias = {
@@ -1768,6 +1804,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_bastion_conversation_nine_02",
 		response = "pwh_bastion_conversation_nine_02",
 		criterias = {
@@ -1805,6 +1842,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_bastion_conversation_one_01",
 		response = "pwh_bastion_conversation_one_01",
 		criterias = {
@@ -1842,6 +1880,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_bastion_conversation_two_01",
 		response = "pwh_bastion_conversation_two_01",
 		criterias = {
@@ -1922,6 +1961,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_bastion_conversation_two_02",
 		response = "pwh_bastion_conversation_two_02",
 		criterias = {

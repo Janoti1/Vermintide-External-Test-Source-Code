@@ -367,14 +367,14 @@ StoreLoginRewardsPopup._present_rewards = function (self, rewards)
 				}
 			}
 		elseif reward_type == "currency" then
-			local item_template = BackendUtils.get_fake_currency_item(data.currency_code, data.amount)
+			local item_template, _, description_str = BackendUtils.get_fake_currency_item(data.currency_code, data.amount)
 
 			presentation_data[#presentation_data + 1] = {
 				{
 					widget_type = "description",
 					value = {
 						Localize(item_template.display_name),
-						string.format(Localize("achv_menu_curreny_reward_claimed"), data.amount)
+						string.format(Localize(description_str), data.amount)
 					}
 				},
 				{

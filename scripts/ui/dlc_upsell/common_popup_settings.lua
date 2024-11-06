@@ -119,8 +119,8 @@ require("scripts/settings/handbook_settings")
 for popup_id, popup_settings in pairs(HandbookSettings.popups) do
 	CommonPopupSettings[popup_id] = {
 		definitions_path = "scripts/ui/dlc_upsell/handbook_popup_definitions",
-		popup_type = "handbook",
 		class_name = "HandbookPopup",
-		page = popup_settings.page
+		popup_type = "handbook",
+		pages = popup_settings.pages
 	}
 end

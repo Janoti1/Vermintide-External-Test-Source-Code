@@ -570,9 +570,8 @@ EndViewStateScoreVSTabReport._set_final_level_up_progress = function (self, tota
 	local versus_level_start = self._versus_level_start
 
 	if table.is_empty(versus_level_start) then
-		versus_level_start = {
-			ExperienceSettings.get_versus_level()
-		}
+		versus_level_start[1] = ExperienceSettings.get_versus_level()
+		versus_level_start[2] = ExperienceSettings.get_versus_experience()
 	end
 
 	local start_level, start_experience = versus_level_start[1], versus_level_start[2]
@@ -585,6 +584,9 @@ EndViewStateScoreVSTabReport._set_final_level_up_progress = function (self, tota
 	if num_levels_gained > 0 then
 		content.starting_progress = 0
 		content.final_progress = math.lerp(bar_thresholds[1], bar_thresholds[2], end_experience_level_progress)
+	elseif start_level == ExperienceSettings.max_versus_level then
+		content.starting_progress = 1
+		content.final_progress = 1
 	else
 		content.starting_progress = math.lerp(bar_thresholds[1], bar_thresholds[2], start_experience_level_progress)
 		content.final_progress = math.lerp(bar_thresholds[1], bar_thresholds[2], end_experience_level_progress)
@@ -622,89 +624,107 @@ EndViewStateScoreVSTabReport._setup_entry_animations = function (self, entries, 
 			self._animation_callbacks["animate_progression_entry_" .. i - 1] = callback(self, "_start_transition_animation", "animate_progression_entry_" .. i, "animate_progression_entry", data)
 		end
 
+		local progression_callback_key = "animate_progression_entry_" .. #entries
 		local versus_level_start = self._versus_level_start
 
 		if table.is_empty(versus_level_start) then
-			versus_level_start = {
-				ExperienceSettings.get_versus_level()
-			}
+			versus_level_start[1] = ExperienceSettings.get_versus_level()
+			versus_level_start[2] = ExperienceSettings.get_versus_experience()
 		end
 
 		local start_level, start_experience = versus_level_start[1], versus_level_start[2]
-		local _, start_experience_level_progress = ExperienceSettings.get_versus_level_from_experience(start_experience)
-		local end_level, end_experience_level_progress, end_experience_pool = ExperienceSettings.get_versus_level_from_experience(start_experience + total_experience_gained)
-		local breakdown, breakdown_index = ExperienceSettings.get_versus_progress_breakdown(start_experience, total_experience_gained)
-		local num_levels_gained = end_level - start_level
-		local callback_key = "animate_progression_entry_" .. #entries
-		local sound_parameter_value = 0
-		local level_up_reward_level
 
-		for i = 0, num_levels_gained do
-			local new_level = start_level + (i + 1)
-			local animation_key = "animate_level_up_" .. i + 1
+		if start_level ~= ExperienceSettings.max_versus_level then
+			local _, start_experience_level_progress = ExperienceSettings.get_versus_level_from_experience(start_experience)
+			local end_level, end_experience_level_progress = ExperienceSettings.get_versus_level_from_experience(start_experience + total_experience_gained)
+			local breakdown, breakdown_index = ExperienceSettings.get_versus_progress_breakdown(start_experience, total_experience_gained)
+			local num_levels_gained = end_level - start_level
+			local sound_parameter_value = 0
+			local level_up_reward_level
 
-			if i == 0 then
-				if num_levels_gained > 0 then
+			for i = 0, num_levels_gained do
+				local new_level = math.min(start_level + (i + 1), ExperienceSettings.max_versus_level)
+				local animation_key = "animate_level_up_" .. i + 1
+
+				if i == 0 then
+					if num_levels_gained > 0 then
+						local data = {
+							final_progress = 1,
+							starting_progress = start_experience_level_progress,
+							level = new_level,
+							sound_parameter_values = {
+								sound_parameter_value,
+								sound_parameter_value + breakdown[breakdown_index]
+							}
+						}
+
+						if new_level == ExperienceSettings.max_versus_level then
+							data.on_complete_optional_starting_progress = 1
+							data.on_complete_optional_final_progress = 1
+						end
+
+						self._animation_callbacks[progression_callback_key] = callback(self, "_start_transition_animation", animation_key, "animate_level_up_start", data)
+						level_up_reward_level = new_level
+					else
+						local data = {
+							starting_progress = start_experience_level_progress,
+							final_progress = end_experience_level_progress,
+							sound_parameter_values = {
+								sound_parameter_value,
+								sound_parameter_value + breakdown[breakdown_index]
+							}
+						}
+
+						self._animation_callbacks[progression_callback_key] = callback(self, "_start_transition_animation", animation_key, "animate_level_up_start_end", data)
+					end
+				elseif i < num_levels_gained then
 					local data = {
 						final_progress = 1,
-						starting_progress = start_experience_level_progress,
+						starting_progress = 0,
 						level = new_level,
 						sound_parameter_values = {
 							sound_parameter_value,
 							sound_parameter_value + breakdown[breakdown_index]
 						}
 					}
+					local reward_done_cb = callback(self, "_start_transition_animation", animation_key, "animate_level_up_linear", data)
 
-					self._animation_callbacks[callback_key] = callback(self, "_start_transition_animation", animation_key, "animate_level_up_start", data)
+					self._animation_callbacks[progression_callback_key] = callback(self, "_start_level_up_reward_presentation", level_up_reward_level, reward_done_cb)
 					level_up_reward_level = new_level
+				elseif new_level == ExperienceSettings.max_versus_level then
+					local data = {
+						final_progress = 1,
+						starting_progress = 1,
+						level = ExperienceSettings.max_versus_level
+					}
+					local reward_done_cb = callback(self, "_start_transition_animation", animation_key, "animate_level_up_instant", data)
+
+					self._animation_callbacks[progression_callback_key] = callback(self, "_start_level_up_reward_presentation", level_up_reward_level, reward_done_cb)
 				else
 					local data = {
-						starting_progress = start_experience_level_progress,
+						starting_progress = 0,
 						final_progress = end_experience_level_progress,
+						level = new_level,
 						sound_parameter_values = {
 							sound_parameter_value,
 							sound_parameter_value + breakdown[breakdown_index]
 						}
 					}
+					local reward_done_cb = callback(self, "_start_transition_animation", animation_key, "animate_level_up_end", data)
 
-					self._animation_callbacks[callback_key] = callback(self, "_start_transition_animation", animation_key, "animate_level_up_start_end", data)
+					self._animation_callbacks[progression_callback_key] = callback(self, "_start_level_up_reward_presentation", level_up_reward_level, reward_done_cb)
 				end
-			elseif i < num_levels_gained then
-				local data = {
-					final_progress = 1,
-					starting_progress = 0,
-					level = new_level,
-					sound_parameter_values = {
-						sound_parameter_value,
-						sound_parameter_value + breakdown[breakdown_index]
-					}
-				}
-				local reward_done_cb = callback(self, "_start_transition_animation", animation_key, "animate_level_up_linear", data)
 
-				self._animation_callbacks[callback_key] = callback(self, "_start_level_up_reward_presentation", level_up_reward_level, reward_done_cb)
-				level_up_reward_level = new_level
-			else
-				local data = {
-					starting_progress = 0,
-					final_progress = end_experience_level_progress,
-					level = new_level,
-					sound_parameter_values = {
-						sound_parameter_value,
-						sound_parameter_value + breakdown[breakdown_index]
-					}
-				}
-				local reward_done_cb = callback(self, "_start_transition_animation", animation_key, "animate_level_up_end", data)
-
-				self._animation_callbacks[callback_key] = callback(self, "_start_level_up_reward_presentation", level_up_reward_level, reward_done_cb)
+				progression_callback_key = animation_key
+				sound_parameter_value = sound_parameter_value + breakdown[breakdown_index]
+				breakdown_index = breakdown_index + 1
 			end
 
-			callback_key = animation_key
-			sound_parameter_value = sound_parameter_value + breakdown[breakdown_index]
-			breakdown_index = breakdown_index + 1
+			self._animation_callbacks[progression_callback_key] = callback(self, "_start_transition_animation", "versus_level_up_pause", "versus_level_up_pause")
+			progression_callback_key = "versus_level_up_pause"
 		end
 
-		self._animation_callbacks[callback_key] = callback(self, "_start_transition_animation", "versus_level_up_pause", "versus_level_up_pause")
-		self._animation_callbacks.versus_level_up_pause = callback(self, "_start_transition_animation", "animate_hero_progress", "animate_hero_progress")
+		self._animation_callbacks[progression_callback_key] = callback(self, "_start_transition_animation", "animate_hero_progress", "animate_hero_progress")
 		self._animation_callbacks.animate_hero_progress = callback(self, "_setup_hero_progression")
 	else
 		self:_start_transition_animation("animate_hero_progress", "animate_hero_progress")
@@ -729,8 +749,8 @@ EndViewStateScoreVSTabReport._start_level_up_reward_presentation = function (sel
 	local entry = {}
 	local description = {}
 
-	description[1] = "Level Up Rewards"
-	description[2] = "Versus Rank " .. level
+	description[1] = Localize("summary_screen_rank_up")
+	description[2] = Localize("versus_level_tag") .. " " .. level
 	entry[#entry + 1] = {
 		widget_type = "description",
 		value = description
@@ -763,7 +783,7 @@ EndViewStateScoreVSTabReport._start_level_up_reward_presentation = function (sel
 	PRESENTATION_DATA.bg_alpha = 200
 	PRESENTATION_DATA.offset = {
 		0,
-		190,
+		0,
 		1
 	}
 
@@ -807,17 +827,22 @@ EndViewStateScoreVSTabReport._create_ui_elements = function (self, params)
 	local level_start = self._versus_level_start
 
 	if table.is_empty(level_start) then
-		level_start = {
-			ExperienceSettings.get_versus_level()
-		}
+		level_start[1] = ExperienceSettings.get_versus_level()
+		level_start[2] = ExperienceSettings.get_versus_experience()
 	end
 
 	local versus_start_level, versus_start_experience = level_start[1], level_start[2]
 	local _, versus_start_experience_level_progress = ExperienceSettings.get_versus_level_from_experience(versus_start_experience)
 	local level_up_widget = self._widgets_by_name.level_up
 
-	level_up_widget.content.starting_progress = math.lerp(bar_thresholds[1], bar_thresholds[2], versus_start_experience_level_progress)
-	level_up_widget.content.final_progress = math.lerp(bar_thresholds[1], bar_thresholds[2], versus_start_experience_level_progress)
+	if versus_start_level == ExperienceSettings.max_versus_level then
+		level_up_widget.content.starting_progress = 1
+		level_up_widget.content.final_progress = 1
+	else
+		level_up_widget.content.starting_progress = math.lerp(bar_thresholds[1], bar_thresholds[2], versus_start_experience_level_progress)
+		level_up_widget.content.final_progress = math.lerp(bar_thresholds[1], bar_thresholds[2], versus_start_experience_level_progress)
+	end
+
 	level_up_widget.content.level_text = versus_start_level
 
 	local insignia_widget = self._widgets_by_name.insignia

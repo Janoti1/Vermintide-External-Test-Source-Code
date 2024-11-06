@@ -100,10 +100,11 @@ local buff_tweak_data = {
 		multiplier = 0.01
 	},
 	victor_bountyhunter_attack_speed_on_no_ammo_buff = {
-		duration = 15,
+		duration = 10,
 		multiplier = 0.15
 	},
 	victor_bountyhunter_power_on_no_ammo_buff = {
+		duration = 10,
 		multiplier = 0.15
 	},
 	victor_bountyhunter_blessed_melee_damage_buff = {
@@ -694,32 +695,15 @@ TalentBuffTemplates.witch_hunter = {
 			}
 		}
 	},
-	victor_bountyhunter_increased_melee_attack_speed_on_no_ammo_add = {
-		buffs = {
-			{
-				event = "on_last_ammo_used",
-				buff_func = "add_buff_on_out_of_ammo",
-				buffs_to_add = {
-					"victor_bountyhunter_attack_speed_on_no_ammo_buff"
-				}
-			}
-		}
-	},
 	victor_bountyhunter_increased_melee_damage_on_no_ammo_add = {
 		buffs = {
 			{
-				event = "on_last_ammo_used",
-				buff_to_add = "victor_bountyhunter_power_on_no_ammo_buff",
-				buff_func = "victor_bountyhunter_add_power_on_no_ammo_proc"
-			}
-		}
-	},
-	victor_bountyhunter_increased_melee_damage_on_no_ammo_remove = {
-		buffs = {
-			{
-				event = "on_gained_ammo_from_no_ammo",
-				buff_to_remove = "victor_bountyhunter_power_on_no_ammo_buff",
-				buff_func = "victor_bountyhunter_remove_power_on_no_ammo_proc"
+				event = "on_ammo_clip_used",
+				buff_func = "add_buff_on_out_of_ammo",
+				buffs_to_add = {
+					"victor_bountyhunter_attack_speed_on_no_ammo_buff",
+					"victor_bountyhunter_power_on_no_ammo_buff"
+				}
 			}
 		}
 	},
@@ -728,7 +712,7 @@ TalentBuffTemplates.witch_hunter = {
 			{
 				refresh_durations = true,
 				name = "bardin_slayer_frenzy",
-				stat_buff = "attack_speed",
+				stat_buff = "attack_speed_melee",
 				max_stacks = 1,
 				icon = "victor_bountyhunter_melee_damage_on_no_ammo"
 			}
@@ -738,8 +722,9 @@ TalentBuffTemplates.witch_hunter = {
 		buffs = {
 			{
 				max_stacks = 1,
-				priority_buff = true,
-				stat_buff = "power_level"
+				refresh_durations = true,
+				stat_buff = "power_level_melee",
+				priority_buff = true
 			}
 		}
 	},
@@ -1726,9 +1711,7 @@ Talents.witch_hunter = {
 			}
 		},
 		buffs = {
-			"victor_bountyhunter_increased_melee_attack_speed_on_no_ammo_add",
-			"victor_bountyhunter_increased_melee_damage_on_no_ammo_add",
-			"victor_bountyhunter_increased_melee_damage_on_no_ammo_remove"
+			"victor_bountyhunter_increased_melee_damage_on_no_ammo_add"
 		}
 	},
 	{

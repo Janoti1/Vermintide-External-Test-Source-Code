@@ -946,43 +946,50 @@ ScoreboardHelper.get_versus_stats = function (statistics_db, saved_scoreboard_st
 	local player_list = {}
 
 	for _, player in pairs(human_players) do
-		local player_peer_id = player:network_id()
-		local player_name = player:name()
-		local stats_id = player:stats_id()
-		local local_player_id = player:local_player_id()
-		local player_level = ExperienceSettings.get_player_level(player)
-		local is_player_controlled = player:is_player_controlled()
-		local versus_player_level = is_player_controlled and ExperienceSettings.get_versus_player_level(player) or 0
-		local portrait_frame = CosmeticUtils.get_cosmetic_slot(player, "slot_frame")
-		local profile_index, career_index = Managers.mechanism:get_persistent_profile_index_reservation(player_peer_id)
-		local profile = SPProfiles[profile_index]
-		local careers = profile.careers
-		local career_settings = careers[career_index]
-		local weapon, weapon_pose, weapon_pose_skin, hero_skin, hat = mechanism:get_hero_cosmetics(player_peer_id, local_player_id)
+		repeat
+			local player_peer_id = player:network_id()
+			local profile_index, career_index = Managers.mechanism:get_persistent_profile_index_reservation(player_peer_id)
 
-		player_list[stats_id] = {
-			name = player_name,
-			peer_id = player_peer_id,
-			local_player_id = local_player_id,
-			stats_id = stats_id,
-			profile_index = profile_index,
-			career_index = career_index,
-			player_level = player_level,
-			versus_player_level = versus_player_level,
-			portrait_frame = portrait_frame and portrait_frame.item_name,
-			hero_skin = hero_skin,
-			weapon = {
-				item_name = weapon
-			},
-			weapon_pose = {
-				item_name = weapon_pose,
-				skin_name = weapon_pose_skin
-			},
-			hat = {
-				item_name = hat
-			},
-			scores = {}
-		}
+			if profile_index == 0 or career_index == 0 then
+				break
+			end
+
+			local player_name = player:name()
+			local stats_id = player:stats_id()
+			local local_player_id = player:local_player_id()
+			local player_level = ExperienceSettings.get_player_level(player)
+			local is_player_controlled = player:is_player_controlled()
+			local versus_player_level = is_player_controlled and ExperienceSettings.get_versus_player_level(player) or 0
+			local portrait_frame = CosmeticUtils.get_cosmetic_slot(player, "slot_frame")
+			local profile = SPProfiles[profile_index]
+			local careers = profile.careers
+			local career_settings = careers[career_index]
+			local weapon, weapon_pose, weapon_pose_skin, hero_skin, hat = mechanism:get_hero_cosmetics(player_peer_id, local_player_id)
+
+			player_list[stats_id] = {
+				name = player_name,
+				peer_id = player_peer_id,
+				local_player_id = local_player_id,
+				stats_id = stats_id,
+				profile_index = profile_index,
+				career_index = career_index,
+				player_level = player_level,
+				versus_player_level = versus_player_level,
+				portrait_frame = portrait_frame and portrait_frame.item_name,
+				hero_skin = hero_skin,
+				weapon = {
+					item_name = weapon
+				},
+				weapon_pose = {
+					item_name = weapon_pose,
+					skin_name = weapon_pose_skin
+				},
+				hat = {
+					item_name = hat
+				},
+				scores = {}
+			}
+		until true
 	end
 
 	local scoreboard_topic_stats = ScoreboardHelper.scoreboard_topic_stats_versus

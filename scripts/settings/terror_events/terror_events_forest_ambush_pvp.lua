@@ -225,7 +225,7 @@ local terror_event_blueprints = {
 		{
 			"spawn_at_raw",
 			spawner_id = "watch_tower_guards_spawn_01",
-			breed_name = "beastmen_ungor_archer"
+			breed_name = "beastmen_bestigor"
 		},
 		{
 			"delay",
@@ -293,7 +293,7 @@ local terror_event_blueprints = {
 		},
 		{
 			"delay",
-			duration = 10
+			duration = 5
 		},
 		{
 			"spawn_at_raw",
@@ -302,7 +302,7 @@ local terror_event_blueprints = {
 		},
 		{
 			"delay",
-			duration = 10
+			duration = 5
 		},
 		{
 			"continue_when",
@@ -313,7 +313,7 @@ local terror_event_blueprints = {
 		},
 		{
 			"delay",
-			duration = 10
+			duration = 5
 		},
 		{
 			"flow_event",
@@ -561,6 +561,10 @@ local terror_event_blueprints = {
 		{
 			"play_stinger",
 			stinger_name = "enemy_horde_stinger"
+		},
+		{
+			"delay",
+			duration = 5
 		},
 		{
 			"event_horde",

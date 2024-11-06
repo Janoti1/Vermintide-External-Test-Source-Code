@@ -417,7 +417,7 @@ PlayerControllerKeymaps.win32 = InputUtils.keymaps_key_approved("win32") and {
 	},
 	emote_toggle_hud_visibility = {
 		"keyboard",
-		"e",
+		"h",
 		"pressed"
 	},
 	versus_horde_ability = {

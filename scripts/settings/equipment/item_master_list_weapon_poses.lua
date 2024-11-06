@@ -1,5 +1,5 @@
 ItemMasterList.default_weapon_pose_01 = {
-	description = "deafult_weapon_pose_01_desc",
+	description = "default_weapon_pose_01_desc",
 	name = "default_weapon_pose_01",
 	display_name = "default_weapon_pose_01",
 	rarity = "plentiful",
@@ -8,7 +8,7 @@ ItemMasterList.default_weapon_pose_01 = {
 	pose_index = 1,
 	template = "pose_template",
 	parent = "default",
-	hud_icon = "icons_placeholder",
+	hud_icon = "empty",
 	item_type = "weapon_pose",
 	data = {},
 	can_wield = CanWieldAllItemTemplates
@@ -1441,17 +1441,17 @@ ItemMasterList.es_sword_shield_weapon_pose_06 = {
 		"es_questingknight"
 	}
 }
-ItemMasterList.dr_1h_throwing_axes_weapon_pose_01 = {
+ItemMasterList.es_1h_flail_weapon_pose_01 = {
 	description = "weapon_pose_emote_description",
-	name = "<dr_1h_throwing_axes_emote_wheel>",
-	display_name = "dr_1h_throwing_axes_emote_wheel",
-	inventory_icon = "dr_1h_throwing_axes_01",
+	name = "<es_1h_flail_emote_wheel>",
+	display_name = "es_1h_flail_emote_wheel",
+	inventory_icon = "es_1h_flail_01",
 	slot_type = "weapon_pose",
 	information_text = "information_weapon_pose",
 	rarity = "exotic",
 	pose_index = 1,
-	parent = "dr_1h_throwing_axes",
-	hud_icon = "dr_1h_throwing_axes_01",
+	parent = "es_1h_flail",
+	hud_icon = "es_1h_flail_01",
 	template = "pose_template",
 	item_type = "weapon_pose",
 	data = {
@@ -1459,21 +1459,22 @@ ItemMasterList.dr_1h_throwing_axes_weapon_pose_01 = {
 		hide_weapons = false
 	},
 	can_wield = {
-		"dr_slayer",
-		"dr_ranger"
+		"wh_zealot",
+		"wh_captain",
+		"wh_bountyhunter"
 	}
 }
-ItemMasterList.dr_1h_throwing_axes_weapon_pose_02 = {
+ItemMasterList.es_1h_flail_weapon_pose_02 = {
 	description = "weapon_pose_emote_description",
-	name = "<dr_1h_throwing_axes_emote_wheel>",
-	display_name = "dr_1h_throwing_axes_emote_wheel",
-	inventory_icon = "dr_1h_throwing_axes_02",
+	name = "<es_1h_flail_emote_wheel>",
+	display_name = "es_1h_flail_emote_wheel",
+	inventory_icon = "es_1h_flail_02",
 	slot_type = "weapon_pose",
 	information_text = "information_weapon_pose",
 	rarity = "exotic",
 	pose_index = 2,
-	parent = "dr_1h_throwing_axes",
-	hud_icon = "dr_1h_throwing_axes_02",
+	parent = "es_1h_flail",
+	hud_icon = "es_1h_flail_02",
 	template = "pose_template",
 	item_type = "weapon_pose",
 	data = {
@@ -1481,21 +1482,22 @@ ItemMasterList.dr_1h_throwing_axes_weapon_pose_02 = {
 		hide_weapons = false
 	},
 	can_wield = {
-		"dr_slayer",
-		"dr_ranger"
+		"wh_zealot",
+		"wh_captain",
+		"wh_bountyhunter"
 	}
 }
-ItemMasterList.dr_1h_throwing_axes_weapon_pose_03 = {
+ItemMasterList.es_1h_flail_weapon_pose_03 = {
 	description = "weapon_pose_emote_description",
-	name = "<dr_1h_throwing_axes_emote_wheel>",
-	display_name = "dr_1h_throwing_axes_emote_wheel",
-	inventory_icon = "dr_1h_throwing_axes_03",
+	name = "<es_1h_flail_emote_wheel>",
+	display_name = "es_1h_flail_emote_wheel",
+	inventory_icon = "es_1h_flail_03",
 	slot_type = "weapon_pose",
 	information_text = "information_weapon_pose",
 	rarity = "exotic",
 	pose_index = 3,
-	parent = "dr_1h_throwing_axes",
-	hud_icon = "dr_1h_throwing_axes_03",
+	parent = "es_1h_flail",
+	hud_icon = "es_1h_flail_03",
 	template = "pose_template",
 	item_type = "weapon_pose",
 	data = {
@@ -1503,21 +1505,22 @@ ItemMasterList.dr_1h_throwing_axes_weapon_pose_03 = {
 		hide_weapons = false
 	},
 	can_wield = {
-		"dr_slayer",
-		"dr_ranger"
+		"wh_zealot",
+		"wh_captain",
+		"wh_bountyhunter"
 	}
 }
-ItemMasterList.dr_1h_throwing_axes_weapon_pose_04 = {
+ItemMasterList.es_1h_flail_weapon_pose_04 = {
 	description = "weapon_pose_emote_description",
-	name = "<dr_1h_throwing_axes_emote_wheel>",
-	display_name = "dr_1h_throwing_axes_emote_wheel",
-	inventory_icon = "dr_1h_throwing_axes_04",
+	name = "<es_1h_flail_emote_wheel>",
+	display_name = "es_1h_flail_emote_wheel",
+	inventory_icon = "es_1h_flail_04",
 	slot_type = "weapon_pose",
 	information_text = "information_weapon_pose",
 	rarity = "exotic",
 	pose_index = 4,
-	parent = "dr_1h_throwing_axes",
-	hud_icon = "dr_1h_throwing_axes_04",
+	parent = "es_1h_flail",
+	hud_icon = "es_1h_flail_04",
 	template = "pose_template",
 	item_type = "weapon_pose",
 	data = {
@@ -1525,21 +1528,22 @@ ItemMasterList.dr_1h_throwing_axes_weapon_pose_04 = {
 		hide_weapons = false
 	},
 	can_wield = {
-		"dr_slayer",
-		"dr_ranger"
+		"wh_zealot",
+		"wh_captain",
+		"wh_bountyhunter"
 	}
 }
-ItemMasterList.dr_1h_throwing_axes_weapon_pose_05 = {
+ItemMasterList.es_1h_flail_weapon_pose_05 = {
 	description = "weapon_pose_emote_description",
-	name = "<dr_1h_throwing_axes_emote_wheel>",
-	display_name = "dr_1h_throwing_axes_emote_wheel",
-	inventory_icon = "dr_1h_throwing_axes_05",
+	name = "<es_1h_flail_emote_wheel>",
+	display_name = "es_1h_flail_emote_wheel",
+	inventory_icon = "es_1h_flail_05",
 	slot_type = "weapon_pose",
 	information_text = "information_weapon_pose",
 	rarity = "exotic",
 	pose_index = 5,
-	parent = "dr_1h_throwing_axes",
-	hud_icon = "dr_1h_throwing_axes_05",
+	parent = "es_1h_flail",
+	hud_icon = "es_1h_flail_05",
 	template = "pose_template",
 	item_type = "weapon_pose",
 	data = {
@@ -1547,21 +1551,22 @@ ItemMasterList.dr_1h_throwing_axes_weapon_pose_05 = {
 		hide_weapons = false
 	},
 	can_wield = {
-		"dr_slayer",
-		"dr_ranger"
+		"wh_zealot",
+		"wh_captain",
+		"wh_bountyhunter"
 	}
 }
-ItemMasterList.dr_1h_throwing_axes_weapon_pose_06 = {
+ItemMasterList.es_1h_flail_weapon_pose_06 = {
 	description = "weapon_pose_emote_description",
-	name = "<dr_1h_throwing_axes_emote_wheel>",
-	display_name = "dr_1h_throwing_axes_emote_wheel",
-	inventory_icon = "dr_1h_throwing_axes_06",
+	name = "<es_1h_flail_emote_wheel>",
+	display_name = "es_1h_flail_emote_wheel",
+	inventory_icon = "es_1h_flail_06",
 	slot_type = "weapon_pose",
 	information_text = "information_weapon_pose",
 	rarity = "exotic",
 	pose_index = 6,
-	parent = "dr_1h_throwing_axes",
-	hud_icon = "dr_1h_throwing_axes_06",
+	parent = "es_1h_flail",
+	hud_icon = "es_1h_flail_06",
 	template = "pose_template",
 	item_type = "weapon_pose",
 	data = {
@@ -1569,8 +1574,9 @@ ItemMasterList.dr_1h_throwing_axes_weapon_pose_06 = {
 		hide_weapons = false
 	},
 	can_wield = {
-		"dr_slayer",
-		"dr_ranger"
+		"wh_zealot",
+		"wh_captain",
+		"wh_bountyhunter"
 	}
 }
 ItemMasterList.wh_dual_hammer_weapon_pose_01 = {
@@ -2099,132 +2105,6 @@ ItemMasterList.we_1h_spears_shield_weapon_pose_06 = {
 	},
 	can_wield = {
 		"we_maidenguard"
-	}
-}
-ItemMasterList.wh_flail_shield_weapon_pose_01 = {
-	description = "weapon_pose_emote_description",
-	name = "<wh_flail_shield_emote_wheel>",
-	display_name = "wh_flail_shield_emote_wheel",
-	inventory_icon = "wh_flail_shield_01",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 1,
-	parent = "wh_flail_shield",
-	hud_icon = "wh_flail_shield_01",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_01",
-		hide_weapons = false
-	},
-	can_wield = {
-		"wh_priest"
-	}
-}
-ItemMasterList.wh_flail_shield_weapon_pose_02 = {
-	description = "weapon_pose_emote_description",
-	name = "<wh_flail_shield_emote_wheel>",
-	display_name = "wh_flail_shield_emote_wheel",
-	inventory_icon = "wh_flail_shield_02",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 2,
-	parent = "wh_flail_shield",
-	hud_icon = "wh_flail_shield_02",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_02",
-		hide_weapons = false
-	},
-	can_wield = {
-		"wh_priest"
-	}
-}
-ItemMasterList.wh_flail_shield_weapon_pose_03 = {
-	description = "weapon_pose_emote_description",
-	name = "<wh_flail_shield_emote_wheel>",
-	display_name = "wh_flail_shield_emote_wheel",
-	inventory_icon = "wh_flail_shield_03",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 3,
-	parent = "wh_flail_shield",
-	hud_icon = "wh_flail_shield_03",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_03",
-		hide_weapons = false
-	},
-	can_wield = {
-		"wh_priest"
-	}
-}
-ItemMasterList.wh_flail_shield_weapon_pose_04 = {
-	description = "weapon_pose_emote_description",
-	name = "<wh_flail_shield_emote_wheel>",
-	display_name = "wh_flail_shield_emote_wheel",
-	inventory_icon = "wh_flail_shield_04",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 4,
-	parent = "wh_flail_shield",
-	hud_icon = "wh_flail_shield_04",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_04",
-		hide_weapons = false
-	},
-	can_wield = {
-		"wh_priest"
-	}
-}
-ItemMasterList.wh_flail_shield_weapon_pose_05 = {
-	description = "weapon_pose_emote_description",
-	name = "<wh_flail_shield_emote_wheel>",
-	display_name = "wh_flail_shield_emote_wheel",
-	inventory_icon = "wh_flail_shield_05",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 5,
-	parent = "wh_flail_shield",
-	hud_icon = "wh_flail_shield_05",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_05",
-		hide_weapons = false
-	},
-	can_wield = {
-		"wh_priest"
-	}
-}
-ItemMasterList.wh_flail_shield_weapon_pose_06 = {
-	description = "weapon_pose_emote_description",
-	name = "<wh_flail_shield_emote_wheel>",
-	display_name = "wh_flail_shield_emote_wheel",
-	inventory_icon = "wh_flail_shield_06",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 6,
-	parent = "wh_flail_shield",
-	hud_icon = "wh_flail_shield_06",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_06",
-		hide_weapons = false
-	},
-	can_wield = {
-		"wh_priest"
 	}
 }
 ItemMasterList.bw_skullstaff_flamethrower_weapon_pose_01 = {
@@ -3721,17 +3601,17 @@ ItemMasterList.es_2h_sword_weapon_pose_06 = {
 		"es_questingknight"
 	}
 }
-ItemMasterList.wh_hammer_book_weapon_pose_01 = {
+ItemMasterList.es_sword_shield_breton_weapon_pose_01 = {
 	description = "weapon_pose_emote_description",
-	name = "<wh_hammer_book_emote_wheel>",
-	display_name = "wh_hammer_book_emote_wheel",
-	inventory_icon = "wh_hammer_book_01",
+	name = "Sword and Shield Pose",
+	display_name = "es_sword_shield_breton_emote_wheel",
+	inventory_icon = "es_sword_shield_breton_01",
 	slot_type = "weapon_pose",
 	information_text = "information_weapon_pose",
 	rarity = "exotic",
 	pose_index = 1,
-	parent = "wh_hammer_book",
-	hud_icon = "wh_hammer_book_01",
+	parent = "es_sword_shield_breton",
+	hud_icon = "es_sword_shield_breton_01",
 	template = "pose_template",
 	item_type = "weapon_pose",
 	data = {
@@ -3739,20 +3619,20 @@ ItemMasterList.wh_hammer_book_weapon_pose_01 = {
 		hide_weapons = false
 	},
 	can_wield = {
-		"wh_priest"
+		"es_questingknight"
 	}
 }
-ItemMasterList.wh_hammer_book_weapon_pose_02 = {
+ItemMasterList.es_sword_shield_breton_weapon_pose_02 = {
 	description = "weapon_pose_emote_description",
-	name = "<wh_hammer_book_emote_wheel>",
-	display_name = "wh_hammer_book_emote_wheel",
-	inventory_icon = "wh_hammer_book_02",
+	name = "Sword and Shield Pose",
+	display_name = "es_sword_shield_breton_emote_wheel",
+	inventory_icon = "es_sword_shield_breton_02",
 	slot_type = "weapon_pose",
 	information_text = "information_weapon_pose",
 	rarity = "exotic",
 	pose_index = 2,
-	parent = "wh_hammer_book",
-	hud_icon = "wh_hammer_book_02",
+	parent = "es_sword_shield_breton",
+	hud_icon = "es_sword_shield_breton_02",
 	template = "pose_template",
 	item_type = "weapon_pose",
 	data = {
@@ -3760,20 +3640,20 @@ ItemMasterList.wh_hammer_book_weapon_pose_02 = {
 		hide_weapons = false
 	},
 	can_wield = {
-		"wh_priest"
+		"es_questingknight"
 	}
 }
-ItemMasterList.wh_hammer_book_weapon_pose_03 = {
+ItemMasterList.es_sword_shield_breton_weapon_pose_03 = {
 	description = "weapon_pose_emote_description",
-	name = "<wh_hammer_book_emote_wheel>",
-	display_name = "wh_hammer_book_emote_wheel",
-	inventory_icon = "wh_hammer_book_03",
+	name = "Sword and Shield Pose",
+	display_name = "es_sword_shield_breton_emote_wheel",
+	inventory_icon = "es_sword_shield_breton_03",
 	slot_type = "weapon_pose",
 	information_text = "information_weapon_pose",
 	rarity = "exotic",
 	pose_index = 3,
-	parent = "wh_hammer_book",
-	hud_icon = "wh_hammer_book_03",
+	parent = "es_sword_shield_breton",
+	hud_icon = "es_sword_shield_breton_03",
 	template = "pose_template",
 	item_type = "weapon_pose",
 	data = {
@@ -3781,20 +3661,20 @@ ItemMasterList.wh_hammer_book_weapon_pose_03 = {
 		hide_weapons = false
 	},
 	can_wield = {
-		"wh_priest"
+		"es_questingknight"
 	}
 }
-ItemMasterList.wh_hammer_book_weapon_pose_04 = {
+ItemMasterList.es_sword_shield_breton_weapon_pose_04 = {
 	description = "weapon_pose_emote_description",
-	name = "<wh_hammer_book_emote_wheel>",
-	display_name = "wh_hammer_book_emote_wheel",
-	inventory_icon = "wh_hammer_book_04",
+	name = "Sword and Shield Pose",
+	display_name = "es_sword_shield_breton_emote_wheel",
+	inventory_icon = "es_sword_shield_breton_04",
 	slot_type = "weapon_pose",
 	information_text = "information_weapon_pose",
 	rarity = "exotic",
 	pose_index = 4,
-	parent = "wh_hammer_book",
-	hud_icon = "wh_hammer_book_04",
+	parent = "es_sword_shield_breton",
+	hud_icon = "es_sword_shield_breton_04",
 	template = "pose_template",
 	item_type = "weapon_pose",
 	data = {
@@ -3802,20 +3682,20 @@ ItemMasterList.wh_hammer_book_weapon_pose_04 = {
 		hide_weapons = false
 	},
 	can_wield = {
-		"wh_priest"
+		"es_questingknight"
 	}
 }
-ItemMasterList.wh_hammer_book_weapon_pose_05 = {
+ItemMasterList.es_sword_shield_breton_weapon_pose_05 = {
 	description = "weapon_pose_emote_description",
-	name = "<wh_hammer_book_emote_wheel>",
-	display_name = "wh_hammer_book_emote_wheel",
-	inventory_icon = "wh_hammer_book_05",
+	name = "Sword and Shield Pose",
+	display_name = "es_sword_shield_breton_emote_wheel",
+	inventory_icon = "es_sword_shield_breton_05",
 	slot_type = "weapon_pose",
 	information_text = "information_weapon_pose",
 	rarity = "exotic",
 	pose_index = 5,
-	parent = "wh_hammer_book",
-	hud_icon = "wh_hammer_book_05",
+	parent = "es_sword_shield_breton",
+	hud_icon = "es_sword_shield_breton_05",
 	template = "pose_template",
 	item_type = "weapon_pose",
 	data = {
@@ -3823,20 +3703,20 @@ ItemMasterList.wh_hammer_book_weapon_pose_05 = {
 		hide_weapons = false
 	},
 	can_wield = {
-		"wh_priest"
+		"es_questingknight"
 	}
 }
-ItemMasterList.wh_hammer_book_weapon_pose_06 = {
+ItemMasterList.es_sword_shield_breton_weapon_pose_06 = {
 	description = "weapon_pose_emote_description",
-	name = "<wh_hammer_book_emote_wheel>",
-	display_name = "wh_hammer_book_emote_wheel",
-	inventory_icon = "wh_hammer_book_06",
+	name = "Sword and Shield Pose",
+	display_name = "es_sword_shield_breton_emote_wheel",
+	inventory_icon = "es_sword_shield_breton_06",
 	slot_type = "weapon_pose",
 	information_text = "information_weapon_pose",
 	rarity = "exotic",
 	pose_index = 6,
-	parent = "wh_hammer_book",
-	hud_icon = "wh_hammer_book_06",
+	parent = "es_sword_shield_breton",
+	hud_icon = "es_sword_shield_breton_06",
 	template = "pose_template",
 	item_type = "weapon_pose",
 	data = {
@@ -3844,7 +3724,151 @@ ItemMasterList.wh_hammer_book_weapon_pose_06 = {
 		hide_weapons = false
 	},
 	can_wield = {
-		"wh_priest"
+		"es_questingknight"
+	}
+}
+ItemMasterList.es_bastard_sword_weapon_pose_01 = {
+	description = "weapon_pose_emote_description",
+	name = "Longsword Pose",
+	display_name = "es_bastard_sword_emote_wheel",
+	inventory_icon = "es_bastard_sword_01",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 1,
+	parent = "es_bastard_sword",
+	hud_icon = "es_bastard_sword_01",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_01",
+		hide_weapons = false
+	},
+	can_wield = {
+		"es_huntsman",
+		"es_knight",
+		"es_mercenary",
+		"es_questingknight"
+	}
+}
+ItemMasterList.es_bastard_sword_weapon_pose_02 = {
+	description = "weapon_pose_emote_description",
+	name = "Longsword Pose",
+	display_name = "es_bastard_sword_emote_wheel",
+	inventory_icon = "es_bastard_sword_02",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 2,
+	parent = "es_bastard_sword",
+	hud_icon = "es_bastard_sword_02",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_02",
+		hide_weapons = false
+	},
+	can_wield = {
+		"es_huntsman",
+		"es_knight",
+		"es_mercenary",
+		"es_questingknight"
+	}
+}
+ItemMasterList.es_bastard_sword_weapon_pose_03 = {
+	description = "weapon_pose_emote_description",
+	name = "Longsword Pose",
+	display_name = "es_bastard_sword_emote_wheel",
+	inventory_icon = "es_bastard_sword_03",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 3,
+	parent = "es_bastard_sword",
+	hud_icon = "es_bastard_sword_03",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_03",
+		hide_weapons = false
+	},
+	can_wield = {
+		"es_huntsman",
+		"es_knight",
+		"es_mercenary",
+		"es_questingknight"
+	}
+}
+ItemMasterList.es_bastard_sword_weapon_pose_04 = {
+	description = "weapon_pose_emote_description",
+	name = "Longsword Pose",
+	display_name = "es_bastard_sword_emote_wheel",
+	inventory_icon = "es_bastard_sword_04",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 4,
+	parent = "es_bastard_sword",
+	hud_icon = "es_bastard_sword_04",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_04",
+		hide_weapons = false
+	},
+	can_wield = {
+		"es_huntsman",
+		"es_knight",
+		"es_mercenary",
+		"es_questingknight"
+	}
+}
+ItemMasterList.es_bastard_sword_weapon_pose_05 = {
+	description = "weapon_pose_emote_description",
+	name = "Longsword Pose",
+	display_name = "es_bastard_sword_emote_wheel",
+	inventory_icon = "es_bastard_sword_05",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 5,
+	parent = "es_bastard_sword",
+	hud_icon = "es_bastard_sword_05",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_05",
+		hide_weapons = false
+	},
+	can_wield = {
+		"es_huntsman",
+		"es_knight",
+		"es_mercenary",
+		"es_questingknight"
+	}
+}
+ItemMasterList.es_bastard_sword_weapon_pose_06 = {
+	description = "weapon_pose_emote_description",
+	name = "Longsword Pose",
+	display_name = "es_bastard_sword_emote_wheel",
+	inventory_icon = "es_bastard_sword_06",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 6,
+	parent = "es_bastard_sword",
+	hud_icon = "es_bastard_sword_06",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_06",
+		hide_weapons = false
+	},
+	can_wield = {
+		"es_huntsman",
+		"es_knight",
+		"es_mercenary",
+		"es_questingknight"
 	}
 }
 ItemMasterList.es_2h_hammer_weapon_pose_01 = {
@@ -3989,6 +4013,432 @@ ItemMasterList.es_2h_hammer_weapon_pose_06 = {
 		"es_knight",
 		"es_mercenary",
 		"es_questingknight"
+	}
+}
+ItemMasterList.dr_dual_wield_hammers_weapon_pose_01 = {
+	description = "weapon_pose_emote_description",
+	name = "Hammers Pose",
+	display_name = "dr_dual_wield_hammers_emote_wheel",
+	inventory_icon = "dr_dual_wield_hammers_01",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 1,
+	parent = "dr_dual_wield_hammers",
+	hud_icon = "dr_dual_wield_hammers_01",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_01",
+		hide_weapons = false
+	},
+	can_wield = {
+		"dr_ironbreaker",
+		"dr_slayer",
+		"dr_ranger",
+		"dr_engineer"
+	}
+}
+ItemMasterList.dr_dual_wield_hammers_weapon_pose_02 = {
+	description = "weapon_pose_emote_description",
+	name = "Hammers Pose",
+	display_name = "dr_dual_wield_hammers_emote_wheel",
+	inventory_icon = "dr_dual_wield_hammers_02",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 2,
+	parent = "dr_dual_wield_hammers",
+	hud_icon = "dr_dual_wield_hammers_02",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_02",
+		hide_weapons = false
+	},
+	can_wield = {
+		"dr_ironbreaker",
+		"dr_slayer",
+		"dr_ranger",
+		"dr_engineer"
+	}
+}
+ItemMasterList.dr_dual_wield_hammers_weapon_pose_03 = {
+	description = "weapon_pose_emote_description",
+	name = "Hammers Pose",
+	display_name = "dr_dual_wield_hammers_emote_wheel",
+	inventory_icon = "dr_dual_wield_hammers_03",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 3,
+	parent = "dr_dual_wield_hammers",
+	hud_icon = "dr_dual_wield_hammers_03",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_03",
+		hide_weapons = false
+	},
+	can_wield = {
+		"dr_ironbreaker",
+		"dr_slayer",
+		"dr_ranger",
+		"dr_engineer"
+	}
+}
+ItemMasterList.dr_dual_wield_hammers_weapon_pose_04 = {
+	description = "weapon_pose_emote_description",
+	name = "Hammers Pose",
+	display_name = "dr_dual_wield_hammers_emote_wheel",
+	inventory_icon = "dr_dual_wield_hammers_04",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 4,
+	parent = "dr_dual_wield_hammers",
+	hud_icon = "dr_dual_wield_hammers_04",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_04",
+		hide_weapons = false
+	},
+	can_wield = {
+		"dr_ironbreaker",
+		"dr_slayer",
+		"dr_ranger",
+		"dr_engineer"
+	}
+}
+ItemMasterList.dr_dual_wield_hammers_weapon_pose_05 = {
+	description = "weapon_pose_emote_description",
+	name = "Hammers Pose",
+	display_name = "dr_dual_wield_hammers_emote_wheel",
+	inventory_icon = "dr_dual_wield_hammers_05",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 5,
+	parent = "dr_dual_wield_hammers",
+	hud_icon = "dr_dual_wield_hammers_05",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_05",
+		hide_weapons = false
+	},
+	can_wield = {
+		"dr_ironbreaker",
+		"dr_slayer",
+		"dr_ranger",
+		"dr_engineer"
+	}
+}
+ItemMasterList.dr_dual_wield_hammers_weapon_pose_06 = {
+	description = "weapon_pose_emote_description",
+	name = "Hammers Pose",
+	display_name = "dr_dual_wield_hammers_emote_wheel",
+	inventory_icon = "dr_dual_wield_hammers_06",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 6,
+	parent = "dr_dual_wield_hammers",
+	hud_icon = "dr_dual_wield_hammers_06",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_06",
+		hide_weapons = false
+	},
+	can_wield = {
+		"dr_ironbreaker",
+		"dr_slayer",
+		"dr_ranger",
+		"dr_engineer"
+	}
+}
+ItemMasterList.wh_dual_wield_axe_falchion_weapon_pose_01 = {
+	description = "weapon_pose_emote_description",
+	name = "Axe and Falchion Pose",
+	display_name = "wh_dual_wield_axe_falchion_emote_wheel",
+	inventory_icon = "wh_dual_wield_axe_falchion_01",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 1,
+	parent = "wh_dual_wield_axe_falchion",
+	hud_icon = "wh_dual_wield_axe_falchion_01",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_01",
+		hide_weapons = false
+	},
+	can_wield = {
+		"wh_zealot",
+		"wh_bountyhunter",
+		"wh_captain"
+	}
+}
+ItemMasterList.wh_dual_wield_axe_falchion_weapon_pose_02 = {
+	description = "weapon_pose_emote_description",
+	name = "Axe and Falchion Pose",
+	display_name = "wh_dual_wield_axe_falchion_emote_wheel",
+	inventory_icon = "wh_dual_wield_axe_falchion_02",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 2,
+	parent = "wh_dual_wield_axe_falchion",
+	hud_icon = "wh_dual_wield_axe_falchion_02",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_02",
+		hide_weapons = false
+	},
+	can_wield = {
+		"wh_zealot",
+		"wh_bountyhunter",
+		"wh_captain"
+	}
+}
+ItemMasterList.wh_dual_wield_axe_falchion_weapon_pose_03 = {
+	description = "weapon_pose_emote_description",
+	name = "Axe and Falchion Pose",
+	display_name = "wh_dual_wield_axe_falchion_emote_wheel",
+	inventory_icon = "wh_dual_wield_axe_falchion_03",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 3,
+	parent = "wh_dual_wield_axe_falchion",
+	hud_icon = "wh_dual_wield_axe_falchion_03",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_03",
+		hide_weapons = false
+	},
+	can_wield = {
+		"wh_zealot",
+		"wh_bountyhunter",
+		"wh_captain"
+	}
+}
+ItemMasterList.wh_dual_wield_axe_falchion_weapon_pose_04 = {
+	description = "weapon_pose_emote_description",
+	name = "Axe and Falchion Pose",
+	display_name = "wh_dual_wield_axe_falchion_emote_wheel",
+	inventory_icon = "wh_dual_wield_axe_falchion_04",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 4,
+	parent = "wh_dual_wield_axe_falchion",
+	hud_icon = "wh_dual_wield_axe_falchion_04",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_04",
+		hide_weapons = false
+	},
+	can_wield = {
+		"wh_zealot",
+		"wh_bountyhunter",
+		"wh_captain"
+	}
+}
+ItemMasterList.wh_dual_wield_axe_falchion_weapon_pose_05 = {
+	description = "weapon_pose_emote_description",
+	name = "Axe and Falchion Pose",
+	display_name = "wh_dual_wield_axe_falchion_emote_wheel",
+	inventory_icon = "wh_dual_wield_axe_falchion_05",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 5,
+	parent = "wh_dual_wield_axe_falchion",
+	hud_icon = "wh_dual_wield_axe_falchion_05",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_05",
+		hide_weapons = false
+	},
+	can_wield = {
+		"wh_zealot",
+		"wh_bountyhunter",
+		"wh_captain"
+	}
+}
+ItemMasterList.wh_dual_wield_axe_falchion_weapon_pose_06 = {
+	description = "weapon_pose_emote_description",
+	name = "Axe and Falchion Pose",
+	display_name = "wh_dual_wield_axe_falchion_emote_wheel",
+	inventory_icon = "wh_dual_wield_axe_falchion_06",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 6,
+	parent = "wh_dual_wield_axe_falchion",
+	hud_icon = "wh_dual_wield_axe_falchion_06",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_06",
+		hide_weapons = false
+	},
+	can_wield = {
+		"wh_zealot",
+		"wh_bountyhunter",
+		"wh_captain"
+	}
+}
+ItemMasterList.we_1h_axe_weapon_pose_01 = {
+	description = "weapon_pose_emote_description",
+	name = "<we_1h_axe_emote_wheel>",
+	display_name = "we_1h_axe_emote_wheel",
+	inventory_icon = "we_1h_axe_01",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 1,
+	parent = "we_1h_axe",
+	hud_icon = "we_1h_axe_01",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_01",
+		hide_weapons = false
+	},
+	can_wield = {
+		"we_shade",
+		"we_maidenguard",
+		"we_waywatcher",
+		"we_thornsister"
+	}
+}
+ItemMasterList.we_1h_axe_weapon_pose_02 = {
+	description = "weapon_pose_emote_description",
+	name = "<we_1h_axe_emote_wheel>",
+	display_name = "we_1h_axe_emote_wheel",
+	inventory_icon = "we_1h_axe_02",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 2,
+	parent = "we_1h_axe",
+	hud_icon = "we_1h_axe_02",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_02",
+		hide_weapons = false
+	},
+	can_wield = {
+		"we_shade",
+		"we_maidenguard",
+		"we_waywatcher",
+		"we_thornsister"
+	}
+}
+ItemMasterList.we_1h_axe_weapon_pose_03 = {
+	description = "weapon_pose_emote_description",
+	name = "<we_1h_axe_emote_wheel>",
+	display_name = "we_1h_axe_emote_wheel",
+	inventory_icon = "we_1h_axe_03",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 3,
+	parent = "we_1h_axe",
+	hud_icon = "we_1h_axe_03",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_03",
+		hide_weapons = false
+	},
+	can_wield = {
+		"we_shade",
+		"we_maidenguard",
+		"we_waywatcher",
+		"we_thornsister"
+	}
+}
+ItemMasterList.we_1h_axe_weapon_pose_04 = {
+	description = "weapon_pose_emote_description",
+	name = "<we_1h_axe_emote_wheel>",
+	display_name = "we_1h_axe_emote_wheel",
+	inventory_icon = "we_1h_axe_04",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 4,
+	parent = "we_1h_axe",
+	hud_icon = "we_1h_axe_04",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_04",
+		hide_weapons = false
+	},
+	can_wield = {
+		"we_shade",
+		"we_maidenguard",
+		"we_waywatcher",
+		"we_thornsister"
+	}
+}
+ItemMasterList.we_1h_axe_weapon_pose_05 = {
+	description = "weapon_pose_emote_description",
+	name = "<we_1h_axe_emote_wheel>",
+	display_name = "we_1h_axe_emote_wheel",
+	inventory_icon = "we_1h_axe_05",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 5,
+	parent = "we_1h_axe",
+	hud_icon = "we_1h_axe_05",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_05",
+		hide_weapons = false
+	},
+	can_wield = {
+		"we_shade",
+		"we_maidenguard",
+		"we_waywatcher",
+		"we_thornsister"
+	}
+}
+ItemMasterList.we_1h_axe_weapon_pose_06 = {
+	description = "weapon_pose_emote_description",
+	name = "<we_1h_axe_emote_wheel>",
+	display_name = "we_1h_axe_emote_wheel",
+	inventory_icon = "we_1h_axe_06",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 6,
+	parent = "we_1h_axe",
+	hud_icon = "we_1h_axe_06",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_06",
+		hide_weapons = false
+	},
+	can_wield = {
+		"we_shade",
+		"we_maidenguard",
+		"we_waywatcher",
+		"we_thornsister"
 	}
 }
 ItemMasterList.dr_rakegun_weapon_pose_01 = {
@@ -4687,17 +5137,17 @@ ItemMasterList.wh_1h_hammer_weapon_pose_06 = {
 		"wh_zealot"
 	}
 }
-ItemMasterList.dr_shield_hammer_weapon_pose_01 = {
+ItemMasterList.dr_steam_pistol_weapon_pose_01 = {
 	description = "weapon_pose_emote_description",
-	name = "Hammer and Shield Pose",
-	display_name = "dr_shield_hammer_emote_wheel",
-	inventory_icon = "dr_shield_hammer_01",
+	name = "Pistol Pose",
+	display_name = "dr_steam_pistol_emote_wheel",
+	inventory_icon = "dr_steam_pistol_01",
 	slot_type = "weapon_pose",
 	information_text = "information_weapon_pose",
 	rarity = "exotic",
 	pose_index = 1,
-	parent = "dr_shield_hammer",
-	hud_icon = "dr_shield_hammer_01",
+	parent = "dr_steam_pistol",
+	hud_icon = "dr_steam_pistol_01",
 	template = "pose_template",
 	item_type = "weapon_pose",
 	data = {
@@ -4705,22 +5155,22 @@ ItemMasterList.dr_shield_hammer_weapon_pose_01 = {
 		hide_weapons = false
 	},
 	can_wield = {
-		"dr_ironbreaker",
+		"dr_engineer",
 		"dr_ranger",
-		"dr_engineer"
+		"dr_ironbreaker"
 	}
 }
-ItemMasterList.dr_shield_hammer_weapon_pose_02 = {
+ItemMasterList.dr_steam_pistol_weapon_pose_02 = {
 	description = "weapon_pose_emote_description",
-	name = "Hammer and Shield Pose",
-	display_name = "dr_shield_hammer_emote_wheel",
-	inventory_icon = "dr_shield_hammer_02",
+	name = "Pistol Pose",
+	display_name = "dr_steam_pistol_emote_wheel",
+	inventory_icon = "dr_steam_pistol_02",
 	slot_type = "weapon_pose",
 	information_text = "information_weapon_pose",
 	rarity = "exotic",
 	pose_index = 2,
-	parent = "dr_shield_hammer",
-	hud_icon = "dr_shield_hammer_02",
+	parent = "dr_steam_pistol",
+	hud_icon = "dr_steam_pistol_02",
 	template = "pose_template",
 	item_type = "weapon_pose",
 	data = {
@@ -4728,22 +5178,22 @@ ItemMasterList.dr_shield_hammer_weapon_pose_02 = {
 		hide_weapons = false
 	},
 	can_wield = {
-		"dr_ironbreaker",
+		"dr_engineer",
 		"dr_ranger",
-		"dr_engineer"
+		"dr_ironbreaker"
 	}
 }
-ItemMasterList.dr_shield_hammer_weapon_pose_03 = {
+ItemMasterList.dr_steam_pistol_weapon_pose_03 = {
 	description = "weapon_pose_emote_description",
-	name = "Hammer and Shield Pose",
-	display_name = "dr_shield_hammer_emote_wheel",
-	inventory_icon = "dr_shield_hammer_03",
+	name = "Pistol Pose",
+	display_name = "dr_steam_pistol_emote_wheel",
+	inventory_icon = "dr_steam_pistol_03",
 	slot_type = "weapon_pose",
 	information_text = "information_weapon_pose",
 	rarity = "exotic",
 	pose_index = 3,
-	parent = "dr_shield_hammer",
-	hud_icon = "dr_shield_hammer_03",
+	parent = "dr_steam_pistol",
+	hud_icon = "dr_steam_pistol_03",
 	template = "pose_template",
 	item_type = "weapon_pose",
 	data = {
@@ -4751,22 +5201,22 @@ ItemMasterList.dr_shield_hammer_weapon_pose_03 = {
 		hide_weapons = false
 	},
 	can_wield = {
-		"dr_ironbreaker",
+		"dr_engineer",
 		"dr_ranger",
-		"dr_engineer"
+		"dr_ironbreaker"
 	}
 }
-ItemMasterList.dr_shield_hammer_weapon_pose_04 = {
+ItemMasterList.dr_steam_pistol_weapon_pose_04 = {
 	description = "weapon_pose_emote_description",
-	name = "Hammer and Shield Pose",
-	display_name = "dr_shield_hammer_emote_wheel",
-	inventory_icon = "dr_shield_hammer_04",
+	name = "Pistol Pose",
+	display_name = "dr_steam_pistol_emote_wheel",
+	inventory_icon = "dr_steam_pistol_04",
 	slot_type = "weapon_pose",
 	information_text = "information_weapon_pose",
 	rarity = "exotic",
 	pose_index = 4,
-	parent = "dr_shield_hammer",
-	hud_icon = "dr_shield_hammer_04",
+	parent = "dr_steam_pistol",
+	hud_icon = "dr_steam_pistol_04",
 	template = "pose_template",
 	item_type = "weapon_pose",
 	data = {
@@ -4774,22 +5224,22 @@ ItemMasterList.dr_shield_hammer_weapon_pose_04 = {
 		hide_weapons = false
 	},
 	can_wield = {
-		"dr_ironbreaker",
+		"dr_engineer",
 		"dr_ranger",
-		"dr_engineer"
+		"dr_ironbreaker"
 	}
 }
-ItemMasterList.dr_shield_hammer_weapon_pose_05 = {
+ItemMasterList.dr_steam_pistol_weapon_pose_05 = {
 	description = "weapon_pose_emote_description",
-	name = "Hammer and Shield Pose",
-	display_name = "dr_shield_hammer_emote_wheel",
-	inventory_icon = "dr_shield_hammer_05",
+	name = "Pistol Pose",
+	display_name = "dr_steam_pistol_emote_wheel",
+	inventory_icon = "dr_steam_pistol_05",
 	slot_type = "weapon_pose",
 	information_text = "information_weapon_pose",
 	rarity = "exotic",
 	pose_index = 5,
-	parent = "dr_shield_hammer",
-	hud_icon = "dr_shield_hammer_05",
+	parent = "dr_steam_pistol",
+	hud_icon = "dr_steam_pistol_05",
 	template = "pose_template",
 	item_type = "weapon_pose",
 	data = {
@@ -4797,22 +5247,22 @@ ItemMasterList.dr_shield_hammer_weapon_pose_05 = {
 		hide_weapons = false
 	},
 	can_wield = {
-		"dr_ironbreaker",
+		"dr_engineer",
 		"dr_ranger",
-		"dr_engineer"
+		"dr_ironbreaker"
 	}
 }
-ItemMasterList.dr_shield_hammer_weapon_pose_06 = {
+ItemMasterList.dr_steam_pistol_weapon_pose_06 = {
 	description = "weapon_pose_emote_description",
-	name = "Hammer and Shield Pose",
-	display_name = "dr_shield_hammer_emote_wheel",
-	inventory_icon = "dr_shield_hammer_06",
+	name = "Pistol Pose",
+	display_name = "dr_steam_pistol_emote_wheel",
+	inventory_icon = "dr_steam_pistol_06",
 	slot_type = "weapon_pose",
 	information_text = "information_weapon_pose",
 	rarity = "exotic",
 	pose_index = 6,
-	parent = "dr_shield_hammer",
-	hud_icon = "dr_shield_hammer_06",
+	parent = "dr_steam_pistol",
+	hud_icon = "dr_steam_pistol_06",
 	template = "pose_template",
 	item_type = "weapon_pose",
 	data = {
@@ -4820,9 +5270,9 @@ ItemMasterList.dr_shield_hammer_weapon_pose_06 = {
 		hide_weapons = false
 	},
 	can_wield = {
-		"dr_ironbreaker",
+		"dr_engineer",
 		"dr_ranger",
-		"dr_engineer"
+		"dr_ironbreaker"
 	}
 }
 ItemMasterList.wh_deus_01_weapon_pose_01 = {
@@ -5677,276 +6127,6 @@ ItemMasterList.es_1h_sword_weapon_pose_06 = {
 		"es_questingknight"
 	}
 }
-ItemMasterList.es_sword_shield_breton_weapon_pose_01 = {
-	description = "weapon_pose_emote_description",
-	name = "Sword and Shield Pose",
-	display_name = "es_sword_shield_breton_emote_wheel",
-	inventory_icon = "es_sword_shield_breton_01",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 1,
-	parent = "es_sword_shield_breton",
-	hud_icon = "es_sword_shield_breton_01",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_01",
-		hide_weapons = false
-	},
-	can_wield = {
-		"es_questingknight"
-	}
-}
-ItemMasterList.es_sword_shield_breton_weapon_pose_02 = {
-	description = "weapon_pose_emote_description",
-	name = "Sword and Shield Pose",
-	display_name = "es_sword_shield_breton_emote_wheel",
-	inventory_icon = "es_sword_shield_breton_02",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 2,
-	parent = "es_sword_shield_breton",
-	hud_icon = "es_sword_shield_breton_02",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_02",
-		hide_weapons = false
-	},
-	can_wield = {
-		"es_questingknight"
-	}
-}
-ItemMasterList.es_sword_shield_breton_weapon_pose_03 = {
-	description = "weapon_pose_emote_description",
-	name = "Sword and Shield Pose",
-	display_name = "es_sword_shield_breton_emote_wheel",
-	inventory_icon = "es_sword_shield_breton_03",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 3,
-	parent = "es_sword_shield_breton",
-	hud_icon = "es_sword_shield_breton_03",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_03",
-		hide_weapons = false
-	},
-	can_wield = {
-		"es_questingknight"
-	}
-}
-ItemMasterList.es_sword_shield_breton_weapon_pose_04 = {
-	description = "weapon_pose_emote_description",
-	name = "Sword and Shield Pose",
-	display_name = "es_sword_shield_breton_emote_wheel",
-	inventory_icon = "es_sword_shield_breton_04",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 4,
-	parent = "es_sword_shield_breton",
-	hud_icon = "es_sword_shield_breton_04",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_04",
-		hide_weapons = false
-	},
-	can_wield = {
-		"es_questingknight"
-	}
-}
-ItemMasterList.es_sword_shield_breton_weapon_pose_05 = {
-	description = "weapon_pose_emote_description",
-	name = "Sword and Shield Pose",
-	display_name = "es_sword_shield_breton_emote_wheel",
-	inventory_icon = "es_sword_shield_breton_05",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 5,
-	parent = "es_sword_shield_breton",
-	hud_icon = "es_sword_shield_breton_05",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_05",
-		hide_weapons = false
-	},
-	can_wield = {
-		"es_questingknight"
-	}
-}
-ItemMasterList.es_sword_shield_breton_weapon_pose_06 = {
-	description = "weapon_pose_emote_description",
-	name = "Sword and Shield Pose",
-	display_name = "es_sword_shield_breton_emote_wheel",
-	inventory_icon = "es_sword_shield_breton_06",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 6,
-	parent = "es_sword_shield_breton",
-	hud_icon = "es_sword_shield_breton_06",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_06",
-		hide_weapons = false
-	},
-	can_wield = {
-		"es_questingknight"
-	}
-}
-ItemMasterList.es_bastard_sword_weapon_pose_01 = {
-	description = "weapon_pose_emote_description",
-	name = "Longsword Pose",
-	display_name = "es_bastard_sword_emote_wheel",
-	inventory_icon = "es_bastard_sword_01",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 1,
-	parent = "es_bastard_sword",
-	hud_icon = "es_bastard_sword_01",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_01",
-		hide_weapons = false
-	},
-	can_wield = {
-		"es_huntsman",
-		"es_knight",
-		"es_mercenary",
-		"es_questingknight"
-	}
-}
-ItemMasterList.es_bastard_sword_weapon_pose_02 = {
-	description = "weapon_pose_emote_description",
-	name = "Longsword Pose",
-	display_name = "es_bastard_sword_emote_wheel",
-	inventory_icon = "es_bastard_sword_02",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 2,
-	parent = "es_bastard_sword",
-	hud_icon = "es_bastard_sword_02",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_02",
-		hide_weapons = false
-	},
-	can_wield = {
-		"es_huntsman",
-		"es_knight",
-		"es_mercenary",
-		"es_questingknight"
-	}
-}
-ItemMasterList.es_bastard_sword_weapon_pose_03 = {
-	description = "weapon_pose_emote_description",
-	name = "Longsword Pose",
-	display_name = "es_bastard_sword_emote_wheel",
-	inventory_icon = "es_bastard_sword_03",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 3,
-	parent = "es_bastard_sword",
-	hud_icon = "es_bastard_sword_03",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_03",
-		hide_weapons = false
-	},
-	can_wield = {
-		"es_huntsman",
-		"es_knight",
-		"es_mercenary",
-		"es_questingknight"
-	}
-}
-ItemMasterList.es_bastard_sword_weapon_pose_04 = {
-	description = "weapon_pose_emote_description",
-	name = "Longsword Pose",
-	display_name = "es_bastard_sword_emote_wheel",
-	inventory_icon = "es_bastard_sword_04",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 4,
-	parent = "es_bastard_sword",
-	hud_icon = "es_bastard_sword_04",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_04",
-		hide_weapons = false
-	},
-	can_wield = {
-		"es_huntsman",
-		"es_knight",
-		"es_mercenary",
-		"es_questingknight"
-	}
-}
-ItemMasterList.es_bastard_sword_weapon_pose_05 = {
-	description = "weapon_pose_emote_description",
-	name = "Longsword Pose",
-	display_name = "es_bastard_sword_emote_wheel",
-	inventory_icon = "es_bastard_sword_05",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 5,
-	parent = "es_bastard_sword",
-	hud_icon = "es_bastard_sword_05",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_05",
-		hide_weapons = false
-	},
-	can_wield = {
-		"es_huntsman",
-		"es_knight",
-		"es_mercenary",
-		"es_questingknight"
-	}
-}
-ItemMasterList.es_bastard_sword_weapon_pose_06 = {
-	description = "weapon_pose_emote_description",
-	name = "Longsword Pose",
-	display_name = "es_bastard_sword_emote_wheel",
-	inventory_icon = "es_bastard_sword_06",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 6,
-	parent = "es_bastard_sword",
-	hud_icon = "es_bastard_sword_06",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_06",
-		hide_weapons = false
-	},
-	can_wield = {
-		"es_huntsman",
-		"es_knight",
-		"es_mercenary",
-		"es_questingknight"
-	}
-}
 ItemMasterList.dr_handgun_weapon_pose_01 = {
 	description = "weapon_pose_emote_description",
 	name = "Handgun Pose",
@@ -6085,150 +6265,6 @@ ItemMasterList.dr_handgun_weapon_pose_06 = {
 		"dr_engineer"
 	}
 }
-ItemMasterList.dr_2h_hammer_weapon_pose_01 = {
-	description = "weapon_pose_emote_description",
-	name = "Hammer Pose",
-	display_name = "dr_2h_hammer_emote_wheel",
-	inventory_icon = "dr_2h_hammer_01",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 1,
-	parent = "dr_2h_hammer",
-	hud_icon = "dr_2h_hammer_01",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_01",
-		hide_weapons = false
-	},
-	can_wield = {
-		"dr_ironbreaker",
-		"dr_slayer",
-		"dr_ranger",
-		"dr_engineer"
-	}
-}
-ItemMasterList.dr_2h_hammer_weapon_pose_02 = {
-	description = "weapon_pose_emote_description",
-	name = "Hammer Pose",
-	display_name = "dr_2h_hammer_emote_wheel",
-	inventory_icon = "dr_2h_hammer_02",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 2,
-	parent = "dr_2h_hammer",
-	hud_icon = "dr_2h_hammer_02",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_02",
-		hide_weapons = false
-	},
-	can_wield = {
-		"dr_ironbreaker",
-		"dr_slayer",
-		"dr_ranger",
-		"dr_engineer"
-	}
-}
-ItemMasterList.dr_2h_hammer_weapon_pose_03 = {
-	description = "weapon_pose_emote_description",
-	name = "Hammer Pose",
-	display_name = "dr_2h_hammer_emote_wheel",
-	inventory_icon = "dr_2h_hammer_03",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 3,
-	parent = "dr_2h_hammer",
-	hud_icon = "dr_2h_hammer_03",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_03",
-		hide_weapons = false
-	},
-	can_wield = {
-		"dr_ironbreaker",
-		"dr_slayer",
-		"dr_ranger",
-		"dr_engineer"
-	}
-}
-ItemMasterList.dr_2h_hammer_weapon_pose_04 = {
-	description = "weapon_pose_emote_description",
-	name = "Hammer Pose",
-	display_name = "dr_2h_hammer_emote_wheel",
-	inventory_icon = "dr_2h_hammer_04",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 4,
-	parent = "dr_2h_hammer",
-	hud_icon = "dr_2h_hammer_04",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_04",
-		hide_weapons = false
-	},
-	can_wield = {
-		"dr_ironbreaker",
-		"dr_slayer",
-		"dr_ranger",
-		"dr_engineer"
-	}
-}
-ItemMasterList.dr_2h_hammer_weapon_pose_05 = {
-	description = "weapon_pose_emote_description",
-	name = "Hammer Pose",
-	display_name = "dr_2h_hammer_emote_wheel",
-	inventory_icon = "dr_2h_hammer_05",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 5,
-	parent = "dr_2h_hammer",
-	hud_icon = "dr_2h_hammer_05",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_05",
-		hide_weapons = false
-	},
-	can_wield = {
-		"dr_ironbreaker",
-		"dr_slayer",
-		"dr_ranger",
-		"dr_engineer"
-	}
-}
-ItemMasterList.dr_2h_hammer_weapon_pose_06 = {
-	description = "weapon_pose_emote_description",
-	name = "Hammer Pose",
-	display_name = "dr_2h_hammer_emote_wheel",
-	inventory_icon = "dr_2h_hammer_06",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 6,
-	parent = "dr_2h_hammer",
-	hud_icon = "dr_2h_hammer_06",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_06",
-		hide_weapons = false
-	},
-	can_wield = {
-		"dr_ironbreaker",
-		"dr_slayer",
-		"dr_ranger",
-		"dr_engineer"
-	}
-}
 ItemMasterList.wh_2h_hammer_weapon_pose_01 = {
 	description = "weapon_pose_emote_description",
 	name = "<wh_2h_hammer_emote_wheel>",
@@ -6361,17 +6397,17 @@ ItemMasterList.wh_2h_hammer_weapon_pose_06 = {
 		"wh_zealot"
 	}
 }
-ItemMasterList.dr_dual_wield_hammers_weapon_pose_01 = {
+ItemMasterList.es_deus_01_weapon_pose_01 = {
 	description = "weapon_pose_emote_description",
-	name = "Hammers Pose",
-	display_name = "dr_dual_wield_hammers_emote_wheel",
-	inventory_icon = "dr_dual_wield_hammers_01",
+	name = "<es_deus_01_emote_wheel>",
+	display_name = "es_deus_01_emote_wheel",
+	inventory_icon = "es_deus_01_01",
 	slot_type = "weapon_pose",
 	information_text = "information_weapon_pose",
 	rarity = "exotic",
 	pose_index = 1,
-	parent = "dr_dual_wield_hammers",
-	hud_icon = "dr_dual_wield_hammers_01",
+	parent = "es_deus_01",
+	hud_icon = "es_deus_01_01",
 	template = "pose_template",
 	item_type = "weapon_pose",
 	data = {
@@ -6379,23 +6415,22 @@ ItemMasterList.dr_dual_wield_hammers_weapon_pose_01 = {
 		hide_weapons = false
 	},
 	can_wield = {
-		"dr_ironbreaker",
-		"dr_slayer",
-		"dr_ranger",
-		"dr_engineer"
+		"es_huntsman",
+		"es_knight",
+		"es_mercenary"
 	}
 }
-ItemMasterList.dr_dual_wield_hammers_weapon_pose_02 = {
+ItemMasterList.es_deus_01_weapon_pose_02 = {
 	description = "weapon_pose_emote_description",
-	name = "Hammers Pose",
-	display_name = "dr_dual_wield_hammers_emote_wheel",
-	inventory_icon = "dr_dual_wield_hammers_02",
+	name = "<es_deus_01_emote_wheel>",
+	display_name = "es_deus_01_emote_wheel",
+	inventory_icon = "es_deus_01_02",
 	slot_type = "weapon_pose",
 	information_text = "information_weapon_pose",
 	rarity = "exotic",
 	pose_index = 2,
-	parent = "dr_dual_wield_hammers",
-	hud_icon = "dr_dual_wield_hammers_02",
+	parent = "es_deus_01",
+	hud_icon = "es_deus_01_02",
 	template = "pose_template",
 	item_type = "weapon_pose",
 	data = {
@@ -6403,23 +6438,22 @@ ItemMasterList.dr_dual_wield_hammers_weapon_pose_02 = {
 		hide_weapons = false
 	},
 	can_wield = {
-		"dr_ironbreaker",
-		"dr_slayer",
-		"dr_ranger",
-		"dr_engineer"
+		"es_huntsman",
+		"es_knight",
+		"es_mercenary"
 	}
 }
-ItemMasterList.dr_dual_wield_hammers_weapon_pose_03 = {
+ItemMasterList.es_deus_01_weapon_pose_03 = {
 	description = "weapon_pose_emote_description",
-	name = "Hammers Pose",
-	display_name = "dr_dual_wield_hammers_emote_wheel",
-	inventory_icon = "dr_dual_wield_hammers_03",
+	name = "<es_deus_01_emote_wheel>",
+	display_name = "es_deus_01_emote_wheel",
+	inventory_icon = "es_deus_01_03",
 	slot_type = "weapon_pose",
 	information_text = "information_weapon_pose",
 	rarity = "exotic",
 	pose_index = 3,
-	parent = "dr_dual_wield_hammers",
-	hud_icon = "dr_dual_wield_hammers_03",
+	parent = "es_deus_01",
+	hud_icon = "es_deus_01_03",
 	template = "pose_template",
 	item_type = "weapon_pose",
 	data = {
@@ -6427,23 +6461,22 @@ ItemMasterList.dr_dual_wield_hammers_weapon_pose_03 = {
 		hide_weapons = false
 	},
 	can_wield = {
-		"dr_ironbreaker",
-		"dr_slayer",
-		"dr_ranger",
-		"dr_engineer"
+		"es_huntsman",
+		"es_knight",
+		"es_mercenary"
 	}
 }
-ItemMasterList.dr_dual_wield_hammers_weapon_pose_04 = {
+ItemMasterList.es_deus_01_weapon_pose_04 = {
 	description = "weapon_pose_emote_description",
-	name = "Hammers Pose",
-	display_name = "dr_dual_wield_hammers_emote_wheel",
-	inventory_icon = "dr_dual_wield_hammers_04",
+	name = "<es_deus_01_emote_wheel>",
+	display_name = "es_deus_01_emote_wheel",
+	inventory_icon = "es_deus_01_04",
 	slot_type = "weapon_pose",
 	information_text = "information_weapon_pose",
 	rarity = "exotic",
 	pose_index = 4,
-	parent = "dr_dual_wield_hammers",
-	hud_icon = "dr_dual_wield_hammers_04",
+	parent = "es_deus_01",
+	hud_icon = "es_deus_01_04",
 	template = "pose_template",
 	item_type = "weapon_pose",
 	data = {
@@ -6451,23 +6484,22 @@ ItemMasterList.dr_dual_wield_hammers_weapon_pose_04 = {
 		hide_weapons = false
 	},
 	can_wield = {
-		"dr_ironbreaker",
-		"dr_slayer",
-		"dr_ranger",
-		"dr_engineer"
+		"es_huntsman",
+		"es_knight",
+		"es_mercenary"
 	}
 }
-ItemMasterList.dr_dual_wield_hammers_weapon_pose_05 = {
+ItemMasterList.es_deus_01_weapon_pose_05 = {
 	description = "weapon_pose_emote_description",
-	name = "Hammers Pose",
-	display_name = "dr_dual_wield_hammers_emote_wheel",
-	inventory_icon = "dr_dual_wield_hammers_05",
+	name = "<es_deus_01_emote_wheel>",
+	display_name = "es_deus_01_emote_wheel",
+	inventory_icon = "es_deus_01_05",
 	slot_type = "weapon_pose",
 	information_text = "information_weapon_pose",
 	rarity = "exotic",
 	pose_index = 5,
-	parent = "dr_dual_wield_hammers",
-	hud_icon = "dr_dual_wield_hammers_05",
+	parent = "es_deus_01",
+	hud_icon = "es_deus_01_05",
 	template = "pose_template",
 	item_type = "weapon_pose",
 	data = {
@@ -6475,23 +6507,22 @@ ItemMasterList.dr_dual_wield_hammers_weapon_pose_05 = {
 		hide_weapons = false
 	},
 	can_wield = {
-		"dr_ironbreaker",
-		"dr_slayer",
-		"dr_ranger",
-		"dr_engineer"
+		"es_huntsman",
+		"es_knight",
+		"es_mercenary"
 	}
 }
-ItemMasterList.dr_dual_wield_hammers_weapon_pose_06 = {
+ItemMasterList.es_deus_01_weapon_pose_06 = {
 	description = "weapon_pose_emote_description",
-	name = "Hammers Pose",
-	display_name = "dr_dual_wield_hammers_emote_wheel",
-	inventory_icon = "dr_dual_wield_hammers_06",
+	name = "<es_deus_01_emote_wheel>",
+	display_name = "es_deus_01_emote_wheel",
+	inventory_icon = "es_deus_01_06",
 	slot_type = "weapon_pose",
 	information_text = "information_weapon_pose",
 	rarity = "exotic",
 	pose_index = 6,
-	parent = "dr_dual_wield_hammers",
-	hud_icon = "dr_dual_wield_hammers_06",
+	parent = "es_deus_01",
+	hud_icon = "es_deus_01_06",
 	template = "pose_template",
 	item_type = "weapon_pose",
 	data = {
@@ -6499,292 +6530,9 @@ ItemMasterList.dr_dual_wield_hammers_weapon_pose_06 = {
 		hide_weapons = false
 	},
 	can_wield = {
-		"dr_ironbreaker",
-		"dr_slayer",
-		"dr_ranger",
-		"dr_engineer"
-	}
-}
-ItemMasterList.wh_dual_wield_axe_falchion_weapon_pose_01 = {
-	description = "weapon_pose_emote_description",
-	name = "Axe and Falchion Pose",
-	display_name = "wh_dual_wield_axe_falchion_emote_wheel",
-	inventory_icon = "wh_dual_wield_axe_falchion_01",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 1,
-	parent = "wh_dual_wield_axe_falchion",
-	hud_icon = "wh_dual_wield_axe_falchion_01",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_01",
-		hide_weapons = false
-	},
-	can_wield = {
-		"wh_zealot",
-		"wh_bountyhunter",
-		"wh_captain"
-	}
-}
-ItemMasterList.wh_dual_wield_axe_falchion_weapon_pose_02 = {
-	description = "weapon_pose_emote_description",
-	name = "Axe and Falchion Pose",
-	display_name = "wh_dual_wield_axe_falchion_emote_wheel",
-	inventory_icon = "wh_dual_wield_axe_falchion_02",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 2,
-	parent = "wh_dual_wield_axe_falchion",
-	hud_icon = "wh_dual_wield_axe_falchion_02",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_02",
-		hide_weapons = false
-	},
-	can_wield = {
-		"wh_zealot",
-		"wh_bountyhunter",
-		"wh_captain"
-	}
-}
-ItemMasterList.wh_dual_wield_axe_falchion_weapon_pose_03 = {
-	description = "weapon_pose_emote_description",
-	name = "Axe and Falchion Pose",
-	display_name = "wh_dual_wield_axe_falchion_emote_wheel",
-	inventory_icon = "wh_dual_wield_axe_falchion_03",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 3,
-	parent = "wh_dual_wield_axe_falchion",
-	hud_icon = "wh_dual_wield_axe_falchion_03",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_03",
-		hide_weapons = false
-	},
-	can_wield = {
-		"wh_zealot",
-		"wh_bountyhunter",
-		"wh_captain"
-	}
-}
-ItemMasterList.wh_dual_wield_axe_falchion_weapon_pose_04 = {
-	description = "weapon_pose_emote_description",
-	name = "Axe and Falchion Pose",
-	display_name = "wh_dual_wield_axe_falchion_emote_wheel",
-	inventory_icon = "wh_dual_wield_axe_falchion_04",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 4,
-	parent = "wh_dual_wield_axe_falchion",
-	hud_icon = "wh_dual_wield_axe_falchion_04",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_04",
-		hide_weapons = false
-	},
-	can_wield = {
-		"wh_zealot",
-		"wh_bountyhunter",
-		"wh_captain"
-	}
-}
-ItemMasterList.wh_dual_wield_axe_falchion_weapon_pose_05 = {
-	description = "weapon_pose_emote_description",
-	name = "Axe and Falchion Pose",
-	display_name = "wh_dual_wield_axe_falchion_emote_wheel",
-	inventory_icon = "wh_dual_wield_axe_falchion_05",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 5,
-	parent = "wh_dual_wield_axe_falchion",
-	hud_icon = "wh_dual_wield_axe_falchion_05",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_05",
-		hide_weapons = false
-	},
-	can_wield = {
-		"wh_zealot",
-		"wh_bountyhunter",
-		"wh_captain"
-	}
-}
-ItemMasterList.wh_dual_wield_axe_falchion_weapon_pose_06 = {
-	description = "weapon_pose_emote_description",
-	name = "Axe and Falchion Pose",
-	display_name = "wh_dual_wield_axe_falchion_emote_wheel",
-	inventory_icon = "wh_dual_wield_axe_falchion_06",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 6,
-	parent = "wh_dual_wield_axe_falchion",
-	hud_icon = "wh_dual_wield_axe_falchion_06",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_06",
-		hide_weapons = false
-	},
-	can_wield = {
-		"wh_zealot",
-		"wh_bountyhunter",
-		"wh_captain"
-	}
-}
-ItemMasterList.we_1h_axe_weapon_pose_01 = {
-	description = "weapon_pose_emote_description",
-	name = "<we_1h_axe_emote_wheel>",
-	display_name = "we_1h_axe_emote_wheel",
-	inventory_icon = "we_1h_axe_01",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 1,
-	parent = "we_1h_axe",
-	hud_icon = "we_1h_axe_01",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_01",
-		hide_weapons = false
-	},
-	can_wield = {
-		"we_shade",
-		"we_maidenguard",
-		"we_waywatcher",
-		"we_thornsister"
-	}
-}
-ItemMasterList.we_1h_axe_weapon_pose_02 = {
-	description = "weapon_pose_emote_description",
-	name = "<we_1h_axe_emote_wheel>",
-	display_name = "we_1h_axe_emote_wheel",
-	inventory_icon = "we_1h_axe_02",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 2,
-	parent = "we_1h_axe",
-	hud_icon = "we_1h_axe_02",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_02",
-		hide_weapons = false
-	},
-	can_wield = {
-		"we_shade",
-		"we_maidenguard",
-		"we_waywatcher",
-		"we_thornsister"
-	}
-}
-ItemMasterList.we_1h_axe_weapon_pose_03 = {
-	description = "weapon_pose_emote_description",
-	name = "<we_1h_axe_emote_wheel>",
-	display_name = "we_1h_axe_emote_wheel",
-	inventory_icon = "we_1h_axe_03",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 3,
-	parent = "we_1h_axe",
-	hud_icon = "we_1h_axe_03",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_03",
-		hide_weapons = false
-	},
-	can_wield = {
-		"we_shade",
-		"we_maidenguard",
-		"we_waywatcher",
-		"we_thornsister"
-	}
-}
-ItemMasterList.we_1h_axe_weapon_pose_04 = {
-	description = "weapon_pose_emote_description",
-	name = "<we_1h_axe_emote_wheel>",
-	display_name = "we_1h_axe_emote_wheel",
-	inventory_icon = "we_1h_axe_04",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 4,
-	parent = "we_1h_axe",
-	hud_icon = "we_1h_axe_04",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_04",
-		hide_weapons = false
-	},
-	can_wield = {
-		"we_shade",
-		"we_maidenguard",
-		"we_waywatcher",
-		"we_thornsister"
-	}
-}
-ItemMasterList.we_1h_axe_weapon_pose_05 = {
-	description = "weapon_pose_emote_description",
-	name = "<we_1h_axe_emote_wheel>",
-	display_name = "we_1h_axe_emote_wheel",
-	inventory_icon = "we_1h_axe_05",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 5,
-	parent = "we_1h_axe",
-	hud_icon = "we_1h_axe_05",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_05",
-		hide_weapons = false
-	},
-	can_wield = {
-		"we_shade",
-		"we_maidenguard",
-		"we_waywatcher",
-		"we_thornsister"
-	}
-}
-ItemMasterList.we_1h_axe_weapon_pose_06 = {
-	description = "weapon_pose_emote_description",
-	name = "<we_1h_axe_emote_wheel>",
-	display_name = "we_1h_axe_emote_wheel",
-	inventory_icon = "we_1h_axe_06",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 6,
-	parent = "we_1h_axe",
-	hud_icon = "we_1h_axe_06",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_06",
-		hide_weapons = false
-	},
-	can_wield = {
-		"we_shade",
-		"we_maidenguard",
-		"we_waywatcher",
-		"we_thornsister"
+		"es_huntsman",
+		"es_knight",
+		"es_mercenary"
 	}
 }
 ItemMasterList.es_2h_heavy_spear_weapon_pose_01 = {
@@ -6917,6 +6665,564 @@ ItemMasterList.es_2h_heavy_spear_weapon_pose_06 = {
 	can_wield = {
 		"es_huntsman",
 		"es_mercenary"
+	}
+}
+ItemMasterList.we_deus_01_weapon_pose_01 = {
+	description = "weapon_pose_emote_description",
+	name = "<we_deus_01_emote_wheel>",
+	display_name = "we_deus_01_emote_wheel",
+	inventory_icon = "we_deus_01_01",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 1,
+	parent = "we_deus_01",
+	hud_icon = "we_deus_01_01",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_01",
+		hide_weapons = false
+	},
+	can_wield = {
+		"we_shade",
+		"we_maidenguard",
+		"we_waywatcher",
+		"we_thornsister"
+	}
+}
+ItemMasterList.we_deus_01_weapon_pose_02 = {
+	description = "weapon_pose_emote_description",
+	name = "<we_deus_01_emote_wheel>",
+	display_name = "we_deus_01_emote_wheel",
+	inventory_icon = "we_deus_01_02",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 2,
+	parent = "we_deus_01",
+	hud_icon = "we_deus_01_02",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_02",
+		hide_weapons = false
+	},
+	can_wield = {
+		"we_shade",
+		"we_maidenguard",
+		"we_waywatcher",
+		"we_thornsister"
+	}
+}
+ItemMasterList.we_deus_01_weapon_pose_03 = {
+	description = "weapon_pose_emote_description",
+	name = "<we_deus_01_emote_wheel>",
+	display_name = "we_deus_01_emote_wheel",
+	inventory_icon = "we_deus_01_03",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 3,
+	parent = "we_deus_01",
+	hud_icon = "we_deus_01_03",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_03",
+		hide_weapons = false
+	},
+	can_wield = {
+		"we_shade",
+		"we_maidenguard",
+		"we_waywatcher",
+		"we_thornsister"
+	}
+}
+ItemMasterList.we_deus_01_weapon_pose_04 = {
+	description = "weapon_pose_emote_description",
+	name = "<we_deus_01_emote_wheel>",
+	display_name = "we_deus_01_emote_wheel",
+	inventory_icon = "we_deus_01_04",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 4,
+	parent = "we_deus_01",
+	hud_icon = "we_deus_01_04",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_04",
+		hide_weapons = false
+	},
+	can_wield = {
+		"we_shade",
+		"we_maidenguard",
+		"we_waywatcher",
+		"we_thornsister"
+	}
+}
+ItemMasterList.we_deus_01_weapon_pose_05 = {
+	description = "weapon_pose_emote_description",
+	name = "<we_deus_01_emote_wheel>",
+	display_name = "we_deus_01_emote_wheel",
+	inventory_icon = "we_deus_01_05",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 5,
+	parent = "we_deus_01",
+	hud_icon = "we_deus_01_05",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_05",
+		hide_weapons = false
+	},
+	can_wield = {
+		"we_shade",
+		"we_maidenguard",
+		"we_waywatcher",
+		"we_thornsister"
+	}
+}
+ItemMasterList.we_deus_01_weapon_pose_06 = {
+	description = "weapon_pose_emote_description",
+	name = "<we_deus_01_emote_wheel>",
+	display_name = "we_deus_01_emote_wheel",
+	inventory_icon = "we_deus_01_06",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 6,
+	parent = "we_deus_01",
+	hud_icon = "we_deus_01_06",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_06",
+		hide_weapons = false
+	},
+	can_wield = {
+		"we_shade",
+		"we_maidenguard",
+		"we_waywatcher",
+		"we_thornsister"
+	}
+}
+ItemMasterList.dr_deus_01_weapon_pose_01 = {
+	description = "weapon_pose_emote_description",
+	name = "<dr_deus_01_emote_wheel>",
+	display_name = "dr_deus_01_emote_wheel",
+	inventory_icon = "dr_deus_01_01",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 1,
+	parent = "dr_deus_01",
+	hud_icon = "dr_deus_01_01",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_01",
+		hide_weapons = false
+	},
+	can_wield = {
+		"dr_ironbreaker",
+		"dr_engineer"
+	}
+}
+ItemMasterList.dr_deus_01_weapon_pose_02 = {
+	description = "weapon_pose_emote_description",
+	name = "<dr_deus_01_emote_wheel>",
+	display_name = "dr_deus_01_emote_wheel",
+	inventory_icon = "dr_deus_01_02",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 2,
+	parent = "dr_deus_01",
+	hud_icon = "dr_deus_01_02",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_02",
+		hide_weapons = false
+	},
+	can_wield = {
+		"dr_ironbreaker",
+		"dr_engineer"
+	}
+}
+ItemMasterList.dr_deus_01_weapon_pose_03 = {
+	description = "weapon_pose_emote_description",
+	name = "<dr_deus_01_emote_wheel>",
+	display_name = "dr_deus_01_emote_wheel",
+	inventory_icon = "dr_deus_01_03",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 3,
+	parent = "dr_deus_01",
+	hud_icon = "dr_deus_01_03",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_03",
+		hide_weapons = false
+	},
+	can_wield = {
+		"dr_ironbreaker",
+		"dr_engineer"
+	}
+}
+ItemMasterList.dr_deus_01_weapon_pose_04 = {
+	description = "weapon_pose_emote_description",
+	name = "<dr_deus_01_emote_wheel>",
+	display_name = "dr_deus_01_emote_wheel",
+	inventory_icon = "dr_deus_01_04",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 4,
+	parent = "dr_deus_01",
+	hud_icon = "dr_deus_01_04",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_04",
+		hide_weapons = false
+	},
+	can_wield = {
+		"dr_ironbreaker",
+		"dr_engineer"
+	}
+}
+ItemMasterList.dr_deus_01_weapon_pose_05 = {
+	description = "weapon_pose_emote_description",
+	name = "<dr_deus_01_emote_wheel>",
+	display_name = "dr_deus_01_emote_wheel",
+	inventory_icon = "dr_deus_01_05",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 5,
+	parent = "dr_deus_01",
+	hud_icon = "dr_deus_01_05",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_05",
+		hide_weapons = false
+	},
+	can_wield = {
+		"dr_ironbreaker",
+		"dr_engineer"
+	}
+}
+ItemMasterList.dr_deus_01_weapon_pose_06 = {
+	description = "weapon_pose_emote_description",
+	name = "<dr_deus_01_emote_wheel>",
+	display_name = "dr_deus_01_emote_wheel",
+	inventory_icon = "dr_deus_01_06",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 6,
+	parent = "dr_deus_01",
+	hud_icon = "dr_deus_01_06",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_06",
+		hide_weapons = false
+	},
+	can_wield = {
+		"dr_ironbreaker",
+		"dr_engineer"
+	}
+}
+ItemMasterList.dr_shield_axe_weapon_pose_01 = {
+	description = "weapon_pose_emote_description",
+	name = "Axe and Shield Pose",
+	display_name = "dr_shield_axe_emote_wheel",
+	inventory_icon = "dr_shield_axe_01",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 1,
+	parent = "dr_shield_axe",
+	hud_icon = "dr_shield_axe_01",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_01",
+		hide_weapons = false
+	},
+	can_wield = {
+		"dr_ironbreaker",
+		"dr_ranger",
+		"dr_engineer"
+	}
+}
+ItemMasterList.dr_shield_axe_weapon_pose_02 = {
+	description = "weapon_pose_emote_description",
+	name = "Axe and Shield Pose",
+	display_name = "dr_shield_axe_emote_wheel",
+	inventory_icon = "dr_shield_axe_02",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 2,
+	parent = "dr_shield_axe",
+	hud_icon = "dr_shield_axe_02",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_02",
+		hide_weapons = false
+	},
+	can_wield = {
+		"dr_ironbreaker",
+		"dr_ranger",
+		"dr_engineer"
+	}
+}
+ItemMasterList.dr_shield_axe_weapon_pose_03 = {
+	description = "weapon_pose_emote_description",
+	name = "Axe and Shield Pose",
+	display_name = "dr_shield_axe_emote_wheel",
+	inventory_icon = "dr_shield_axe_03",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 3,
+	parent = "dr_shield_axe",
+	hud_icon = "dr_shield_axe_03",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_03",
+		hide_weapons = false
+	},
+	can_wield = {
+		"dr_ironbreaker",
+		"dr_ranger",
+		"dr_engineer"
+	}
+}
+ItemMasterList.dr_shield_axe_weapon_pose_04 = {
+	description = "weapon_pose_emote_description",
+	name = "Axe and Shield Pose",
+	display_name = "dr_shield_axe_emote_wheel",
+	inventory_icon = "dr_shield_axe_04",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 4,
+	parent = "dr_shield_axe",
+	hud_icon = "dr_shield_axe_04",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_04",
+		hide_weapons = false
+	},
+	can_wield = {
+		"dr_ironbreaker",
+		"dr_ranger",
+		"dr_engineer"
+	}
+}
+ItemMasterList.dr_shield_axe_weapon_pose_05 = {
+	description = "weapon_pose_emote_description",
+	name = "Axe and Shield Pose",
+	display_name = "dr_shield_axe_emote_wheel",
+	inventory_icon = "dr_shield_axe_05",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 5,
+	parent = "dr_shield_axe",
+	hud_icon = "dr_shield_axe_05",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_05",
+		hide_weapons = false
+	},
+	can_wield = {
+		"dr_ironbreaker",
+		"dr_ranger",
+		"dr_engineer"
+	}
+}
+ItemMasterList.dr_shield_axe_weapon_pose_06 = {
+	description = "weapon_pose_emote_description",
+	name = "Axe and Shield Pose",
+	display_name = "dr_shield_axe_emote_wheel",
+	inventory_icon = "dr_shield_axe_06",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 6,
+	parent = "dr_shield_axe",
+	hud_icon = "dr_shield_axe_06",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_06",
+		hide_weapons = false
+	},
+	can_wield = {
+		"dr_ironbreaker",
+		"dr_ranger",
+		"dr_engineer"
+	}
+}
+ItemMasterList.bw_ghost_scythe_weapon_pose_01 = {
+	description = "weapon_pose_emote_description",
+	name = "Scythe Pose",
+	display_name = "bw_ghost_scythe_emote_wheel",
+	inventory_icon = "bw_ghost_scythe_01",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 1,
+	parent = "bw_ghost_scythe",
+	hud_icon = "bw_ghost_scythe_01",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_01",
+		hide_weapons = false
+	},
+	can_wield = {
+		"bw_scholar",
+		"bw_adept",
+		"bw_unchained",
+		"bw_necromancer"
+	}
+}
+ItemMasterList.bw_ghost_scythe_weapon_pose_02 = {
+	description = "weapon_pose_emote_description",
+	name = "Scythe Pose",
+	display_name = "bw_ghost_scythe_emote_wheel",
+	inventory_icon = "bw_ghost_scythe_02",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 2,
+	parent = "bw_ghost_scythe",
+	hud_icon = "bw_ghost_scythe_02",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_02",
+		hide_weapons = false
+	},
+	can_wield = {
+		"bw_scholar",
+		"bw_adept",
+		"bw_unchained",
+		"bw_necromancer"
+	}
+}
+ItemMasterList.bw_ghost_scythe_weapon_pose_03 = {
+	description = "weapon_pose_emote_description",
+	name = "Scythe Pose",
+	display_name = "bw_ghost_scythe_emote_wheel",
+	inventory_icon = "bw_ghost_scythe_03",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 3,
+	parent = "bw_ghost_scythe",
+	hud_icon = "bw_ghost_scythe_03",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_03",
+		hide_weapons = false
+	},
+	can_wield = {
+		"bw_scholar",
+		"bw_adept",
+		"bw_unchained",
+		"bw_necromancer"
+	}
+}
+ItemMasterList.bw_ghost_scythe_weapon_pose_04 = {
+	description = "weapon_pose_emote_description",
+	name = "Scythe Pose",
+	display_name = "bw_ghost_scythe_emote_wheel",
+	inventory_icon = "bw_ghost_scythe_04",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 4,
+	parent = "bw_ghost_scythe",
+	hud_icon = "bw_ghost_scythe_04",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_04",
+		hide_weapons = false
+	},
+	can_wield = {
+		"bw_scholar",
+		"bw_adept",
+		"bw_unchained",
+		"bw_necromancer"
+	}
+}
+ItemMasterList.bw_ghost_scythe_weapon_pose_05 = {
+	description = "weapon_pose_emote_description",
+	name = "Scythe Pose",
+	display_name = "bw_ghost_scythe_emote_wheel",
+	inventory_icon = "bw_ghost_scythe_05",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 5,
+	parent = "bw_ghost_scythe",
+	hud_icon = "bw_ghost_scythe_05",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_05",
+		hide_weapons = false
+	},
+	can_wield = {
+		"bw_scholar",
+		"bw_adept",
+		"bw_unchained",
+		"bw_necromancer"
+	}
+}
+ItemMasterList.bw_ghost_scythe_weapon_pose_06 = {
+	description = "weapon_pose_emote_description",
+	name = "Scythe Pose",
+	display_name = "bw_ghost_scythe_emote_wheel",
+	inventory_icon = "bw_ghost_scythe_06",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 6,
+	parent = "bw_ghost_scythe",
+	hud_icon = "bw_ghost_scythe_06",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_06",
+		hide_weapons = false
+	},
+	can_wield = {
+		"bw_scholar",
+		"bw_adept",
+		"bw_unchained",
+		"bw_necromancer"
 	}
 }
 ItemMasterList.dr_1h_axe_weapon_pose_01 = {
@@ -7201,6 +7507,150 @@ ItemMasterList.wh_1h_axe_weapon_pose_06 = {
 		"wh_captain"
 	}
 }
+ItemMasterList.dr_2h_hammer_weapon_pose_01 = {
+	description = "weapon_pose_emote_description",
+	name = "Hammer Pose",
+	display_name = "dr_2h_hammer_emote_wheel",
+	inventory_icon = "dr_2h_hammer_01",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 1,
+	parent = "dr_2h_hammer",
+	hud_icon = "dr_2h_hammer_01",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_01",
+		hide_weapons = false
+	},
+	can_wield = {
+		"dr_ironbreaker",
+		"dr_slayer",
+		"dr_ranger",
+		"dr_engineer"
+	}
+}
+ItemMasterList.dr_2h_hammer_weapon_pose_02 = {
+	description = "weapon_pose_emote_description",
+	name = "Hammer Pose",
+	display_name = "dr_2h_hammer_emote_wheel",
+	inventory_icon = "dr_2h_hammer_02",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 2,
+	parent = "dr_2h_hammer",
+	hud_icon = "dr_2h_hammer_02",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_02",
+		hide_weapons = false
+	},
+	can_wield = {
+		"dr_ironbreaker",
+		"dr_slayer",
+		"dr_ranger",
+		"dr_engineer"
+	}
+}
+ItemMasterList.dr_2h_hammer_weapon_pose_03 = {
+	description = "weapon_pose_emote_description",
+	name = "Hammer Pose",
+	display_name = "dr_2h_hammer_emote_wheel",
+	inventory_icon = "dr_2h_hammer_03",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 3,
+	parent = "dr_2h_hammer",
+	hud_icon = "dr_2h_hammer_03",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_03",
+		hide_weapons = false
+	},
+	can_wield = {
+		"dr_ironbreaker",
+		"dr_slayer",
+		"dr_ranger",
+		"dr_engineer"
+	}
+}
+ItemMasterList.dr_2h_hammer_weapon_pose_04 = {
+	description = "weapon_pose_emote_description",
+	name = "Hammer Pose",
+	display_name = "dr_2h_hammer_emote_wheel",
+	inventory_icon = "dr_2h_hammer_04",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 4,
+	parent = "dr_2h_hammer",
+	hud_icon = "dr_2h_hammer_04",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_04",
+		hide_weapons = false
+	},
+	can_wield = {
+		"dr_ironbreaker",
+		"dr_slayer",
+		"dr_ranger",
+		"dr_engineer"
+	}
+}
+ItemMasterList.dr_2h_hammer_weapon_pose_05 = {
+	description = "weapon_pose_emote_description",
+	name = "Hammer Pose",
+	display_name = "dr_2h_hammer_emote_wheel",
+	inventory_icon = "dr_2h_hammer_05",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 5,
+	parent = "dr_2h_hammer",
+	hud_icon = "dr_2h_hammer_05",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_05",
+		hide_weapons = false
+	},
+	can_wield = {
+		"dr_ironbreaker",
+		"dr_slayer",
+		"dr_ranger",
+		"dr_engineer"
+	}
+}
+ItemMasterList.dr_2h_hammer_weapon_pose_06 = {
+	description = "weapon_pose_emote_description",
+	name = "Hammer Pose",
+	display_name = "dr_2h_hammer_emote_wheel",
+	inventory_icon = "dr_2h_hammer_06",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 6,
+	parent = "dr_2h_hammer",
+	hud_icon = "dr_2h_hammer_06",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_06",
+		hide_weapons = false
+	},
+	can_wield = {
+		"dr_ironbreaker",
+		"dr_slayer",
+		"dr_ranger",
+		"dr_engineer"
+	}
+}
 ItemMasterList.bw_1h_mace_weapon_pose_01 = {
 	description = "weapon_pose_emote_description",
 	name = "Mace Pose",
@@ -7345,17 +7795,17 @@ ItemMasterList.bw_1h_mace_weapon_pose_06 = {
 		"bw_necromancer"
 	}
 }
-ItemMasterList.dr_steam_pistol_weapon_pose_01 = {
+ItemMasterList.wh_2h_billhook_weapon_pose_01 = {
 	description = "weapon_pose_emote_description",
-	name = "Pistol Pose",
-	display_name = "dr_steam_pistol_emote_wheel",
-	inventory_icon = "dr_steam_pistol_01",
+	name = "<wh_2h_billhook_emote_wheel>",
+	display_name = "wh_2h_billhook_emote_wheel",
+	inventory_icon = "wh_2h_billhook_01",
 	slot_type = "weapon_pose",
 	information_text = "information_weapon_pose",
 	rarity = "exotic",
 	pose_index = 1,
-	parent = "dr_steam_pistol",
-	hud_icon = "dr_steam_pistol_01",
+	parent = "wh_2h_billhook",
+	hud_icon = "wh_2h_billhook_01",
 	template = "pose_template",
 	item_type = "weapon_pose",
 	data = {
@@ -7363,22 +7813,22 @@ ItemMasterList.dr_steam_pistol_weapon_pose_01 = {
 		hide_weapons = false
 	},
 	can_wield = {
-		"dr_engineer",
-		"dr_ranger",
-		"dr_ironbreaker"
+		"wh_zealot",
+		"wh_bountyhunter",
+		"wh_captain"
 	}
 }
-ItemMasterList.dr_steam_pistol_weapon_pose_02 = {
+ItemMasterList.wh_2h_billhook_weapon_pose_02 = {
 	description = "weapon_pose_emote_description",
-	name = "Pistol Pose",
-	display_name = "dr_steam_pistol_emote_wheel",
-	inventory_icon = "dr_steam_pistol_02",
+	name = "<wh_2h_billhook_emote_wheel>",
+	display_name = "wh_2h_billhook_emote_wheel",
+	inventory_icon = "wh_2h_billhook_02",
 	slot_type = "weapon_pose",
 	information_text = "information_weapon_pose",
 	rarity = "exotic",
 	pose_index = 2,
-	parent = "dr_steam_pistol",
-	hud_icon = "dr_steam_pistol_02",
+	parent = "wh_2h_billhook",
+	hud_icon = "wh_2h_billhook_02",
 	template = "pose_template",
 	item_type = "weapon_pose",
 	data = {
@@ -7386,22 +7836,22 @@ ItemMasterList.dr_steam_pistol_weapon_pose_02 = {
 		hide_weapons = false
 	},
 	can_wield = {
-		"dr_engineer",
-		"dr_ranger",
-		"dr_ironbreaker"
+		"wh_zealot",
+		"wh_bountyhunter",
+		"wh_captain"
 	}
 }
-ItemMasterList.dr_steam_pistol_weapon_pose_03 = {
+ItemMasterList.wh_2h_billhook_weapon_pose_03 = {
 	description = "weapon_pose_emote_description",
-	name = "Pistol Pose",
-	display_name = "dr_steam_pistol_emote_wheel",
-	inventory_icon = "dr_steam_pistol_03",
+	name = "<wh_2h_billhook_emote_wheel>",
+	display_name = "wh_2h_billhook_emote_wheel",
+	inventory_icon = "wh_2h_billhook_03",
 	slot_type = "weapon_pose",
 	information_text = "information_weapon_pose",
 	rarity = "exotic",
 	pose_index = 3,
-	parent = "dr_steam_pistol",
-	hud_icon = "dr_steam_pistol_03",
+	parent = "wh_2h_billhook",
+	hud_icon = "wh_2h_billhook_03",
 	template = "pose_template",
 	item_type = "weapon_pose",
 	data = {
@@ -7409,22 +7859,22 @@ ItemMasterList.dr_steam_pistol_weapon_pose_03 = {
 		hide_weapons = false
 	},
 	can_wield = {
-		"dr_engineer",
-		"dr_ranger",
-		"dr_ironbreaker"
+		"wh_zealot",
+		"wh_bountyhunter",
+		"wh_captain"
 	}
 }
-ItemMasterList.dr_steam_pistol_weapon_pose_04 = {
+ItemMasterList.wh_2h_billhook_weapon_pose_04 = {
 	description = "weapon_pose_emote_description",
-	name = "Pistol Pose",
-	display_name = "dr_steam_pistol_emote_wheel",
-	inventory_icon = "dr_steam_pistol_04",
+	name = "<wh_2h_billhook_emote_wheel>",
+	display_name = "wh_2h_billhook_emote_wheel",
+	inventory_icon = "wh_2h_billhook_04",
 	slot_type = "weapon_pose",
 	information_text = "information_weapon_pose",
 	rarity = "exotic",
 	pose_index = 4,
-	parent = "dr_steam_pistol",
-	hud_icon = "dr_steam_pistol_04",
+	parent = "wh_2h_billhook",
+	hud_icon = "wh_2h_billhook_04",
 	template = "pose_template",
 	item_type = "weapon_pose",
 	data = {
@@ -7432,22 +7882,22 @@ ItemMasterList.dr_steam_pistol_weapon_pose_04 = {
 		hide_weapons = false
 	},
 	can_wield = {
-		"dr_engineer",
-		"dr_ranger",
-		"dr_ironbreaker"
+		"wh_zealot",
+		"wh_bountyhunter",
+		"wh_captain"
 	}
 }
-ItemMasterList.dr_steam_pistol_weapon_pose_05 = {
+ItemMasterList.wh_2h_billhook_weapon_pose_05 = {
 	description = "weapon_pose_emote_description",
-	name = "Pistol Pose",
-	display_name = "dr_steam_pistol_emote_wheel",
-	inventory_icon = "dr_steam_pistol_05",
+	name = "<wh_2h_billhook_emote_wheel>",
+	display_name = "wh_2h_billhook_emote_wheel",
+	inventory_icon = "wh_2h_billhook_05",
 	slot_type = "weapon_pose",
 	information_text = "information_weapon_pose",
 	rarity = "exotic",
 	pose_index = 5,
-	parent = "dr_steam_pistol",
-	hud_icon = "dr_steam_pistol_05",
+	parent = "wh_2h_billhook",
+	hud_icon = "wh_2h_billhook_05",
 	template = "pose_template",
 	item_type = "weapon_pose",
 	data = {
@@ -7455,22 +7905,22 @@ ItemMasterList.dr_steam_pistol_weapon_pose_05 = {
 		hide_weapons = false
 	},
 	can_wield = {
-		"dr_engineer",
-		"dr_ranger",
-		"dr_ironbreaker"
+		"wh_zealot",
+		"wh_bountyhunter",
+		"wh_captain"
 	}
 }
-ItemMasterList.dr_steam_pistol_weapon_pose_06 = {
+ItemMasterList.wh_2h_billhook_weapon_pose_06 = {
 	description = "weapon_pose_emote_description",
-	name = "Pistol Pose",
-	display_name = "dr_steam_pistol_emote_wheel",
-	inventory_icon = "dr_steam_pistol_06",
+	name = "<wh_2h_billhook_emote_wheel>",
+	display_name = "wh_2h_billhook_emote_wheel",
+	inventory_icon = "wh_2h_billhook_06",
 	slot_type = "weapon_pose",
 	information_text = "information_weapon_pose",
 	rarity = "exotic",
 	pose_index = 6,
-	parent = "dr_steam_pistol",
-	hud_icon = "dr_steam_pistol_06",
+	parent = "wh_2h_billhook",
+	hud_icon = "wh_2h_billhook_06",
 	template = "pose_template",
 	item_type = "weapon_pose",
 	data = {
@@ -7478,9 +7928,663 @@ ItemMasterList.dr_steam_pistol_weapon_pose_06 = {
 		hide_weapons = false
 	},
 	can_wield = {
-		"dr_engineer",
-		"dr_ranger",
-		"dr_ironbreaker"
+		"wh_zealot",
+		"wh_bountyhunter",
+		"wh_captain"
+	}
+}
+ItemMasterList.dr_1h_throwing_axes_weapon_pose_01 = {
+	description = "weapon_pose_emote_description",
+	name = "<dr_1h_throwing_axes_emote_wheel>",
+	display_name = "dr_1h_throwing_axes_emote_wheel",
+	inventory_icon = "dr_1h_throwing_axes_01",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 1,
+	parent = "dr_1h_throwing_axes",
+	hud_icon = "dr_1h_throwing_axes_01",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_01",
+		hide_weapons = false
+	},
+	can_wield = {
+		"dr_slayer",
+		"dr_ranger"
+	}
+}
+ItemMasterList.dr_1h_throwing_axes_weapon_pose_02 = {
+	description = "weapon_pose_emote_description",
+	name = "<dr_1h_throwing_axes_emote_wheel>",
+	display_name = "dr_1h_throwing_axes_emote_wheel",
+	inventory_icon = "dr_1h_throwing_axes_02",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 2,
+	parent = "dr_1h_throwing_axes",
+	hud_icon = "dr_1h_throwing_axes_02",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_02",
+		hide_weapons = false
+	},
+	can_wield = {
+		"dr_slayer",
+		"dr_ranger"
+	}
+}
+ItemMasterList.dr_1h_throwing_axes_weapon_pose_03 = {
+	description = "weapon_pose_emote_description",
+	name = "<dr_1h_throwing_axes_emote_wheel>",
+	display_name = "dr_1h_throwing_axes_emote_wheel",
+	inventory_icon = "dr_1h_throwing_axes_03",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 3,
+	parent = "dr_1h_throwing_axes",
+	hud_icon = "dr_1h_throwing_axes_03",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_03",
+		hide_weapons = false
+	},
+	can_wield = {
+		"dr_slayer",
+		"dr_ranger"
+	}
+}
+ItemMasterList.dr_1h_throwing_axes_weapon_pose_04 = {
+	description = "weapon_pose_emote_description",
+	name = "<dr_1h_throwing_axes_emote_wheel>",
+	display_name = "dr_1h_throwing_axes_emote_wheel",
+	inventory_icon = "dr_1h_throwing_axes_04",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 4,
+	parent = "dr_1h_throwing_axes",
+	hud_icon = "dr_1h_throwing_axes_04",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_04",
+		hide_weapons = false
+	},
+	can_wield = {
+		"dr_slayer",
+		"dr_ranger"
+	}
+}
+ItemMasterList.dr_1h_throwing_axes_weapon_pose_05 = {
+	description = "weapon_pose_emote_description",
+	name = "<dr_1h_throwing_axes_emote_wheel>",
+	display_name = "dr_1h_throwing_axes_emote_wheel",
+	inventory_icon = "dr_1h_throwing_axes_05",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 5,
+	parent = "dr_1h_throwing_axes",
+	hud_icon = "dr_1h_throwing_axes_05",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_05",
+		hide_weapons = false
+	},
+	can_wield = {
+		"dr_slayer",
+		"dr_ranger"
+	}
+}
+ItemMasterList.dr_1h_throwing_axes_weapon_pose_06 = {
+	description = "weapon_pose_emote_description",
+	name = "<dr_1h_throwing_axes_emote_wheel>",
+	display_name = "dr_1h_throwing_axes_emote_wheel",
+	inventory_icon = "dr_1h_throwing_axes_06",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 6,
+	parent = "dr_1h_throwing_axes",
+	hud_icon = "dr_1h_throwing_axes_06",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_06",
+		hide_weapons = false
+	},
+	can_wield = {
+		"dr_slayer",
+		"dr_ranger"
+	}
+}
+ItemMasterList.bw_1h_flail_flaming_weapon_pose_01 = {
+	description = "weapon_pose_emote_description",
+	name = "Flail Pose",
+	display_name = "bw_1h_flail_flaming_emote_wheel",
+	inventory_icon = "bw_1h_flail_flaming_01",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 1,
+	parent = "bw_1h_flail_flaming",
+	hud_icon = "bw_1h_flail_flaming_01",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_01",
+		hide_weapons = false
+	},
+	can_wield = {
+		"bw_scholar",
+		"bw_adept",
+		"bw_unchained",
+		"bw_necromancer"
+	}
+}
+ItemMasterList.bw_1h_flail_flaming_weapon_pose_02 = {
+	description = "weapon_pose_emote_description",
+	name = "Flail Pose",
+	display_name = "bw_1h_flail_flaming_emote_wheel",
+	inventory_icon = "bw_1h_flail_flaming_02",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 2,
+	parent = "bw_1h_flail_flaming",
+	hud_icon = "bw_1h_flail_flaming_02",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_02",
+		hide_weapons = false
+	},
+	can_wield = {
+		"bw_scholar",
+		"bw_adept",
+		"bw_unchained",
+		"bw_necromancer"
+	}
+}
+ItemMasterList.bw_1h_flail_flaming_weapon_pose_03 = {
+	description = "weapon_pose_emote_description",
+	name = "Flail Pose",
+	display_name = "bw_1h_flail_flaming_emote_wheel",
+	inventory_icon = "bw_1h_flail_flaming_03",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 3,
+	parent = "bw_1h_flail_flaming",
+	hud_icon = "bw_1h_flail_flaming_03",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_03",
+		hide_weapons = false
+	},
+	can_wield = {
+		"bw_scholar",
+		"bw_adept",
+		"bw_unchained",
+		"bw_necromancer"
+	}
+}
+ItemMasterList.bw_1h_flail_flaming_weapon_pose_04 = {
+	description = "weapon_pose_emote_description",
+	name = "Flail Pose",
+	display_name = "bw_1h_flail_flaming_emote_wheel",
+	inventory_icon = "bw_1h_flail_flaming_04",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 4,
+	parent = "bw_1h_flail_flaming",
+	hud_icon = "bw_1h_flail_flaming_04",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_04",
+		hide_weapons = false
+	},
+	can_wield = {
+		"bw_scholar",
+		"bw_adept",
+		"bw_unchained",
+		"bw_necromancer"
+	}
+}
+ItemMasterList.bw_1h_flail_flaming_weapon_pose_05 = {
+	description = "weapon_pose_emote_description",
+	name = "Flail Pose",
+	display_name = "bw_1h_flail_flaming_emote_wheel",
+	inventory_icon = "bw_1h_flail_flaming_05",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 5,
+	parent = "bw_1h_flail_flaming",
+	hud_icon = "bw_1h_flail_flaming_05",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_05",
+		hide_weapons = false
+	},
+	can_wield = {
+		"bw_scholar",
+		"bw_adept",
+		"bw_unchained",
+		"bw_necromancer"
+	}
+}
+ItemMasterList.bw_1h_flail_flaming_weapon_pose_06 = {
+	description = "weapon_pose_emote_description",
+	name = "Flail Pose",
+	display_name = "bw_1h_flail_flaming_emote_wheel",
+	inventory_icon = "bw_1h_flail_flaming_06",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 6,
+	parent = "bw_1h_flail_flaming",
+	hud_icon = "bw_1h_flail_flaming_06",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_06",
+		hide_weapons = false
+	},
+	can_wield = {
+		"bw_scholar",
+		"bw_adept",
+		"bw_unchained",
+		"bw_necromancer"
+	}
+}
+ItemMasterList.wh_hammer_book_weapon_pose_01 = {
+	description = "weapon_pose_emote_description",
+	name = "<wh_hammer_book_emote_wheel>",
+	display_name = "wh_hammer_book_emote_wheel",
+	inventory_icon = "wh_hammer_book_01",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 1,
+	parent = "wh_hammer_book",
+	hud_icon = "wh_hammer_book_01",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_01",
+		hide_weapons = false
+	},
+	can_wield = {
+		"wh_priest"
+	}
+}
+ItemMasterList.wh_hammer_book_weapon_pose_02 = {
+	description = "weapon_pose_emote_description",
+	name = "<wh_hammer_book_emote_wheel>",
+	display_name = "wh_hammer_book_emote_wheel",
+	inventory_icon = "wh_hammer_book_02",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 2,
+	parent = "wh_hammer_book",
+	hud_icon = "wh_hammer_book_02",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_02",
+		hide_weapons = false
+	},
+	can_wield = {
+		"wh_priest"
+	}
+}
+ItemMasterList.wh_hammer_book_weapon_pose_03 = {
+	description = "weapon_pose_emote_description",
+	name = "<wh_hammer_book_emote_wheel>",
+	display_name = "wh_hammer_book_emote_wheel",
+	inventory_icon = "wh_hammer_book_03",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 3,
+	parent = "wh_hammer_book",
+	hud_icon = "wh_hammer_book_03",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_03",
+		hide_weapons = false
+	},
+	can_wield = {
+		"wh_priest"
+	}
+}
+ItemMasterList.wh_hammer_book_weapon_pose_04 = {
+	description = "weapon_pose_emote_description",
+	name = "<wh_hammer_book_emote_wheel>",
+	display_name = "wh_hammer_book_emote_wheel",
+	inventory_icon = "wh_hammer_book_04",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 4,
+	parent = "wh_hammer_book",
+	hud_icon = "wh_hammer_book_04",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_04",
+		hide_weapons = false
+	},
+	can_wield = {
+		"wh_priest"
+	}
+}
+ItemMasterList.wh_hammer_book_weapon_pose_05 = {
+	description = "weapon_pose_emote_description",
+	name = "<wh_hammer_book_emote_wheel>",
+	display_name = "wh_hammer_book_emote_wheel",
+	inventory_icon = "wh_hammer_book_05",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 5,
+	parent = "wh_hammer_book",
+	hud_icon = "wh_hammer_book_05",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_05",
+		hide_weapons = false
+	},
+	can_wield = {
+		"wh_priest"
+	}
+}
+ItemMasterList.wh_hammer_book_weapon_pose_06 = {
+	description = "weapon_pose_emote_description",
+	name = "<wh_hammer_book_emote_wheel>",
+	display_name = "wh_hammer_book_emote_wheel",
+	inventory_icon = "wh_hammer_book_06",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 6,
+	parent = "wh_hammer_book",
+	hud_icon = "wh_hammer_book_06",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_06",
+		hide_weapons = false
+	},
+	can_wield = {
+		"wh_priest"
+	}
+}
+ItemMasterList.wh_flail_shield_weapon_pose_01 = {
+	description = "weapon_pose_emote_description",
+	name = "<wh_flail_shield_emote_wheel>",
+	display_name = "wh_flail_shield_emote_wheel",
+	inventory_icon = "wh_flail_shield_01",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 1,
+	parent = "wh_flail_shield",
+	hud_icon = "wh_flail_shield_01",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_01",
+		hide_weapons = false
+	},
+	can_wield = {
+		"wh_priest"
+	}
+}
+ItemMasterList.wh_flail_shield_weapon_pose_02 = {
+	description = "weapon_pose_emote_description",
+	name = "<wh_flail_shield_emote_wheel>",
+	display_name = "wh_flail_shield_emote_wheel",
+	inventory_icon = "wh_flail_shield_02",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 2,
+	parent = "wh_flail_shield",
+	hud_icon = "wh_flail_shield_02",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_02",
+		hide_weapons = false
+	},
+	can_wield = {
+		"wh_priest"
+	}
+}
+ItemMasterList.wh_flail_shield_weapon_pose_03 = {
+	description = "weapon_pose_emote_description",
+	name = "<wh_flail_shield_emote_wheel>",
+	display_name = "wh_flail_shield_emote_wheel",
+	inventory_icon = "wh_flail_shield_03",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 3,
+	parent = "wh_flail_shield",
+	hud_icon = "wh_flail_shield_03",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_03",
+		hide_weapons = false
+	},
+	can_wield = {
+		"wh_priest"
+	}
+}
+ItemMasterList.wh_flail_shield_weapon_pose_04 = {
+	description = "weapon_pose_emote_description",
+	name = "<wh_flail_shield_emote_wheel>",
+	display_name = "wh_flail_shield_emote_wheel",
+	inventory_icon = "wh_flail_shield_04",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 4,
+	parent = "wh_flail_shield",
+	hud_icon = "wh_flail_shield_04",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_04",
+		hide_weapons = false
+	},
+	can_wield = {
+		"wh_priest"
+	}
+}
+ItemMasterList.wh_flail_shield_weapon_pose_05 = {
+	description = "weapon_pose_emote_description",
+	name = "<wh_flail_shield_emote_wheel>",
+	display_name = "wh_flail_shield_emote_wheel",
+	inventory_icon = "wh_flail_shield_05",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 5,
+	parent = "wh_flail_shield",
+	hud_icon = "wh_flail_shield_05",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_05",
+		hide_weapons = false
+	},
+	can_wield = {
+		"wh_priest"
+	}
+}
+ItemMasterList.wh_flail_shield_weapon_pose_06 = {
+	description = "weapon_pose_emote_description",
+	name = "<wh_flail_shield_emote_wheel>",
+	display_name = "wh_flail_shield_emote_wheel",
+	inventory_icon = "wh_flail_shield_06",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 6,
+	parent = "wh_flail_shield",
+	hud_icon = "wh_flail_shield_06",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_06",
+		hide_weapons = false
+	},
+	can_wield = {
+		"wh_priest"
+	}
+}
+ItemMasterList.wh_hammer_shield_weapon_pose_01 = {
+	description = "weapon_pose_emote_description",
+	name = "<wh_hammer_shield_emote_wheel>",
+	display_name = "wh_hammer_shield_emote_wheel",
+	inventory_icon = "wh_hammer_shield_01",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 1,
+	parent = "wh_hammer_shield",
+	hud_icon = "wh_hammer_shield_01",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_01",
+		hide_weapons = false
+	},
+	can_wield = {
+		"wh_priest"
+	}
+}
+ItemMasterList.wh_hammer_shield_weapon_pose_02 = {
+	description = "weapon_pose_emote_description",
+	name = "<wh_hammer_shield_emote_wheel>",
+	display_name = "wh_hammer_shield_emote_wheel",
+	inventory_icon = "wh_hammer_shield_02",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 2,
+	parent = "wh_hammer_shield",
+	hud_icon = "wh_hammer_shield_02",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_02",
+		hide_weapons = false
+	},
+	can_wield = {
+		"wh_priest"
+	}
+}
+ItemMasterList.wh_hammer_shield_weapon_pose_03 = {
+	description = "weapon_pose_emote_description",
+	name = "<wh_hammer_shield_emote_wheel>",
+	display_name = "wh_hammer_shield_emote_wheel",
+	inventory_icon = "wh_hammer_shield_03",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 3,
+	parent = "wh_hammer_shield",
+	hud_icon = "wh_hammer_shield_03",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_03",
+		hide_weapons = false
+	},
+	can_wield = {
+		"wh_priest"
+	}
+}
+ItemMasterList.wh_hammer_shield_weapon_pose_04 = {
+	description = "weapon_pose_emote_description",
+	name = "<wh_hammer_shield_emote_wheel>",
+	display_name = "wh_hammer_shield_emote_wheel",
+	inventory_icon = "wh_hammer_shield_04",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 4,
+	parent = "wh_hammer_shield",
+	hud_icon = "wh_hammer_shield_04",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_04",
+		hide_weapons = false
+	},
+	can_wield = {
+		"wh_priest"
+	}
+}
+ItemMasterList.wh_hammer_shield_weapon_pose_05 = {
+	description = "weapon_pose_emote_description",
+	name = "<wh_hammer_shield_emote_wheel>",
+	display_name = "wh_hammer_shield_emote_wheel",
+	inventory_icon = "wh_hammer_shield_05",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 5,
+	parent = "wh_hammer_shield",
+	hud_icon = "wh_hammer_shield_05",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_05",
+		hide_weapons = false
+	},
+	can_wield = {
+		"wh_priest"
+	}
+}
+ItemMasterList.wh_hammer_shield_weapon_pose_06 = {
+	description = "weapon_pose_emote_description",
+	name = "<wh_hammer_shield_emote_wheel>",
+	display_name = "wh_hammer_shield_emote_wheel",
+	inventory_icon = "wh_hammer_shield_06",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 6,
+	parent = "wh_hammer_shield",
+	hud_icon = "wh_hammer_shield_06",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_06",
+		hide_weapons = false
+	},
+	can_wield = {
+		"wh_priest"
 	}
 }
 ItemMasterList.es_mace_shield_weapon_pose_01 = {
@@ -7915,299 +9019,17 @@ ItemMasterList.bw_sword_weapon_pose_06 = {
 		"bw_necromancer"
 	}
 }
-ItemMasterList.es_deus_01_weapon_pose_01 = {
+ItemMasterList.dr_2h_axe_weapon_pose_01 = {
 	description = "weapon_pose_emote_description",
-	name = "<es_deus_01_emote_wheel>",
-	display_name = "es_deus_01_emote_wheel",
-	inventory_icon = "es_deus_01_01",
+	name = "Axe Pose",
+	display_name = "dr_2h_axe_emote_wheel",
+	inventory_icon = "dr_2h_axe_01",
 	slot_type = "weapon_pose",
 	information_text = "information_weapon_pose",
 	rarity = "exotic",
 	pose_index = 1,
-	parent = "es_deus_01",
-	hud_icon = "es_deus_01_01",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_01",
-		hide_weapons = false
-	},
-	can_wield = {
-		"es_huntsman",
-		"es_knight",
-		"es_mercenary"
-	}
-}
-ItemMasterList.es_deus_01_weapon_pose_02 = {
-	description = "weapon_pose_emote_description",
-	name = "<es_deus_01_emote_wheel>",
-	display_name = "es_deus_01_emote_wheel",
-	inventory_icon = "es_deus_01_02",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 2,
-	parent = "es_deus_01",
-	hud_icon = "es_deus_01_02",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_02",
-		hide_weapons = false
-	},
-	can_wield = {
-		"es_huntsman",
-		"es_knight",
-		"es_mercenary"
-	}
-}
-ItemMasterList.es_deus_01_weapon_pose_03 = {
-	description = "weapon_pose_emote_description",
-	name = "<es_deus_01_emote_wheel>",
-	display_name = "es_deus_01_emote_wheel",
-	inventory_icon = "es_deus_01_03",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 3,
-	parent = "es_deus_01",
-	hud_icon = "es_deus_01_03",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_03",
-		hide_weapons = false
-	},
-	can_wield = {
-		"es_huntsman",
-		"es_knight",
-		"es_mercenary"
-	}
-}
-ItemMasterList.es_deus_01_weapon_pose_04 = {
-	description = "weapon_pose_emote_description",
-	name = "<es_deus_01_emote_wheel>",
-	display_name = "es_deus_01_emote_wheel",
-	inventory_icon = "es_deus_01_04",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 4,
-	parent = "es_deus_01",
-	hud_icon = "es_deus_01_04",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_04",
-		hide_weapons = false
-	},
-	can_wield = {
-		"es_huntsman",
-		"es_knight",
-		"es_mercenary"
-	}
-}
-ItemMasterList.es_deus_01_weapon_pose_05 = {
-	description = "weapon_pose_emote_description",
-	name = "<es_deus_01_emote_wheel>",
-	display_name = "es_deus_01_emote_wheel",
-	inventory_icon = "es_deus_01_05",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 5,
-	parent = "es_deus_01",
-	hud_icon = "es_deus_01_05",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_05",
-		hide_weapons = false
-	},
-	can_wield = {
-		"es_huntsman",
-		"es_knight",
-		"es_mercenary"
-	}
-}
-ItemMasterList.es_deus_01_weapon_pose_06 = {
-	description = "weapon_pose_emote_description",
-	name = "<es_deus_01_emote_wheel>",
-	display_name = "es_deus_01_emote_wheel",
-	inventory_icon = "es_deus_01_06",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 6,
-	parent = "es_deus_01",
-	hud_icon = "es_deus_01_06",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_06",
-		hide_weapons = false
-	},
-	can_wield = {
-		"es_huntsman",
-		"es_knight",
-		"es_mercenary"
-	}
-}
-ItemMasterList.we_deus_01_weapon_pose_01 = {
-	description = "weapon_pose_emote_description",
-	name = "<we_deus_01_emote_wheel>",
-	display_name = "we_deus_01_emote_wheel",
-	inventory_icon = "we_deus_01_01",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 1,
-	parent = "we_deus_01",
-	hud_icon = "we_deus_01_01",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_01",
-		hide_weapons = false
-	},
-	can_wield = {
-		"we_shade",
-		"we_maidenguard",
-		"we_waywatcher",
-		"we_thornsister"
-	}
-}
-ItemMasterList.we_deus_01_weapon_pose_02 = {
-	description = "weapon_pose_emote_description",
-	name = "<we_deus_01_emote_wheel>",
-	display_name = "we_deus_01_emote_wheel",
-	inventory_icon = "we_deus_01_02",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 2,
-	parent = "we_deus_01",
-	hud_icon = "we_deus_01_02",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_02",
-		hide_weapons = false
-	},
-	can_wield = {
-		"we_shade",
-		"we_maidenguard",
-		"we_waywatcher",
-		"we_thornsister"
-	}
-}
-ItemMasterList.we_deus_01_weapon_pose_03 = {
-	description = "weapon_pose_emote_description",
-	name = "<we_deus_01_emote_wheel>",
-	display_name = "we_deus_01_emote_wheel",
-	inventory_icon = "we_deus_01_03",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 3,
-	parent = "we_deus_01",
-	hud_icon = "we_deus_01_03",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_03",
-		hide_weapons = false
-	},
-	can_wield = {
-		"we_shade",
-		"we_maidenguard",
-		"we_waywatcher",
-		"we_thornsister"
-	}
-}
-ItemMasterList.we_deus_01_weapon_pose_04 = {
-	description = "weapon_pose_emote_description",
-	name = "<we_deus_01_emote_wheel>",
-	display_name = "we_deus_01_emote_wheel",
-	inventory_icon = "we_deus_01_04",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 4,
-	parent = "we_deus_01",
-	hud_icon = "we_deus_01_04",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_04",
-		hide_weapons = false
-	},
-	can_wield = {
-		"we_shade",
-		"we_maidenguard",
-		"we_waywatcher",
-		"we_thornsister"
-	}
-}
-ItemMasterList.we_deus_01_weapon_pose_05 = {
-	description = "weapon_pose_emote_description",
-	name = "<we_deus_01_emote_wheel>",
-	display_name = "we_deus_01_emote_wheel",
-	inventory_icon = "we_deus_01_05",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 5,
-	parent = "we_deus_01",
-	hud_icon = "we_deus_01_05",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_05",
-		hide_weapons = false
-	},
-	can_wield = {
-		"we_shade",
-		"we_maidenguard",
-		"we_waywatcher",
-		"we_thornsister"
-	}
-}
-ItemMasterList.we_deus_01_weapon_pose_06 = {
-	description = "weapon_pose_emote_description",
-	name = "<we_deus_01_emote_wheel>",
-	display_name = "we_deus_01_emote_wheel",
-	inventory_icon = "we_deus_01_06",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 6,
-	parent = "we_deus_01",
-	hud_icon = "we_deus_01_06",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_06",
-		hide_weapons = false
-	},
-	can_wield = {
-		"we_shade",
-		"we_maidenguard",
-		"we_waywatcher",
-		"we_thornsister"
-	}
-}
-ItemMasterList.dr_deus_01_weapon_pose_01 = {
-	description = "weapon_pose_emote_description",
-	name = "<dr_deus_01_emote_wheel>",
-	display_name = "dr_deus_01_emote_wheel",
-	inventory_icon = "dr_deus_01_01",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 1,
-	parent = "dr_deus_01",
-	hud_icon = "dr_deus_01_01",
+	parent = "dr_2h_axe",
+	hud_icon = "dr_2h_axe_01",
 	template = "pose_template",
 	item_type = "weapon_pose",
 	data = {
@@ -8216,20 +9038,22 @@ ItemMasterList.dr_deus_01_weapon_pose_01 = {
 	},
 	can_wield = {
 		"dr_ironbreaker",
+		"dr_slayer",
+		"dr_ranger",
 		"dr_engineer"
 	}
 }
-ItemMasterList.dr_deus_01_weapon_pose_02 = {
+ItemMasterList.dr_2h_axe_weapon_pose_02 = {
 	description = "weapon_pose_emote_description",
-	name = "<dr_deus_01_emote_wheel>",
-	display_name = "dr_deus_01_emote_wheel",
-	inventory_icon = "dr_deus_01_02",
+	name = "Axe Pose",
+	display_name = "dr_2h_axe_emote_wheel",
+	inventory_icon = "dr_2h_axe_02",
 	slot_type = "weapon_pose",
 	information_text = "information_weapon_pose",
 	rarity = "exotic",
 	pose_index = 2,
-	parent = "dr_deus_01",
-	hud_icon = "dr_deus_01_02",
+	parent = "dr_2h_axe",
+	hud_icon = "dr_2h_axe_02",
 	template = "pose_template",
 	item_type = "weapon_pose",
 	data = {
@@ -8238,20 +9062,22 @@ ItemMasterList.dr_deus_01_weapon_pose_02 = {
 	},
 	can_wield = {
 		"dr_ironbreaker",
+		"dr_slayer",
+		"dr_ranger",
 		"dr_engineer"
 	}
 }
-ItemMasterList.dr_deus_01_weapon_pose_03 = {
+ItemMasterList.dr_2h_axe_weapon_pose_03 = {
 	description = "weapon_pose_emote_description",
-	name = "<dr_deus_01_emote_wheel>",
-	display_name = "dr_deus_01_emote_wheel",
-	inventory_icon = "dr_deus_01_03",
+	name = "Axe Pose",
+	display_name = "dr_2h_axe_emote_wheel",
+	inventory_icon = "dr_2h_axe_03",
 	slot_type = "weapon_pose",
 	information_text = "information_weapon_pose",
 	rarity = "exotic",
 	pose_index = 3,
-	parent = "dr_deus_01",
-	hud_icon = "dr_deus_01_03",
+	parent = "dr_2h_axe",
+	hud_icon = "dr_2h_axe_03",
 	template = "pose_template",
 	item_type = "weapon_pose",
 	data = {
@@ -8260,20 +9086,22 @@ ItemMasterList.dr_deus_01_weapon_pose_03 = {
 	},
 	can_wield = {
 		"dr_ironbreaker",
+		"dr_slayer",
+		"dr_ranger",
 		"dr_engineer"
 	}
 }
-ItemMasterList.dr_deus_01_weapon_pose_04 = {
+ItemMasterList.dr_2h_axe_weapon_pose_04 = {
 	description = "weapon_pose_emote_description",
-	name = "<dr_deus_01_emote_wheel>",
-	display_name = "dr_deus_01_emote_wheel",
-	inventory_icon = "dr_deus_01_04",
+	name = "Axe Pose",
+	display_name = "dr_2h_axe_emote_wheel",
+	inventory_icon = "dr_2h_axe_04",
 	slot_type = "weapon_pose",
 	information_text = "information_weapon_pose",
 	rarity = "exotic",
 	pose_index = 4,
-	parent = "dr_deus_01",
-	hud_icon = "dr_deus_01_04",
+	parent = "dr_2h_axe",
+	hud_icon = "dr_2h_axe_04",
 	template = "pose_template",
 	item_type = "weapon_pose",
 	data = {
@@ -8282,20 +9110,22 @@ ItemMasterList.dr_deus_01_weapon_pose_04 = {
 	},
 	can_wield = {
 		"dr_ironbreaker",
+		"dr_slayer",
+		"dr_ranger",
 		"dr_engineer"
 	}
 }
-ItemMasterList.dr_deus_01_weapon_pose_05 = {
+ItemMasterList.dr_2h_axe_weapon_pose_05 = {
 	description = "weapon_pose_emote_description",
-	name = "<dr_deus_01_emote_wheel>",
-	display_name = "dr_deus_01_emote_wheel",
-	inventory_icon = "dr_deus_01_05",
+	name = "Axe Pose",
+	display_name = "dr_2h_axe_emote_wheel",
+	inventory_icon = "dr_2h_axe_05",
 	slot_type = "weapon_pose",
 	information_text = "information_weapon_pose",
 	rarity = "exotic",
 	pose_index = 5,
-	parent = "dr_deus_01",
-	hud_icon = "dr_deus_01_05",
+	parent = "dr_2h_axe",
+	hud_icon = "dr_2h_axe_05",
 	template = "pose_template",
 	item_type = "weapon_pose",
 	data = {
@@ -8304,20 +9134,22 @@ ItemMasterList.dr_deus_01_weapon_pose_05 = {
 	},
 	can_wield = {
 		"dr_ironbreaker",
+		"dr_slayer",
+		"dr_ranger",
 		"dr_engineer"
 	}
 }
-ItemMasterList.dr_deus_01_weapon_pose_06 = {
+ItemMasterList.dr_2h_axe_weapon_pose_06 = {
 	description = "weapon_pose_emote_description",
-	name = "<dr_deus_01_emote_wheel>",
-	display_name = "dr_deus_01_emote_wheel",
-	inventory_icon = "dr_deus_01_06",
+	name = "Axe Pose",
+	display_name = "dr_2h_axe_emote_wheel",
+	inventory_icon = "dr_2h_axe_06",
 	slot_type = "weapon_pose",
 	information_text = "information_weapon_pose",
 	rarity = "exotic",
 	pose_index = 6,
-	parent = "dr_deus_01",
-	hud_icon = "dr_deus_01_06",
+	parent = "dr_2h_axe",
+	hud_icon = "dr_2h_axe_06",
 	template = "pose_template",
 	item_type = "weapon_pose",
 	data = {
@@ -8326,20 +9158,22 @@ ItemMasterList.dr_deus_01_weapon_pose_06 = {
 	},
 	can_wield = {
 		"dr_ironbreaker",
+		"dr_slayer",
+		"dr_ranger",
 		"dr_engineer"
 	}
 }
-ItemMasterList.bw_ghost_scythe_weapon_pose_01 = {
+ItemMasterList.bw_skullstaff_fireball_weapon_pose_01 = {
 	description = "weapon_pose_emote_description",
-	name = "Scythe Pose",
-	display_name = "bw_ghost_scythe_emote_wheel",
-	inventory_icon = "bw_ghost_scythe_01",
+	name = "Staff Pose",
+	display_name = "bw_skullstaff_fireball_emote_wheel",
+	inventory_icon = "bw_skullstaff_fireball_01",
 	slot_type = "weapon_pose",
 	information_text = "information_weapon_pose",
 	rarity = "exotic",
 	pose_index = 1,
-	parent = "bw_ghost_scythe",
-	hud_icon = "bw_ghost_scythe_01",
+	parent = "bw_skullstaff_fireball",
+	hud_icon = "bw_skullstaff_fireball_01",
 	template = "pose_template",
 	item_type = "weapon_pose",
 	data = {
@@ -8353,17 +9187,17 @@ ItemMasterList.bw_ghost_scythe_weapon_pose_01 = {
 		"bw_necromancer"
 	}
 }
-ItemMasterList.bw_ghost_scythe_weapon_pose_02 = {
+ItemMasterList.bw_skullstaff_fireball_weapon_pose_02 = {
 	description = "weapon_pose_emote_description",
-	name = "Scythe Pose",
-	display_name = "bw_ghost_scythe_emote_wheel",
-	inventory_icon = "bw_ghost_scythe_02",
+	name = "Staff Pose",
+	display_name = "bw_skullstaff_fireball_emote_wheel",
+	inventory_icon = "bw_skullstaff_fireball_02",
 	slot_type = "weapon_pose",
 	information_text = "information_weapon_pose",
 	rarity = "exotic",
 	pose_index = 2,
-	parent = "bw_ghost_scythe",
-	hud_icon = "bw_ghost_scythe_02",
+	parent = "bw_skullstaff_fireball",
+	hud_icon = "bw_skullstaff_fireball_02",
 	template = "pose_template",
 	item_type = "weapon_pose",
 	data = {
@@ -8377,17 +9211,17 @@ ItemMasterList.bw_ghost_scythe_weapon_pose_02 = {
 		"bw_necromancer"
 	}
 }
-ItemMasterList.bw_ghost_scythe_weapon_pose_03 = {
+ItemMasterList.bw_skullstaff_fireball_weapon_pose_03 = {
 	description = "weapon_pose_emote_description",
-	name = "Scythe Pose",
-	display_name = "bw_ghost_scythe_emote_wheel",
-	inventory_icon = "bw_ghost_scythe_03",
+	name = "Staff Pose",
+	display_name = "bw_skullstaff_fireball_emote_wheel",
+	inventory_icon = "bw_skullstaff_fireball_03",
 	slot_type = "weapon_pose",
 	information_text = "information_weapon_pose",
 	rarity = "exotic",
 	pose_index = 3,
-	parent = "bw_ghost_scythe",
-	hud_icon = "bw_ghost_scythe_03",
+	parent = "bw_skullstaff_fireball",
+	hud_icon = "bw_skullstaff_fireball_03",
 	template = "pose_template",
 	item_type = "weapon_pose",
 	data = {
@@ -8401,17 +9235,17 @@ ItemMasterList.bw_ghost_scythe_weapon_pose_03 = {
 		"bw_necromancer"
 	}
 }
-ItemMasterList.bw_ghost_scythe_weapon_pose_04 = {
+ItemMasterList.bw_skullstaff_fireball_weapon_pose_04 = {
 	description = "weapon_pose_emote_description",
-	name = "Scythe Pose",
-	display_name = "bw_ghost_scythe_emote_wheel",
-	inventory_icon = "bw_ghost_scythe_04",
+	name = "Staff Pose",
+	display_name = "bw_skullstaff_fireball_emote_wheel",
+	inventory_icon = "bw_skullstaff_fireball_04",
 	slot_type = "weapon_pose",
 	information_text = "information_weapon_pose",
 	rarity = "exotic",
 	pose_index = 4,
-	parent = "bw_ghost_scythe",
-	hud_icon = "bw_ghost_scythe_04",
+	parent = "bw_skullstaff_fireball",
+	hud_icon = "bw_skullstaff_fireball_04",
 	template = "pose_template",
 	item_type = "weapon_pose",
 	data = {
@@ -8425,17 +9259,17 @@ ItemMasterList.bw_ghost_scythe_weapon_pose_04 = {
 		"bw_necromancer"
 	}
 }
-ItemMasterList.bw_ghost_scythe_weapon_pose_05 = {
+ItemMasterList.bw_skullstaff_fireball_weapon_pose_05 = {
 	description = "weapon_pose_emote_description",
-	name = "Scythe Pose",
-	display_name = "bw_ghost_scythe_emote_wheel",
-	inventory_icon = "bw_ghost_scythe_05",
+	name = "Staff Pose",
+	display_name = "bw_skullstaff_fireball_emote_wheel",
+	inventory_icon = "bw_skullstaff_fireball_05",
 	slot_type = "weapon_pose",
 	information_text = "information_weapon_pose",
 	rarity = "exotic",
 	pose_index = 5,
-	parent = "bw_ghost_scythe",
-	hud_icon = "bw_ghost_scythe_05",
+	parent = "bw_skullstaff_fireball",
+	hud_icon = "bw_skullstaff_fireball_05",
 	template = "pose_template",
 	item_type = "weapon_pose",
 	data = {
@@ -8449,17 +9283,17 @@ ItemMasterList.bw_ghost_scythe_weapon_pose_05 = {
 		"bw_necromancer"
 	}
 }
-ItemMasterList.bw_ghost_scythe_weapon_pose_06 = {
+ItemMasterList.bw_skullstaff_fireball_weapon_pose_06 = {
 	description = "weapon_pose_emote_description",
-	name = "Scythe Pose",
-	display_name = "bw_ghost_scythe_emote_wheel",
-	inventory_icon = "bw_ghost_scythe_06",
+	name = "Staff Pose",
+	display_name = "bw_skullstaff_fireball_emote_wheel",
+	inventory_icon = "bw_skullstaff_fireball_06",
 	slot_type = "weapon_pose",
 	information_text = "information_weapon_pose",
 	rarity = "exotic",
 	pose_index = 6,
-	parent = "bw_ghost_scythe",
-	hud_icon = "bw_ghost_scythe_06",
+	parent = "bw_skullstaff_fireball",
+	hud_icon = "bw_skullstaff_fireball_06",
 	template = "pose_template",
 	item_type = "weapon_pose",
 	data = {
@@ -8617,132 +9451,6 @@ ItemMasterList.we_shortbow_hagbane_weapon_pose_06 = {
 		"we_thornsister"
 	}
 }
-ItemMasterList.wh_hammer_shield_weapon_pose_01 = {
-	description = "weapon_pose_emote_description",
-	name = "<wh_hammer_shield_emote_wheel>",
-	display_name = "wh_hammer_shield_emote_wheel",
-	inventory_icon = "wh_hammer_shield_01",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 1,
-	parent = "wh_hammer_shield",
-	hud_icon = "wh_hammer_shield_01",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_01",
-		hide_weapons = false
-	},
-	can_wield = {
-		"wh_priest"
-	}
-}
-ItemMasterList.wh_hammer_shield_weapon_pose_02 = {
-	description = "weapon_pose_emote_description",
-	name = "<wh_hammer_shield_emote_wheel>",
-	display_name = "wh_hammer_shield_emote_wheel",
-	inventory_icon = "wh_hammer_shield_02",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 2,
-	parent = "wh_hammer_shield",
-	hud_icon = "wh_hammer_shield_02",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_02",
-		hide_weapons = false
-	},
-	can_wield = {
-		"wh_priest"
-	}
-}
-ItemMasterList.wh_hammer_shield_weapon_pose_03 = {
-	description = "weapon_pose_emote_description",
-	name = "<wh_hammer_shield_emote_wheel>",
-	display_name = "wh_hammer_shield_emote_wheel",
-	inventory_icon = "wh_hammer_shield_03",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 3,
-	parent = "wh_hammer_shield",
-	hud_icon = "wh_hammer_shield_03",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_03",
-		hide_weapons = false
-	},
-	can_wield = {
-		"wh_priest"
-	}
-}
-ItemMasterList.wh_hammer_shield_weapon_pose_04 = {
-	description = "weapon_pose_emote_description",
-	name = "<wh_hammer_shield_emote_wheel>",
-	display_name = "wh_hammer_shield_emote_wheel",
-	inventory_icon = "wh_hammer_shield_04",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 4,
-	parent = "wh_hammer_shield",
-	hud_icon = "wh_hammer_shield_04",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_04",
-		hide_weapons = false
-	},
-	can_wield = {
-		"wh_priest"
-	}
-}
-ItemMasterList.wh_hammer_shield_weapon_pose_05 = {
-	description = "weapon_pose_emote_description",
-	name = "<wh_hammer_shield_emote_wheel>",
-	display_name = "wh_hammer_shield_emote_wheel",
-	inventory_icon = "wh_hammer_shield_05",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 5,
-	parent = "wh_hammer_shield",
-	hud_icon = "wh_hammer_shield_05",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_05",
-		hide_weapons = false
-	},
-	can_wield = {
-		"wh_priest"
-	}
-}
-ItemMasterList.wh_hammer_shield_weapon_pose_06 = {
-	description = "weapon_pose_emote_description",
-	name = "<wh_hammer_shield_emote_wheel>",
-	display_name = "wh_hammer_shield_emote_wheel",
-	inventory_icon = "wh_hammer_shield_06",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 6,
-	parent = "wh_hammer_shield",
-	hud_icon = "wh_hammer_shield_06",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_06",
-		hide_weapons = false
-	},
-	can_wield = {
-		"wh_priest"
-	}
-}
 ItemMasterList.wh_crossbow_repeater_weapon_pose_01 = {
 	description = "weapon_pose_emote_description",
 	name = "<wh_crossbow_repeater_emote_wheel>",
@@ -8879,150 +9587,6 @@ ItemMasterList.wh_crossbow_repeater_weapon_pose_06 = {
 		"wh_zealot",
 		"wh_bountyhunter",
 		"wh_captain"
-	}
-}
-ItemMasterList.bw_1h_flail_flaming_weapon_pose_01 = {
-	description = "weapon_pose_emote_description",
-	name = "Flail Pose",
-	display_name = "bw_1h_flail_flaming_emote_wheel",
-	inventory_icon = "bw_1h_flail_flaming_01",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 1,
-	parent = "bw_1h_flail_flaming",
-	hud_icon = "bw_1h_flail_flaming_01",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_01",
-		hide_weapons = false
-	},
-	can_wield = {
-		"bw_scholar",
-		"bw_adept",
-		"bw_unchained",
-		"bw_necromancer"
-	}
-}
-ItemMasterList.bw_1h_flail_flaming_weapon_pose_02 = {
-	description = "weapon_pose_emote_description",
-	name = "Flail Pose",
-	display_name = "bw_1h_flail_flaming_emote_wheel",
-	inventory_icon = "bw_1h_flail_flaming_02",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 2,
-	parent = "bw_1h_flail_flaming",
-	hud_icon = "bw_1h_flail_flaming_02",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_02",
-		hide_weapons = false
-	},
-	can_wield = {
-		"bw_scholar",
-		"bw_adept",
-		"bw_unchained",
-		"bw_necromancer"
-	}
-}
-ItemMasterList.bw_1h_flail_flaming_weapon_pose_03 = {
-	description = "weapon_pose_emote_description",
-	name = "Flail Pose",
-	display_name = "bw_1h_flail_flaming_emote_wheel",
-	inventory_icon = "bw_1h_flail_flaming_03",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 3,
-	parent = "bw_1h_flail_flaming",
-	hud_icon = "bw_1h_flail_flaming_03",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_03",
-		hide_weapons = false
-	},
-	can_wield = {
-		"bw_scholar",
-		"bw_adept",
-		"bw_unchained",
-		"bw_necromancer"
-	}
-}
-ItemMasterList.bw_1h_flail_flaming_weapon_pose_04 = {
-	description = "weapon_pose_emote_description",
-	name = "Flail Pose",
-	display_name = "bw_1h_flail_flaming_emote_wheel",
-	inventory_icon = "bw_1h_flail_flaming_04",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 4,
-	parent = "bw_1h_flail_flaming",
-	hud_icon = "bw_1h_flail_flaming_04",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_04",
-		hide_weapons = false
-	},
-	can_wield = {
-		"bw_scholar",
-		"bw_adept",
-		"bw_unchained",
-		"bw_necromancer"
-	}
-}
-ItemMasterList.bw_1h_flail_flaming_weapon_pose_05 = {
-	description = "weapon_pose_emote_description",
-	name = "Flail Pose",
-	display_name = "bw_1h_flail_flaming_emote_wheel",
-	inventory_icon = "bw_1h_flail_flaming_05",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 5,
-	parent = "bw_1h_flail_flaming",
-	hud_icon = "bw_1h_flail_flaming_05",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_05",
-		hide_weapons = false
-	},
-	can_wield = {
-		"bw_scholar",
-		"bw_adept",
-		"bw_unchained",
-		"bw_necromancer"
-	}
-}
-ItemMasterList.bw_1h_flail_flaming_weapon_pose_06 = {
-	description = "weapon_pose_emote_description",
-	name = "Flail Pose",
-	display_name = "bw_1h_flail_flaming_emote_wheel",
-	inventory_icon = "bw_1h_flail_flaming_06",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 6,
-	parent = "bw_1h_flail_flaming",
-	hud_icon = "bw_1h_flail_flaming_06",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_06",
-		hide_weapons = false
-	},
-	can_wield = {
-		"bw_scholar",
-		"bw_adept",
-		"bw_unchained",
-		"bw_necromancer"
 	}
 }
 ItemMasterList.bw_skullstaff_spear_weapon_pose_01 = {
@@ -9307,294 +9871,6 @@ ItemMasterList.es_halberd_weapon_pose_06 = {
 		"es_mercenary"
 	}
 }
-ItemMasterList.bw_dagger_weapon_pose_01 = {
-	description = "weapon_pose_emote_description",
-	name = "Dagger Pose",
-	display_name = "bw_dagger_emote_wheel",
-	inventory_icon = "bw_dagger_01",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 1,
-	parent = "bw_dagger",
-	hud_icon = "bw_dagger_01",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_01",
-		hide_weapons = false
-	},
-	can_wield = {
-		"bw_scholar",
-		"bw_adept",
-		"bw_unchained",
-		"bw_necromancer"
-	}
-}
-ItemMasterList.bw_dagger_weapon_pose_02 = {
-	description = "weapon_pose_emote_description",
-	name = "Dagger Pose",
-	display_name = "bw_dagger_emote_wheel",
-	inventory_icon = "bw_dagger_02",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 2,
-	parent = "bw_dagger",
-	hud_icon = "bw_dagger_02",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_02",
-		hide_weapons = false
-	},
-	can_wield = {
-		"bw_scholar",
-		"bw_adept",
-		"bw_unchained",
-		"bw_necromancer"
-	}
-}
-ItemMasterList.bw_dagger_weapon_pose_03 = {
-	description = "weapon_pose_emote_description",
-	name = "Dagger Pose",
-	display_name = "bw_dagger_emote_wheel",
-	inventory_icon = "bw_dagger_03",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 3,
-	parent = "bw_dagger",
-	hud_icon = "bw_dagger_03",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_03",
-		hide_weapons = false
-	},
-	can_wield = {
-		"bw_scholar",
-		"bw_adept",
-		"bw_unchained",
-		"bw_necromancer"
-	}
-}
-ItemMasterList.bw_dagger_weapon_pose_04 = {
-	description = "weapon_pose_emote_description",
-	name = "Dagger Pose",
-	display_name = "bw_dagger_emote_wheel",
-	inventory_icon = "bw_dagger_04",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 4,
-	parent = "bw_dagger",
-	hud_icon = "bw_dagger_04",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_04",
-		hide_weapons = false
-	},
-	can_wield = {
-		"bw_scholar",
-		"bw_adept",
-		"bw_unchained",
-		"bw_necromancer"
-	}
-}
-ItemMasterList.bw_dagger_weapon_pose_05 = {
-	description = "weapon_pose_emote_description",
-	name = "Dagger Pose",
-	display_name = "bw_dagger_emote_wheel",
-	inventory_icon = "bw_dagger_05",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 5,
-	parent = "bw_dagger",
-	hud_icon = "bw_dagger_05",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_05",
-		hide_weapons = false
-	},
-	can_wield = {
-		"bw_scholar",
-		"bw_adept",
-		"bw_unchained",
-		"bw_necromancer"
-	}
-}
-ItemMasterList.bw_dagger_weapon_pose_06 = {
-	description = "weapon_pose_emote_description",
-	name = "Dagger Pose",
-	display_name = "bw_dagger_emote_wheel",
-	inventory_icon = "bw_dagger_06",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 6,
-	parent = "bw_dagger",
-	hud_icon = "bw_dagger_06",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_06",
-		hide_weapons = false
-	},
-	can_wield = {
-		"bw_scholar",
-		"bw_adept",
-		"bw_unchained",
-		"bw_necromancer"
-	}
-}
-ItemMasterList.dr_2h_axe_weapon_pose_01 = {
-	description = "weapon_pose_emote_description",
-	name = "Axe Pose",
-	display_name = "dr_2h_axe_emote_wheel",
-	inventory_icon = "dr_2h_axe_01",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 1,
-	parent = "dr_2h_axe",
-	hud_icon = "dr_2h_axe_01",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_01",
-		hide_weapons = false
-	},
-	can_wield = {
-		"dr_ironbreaker",
-		"dr_slayer",
-		"dr_ranger",
-		"dr_engineer"
-	}
-}
-ItemMasterList.dr_2h_axe_weapon_pose_02 = {
-	description = "weapon_pose_emote_description",
-	name = "Axe Pose",
-	display_name = "dr_2h_axe_emote_wheel",
-	inventory_icon = "dr_2h_axe_02",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 2,
-	parent = "dr_2h_axe",
-	hud_icon = "dr_2h_axe_02",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_02",
-		hide_weapons = false
-	},
-	can_wield = {
-		"dr_ironbreaker",
-		"dr_slayer",
-		"dr_ranger",
-		"dr_engineer"
-	}
-}
-ItemMasterList.dr_2h_axe_weapon_pose_03 = {
-	description = "weapon_pose_emote_description",
-	name = "Axe Pose",
-	display_name = "dr_2h_axe_emote_wheel",
-	inventory_icon = "dr_2h_axe_03",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 3,
-	parent = "dr_2h_axe",
-	hud_icon = "dr_2h_axe_03",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_03",
-		hide_weapons = false
-	},
-	can_wield = {
-		"dr_ironbreaker",
-		"dr_slayer",
-		"dr_ranger",
-		"dr_engineer"
-	}
-}
-ItemMasterList.dr_2h_axe_weapon_pose_04 = {
-	description = "weapon_pose_emote_description",
-	name = "Axe Pose",
-	display_name = "dr_2h_axe_emote_wheel",
-	inventory_icon = "dr_2h_axe_04",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 4,
-	parent = "dr_2h_axe",
-	hud_icon = "dr_2h_axe_04",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_04",
-		hide_weapons = false
-	},
-	can_wield = {
-		"dr_ironbreaker",
-		"dr_slayer",
-		"dr_ranger",
-		"dr_engineer"
-	}
-}
-ItemMasterList.dr_2h_axe_weapon_pose_05 = {
-	description = "weapon_pose_emote_description",
-	name = "Axe Pose",
-	display_name = "dr_2h_axe_emote_wheel",
-	inventory_icon = "dr_2h_axe_05",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 5,
-	parent = "dr_2h_axe",
-	hud_icon = "dr_2h_axe_05",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_05",
-		hide_weapons = false
-	},
-	can_wield = {
-		"dr_ironbreaker",
-		"dr_slayer",
-		"dr_ranger",
-		"dr_engineer"
-	}
-}
-ItemMasterList.dr_2h_axe_weapon_pose_06 = {
-	description = "weapon_pose_emote_description",
-	name = "Axe Pose",
-	display_name = "dr_2h_axe_emote_wheel",
-	inventory_icon = "dr_2h_axe_06",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 6,
-	parent = "dr_2h_axe",
-	hud_icon = "dr_2h_axe_06",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_06",
-		hide_weapons = false
-	},
-	can_wield = {
-		"dr_ironbreaker",
-		"dr_slayer",
-		"dr_ranger",
-		"dr_engineer"
-	}
-}
 ItemMasterList.wh_repeating_pistols_weapon_pose_01 = {
 	description = "weapon_pose_emote_description",
 	name = "<wh_repeating_pistols_emote_wheel>",
@@ -9733,6 +10009,144 @@ ItemMasterList.wh_repeating_pistols_weapon_pose_06 = {
 		"wh_captain"
 	}
 }
+ItemMasterList.dr_shield_hammer_weapon_pose_01 = {
+	description = "weapon_pose_emote_description",
+	name = "Hammer and Shield Pose",
+	display_name = "dr_shield_hammer_emote_wheel",
+	inventory_icon = "dr_shield_hammer_01",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 1,
+	parent = "dr_shield_hammer",
+	hud_icon = "dr_shield_hammer_01",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_01",
+		hide_weapons = false
+	},
+	can_wield = {
+		"dr_ironbreaker",
+		"dr_ranger",
+		"dr_engineer"
+	}
+}
+ItemMasterList.dr_shield_hammer_weapon_pose_02 = {
+	description = "weapon_pose_emote_description",
+	name = "Hammer and Shield Pose",
+	display_name = "dr_shield_hammer_emote_wheel",
+	inventory_icon = "dr_shield_hammer_02",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 2,
+	parent = "dr_shield_hammer",
+	hud_icon = "dr_shield_hammer_02",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_02",
+		hide_weapons = false
+	},
+	can_wield = {
+		"dr_ironbreaker",
+		"dr_ranger",
+		"dr_engineer"
+	}
+}
+ItemMasterList.dr_shield_hammer_weapon_pose_03 = {
+	description = "weapon_pose_emote_description",
+	name = "Hammer and Shield Pose",
+	display_name = "dr_shield_hammer_emote_wheel",
+	inventory_icon = "dr_shield_hammer_03",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 3,
+	parent = "dr_shield_hammer",
+	hud_icon = "dr_shield_hammer_03",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_03",
+		hide_weapons = false
+	},
+	can_wield = {
+		"dr_ironbreaker",
+		"dr_ranger",
+		"dr_engineer"
+	}
+}
+ItemMasterList.dr_shield_hammer_weapon_pose_04 = {
+	description = "weapon_pose_emote_description",
+	name = "Hammer and Shield Pose",
+	display_name = "dr_shield_hammer_emote_wheel",
+	inventory_icon = "dr_shield_hammer_04",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 4,
+	parent = "dr_shield_hammer",
+	hud_icon = "dr_shield_hammer_04",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_04",
+		hide_weapons = false
+	},
+	can_wield = {
+		"dr_ironbreaker",
+		"dr_ranger",
+		"dr_engineer"
+	}
+}
+ItemMasterList.dr_shield_hammer_weapon_pose_05 = {
+	description = "weapon_pose_emote_description",
+	name = "Hammer and Shield Pose",
+	display_name = "dr_shield_hammer_emote_wheel",
+	inventory_icon = "dr_shield_hammer_05",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 5,
+	parent = "dr_shield_hammer",
+	hud_icon = "dr_shield_hammer_05",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_05",
+		hide_weapons = false
+	},
+	can_wield = {
+		"dr_ironbreaker",
+		"dr_ranger",
+		"dr_engineer"
+	}
+}
+ItemMasterList.dr_shield_hammer_weapon_pose_06 = {
+	description = "weapon_pose_emote_description",
+	name = "Hammer and Shield Pose",
+	display_name = "dr_shield_hammer_emote_wheel",
+	inventory_icon = "dr_shield_hammer_06",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 6,
+	parent = "dr_shield_hammer",
+	hud_icon = "dr_shield_hammer_06",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_06",
+		hide_weapons = false
+	},
+	can_wield = {
+		"dr_ironbreaker",
+		"dr_ranger",
+		"dr_engineer"
+	}
+}
 ItemMasterList.wh_brace_of_pistols_weapon_pose_01 = {
 	description = "weapon_pose_emote_description",
 	name = "Pistols Pose",
@@ -9869,144 +10283,6 @@ ItemMasterList.wh_brace_of_pistols_weapon_pose_06 = {
 		"wh_zealot",
 		"wh_bountyhunter",
 		"wh_captain"
-	}
-}
-ItemMasterList.dr_shield_axe_weapon_pose_01 = {
-	description = "weapon_pose_emote_description",
-	name = "Axe and Shield Pose",
-	display_name = "dr_shield_axe_emote_wheel",
-	inventory_icon = "dr_shield_axe_01",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 1,
-	parent = "dr_shield_axe",
-	hud_icon = "dr_shield_axe_01",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_01",
-		hide_weapons = false
-	},
-	can_wield = {
-		"dr_ironbreaker",
-		"dr_ranger",
-		"dr_engineer"
-	}
-}
-ItemMasterList.dr_shield_axe_weapon_pose_02 = {
-	description = "weapon_pose_emote_description",
-	name = "Axe and Shield Pose",
-	display_name = "dr_shield_axe_emote_wheel",
-	inventory_icon = "dr_shield_axe_02",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 2,
-	parent = "dr_shield_axe",
-	hud_icon = "dr_shield_axe_02",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_02",
-		hide_weapons = false
-	},
-	can_wield = {
-		"dr_ironbreaker",
-		"dr_ranger",
-		"dr_engineer"
-	}
-}
-ItemMasterList.dr_shield_axe_weapon_pose_03 = {
-	description = "weapon_pose_emote_description",
-	name = "Axe and Shield Pose",
-	display_name = "dr_shield_axe_emote_wheel",
-	inventory_icon = "dr_shield_axe_03",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 3,
-	parent = "dr_shield_axe",
-	hud_icon = "dr_shield_axe_03",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_03",
-		hide_weapons = false
-	},
-	can_wield = {
-		"dr_ironbreaker",
-		"dr_ranger",
-		"dr_engineer"
-	}
-}
-ItemMasterList.dr_shield_axe_weapon_pose_04 = {
-	description = "weapon_pose_emote_description",
-	name = "Axe and Shield Pose",
-	display_name = "dr_shield_axe_emote_wheel",
-	inventory_icon = "dr_shield_axe_04",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 4,
-	parent = "dr_shield_axe",
-	hud_icon = "dr_shield_axe_04",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_04",
-		hide_weapons = false
-	},
-	can_wield = {
-		"dr_ironbreaker",
-		"dr_ranger",
-		"dr_engineer"
-	}
-}
-ItemMasterList.dr_shield_axe_weapon_pose_05 = {
-	description = "weapon_pose_emote_description",
-	name = "Axe and Shield Pose",
-	display_name = "dr_shield_axe_emote_wheel",
-	inventory_icon = "dr_shield_axe_05",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 5,
-	parent = "dr_shield_axe",
-	hud_icon = "dr_shield_axe_05",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_05",
-		hide_weapons = false
-	},
-	can_wield = {
-		"dr_ironbreaker",
-		"dr_ranger",
-		"dr_engineer"
-	}
-}
-ItemMasterList.dr_shield_axe_weapon_pose_06 = {
-	description = "weapon_pose_emote_description",
-	name = "Axe and Shield Pose",
-	display_name = "dr_shield_axe_emote_wheel",
-	inventory_icon = "dr_shield_axe_06",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 6,
-	parent = "dr_shield_axe",
-	hud_icon = "dr_shield_axe_06",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_06",
-		hide_weapons = false
-	},
-	can_wield = {
-		"dr_ironbreaker",
-		"dr_ranger",
-		"dr_engineer"
 	}
 }
 ItemMasterList.es_blunderbuss_weapon_pose_01 = {
@@ -10435,144 +10711,6 @@ ItemMasterList.we_shortbow_weapon_pose_06 = {
 		"we_thornsister"
 	}
 }
-ItemMasterList.wh_2h_billhook_weapon_pose_01 = {
-	description = "weapon_pose_emote_description",
-	name = "<wh_2h_billhook_emote_wheel>",
-	display_name = "wh_2h_billhook_emote_wheel",
-	inventory_icon = "wh_2h_billhook_01",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 1,
-	parent = "wh_2h_billhook",
-	hud_icon = "wh_2h_billhook_01",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_01",
-		hide_weapons = false
-	},
-	can_wield = {
-		"wh_zealot",
-		"wh_bountyhunter",
-		"wh_captain"
-	}
-}
-ItemMasterList.wh_2h_billhook_weapon_pose_02 = {
-	description = "weapon_pose_emote_description",
-	name = "<wh_2h_billhook_emote_wheel>",
-	display_name = "wh_2h_billhook_emote_wheel",
-	inventory_icon = "wh_2h_billhook_02",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 2,
-	parent = "wh_2h_billhook",
-	hud_icon = "wh_2h_billhook_02",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_02",
-		hide_weapons = false
-	},
-	can_wield = {
-		"wh_zealot",
-		"wh_bountyhunter",
-		"wh_captain"
-	}
-}
-ItemMasterList.wh_2h_billhook_weapon_pose_03 = {
-	description = "weapon_pose_emote_description",
-	name = "<wh_2h_billhook_emote_wheel>",
-	display_name = "wh_2h_billhook_emote_wheel",
-	inventory_icon = "wh_2h_billhook_03",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 3,
-	parent = "wh_2h_billhook",
-	hud_icon = "wh_2h_billhook_03",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_03",
-		hide_weapons = false
-	},
-	can_wield = {
-		"wh_zealot",
-		"wh_bountyhunter",
-		"wh_captain"
-	}
-}
-ItemMasterList.wh_2h_billhook_weapon_pose_04 = {
-	description = "weapon_pose_emote_description",
-	name = "<wh_2h_billhook_emote_wheel>",
-	display_name = "wh_2h_billhook_emote_wheel",
-	inventory_icon = "wh_2h_billhook_04",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 4,
-	parent = "wh_2h_billhook",
-	hud_icon = "wh_2h_billhook_04",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_04",
-		hide_weapons = false
-	},
-	can_wield = {
-		"wh_zealot",
-		"wh_bountyhunter",
-		"wh_captain"
-	}
-}
-ItemMasterList.wh_2h_billhook_weapon_pose_05 = {
-	description = "weapon_pose_emote_description",
-	name = "<wh_2h_billhook_emote_wheel>",
-	display_name = "wh_2h_billhook_emote_wheel",
-	inventory_icon = "wh_2h_billhook_05",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 5,
-	parent = "wh_2h_billhook",
-	hud_icon = "wh_2h_billhook_05",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_05",
-		hide_weapons = false
-	},
-	can_wield = {
-		"wh_zealot",
-		"wh_bountyhunter",
-		"wh_captain"
-	}
-}
-ItemMasterList.wh_2h_billhook_weapon_pose_06 = {
-	description = "weapon_pose_emote_description",
-	name = "<wh_2h_billhook_emote_wheel>",
-	display_name = "wh_2h_billhook_emote_wheel",
-	inventory_icon = "wh_2h_billhook_06",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 6,
-	parent = "wh_2h_billhook",
-	hud_icon = "wh_2h_billhook_06",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_06",
-		hide_weapons = false
-	},
-	can_wield = {
-		"wh_zealot",
-		"wh_bountyhunter",
-		"wh_captain"
-	}
-}
 ItemMasterList.we_spear_weapon_pose_01 = {
 	description = "weapon_pose_emote_description",
 	name = "Spear Pose",
@@ -10715,150 +10853,6 @@ ItemMasterList.we_spear_weapon_pose_06 = {
 		"we_maidenguard",
 		"we_waywatcher",
 		"we_thornsister"
-	}
-}
-ItemMasterList.bw_skullstaff_fireball_weapon_pose_01 = {
-	description = "weapon_pose_emote_description",
-	name = "Staff Pose",
-	display_name = "bw_skullstaff_fireball_emote_wheel",
-	inventory_icon = "bw_skullstaff_fireball_01",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 1,
-	parent = "bw_skullstaff_fireball",
-	hud_icon = "bw_skullstaff_fireball_01",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_01",
-		hide_weapons = false
-	},
-	can_wield = {
-		"bw_scholar",
-		"bw_adept",
-		"bw_unchained",
-		"bw_necromancer"
-	}
-}
-ItemMasterList.bw_skullstaff_fireball_weapon_pose_02 = {
-	description = "weapon_pose_emote_description",
-	name = "Staff Pose",
-	display_name = "bw_skullstaff_fireball_emote_wheel",
-	inventory_icon = "bw_skullstaff_fireball_02",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 2,
-	parent = "bw_skullstaff_fireball",
-	hud_icon = "bw_skullstaff_fireball_02",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_02",
-		hide_weapons = false
-	},
-	can_wield = {
-		"bw_scholar",
-		"bw_adept",
-		"bw_unchained",
-		"bw_necromancer"
-	}
-}
-ItemMasterList.bw_skullstaff_fireball_weapon_pose_03 = {
-	description = "weapon_pose_emote_description",
-	name = "Staff Pose",
-	display_name = "bw_skullstaff_fireball_emote_wheel",
-	inventory_icon = "bw_skullstaff_fireball_03",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 3,
-	parent = "bw_skullstaff_fireball",
-	hud_icon = "bw_skullstaff_fireball_03",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_03",
-		hide_weapons = false
-	},
-	can_wield = {
-		"bw_scholar",
-		"bw_adept",
-		"bw_unchained",
-		"bw_necromancer"
-	}
-}
-ItemMasterList.bw_skullstaff_fireball_weapon_pose_04 = {
-	description = "weapon_pose_emote_description",
-	name = "Staff Pose",
-	display_name = "bw_skullstaff_fireball_emote_wheel",
-	inventory_icon = "bw_skullstaff_fireball_04",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 4,
-	parent = "bw_skullstaff_fireball",
-	hud_icon = "bw_skullstaff_fireball_04",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_04",
-		hide_weapons = false
-	},
-	can_wield = {
-		"bw_scholar",
-		"bw_adept",
-		"bw_unchained",
-		"bw_necromancer"
-	}
-}
-ItemMasterList.bw_skullstaff_fireball_weapon_pose_05 = {
-	description = "weapon_pose_emote_description",
-	name = "Staff Pose",
-	display_name = "bw_skullstaff_fireball_emote_wheel",
-	inventory_icon = "bw_skullstaff_fireball_05",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 5,
-	parent = "bw_skullstaff_fireball",
-	hud_icon = "bw_skullstaff_fireball_05",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_05",
-		hide_weapons = false
-	},
-	can_wield = {
-		"bw_scholar",
-		"bw_adept",
-		"bw_unchained",
-		"bw_necromancer"
-	}
-}
-ItemMasterList.bw_skullstaff_fireball_weapon_pose_06 = {
-	description = "weapon_pose_emote_description",
-	name = "Staff Pose",
-	display_name = "bw_skullstaff_fireball_emote_wheel",
-	inventory_icon = "bw_skullstaff_fireball_06",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 6,
-	parent = "bw_skullstaff_fireball",
-	hud_icon = "bw_skullstaff_fireball_06",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_06",
-		hide_weapons = false
-	},
-	can_wield = {
-		"bw_scholar",
-		"bw_adept",
-		"bw_unchained",
-		"bw_necromancer"
 	}
 }
 ItemMasterList.dr_drakegun_weapon_pose_01 = {
@@ -11125,6 +11119,150 @@ ItemMasterList.dr_drake_pistol_weapon_pose_06 = {
 		"dr_engineer"
 	}
 }
+ItemMasterList.bw_dagger_weapon_pose_01 = {
+	description = "weapon_pose_emote_description",
+	name = "Dagger Pose",
+	display_name = "bw_dagger_emote_wheel",
+	inventory_icon = "bw_dagger_01",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 1,
+	parent = "bw_dagger",
+	hud_icon = "bw_dagger_01",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_01",
+		hide_weapons = false
+	},
+	can_wield = {
+		"bw_scholar",
+		"bw_adept",
+		"bw_unchained",
+		"bw_necromancer"
+	}
+}
+ItemMasterList.bw_dagger_weapon_pose_02 = {
+	description = "weapon_pose_emote_description",
+	name = "Dagger Pose",
+	display_name = "bw_dagger_emote_wheel",
+	inventory_icon = "bw_dagger_02",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 2,
+	parent = "bw_dagger",
+	hud_icon = "bw_dagger_02",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_02",
+		hide_weapons = false
+	},
+	can_wield = {
+		"bw_scholar",
+		"bw_adept",
+		"bw_unchained",
+		"bw_necromancer"
+	}
+}
+ItemMasterList.bw_dagger_weapon_pose_03 = {
+	description = "weapon_pose_emote_description",
+	name = "Dagger Pose",
+	display_name = "bw_dagger_emote_wheel",
+	inventory_icon = "bw_dagger_03",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 3,
+	parent = "bw_dagger",
+	hud_icon = "bw_dagger_03",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_03",
+		hide_weapons = false
+	},
+	can_wield = {
+		"bw_scholar",
+		"bw_adept",
+		"bw_unchained",
+		"bw_necromancer"
+	}
+}
+ItemMasterList.bw_dagger_weapon_pose_04 = {
+	description = "weapon_pose_emote_description",
+	name = "Dagger Pose",
+	display_name = "bw_dagger_emote_wheel",
+	inventory_icon = "bw_dagger_04",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 4,
+	parent = "bw_dagger",
+	hud_icon = "bw_dagger_04",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_04",
+		hide_weapons = false
+	},
+	can_wield = {
+		"bw_scholar",
+		"bw_adept",
+		"bw_unchained",
+		"bw_necromancer"
+	}
+}
+ItemMasterList.bw_dagger_weapon_pose_05 = {
+	description = "weapon_pose_emote_description",
+	name = "Dagger Pose",
+	display_name = "bw_dagger_emote_wheel",
+	inventory_icon = "bw_dagger_05",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 5,
+	parent = "bw_dagger",
+	hud_icon = "bw_dagger_05",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_05",
+		hide_weapons = false
+	},
+	can_wield = {
+		"bw_scholar",
+		"bw_adept",
+		"bw_unchained",
+		"bw_necromancer"
+	}
+}
+ItemMasterList.bw_dagger_weapon_pose_06 = {
+	description = "weapon_pose_emote_description",
+	name = "Dagger Pose",
+	display_name = "bw_dagger_emote_wheel",
+	inventory_icon = "bw_dagger_06",
+	slot_type = "weapon_pose",
+	information_text = "information_weapon_pose",
+	rarity = "exotic",
+	pose_index = 6,
+	parent = "bw_dagger",
+	hud_icon = "bw_dagger_06",
+	template = "pose_template",
+	item_type = "weapon_pose",
+	data = {
+		anim_event = "anim_pose_06",
+		hide_weapons = false
+	},
+	can_wield = {
+		"bw_scholar",
+		"bw_adept",
+		"bw_unchained",
+		"bw_necromancer"
+	}
+}
 ItemMasterList.es_repeating_handgun_weapon_pose_01 = {
 	description = "weapon_pose_emote_description",
 	name = "Repeating Handgun Pose",
@@ -11261,144 +11399,6 @@ ItemMasterList.es_repeating_handgun_weapon_pose_06 = {
 		"es_huntsman",
 		"es_knight",
 		"es_mercenary"
-	}
-}
-ItemMasterList.es_1h_flail_weapon_pose_01 = {
-	description = "weapon_pose_emote_description",
-	name = "<es_1h_flail_emote_wheel>",
-	display_name = "es_1h_flail_emote_wheel",
-	inventory_icon = "es_1h_flail_01",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 1,
-	parent = "es_1h_flail",
-	hud_icon = "es_1h_flail_01",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_01",
-		hide_weapons = false
-	},
-	can_wield = {
-		"wh_zealot",
-		"wh_captain",
-		"wh_bountyhunter"
-	}
-}
-ItemMasterList.es_1h_flail_weapon_pose_02 = {
-	description = "weapon_pose_emote_description",
-	name = "<es_1h_flail_emote_wheel>",
-	display_name = "es_1h_flail_emote_wheel",
-	inventory_icon = "es_1h_flail_02",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 2,
-	parent = "es_1h_flail",
-	hud_icon = "es_1h_flail_02",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_02",
-		hide_weapons = false
-	},
-	can_wield = {
-		"wh_zealot",
-		"wh_captain",
-		"wh_bountyhunter"
-	}
-}
-ItemMasterList.es_1h_flail_weapon_pose_03 = {
-	description = "weapon_pose_emote_description",
-	name = "<es_1h_flail_emote_wheel>",
-	display_name = "es_1h_flail_emote_wheel",
-	inventory_icon = "es_1h_flail_03",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 3,
-	parent = "es_1h_flail",
-	hud_icon = "es_1h_flail_03",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_03",
-		hide_weapons = false
-	},
-	can_wield = {
-		"wh_zealot",
-		"wh_captain",
-		"wh_bountyhunter"
-	}
-}
-ItemMasterList.es_1h_flail_weapon_pose_04 = {
-	description = "weapon_pose_emote_description",
-	name = "<es_1h_flail_emote_wheel>",
-	display_name = "es_1h_flail_emote_wheel",
-	inventory_icon = "es_1h_flail_04",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 4,
-	parent = "es_1h_flail",
-	hud_icon = "es_1h_flail_04",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_04",
-		hide_weapons = false
-	},
-	can_wield = {
-		"wh_zealot",
-		"wh_captain",
-		"wh_bountyhunter"
-	}
-}
-ItemMasterList.es_1h_flail_weapon_pose_05 = {
-	description = "weapon_pose_emote_description",
-	name = "<es_1h_flail_emote_wheel>",
-	display_name = "es_1h_flail_emote_wheel",
-	inventory_icon = "es_1h_flail_05",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 5,
-	parent = "es_1h_flail",
-	hud_icon = "es_1h_flail_05",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_05",
-		hide_weapons = false
-	},
-	can_wield = {
-		"wh_zealot",
-		"wh_captain",
-		"wh_bountyhunter"
-	}
-}
-ItemMasterList.es_1h_flail_weapon_pose_06 = {
-	description = "weapon_pose_emote_description",
-	name = "<es_1h_flail_emote_wheel>",
-	display_name = "es_1h_flail_emote_wheel",
-	inventory_icon = "es_1h_flail_06",
-	slot_type = "weapon_pose",
-	information_text = "information_weapon_pose",
-	rarity = "exotic",
-	pose_index = 6,
-	parent = "es_1h_flail",
-	hud_icon = "es_1h_flail_06",
-	template = "pose_template",
-	item_type = "weapon_pose",
-	data = {
-		anim_event = "anim_pose_06",
-		hide_weapons = false
-	},
-	can_wield = {
-		"wh_zealot",
-		"wh_captain",
-		"wh_bountyhunter"
 	}
 }
 ItemMasterList.wh_fencing_sword_weapon_pose_01 = {

@@ -142,6 +142,63 @@ local terror_event_blueprints = {
 			flow_event_name = "fort_pvp_terror_event_bell_tower_guards_done"
 		}
 	},
+	fort_pvp_terror_event_bonfire_guards = {
+		{
+			"spawn_at_raw",
+			spawner_id = "bon_fire_guard_1",
+			breed_name = "skaven_storm_vermin_commander"
+		},
+		{
+			"delay",
+			duration = 1
+		},
+		{
+			"spawn_at_raw",
+			spawner_id = "bon_fire_guard_2",
+			breed_name = "skaven_storm_vermin_commander"
+		},
+		{
+			"delay",
+			duration = 10
+		},
+		{
+			"flow_event",
+			flow_event_name = "fort_pvp_terror_event_bonfire_guards_done"
+		}
+	},
+	fort_pvp_terror_event_bonfire_guards_back = {
+		{
+			"spawn_at_raw",
+			spawner_id = "bon_fire_guard_3",
+			breed_name = "skaven_plague_monk"
+		},
+		{
+			"delay",
+			duration = 1
+		},
+		{
+			"spawn_at_raw",
+			spawner_id = "bon_fire_guard_4",
+			breed_name = "skaven_storm_vermin_with_shield"
+		},
+		{
+			"delay",
+			duration = 1
+		},
+		{
+			"spawn_at_raw",
+			spawner_id = "bon_fire_guard_5",
+			breed_name = "skaven_storm_vermin_with_shield"
+		},
+		{
+			"delay",
+			duration = 10
+		},
+		{
+			"flow_event",
+			flow_event_name = "fort_pvp_terror_event_bonfire_guards_back_done"
+		}
+	},
 	fort_pvp_terror_event_payload_02 = {
 		{
 			"set_freeze_condition",
@@ -229,7 +286,7 @@ local terror_event_blueprints = {
 		{
 			"spawn_at_raw",
 			spawner_id = "ram_guard_4",
-			breed_name = "chaos_marauder_with_shield"
+			breed_name = "chaos_warrior"
 		},
 		{
 			"delay",
@@ -238,7 +295,7 @@ local terror_event_blueprints = {
 		{
 			"spawn_at_raw",
 			spawner_id = "ram_guard_5",
-			breed_name = "chaos_marauder_with_shield"
+			breed_name = "chaos_warrior"
 		},
 		{
 			"delay",

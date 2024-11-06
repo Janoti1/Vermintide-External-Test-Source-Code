@@ -62,7 +62,10 @@ HeroWindowDarkPactCharacterSelectionConsole._first_pactsworn_setup = function (s
 
 	if profile_settings.affiliation ~= "dark_pact" then
 		row = Math.random(1, self._num_max_rows)
-		column = Math.random(1, self._num_hero_columns[row])
+
+		local max_columns_per_row = self._num_hero_columns[row] or 1
+
+		column = Math.random(1, max_columns_per_row)
 		self._selected_row = row
 		self._selected_column = column
 		profile_index, career_index = self:_get_selected_dark_pact_profile_and_career_indx(row, column)
@@ -265,7 +268,7 @@ HeroWindowDarkPactCharacterSelectionConsole._setup_dark_pact_selection_widgets =
 
 		local content = widget.content
 
-		content.portrait = career.picking_image
+		content.portrait = career.picking_image_square
 		content.career_settings = career
 		content.profile_index = profile_index
 		content.career_index = 1
@@ -568,17 +571,12 @@ HeroWindowDarkPactCharacterSelectionConsole._update_portraits = function (self, 
 
 		local style = widget.style
 		local portrait_frame_style = style.portrait_frame
-		local selection_mask_style = style.selection_mask
 		local portrait_style = style.portrait
 		local selected_frame_style = style.portrait_frame_selected
 		local portrait_frame_texture_size = portrait_frame_style.texture_size
 		local portrait_frame_default_size = portrait_frame_style.default_size
 		local portrait_frame_offset = portrait_frame_style.offset
 		local portrait_frame_default_offset = portrait_frame_style.default_offset
-		local selection_mask_texture_size = selection_mask_style.texture_size
-		local selection_mask_default_size = selection_mask_style.default_size
-		local selection_mask_offset = selection_mask_style.offset
-		local selection_mask_default_offset = selection_mask_style.default_offset
 		local portrait_texture_size = portrait_style.texture_size
 		local portrait_default_size = portrait_style.default_size
 		local portrait_offset = portrait_style.offset
@@ -594,9 +592,6 @@ HeroWindowDarkPactCharacterSelectionConsole._update_portraits = function (self, 
 		portrait_frame_texture_size[1] = portrait_frame_default_size[1] + portrait_frame_default_size[1] * size_multiplier * ease_progress
 		portrait_frame_texture_size[2] = portrait_frame_default_size[2] + portrait_frame_default_size[2] * size_multiplier * ease_progress
 		portrait_frame_offset[1] = portrait_frame_default_offset[1] - portrait_frame_default_size[1] * size_multiplier * ease_progress * 0.5
-		selection_mask_texture_size[1] = selection_mask_default_size[1] + selection_mask_default_size[1] * size_multiplier * ease_progress
-		selection_mask_texture_size[2] = selection_mask_default_size[2] + selection_mask_default_size[2] * size_multiplier * ease_progress
-		selection_mask_offset[1] = selection_mask_default_offset[1] - selection_mask_default_size[1] * size_multiplier * ease_progress * 0.5
 		portrait_texture_size[1] = portrait_default_size[1] + portrait_default_size[1] * portrait_size_multiplier * ease_progress
 		portrait_texture_size[2] = portrait_default_size[2] + portrait_default_size[2] * portrait_size_multiplier * ease_progress
 		portrait_offset[1] = portrait_default_offset[1] - portrait_default_size[1] * portrait_size_multiplier * ease_progress * 0.5

@@ -1700,7 +1700,7 @@ local profile_ability_templates = {
 				throw_charge = pre_defined_widgets.throw_charge.update_function
 			}
 		},
-		[3] = {
+		{
 			ability_name = "horde_ability",
 			widget_definitions = {
 				ability = pre_defined_widgets.ability.definition

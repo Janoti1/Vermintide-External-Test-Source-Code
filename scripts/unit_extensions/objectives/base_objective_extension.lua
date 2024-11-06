@@ -50,13 +50,7 @@ end
 
 BaseObjectiveExtension._store_local_player = function (self)
 	if not DEDICATED_SERVER then
-		local local_player = Managers.player:local_player()
-		local peer_id = local_player:network_id()
-		local local_player_id = local_player:local_player_id()
-		local party = Managers.party:get_party_from_player_id(peer_id, local_player_id)
-		local side = Managers.state.side.side_by_party[party]
-
-		self._local_side = side
+		self:_local_side()
 	end
 end
 
@@ -68,6 +62,22 @@ BaseObjectiveExtension.desync_objective = function (self)
 	self._game_object_id = nil
 end
 
+BaseObjectiveExtension._local_side = function (self)
+	local local_player = Managers.player:local_player()
+
+	if local_player then
+		local peer_id = local_player:network_id()
+		local local_player_id = local_player:local_player_id()
+		local party = Managers.party:get_party_from_player_id(peer_id, local_player_id)
+
+		if party then
+			self._local_side_cached = Managers.state.side.side_by_party[party]
+		end
+	end
+
+	return self._local_side_cached
+end
+
 BaseObjectiveExtension.complete = function (self, last_leaf_objective)
 	if self._is_server and self._on_complete_func then
 		self._on_complete_func(self._unit)
@@ -77,9 +87,12 @@ BaseObjectiveExtension.complete = function (self, last_leaf_objective)
 		local last_leaf_complete_sound_event = self._on_last_leaf_complete_sound_event
 
 		if last_leaf_complete_sound_event and last_leaf_objective then
-			local complete_event = last_leaf_complete_sound_event[self._local_side:name()]
+			local side_name = self:_local_side():name()
+			local complete_event = last_leaf_complete_sound_event[side_name]
 
-			self:play_local_sound(complete_event)
+			if complete_event then
+				self:play_local_sound(complete_event)
+			end
 		end
 	end
 

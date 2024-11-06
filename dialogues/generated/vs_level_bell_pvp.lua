@@ -2,6 +2,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_bell_set1_briefing_a",
 		name = "nde_vs_bell_set1_briefing_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -16,7 +17,7 @@ return function ()
 				"nde_vs_safe_room_start_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
@@ -44,6 +45,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_bell_set1_obj1_a",
 		name = "nde_vs_bell_set1_obj1_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -58,7 +60,7 @@ return function ()
 				"nde_vs_safe_room_round_started_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
@@ -74,18 +76,13 @@ return function ()
 				"current_set",
 				OP.EQ,
 				1
-			},
-			{
-				"global_context",
-				"current_objective",
-				OP.EQ,
-				"one"
 			}
 		}
 	})
 	define_rule({
 		response = "nde_vs_bell_set1_obj1_reached",
 		name = "nde_vs_bell_set1_obj1_reached",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -94,10 +91,16 @@ return function ()
 				"vs_mg_heroes_objective_reached"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"global_context",
@@ -122,6 +125,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_bell_set1_obj2_a",
 		name = "nde_vs_bell_set1_obj2_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -133,13 +137,50 @@ return function ()
 				"query_context",
 				"dialogue_name",
 				OP.EQ,
-				"nde_vs_new_objective_intro_a"
+				"nde_vs_bell_set1_obj2_a_BRIDGE"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
+			}
+		}
+	})
+	define_rule({
+		response = "nde_vs_bell_set1_obj2_a_BRIDGE",
+		name = "nde_vs_bell_set1_obj2_a_BRIDGE",
+		probability = 1,
+		criterias = {
+			{
+				"query_context",
+				"concept",
+				OP.EQ,
+				"heard_speak_self"
+			},
+			{
+				"query_context",
+				"dialogue_name",
+				OP.EQ,
+				"nde_vs_objective_completed_agnostic_a"
+			},
+			{
+				"query_context",
+				"source_name",
+				OP.EQ,
+				"vs_heroes_mission_giver"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"global_context",
@@ -164,6 +205,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_bell_set1_obj2_reached",
 		name = "nde_vs_bell_set1_obj2_reached",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -172,10 +214,16 @@ return function ()
 				"vs_mg_heroes_objective_reached"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"global_context",
@@ -200,6 +248,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_bell_set2_obj1_a",
 		name = "nde_vs_bell_set2_obj1_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -214,7 +263,7 @@ return function ()
 				"nde_vs_safe_room_round_started_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
@@ -230,18 +279,13 @@ return function ()
 				"current_set",
 				OP.EQ,
 				2
-			},
-			{
-				"global_context",
-				"current_objective",
-				OP.EQ,
-				"one"
 			}
 		}
 	})
 	define_rule({
 		response = "nde_vs_bell_set2_obj1_reached",
 		name = "nde_vs_bell_set2_obj1_reached",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -250,10 +294,16 @@ return function ()
 				"vs_mg_heroes_objective_reached"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"global_context",
@@ -278,6 +328,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_bell_set2_obj2_a",
 		name = "nde_vs_bell_set2_obj2_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -289,13 +340,68 @@ return function ()
 				"query_context",
 				"dialogue_name",
 				OP.EQ,
-				"nde_vs_new_objective_intro_a"
+				"nde_vs_objective_completed_agnostic_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
+			},
+			{
+				"global_context",
+				"current_level",
+				OP.EQ,
+				"bell_pvp"
+			},
+			{
+				"global_context",
+				"current_set",
+				OP.EQ,
+				2
+			},
+			{
+				"global_context",
+				"current_objective",
+				OP.EQ,
+				"two"
+			}
+		}
+	})
+	define_rule({
+		response = "nde_vs_bell_set2_obj2_a_EXTRA",
+		name = "nde_vs_bell_set2_obj2_a_EXTRA",
+		probability = 1,
+		criterias = {
+			{
+				"query_context",
+				"concept",
+				OP.EQ,
+				"heard_speak_self"
+			},
+			{
+				"query_context",
+				"sound_event",
+				OP.EQ,
+				"nde_vs_new_objective_intro_a_06"
+			},
+			{
+				"query_context",
+				"source_name",
+				OP.EQ,
+				"vs_heroes_mission_giver"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"global_context",
@@ -320,6 +426,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_bell_set2_obj2_reached",
 		name = "nde_vs_bell_set2_obj2_reached",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -328,10 +435,16 @@ return function ()
 				"vs_mg_heroes_objective_reached"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"global_context",
@@ -356,6 +469,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_bell_set2_waystone_reminder",
 		name = "nde_vs_bell_set2_waystone_reminder",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -364,10 +478,16 @@ return function ()
 				"vs_mg_heroes_objective_reached"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"global_context",
@@ -392,6 +512,7 @@ return function ()
 	define_rule({
 		response = "pbw_vs_safe_room_bell_01_b",
 		name = "pbw_vs_safe_room_bell_01_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -416,6 +537,7 @@ return function ()
 	define_rule({
 		response = "pbw_vs_safe_room_bell_02_a",
 		name = "pbw_vs_safe_room_bell_02_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -430,7 +552,7 @@ return function ()
 				"nde_vs_bell_set1_briefing_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"bright_wizard"
@@ -464,6 +586,7 @@ return function ()
 	define_rule({
 		response = "pbw_vs_safe_room_bell_03_b",
 		name = "pbw_vs_safe_room_bell_03_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -488,6 +611,7 @@ return function ()
 	define_rule({
 		response = "pbw_vs_safe_room_bell_04_b",
 		name = "pbw_vs_safe_room_bell_04_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -512,6 +636,7 @@ return function ()
 	define_rule({
 		response = "pbw_vs_safe_room_bell_05_b",
 		name = "pbw_vs_safe_room_bell_05_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -536,6 +661,7 @@ return function ()
 	define_rule({
 		response = "pbw_vs_safe_room_bell_06_b",
 		name = "pbw_vs_safe_room_bell_06_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -560,6 +686,7 @@ return function ()
 	define_rule({
 		response = "pbw_vs_safe_room_bell_07_a",
 		name = "pbw_vs_safe_room_bell_07_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -574,7 +701,7 @@ return function ()
 				"nde_vs_bell_set1_briefing_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"bright_wizard"
@@ -608,6 +735,7 @@ return function ()
 	define_rule({
 		response = "pbw_vs_safe_room_bell_08_b",
 		name = "pbw_vs_safe_room_bell_08_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -632,6 +760,7 @@ return function ()
 	define_rule({
 		response = "pbw_vs_safe_room_bell_09_b",
 		name = "pbw_vs_safe_room_bell_09_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -656,6 +785,7 @@ return function ()
 	define_rule({
 		response = "pbw_vs_safe_room_bell_10_b",
 		name = "pbw_vs_safe_room_bell_10_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -678,6 +808,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_level_bell_destroyed_PVP",
 		response = "pdr_level_bell_destroyed_PVP",
 		criterias = {
@@ -724,6 +855,7 @@ return function ()
 	define_rule({
 		response = "pdr_vs_safe_room_bell_01_b",
 		name = "pdr_vs_safe_room_bell_01_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -748,6 +880,7 @@ return function ()
 	define_rule({
 		response = "pdr_vs_safe_room_bell_02_b",
 		name = "pdr_vs_safe_room_bell_02_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -772,6 +905,7 @@ return function ()
 	define_rule({
 		response = "pdr_vs_safe_room_bell_03_a",
 		name = "pdr_vs_safe_room_bell_03_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -786,7 +920,7 @@ return function ()
 				"nde_vs_bell_set1_briefing_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"dwarf_ranger"
@@ -820,6 +954,7 @@ return function ()
 	define_rule({
 		response = "pdr_vs_safe_room_bell_04_b",
 		name = "pdr_vs_safe_room_bell_04_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -844,6 +979,7 @@ return function ()
 	define_rule({
 		response = "pdr_vs_safe_room_bell_05_b",
 		name = "pdr_vs_safe_room_bell_05_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -868,6 +1004,7 @@ return function ()
 	define_rule({
 		response = "pdr_vs_safe_room_bell_06_b",
 		name = "pdr_vs_safe_room_bell_06_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -892,6 +1029,7 @@ return function ()
 	define_rule({
 		response = "pdr_vs_safe_room_bell_07_b",
 		name = "pdr_vs_safe_room_bell_07_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -916,6 +1054,7 @@ return function ()
 	define_rule({
 		response = "pdr_vs_safe_room_bell_08_a",
 		name = "pdr_vs_safe_room_bell_08_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -930,7 +1069,7 @@ return function ()
 				"nde_vs_bell_set1_briefing_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"dwarf_ranger"
@@ -964,6 +1103,7 @@ return function ()
 	define_rule({
 		response = "pdr_vs_safe_room_bell_09_b",
 		name = "pdr_vs_safe_room_bell_09_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -988,6 +1128,7 @@ return function ()
 	define_rule({
 		response = "pdr_vs_safe_room_bell_10_b",
 		name = "pdr_vs_safe_room_bell_10_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1012,6 +1153,7 @@ return function ()
 	define_rule({
 		response = "pes_vs_safe_room_bell_01_b",
 		name = "pes_vs_safe_room_bell_01_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1036,6 +1178,7 @@ return function ()
 	define_rule({
 		response = "pes_vs_safe_room_bell_02_b",
 		name = "pes_vs_safe_room_bell_02_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1060,6 +1203,7 @@ return function ()
 	define_rule({
 		response = "pes_vs_safe_room_bell_03_b",
 		name = "pes_vs_safe_room_bell_03_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1084,6 +1228,7 @@ return function ()
 	define_rule({
 		response = "pes_vs_safe_room_bell_04_b",
 		name = "pes_vs_safe_room_bell_04_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1108,6 +1253,7 @@ return function ()
 	define_rule({
 		response = "pes_vs_safe_room_bell_05_a",
 		name = "pes_vs_safe_room_bell_05_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1122,7 +1268,7 @@ return function ()
 				"nde_vs_bell_set1_briefing_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"empire_soldier"
@@ -1156,6 +1302,7 @@ return function ()
 	define_rule({
 		response = "pes_vs_safe_room_bell_06_b",
 		name = "pes_vs_safe_room_bell_06_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1180,6 +1327,7 @@ return function ()
 	define_rule({
 		response = "pes_vs_safe_room_bell_07_b",
 		name = "pes_vs_safe_room_bell_07_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1204,6 +1352,7 @@ return function ()
 	define_rule({
 		response = "pes_vs_safe_room_bell_08_b",
 		name = "pes_vs_safe_room_bell_08_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1228,6 +1377,7 @@ return function ()
 	define_rule({
 		response = "pes_vs_safe_room_bell_09_b",
 		name = "pes_vs_safe_room_bell_09_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1252,6 +1402,7 @@ return function ()
 	define_rule({
 		response = "pes_vs_safe_room_bell_10_a",
 		name = "pes_vs_safe_room_bell_10_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1266,7 +1417,7 @@ return function ()
 				"nde_vs_bell_set1_briefing_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"empire_soldier"
@@ -1298,6 +1449,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_level_bell_destroyed_PVP",
 		response = "pwe_level_bell_destroyed_PVP",
 		criterias = {
@@ -1344,6 +1496,7 @@ return function ()
 	define_rule({
 		response = "pwe_vs_safe_room_bell_01_b",
 		name = "pwe_vs_safe_room_bell_01_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1368,6 +1521,7 @@ return function ()
 	define_rule({
 		response = "pwe_vs_safe_room_bell_02_b",
 		name = "pwe_vs_safe_room_bell_02_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1392,6 +1546,7 @@ return function ()
 	define_rule({
 		response = "pwe_vs_safe_room_bell_03_b",
 		name = "pwe_vs_safe_room_bell_03_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1416,6 +1571,7 @@ return function ()
 	define_rule({
 		response = "pwe_vs_safe_room_bell_04_a",
 		name = "pwe_vs_safe_room_bell_04_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1430,7 +1586,7 @@ return function ()
 				"nde_vs_bell_set1_briefing_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"wood_elf"
@@ -1464,6 +1620,7 @@ return function ()
 	define_rule({
 		response = "pwe_vs_safe_room_bell_05_b",
 		name = "pwe_vs_safe_room_bell_05_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1488,6 +1645,7 @@ return function ()
 	define_rule({
 		response = "pwe_vs_safe_room_bell_06_b",
 		name = "pwe_vs_safe_room_bell_06_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1512,6 +1670,7 @@ return function ()
 	define_rule({
 		response = "pwe_vs_safe_room_bell_07_b",
 		name = "pwe_vs_safe_room_bell_07_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1536,6 +1695,7 @@ return function ()
 	define_rule({
 		response = "pwe_vs_safe_room_bell_08_b",
 		name = "pwe_vs_safe_room_bell_08_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1560,6 +1720,7 @@ return function ()
 	define_rule({
 		response = "pwe_vs_safe_room_bell_09_a",
 		name = "pwe_vs_safe_room_bell_09_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1574,7 +1735,7 @@ return function ()
 				"nde_vs_bell_set1_briefing_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"wood_elf"
@@ -1608,6 +1769,7 @@ return function ()
 	define_rule({
 		response = "pwe_vs_safe_room_bell_10_b",
 		name = "pwe_vs_safe_room_bell_10_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1630,6 +1792,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_level_bell_destroyed_PVP",
 		response = "pwh_level_bell_destroyed_PVP",
 		criterias = {
@@ -1676,6 +1839,7 @@ return function ()
 	define_rule({
 		response = "pwh_vs_safe_room_bell_01_a",
 		name = "pwh_vs_safe_room_bell_01_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1690,7 +1854,7 @@ return function ()
 				"nde_vs_bell_set1_briefing_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"witch_hunter"
@@ -1724,6 +1888,7 @@ return function ()
 	define_rule({
 		response = "pwh_vs_safe_room_bell_02_b",
 		name = "pwh_vs_safe_room_bell_02_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1748,6 +1913,7 @@ return function ()
 	define_rule({
 		response = "pwh_vs_safe_room_bell_03_b",
 		name = "pwh_vs_safe_room_bell_03_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1772,6 +1938,7 @@ return function ()
 	define_rule({
 		response = "pwh_vs_safe_room_bell_04_b",
 		name = "pwh_vs_safe_room_bell_04_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1796,6 +1963,7 @@ return function ()
 	define_rule({
 		response = "pwh_vs_safe_room_bell_05_b",
 		name = "pwh_vs_safe_room_bell_05_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1820,6 +1988,7 @@ return function ()
 	define_rule({
 		response = "pwh_vs_safe_room_bell_06_a",
 		name = "pwh_vs_safe_room_bell_06_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1834,7 +2003,7 @@ return function ()
 				"nde_vs_bell_set1_briefing_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"witch_hunter"
@@ -1868,6 +2037,7 @@ return function ()
 	define_rule({
 		response = "pwh_vs_safe_room_bell_07_b",
 		name = "pwh_vs_safe_room_bell_07_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1892,6 +2062,7 @@ return function ()
 	define_rule({
 		response = "pwh_vs_safe_room_bell_08_b",
 		name = "pwh_vs_safe_room_bell_08_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1916,6 +2087,7 @@ return function ()
 	define_rule({
 		response = "pwh_vs_safe_room_bell_09_b",
 		name = "pwh_vs_safe_room_bell_09_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1940,6 +2112,7 @@ return function ()
 	define_rule({
 		response = "pwh_vs_safe_room_bell_10_b",
 		name = "pwh_vs_safe_room_bell_10_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2103,6 +2276,56 @@ return function ()
 				3.6349999904633
 			}
 		},
+		nde_vs_bell_set1_obj2_a_BRIDGE = {
+			only_allies = true,
+			randomize_indexes_n = 0,
+			face_animations_n = 6,
+			database = "vs_level_bell_pvp",
+			sound_events_n = 6,
+			category = "npc_talk",
+			dialogue_animations_n = 6,
+			dialogue_animations = {
+				"dialogue_talk",
+				"dialogue_talk",
+				"dialogue_talk",
+				"dialogue_talk",
+				"dialogue_talk",
+				"dialogue_talk"
+			},
+			face_animations = {
+				"face_neutral",
+				"face_neutral",
+				"face_neutral",
+				"face_neutral",
+				"face_neutral",
+				"face_neutral"
+			},
+			localization_strings = {
+				"nde_vs_new_objective_intro_a_01",
+				"nde_vs_new_objective_intro_a_02",
+				"nde_vs_new_objective_intro_a_03",
+				"nde_vs_new_objective_intro_a_04",
+				"nde_vs_new_objective_intro_a_05",
+				"nde_vs_new_objective_intro_a_06"
+			},
+			randomize_indexes = {},
+			sound_events = {
+				"nde_vs_new_objective_intro_a_01",
+				"nde_vs_new_objective_intro_a_02",
+				"nde_vs_new_objective_intro_a_03",
+				"nde_vs_new_objective_intro_a_04",
+				"nde_vs_new_objective_intro_a_05",
+				"nde_vs_new_objective_intro_a_06"
+			},
+			sound_events_duration = {
+				2.0169999599457,
+				2.1679999828339,
+				2.8559999465942,
+				2.7655208110809,
+				2.8721873760223,
+				3.0592291355133
+			}
+		},
 		nde_vs_bell_set1_obj2_reached = {
 			only_allies = true,
 			randomize_indexes_n = 0,
@@ -2206,31 +2429,59 @@ return function ()
 		nde_vs_bell_set2_obj2_a = {
 			only_allies = true,
 			randomize_indexes_n = 0,
-			face_animations_n = 2,
+			face_animations_n = 3,
 			database = "vs_level_bell_pvp",
-			sound_events_n = 2,
+			sound_events_n = 3,
 			category = "npc_talk",
-			dialogue_animations_n = 2,
+			dialogue_animations_n = 3,
 			dialogue_animations = {
-				[1] = "dialogue_talk",
-				[2] = "dialogue_talk"
+				"dialogue_talk",
+				"dialogue_talk",
+				"dialogue_talk"
 			},
 			face_animations = {
-				[1] = "face_calm",
-				[2] = "face_calm"
+				"face_calm",
+				"face_calm",
+				"face_calm"
 			},
 			localization_strings = {
-				[1] = "nde_vs_bell_set2_obj2_a_01",
-				[2] = "nde_vs_bell_set2_obj2_a_02"
+				"nde_vs_bell_set2_obj2_a_01",
+				"nde_vs_bell_set2_obj2_a_02",
+				"nde_vs_new_objective_intro_a_06"
 			},
 			randomize_indexes = {},
 			sound_events = {
-				[1] = "nde_vs_bell_set2_obj2_a_01",
-				[2] = "nde_vs_bell_set2_obj2_a_02"
+				"nde_vs_bell_set2_obj2_a_01",
+				"nde_vs_bell_set2_obj2_a_02",
+				"nde_vs_new_objective_intro_a_06"
 			},
 			sound_events_duration = {
-				[1] = 4.6050000190735,
-				[2] = 5.2610001564026
+				4.6050000190735,
+				5.2610001564026,
+				3.0592291355133
+			}
+		},
+		nde_vs_bell_set2_obj2_a_EXTRA = {
+			only_allies = true,
+			sound_events_n = 1,
+			face_animations_n = 1,
+			database = "vs_level_bell_pvp",
+			category = "npc_talk",
+			dialogue_animations_n = 1,
+			dialogue_animations = {
+				[1] = "dialogue_talk"
+			},
+			face_animations = {
+				[1] = "face_calm"
+			},
+			localization_strings = {
+				[1] = "nde_vs_bell_set2_obj2_a_03"
+			},
+			sound_events = {
+				[1] = "nde_vs_bell_set2_obj2_a_03"
+			},
+			sound_events_duration = {
+				[1] = 6.7323336601257
 			}
 		},
 		nde_vs_bell_set2_obj2_reached = {

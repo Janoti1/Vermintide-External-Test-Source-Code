@@ -386,7 +386,7 @@ BulldozerPlayer.spawn = function (self, optional_position, optional_rotation, is
 	local is_player_unit = true
 
 	player_manager:assign_unit_ownership(unit, self, is_player_unit)
-	Managers.state.event:trigger("level_start_local_player_spawned", is_initial_spawn, unit)
+	Managers.state.event:trigger("level_start_local_player_spawned", is_initial_spawn, unit, side, breed)
 	Managers.telemetry_events:player_spawned(self)
 
 	if not breed.is_hero then
@@ -503,7 +503,7 @@ BulldozerPlayer.reevaluate_highest_difficulty = function (self)
 end
 
 BulldozerPlayer.name = function (self)
-	if rawget(_G, "Steam") then
+	if HAS_STEAM then
 		if self._cached_name then
 			return self._cached_name
 		else

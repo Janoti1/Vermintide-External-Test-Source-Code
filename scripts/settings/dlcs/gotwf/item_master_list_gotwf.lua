@@ -1,3 +1,4 @@
+ItemMasterList = ItemMasterList or {}
 ItemMasterList.wh_brace_of_pistols_skin_03_runed_05 = {
 	description = "wh_brace_of_pistols_skin_03_runed_05_description",
 	rarity = "unique",

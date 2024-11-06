@@ -2,6 +2,7 @@ return function ()
 	define_rule({
 		response = "pbr_gameplay_elf_downed_3_times_11",
 		name = "pbr_gameplay_elf_downed_3_times_11",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -32,6 +33,7 @@ return function ()
 	define_rule({
 		response = "pbw_all_stairs_conversation_b",
 		name = "pbw_all_stairs_conversation_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -54,6 +56,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_ameplay_soldier_potions_above_half_health_01_reply_01",
 		response = "pbw_ameplay_soldier_potions_above_half_health_01_reply_01",
 		criterias = {
@@ -85,6 +88,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_another_is_bunnyjumping_01",
 		response = "pbw_gameplay_another_is_bunnyjumping_01",
 		criterias = {
@@ -117,6 +121,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_elf_3_special_kills_in_a_row_01",
 		response = "pbw_gameplay_elf_3_special_kills_in_a_row_01",
 		criterias = {
@@ -175,6 +180,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_elf_3_special_kills_in_a_row_01_reply_01",
 		name = "pbw_gameplay_elf_3_special_kills_in_a_row_01_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -199,6 +205,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_elf_3_special_kills_in_a_row_01_reply_02",
 		name = "pbw_gameplay_elf_3_special_kills_in_a_row_01_reply_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -223,6 +230,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_elf_caught_by_slaver_3_times_02",
 		name = "pbw_gameplay_elf_caught_by_slaver_3_times_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -247,6 +255,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_elf_downed_3_times_02",
 		name = "pbw_gameplay_elf_downed_3_times_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -277,6 +286,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_elf_downed_3_times_02_reply_01",
 		name = "pbw_gameplay_elf_downed_3_times_02_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -301,6 +311,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_elf_downed_3_times_05_reply_01",
 		name = "pbw_gameplay_elf_downed_3_times_05_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -325,6 +336,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_elf_downed_3_times_06",
 		name = "pbw_gameplay_elf_downed_3_times_06",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -355,6 +367,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_elf_downed_3_times_06_reply_01",
 		name = "pbw_gameplay_elf_downed_3_times_06_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -379,6 +392,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_elf_downed_3_times_07",
 		name = "pbw_gameplay_elf_downed_3_times_07",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -409,6 +423,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_elf_downed_3_times_07_reply_01",
 		name = "pbw_gameplay_elf_downed_3_times_07_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -431,6 +446,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_elf_hit_by_goo_thrice_02",
 		response = "pbw_gameplay_elf_hit_by_goo_thrice_02",
 		criterias = {
@@ -477,6 +493,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_elf_killing_rat_ogre_melee_01",
 		name = "pbw_gameplay_elf_killing_rat_ogre_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -525,6 +542,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_elf_killing_rat_ogre_melee_01_reply_01",
 		name = "pbw_gameplay_elf_killing_rat_ogre_melee_01_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -549,6 +567,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_elf_killing_rat_ogre_ranged_01",
 		name = "pbw_gameplay_elf_killing_rat_ogre_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -597,6 +616,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_elf_killing_rat_ogre_ranged_01_reply_01",
 		name = "pbw_gameplay_elf_killing_rat_ogre_ranged_01_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -621,6 +641,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_elf_killing_spawn_melee_01",
 		name = "pbw_gameplay_elf_killing_spawn_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -663,6 +684,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_elf_killing_spawn_ranged_01",
 		name = "pbw_gameplay_elf_killing_spawn_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -705,6 +727,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_elf_killing_troll_melee_01",
 		name = "pbw_gameplay_elf_killing_troll_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -747,6 +770,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_elf_killing_troll_ranged_01",
 		name = "pbw_gameplay_elf_killing_troll_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -787,6 +811,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_elf_misses_bomb_01",
 		response = "pbw_gameplay_elf_misses_bomb_01",
 		criterias = {
@@ -849,6 +874,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_elf_potions_above_half_health_01",
 		response = "pbw_gameplay_elf_potions_above_half_health_01",
 		criterias = {
@@ -893,6 +919,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_elf_potions_above_half_health_01_reply_01",
 		response = "pbw_gameplay_elf_potions_above_half_health_01_reply_01",
 		criterias = {
@@ -924,6 +951,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_elf_potions_above_half_health_02",
 		response = "pbw_gameplay_elf_potions_above_half_health_02",
 		criterias = {
@@ -968,6 +996,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_elf_potions_above_half_health_02_reply_01",
 		response = "pbw_gameplay_elf_potions_above_half_health_02_reply_01",
 		criterias = {
@@ -999,6 +1028,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_elf_potions_above_half_health_06",
 		response = "pbw_gameplay_elf_potions_above_half_health_06",
 		criterias = {
@@ -1043,6 +1073,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_elf_potions_above_half_health_06_reply_01",
 		response = "pbw_gameplay_elf_potions_above_half_health_06_reply_01",
 		criterias = {
@@ -1074,6 +1105,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_hanging_help",
 		response = "pbw_gameplay_hanging_help",
 		criterias = {
@@ -1118,6 +1150,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_hunter_3_special_kills_in_a_row_01",
 		response = "pbw_gameplay_hunter_3_special_kills_in_a_row_01",
 		criterias = {
@@ -1176,6 +1209,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_hunter_3_special_kills_in_a_row_reply_01",
 		name = "pbw_gameplay_hunter_3_special_kills_in_a_row_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1200,6 +1234,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_hunter_caught_by_slaver_3_times_02",
 		name = "pbw_gameplay_hunter_caught_by_slaver_3_times_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1224,6 +1259,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_hunter_downed_3_times_02",
 		name = "pbw_gameplay_hunter_downed_3_times_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1254,6 +1290,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_hunter_downed_3_times_03",
 		name = "pbw_gameplay_hunter_downed_3_times_03",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1284,6 +1321,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_hunter_downed_3_times_04",
 		name = "pbw_gameplay_hunter_downed_3_times_04",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1312,6 +1350,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_hunter_hit_by_goo_thrice_02",
 		response = "pbw_gameplay_hunter_hit_by_goo_thrice_02",
 		criterias = {
@@ -1358,6 +1397,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_hunter_killing_rat_ogre_melee_01",
 		name = "pbw_gameplay_hunter_killing_rat_ogre_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1406,6 +1446,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_hunter_killing_rat_ogre_ranged_01",
 		name = "pbw_gameplay_hunter_killing_rat_ogre_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1454,6 +1495,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_hunter_killing_spawn_melee_01",
 		name = "pbw_gameplay_hunter_killing_spawn_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1496,6 +1538,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_hunter_killing_spawn_ranged_01",
 		name = "pbw_gameplay_hunter_killing_spawn_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1538,6 +1581,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_hunter_killing_troll_melee_01",
 		name = "pbw_gameplay_hunter_killing_troll_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1580,6 +1624,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_hunter_killing_troll_ranged_01",
 		name = "pbw_gameplay_hunter_killing_troll_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1620,6 +1665,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_hunter_kills_3_specials_in_a_row_02",
 		response = "pbw_gameplay_hunter_kills_3_specials_in_a_row_02",
 		criterias = {
@@ -1676,6 +1722,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_hunter_misses_bomb_01",
 		response = "pbw_gameplay_hunter_misses_bomb_01",
 		criterias = {
@@ -1740,6 +1787,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_killing_a_second_rat_ogre_01",
 		name = "pbw_gameplay_killing_a_second_rat_ogre_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1782,6 +1830,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_killing_rat_ogre_01",
 		name = "pbw_gameplay_killing_rat_ogre_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1822,6 +1871,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_ranger_3_special_kills_in_a_row_01",
 		response = "pbw_gameplay_ranger_3_special_kills_in_a_row_01",
 		criterias = {
@@ -1880,6 +1930,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_ranger_3_special_kills_in_a_row_01_reply_01",
 		name = "pbw_gameplay_ranger_3_special_kills_in_a_row_01_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1904,6 +1955,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_ranger_caught_by_slaver_3_times_02",
 		name = "pbw_gameplay_ranger_caught_by_slaver_3_times_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1928,6 +1980,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_ranger_downed_3_times_07",
 		name = "pbw_gameplay_ranger_downed_3_times_07",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1958,6 +2011,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_ranger_downed_3_times_07_reply_01",
 		name = "pbw_gameplay_ranger_downed_3_times_07_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1982,6 +2036,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_ranger_downed_3_times_08",
 		name = "pbw_gameplay_ranger_downed_3_times_08",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2012,6 +2067,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_ranger_downed_3_times_08_reply_01",
 		name = "pbw_gameplay_ranger_downed_3_times_08_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2036,6 +2092,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_ranger_downed_3_times_09",
 		name = "pbw_gameplay_ranger_downed_3_times_09",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2066,6 +2123,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_ranger_downed_3_times_11_reply_01",
 		name = "pbw_gameplay_ranger_downed_3_times_11_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2088,6 +2146,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_ranger_hit_by_goo_thrice_02",
 		response = "pbw_gameplay_ranger_hit_by_goo_thrice_02",
 		criterias = {
@@ -2134,6 +2193,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_ranger_killing_rat_ogre_melee_01",
 		name = "pbw_gameplay_ranger_killing_rat_ogre_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2182,6 +2242,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_ranger_killing_rat_ogre_melee_reply_01",
 		name = "pbw_gameplay_ranger_killing_rat_ogre_melee_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2206,6 +2267,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_ranger_killing_rat_ogre_ranged_01",
 		name = "pbw_gameplay_ranger_killing_rat_ogre_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2254,6 +2316,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_ranger_killing_rat_ogre_ranged_01_reply_01",
 		name = "pbw_gameplay_ranger_killing_rat_ogre_ranged_01_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2278,6 +2341,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_ranger_killing_spawn_melee_01",
 		name = "pbw_gameplay_ranger_killing_spawn_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2320,6 +2384,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_ranger_killing_spawn_ranged_01",
 		name = "pbw_gameplay_ranger_killing_spawn_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2362,6 +2427,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_ranger_killing_troll_melee_01",
 		name = "pbw_gameplay_ranger_killing_troll_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2404,6 +2470,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_ranger_killing_troll_ranged_01",
 		name = "pbw_gameplay_ranger_killing_troll_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2444,6 +2511,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_ranger_misses_bomb_01",
 		response = "pbw_gameplay_ranger_misses_bomb_01",
 		criterias = {
@@ -2506,6 +2574,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_ranger_potions_above_half_health_01",
 		response = "pbw_gameplay_ranger_potions_above_half_health_01",
 		criterias = {
@@ -2550,6 +2619,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_ranger_potions_above_half_health_01_reply_01",
 		response = "pbw_gameplay_ranger_potions_above_half_health_01_reply_01",
 		criterias = {
@@ -2581,6 +2651,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_ranger_potions_above_half_health_02",
 		response = "pbw_gameplay_ranger_potions_above_half_health_02",
 		criterias = {
@@ -2625,6 +2696,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_ranger_potions_above_half_health_02_reply_01",
 		response = "pbw_gameplay_ranger_potions_above_half_health_02_reply_01",
 		criterias = {
@@ -2656,6 +2728,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_ranger_potions_above_half_health_03",
 		response = "pbw_gameplay_ranger_potions_above_half_health_03",
 		criterias = {
@@ -2700,6 +2773,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_ranger_potions_above_half_health_03_reply_01",
 		response = "pbw_gameplay_ranger_potions_above_half_health_03_reply_01",
 		criterias = {
@@ -2731,6 +2805,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_response_043",
 		response = "pbw_gameplay_response_043",
 		criterias = {
@@ -2764,6 +2839,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_078",
 		name = "pbw_gameplay_response_078",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2788,6 +2864,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_079",
 		name = "pbw_gameplay_response_079",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2812,6 +2889,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_07_b",
 		name = "pbw_gameplay_response_07_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2836,6 +2914,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_08",
 		name = "pbw_gameplay_response_08",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2860,6 +2939,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_116",
 		name = "pbw_gameplay_response_116",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2884,6 +2964,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_117",
 		name = "pbw_gameplay_response_117",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2908,6 +2989,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_118",
 		name = "pbw_gameplay_response_118",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2932,6 +3014,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_119",
 		name = "pbw_gameplay_response_119",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2956,6 +3039,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_120",
 		name = "pbw_gameplay_response_120",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2980,6 +3064,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_121",
 		name = "pbw_gameplay_response_121",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3004,6 +3089,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_122",
 		name = "pbw_gameplay_response_122",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3028,6 +3114,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_123",
 		name = "pbw_gameplay_response_123",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3052,6 +3139,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_124",
 		name = "pbw_gameplay_response_124",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3076,6 +3164,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_141",
 		name = "pbw_gameplay_response_141",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3100,6 +3189,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_142",
 		name = "pbw_gameplay_response_142",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3124,6 +3214,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_144",
 		name = "pbw_gameplay_response_144",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3148,6 +3239,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_145",
 		name = "pbw_gameplay_response_145",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3172,6 +3264,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_146",
 		name = "pbw_gameplay_response_146",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3196,6 +3289,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_147",
 		name = "pbw_gameplay_response_147",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3220,6 +3314,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_148",
 		name = "pbw_gameplay_response_148",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3244,6 +3339,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_149",
 		name = "pbw_gameplay_response_149",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3268,6 +3364,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_150",
 		name = "pbw_gameplay_response_150",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3292,6 +3389,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_151",
 		name = "pbw_gameplay_response_151",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3316,6 +3414,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_152",
 		name = "pbw_gameplay_response_152",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3340,6 +3439,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_153",
 		name = "pbw_gameplay_response_153",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3364,6 +3464,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_154",
 		name = "pbw_gameplay_response_154",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3388,6 +3489,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_155",
 		name = "pbw_gameplay_response_155",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3412,6 +3514,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_156",
 		name = "pbw_gameplay_response_156",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3436,6 +3539,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_157",
 		name = "pbw_gameplay_response_157",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3460,6 +3564,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_174",
 		name = "pbw_gameplay_response_174",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3484,6 +3589,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_175",
 		name = "pbw_gameplay_response_175",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3508,6 +3614,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_176",
 		name = "pbw_gameplay_response_176",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3532,6 +3639,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_177",
 		name = "pbw_gameplay_response_177",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3556,6 +3664,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_178",
 		name = "pbw_gameplay_response_178",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3580,6 +3689,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_179",
 		name = "pbw_gameplay_response_179",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3604,6 +3714,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_180",
 		name = "pbw_gameplay_response_180",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3628,6 +3739,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_181",
 		name = "pbw_gameplay_response_181",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3652,6 +3764,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_182",
 		name = "pbw_gameplay_response_182",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3676,6 +3789,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_183",
 		name = "pbw_gameplay_response_183",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3700,6 +3814,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_184",
 		name = "pbw_gameplay_response_184",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3724,6 +3839,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_185",
 		name = "pbw_gameplay_response_185",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3748,6 +3864,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_186",
 		name = "pbw_gameplay_response_186",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3772,6 +3889,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_187",
 		name = "pbw_gameplay_response_187",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3796,6 +3914,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_188",
 		name = "pbw_gameplay_response_188",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3820,6 +3939,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_19",
 		name = "pbw_gameplay_response_19",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3844,6 +3964,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_199",
 		name = "pbw_gameplay_response_199",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3868,6 +3989,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_20",
 		name = "pbw_gameplay_response_20",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3892,6 +4014,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_21",
 		name = "pbw_gameplay_response_21",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3916,6 +4039,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_37",
 		name = "pbw_gameplay_response_37",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3940,6 +4064,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_38",
 		name = "pbw_gameplay_response_38",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3964,6 +4089,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_response_39",
 		name = "pbw_gameplay_response_39",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3986,6 +4112,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_soldier_3_special_kills_in_a_row_01",
 		response = "pbw_gameplay_soldier_3_special_kills_in_a_row_01",
 		criterias = {
@@ -4044,6 +4171,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_soldier_caught_by_slaver_3_times_02",
 		name = "pbw_gameplay_soldier_caught_by_slaver_3_times_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -4068,6 +4196,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_soldier_downed_3_times_05_reply_01",
 		name = "pbw_gameplay_soldier_downed_3_times_05_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -4092,6 +4221,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_soldier_downed_3_times_06",
 		name = "pbw_gameplay_soldier_downed_3_times_06",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -4122,6 +4252,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_soldier_downed_3_times_07",
 		name = "pbw_gameplay_soldier_downed_3_times_07",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -4152,6 +4283,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_soldier_downed_3_times_07_reply_01",
 		name = "pbw_gameplay_soldier_downed_3_times_07_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -4174,6 +4306,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_soldier_downed_3_times_08",
 		response = "pbw_gameplay_soldier_downed_3_times_08",
 		criterias = {
@@ -4218,6 +4351,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_soldier_hit_by_goo_thrice_02",
 		response = "pbw_gameplay_soldier_hit_by_goo_thrice_02",
 		criterias = {
@@ -4264,6 +4398,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_soldier_killing_rat_ogre_melee_01",
 		name = "pbw_gameplay_soldier_killing_rat_ogre_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -4312,6 +4447,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_soldier_killing_rat_ogre_ranged_01",
 		name = "pbw_gameplay_soldier_killing_rat_ogre_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -4360,6 +4496,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_soldier_killing_rat_ogre_ranged_01_reply_02",
 		name = "pbw_gameplay_soldier_killing_rat_ogre_ranged_01_reply_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -4384,6 +4521,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_soldier_killing_spawn_melee_01",
 		name = "pbw_gameplay_soldier_killing_spawn_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -4426,6 +4564,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_soldier_killing_spawn_ranged_01",
 		name = "pbw_gameplay_soldier_killing_spawn_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -4468,6 +4607,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_soldier_killing_troll_melee_01",
 		name = "pbw_gameplay_soldier_killing_troll_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -4510,6 +4650,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_soldier_killing_troll_ranged_01",
 		name = "pbw_gameplay_soldier_killing_troll_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -4550,6 +4691,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_soldier_misses_bomb_01",
 		response = "pbw_gameplay_soldier_misses_bomb_01",
 		criterias = {
@@ -4612,6 +4754,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_soldier_potions_above_half_health_01",
 		response = "pbw_gameplay_soldier_potions_above_half_health_01",
 		criterias = {
@@ -4656,6 +4799,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_soldier_potions_above_half_health_02",
 		response = "pbw_gameplay_soldier_potions_above_half_health_02",
 		criterias = {
@@ -4700,6 +4844,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_soldier_potions_above_half_health_02_reply_01",
 		response = "pbw_gameplay_soldier_potions_above_half_health_02_reply_01",
 		criterias = {
@@ -4731,6 +4876,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_soldier_potions_above_half_health_03",
 		response = "pbw_gameplay_soldier_potions_above_half_health_03",
 		criterias = {
@@ -4775,6 +4921,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_soldier_potions_above_half_health_reply_01",
 		response = "pbw_gameplay_soldier_potions_above_half_health_reply_01",
 		criterias = {
@@ -4808,6 +4955,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_wizard_3_special_kills_in_a_row_01_reply_01",
 		name = "pbw_gameplay_wizard_3_special_kills_in_a_row_01_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -4832,6 +4980,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_wizard_3_special_kills_in_a_row_01_reply_02",
 		name = "pbw_gameplay_wizard_3_special_kills_in_a_row_01_reply_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -4856,6 +5005,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_wizard_3_special_kills_in_a_row_01_reply_03",
 		name = "pbw_gameplay_wizard_3_special_kills_in_a_row_01_reply_03",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -4880,6 +5030,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_wizard_downed_3_times_03_reply_01",
 		name = "pbw_gameplay_wizard_downed_3_times_03_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -4904,6 +5055,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_wizard_downed_3_times_04_reply_01",
 		name = "pbw_gameplay_wizard_downed_3_times_04_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -4928,6 +5080,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_wizard_downed_3_times_05_reply_01",
 		name = "pbw_gameplay_wizard_downed_3_times_05_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -4952,6 +5105,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_wizard_downed_3_times_06_reply_01",
 		name = "pbw_gameplay_wizard_downed_3_times_06_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -4976,6 +5130,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_wizard_downed_3_times_07_reply_01",
 		name = "pbw_gameplay_wizard_downed_3_times_07_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -5000,6 +5155,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_wizard_downed_3_times_08_reply_01",
 		name = "pbw_gameplay_wizard_downed_3_times_08_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -5024,6 +5180,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_wizard_downed_3_times_09_reply_01",
 		name = "pbw_gameplay_wizard_downed_3_times_09_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -5048,6 +5205,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_wizard_downed_3_times_10_reply_01",
 		name = "pbw_gameplay_wizard_downed_3_times_10_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -5072,6 +5230,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_wizard_downed_3_times_11_reply_01",
 		name = "pbw_gameplay_wizard_downed_3_times_11_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -5096,6 +5255,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_wizard_downed_3_times_12_reply_01",
 		name = "pbw_gameplay_wizard_downed_3_times_12_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -5120,6 +5280,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_wizard_downed_3_times_14_reply_01",
 		name = "pbw_gameplay_wizard_downed_3_times_14_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -5142,6 +5303,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_wizard_hit_by_goo_thrice_02_reply_01",
 		response = "pbw_gameplay_wizard_hit_by_goo_thrice_02_reply_01",
 		criterias = {
@@ -5173,6 +5335,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_wizard_hit_by_goo_thrice_02_reply_02",
 		response = "pbw_gameplay_wizard_hit_by_goo_thrice_02_reply_02",
 		criterias = {
@@ -5204,6 +5367,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_wizard_hit_by_goo_thrice_02_reply_03",
 		response = "pbw_gameplay_wizard_hit_by_goo_thrice_02_reply_03",
 		criterias = {
@@ -5235,6 +5399,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_wizard_hit_by_goo_thrice_02_reply_04",
 		response = "pbw_gameplay_wizard_hit_by_goo_thrice_02_reply_04",
 		criterias = {
@@ -5268,6 +5433,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_wizard_killing_rat_ogre_melee_01",
 		name = "pbw_gameplay_wizard_killing_rat_ogre_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -5292,6 +5458,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_wizard_killing_rat_ogre_melee_01_reply_01",
 		name = "pbw_gameplay_wizard_killing_rat_ogre_melee_01_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -5316,6 +5483,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_wizard_killing_rat_ogre_melee_01_reply_02",
 		name = "pbw_gameplay_wizard_killing_rat_ogre_melee_01_reply_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -5340,6 +5508,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_wizard_killing_rat_ogre_ranged_01_reply_01",
 		name = "pbw_gameplay_wizard_killing_rat_ogre_ranged_01_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -5364,6 +5533,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_wizard_killing_rat_ogre_ranged_01_reply_02",
 		name = "pbw_gameplay_wizard_killing_rat_ogre_ranged_01_reply_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -5388,6 +5558,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_wizard_killing_rat_ogre_ranged_01_reply_03",
 		name = "pbw_gameplay_wizard_killing_rat_ogre_ranged_01_reply_03",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -5412,6 +5583,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_wizard_killing_rat_ogre_ranged_01_reply_05",
 		name = "pbw_gameplay_wizard_killing_rat_ogre_ranged_01_reply_05",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -5436,6 +5608,7 @@ return function ()
 	define_rule({
 		response = "pbw_gameplay_wizard_kills_3_specials_in_a_row_02_reply_01",
 		name = "pbw_gameplay_wizard_kills_3_specials_in_a_row_02_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -5458,6 +5631,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_wizard_potions_above_half_health_01",
 		response = "pbw_gameplay_wizard_potions_above_half_health_01",
 		criterias = {
@@ -5502,6 +5676,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_wizard_potions_above_half_health_01_reply_01",
 		response = "pbw_gameplay_wizard_potions_above_half_health_01_reply_01",
 		criterias = {
@@ -5533,6 +5708,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_wizard_potions_above_half_health_01_reply_02",
 		response = "pbw_gameplay_wizard_potions_above_half_health_01_reply_02",
 		criterias = {
@@ -5564,6 +5740,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_wizard_potions_above_half_health_01_reply_03",
 		response = "pbw_gameplay_wizard_potions_above_half_health_01_reply_03",
 		criterias = {
@@ -5595,6 +5772,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_wizard_potions_above_half_health_02",
 		response = "pbw_gameplay_wizard_potions_above_half_health_02",
 		criterias = {
@@ -5639,6 +5817,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_wizard_potions_above_half_health_02_reply_02",
 		response = "pbw_gameplay_wizard_potions_above_half_health_02_reply_02",
 		criterias = {
@@ -5670,6 +5849,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_wizard_potions_above_half_health_02_reply_03",
 		response = "pbw_gameplay_wizard_potions_above_half_health_02_reply_03",
 		criterias = {
@@ -5701,6 +5881,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_wizard_potions_above_half_health_02_reply_04",
 		response = "pbw_gameplay_wizard_potions_above_half_health_02_reply_04",
 		criterias = {
@@ -5732,6 +5913,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_wizard_potions_above_half_health_03",
 		response = "pbw_gameplay_wizard_potions_above_half_health_03",
 		criterias = {
@@ -5776,6 +5958,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_wizard_potions_above_half_health_03_reply_01",
 		response = "pbw_gameplay_wizard_potions_above_half_health_03_reply_01",
 		criterias = {
@@ -5807,6 +5990,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_wizard_potions_above_half_health_03_reply_02",
 		response = "pbw_gameplay_wizard_potions_above_half_health_03_reply_02",
 		criterias = {
@@ -5838,6 +6022,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_wizard_potions_above_half_health_03_reply_03",
 		response = "pbw_gameplay_wizard_potions_above_half_health_03_reply_03",
 		criterias = {
@@ -5869,6 +6054,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_gameplay_wizard_potions_above_half_health_03_reply_04",
 		response = "pbw_gameplay_wizard_potions_above_half_health_03_reply_04",
 		criterias = {
@@ -5902,6 +6088,7 @@ return function ()
 	define_rule({
 		response = "pbw_killing_a_second_rat_ogre_02",
 		name = "pbw_killing_a_second_rat_ogre_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -5942,6 +6129,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_all_stairs_conversation_a",
 		response = "pdr_all_stairs_conversation_a",
 		criterias = {
@@ -6012,6 +6200,7 @@ return function ()
 	define_rule({
 		response = "pdr_all_stairs_conversation_c",
 		name = "pdr_all_stairs_conversation_c",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -6034,6 +6223,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_another_is_bunnyjumping_01",
 		response = "pdr_gameplay_another_is_bunnyjumping_01",
 		criterias = {
@@ -6066,6 +6256,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_elf_3_special_kills_in_a_row_01",
 		response = "pdr_gameplay_elf_3_special_kills_in_a_row_01",
 		criterias = {
@@ -6124,6 +6315,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_elf_3_special_kills_in_a_row_01_reply_01",
 		name = "pdr_gameplay_elf_3_special_kills_in_a_row_01_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -6148,6 +6340,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_elf_caught_by_slaver_3_times_02",
 		name = "pdr_gameplay_elf_caught_by_slaver_3_times_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -6172,6 +6365,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_elf_downed_3_times_12",
 		name = "pdr_gameplay_elf_downed_3_times_12",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -6202,6 +6396,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_elf_downed_3_times_12_reply_01",
 		name = "pdr_gameplay_elf_downed_3_times_12_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -6226,6 +6421,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_elf_downed_3_times_13",
 		name = "pdr_gameplay_elf_downed_3_times_13",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -6256,6 +6452,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_elf_downed_3_times_13_reply_01",
 		name = "pdr_gameplay_elf_downed_3_times_13_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -6278,6 +6475,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_elf_hit_by_goo_thrice_02",
 		response = "pdr_gameplay_elf_hit_by_goo_thrice_02",
 		criterias = {
@@ -6324,6 +6522,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_elf_killing_rat_ogre_melee_01",
 		name = "pdr_gameplay_elf_killing_rat_ogre_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -6372,6 +6571,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_elf_killing_rat_ogre_ranged_01",
 		name = "pdr_gameplay_elf_killing_rat_ogre_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -6420,6 +6620,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_elf_killing_rat_ogre_ranged_01_reply_01",
 		name = "pdr_gameplay_elf_killing_rat_ogre_ranged_01_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -6444,6 +6645,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_elf_killing_spawn_melee_01",
 		name = "pdr_gameplay_elf_killing_spawn_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -6486,6 +6688,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_elf_killing_spawn_ranged_01",
 		name = "pdr_gameplay_elf_killing_spawn_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -6528,6 +6731,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_elf_killing_troll_melee_01",
 		name = "pdr_gameplay_elf_killing_troll_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -6570,6 +6774,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_elf_killing_troll_ranged_01",
 		name = "pdr_gameplay_elf_killing_troll_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -6610,6 +6815,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_elf_misses_bomb_01",
 		response = "pdr_gameplay_elf_misses_bomb_01",
 		criterias = {
@@ -6672,6 +6878,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_elf_potions_above_half_health_02",
 		response = "pdr_gameplay_elf_potions_above_half_health_02",
 		criterias = {
@@ -6716,6 +6923,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_elf_potions_above_half_health_03",
 		response = "pdr_gameplay_elf_potions_above_half_health_03",
 		criterias = {
@@ -6760,6 +6968,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_elf_potions_above_half_health_04",
 		response = "pdr_gameplay_elf_potions_above_half_health_04",
 		criterias = {
@@ -6804,6 +7013,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_hanging_help",
 		response = "pdr_gameplay_hanging_help",
 		criterias = {
@@ -6848,6 +7058,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_hunter_3_special_kills_in_a_row_01",
 		response = "pdr_gameplay_hunter_3_special_kills_in_a_row_01",
 		criterias = {
@@ -6906,6 +7117,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_hunter_3_special_kills_in_a_row_01_reply_01",
 		name = "pdr_gameplay_hunter_3_special_kills_in_a_row_01_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -6930,6 +7142,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_hunter_caught_by_slaver_3_times_02",
 		name = "pdr_gameplay_hunter_caught_by_slaver_3_times_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -6954,6 +7167,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_hunter_downed_3_times_02_reply_01",
 		name = "pdr_gameplay_hunter_downed_3_times_02_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -6978,6 +7192,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_hunter_downed_3_times_03_reply_01",
 		name = "pdr_gameplay_hunter_downed_3_times_03_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -7002,6 +7217,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_hunter_downed_3_times_04_reply_01",
 		name = "pdr_gameplay_hunter_downed_3_times_04_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -7026,6 +7242,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_hunter_downed_3_times_08",
 		name = "pdr_gameplay_hunter_downed_3_times_08",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -7056,6 +7273,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_hunter_downed_3_times_08_reply_01",
 		name = "pdr_gameplay_hunter_downed_3_times_08_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -7080,6 +7298,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_hunter_downed_3_times_09",
 		name = "pdr_gameplay_hunter_downed_3_times_09",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -7110,6 +7329,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_hunter_downed_3_times_09_reply_01",
 		name = "pdr_gameplay_hunter_downed_3_times_09_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -7134,6 +7354,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_hunter_downed_3_times_10",
 		name = "pdr_gameplay_hunter_downed_3_times_10",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -7164,6 +7385,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_hunter_downed_3_times_10_reply_01",
 		name = "pdr_gameplay_hunter_downed_3_times_10_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -7188,6 +7410,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_hunter_downed_3_times_11_reply_02",
 		name = "pdr_gameplay_hunter_downed_3_times_11_reply_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -7210,6 +7433,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_hunter_hit_by_goo_thrice_02",
 		response = "pdr_gameplay_hunter_hit_by_goo_thrice_02",
 		criterias = {
@@ -7256,6 +7480,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_hunter_killing_rat_ogre_melee_01",
 		name = "pdr_gameplay_hunter_killing_rat_ogre_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -7304,6 +7529,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_hunter_killing_rat_ogre_melee_01_reply_01",
 		name = "pdr_gameplay_hunter_killing_rat_ogre_melee_01_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -7328,6 +7554,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_hunter_killing_rat_ogre_melee_01_reply_02",
 		name = "pdr_gameplay_hunter_killing_rat_ogre_melee_01_reply_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -7352,6 +7579,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_hunter_killing_rat_ogre_ranged_01",
 		name = "pdr_gameplay_hunter_killing_rat_ogre_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -7400,6 +7628,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_hunter_killing_rat_ogre_ranged_01_reply_01",
 		name = "pdr_gameplay_hunter_killing_rat_ogre_ranged_01_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -7424,6 +7653,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_hunter_killing_spawn_melee_01",
 		name = "pdr_gameplay_hunter_killing_spawn_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -7466,6 +7696,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_hunter_killing_spawn_ranged_01",
 		name = "pdr_gameplay_hunter_killing_spawn_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -7508,6 +7739,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_hunter_killing_troll_melee_01",
 		name = "pdr_gameplay_hunter_killing_troll_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -7550,6 +7782,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_hunter_killing_troll_ranged_01",
 		name = "pdr_gameplay_hunter_killing_troll_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -7590,6 +7823,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_hunter_misses_bomb_01",
 		response = "pdr_gameplay_hunter_misses_bomb_01",
 		criterias = {
@@ -7652,6 +7886,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_hunter_potions_above_half_health_02",
 		response = "pdr_gameplay_hunter_potions_above_half_health_02",
 		criterias = {
@@ -7696,6 +7931,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_hunter_potions_above_half_health_03",
 		response = "pdr_gameplay_hunter_potions_above_half_health_03",
 		criterias = {
@@ -7740,6 +7976,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_hunter_potions_above_half_health_04",
 		response = "pdr_gameplay_hunter_potions_above_half_health_04",
 		criterias = {
@@ -7784,6 +8021,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_hunter_potions_above_half_health_reply_01",
 		response = "pdr_gameplay_hunter_potions_above_half_health_reply_01",
 		criterias = {
@@ -7815,6 +8053,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_i_will_tank",
 		response = "pdr_gameplay_i_will_tank",
 		criterias = {
@@ -7867,6 +8106,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_killing_a_rat_ogre_crossbow_01",
 		name = "pdr_gameplay_killing_a_rat_ogre_crossbow_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -7915,6 +8155,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_killing_a_second_rat_ogre_01",
 		name = "pdr_gameplay_killing_a_second_rat_ogre_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -7957,6 +8198,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_killing_a_second_rat_ogre_02",
 		name = "pdr_gameplay_killing_a_second_rat_ogre_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -7999,6 +8241,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_ranger_3_special_kills_in_a_row_01_reply_01",
 		name = "pdr_gameplay_ranger_3_special_kills_in_a_row_01_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -8023,6 +8266,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_ranger_3_special_kills_in_a_row_01_reply_02",
 		name = "pdr_gameplay_ranger_3_special_kills_in_a_row_01_reply_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -8047,6 +8291,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_ranger_3_special_kills_in_a_row_01_reply_03",
 		name = "pdr_gameplay_ranger_3_special_kills_in_a_row_01_reply_03",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -8071,6 +8316,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_ranger_3_special_kills_in_a_row_reply_01",
 		name = "pdr_gameplay_ranger_3_special_kills_in_a_row_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -8095,6 +8341,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_ranger_downed_3_times_02_reply_01",
 		name = "pdr_gameplay_ranger_downed_3_times_02_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -8119,6 +8366,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_ranger_downed_3_times_03_reply_01",
 		name = "pdr_gameplay_ranger_downed_3_times_03_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -8143,6 +8391,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_ranger_downed_3_times_04_reply_01",
 		name = "pdr_gameplay_ranger_downed_3_times_04_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -8167,6 +8416,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_ranger_downed_3_times_07_reply_01",
 		name = "pdr_gameplay_ranger_downed_3_times_07_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -8191,6 +8441,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_ranger_downed_3_times_08_reply_01",
 		name = "pdr_gameplay_ranger_downed_3_times_08_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -8215,6 +8466,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_ranger_downed_3_times_09_reply_01",
 		name = "pdr_gameplay_ranger_downed_3_times_09_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -8239,6 +8491,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_ranger_downed_3_times_10_reply_01",
 		name = "pdr_gameplay_ranger_downed_3_times_10_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -8263,6 +8516,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_ranger_downed_3_times_11_reply_01",
 		name = "pdr_gameplay_ranger_downed_3_times_11_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -8287,6 +8541,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_ranger_downed_3_times_12_reply_01",
 		name = "pdr_gameplay_ranger_downed_3_times_12_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -8311,6 +8566,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_ranger_downed_3_times_13_reply_01",
 		name = "pdr_gameplay_ranger_downed_3_times_13_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -8333,6 +8589,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_ranger_hit_by_goo_thrice_00_reply_01",
 		response = "pdr_gameplay_ranger_hit_by_goo_thrice_00_reply_01",
 		criterias = {
@@ -8364,6 +8621,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_ranger_hit_by_goo_thrice_02_reply_01",
 		response = "pdr_gameplay_ranger_hit_by_goo_thrice_02_reply_01",
 		criterias = {
@@ -8395,6 +8653,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_ranger_hit_by_goo_thrice_02_reply_02",
 		response = "pdr_gameplay_ranger_hit_by_goo_thrice_02_reply_02",
 		criterias = {
@@ -8426,6 +8685,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_ranger_hit_by_goo_thrice_02_reply_03",
 		response = "pdr_gameplay_ranger_hit_by_goo_thrice_02_reply_03",
 		criterias = {
@@ -8459,6 +8719,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_ranger_killing_3_specials_in_a_row_02_reply_01",
 		name = "pdr_gameplay_ranger_killing_3_specials_in_a_row_02_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -8483,6 +8744,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_ranger_killing_rat_ogre_melee_01_reply_01",
 		name = "pdr_gameplay_ranger_killing_rat_ogre_melee_01_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -8507,6 +8769,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_ranger_killing_rat_ogre_melee_01_reply_02",
 		name = "pdr_gameplay_ranger_killing_rat_ogre_melee_01_reply_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -8531,6 +8794,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_ranger_killing_rat_ogre_melee_01_reply_03",
 		name = "pdr_gameplay_ranger_killing_rat_ogre_melee_01_reply_03",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -8555,6 +8819,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_ranger_killing_rat_ogre_ranged_01_reply_01",
 		name = "pdr_gameplay_ranger_killing_rat_ogre_ranged_01_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -8579,6 +8844,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_ranger_killing_rat_ogre_ranged_01_reply_02",
 		name = "pdr_gameplay_ranger_killing_rat_ogre_ranged_01_reply_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -8603,6 +8869,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_ranger_killing_rat_ogre_ranged_01_reply_03",
 		name = "pdr_gameplay_ranger_killing_rat_ogre_ranged_01_reply_03",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -8625,6 +8892,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_ranger_potions_above_half_health_01_reply_01",
 		response = "pdr_gameplay_ranger_potions_above_half_health_01_reply_01",
 		criterias = {
@@ -8656,6 +8924,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_ranger_potions_above_half_health_01_reply_02",
 		response = "pdr_gameplay_ranger_potions_above_half_health_01_reply_02",
 		criterias = {
@@ -8687,6 +8956,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_ranger_potions_above_half_health_01_reply_03",
 		response = "pdr_gameplay_ranger_potions_above_half_health_01_reply_03",
 		criterias = {
@@ -8718,6 +8988,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_ranger_potions_above_half_health_02_reply_01",
 		response = "pdr_gameplay_ranger_potions_above_half_health_02_reply_01",
 		criterias = {
@@ -8749,6 +9020,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_ranger_potions_above_half_health_02_reply_02",
 		response = "pdr_gameplay_ranger_potions_above_half_health_02_reply_02",
 		criterias = {
@@ -8780,6 +9052,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_ranger_potions_above_half_health_02_reply_03",
 		response = "pdr_gameplay_ranger_potions_above_half_health_02_reply_03",
 		criterias = {
@@ -8811,6 +9084,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_ranger_potions_above_half_health_02_reply_04",
 		response = "pdr_gameplay_ranger_potions_above_half_health_02_reply_04",
 		criterias = {
@@ -8842,6 +9116,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_ranger_potions_above_half_health_03_reply_01",
 		response = "pdr_gameplay_ranger_potions_above_half_health_03_reply_01",
 		criterias = {
@@ -8873,6 +9148,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_ranger_potions_above_half_health_03_reply_02",
 		response = "pdr_gameplay_ranger_potions_above_half_health_03_reply_02",
 		criterias = {
@@ -8904,6 +9180,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_ranger_potions_above_half_health_03_reply_03",
 		response = "pdr_gameplay_ranger_potions_above_half_health_03_reply_03",
 		criterias = {
@@ -8935,6 +9212,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_ranger_potions_above_half_health_03_reply_04",
 		response = "pdr_gameplay_ranger_potions_above_half_health_03_reply_04",
 		criterias = {
@@ -8966,6 +9244,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_ranger_potions_above_half_health_04_reply_01",
 		response = "pdr_gameplay_ranger_potions_above_half_health_04_reply_01",
 		criterias = {
@@ -8997,6 +9276,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_response_044",
 		response = "pdr_gameplay_response_044",
 		criterias = {
@@ -9028,6 +9308,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_response_045",
 		response = "pdr_gameplay_response_045",
 		criterias = {
@@ -9059,6 +9340,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_response_046",
 		response = "pdr_gameplay_response_046",
 		criterias = {
@@ -9090,6 +9372,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_response_050",
 		response = "pdr_gameplay_response_050",
 		criterias = {
@@ -9121,6 +9404,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_response_053",
 		response = "pdr_gameplay_response_053",
 		criterias = {
@@ -9152,6 +9436,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_response_054",
 		response = "pdr_gameplay_response_054",
 		criterias = {
@@ -9185,6 +9470,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_07",
 		name = "pdr_gameplay_response_07",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -9209,6 +9495,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_079",
 		name = "pdr_gameplay_response_079",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -9233,6 +9520,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_080",
 		name = "pdr_gameplay_response_080",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -9257,6 +9545,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_125",
 		name = "pdr_gameplay_response_125",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -9281,6 +9570,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_126",
 		name = "pdr_gameplay_response_126",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -9305,6 +9595,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_127",
 		name = "pdr_gameplay_response_127",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -9329,6 +9620,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_128",
 		name = "pdr_gameplay_response_128",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -9353,6 +9645,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_129",
 		name = "pdr_gameplay_response_129",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -9377,6 +9670,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_130",
 		name = "pdr_gameplay_response_130",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -9401,6 +9695,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_131",
 		name = "pdr_gameplay_response_131",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -9425,6 +9720,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_132",
 		name = "pdr_gameplay_response_132",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -9449,6 +9745,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_150",
 		name = "pdr_gameplay_response_150",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -9473,6 +9770,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_151",
 		name = "pdr_gameplay_response_151",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -9497,6 +9795,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_152",
 		name = "pdr_gameplay_response_152",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -9521,6 +9820,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_153",
 		name = "pdr_gameplay_response_153",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -9545,6 +9845,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_154",
 		name = "pdr_gameplay_response_154",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -9569,6 +9870,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_155",
 		name = "pdr_gameplay_response_155",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -9593,6 +9895,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_156",
 		name = "pdr_gameplay_response_156",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -9617,6 +9920,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_157",
 		name = "pdr_gameplay_response_157",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -9641,6 +9945,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_158",
 		name = "pdr_gameplay_response_158",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -9665,6 +9970,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_159",
 		name = "pdr_gameplay_response_159",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -9689,6 +9995,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_160",
 		name = "pdr_gameplay_response_160",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -9713,6 +10020,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_161",
 		name = "pdr_gameplay_response_161",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -9737,6 +10045,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_162",
 		name = "pdr_gameplay_response_162",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -9761,6 +10070,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_163",
 		name = "pdr_gameplay_response_163",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -9785,6 +10095,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_17",
 		name = "pdr_gameplay_response_17",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -9809,6 +10120,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_18",
 		name = "pdr_gameplay_response_18",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -9833,6 +10145,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_180",
 		name = "pdr_gameplay_response_180",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -9857,6 +10170,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_181",
 		name = "pdr_gameplay_response_181",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -9881,6 +10195,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_182",
 		name = "pdr_gameplay_response_182",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -9905,6 +10220,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_183",
 		name = "pdr_gameplay_response_183",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -9929,6 +10245,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_184",
 		name = "pdr_gameplay_response_184",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -9953,6 +10270,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_185",
 		name = "pdr_gameplay_response_185",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -9977,6 +10295,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_186",
 		name = "pdr_gameplay_response_186",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -10001,6 +10320,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_187",
 		name = "pdr_gameplay_response_187",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -10025,6 +10345,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_188",
 		name = "pdr_gameplay_response_188",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -10049,6 +10370,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_189",
 		name = "pdr_gameplay_response_189",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -10073,6 +10395,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_19",
 		name = "pdr_gameplay_response_19",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -10097,6 +10420,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_190",
 		name = "pdr_gameplay_response_190",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -10121,6 +10445,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_191",
 		name = "pdr_gameplay_response_191",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -10145,6 +10470,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_192",
 		name = "pdr_gameplay_response_192",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -10169,6 +10495,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_193",
 		name = "pdr_gameplay_response_193",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -10193,6 +10520,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_194",
 		name = "pdr_gameplay_response_194",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -10217,6 +10545,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_195",
 		name = "pdr_gameplay_response_195",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -10241,6 +10570,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_20",
 		name = "pdr_gameplay_response_20",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -10265,6 +10595,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_21",
 		name = "pdr_gameplay_response_21",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -10289,6 +10620,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_22",
 		name = "pdr_gameplay_response_22",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -10313,6 +10645,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_23",
 		name = "pdr_gameplay_response_23",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -10337,6 +10670,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_38",
 		name = "pdr_gameplay_response_38",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -10361,6 +10695,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_39",
 		name = "pdr_gameplay_response_39",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -10385,6 +10720,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_response_40",
 		name = "pdr_gameplay_response_40",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -10409,6 +10745,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_soldier_3_special_kills_in_a_row_01_reply_01",
 		name = "pdr_gameplay_soldier_3_special_kills_in_a_row_01_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -10431,6 +10768,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_soldier_3_special_kills_in_a_row_02",
 		response = "pdr_gameplay_soldier_3_special_kills_in_a_row_02",
 		criterias = {
@@ -10489,6 +10827,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_soldier_caught_by_slaver_3_times_two",
 		name = "pdr_gameplay_soldier_caught_by_slaver_3_times_two",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -10513,6 +10852,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_soldier_downed_3_times_09",
 		name = "pdr_gameplay_soldier_downed_3_times_09",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -10543,6 +10883,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_soldier_downed_3_times_10",
 		name = "pdr_gameplay_soldier_downed_3_times_10",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -10573,6 +10914,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_soldier_downed_3_times_10_reply_01",
 		name = "pdr_gameplay_soldier_downed_3_times_10_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -10597,6 +10939,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_soldier_downed_3_times_11",
 		name = "pdr_gameplay_soldier_downed_3_times_11",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -10627,6 +10970,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_soldier_downed_3_times_11_reply_01",
 		name = "pdr_gameplay_soldier_downed_3_times_11_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -10649,6 +10993,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_soldier_hit_by_goo_thrice_02",
 		response = "pdr_gameplay_soldier_hit_by_goo_thrice_02",
 		criterias = {
@@ -10695,6 +11040,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_soldier_killing_rat_ogre_melee_01",
 		name = "pdr_gameplay_soldier_killing_rat_ogre_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -10743,6 +11089,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_soldier_killing_rat_ogre_melee_01_reply_01",
 		name = "pdr_gameplay_soldier_killing_rat_ogre_melee_01_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -10767,6 +11114,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_soldier_killing_rat_ogre_melee_01_reply_02",
 		name = "pdr_gameplay_soldier_killing_rat_ogre_melee_01_reply_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -10791,6 +11139,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_soldier_killing_rat_ogre_ranged_01",
 		name = "pdr_gameplay_soldier_killing_rat_ogre_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -10833,6 +11182,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_soldier_killing_rat_ogre_ranged_01_reply_01",
 		name = "pdr_gameplay_soldier_killing_rat_ogre_ranged_01_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -10857,6 +11207,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_soldier_killing_rat_ogre_ranged_01_reply_02",
 		name = "pdr_gameplay_soldier_killing_rat_ogre_ranged_01_reply_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -10881,6 +11232,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_soldier_killing_spawn_melee_01",
 		name = "pdr_gameplay_soldier_killing_spawn_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -10923,6 +11275,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_soldier_killing_spawn_ranged_01",
 		name = "pdr_gameplay_soldier_killing_spawn_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -10965,6 +11318,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_soldier_killing_troll_melee_01",
 		name = "pdr_gameplay_soldier_killing_troll_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -11007,6 +11361,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_soldier_killing_troll_ranged_01",
 		name = "pdr_gameplay_soldier_killing_troll_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -11047,6 +11402,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_soldier_misses_bomb_01",
 		response = "pdr_gameplay_soldier_misses_bomb_01",
 		criterias = {
@@ -11109,6 +11465,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_soldier_potions_above_half_health_01",
 		response = "pdr_gameplay_soldier_potions_above_half_health_01",
 		criterias = {
@@ -11153,6 +11510,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_soldier_potions_above_half_health_01_reply_01",
 		response = "pdr_gameplay_soldier_potions_above_half_health_01_reply_01",
 		criterias = {
@@ -11184,6 +11542,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_soldier_potions_above_half_health_02",
 		response = "pdr_gameplay_soldier_potions_above_half_health_02",
 		criterias = {
@@ -11228,6 +11587,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_soldier_potions_above_half_health_02_reply_02",
 		response = "pdr_gameplay_soldier_potions_above_half_health_02_reply_02",
 		criterias = {
@@ -11259,6 +11619,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_soldier_potions_above_half_health_03",
 		response = "pdr_gameplay_soldier_potions_above_half_health_03",
 		criterias = {
@@ -11303,6 +11664,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_soldier_potions_above_half_health_03_reply_01",
 		response = "pdr_gameplay_soldier_potions_above_half_health_03_reply_01",
 		criterias = {
@@ -11334,6 +11696,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_wizard_3_special_kills_in_a_row_01",
 		response = "pdr_gameplay_wizard_3_special_kills_in_a_row_01",
 		criterias = {
@@ -11392,6 +11755,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_wizard_3_special_kills_in_a_row_01_reply_01",
 		name = "pdr_gameplay_wizard_3_special_kills_in_a_row_01_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -11416,6 +11780,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_wizard_caught_by_slaver_3_times_02",
 		name = "pdr_gameplay_wizard_caught_by_slaver_3_times_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -11440,6 +11805,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_wizard_downed_3_times_05_reply_01",
 		name = "pdr_gameplay_wizard_downed_3_times_05_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -11464,6 +11830,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_wizard_downed_3_times_06_reply_01",
 		name = "pdr_gameplay_wizard_downed_3_times_06_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -11488,6 +11855,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_wizard_downed_3_times_07_reply_01",
 		name = "pdr_gameplay_wizard_downed_3_times_07_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -11512,6 +11880,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_wizard_downed_3_times_08",
 		name = "pdr_gameplay_wizard_downed_3_times_08",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -11542,6 +11911,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_wizard_downed_3_times_09",
 		name = "pdr_gameplay_wizard_downed_3_times_09",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -11572,6 +11942,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_wizard_downed_3_times_09_reply_01",
 		name = "pdr_gameplay_wizard_downed_3_times_09_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -11596,6 +11967,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_wizard_downed_3_times_10",
 		name = "pdr_gameplay_wizard_downed_3_times_10",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -11626,6 +11998,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_wizard_fires_a_rat_ogre_01",
 		name = "pdr_gameplay_wizard_fires_a_rat_ogre_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -11678,6 +12051,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_wizard_hit_by_goo_thrice_02",
 		response = "pdr_gameplay_wizard_hit_by_goo_thrice_02",
 		criterias = {
@@ -11724,6 +12098,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_wizard_killing_rat_ogre_melee_01",
 		name = "pdr_gameplay_wizard_killing_rat_ogre_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -11772,6 +12147,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_wizard_killing_rat_ogre_ranged_01",
 		name = "pdr_gameplay_wizard_killing_rat_ogre_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -11820,6 +12196,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_wizard_killing_rat_ogre_ranged_01_reply_05",
 		name = "pdr_gameplay_wizard_killing_rat_ogre_ranged_01_reply_05",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -11844,6 +12221,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_wizard_killing_spawn_melee_01",
 		name = "pdr_gameplay_wizard_killing_spawn_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -11886,6 +12264,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_wizard_killing_spawn_ranged_01",
 		name = "pdr_gameplay_wizard_killing_spawn_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -11928,6 +12307,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_wizard_killing_troll_melee_01",
 		name = "pdr_gameplay_wizard_killing_troll_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -11970,6 +12350,7 @@ return function ()
 	define_rule({
 		response = "pdr_gameplay_wizard_killing_troll_ranged_01",
 		name = "pdr_gameplay_wizard_killing_troll_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -12010,6 +12391,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_wizard_kills_3_specials_in_a_row_02",
 		response = "pdr_gameplay_wizard_kills_3_specials_in_a_row_02",
 		criterias = {
@@ -12066,6 +12448,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_wizard_misses_bomb_01",
 		response = "pdr_gameplay_wizard_misses_bomb_01",
 		criterias = {
@@ -12128,6 +12511,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_wizard_potions_above_half_health_01",
 		response = "pdr_gameplay_wizard_potions_above_half_health_01",
 		criterias = {
@@ -12172,6 +12556,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_wizard_potions_above_half_health_02",
 		response = "pdr_gameplay_wizard_potions_above_half_health_02",
 		criterias = {
@@ -12216,6 +12601,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_wizard_potions_above_half_health_03",
 		response = "pdr_gameplay_wizard_potions_above_half_health_03",
 		criterias = {
@@ -12260,6 +12646,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_wizard_potions_above_half_health_03_reply_02",
 		response = "pdr_gameplay_wizard_potions_above_half_health_03_reply_02",
 		criterias = {
@@ -12291,6 +12678,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_gameplay_wizard_potions_above_half_health_04",
 		response = "pdr_gameplay_wizard_potions_above_half_health_04",
 		criterias = {
@@ -12324,6 +12712,7 @@ return function ()
 	define_rule({
 		response = "pdr_hunter_shoots_rat_ogre_01",
 		name = "pdr_hunter_shoots_rat_ogre_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -12360,6 +12749,7 @@ return function ()
 	define_rule({
 		response = "pes_all_stairs_conversation_b",
 		name = "pes_all_stairs_conversation_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -12382,6 +12772,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_ameplay_soldier_potions_above_half_health_01_reply_01",
 		response = "pes_ameplay_soldier_potions_above_half_health_01_reply_01",
 		criterias = {
@@ -12413,6 +12804,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_another_is_bunnyjumping_01",
 		response = "pes_gameplay_another_is_bunnyjumping_01",
 		criterias = {
@@ -12445,6 +12837,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_elf_3_special_kills_in_a_row_01",
 		response = "pes_gameplay_elf_3_special_kills_in_a_row_01",
 		criterias = {
@@ -12503,6 +12896,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_elf_caught_by_slaver_3_times_02",
 		name = "pes_gameplay_elf_caught_by_slaver_3_times_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -12527,6 +12921,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_elf_downed_3_times_08",
 		name = "pes_gameplay_elf_downed_3_times_08",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -12557,6 +12952,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_elf_downed_3_times_08_reply_01",
 		name = "pes_gameplay_elf_downed_3_times_08_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -12581,6 +12977,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_elf_downed_3_times_09",
 		name = "pes_gameplay_elf_downed_3_times_09",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -12611,6 +13008,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_elf_downed_3_times_09_reply_01",
 		name = "pes_gameplay_elf_downed_3_times_09_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -12635,6 +13033,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_elf_downed_3_times_10",
 		name = "pes_gameplay_elf_downed_3_times_10",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -12663,6 +13062,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_elf_hit_by_goo_thrice_02",
 		response = "pes_gameplay_elf_hit_by_goo_thrice_02",
 		criterias = {
@@ -12709,6 +13109,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_elf_killing_rat_ogre_melee_01",
 		name = "pes_gameplay_elf_killing_rat_ogre_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -12757,6 +13158,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_elf_killing_rat_ogre_ranged_01",
 		name = "pes_gameplay_elf_killing_rat_ogre_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -12805,6 +13207,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_elf_killing_rat_ogre_ranged_01_reply_01",
 		name = "pes_gameplay_elf_killing_rat_ogre_ranged_01_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -12829,6 +13232,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_elf_killing_rat_ogre_ranged_01_reply_02",
 		name = "pes_gameplay_elf_killing_rat_ogre_ranged_01_reply_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -12853,6 +13257,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_elf_killing_spawn_melee_01",
 		name = "pes_gameplay_elf_killing_spawn_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -12895,6 +13300,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_elf_killing_spawn_ranged_01",
 		name = "pes_gameplay_elf_killing_spawn_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -12937,6 +13343,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_elf_killing_troll_melee_01",
 		name = "pes_gameplay_elf_killing_troll_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -12979,6 +13386,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_elf_killing_troll_ranged_01",
 		name = "pes_gameplay_elf_killing_troll_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -13019,6 +13427,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_elf_misses_bomb_01",
 		response = "pes_gameplay_elf_misses_bomb_01",
 		criterias = {
@@ -13081,6 +13490,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_elf_potions_above_half_health_01",
 		response = "pes_gameplay_elf_potions_above_half_health_01",
 		criterias = {
@@ -13125,6 +13535,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_elf_potions_above_half_health_01_reply_02",
 		response = "pes_gameplay_elf_potions_above_half_health_01_reply_02",
 		criterias = {
@@ -13156,6 +13567,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_elf_potions_above_half_health_02",
 		response = "pes_gameplay_elf_potions_above_half_health_02",
 		criterias = {
@@ -13200,6 +13612,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_elf_potions_above_half_health_02_reply_01",
 		response = "pes_gameplay_elf_potions_above_half_health_02_reply_01",
 		criterias = {
@@ -13231,6 +13644,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_elf_potions_above_half_health_03",
 		response = "pes_gameplay_elf_potions_above_half_health_03",
 		criterias = {
@@ -13275,6 +13689,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_elf_potions_above_half_health_03_reply_01",
 		response = "pes_gameplay_elf_potions_above_half_health_03_reply_01",
 		criterias = {
@@ -13308,6 +13723,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_elf_shoots_a_rat_ogre_01",
 		name = "pes_gameplay_elf_shoots_a_rat_ogre_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -13342,6 +13758,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_hanging_help",
 		response = "pes_gameplay_hanging_help",
 		criterias = {
@@ -13386,6 +13803,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_hunter_3_special_kills_in_a_row_01",
 		response = "pes_gameplay_hunter_3_special_kills_in_a_row_01",
 		criterias = {
@@ -13444,6 +13862,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_hunter_3_special_kills_in_a_row_01_reply_01",
 		name = "pes_gameplay_hunter_3_special_kills_in_a_row_01_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -13468,6 +13887,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_hunter_3_special_kills_in_a_row_01_reply_02",
 		name = "pes_gameplay_hunter_3_special_kills_in_a_row_01_reply_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -13492,6 +13912,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_hunter_caught_by_slaver_3_times_02",
 		name = "pes_gameplay_hunter_caught_by_slaver_3_times_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -13516,6 +13937,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_hunter_downed_3_times_05",
 		name = "pes_gameplay_hunter_downed_3_times_05",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -13546,6 +13968,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_hunter_downed_3_times_05_reply_01",
 		name = "pes_gameplay_hunter_downed_3_times_05_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -13570,6 +13993,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_hunter_downed_3_times_06",
 		name = "pes_gameplay_hunter_downed_3_times_06",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -13600,6 +14024,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_hunter_downed_3_times_07",
 		name = "pes_gameplay_hunter_downed_3_times_07",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -13630,6 +14055,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_hunter_downed_3_times_07_reply_01",
 		name = "pes_gameplay_hunter_downed_3_times_07_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -13652,6 +14078,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_hunter_hit_by_goo_thrice",
 		response = "pes_gameplay_hunter_hit_by_goo_thrice",
 		criterias = {
@@ -13698,6 +14125,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_hunter_killing_rat_ogre_ranged_01",
 		name = "pes_gameplay_hunter_killing_rat_ogre_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -13746,6 +14174,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_hunter_killing_rat_ogre_ranged_01_reply_01",
 		name = "pes_gameplay_hunter_killing_rat_ogre_ranged_01_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -13770,6 +14199,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_hunter_killing_rat_ogre_ranged_01_reply_02",
 		name = "pes_gameplay_hunter_killing_rat_ogre_ranged_01_reply_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -13794,6 +14224,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_hunter_killing_spawn_melee_01",
 		name = "pes_gameplay_hunter_killing_spawn_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -13842,6 +14273,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_hunter_killing_spawn_ranged_01",
 		name = "pes_gameplay_hunter_killing_spawn_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -13884,6 +14316,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_hunter_killing_troll_melee_01",
 		name = "pes_gameplay_hunter_killing_troll_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -13926,6 +14359,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_hunter_killing_troll_ranged_01",
 		name = "pes_gameplay_hunter_killing_troll_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -13968,6 +14402,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_hunter_kills_3_specials_in_a_row_02_reply_01",
 		name = "pes_gameplay_hunter_kills_3_specials_in_a_row_02_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -13990,6 +14425,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_hunter_misses_bomb_01",
 		response = "pes_gameplay_hunter_misses_bomb_01",
 		criterias = {
@@ -14052,6 +14488,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_hunter_potions_above_half_health_01",
 		response = "pes_gameplay_hunter_potions_above_half_health_01",
 		criterias = {
@@ -14096,6 +14533,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_hunter_potions_above_half_health_01_reply_01",
 		response = "pes_gameplay_hunter_potions_above_half_health_01_reply_01",
 		criterias = {
@@ -14127,6 +14565,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_hunter_potions_above_half_health_02",
 		response = "pes_gameplay_hunter_potions_above_half_health_02",
 		criterias = {
@@ -14171,6 +14610,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_hunter_potions_above_half_health_02_reply_01",
 		response = "pes_gameplay_hunter_potions_above_half_health_02_reply_01",
 		criterias = {
@@ -14202,6 +14642,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_hunter_potions_above_half_health_03",
 		response = "pes_gameplay_hunter_potions_above_half_health_03",
 		criterias = {
@@ -14246,6 +14687,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_hunter_potions_above_half_health_03_reply_01",
 		response = "pes_gameplay_hunter_potions_above_half_health_03_reply_01",
 		criterias = {
@@ -14277,6 +14719,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_i_will_tank",
 		response = "pes_gameplay_i_will_tank",
 		criterias = {
@@ -14329,6 +14772,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_killing_a_second_rat_ogre_01",
 		name = "pes_gameplay_killing_a_second_rat_ogre_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -14371,6 +14815,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_killing_a_second_rat_ogre_02",
 		name = "pes_gameplay_killing_a_second_rat_ogre_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -14413,6 +14858,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_killing_rat_ogre_01",
 		name = "pes_gameplay_killing_rat_ogre_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -14459,6 +14905,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_ranger_3_special_kills_in_a_row_01",
 		response = "pes_gameplay_ranger_3_special_kills_in_a_row_01",
 		criterias = {
@@ -14517,6 +14964,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_ranger_3_special_kills_in_a_row_01_reply_01",
 		name = "pes_gameplay_ranger_3_special_kills_in_a_row_01_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -14541,6 +14989,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_ranger_caught_by_slaver_3_times_02",
 		name = "pes_gameplay_ranger_caught_by_slaver_3_times_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -14565,6 +15014,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_ranger_downed_3_times_09_reply_01",
 		name = "pes_gameplay_ranger_downed_3_times_09_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -14589,6 +15039,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_ranger_downed_3_times_10",
 		name = "pes_gameplay_ranger_downed_3_times_10",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -14617,6 +15068,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_ranger_hit_by_goo_thrice_02",
 		response = "pes_gameplay_ranger_hit_by_goo_thrice_02",
 		criterias = {
@@ -14663,6 +15115,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_ranger_killing_3_specials_in_a_row_02_reply_01",
 		name = "pes_gameplay_ranger_killing_3_specials_in_a_row_02_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -14687,6 +15140,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_ranger_killing_rat_ogre_melee_01",
 		name = "pes_gameplay_ranger_killing_rat_ogre_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -14735,6 +15189,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_ranger_killing_rat_ogre_ranged_01",
 		name = "pes_gameplay_ranger_killing_rat_ogre_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -14783,6 +15238,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_ranger_killing_rat_ogre_ranged_01_reply_01",
 		name = "pes_gameplay_ranger_killing_rat_ogre_ranged_01_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -14807,6 +15263,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_ranger_killing_spawn_melee_01",
 		name = "pes_gameplay_ranger_killing_spawn_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -14849,6 +15306,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_ranger_killing_spawn_ranged_01",
 		name = "pes_gameplay_ranger_killing_spawn_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -14891,6 +15349,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_ranger_killing_troll_ranged_01",
 		name = "pes_gameplay_ranger_killing_troll_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -14931,6 +15390,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_ranger_misses_bomb_01",
 		response = "pes_gameplay_ranger_misses_bomb_01",
 		criterias = {
@@ -14993,6 +15453,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_ranger_potions_above_half_health_01",
 		response = "pes_gameplay_ranger_potions_above_half_health_01",
 		criterias = {
@@ -15037,6 +15498,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_ranger_potions_above_half_health_02",
 		response = "pes_gameplay_ranger_potions_above_half_health_02",
 		criterias = {
@@ -15081,6 +15543,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_ranger_potions_above_half_health_02_reply_01",
 		response = "pes_gameplay_ranger_potions_above_half_health_02_reply_01",
 		criterias = {
@@ -15112,6 +15575,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_ranger_potions_above_half_health_03",
 		response = "pes_gameplay_ranger_potions_above_half_health_03",
 		criterias = {
@@ -15156,6 +15620,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_ranger_potions_above_half_health_03_reply_01",
 		response = "pes_gameplay_ranger_potions_above_half_health_03_reply_01",
 		criterias = {
@@ -15187,6 +15652,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_ranger_potions_above_half_health_reply_01",
 		response = "pes_gameplay_ranger_potions_above_half_health_reply_01",
 		criterias = {
@@ -15220,6 +15686,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_04",
 		name = "pes_gameplay_response_04",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -15244,6 +15711,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_05",
 		name = "pes_gameplay_response_05",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -15268,6 +15736,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_071",
 		name = "pes_gameplay_response_071",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -15292,6 +15761,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_112",
 		name = "pes_gameplay_response_112",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -15316,6 +15786,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_113",
 		name = "pes_gameplay_response_113",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -15340,6 +15811,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_114",
 		name = "pes_gameplay_response_114",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -15364,6 +15836,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_115",
 		name = "pes_gameplay_response_115",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -15388,6 +15861,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_116",
 		name = "pes_gameplay_response_116",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -15412,6 +15886,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_117",
 		name = "pes_gameplay_response_117",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -15436,6 +15911,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_118",
 		name = "pes_gameplay_response_118",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -15460,6 +15936,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_119",
 		name = "pes_gameplay_response_119",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -15484,6 +15961,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_13",
 		name = "pes_gameplay_response_13",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -15508,6 +15986,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_136",
 		name = "pes_gameplay_response_136",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -15532,6 +16011,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_137",
 		name = "pes_gameplay_response_137",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -15556,6 +16036,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_138",
 		name = "pes_gameplay_response_138",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -15580,6 +16061,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_139",
 		name = "pes_gameplay_response_139",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -15604,6 +16086,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_14",
 		name = "pes_gameplay_response_14",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -15628,6 +16111,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_140",
 		name = "pes_gameplay_response_140",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -15652,6 +16136,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_141",
 		name = "pes_gameplay_response_141",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -15676,6 +16161,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_142",
 		name = "pes_gameplay_response_142",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -15700,6 +16186,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_143",
 		name = "pes_gameplay_response_143",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -15724,6 +16211,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_144",
 		name = "pes_gameplay_response_144",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -15748,6 +16236,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_145",
 		name = "pes_gameplay_response_145",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -15772,6 +16261,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_146",
 		name = "pes_gameplay_response_146",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -15796,6 +16286,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_147",
 		name = "pes_gameplay_response_147",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -15820,6 +16311,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_148",
 		name = "pes_gameplay_response_148",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -15844,6 +16336,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_149",
 		name = "pes_gameplay_response_149",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -15868,6 +16361,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_15",
 		name = "pes_gameplay_response_15",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -15892,6 +16386,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_150",
 		name = "pes_gameplay_response_150",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -15916,6 +16411,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_151",
 		name = "pes_gameplay_response_151",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -15940,6 +16436,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_16",
 		name = "pes_gameplay_response_16",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -15964,6 +16461,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_167",
 		name = "pes_gameplay_response_167",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -15988,6 +16486,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_168",
 		name = "pes_gameplay_response_168",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -16012,6 +16511,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_169",
 		name = "pes_gameplay_response_169",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -16036,6 +16536,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_17",
 		name = "pes_gameplay_response_17",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -16060,6 +16561,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_170",
 		name = "pes_gameplay_response_170",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -16084,6 +16586,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_171",
 		name = "pes_gameplay_response_171",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -16108,6 +16611,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_172",
 		name = "pes_gameplay_response_172",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -16132,6 +16636,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_173",
 		name = "pes_gameplay_response_173",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -16156,6 +16661,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_174",
 		name = "pes_gameplay_response_174",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -16180,6 +16686,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_175",
 		name = "pes_gameplay_response_175",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -16204,6 +16711,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_176",
 		name = "pes_gameplay_response_176",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -16228,6 +16736,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_177",
 		name = "pes_gameplay_response_177",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -16252,6 +16761,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_178",
 		name = "pes_gameplay_response_178",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -16276,6 +16786,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_179",
 		name = "pes_gameplay_response_179",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -16300,6 +16811,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_180",
 		name = "pes_gameplay_response_180",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -16324,6 +16836,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_181",
 		name = "pes_gameplay_response_181",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -16348,6 +16861,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_182",
 		name = "pes_gameplay_response_182",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -16372,6 +16886,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_183",
 		name = "pes_gameplay_response_183",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -16396,6 +16911,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_30",
 		name = "pes_gameplay_response_30",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -16420,6 +16936,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_31",
 		name = "pes_gameplay_response_31",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -16444,6 +16961,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_response_32",
 		name = "pes_gameplay_response_32",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -16468,6 +16986,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_soldier_3_special_kills_in_a_row_01_reply_01",
 		name = "pes_gameplay_soldier_3_special_kills_in_a_row_01_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -16492,6 +17011,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_soldier_3_special_kills_in_a_row_01_reply_02",
 		name = "pes_gameplay_soldier_3_special_kills_in_a_row_01_reply_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -16516,6 +17036,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_soldier_3_special_kills_in_a_row_01_reply_03",
 		name = "pes_gameplay_soldier_3_special_kills_in_a_row_01_reply_03",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -16540,6 +17061,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_soldier_3_special_kills_in_a_row_02",
 		name = "pes_gameplay_soldier_3_special_kills_in_a_row_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -16564,6 +17086,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_soldier_downed_3_times_02_reply_01",
 		name = "pes_gameplay_soldier_downed_3_times_02_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -16588,6 +17111,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_soldier_downed_3_times_04_reply_01",
 		name = "pes_gameplay_soldier_downed_3_times_04_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -16612,6 +17136,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_soldier_downed_3_times_06_reply_01",
 		name = "pes_gameplay_soldier_downed_3_times_06_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -16636,6 +17161,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_soldier_downed_3_times_07_reply_01",
 		name = "pes_gameplay_soldier_downed_3_times_07_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -16660,6 +17186,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_soldier_downed_3_times_08_reply_01",
 		name = "pes_gameplay_soldier_downed_3_times_08_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -16684,6 +17211,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_soldier_downed_3_times_09_reply_01",
 		name = "pes_gameplay_soldier_downed_3_times_09_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -16708,6 +17236,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_soldier_downed_3_times_10_reply_01",
 		name = "pes_gameplay_soldier_downed_3_times_10_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -16732,6 +17261,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_soldier_downed_3_times_11_reply_01",
 		name = "pes_gameplay_soldier_downed_3_times_11_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -16756,6 +17286,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_soldier_downed_3_times_12_reply_01",
 		name = "pes_gameplay_soldier_downed_3_times_12_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -16780,6 +17311,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_soldier_downed_3_times_13_reply_01",
 		name = "pes_gameplay_soldier_downed_3_times_13_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -16804,6 +17336,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_soldier_downed_3_times_reply_01",
 		name = "pes_gameplay_soldier_downed_3_times_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -16826,6 +17359,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_soldier_hit_by_goo_thrice_02_reply_01",
 		response = "pes_gameplay_soldier_hit_by_goo_thrice_02_reply_01",
 		criterias = {
@@ -16857,6 +17391,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_soldier_hit_by_goo_thrice_02_reply_02",
 		response = "pes_gameplay_soldier_hit_by_goo_thrice_02_reply_02",
 		criterias = {
@@ -16888,6 +17423,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_soldier_hit_by_goo_thrice_02_reply_03",
 		response = "pes_gameplay_soldier_hit_by_goo_thrice_02_reply_03",
 		criterias = {
@@ -16919,6 +17455,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_soldier_hit_by_goo_thrice_02_reply_04",
 		response = "pes_gameplay_soldier_hit_by_goo_thrice_02_reply_04",
 		criterias = {
@@ -16952,6 +17489,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_soldier_killing_rat_ogre_melee_01_reply_01",
 		name = "pes_gameplay_soldier_killing_rat_ogre_melee_01_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -16976,6 +17514,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_soldier_killing_rat_ogre_melee_01_reply_02",
 		name = "pes_gameplay_soldier_killing_rat_ogre_melee_01_reply_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -17000,6 +17539,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_soldier_killing_rat_ogre_ranged_01_reply_01",
 		name = "pes_gameplay_soldier_killing_rat_ogre_ranged_01_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -17024,6 +17564,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_soldier_killing_rat_ogre_ranged_01_reply_02",
 		name = "pes_gameplay_soldier_killing_rat_ogre_ranged_01_reply_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -17048,6 +17589,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_soldier_killing_rat_ogre_ranged_01_reply_03",
 		name = "pes_gameplay_soldier_killing_rat_ogre_ranged_01_reply_03",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -17072,6 +17614,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_soldier_killing_rat_ogre_ranged_01_reply_04",
 		name = "pes_gameplay_soldier_killing_rat_ogre_ranged_01_reply_04",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -17094,6 +17637,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_soldier_potions_above_half_health_01_reply_01",
 		response = "pes_gameplay_soldier_potions_above_half_health_01_reply_01",
 		criterias = {
@@ -17125,6 +17669,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_soldier_potions_above_half_health_01_reply_02",
 		response = "pes_gameplay_soldier_potions_above_half_health_01_reply_02",
 		criterias = {
@@ -17156,6 +17701,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_soldier_potions_above_half_health_02_reply_01",
 		response = "pes_gameplay_soldier_potions_above_half_health_02_reply_01",
 		criterias = {
@@ -17187,6 +17733,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_soldier_potions_above_half_health_02_reply_02",
 		response = "pes_gameplay_soldier_potions_above_half_health_02_reply_02",
 		criterias = {
@@ -17218,6 +17765,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_soldier_potions_above_half_health_02_reply_03",
 		response = "pes_gameplay_soldier_potions_above_half_health_02_reply_03",
 		criterias = {
@@ -17249,6 +17797,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_soldier_potions_above_half_health_02_reply_04",
 		response = "pes_gameplay_soldier_potions_above_half_health_02_reply_04",
 		criterias = {
@@ -17280,6 +17829,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_soldier_potions_above_half_health_03_reply_01",
 		response = "pes_gameplay_soldier_potions_above_half_health_03_reply_01",
 		criterias = {
@@ -17311,6 +17861,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_soldier_potions_above_half_health_03_reply_02",
 		response = "pes_gameplay_soldier_potions_above_half_health_03_reply_02",
 		criterias = {
@@ -17342,6 +17893,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_soldier_potions_above_half_health_03_reply_03",
 		response = "pes_gameplay_soldier_potions_above_half_health_03_reply_03",
 		criterias = {
@@ -17375,6 +17927,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_wizard_3_special_kills_in_a_row_01_reply_01",
 		name = "pes_gameplay_wizard_3_special_kills_in_a_row_01_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -17399,6 +17952,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_wizard_caught_by_slaver_3_times_02",
 		name = "pes_gameplay_wizard_caught_by_slaver_3_times_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -17423,6 +17977,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_wizard_downed_3_times_04_reply_01",
 		name = "pes_gameplay_wizard_downed_3_times_04_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -17445,6 +18000,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_wizard_downed_3_times_05",
 		response = "pes_gameplay_wizard_downed_3_times_05",
 		criterias = {
@@ -17491,6 +18047,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_wizard_downed_3_times_06",
 		name = "pes_gameplay_wizard_downed_3_times_06",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -17521,6 +18078,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_wizard_downed_3_times_07",
 		name = "pes_gameplay_wizard_downed_3_times_07",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -17551,6 +18109,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_wizard_downed_3_times_07_reply_01",
 		name = "pes_gameplay_wizard_downed_3_times_07_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -17575,6 +18134,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_wizard_downed_3_times_12_reply_01",
 		name = "pes_gameplay_wizard_downed_3_times_12_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -17597,6 +18157,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_wizard_hit_by_goo_thrice_02",
 		response = "pes_gameplay_wizard_hit_by_goo_thrice_02",
 		criterias = {
@@ -17643,6 +18204,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_wizard_killing_rat_ogre_melee_01",
 		name = "pes_gameplay_wizard_killing_rat_ogre_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -17691,6 +18253,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_wizard_killing_rat_ogre_melee_01_reply_01",
 		name = "pes_gameplay_wizard_killing_rat_ogre_melee_01_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -17715,6 +18278,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_wizard_killing_rat_ogre_melee_01_reply_02",
 		name = "pes_gameplay_wizard_killing_rat_ogre_melee_01_reply_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -17739,6 +18303,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_wizard_killing_rat_ogre_ranged_01",
 		name = "pes_gameplay_wizard_killing_rat_ogre_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -17787,6 +18352,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_wizard_killing_spawn_melee_01",
 		name = "pes_gameplay_wizard_killing_spawn_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -17829,6 +18395,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_wizard_killing_spawn_ranged_01",
 		name = "pes_gameplay_wizard_killing_spawn_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -17871,6 +18438,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_wizard_killing_troll_melee_01",
 		name = "pes_gameplay_wizard_killing_troll_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -17913,6 +18481,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_wizard_killing_troll_ranged_01",
 		name = "pes_gameplay_wizard_killing_troll_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -17955,6 +18524,7 @@ return function ()
 	define_rule({
 		response = "pes_gameplay_wizard_kills_3_specials_in_a_row_02_reply_01",
 		name = "pes_gameplay_wizard_kills_3_specials_in_a_row_02_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -17977,6 +18547,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_wizard_misses_bomb_01",
 		response = "pes_gameplay_wizard_misses_bomb_01",
 		criterias = {
@@ -18039,6 +18610,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_wizard_potions_above_half_health_01",
 		response = "pes_gameplay_wizard_potions_above_half_health_01",
 		criterias = {
@@ -18083,6 +18655,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_wizard_potions_above_half_health_02",
 		response = "pes_gameplay_wizard_potions_above_half_health_02",
 		criterias = {
@@ -18127,6 +18700,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_wizard_potions_above_half_health_02_reply_01",
 		response = "pes_gameplay_wizard_potions_above_half_health_02_reply_01",
 		criterias = {
@@ -18158,6 +18732,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_wizard_potions_above_half_health_03",
 		response = "pes_gameplay_wizard_potions_above_half_health_03",
 		criterias = {
@@ -18202,6 +18777,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_wizard_potions_above_half_health_03_reply_01",
 		response = "pes_gameplay_wizard_potions_above_half_health_03_reply_01",
 		criterias = {
@@ -18233,6 +18809,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_wizard_potions_above_half_health_reply_01",
 		response = "pes_gameplay_wizard_potions_above_half_health_reply_01",
 		criterias = {
@@ -18264,6 +18841,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_pes_gameplay_wizard_potions_above_half_health_03_reply_01",
 		response = "pes_pes_gameplay_wizard_potions_above_half_health_03_reply_01",
 		criterias = {
@@ -18297,6 +18875,7 @@ return function ()
 	define_rule({
 		response = "pwb_gameplay_response_18",
 		name = "pwb_gameplay_response_18",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -18321,6 +18900,7 @@ return function ()
 	define_rule({
 		response = "pwe_all_stairs_conversation_b",
 		name = "pwe_all_stairs_conversation_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -18343,6 +18923,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_another_is_bunnyjumping_01",
 		response = "pwe_gameplay_another_is_bunnyjumping_01",
 		criterias = {
@@ -18375,6 +18956,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_dwarf_picks_up_a_bomb",
 		response = "pwe_gameplay_dwarf_picks_up_a_bomb",
 		criterias = {
@@ -18440,6 +19022,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_elf_3_special_kills_in_a_row_01",
 		name = "pwe_gameplay_elf_3_special_kills_in_a_row_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -18464,6 +19047,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_elf_3_special_kills_in_a_row_01_reply_01",
 		name = "pwe_gameplay_elf_3_special_kills_in_a_row_01_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -18488,6 +19072,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_elf_3_special_kills_in_a_row_01_reply_02",
 		name = "pwe_gameplay_elf_3_special_kills_in_a_row_01_reply_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -18512,6 +19097,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_elf_3_special_kills_in_a_row_01_reply_03",
 		name = "pwe_gameplay_elf_3_special_kills_in_a_row_01_reply_03",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -18536,6 +19122,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_elf_downed_3_times_02_reply_01",
 		name = "pwe_gameplay_elf_downed_3_times_02_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -18560,6 +19147,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_elf_downed_3_times_03_reply_01",
 		name = "pwe_gameplay_elf_downed_3_times_03_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -18584,6 +19172,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_elf_downed_3_times_04_reply_01",
 		name = "pwe_gameplay_elf_downed_3_times_04_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -18608,6 +19197,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_elf_downed_3_times_05_reply_01",
 		name = "pwe_gameplay_elf_downed_3_times_05_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -18632,6 +19222,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_elf_downed_3_times_06_reply_01",
 		name = "pwe_gameplay_elf_downed_3_times_06_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -18656,6 +19247,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_elf_downed_3_times_07_reply_01",
 		name = "pwe_gameplay_elf_downed_3_times_07_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -18680,6 +19272,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_elf_downed_3_times_08_reply_01",
 		name = "pwe_gameplay_elf_downed_3_times_08_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -18704,6 +19297,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_elf_downed_3_times_09_reply_01",
 		name = "pwe_gameplay_elf_downed_3_times_09_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -18728,6 +19322,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_elf_downed_3_times_10_reply_01",
 		name = "pwe_gameplay_elf_downed_3_times_10_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -18752,6 +19347,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_elf_downed_3_times_11_reply_01",
 		name = "pwe_gameplay_elf_downed_3_times_11_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -18776,6 +19372,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_elf_downed_3_times_12_reply_01",
 		name = "pwe_gameplay_elf_downed_3_times_12_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -18800,6 +19397,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_elf_downed_3_times_13_reply_01",
 		name = "pwe_gameplay_elf_downed_3_times_13_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -18822,6 +19420,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_elf_hit_by_goo_thrice_02_reply_01",
 		response = "pwe_gameplay_elf_hit_by_goo_thrice_02_reply_01",
 		criterias = {
@@ -18853,6 +19452,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_elf_hit_by_goo_thrice_02_reply_02",
 		response = "pwe_gameplay_elf_hit_by_goo_thrice_02_reply_02",
 		criterias = {
@@ -18884,6 +19484,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_elf_hit_by_goo_thrice_02_reply_03",
 		response = "pwe_gameplay_elf_hit_by_goo_thrice_02_reply_03",
 		criterias = {
@@ -18915,6 +19516,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_elf_hit_by_goo_thrice_02_reply_04",
 		response = "pwe_gameplay_elf_hit_by_goo_thrice_02_reply_04",
 		criterias = {
@@ -18948,6 +19550,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_elf_killing_rat_ogre_melee_01_reply_01",
 		name = "pwe_gameplay_elf_killing_rat_ogre_melee_01_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -18972,6 +19575,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_elf_killing_rat_ogre_melee_01_reply_02",
 		name = "pwe_gameplay_elf_killing_rat_ogre_melee_01_reply_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -18996,6 +19600,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_elf_killing_rat_ogre_melee_01_reply_03",
 		name = "pwe_gameplay_elf_killing_rat_ogre_melee_01_reply_03",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -19020,6 +19625,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_elf_killing_rat_ogre_ranged_01_reply_01",
 		name = "pwe_gameplay_elf_killing_rat_ogre_ranged_01_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -19044,6 +19650,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_elf_killing_rat_ogre_ranged_01_reply_02",
 		name = "pwe_gameplay_elf_killing_rat_ogre_ranged_01_reply_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -19068,6 +19675,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_elf_killing_rat_ogre_ranged_01_reply_03",
 		name = "pwe_gameplay_elf_killing_rat_ogre_ranged_01_reply_03",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -19092,6 +19700,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_elf_killing_rat_ogre_ranged_01_reply_04",
 		name = "pwe_gameplay_elf_killing_rat_ogre_ranged_01_reply_04",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -19114,6 +19723,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_elf_potions_above_half_health_01_reply_01",
 		response = "pwe_gameplay_elf_potions_above_half_health_01_reply_01",
 		criterias = {
@@ -19145,6 +19755,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_elf_potions_above_half_health_01_reply_02",
 		response = "pwe_gameplay_elf_potions_above_half_health_01_reply_02",
 		criterias = {
@@ -19176,6 +19787,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_elf_potions_above_half_health_01_reply_03",
 		response = "pwe_gameplay_elf_potions_above_half_health_01_reply_03",
 		criterias = {
@@ -19207,6 +19819,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_elf_potions_above_half_health_02_reply_01",
 		response = "pwe_gameplay_elf_potions_above_half_health_02_reply_01",
 		criterias = {
@@ -19238,6 +19851,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_elf_potions_above_half_health_02_reply_02",
 		response = "pwe_gameplay_elf_potions_above_half_health_02_reply_02",
 		criterias = {
@@ -19269,6 +19883,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_elf_potions_above_half_health_02_reply_03",
 		response = "pwe_gameplay_elf_potions_above_half_health_02_reply_03",
 		criterias = {
@@ -19300,6 +19915,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_elf_potions_above_half_health_03_reply_01",
 		response = "pwe_gameplay_elf_potions_above_half_health_03_reply_01",
 		criterias = {
@@ -19331,6 +19947,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_elf_potions_above_half_health_06_reply_01",
 		response = "pwe_gameplay_elf_potions_above_half_health_06_reply_01",
 		criterias = {
@@ -19362,6 +19979,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_hanging_help",
 		response = "pwe_gameplay_hanging_help",
 		criterias = {
@@ -19406,6 +20024,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_hunter_3_special_kills_in_a_row_01",
 		response = "pwe_gameplay_hunter_3_special_kills_in_a_row_01",
 		criterias = {
@@ -19464,6 +20083,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_hunter_caught_by_slaver_3_times_02",
 		name = "pwe_gameplay_hunter_caught_by_slaver_3_times_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -19488,6 +20108,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_hunter_downed_3_times_06_reply_01",
 		name = "pwe_gameplay_hunter_downed_3_times_06_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -19512,6 +20133,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_hunter_downed_3_times_11",
 		name = "pwe_gameplay_hunter_downed_3_times_11",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -19542,6 +20164,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_hunter_downed_3_times_11_reply_01",
 		name = "pwe_gameplay_hunter_downed_3_times_11_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -19566,6 +20189,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_hunter_downed_3_times_12",
 		name = "pwe_gameplay_hunter_downed_3_times_12",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -19596,6 +20220,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_hunter_downed_3_times_13",
 		name = "pwe_gameplay_hunter_downed_3_times_13",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -19626,6 +20251,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_hunter_downed_3_times_13_reply_01",
 		name = "pwe_gameplay_hunter_downed_3_times_13_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -19648,6 +20274,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_hunter_hit_by_goo_thrice_03",
 		response = "pwe_gameplay_hunter_hit_by_goo_thrice_03",
 		criterias = {
@@ -19694,6 +20321,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_hunter_killing_rat_ogre_melee_01",
 		name = "pwe_gameplay_hunter_killing_rat_ogre_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -19742,6 +20370,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_hunter_killing_rat_ogre_melee_01_reply_02",
 		name = "pwe_gameplay_hunter_killing_rat_ogre_melee_01_reply_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -19766,6 +20395,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_hunter_killing_rat_ogre_ranged_01",
 		name = "pwe_gameplay_hunter_killing_rat_ogre_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -19814,6 +20444,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_hunter_killing_rat_ogre_ranged_01_reply_01",
 		name = "pwe_gameplay_hunter_killing_rat_ogre_ranged_01_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -19838,6 +20469,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_hunter_killing_rat_ogre_ranged_01_reply_02",
 		name = "pwe_gameplay_hunter_killing_rat_ogre_ranged_01_reply_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -19862,6 +20494,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_hunter_killing_spawn_melee_01",
 		name = "pwe_gameplay_hunter_killing_spawn_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -19904,6 +20537,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_hunter_killing_spawn_ranged_01",
 		name = "pwe_gameplay_hunter_killing_spawn_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -19946,6 +20580,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_hunter_killing_troll_melee_01",
 		name = "pwe_gameplay_hunter_killing_troll_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -19988,6 +20623,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_hunter_killing_troll_ranged_01",
 		name = "pwe_gameplay_hunter_killing_troll_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -20028,6 +20664,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_hunter_misses_bomb_01",
 		response = "pwe_gameplay_hunter_misses_bomb_01",
 		criterias = {
@@ -20090,6 +20727,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_hunter_potions_above_half_health_01",
 		response = "pwe_gameplay_hunter_potions_above_half_health_01",
 		criterias = {
@@ -20134,6 +20772,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_hunter_potions_above_half_health_02",
 		response = "pwe_gameplay_hunter_potions_above_half_health_02",
 		criterias = {
@@ -20178,6 +20817,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_hunter_potions_above_half_health_02_reply_01",
 		response = "pwe_gameplay_hunter_potions_above_half_health_02_reply_01",
 		criterias = {
@@ -20209,6 +20849,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_hunter_potions_above_half_health_03",
 		response = "pwe_gameplay_hunter_potions_above_half_health_03",
 		criterias = {
@@ -20253,6 +20894,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_hunter_potions_above_half_health_03_reply_01",
 		response = "pwe_gameplay_hunter_potions_above_half_health_03_reply_01",
 		criterias = {
@@ -20284,6 +20926,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_hunter_potions_above_half_health__reply_02",
 		response = "pwe_gameplay_hunter_potions_above_half_health__reply_02",
 		criterias = {
@@ -20317,6 +20960,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_kiling_a_second_rat_ogre_01",
 		name = "pwe_gameplay_kiling_a_second_rat_ogre_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -20359,6 +21003,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_killing_a_rat_ogre_01",
 		name = "pwe_gameplay_killing_a_rat_ogre_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -20407,6 +21052,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_killing_a_second_rat_ogre_02",
 		name = "pwe_gameplay_killing_a_second_rat_ogre_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -20447,6 +21093,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_ranger_3_special_kills_in_a_row_01",
 		response = "pwe_gameplay_ranger_3_special_kills_in_a_row_01",
 		criterias = {
@@ -20505,6 +21152,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_ranger_caught_by_slaver_3_times_02",
 		name = "pwe_gameplay_ranger_caught_by_slaver_3_times_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -20529,6 +21177,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_ranger_downed_3_times_04_reply_01",
 		name = "pwe_gameplay_ranger_downed_3_times_04_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -20553,6 +21202,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_ranger_downed_3_times_10_reply_01",
 		name = "pwe_gameplay_ranger_downed_3_times_10_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -20577,6 +21227,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_ranger_downed_3_times_11",
 		name = "pwe_gameplay_ranger_downed_3_times_11",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -20607,6 +21258,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_ranger_downed_3_times_12",
 		name = "pwe_gameplay_ranger_downed_3_times_12",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -20637,6 +21289,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_ranger_downed_3_times_12_reply_01",
 		name = "pwe_gameplay_ranger_downed_3_times_12_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -20661,6 +21314,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_ranger_downed_3_times_13",
 		name = "pwe_gameplay_ranger_downed_3_times_13",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -20691,6 +21345,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_ranger_downed_3_times_13_reply_01",
 		name = "pwe_gameplay_ranger_downed_3_times_13_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -20713,6 +21368,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_ranger_hit_by_goo_thrice_00",
 		response = "pwe_gameplay_ranger_hit_by_goo_thrice_00",
 		criterias = {
@@ -20759,6 +21415,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_ranger_killing_rat_ogre_melee_01",
 		name = "pwe_gameplay_ranger_killing_rat_ogre_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -20807,6 +21464,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_ranger_killing_rat_ogre_melee_01_reply_02",
 		name = "pwe_gameplay_ranger_killing_rat_ogre_melee_01_reply_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -20831,6 +21489,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_ranger_killing_rat_ogre_melee_reply_02",
 		name = "pwe_gameplay_ranger_killing_rat_ogre_melee_reply_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -20855,6 +21514,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_ranger_killing_rat_ogre_ranged_01",
 		name = "pwe_gameplay_ranger_killing_rat_ogre_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -20903,6 +21563,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_ranger_killing_rat_ogre_ranged_01_reply_01",
 		name = "pwe_gameplay_ranger_killing_rat_ogre_ranged_01_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -20927,6 +21588,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_ranger_killing_spawn_melee_01",
 		name = "pwe_gameplay_ranger_killing_spawn_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -20969,6 +21631,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_ranger_killing_spawn_ranged_01",
 		name = "pwe_gameplay_ranger_killing_spawn_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -21011,6 +21674,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_ranger_killing_troll_melee_01",
 		name = "pwe_gameplay_ranger_killing_troll_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -21053,6 +21717,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_ranger_killing_troll_ranged_01",
 		name = "pwe_gameplay_ranger_killing_troll_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -21093,6 +21758,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_ranger_misses_bomb_01",
 		response = "pwe_gameplay_ranger_misses_bomb_01",
 		criterias = {
@@ -21155,6 +21821,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_ranger_potions_above_half_health_02",
 		response = "pwe_gameplay_ranger_potions_above_half_health_02",
 		criterias = {
@@ -21199,6 +21866,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_ranger_potions_above_half_health_02_reply_01",
 		response = "pwe_gameplay_ranger_potions_above_half_health_02_reply_01",
 		criterias = {
@@ -21230,6 +21898,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_ranger_potions_above_half_health_03",
 		response = "pwe_gameplay_ranger_potions_above_half_health_03",
 		criterias = {
@@ -21274,6 +21943,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_ranger_potions_above_half_health_03_reply_01",
 		response = "pwe_gameplay_ranger_potions_above_half_health_03_reply_01",
 		criterias = {
@@ -21305,6 +21975,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_ranger_potions_above_half_health_04",
 		response = "pwe_gameplay_ranger_potions_above_half_health_04",
 		criterias = {
@@ -21349,6 +22020,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_ranger_potions_above_half_health_04_reply_01",
 		response = "pwe_gameplay_ranger_potions_above_half_health_04_reply_01",
 		criterias = {
@@ -21380,6 +22052,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_response_054",
 		response = "pwe_gameplay_response_054",
 		criterias = {
@@ -21411,6 +22084,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_response_055",
 		response = "pwe_gameplay_response_055",
 		criterias = {
@@ -21442,6 +22116,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_response_056",
 		response = "pwe_gameplay_response_056",
 		criterias = {
@@ -21475,6 +22150,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_07",
 		name = "pwe_gameplay_response_07",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -21499,6 +22175,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_08",
 		name = "pwe_gameplay_response_08",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -21523,6 +22200,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_081",
 		name = "pwe_gameplay_response_081",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -21547,6 +22225,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_082",
 		name = "pwe_gameplay_response_082",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -21571,6 +22250,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_09",
 		name = "pwe_gameplay_response_09",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -21595,6 +22275,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_123",
 		name = "pwe_gameplay_response_123",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -21619,6 +22300,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_124",
 		name = "pwe_gameplay_response_124",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -21643,6 +22325,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_125",
 		name = "pwe_gameplay_response_125",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -21667,6 +22350,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_126",
 		name = "pwe_gameplay_response_126",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -21691,6 +22375,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_127",
 		name = "pwe_gameplay_response_127",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -21715,6 +22400,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_129",
 		name = "pwe_gameplay_response_129",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -21739,6 +22425,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_130",
 		name = "pwe_gameplay_response_130",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -21763,6 +22450,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_147",
 		name = "pwe_gameplay_response_147",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -21787,6 +22475,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_148",
 		name = "pwe_gameplay_response_148",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -21811,6 +22500,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_149",
 		name = "pwe_gameplay_response_149",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -21835,6 +22525,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_150",
 		name = "pwe_gameplay_response_150",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -21859,6 +22550,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_151",
 		name = "pwe_gameplay_response_151",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -21883,6 +22575,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_152",
 		name = "pwe_gameplay_response_152",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -21907,6 +22600,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_154",
 		name = "pwe_gameplay_response_154",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -21931,6 +22625,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_155",
 		name = "pwe_gameplay_response_155",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -21955,6 +22650,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_156",
 		name = "pwe_gameplay_response_156",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -21979,6 +22675,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_157",
 		name = "pwe_gameplay_response_157",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -22003,6 +22700,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_158",
 		name = "pwe_gameplay_response_158",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -22027,6 +22725,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_159",
 		name = "pwe_gameplay_response_159",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -22051,6 +22750,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_160",
 		name = "pwe_gameplay_response_160",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -22075,6 +22775,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_161",
 		name = "pwe_gameplay_response_161",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -22099,6 +22800,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_162",
 		name = "pwe_gameplay_response_162",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -22123,6 +22825,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_180",
 		name = "pwe_gameplay_response_180",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -22147,6 +22850,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_181",
 		name = "pwe_gameplay_response_181",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -22171,6 +22875,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_182",
 		name = "pwe_gameplay_response_182",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -22195,6 +22900,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_183",
 		name = "pwe_gameplay_response_183",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -22219,6 +22925,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_184",
 		name = "pwe_gameplay_response_184",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -22243,6 +22950,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_185",
 		name = "pwe_gameplay_response_185",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -22267,6 +22975,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_186",
 		name = "pwe_gameplay_response_186",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -22291,6 +23000,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_187",
 		name = "pwe_gameplay_response_187",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -22315,6 +23025,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_188",
 		name = "pwe_gameplay_response_188",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -22339,6 +23050,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_189",
 		name = "pwe_gameplay_response_189",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -22363,6 +23075,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_190",
 		name = "pwe_gameplay_response_190",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -22387,6 +23100,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_191",
 		name = "pwe_gameplay_response_191",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -22411,6 +23125,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_192",
 		name = "pwe_gameplay_response_192",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -22435,6 +23150,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_193",
 		name = "pwe_gameplay_response_193",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -22459,6 +23175,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_194",
 		name = "pwe_gameplay_response_194",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -22483,6 +23200,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_195",
 		name = "pwe_gameplay_response_195",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -22507,6 +23225,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_20",
 		name = "pwe_gameplay_response_20",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -22531,6 +23250,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_21",
 		name = "pwe_gameplay_response_21",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -22555,6 +23275,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_22",
 		name = "pwe_gameplay_response_22",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -22579,6 +23300,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_23",
 		name = "pwe_gameplay_response_23",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -22603,6 +23325,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_24",
 		name = "pwe_gameplay_response_24",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -22627,6 +23350,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_39",
 		name = "pwe_gameplay_response_39",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -22651,6 +23375,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_40",
 		name = "pwe_gameplay_response_40",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -22675,6 +23400,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_response_41",
 		name = "pwe_gameplay_response_41",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -22697,6 +23423,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_soldier_3_special_kills_in_a_row_01",
 		response = "pwe_gameplay_soldier_3_special_kills_in_a_row_01",
 		criterias = {
@@ -22755,6 +23482,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_soldier_3_special_kills_in_a_row_01_reply_01",
 		name = "pwe_gameplay_soldier_3_special_kills_in_a_row_01_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -22779,6 +23507,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_soldier_3_special_kills_in_a_row_01_reply_02",
 		name = "pwe_gameplay_soldier_3_special_kills_in_a_row_01_reply_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -22803,6 +23532,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_soldier_3_special_kills_in_a_row_02_reply_1",
 		name = "pwe_gameplay_soldier_3_special_kills_in_a_row_02_reply_1",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -22827,6 +23557,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_soldier_caught_by_slaver_3_times_02",
 		name = "pwe_gameplay_soldier_caught_by_slaver_3_times_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -22851,6 +23582,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_soldier_downed_3_times_02",
 		name = "pwe_gameplay_soldier_downed_3_times_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -22881,6 +23613,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_soldier_downed_3_times_06_reply_01",
 		name = "pwe_gameplay_soldier_downed_3_times_06_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -22905,6 +23638,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_soldier_downed_3_times_08_reply_01",
 		name = "pwe_gameplay_soldier_downed_3_times_08_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -22929,6 +23663,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_soldier_downed_3_times_09_reply_01",
 		name = "pwe_gameplay_soldier_downed_3_times_09_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -22953,6 +23688,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_soldier_downed_3_times_12",
 		name = "pwe_gameplay_soldier_downed_3_times_12",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -22983,6 +23719,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_soldier_downed_3_times_12_reply_01",
 		name = "pwe_gameplay_soldier_downed_3_times_12_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -23007,6 +23744,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_soldier_downed_3_times_13",
 		name = "pwe_gameplay_soldier_downed_3_times_13",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -23037,6 +23775,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_soldier_downed_3_times_13_reply_01",
 		name = "pwe_gameplay_soldier_downed_3_times_13_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -23059,6 +23798,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_soldier_hit_by_goo_thrice_02",
 		response = "pwe_gameplay_soldier_hit_by_goo_thrice_02",
 		criterias = {
@@ -23105,6 +23845,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_soldier_killing_rat_ogre_melee_01",
 		name = "pwe_gameplay_soldier_killing_rat_ogre_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -23159,6 +23900,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_soldier_killing_rat_ogre_melee_01_reply_01",
 		name = "pwe_gameplay_soldier_killing_rat_ogre_melee_01_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -23183,6 +23925,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_soldier_killing_rat_ogre_melee_01_reply_02",
 		name = "pwe_gameplay_soldier_killing_rat_ogre_melee_01_reply_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -23207,6 +23950,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_soldier_killing_rat_ogre_ranged_01",
 		name = "pwe_gameplay_soldier_killing_rat_ogre_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -23255,6 +23999,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_soldier_killing_rat_ogre_ranged_01_reply_01",
 		name = "pwe_gameplay_soldier_killing_rat_ogre_ranged_01_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -23279,6 +24024,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_soldier_killing_spawn_melee_01",
 		name = "pwe_gameplay_soldier_killing_spawn_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -23321,6 +24067,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_soldier_killing_spawn_ranged_01",
 		name = "pwe_gameplay_soldier_killing_spawn_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -23363,6 +24110,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_soldier_killing_troll_melee_01",
 		name = "pwe_gameplay_soldier_killing_troll_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -23405,6 +24153,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_soldier_killing_troll_ranged_01",
 		name = "pwe_gameplay_soldier_killing_troll_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -23445,6 +24194,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_soldier_misses_bomb_01",
 		response = "pwe_gameplay_soldier_misses_bomb_01",
 		criterias = {
@@ -23507,6 +24257,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_soldier_potions_above_half_health_01",
 		response = "pwe_gameplay_soldier_potions_above_half_health_01",
 		criterias = {
@@ -23551,6 +24302,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_soldier_potions_above_half_health_01_reply_01",
 		response = "pwe_gameplay_soldier_potions_above_half_health_01_reply_01",
 		criterias = {
@@ -23582,6 +24334,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_soldier_potions_above_half_health_02",
 		response = "pwe_gameplay_soldier_potions_above_half_health_02",
 		criterias = {
@@ -23626,6 +24379,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_soldier_potions_above_half_health_02_reply_01",
 		response = "pwe_gameplay_soldier_potions_above_half_health_02_reply_01",
 		criterias = {
@@ -23657,6 +24411,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_soldier_potions_above_half_health_03",
 		response = "pwe_gameplay_soldier_potions_above_half_health_03",
 		criterias = {
@@ -23701,6 +24456,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_soldier_potions_above_half_health_03_reply_01",
 		response = "pwe_gameplay_soldier_potions_above_half_health_03_reply_01",
 		criterias = {
@@ -23732,6 +24488,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_wizard_3_special_kills_in_a_row_01",
 		response = "pwe_gameplay_wizard_3_special_kills_in_a_row_01",
 		criterias = {
@@ -23790,6 +24547,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_wizard_caught_by_slaver_3_times_02",
 		name = "pwe_gameplay_wizard_caught_by_slaver_3_times_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -23814,6 +24572,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_wizard_downed_3_times_11",
 		name = "pwe_gameplay_wizard_downed_3_times_11",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -23844,6 +24603,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_wizard_downed_3_times_11_reply_01",
 		name = "pwe_gameplay_wizard_downed_3_times_11_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -23868,6 +24628,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_wizard_downed_3_times_12",
 		name = "pwe_gameplay_wizard_downed_3_times_12",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -23896,6 +24657,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_wizard_hit_by_goo_thrice_02",
 		response = "pwe_gameplay_wizard_hit_by_goo_thrice_02",
 		criterias = {
@@ -23942,6 +24704,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_wizard_killing_rat_ogre_melee_01",
 		name = "pwe_gameplay_wizard_killing_rat_ogre_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -23990,6 +24753,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_wizard_killing_rat_ogre_ranged_01",
 		name = "pwe_gameplay_wizard_killing_rat_ogre_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -24038,6 +24802,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_wizard_killing_spawn_melee_01",
 		name = "pwe_gameplay_wizard_killing_spawn_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -24080,6 +24845,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_wizard_killing_spawn_ranged_01",
 		name = "pwe_gameplay_wizard_killing_spawn_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -24122,6 +24888,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_wizard_killing_troll_melee_01",
 		name = "pwe_gameplay_wizard_killing_troll_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -24164,6 +24931,7 @@ return function ()
 	define_rule({
 		response = "pwe_gameplay_wizard_killing_troll_ranged_01",
 		name = "pwe_gameplay_wizard_killing_troll_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -24204,6 +24972,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_wizard_misses_bomb_01",
 		response = "pwe_gameplay_wizard_misses_bomb_01",
 		criterias = {
@@ -24266,6 +25035,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_wizard_potions_above_half_health_01",
 		response = "pwe_gameplay_wizard_potions_above_half_health_01",
 		criterias = {
@@ -24310,6 +25080,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_wizard_potions_above_half_health_01_reply_01",
 		response = "pwe_gameplay_wizard_potions_above_half_health_01_reply_01",
 		criterias = {
@@ -24341,6 +25112,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_wizard_potions_above_half_health_03",
 		response = "pwe_gameplay_wizard_potions_above_half_health_03",
 		criterias = {
@@ -24385,6 +25157,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_gameplay_wizard_potions_above_half_health_03_reply_02",
 		response = "pwe_gameplay_wizard_potions_above_half_health_03_reply_02",
 		criterias = {
@@ -24418,6 +25191,7 @@ return function ()
 	define_rule({
 		response = "pwh_all_stairs_conversation_b",
 		name = "pwh_all_stairs_conversation_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -24440,6 +25214,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_gameplay_another_is_bunnyjumping_01",
 		response = "pwh_gameplay_another_is_bunnyjumping_01",
 		criterias = {
@@ -24472,6 +25247,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_gameplay_elf_3_special_kills_in_a_row_01",
 		response = "pwh_gameplay_elf_3_special_kills_in_a_row_01",
 		criterias = {
@@ -24530,6 +25306,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_elf_3_special_kills_in_a_row_01_reply_01",
 		name = "pwh_gameplay_elf_3_special_kills_in_a_row_01_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -24554,6 +25331,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_elf_caught_by_slaver_3_times_02",
 		name = "pwh_gameplay_elf_caught_by_slaver_3_times_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -24578,6 +25356,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_elf_downed_3_times_03_azsd",
 		name = "pwh_gameplay_elf_downed_3_times_03_azsd",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -24608,6 +25387,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_elf_downed_3_times_03_reply_01",
 		name = "pwh_gameplay_elf_downed_3_times_03_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -24632,6 +25412,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_elf_downed_3_times_04",
 		name = "pwh_gameplay_elf_downed_3_times_04",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -24662,6 +25443,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_elf_downed_3_times_04_reply_01",
 		name = "pwh_gameplay_elf_downed_3_times_04_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -24686,6 +25468,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_elf_downed_3_times_05",
 		name = "pwh_gameplay_elf_downed_3_times_05",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -24716,6 +25499,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_elf_downed_3_times_10_reply_01",
 		name = "pwh_gameplay_elf_downed_3_times_10_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -24740,6 +25524,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_elf_downed_3_times_11_reply_01",
 		name = "pwh_gameplay_elf_downed_3_times_11_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -24762,6 +25547,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_gameplay_elf_hit_by_goo_thrice_02",
 		response = "pwh_gameplay_elf_hit_by_goo_thrice_02",
 		criterias = {
@@ -24808,6 +25594,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_elf_killing_rat_ogre_melee_01",
 		name = "pwh_gameplay_elf_killing_rat_ogre_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -24856,6 +25643,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_elf_killing_rat_ogre_melee_01_reply_01",
 		name = "pwh_gameplay_elf_killing_rat_ogre_melee_01_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -24880,6 +25668,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_elf_killing_rat_ogre_melee_01_reply_02",
 		name = "pwh_gameplay_elf_killing_rat_ogre_melee_01_reply_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -24904,6 +25693,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_elf_killing_rat_ogre_ranged_01",
 		name = "pwh_gameplay_elf_killing_rat_ogre_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -24952,6 +25742,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_elf_killing_spawn_melee_01",
 		name = "pwh_gameplay_elf_killing_spawn_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -24994,6 +25785,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_elf_killing_spawn_ranged_01",
 		name = "pwh_gameplay_elf_killing_spawn_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -25036,6 +25828,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_elf_killing_troll_melee_01",
 		name = "pwh_gameplay_elf_killing_troll_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -25078,6 +25871,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_elf_killing_troll_ranged_01",
 		name = "pwh_gameplay_elf_killing_troll_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -25118,6 +25912,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_gameplay_elf_misses_bomb_01",
 		response = "pwh_gameplay_elf_misses_bomb_01",
 		criterias = {
@@ -25180,6 +25975,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_gameplay_elf_potions_above_half_health_01",
 		response = "pwh_gameplay_elf_potions_above_half_health_01",
 		criterias = {
@@ -25224,6 +26020,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_gameplay_elf_potions_above_half_health_01_reply_01",
 		response = "pwh_gameplay_elf_potions_above_half_health_01_reply_01",
 		criterias = {
@@ -25255,6 +26052,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_gameplay_elf_potions_above_half_health_02",
 		response = "pwh_gameplay_elf_potions_above_half_health_02",
 		criterias = {
@@ -25299,6 +26097,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_gameplay_elf_potions_above_half_health_02_reply_01",
 		response = "pwh_gameplay_elf_potions_above_half_health_02_reply_01",
 		criterias = {
@@ -25330,6 +26129,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_gameplay_hanging_help",
 		response = "pwh_gameplay_hanging_help",
 		criterias = {
@@ -25376,6 +26176,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_hunter_3_special_kills_in_a_row_01",
 		name = "pwh_gameplay_hunter_3_special_kills_in_a_row_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -25400,6 +26201,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_hunter_3_special_kills_in_a_row_01_reply_01",
 		name = "pwh_gameplay_hunter_3_special_kills_in_a_row_01_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -25424,6 +26226,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_hunter_3_special_kills_in_a_row_reply_01",
 		name = "pwh_gameplay_hunter_3_special_kills_in_a_row_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -25448,6 +26251,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_hunter_downed_3_times_02_reply_01",
 		name = "pwh_gameplay_hunter_downed_3_times_02_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -25472,6 +26276,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_hunter_downed_3_times_03_reply_01",
 		name = "pwh_gameplay_hunter_downed_3_times_03_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -25496,6 +26301,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_hunter_downed_3_times_04_reply_01",
 		name = "pwh_gameplay_hunter_downed_3_times_04_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -25520,6 +26326,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_hunter_downed_3_times_05_reply_01",
 		name = "pwh_gameplay_hunter_downed_3_times_05_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -25544,6 +26351,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_hunter_downed_3_times_06_reply_01",
 		name = "pwh_gameplay_hunter_downed_3_times_06_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -25568,6 +26376,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_hunter_downed_3_times_07_reply_01",
 		name = "pwh_gameplay_hunter_downed_3_times_07_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -25592,6 +26401,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_hunter_downed_3_times_08_reply_01",
 		name = "pwh_gameplay_hunter_downed_3_times_08_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -25616,6 +26426,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_hunter_downed_3_times_09_reply_01",
 		name = "pwh_gameplay_hunter_downed_3_times_09_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -25640,6 +26451,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_hunter_downed_3_times_10_reply_01",
 		name = "pwh_gameplay_hunter_downed_3_times_10_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -25664,6 +26476,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_hunter_downed_3_times_11_reply_01",
 		name = "pwh_gameplay_hunter_downed_3_times_11_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -25688,6 +26501,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_hunter_downed_3_times_11_reply_02",
 		name = "pwh_gameplay_hunter_downed_3_times_11_reply_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -25712,6 +26526,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_hunter_downed_3_times_13_reply_01",
 		name = "pwh_gameplay_hunter_downed_3_times_13_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -25734,6 +26549,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_gameplay_hunter_hit_by_goo_thrice_02_reply_01",
 		response = "pwh_gameplay_hunter_hit_by_goo_thrice_02_reply_01",
 		criterias = {
@@ -25765,6 +26581,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_gameplay_hunter_hit_by_goo_thrice_02_reply_02",
 		response = "pwh_gameplay_hunter_hit_by_goo_thrice_02_reply_02",
 		criterias = {
@@ -25796,6 +26613,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_gameplay_hunter_hit_by_goo_thrice_03_reply_01",
 		response = "pwh_gameplay_hunter_hit_by_goo_thrice_03_reply_01",
 		criterias = {
@@ -25827,6 +26645,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_gameplay_hunter_hit_by_goo_thrice_reply_01",
 		response = "pwh_gameplay_hunter_hit_by_goo_thrice_reply_01",
 		criterias = {
@@ -25860,6 +26679,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_hunter_killing_rat_ogre_melee_01_reply_01",
 		name = "pwh_gameplay_hunter_killing_rat_ogre_melee_01_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -25884,6 +26704,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_hunter_killing_rat_ogre_melee_01_reply_02",
 		name = "pwh_gameplay_hunter_killing_rat_ogre_melee_01_reply_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -25908,6 +26729,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_hunter_killing_rat_ogre_melee_01_reply_04",
 		name = "pwh_gameplay_hunter_killing_rat_ogre_melee_01_reply_04",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -25932,6 +26754,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_hunter_killing_rat_ogre_ranged_01_reply_01",
 		name = "pwh_gameplay_hunter_killing_rat_ogre_ranged_01_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -25956,6 +26779,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_hunter_killing_rat_ogre_ranged_01_reply_02",
 		name = "pwh_gameplay_hunter_killing_rat_ogre_ranged_01_reply_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -25980,6 +26804,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_hunter_killing_rat_ogre_ranged_01_reply_03",
 		name = "pwh_gameplay_hunter_killing_rat_ogre_ranged_01_reply_03",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -26004,6 +26829,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_hunter_kills_3_specials_in_a_row_02_reply_01",
 		name = "pwh_gameplay_hunter_kills_3_specials_in_a_row_02_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -26026,6 +26852,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_gameplay_hunter_potions_above_half_health_01_reply_01",
 		response = "pwh_gameplay_hunter_potions_above_half_health_01_reply_01",
 		criterias = {
@@ -26057,6 +26884,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_gameplay_hunter_potions_above_half_health_01_reply_02",
 		response = "pwh_gameplay_hunter_potions_above_half_health_01_reply_02",
 		criterias = {
@@ -26088,6 +26916,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_gameplay_hunter_potions_above_half_health_02_reply_01",
 		response = "pwh_gameplay_hunter_potions_above_half_health_02_reply_01",
 		criterias = {
@@ -26119,6 +26948,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_gameplay_hunter_potions_above_half_health_02_reply_02",
 		response = "pwh_gameplay_hunter_potions_above_half_health_02_reply_02",
 		criterias = {
@@ -26150,6 +26980,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_gameplay_hunter_potions_above_half_health_03_reply_01",
 		response = "pwh_gameplay_hunter_potions_above_half_health_03_reply_01",
 		criterias = {
@@ -26181,6 +27012,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_gameplay_hunter_potions_above_half_health_03_reply_02",
 		response = "pwh_gameplay_hunter_potions_above_half_health_03_reply_02",
 		criterias = {
@@ -26212,6 +27044,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_gameplay_hunter_potions_above_half_health_reply_01",
 		response = "pwh_gameplay_hunter_potions_above_half_health_reply_01",
 		criterias = {
@@ -26245,6 +27078,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_killing_a_rat_ogre_01",
 		name = "pwh_gameplay_killing_a_rat_ogre_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -26287,6 +27121,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_killing_a_second_rat_ogre_01",
 		name = "pwh_gameplay_killing_a_second_rat_ogre_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -26329,6 +27164,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_killing_a_second_rat_ogre_02",
 		name = "pwh_gameplay_killing_a_second_rat_ogre_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -26369,6 +27205,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_gameplay_ranger_3_special_kills_in_a_row_01",
 		response = "pwh_gameplay_ranger_3_special_kills_in_a_row_01",
 		criterias = {
@@ -26427,6 +27264,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_ranger_3_special_kills_in_a_row_01_reply_01",
 		name = "pwh_gameplay_ranger_3_special_kills_in_a_row_01_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -26451,6 +27289,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_ranger_3_special_kills_in_a_row_reply_01",
 		name = "pwh_gameplay_ranger_3_special_kills_in_a_row_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -26475,6 +27314,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_ranger_caught_by_slaver_3_times_02",
 		name = "pwh_gameplay_ranger_caught_by_slaver_3_times_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -26499,6 +27339,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_ranger_downed_3_time_02",
 		name = "pwh_gameplay_ranger_downed_3_time_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -26529,6 +27370,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_ranger_downed_3_times_02_reply_01",
 		name = "pwh_gameplay_ranger_downed_3_times_02_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -26553,6 +27395,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_ranger_downed_3_times_03",
 		name = "pwh_gameplay_ranger_downed_3_times_03",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -26583,6 +27426,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_ranger_downed_3_times_03_reply_01",
 		name = "pwh_gameplay_ranger_downed_3_times_03_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -26607,6 +27451,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_ranger_downed_3_times_04",
 		name = "pwh_gameplay_ranger_downed_3_times_04",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -26635,6 +27480,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_gameplay_ranger_hit_by_goo_thrice_02",
 		response = "pwh_gameplay_ranger_hit_by_goo_thrice_02",
 		criterias = {
@@ -26679,6 +27525,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_gameplay_ranger_killing_3_specials_in_a_row_02",
 		response = "pwh_gameplay_ranger_killing_3_specials_in_a_row_02",
 		criterias = {
@@ -26737,6 +27584,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_ranger_killing_rat_ogre_melee_01",
 		name = "pwh_gameplay_ranger_killing_rat_ogre_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -26785,6 +27633,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_ranger_killing_rat_ogre_ranged_01",
 		name = "pwh_gameplay_ranger_killing_rat_ogre_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -26833,6 +27682,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_ranger_killing_rat_ogre_ranged_01_reply_01",
 		name = "pwh_gameplay_ranger_killing_rat_ogre_ranged_01_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -26857,6 +27707,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_ranger_killing_rat_ogre_ranged_01_reply_03",
 		name = "pwh_gameplay_ranger_killing_rat_ogre_ranged_01_reply_03",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -26881,6 +27732,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_ranger_killing_spawn_melee_01",
 		name = "pwh_gameplay_ranger_killing_spawn_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -26923,6 +27775,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_ranger_killing_spawn_ranged_01",
 		name = "pwh_gameplay_ranger_killing_spawn_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -26965,6 +27818,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_ranger_killing_troll_melee_01",
 		name = "pwh_gameplay_ranger_killing_troll_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -27007,6 +27861,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_ranger_killing_troll_ranged_01",
 		name = "pwh_gameplay_ranger_killing_troll_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -27047,6 +27902,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_gameplay_ranger_misses_bomb_01",
 		response = "pwh_gameplay_ranger_misses_bomb_01",
 		criterias = {
@@ -27109,6 +27965,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_gameplay_ranger_potions_above_half_health_01",
 		response = "pwh_gameplay_ranger_potions_above_half_health_01",
 		criterias = {
@@ -27153,6 +28010,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_gameplay_ranger_potions_above_half_health_01_reply_01",
 		response = "pwh_gameplay_ranger_potions_above_half_health_01_reply_01",
 		criterias = {
@@ -27184,6 +28042,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_gameplay_ranger_potions_above_half_health_02",
 		response = "pwh_gameplay_ranger_potions_above_half_health_02",
 		criterias = {
@@ -27228,6 +28087,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_gameplay_ranger_potions_above_half_health_02_reply_01",
 		response = "pwh_gameplay_ranger_potions_above_half_health_02_reply_01",
 		criterias = {
@@ -27259,6 +28119,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_gameplay_ranger_potions_above_half_health_03",
 		response = "pwh_gameplay_ranger_potions_above_half_health_03",
 		criterias = {
@@ -27303,6 +28164,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_gameplay_ranger_potions_above_half_health_03_reply_01",
 		response = "pwh_gameplay_ranger_potions_above_half_health_03_reply_01",
 		criterias = {
@@ -27334,6 +28196,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_gameplay_response_043",
 		response = "pwh_gameplay_response_043",
 		criterias = {
@@ -27365,6 +28228,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_gameplay_response_044",
 		response = "pwh_gameplay_response_044",
 		criterias = {
@@ -27398,6 +28262,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_06",
 		name = "pwh_gameplay_response_06",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -27422,6 +28287,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_071",
 		name = "pwh_gameplay_response_071",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -27446,6 +28312,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_079",
 		name = "pwh_gameplay_response_079",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -27470,6 +28337,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_08",
 		name = "pwh_gameplay_response_08",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -27494,6 +28362,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_122",
 		name = "pwh_gameplay_response_122",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -27518,6 +28387,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_123",
 		name = "pwh_gameplay_response_123",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -27542,6 +28412,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_124",
 		name = "pwh_gameplay_response_124",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -27566,6 +28437,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_125",
 		name = "pwh_gameplay_response_125",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -27590,6 +28462,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_126",
 		name = "pwh_gameplay_response_126",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -27614,6 +28487,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_127",
 		name = "pwh_gameplay_response_127",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -27638,6 +28512,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_128",
 		name = "pwh_gameplay_response_128",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -27662,6 +28537,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_145",
 		name = "pwh_gameplay_response_145",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -27686,6 +28562,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_146",
 		name = "pwh_gameplay_response_146",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -27710,6 +28587,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_147",
 		name = "pwh_gameplay_response_147",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -27734,6 +28612,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_148",
 		name = "pwh_gameplay_response_148",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -27758,6 +28637,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_149",
 		name = "pwh_gameplay_response_149",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -27782,6 +28662,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_150",
 		name = "pwh_gameplay_response_150",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -27806,6 +28687,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_151",
 		name = "pwh_gameplay_response_151",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -27830,6 +28712,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_152",
 		name = "pwh_gameplay_response_152",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -27854,6 +28737,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_153",
 		name = "pwh_gameplay_response_153",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -27878,6 +28762,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_154",
 		name = "pwh_gameplay_response_154",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -27902,6 +28787,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_155",
 		name = "pwh_gameplay_response_155",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -27926,6 +28812,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_156",
 		name = "pwh_gameplay_response_156",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -27950,6 +28837,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_157",
 		name = "pwh_gameplay_response_157",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -27974,6 +28862,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_158",
 		name = "pwh_gameplay_response_158",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -27998,6 +28887,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_159",
 		name = "pwh_gameplay_response_159",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -28022,6 +28912,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_160",
 		name = "pwh_gameplay_response_160",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -28046,6 +28937,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_177",
 		name = "pwh_gameplay_response_177",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -28070,6 +28962,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_178",
 		name = "pwh_gameplay_response_178",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -28094,6 +28987,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_179",
 		name = "pwh_gameplay_response_179",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -28118,6 +29012,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_180",
 		name = "pwh_gameplay_response_180",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -28142,6 +29037,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_181",
 		name = "pwh_gameplay_response_181",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -28166,6 +29062,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_182",
 		name = "pwh_gameplay_response_182",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -28190,6 +29087,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_183",
 		name = "pwh_gameplay_response_183",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -28214,6 +29112,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_184",
 		name = "pwh_gameplay_response_184",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -28238,6 +29137,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_185",
 		name = "pwh_gameplay_response_185",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -28262,6 +29162,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_186",
 		name = "pwh_gameplay_response_186",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -28286,6 +29187,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_187",
 		name = "pwh_gameplay_response_187",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -28310,6 +29212,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_188",
 		name = "pwh_gameplay_response_188",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -28334,6 +29237,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_189",
 		name = "pwh_gameplay_response_189",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -28358,6 +29262,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_19",
 		name = "pwh_gameplay_response_19",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -28382,6 +29287,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_190",
 		name = "pwh_gameplay_response_190",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -28406,6 +29312,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_191",
 		name = "pwh_gameplay_response_191",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -28430,6 +29337,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_192",
 		name = "pwh_gameplay_response_192",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -28454,6 +29362,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_20",
 		name = "pwh_gameplay_response_20",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -28478,6 +29387,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_21",
 		name = "pwh_gameplay_response_21",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -28502,6 +29412,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_22",
 		name = "pwh_gameplay_response_22",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -28526,6 +29437,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_23",
 		name = "pwh_gameplay_response_23",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -28550,6 +29462,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_36",
 		name = "pwh_gameplay_response_36",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -28574,6 +29487,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_37_alt1",
 		name = "pwh_gameplay_response_37_alt1",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -28598,6 +29512,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_38",
 		name = "pwh_gameplay_response_38",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -28622,6 +29537,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_response_39",
 		name = "pwh_gameplay_response_39",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -28644,6 +29560,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_gameplay_soldier_3_special_kills_in_a_row_01",
 		response = "pwh_gameplay_soldier_3_special_kills_in_a_row_01",
 		criterias = {
@@ -28702,6 +29619,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_soldier_caught_by_slaver_3_times_02",
 		name = "pwh_gameplay_soldier_caught_by_slaver_3_times_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -28726,6 +29644,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_soldier_downed_3_times_02_reply_01",
 		name = "pwh_gameplay_soldier_downed_3_times_02_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -28748,6 +29667,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_gameplay_soldier_downed_3_times_03",
 		response = "pwh_gameplay_soldier_downed_3_times_03",
 		criterias = {
@@ -28794,6 +29714,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_soldier_downed_3_times_04",
 		name = "pwh_gameplay_soldier_downed_3_times_04",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -28824,6 +29745,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_soldier_downed_3_times_04_reply_01",
 		name = "pwh_gameplay_soldier_downed_3_times_04_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -28848,6 +29770,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_soldier_downed_3_times_05",
 		name = "pwh_gameplay_soldier_downed_3_times_05",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -28878,6 +29801,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_soldier_downed_3_times_05_reply_01",
 		name = "pwh_gameplay_soldier_downed_3_times_05_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -28902,6 +29826,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_soldier_downed_3_times_reply_01",
 		name = "pwh_gameplay_soldier_downed_3_times_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -28924,6 +29849,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_gameplay_soldier_hit_by_goo_thrice_02",
 		response = "pwh_gameplay_soldier_hit_by_goo_thrice_02",
 		criterias = {
@@ -28970,6 +29896,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_soldier_killing_rat_ogre_melee_01",
 		name = "pwh_gameplay_soldier_killing_rat_ogre_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -29018,6 +29945,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_soldier_killing_rat_ogre_ranged_01",
 		name = "pwh_gameplay_soldier_killing_rat_ogre_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -29066,6 +29994,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_soldier_killing_spawn_melee_01",
 		name = "pwh_gameplay_soldier_killing_spawn_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -29108,6 +30037,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_soldier_killing_spawn_ranged_01",
 		name = "pwh_gameplay_soldier_killing_spawn_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -29150,6 +30080,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_soldier_killing_troll_melee_01",
 		name = "pwh_gameplay_soldier_killing_troll_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -29192,6 +30123,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_soldier_killing_troll_ranged_01",
 		name = "pwh_gameplay_soldier_killing_troll_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -29232,6 +30164,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_gameplay_soldier_potions_above_half_health_02",
 		response = "pwh_gameplay_soldier_potions_above_half_health_02",
 		criterias = {
@@ -29276,6 +30209,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_gameplay_solider_misses_bomb_01",
 		response = "pwh_gameplay_solider_misses_bomb_01",
 		criterias = {
@@ -29338,6 +30272,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_gameplay_wizard_3_special_kills_in_a_row_01",
 		response = "pwh_gameplay_wizard_3_special_kills_in_a_row_01",
 		criterias = {
@@ -29396,6 +30331,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_wizard_3_special_kills_in_a_row_01_reply_01",
 		name = "pwh_gameplay_wizard_3_special_kills_in_a_row_01_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -29420,6 +30356,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_wizard_caught_by_slaver_3_times_02",
 		name = "pwh_gameplay_wizard_caught_by_slaver_3_times_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -29444,6 +30381,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_wizard_downed_3_times_02",
 		name = "pwh_gameplay_wizard_downed_3_times_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -29474,6 +30412,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_wizard_downed_3_times_02_reply_01",
 		name = "pwh_gameplay_wizard_downed_3_times_02_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -29498,6 +30437,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_wizard_downed_3_times_02_reply_02",
 		name = "pwh_gameplay_wizard_downed_3_times_02_reply_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -29522,6 +30462,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_wizard_downed_3_times_03",
 		name = "pwh_gameplay_wizard_downed_3_times_03",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -29552,6 +30493,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_wizard_downed_3_times_03_reply_01",
 		name = "pwh_gameplay_wizard_downed_3_times_03_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -29576,6 +30518,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_wizard_downed_3_times_04",
 		name = "pwh_gameplay_wizard_downed_3_times_04",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -29612,6 +30555,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_wizard_downed_3_times_10_reply_01",
 		name = "pwh_gameplay_wizard_downed_3_times_10_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -29636,6 +30580,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_wizard_downed_3_times_14",
 		name = "pwh_gameplay_wizard_downed_3_times_14",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -29666,6 +30611,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_wizard_downed_3_times_14_reply_01",
 		name = "pwh_gameplay_wizard_downed_3_times_14_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -29688,6 +30634,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_gameplay_wizard_hit_by_goo_thrice_02",
 		response = "pwh_gameplay_wizard_hit_by_goo_thrice_02",
 		criterias = {
@@ -29734,6 +30681,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_wizard_killing_rat_ogre_melee_01",
 		name = "pwh_gameplay_wizard_killing_rat_ogre_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -29782,6 +30730,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_wizard_killing_rat_ogre_ranged_01",
 		name = "pwh_gameplay_wizard_killing_rat_ogre_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -29830,6 +30779,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_wizard_killing_rat_ogre_ranged_01_reply_02",
 		name = "pwh_gameplay_wizard_killing_rat_ogre_ranged_01_reply_02",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -29854,6 +30804,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_wizard_killing_rat_ogre_ranged_01_reply_04",
 		name = "pwh_gameplay_wizard_killing_rat_ogre_ranged_01_reply_04",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -29878,6 +30829,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_wizard_killing_rat_ogre_ranged_reply_01",
 		name = "pwh_gameplay_wizard_killing_rat_ogre_ranged_reply_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -29902,6 +30854,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_wizard_killing_spawn_melee_01",
 		name = "pwh_gameplay_wizard_killing_spawn_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -29944,6 +30897,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_wizard_killing_spawn_ranged_01",
 		name = "pwh_gameplay_wizard_killing_spawn_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -29986,6 +30940,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_wizard_killing_troll_melee_01",
 		name = "pwh_gameplay_wizard_killing_troll_melee_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -30028,6 +30983,7 @@ return function ()
 	define_rule({
 		response = "pwh_gameplay_wizard_killing_troll_ranged_01",
 		name = "pwh_gameplay_wizard_killing_troll_ranged_01",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -30068,6 +31024,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_gameplay_wizard_misses_bomb_01",
 		response = "pwh_gameplay_wizard_misses_bomb_01",
 		criterias = {
@@ -30130,6 +31087,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_gameplay_wizard_potions_above_half_health_01_reply_01",
 		response = "pwh_gameplay_wizard_potions_above_half_health_01_reply_01",
 		criterias = {
@@ -30161,6 +31119,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_gameplay_wizard_potions_above_half_health_02_reply_02",
 		response = "pwh_gameplay_wizard_potions_above_half_health_02_reply_02",
 		criterias = {
@@ -30192,6 +31151,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_gameplay_wizard_potions_above_half_health_03",
 		response = "pwh_gameplay_wizard_potions_above_half_health_03",
 		criterias = {
@@ -30236,6 +31196,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_gameplay_wizard_potions_above_half_health_03_reply_01",
 		response = "pwh_gameplay_wizard_potions_above_half_health_03_reply_01",
 		criterias = {
@@ -30267,6 +31228,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_gameplay_wizard_potions_above_half_health_03_reply_02",
 		response = "pwh_gameplay_wizard_potions_above_half_health_03_reply_02",
 		criterias = {
@@ -30298,6 +31260,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_pwh_gameplay_soldier_potions_above_half_health_02_reply_01",
 		response = "pwh_pwh_gameplay_soldier_potions_above_half_health_02_reply_01",
 		criterias = {

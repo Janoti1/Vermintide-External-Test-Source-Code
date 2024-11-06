@@ -309,6 +309,12 @@ DLCSettings = DLCSettings or {
 			ui = "scripts/settings/dlcs/gotwf/gotwf_ui_settings"
 		}
 	},
+	gotwf_2024 = {
+		package_name = "resource_packages/dlcs/gotwf_2024",
+		additional_settings = {
+			common = "scripts/settings/dlcs/gotwf/gotwf_2024_common_settings"
+		}
+	},
 	cosmetics_2022_q1 = {
 		localization = "localization/cosmetics_2022_q1",
 		package_name = "resource_packages/dlcs/cosmetics_2022_q1",
@@ -441,6 +447,7 @@ DLCSettings = DLCSettings or {
 	carousel = {
 		package_name = "resource_packages/dlcs/carousel",
 		localization = "localization/carousel",
+		level_unlock_settings = "levels/honduras_dlcs/carousel/level_unlock_settings_carousel",
 		level_settings = "levels/honduras_dlcs/carousel/level_settings_carousel",
 		additional_settings = {
 			game_object_initializers = "scripts/settings/dlcs/carousel/carousel_game_object_initializers",

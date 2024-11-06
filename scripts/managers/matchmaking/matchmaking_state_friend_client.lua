@@ -72,12 +72,13 @@ MatchmakingStateFriendClient._sync_player_data = function (self)
 	table.dump(slot_data, "SLOT_SYNC_DATA", 2)
 	print("========================================")
 
+	local versus_level = ExperienceSettings.get_versus_level()
 	local do_full_sync = true
 	local fake_party_id = 0
 	local peer_id = Network.peer_id()
 	local host = self.lobby:lobby_host()
 
-	self.network_transmit:send_rpc("rpc_matchmaking_sync_player_data", host, peer_id, name, profile_id, career_id, slot_data.slot_frame, slot_data.slot_melee, slot_data.slot_ranged, fake_party_id, do_full_sync)
+	self.network_transmit:send_rpc("rpc_matchmaking_sync_player_data", host, peer_id, name, profile_id, career_id, slot_data.slot_frame, slot_data.slot_melee, slot_data.slot_ranged, fake_party_id, versus_level, do_full_sync)
 end
 
 MatchmakingStateFriendClient.on_exit = function (self)

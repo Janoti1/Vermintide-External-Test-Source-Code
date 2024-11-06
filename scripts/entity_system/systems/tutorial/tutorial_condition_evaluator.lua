@@ -146,6 +146,14 @@ TutorialConditions.cataclysm_unlocked = function (ctx)
 	return is_difficulty_unlocked(ctx, "cataclysm")
 end
 
+TutorialConditions.current_mechanism_name = function (ctx)
+	return Managers.mechanism:current_mechanism_name()
+end
+
+TutorialConditions.is_versus_mechanism = function (ctx)
+	return ctx:get("current_mechanism_name") == "versus"
+end
+
 TutorialConditionEvaluator = class(TutorialConditionEvaluator)
 
 TutorialConditionEvaluator.init = function (self)

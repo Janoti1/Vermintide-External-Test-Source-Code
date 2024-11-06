@@ -130,8 +130,6 @@ VersusPartyCharSelectionView.on_exit = function (self)
 	if not Managers.state.game_mode:setting("display_parading_view") then
 		self:play_sound("vs_unmute_reset_all")
 	end
-
-	self:play_sound("menu_versus_character_amb_loop_stop")
 end
 
 VersusPartyCharSelectionView.post_update = function (self, dt, t)

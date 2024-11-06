@@ -7323,6 +7323,12 @@ local settings = {
 		end
 	},
 	{
+		description = "Displays information about early win",
+		is_boolean = true,
+		setting_name = "debug_early_win",
+		category = "Versus"
+	},
+	{
 		description = "Force start the connected dedicated server",
 		close_when_selected = true,
 		setting_name = "Force Start Dedicated Server",
@@ -8099,6 +8105,12 @@ local settings = {
 		end
 	},
 	{
+		description = "Unlocks all the weapon poses in the social_wheel",
+		is_boolean = true,
+		setting_name = "unlock_all_weapon_poses",
+		category = "Items"
+	},
+	{
 		description = "Lists all mutators with functionality to activate them. Requires restart of level",
 		setting_name = "Activate or Deactivate Mutator",
 		category = "Items",
@@ -8637,6 +8649,8 @@ local settings = {
 			local world = Managers.world:world("level_world")
 
 			LevelHelper:flow_event(world, "first_time_started_game")
+			LevelHelper:flow_event(world, "first_time_started_deus_game")
+			LevelHelper:flow_event(world, "first_time_started_versus_game")
 		end
 	},
 	{

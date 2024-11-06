@@ -2,6 +2,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_military_set1_briefing_a",
 		name = "nde_vs_military_set1_briefing_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -16,7 +17,7 @@ return function ()
 				"nde_vs_safe_room_start_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
@@ -44,6 +45,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_military_set1_obj1_a",
 		name = "nde_vs_military_set1_obj1_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -58,7 +60,7 @@ return function ()
 				"nde_vs_safe_room_round_started_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
@@ -74,18 +76,13 @@ return function ()
 				"current_set",
 				OP.EQ,
 				1
-			},
-			{
-				"global_context",
-				"current_objective",
-				OP.EQ,
-				"one"
 			}
 		}
 	})
 	define_rule({
 		response = "nde_vs_military_set1_obj1_reached",
 		name = "nde_vs_military_set1_obj1_reached",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -94,10 +91,16 @@ return function ()
 				"vs_mg_heroes_objective_reached"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"global_context",
@@ -122,6 +125,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_military_set1_obj2_a",
 		name = "nde_vs_military_set1_obj2_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -133,13 +137,19 @@ return function ()
 				"query_context",
 				"dialogue_name",
 				OP.EQ,
-				"nde_vs_new_objective_intro_a"
+				"nde_vs_objective_completed_agnostic_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"global_context",
@@ -164,6 +174,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_military_set1_obj2_reached",
 		name = "nde_vs_military_set1_obj2_reached",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -172,10 +183,16 @@ return function ()
 				"vs_mg_heroes_objective_reached"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"global_context",
@@ -200,6 +217,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_military_set2_obj1_a",
 		name = "nde_vs_military_set2_obj1_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -214,7 +232,7 @@ return function ()
 				"nde_vs_safe_room_round_started_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
@@ -230,18 +248,13 @@ return function ()
 				"current_set",
 				OP.EQ,
 				2
-			},
-			{
-				"global_context",
-				"current_objective",
-				OP.EQ,
-				"one"
 			}
 		}
 	})
 	define_rule({
 		response = "nde_vs_military_set2_obj1_reached",
 		name = "nde_vs_military_set2_obj1_reached",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -250,10 +263,16 @@ return function ()
 				"vs_mg_heroes_objective_reached"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"global_context",
@@ -278,6 +297,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_military_set2_obj2_a",
 		name = "nde_vs_military_set2_obj2_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -289,13 +309,19 @@ return function ()
 				"query_context",
 				"dialogue_name",
 				OP.EQ,
-				"nde_vs_new_objective_intro_a"
+				"nde_vs_objective_completed_agnostic_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"global_context",
@@ -320,6 +346,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_military_set2_obj2_p2",
 		name = "nde_vs_military_set2_obj2_p2",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -328,10 +355,16 @@ return function ()
 				"vs_mg_heroes_objective_reached"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"global_context",
@@ -362,6 +395,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_military_set2_obj2_reached",
 		name = "nde_vs_military_set2_obj2_reached",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -370,10 +404,16 @@ return function ()
 				"vs_mg_heroes_objective_reached"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"global_context",
@@ -398,6 +438,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_military_set3_obj1_a",
 		name = "nde_vs_military_set3_obj1_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -412,7 +453,7 @@ return function ()
 				"nde_vs_safe_room_round_started_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
@@ -428,18 +469,13 @@ return function ()
 				"current_set",
 				OP.EQ,
 				3
-			},
-			{
-				"global_context",
-				"current_objective",
-				OP.EQ,
-				"one"
 			}
 		}
 	})
 	define_rule({
 		response = "nde_vs_military_set3_obj1_reached",
 		name = "nde_vs_military_set3_obj1_reached",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -448,10 +484,16 @@ return function ()
 				"vs_mg_heroes_objective_reached"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"global_context",
@@ -476,6 +518,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_military_set3_obj2_a",
 		name = "nde_vs_military_set3_obj2_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -487,13 +530,19 @@ return function ()
 				"query_context",
 				"dialogue_name",
 				OP.EQ,
-				"nde_vs_new_objective_intro_a"
+				"nde_vs_objective_completed_agnostic_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"global_context",
@@ -518,6 +567,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_military_set3_obj2_reached",
 		name = "nde_vs_military_set3_obj2_reached",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -526,10 +576,16 @@ return function ()
 				"vs_mg_heroes_objective_reached"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"global_context",
@@ -552,6 +608,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_level_helmgart_military_courtyard_event_PVP",
 		response = "pbw_level_helmgart_military_courtyard_event_PVP",
 		criterias = {
@@ -602,6 +659,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_level_helmgart_military_door_opens_PVP",
 		response = "pbw_level_helmgart_military_door_opens_PVP",
 		criterias = {
@@ -652,6 +710,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_level_helmgart_military_empty_town_PVP",
 		response = "pbw_level_helmgart_military_empty_town_PVP",
 		criterias = {
@@ -702,6 +761,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_level_helmgart_military_fire_cannon_PVP",
 		response = "pbw_level_helmgart_military_fire_cannon_PVP",
 		criterias = {
@@ -752,6 +812,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_level_helmgart_military_halfway_through_horde_PVP",
 		response = "pbw_level_helmgart_military_halfway_through_horde_PVP",
 		criterias = {
@@ -796,6 +857,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_level_helmgart_military_ring_bell_PVP",
 		response = "pbw_level_helmgart_military_ring_bell_PVP",
 		criterias = {
@@ -846,6 +908,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_level_helmgart_military_they_are_coming_PVP",
 		response = "pbw_level_helmgart_military_they_are_coming_PVP",
 		criterias = {
@@ -890,6 +953,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_level_helmgart_military_turn_cannon_PVP",
 		response = "pbw_level_helmgart_military_turn_cannon_PVP",
 		criterias = {
@@ -942,6 +1006,7 @@ return function ()
 	define_rule({
 		response = "pbw_vs_safe_room_military_01_b",
 		name = "pbw_vs_safe_room_military_01_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -966,6 +1031,7 @@ return function ()
 	define_rule({
 		response = "pbw_vs_safe_room_military_02_a",
 		name = "pbw_vs_safe_room_military_02_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -980,7 +1046,7 @@ return function ()
 				"nde_vs_military_set1_briefing_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"bright_wizard"
@@ -1014,6 +1080,7 @@ return function ()
 	define_rule({
 		response = "pbw_vs_safe_room_military_03_b",
 		name = "pbw_vs_safe_room_military_03_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1038,6 +1105,7 @@ return function ()
 	define_rule({
 		response = "pbw_vs_safe_room_military_04_b",
 		name = "pbw_vs_safe_room_military_04_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1062,6 +1130,7 @@ return function ()
 	define_rule({
 		response = "pbw_vs_safe_room_military_05_b",
 		name = "pbw_vs_safe_room_military_05_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1086,6 +1155,7 @@ return function ()
 	define_rule({
 		response = "pbw_vs_safe_room_military_06_b",
 		name = "pbw_vs_safe_room_military_06_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1110,6 +1180,7 @@ return function ()
 	define_rule({
 		response = "pbw_vs_safe_room_military_07_a",
 		name = "pbw_vs_safe_room_military_07_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1124,7 +1195,7 @@ return function ()
 				"nde_vs_military_set1_briefing_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"bright_wizard"
@@ -1158,6 +1229,7 @@ return function ()
 	define_rule({
 		response = "pbw_vs_safe_room_military_08_b",
 		name = "pbw_vs_safe_room_military_08_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1182,6 +1254,7 @@ return function ()
 	define_rule({
 		response = "pbw_vs_safe_room_military_09_b",
 		name = "pbw_vs_safe_room_military_09_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1206,6 +1279,7 @@ return function ()
 	define_rule({
 		response = "pbw_vs_safe_room_military_10_b",
 		name = "pbw_vs_safe_room_military_10_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1228,6 +1302,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_level_helmgart_military_courtyard_event_PVP",
 		response = "pdr_level_helmgart_military_courtyard_event_PVP",
 		criterias = {
@@ -1278,6 +1353,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_level_helmgart_military_door_opens_PVP",
 		response = "pdr_level_helmgart_military_door_opens_PVP",
 		criterias = {
@@ -1328,6 +1404,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_level_helmgart_military_empty_town_PVP",
 		response = "pdr_level_helmgart_military_empty_town_PVP",
 		criterias = {
@@ -1378,6 +1455,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_level_helmgart_military_fire_cannon_PVP",
 		response = "pdr_level_helmgart_military_fire_cannon_PVP",
 		criterias = {
@@ -1428,6 +1506,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_level_helmgart_military_halfway_through_horde_PVP",
 		response = "pdr_level_helmgart_military_halfway_through_horde_PVP",
 		criterias = {
@@ -1472,6 +1551,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_level_helmgart_military_ring_bell_PVP",
 		response = "pdr_level_helmgart_military_ring_bell_PVP",
 		criterias = {
@@ -1522,6 +1602,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_level_helmgart_military_they_are_coming_PVP",
 		response = "pdr_level_helmgart_military_they_are_coming_PVP",
 		criterias = {
@@ -1566,6 +1647,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_level_helmgart_military_turn_cannon_PVP",
 		response = "pdr_level_helmgart_military_turn_cannon_PVP",
 		criterias = {
@@ -1618,6 +1700,7 @@ return function ()
 	define_rule({
 		response = "pdr_vs_safe_room_military_01_b",
 		name = "pdr_vs_safe_room_military_01_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1642,6 +1725,7 @@ return function ()
 	define_rule({
 		response = "pdr_vs_safe_room_military_02_b",
 		name = "pdr_vs_safe_room_military_02_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1666,6 +1750,7 @@ return function ()
 	define_rule({
 		response = "pdr_vs_safe_room_military_03_a",
 		name = "pdr_vs_safe_room_military_03_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1680,7 +1765,7 @@ return function ()
 				"nde_vs_military_set1_briefing_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"dwarf_ranger"
@@ -1714,6 +1799,7 @@ return function ()
 	define_rule({
 		response = "pdr_vs_safe_room_military_04_b",
 		name = "pdr_vs_safe_room_military_04_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1738,6 +1824,7 @@ return function ()
 	define_rule({
 		response = "pdr_vs_safe_room_military_05_b",
 		name = "pdr_vs_safe_room_military_05_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1762,6 +1849,7 @@ return function ()
 	define_rule({
 		response = "pdr_vs_safe_room_military_06_b",
 		name = "pdr_vs_safe_room_military_06_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1786,6 +1874,7 @@ return function ()
 	define_rule({
 		response = "pdr_vs_safe_room_military_07_b",
 		name = "pdr_vs_safe_room_military_07_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1810,6 +1899,7 @@ return function ()
 	define_rule({
 		response = "pdr_vs_safe_room_military_08_a",
 		name = "pdr_vs_safe_room_military_08_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1824,7 +1914,7 @@ return function ()
 				"nde_vs_military_set1_briefing_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"dwarf_ranger"
@@ -1858,6 +1948,7 @@ return function ()
 	define_rule({
 		response = "pdr_vs_safe_room_military_09_b",
 		name = "pdr_vs_safe_room_military_09_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1882,6 +1973,7 @@ return function ()
 	define_rule({
 		response = "pdr_vs_safe_room_military_10_b",
 		name = "pdr_vs_safe_room_military_10_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1904,6 +1996,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_level_helmgart_military_courtyard_event_PVP",
 		response = "pes_level_helmgart_military_courtyard_event_PVP",
 		criterias = {
@@ -1954,6 +2047,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_level_helmgart_military_door_opens_PVP",
 		response = "pes_level_helmgart_military_door_opens_PVP",
 		criterias = {
@@ -2004,6 +2098,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_level_helmgart_military_empty_town_PVP",
 		response = "pes_level_helmgart_military_empty_town_PVP",
 		criterias = {
@@ -2054,6 +2149,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_level_helmgart_military_fire_cannon_PVP",
 		response = "pes_level_helmgart_military_fire_cannon_PVP",
 		criterias = {
@@ -2104,6 +2200,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_level_helmgart_military_halfway_through_horde_PVP",
 		response = "pes_level_helmgart_military_halfway_through_horde_PVP",
 		criterias = {
@@ -2148,6 +2245,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_level_helmgart_military_ring_bell_PVP",
 		response = "pes_level_helmgart_military_ring_bell_PVP",
 		criterias = {
@@ -2198,6 +2296,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_level_helmgart_military_they_are_coming_PVP",
 		response = "pes_level_helmgart_military_they_are_coming_PVP",
 		criterias = {
@@ -2242,6 +2341,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_level_helmgart_military_turn_cannon_PVP",
 		response = "pes_level_helmgart_military_turn_cannon_PVP",
 		criterias = {
@@ -2294,6 +2394,7 @@ return function ()
 	define_rule({
 		response = "pes_vs_safe_room_military_01_b",
 		name = "pes_vs_safe_room_military_01_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2318,6 +2419,7 @@ return function ()
 	define_rule({
 		response = "pes_vs_safe_room_military_02_b",
 		name = "pes_vs_safe_room_military_02_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2342,6 +2444,7 @@ return function ()
 	define_rule({
 		response = "pes_vs_safe_room_military_03_b",
 		name = "pes_vs_safe_room_military_03_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2366,6 +2469,7 @@ return function ()
 	define_rule({
 		response = "pes_vs_safe_room_military_04_b",
 		name = "pes_vs_safe_room_military_04_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2390,6 +2494,7 @@ return function ()
 	define_rule({
 		response = "pes_vs_safe_room_military_05_a",
 		name = "pes_vs_safe_room_military_05_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2404,7 +2509,7 @@ return function ()
 				"nde_vs_military_set1_briefing_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"empire_soldier"
@@ -2438,6 +2543,7 @@ return function ()
 	define_rule({
 		response = "pes_vs_safe_room_military_06_b",
 		name = "pes_vs_safe_room_military_06_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2462,6 +2568,7 @@ return function ()
 	define_rule({
 		response = "pes_vs_safe_room_military_07_b",
 		name = "pes_vs_safe_room_military_07_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2486,6 +2593,7 @@ return function ()
 	define_rule({
 		response = "pes_vs_safe_room_military_08_b",
 		name = "pes_vs_safe_room_military_08_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2510,6 +2618,7 @@ return function ()
 	define_rule({
 		response = "pes_vs_safe_room_military_09_b",
 		name = "pes_vs_safe_room_military_09_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2534,6 +2643,7 @@ return function ()
 	define_rule({
 		response = "pes_vs_safe_room_military_10_a",
 		name = "pes_vs_safe_room_military_10_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2548,7 +2658,7 @@ return function ()
 				"nde_vs_military_set1_briefing_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"empire_soldier"
@@ -2580,6 +2690,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_level_helmgart_military_courtyard_event_PVP",
 		response = "pwe_level_helmgart_military_courtyard_event_PVP",
 		criterias = {
@@ -2630,6 +2741,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_level_helmgart_military_door_opens_PVP",
 		response = "pwe_level_helmgart_military_door_opens_PVP",
 		criterias = {
@@ -2680,6 +2792,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_level_helmgart_military_empty_town_PVP",
 		response = "pwe_level_helmgart_military_empty_town_PVP",
 		criterias = {
@@ -2730,6 +2843,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_level_helmgart_military_fire_cannon_PVP",
 		response = "pwe_level_helmgart_military_fire_cannon_PVP",
 		criterias = {
@@ -2780,6 +2894,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_level_helmgart_military_halfway_through_horde_PVP",
 		response = "pwe_level_helmgart_military_halfway_through_horde_PVP",
 		criterias = {
@@ -2824,6 +2939,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_level_helmgart_military_ring_bell_PVP",
 		response = "pwe_level_helmgart_military_ring_bell_PVP",
 		criterias = {
@@ -2874,6 +2990,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_level_helmgart_military_they_are_coming_PVP",
 		response = "pwe_level_helmgart_military_they_are_coming_PVP",
 		criterias = {
@@ -2918,6 +3035,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_level_helmgart_military_turn_cannon_PVP",
 		response = "pwe_level_helmgart_military_turn_cannon_PVP",
 		criterias = {
@@ -2970,6 +3088,7 @@ return function ()
 	define_rule({
 		response = "pwe_vs_safe_room_military_01_b",
 		name = "pwe_vs_safe_room_military_01_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2994,6 +3113,7 @@ return function ()
 	define_rule({
 		response = "pwe_vs_safe_room_military_02_b",
 		name = "pwe_vs_safe_room_military_02_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3018,6 +3138,7 @@ return function ()
 	define_rule({
 		response = "pwe_vs_safe_room_military_03_b",
 		name = "pwe_vs_safe_room_military_03_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3042,6 +3163,7 @@ return function ()
 	define_rule({
 		response = "pwe_vs_safe_room_military_04_a",
 		name = "pwe_vs_safe_room_military_04_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3056,7 +3178,7 @@ return function ()
 				"nde_vs_military_set1_briefing_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"wood_elf"
@@ -3090,6 +3212,7 @@ return function ()
 	define_rule({
 		response = "pwe_vs_safe_room_military_05_b",
 		name = "pwe_vs_safe_room_military_05_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3114,6 +3237,7 @@ return function ()
 	define_rule({
 		response = "pwe_vs_safe_room_military_06_b",
 		name = "pwe_vs_safe_room_military_06_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3138,6 +3262,7 @@ return function ()
 	define_rule({
 		response = "pwe_vs_safe_room_military_07_b",
 		name = "pwe_vs_safe_room_military_07_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3162,6 +3287,7 @@ return function ()
 	define_rule({
 		response = "pwe_vs_safe_room_military_08_b",
 		name = "pwe_vs_safe_room_military_08_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3186,6 +3312,7 @@ return function ()
 	define_rule({
 		response = "pwe_vs_safe_room_military_09_a",
 		name = "pwe_vs_safe_room_military_09_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3200,7 +3327,7 @@ return function ()
 				"nde_vs_military_set1_briefing_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"wood_elf"
@@ -3234,6 +3361,7 @@ return function ()
 	define_rule({
 		response = "pwe_vs_safe_room_military_10_b",
 		name = "pwe_vs_safe_room_military_10_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3256,6 +3384,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_level_helmgart_military_courtyard_event_PVP",
 		response = "pwh_level_helmgart_military_courtyard_event_PVP",
 		criterias = {
@@ -3306,6 +3435,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_level_helmgart_military_door_opens_PVP",
 		response = "pwh_level_helmgart_military_door_opens_PVP",
 		criterias = {
@@ -3356,6 +3486,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_level_helmgart_military_empty_town_PVP",
 		response = "pwh_level_helmgart_military_empty_town_PVP",
 		criterias = {
@@ -3406,6 +3537,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_level_helmgart_military_fire_cannon_PVP",
 		response = "pwh_level_helmgart_military_fire_cannon_PVP",
 		criterias = {
@@ -3456,6 +3588,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_level_helmgart_military_halfway_through_horde_PVP",
 		response = "pwh_level_helmgart_military_halfway_through_horde_PVP",
 		criterias = {
@@ -3500,6 +3633,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_level_helmgart_military_ring_bell_PVP",
 		response = "pwh_level_helmgart_military_ring_bell_PVP",
 		criterias = {
@@ -3550,6 +3684,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_level_helmgart_military_they_are_coming_PVP",
 		response = "pwh_level_helmgart_military_they_are_coming_PVP",
 		criterias = {
@@ -3594,6 +3729,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_level_helmgart_military_turn_cannon_PVP",
 		response = "pwh_level_helmgart_military_turn_cannon_PVP",
 		criterias = {
@@ -3646,6 +3782,7 @@ return function ()
 	define_rule({
 		response = "pwh_vs_safe_room_military_01_a",
 		name = "pwh_vs_safe_room_military_01_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3660,7 +3797,7 @@ return function ()
 				"nde_vs_military_set1_briefing_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"witch_hunter"
@@ -3694,6 +3831,7 @@ return function ()
 	define_rule({
 		response = "pwh_vs_safe_room_military_02_b",
 		name = "pwh_vs_safe_room_military_02_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3718,6 +3856,7 @@ return function ()
 	define_rule({
 		response = "pwh_vs_safe_room_military_03_b",
 		name = "pwh_vs_safe_room_military_03_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3742,6 +3881,7 @@ return function ()
 	define_rule({
 		response = "pwh_vs_safe_room_military_04_b",
 		name = "pwh_vs_safe_room_military_04_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3766,6 +3906,7 @@ return function ()
 	define_rule({
 		response = "pwh_vs_safe_room_military_05_b",
 		name = "pwh_vs_safe_room_military_05_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3790,6 +3931,7 @@ return function ()
 	define_rule({
 		response = "pwh_vs_safe_room_military_06_a",
 		name = "pwh_vs_safe_room_military_06_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3804,7 +3946,7 @@ return function ()
 				"nde_vs_military_set1_briefing_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"witch_hunter"
@@ -3838,6 +3980,7 @@ return function ()
 	define_rule({
 		response = "pwh_vs_safe_room_military_07_b",
 		name = "pwh_vs_safe_room_military_07_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3862,6 +4005,7 @@ return function ()
 	define_rule({
 		response = "pwh_vs_safe_room_military_08_b",
 		name = "pwh_vs_safe_room_military_08_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3886,6 +4030,7 @@ return function ()
 	define_rule({
 		response = "pwh_vs_safe_room_military_09_b",
 		name = "pwh_vs_safe_room_military_09_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3910,6 +4055,7 @@ return function ()
 	define_rule({
 		response = "pwh_vs_safe_room_military_10_b",
 		name = "pwh_vs_safe_room_military_10_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",

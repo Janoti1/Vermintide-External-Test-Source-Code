@@ -641,7 +641,7 @@ local function check_player_death_vo(killed_unit, killing_blow)
 		end
 
 		if not any_player_alive then
-			dialogue_system:trigger_mission_giver_event("vs_mg_pactsworn_wipe")
+			dialogue_system:queue_mission_giver_event("vs_mg_pactsworn_wipe")
 		end
 	end
 end

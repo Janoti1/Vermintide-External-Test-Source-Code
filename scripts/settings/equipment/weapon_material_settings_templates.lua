@@ -41,21 +41,21 @@ WeaponMaterialSettingsTemplates.lileath = {
 }
 WeaponMaterialSettingsTemplates.versus = {
 	color_glow_high = {
-		y = 3,
-		z = 6,
-		x = 3.5,
+		y = 2,
+		z = 4,
+		x = 2.5,
 		type = "vector3"
 	},
 	color_glow_low = {
-		y = 0.5,
-		z = 1.5,
-		x = 1,
+		y = 0.3,
+		z = 1,
+		x = 0.7,
 		type = "vector3"
 	},
 	color_smoke_high = {
-		y = 0.16,
-		z = 0.24,
-		x = 0.07,
+		y = 0.15,
+		z = 0.22,
+		x = 0.06,
 		type = "vector3"
 	},
 	color_smoke_low = {

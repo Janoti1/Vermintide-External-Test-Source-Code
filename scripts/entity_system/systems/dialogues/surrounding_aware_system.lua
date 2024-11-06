@@ -155,6 +155,8 @@ SurroundingAwareSystem.on_add_extension = function (self, world, unit, extension
 	end
 
 	if extension_init_data.side_id then
+		extension.side_id = extension_init_data.side_id
+
 		Managers.state.side:add_unit_to_side(unit, extension_init_data.side_id)
 	end
 

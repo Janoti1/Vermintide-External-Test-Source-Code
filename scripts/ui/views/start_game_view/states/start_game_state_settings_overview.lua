@@ -115,6 +115,11 @@ end
 
 StartGameStateSettingsOverview._calculate_current_weave = function (self)
 	local ignore_dlc_check = false
+
+	if false then
+		-- Nothing
+	end
+
 	local weave_templates = WeaveSettings.templates_ordered
 	local num_entries = #weave_templates
 	local statistics_db = Managers.player:statistics_db()
@@ -504,15 +509,10 @@ end
 StartGameStateSettingsOverview.set_layout_by_name = function (self, name)
 	printf("[StartGameStateSettingsOverview]:set_layout_by_name() - %s", name)
 
-	for index, layout_setting in ipairs(self._window_layouts) do
-		if layout_setting.name == name then
-			self:set_layout(index)
+	local index = table.find_by_key(self._window_layouts, "name", name)
 
-			return
-		end
-	end
-
-	ferror("[StartGameStateSettingsOverview]:set_layout_by_name() - Could not find a layout with name %s", name)
+	fassert(index, "[StartGameStateSettingsOverview]:set_layout_by_name() - Could not find a layout with name %s", name)
+	self:set_layout(index)
 end
 
 StartGameStateSettingsOverview.get_mechanism_name = function (self)

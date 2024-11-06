@@ -553,6 +553,7 @@ ActionUtils.get_action_time_scale = function (unit, action_settings, is_animatio
 
 				if is_melee then
 					time_scale = buff_extension:apply_buffs_to_value(time_scale, "attack_speed")
+					time_scale = buff_extension:apply_buffs_to_value(time_scale, "attack_speed_melee")
 				elseif is_ranged then
 					time_scale = buff_extension:apply_buffs_to_value(time_scale, "attack_speed")
 				end

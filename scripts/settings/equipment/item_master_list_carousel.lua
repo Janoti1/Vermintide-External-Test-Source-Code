@@ -522,7 +522,7 @@ ItemMasterList.vs_es_bastard_sword = {
 	description = "es_bastard_sword_skin_01_description",
 	rarity = "plentiful",
 	right_hand_unit = "units/weapons/player/wpn_emp_gk_sword_01_t1/wpn_emp_gk_sword_01_t1",
-	skin_combination_table = "es_2h_sword_skins",
+	skin_combination_table = "es_bastard_sword_skins",
 	slot_type = "melee",
 	inventory_icon = "icon_wpn_emp_gk_sword_01_t1",
 	display_name = "es_bastard_sword_skin_01_name",
@@ -546,7 +546,7 @@ ItemMasterList.vs_es_bastard_sword = {
 ItemMasterList.vs_es_sword_shield_breton = {
 	slot_type = "melee",
 	display_name = "es_sword_shield_breton_skin_01_name",
-	skin_combination_table = "es_sword_shield_skins",
+	skin_combination_table = "es_sword_shield_breton_skins",
 	left_hand_unit = "units/weapons/player/wpn_emp_gk_shield_03/wpn_emp_gk_shield_03",
 	hud_icon = "weapon_generic_icon_sword_and_sheild",
 	item_type = "es_1h_sword_shield_breton",
@@ -2216,7 +2216,7 @@ ItemMasterList.skaven_gutter_runner_skin_0000 = {
 	temporary_template = "skaven_gutter_runner_skin_0000",
 	display_name = "skaven_gutter_runner_skin_0000",
 	name = "skaven_gutter_runner_skin_0000",
-	inventory_icon = "icon_skin_zealot_original",
+	inventory_icon = "icon_skaven_gutter_runner_skin_0000",
 	slot_type = "skin",
 	information_text = "information_text_character_skin",
 	hud_icon = "unit_frame_portrait_witch_hunter",
@@ -2233,7 +2233,7 @@ ItemMasterList.skaven_pack_master_skin_0000 = {
 	temporary_template = "skaven_pack_master_skin_0000",
 	display_name = "skaven_packmaster_skin_0000",
 	name = "skaven_pack_master_skin_0000",
-	inventory_icon = "icon_skin_zealot_original",
+	inventory_icon = "icon_skaven_pack_master_skin_0000",
 	slot_type = "skin",
 	information_text = "information_text_character_skin",
 	hud_icon = "unit_frame_portrait_witch_hunter",
@@ -2250,7 +2250,7 @@ ItemMasterList.skaven_wind_globadier_skin_0000 = {
 	temporary_template = "skaven_wind_globadier_skin_0000",
 	display_name = "skaven_wind_globadier_skin_0000",
 	name = "skaven_wind_globadier_skin_0000",
-	inventory_icon = "icon_skin_zealot_original",
+	inventory_icon = "icon_skaven_wind_globadier_skin_0000",
 	slot_type = "skin",
 	information_text = "information_text_character_skin",
 	hud_icon = "unit_frame_portrait_witch_hunter",
@@ -2267,7 +2267,7 @@ ItemMasterList.skaven_ratling_gunner_skin_0000 = {
 	temporary_template = "skaven_ratling_gunner_skin_0000",
 	display_name = "skaven_ratling_gunner_skin_0000",
 	name = "skaven_ratling_gunner_skin_0000",
-	inventory_icon = "icon_skin_zealot_original",
+	inventory_icon = "icon_skaven_ratling_gunner_skin_0000",
 	slot_type = "skin",
 	information_text = "information_text_character_skin",
 	hud_icon = "unit_frame_portrait_witch_hunter",
@@ -2284,7 +2284,7 @@ ItemMasterList.skaven_warpfire_thrower_skin_0000 = {
 	temporary_template = "skaven_warpfire_thrower_skin_0000",
 	display_name = "skaven_warpfire_thrower_skin_0000",
 	name = "skaven_warpfire_thrower_skin_0000",
-	inventory_icon = "icon_skin_zealot_original",
+	inventory_icon = "icon_skaven_warpfire_thrower_skin_0000",
 	slot_type = "skin",
 	information_text = "information_text_character_skin",
 	hud_icon = "unit_frame_portrait_witch_hunter",
@@ -2301,7 +2301,7 @@ ItemMasterList.chaos_troll_skin_0000 = {
 	temporary_template = "chaos_troll_skin_0000",
 	display_name = "chaos_troll_skin_0000",
 	name = "chaos_troll_skin_0000",
-	inventory_icon = "icon_skin_zealot_original",
+	inventory_icon = "icon_chaos_troll_skin_0000",
 	slot_type = "skin",
 	information_text = "information_text_character_skin",
 	hud_icon = "unit_frame_portrait_witch_hunter",
@@ -2447,40 +2447,40 @@ ItemMasterList.frame_warpfire_thrower_01 = {
 }
 ItemMasterList.frame_warpfire_thrower_02 = {
 	description = "frame_versus_portrait_warpfire_thrower_02_description",
-	rarity = "promo",
+	temporary_template = "frame_warpfire_thrower_02",
 	display_name = "frame_versus_portrait_warpfire_thrower_02_name",
+	hud_icon = "unit_frame_02",
 	inventory_icon = "icon_portrait_frame_warpfire_thrower_02",
 	slot_type = "frame",
 	information_text = "information_text_frame",
-	hud_icon = "unit_frame_02",
-	template = "frame_warpfire_thrower_02",
+	rarity = "promo",
 	item_type = "frame",
 	can_wield = CanWieldAllItemTemplates
 }
 ItemMasterList.frame_versus_01 = {
 	description = "frame_versus_portrait_01_description",
-	rarity = "promo",
+	temporary_template = "frame_versus_01",
 	display_name = "frame_versus_portrait_01_name",
+	hud_icon = "unit_frame_02",
 	inventory_icon = "icon_portrait_frame_versus_01",
 	slot_type = "frame",
 	information_text = "information_text_frame",
-	hud_icon = "unit_frame_02",
+	rarity = "promo",
 	selection = "versus",
-	template = "frame_versus_01",
 	display_unit = "units/weapons/weapon_display/display_portrait_frame",
 	item_type = "frame",
 	can_wield = CanWieldAllItemTemplates
 }
 ItemMasterList.frame_versus_02 = {
 	description = "frame_versus_portrait_02_description",
-	rarity = "promo",
+	temporary_template = "frame_versus_02",
 	display_name = "frame_versus_portrait_02_name",
+	hud_icon = "unit_frame_02",
 	inventory_icon = "icon_portrait_frame_versus_02",
 	slot_type = "frame",
 	information_text = "information_text_frame",
-	hud_icon = "unit_frame_02",
+	rarity = "promo",
 	selection = "versus",
-	template = "frame_versus_02",
 	display_unit = "units/weapons/weapon_display/display_portrait_frame",
 	item_type = "frame",
 	can_wield = CanWieldAllItemTemplates
@@ -2493,14 +2493,18 @@ ItemMasterList.weapon_pose_pack_kerillian_dual_wield = {
 	information_text = "information_weapon_pose",
 	selection = "versus",
 	name = "weapon_pose_pack_kerillian_dual_wield_name",
-	template = "",
 	hud_icon = "",
+	template = "",
 	item_type = "weapon_pose_bundle",
 	can_wield = {
 		"we_shade",
 		"we_maidenguard",
 		"we_waywatcher",
 		"we_thornsister"
+	},
+	icon_size = {
+		160,
+		160
 	},
 	bundle = {
 		BundledItems = {
@@ -2509,7 +2513,19 @@ ItemMasterList.weapon_pose_pack_kerillian_dual_wield = {
 			"we_dual_wield_sword_dagger_weapon_pose_03",
 			"we_dual_wield_sword_dagger_weapon_pose_04",
 			"we_dual_wield_sword_dagger_weapon_pose_05",
-			"we_dual_wield_sword_dagger_weapon_pose_06"
+			"we_dual_wield_sword_dagger_weapon_pose_06",
+			"we_dual_wield_swords_weapon_pose_01",
+			"we_dual_wield_swords_weapon_pose_02",
+			"we_dual_wield_swords_weapon_pose_03",
+			"we_dual_wield_swords_weapon_pose_04",
+			"we_dual_wield_swords_weapon_pose_05",
+			"we_dual_wield_swords_weapon_pose_06",
+			"we_dual_wield_daggers_weapon_pose_01",
+			"we_dual_wield_daggers_weapon_pose_02",
+			"we_dual_wield_daggers_weapon_pose_03",
+			"we_dual_wield_daggers_weapon_pose_04",
+			"we_dual_wield_daggers_weapon_pose_05",
+			"we_dual_wield_daggers_weapon_pose_06"
 		}
 	}
 }
@@ -2521,14 +2537,18 @@ ItemMasterList.weapon_pose_pack_kerillian_bow = {
 	information_text = "information_weapon_pose",
 	selection = "versus",
 	name = "weapon_pose_pack_kerillian_bow_name",
-	template = "",
 	hud_icon = "",
+	template = "",
 	item_type = "weapon_pose_bundle",
 	can_wield = {
 		"we_shade",
 		"we_maidenguard",
 		"we_waywatcher",
 		"we_thornsister"
+	},
+	icon_size = {
+		160,
+		160
 	},
 	bundle = {
 		BundledItems = {
@@ -2561,14 +2581,18 @@ ItemMasterList.weapon_pose_pack_kerillian_2h_glaive = {
 	information_text = "information_weapon_pose",
 	selection = "versus",
 	name = "weapon_pose_pack_kerillian_2h_glaive_name",
-	template = "",
 	hud_icon = "",
+	template = "",
 	item_type = "weapon_pose_bundle",
 	can_wield = {
 		"we_shade",
 		"we_maidenguard",
 		"we_waywatcher",
 		"we_thornsister"
+	},
+	icon_size = {
+		160,
+		160
 	},
 	bundle = {
 		BundledItems = {
@@ -2589,14 +2613,18 @@ ItemMasterList.weapon_pose_pack_kerillian_spear_shield = {
 	information_text = "information_weapon_pose",
 	selection = "versus",
 	name = "weapon_pose_pack_kerillian_spear_shield_name",
-	template = "",
 	hud_icon = "",
+	template = "",
 	item_type = "weapon_pose_bundle",
 	can_wield = {
 		"we_shade",
 		"we_maidenguard",
 		"we_waywatcher",
 		"we_thornsister"
+	},
+	icon_size = {
+		160,
+		160
 	},
 	bundle = {
 		BundledItems = {
@@ -2617,14 +2645,18 @@ ItemMasterList.weapon_pose_pack_kerillian_life_staff = {
 	information_text = "information_weapon_pose",
 	selection = "versus",
 	name = "weapon_pose_pack_kerillian_life_staff_name",
-	template = "",
 	hud_icon = "",
+	template = "",
 	item_type = "weapon_pose_bundle",
 	can_wield = {
 		"we_shade",
 		"we_maidenguard",
 		"we_waywatcher",
 		"we_thornsister"
+	},
+	icon_size = {
+		160,
+		160
 	},
 	bundle = {
 		BundledItems = {
@@ -2645,14 +2677,18 @@ ItemMasterList.weapon_pose_pack_kerillian_spear = {
 	information_text = "information_weapon_pose",
 	selection = "versus",
 	name = "weapon_pose_pack_kerillian_spear_name",
-	template = "",
 	hud_icon = "",
+	template = "",
 	item_type = "weapon_pose_bundle",
 	can_wield = {
 		"we_shade",
 		"we_maidenguard",
 		"we_waywatcher",
 		"we_thornsister"
+	},
+	icon_size = {
+		160,
+		160
 	},
 	bundle = {
 		BundledItems = {
@@ -2679,13 +2715,17 @@ ItemMasterList.weapon_pose_pack_saltzpyre_brace_of_pistols = {
 	information_text = "information_weapon_pose",
 	selection = "versus",
 	name = "weapon_pose_pack_saltzpyre_brace_of_pistols_name",
-	template = "",
 	hud_icon = "",
+	template = "",
 	item_type = "weapon_pose_bundle",
 	can_wield = {
 		"wh_bountyhunter",
 		"wh_captain",
 		"wh_zealot"
+	},
+	icon_size = {
+		160,
+		160
 	},
 	bundle = {
 		BundledItems = {
@@ -2706,13 +2746,17 @@ ItemMasterList.weapon_pose_pack_saltzpyre_fencing_sword = {
 	information_text = "information_weapon_pose",
 	selection = "versus",
 	name = "weapon_pose_pack_saltzpyre_fencing_sword_name",
-	template = "",
 	hud_icon = "",
+	template = "",
 	item_type = "weapon_pose_bundle",
 	can_wield = {
 		"wh_bountyhunter",
 		"wh_captain",
 		"wh_zealot"
+	},
+	icon_size = {
+		160,
+		160
 	},
 	bundle = {
 		BundledItems = {
@@ -2733,13 +2777,17 @@ ItemMasterList.weapon_pose_pack_saltzpyre_dual_wield = {
 	information_text = "information_weapon_pose",
 	selection = "versus",
 	name = "weapon_pose_pack_saltzpyre_dual_wield_name",
-	template = "",
 	hud_icon = "",
+	template = "",
 	item_type = "weapon_pose_bundle",
 	can_wield = {
 		"wh_bountyhunter",
 		"wh_captain",
 		"wh_zealot"
+	},
+	icon_size = {
+		160,
+		160
 	},
 	bundle = {
 		BundledItems = {
@@ -2760,13 +2808,17 @@ ItemMasterList.weapon_pose_pack_saltzpyre_crossbow = {
 	information_text = "information_weapon_pose",
 	selection = "versus",
 	name = "weapon_pose_pack_saltzpyre_crossbow_name",
-	template = "",
 	hud_icon = "",
+	template = "",
 	item_type = "weapon_pose_bundle",
 	can_wield = {
 		"wh_bountyhunter",
 		"wh_captain",
 		"wh_zealot"
+	},
+	icon_size = {
+		160,
+		160
 	},
 	bundle = {
 		BundledItems = {
@@ -2793,12 +2845,16 @@ ItemMasterList.weapon_pose_pack_saltzpyre_dual_wield_hammers = {
 	information_text = "information_weapon_pose",
 	selection = "versus",
 	name = "weapon_pose_pack_saltzpyre_dual_wield_hammer_name",
-	template = "",
 	hud_icon = "",
+	template = "",
 	item_type = "weapon_pose_bundle",
 	can_wield = {
 		"wh_priest",
 		"wh_zealot"
+	},
+	icon_size = {
+		160,
+		160
 	},
 	bundle = {
 		BundledItems = {
@@ -2819,13 +2875,17 @@ ItemMasterList.weapon_pose_pack_saltzpyre_1h_weapon = {
 	information_text = "information_weapon_pose",
 	selection = "versus",
 	name = "weapon_pose_pack_saltzpyre_1h_weapon_name",
-	template = "",
 	hud_icon = "",
+	template = "",
 	item_type = "weapon_pose_bundle",
 	can_wield = {
 		"wh_bountyhunter",
 		"wh_captain",
 		"wh_zealot"
+	},
+	icon_size = {
+		160,
+		160
 	},
 	bundle = {
 		BundledItems = {
@@ -2858,13 +2918,17 @@ ItemMasterList.weapon_pose_pack_bardin_rifle = {
 	information_text = "information_weapon_pose",
 	selection = "versus",
 	name = "weapon_pose_pack_bardin_rifle_name",
-	template = "",
 	hud_icon = "",
+	template = "",
 	item_type = "weapon_pose_bundle",
 	can_wield = {
 		"dr_ironbreaker",
 		"dr_ranger",
 		"dr_engineer"
+	},
+	icon_size = {
+		160,
+		160
 	},
 	bundle = {
 		BundledItems = {
@@ -2885,14 +2949,18 @@ ItemMasterList.weapon_pose_pack_bardin_dual_wield = {
 	information_text = "information_weapon_pose",
 	selection = "versus",
 	name = "weapon_pose_pack_bardin_dual_wield_name",
-	template = "",
 	hud_icon = "",
+	template = "",
 	item_type = "weapon_pose_bundle",
 	can_wield = {
 		"dr_ironbreaker",
 		"dr_slayer",
 		"dr_ranger",
 		"dr_engineer"
+	},
+	icon_size = {
+		160,
+		160
 	},
 	bundle = {
 		BundledItems = {
@@ -2919,12 +2987,16 @@ ItemMasterList.weapon_pose_pack_bardin_crossbow = {
 	information_text = "information_weapon_pose",
 	selection = "versus",
 	name = "weapon_pose_pack_bardin_crossbow_name",
-	template = "",
 	hud_icon = "",
+	template = "",
 	item_type = "weapon_pose_bundle",
 	can_wield = {
 		"dr_ironbreaker",
 		"dr_ranger"
+	},
+	icon_size = {
+		160,
+		160
 	},
 	bundle = {
 		BundledItems = {
@@ -2945,13 +3017,17 @@ ItemMasterList.weapon_pose_pack_bardin_1h_shield = {
 	information_text = "information_weapon_pose",
 	selection = "versus",
 	name = "weapon_pose_pack_bardin_1h_shield_name",
-	template = "",
 	hud_icon = "",
+	template = "",
 	item_type = "weapon_pose_bundle",
 	can_wield = {
 		"dr_ironbreaker",
 		"dr_ranger",
 		"dr_engineer"
+	},
+	icon_size = {
+		160,
+		160
 	},
 	bundle = {
 		BundledItems = {
@@ -2978,13 +3054,17 @@ ItemMasterList.weapon_pose_pack_bardin_steam_pistol = {
 	information_text = "information_weapon_pose",
 	selection = "versus",
 	name = "weapon_pose_pack_bardin_steam_pistol_name",
-	template = "",
 	hud_icon = "",
+	template = "",
 	item_type = "weapon_pose_bundle",
 	can_wield = {
 		"dr_engineer",
 		"dr_ranger",
 		"dr_ironbreaker"
+	},
+	icon_size = {
+		160,
+		160
 	},
 	bundle = {
 		BundledItems = {
@@ -3005,14 +3085,18 @@ ItemMasterList.weapon_pose_pack_bardin_2h_weapon = {
 	information_text = "information_weapon_pose",
 	selection = "versus",
 	name = "weapon_pose_pack_bardin_2h_weapon_name",
-	template = "",
 	hud_icon = "",
+	template = "",
 	item_type = "weapon_pose_bundle",
 	can_wield = {
 		"dr_ironbreaker",
 		"dr_slayer",
 		"dr_ranger",
 		"dr_engineer"
+	},
+	icon_size = {
+		160,
+		160
 	},
 	bundle = {
 		BundledItems = {
@@ -3051,13 +3135,17 @@ ItemMasterList.weapon_pose_pack_kruber_handgun = {
 	information_text = "information_weapon_pose",
 	selection = "versus",
 	name = "weapon_pose_pack_kruber_handgun_name",
-	template = "",
 	hud_icon = "",
+	template = "",
 	item_type = "weapon_pose_bundle",
 	can_wield = {
 		"es_huntsman",
 		"es_knight",
 		"es_mercenary"
+	},
+	icon_size = {
+		160,
+		160
 	},
 	bundle = {
 		BundledItems = {
@@ -3078,14 +3166,18 @@ ItemMasterList.weapon_pose_pack_kruber_2h_sword = {
 	information_text = "information_weapon_pose",
 	selection = "versus",
 	name = "weapon_pose_pack_kruber_2h_sword_name",
-	template = "",
 	hud_icon = "",
+	template = "",
 	item_type = "weapon_pose_bundle",
 	can_wield = {
 		"es_huntsman",
 		"es_knight",
 		"es_mercenary",
 		"es_questingknight"
+	},
+	icon_size = {
+		160,
+		160
 	},
 	bundle = {
 		BundledItems = {
@@ -3112,13 +3204,17 @@ ItemMasterList.weapon_pose_pack_kruber_shotgun = {
 	information_text = "information_weapon_pose",
 	selection = "versus",
 	name = "weapon_pose_pack_kruber_shotgun_name",
-	template = "",
 	hud_icon = "",
+	template = "",
 	item_type = "weapon_pose_bundle",
 	can_wield = {
 		"es_huntsman",
 		"es_knight",
 		"es_mercenary"
+	},
+	icon_size = {
+		160,
+		160
 	},
 	bundle = {
 		BundledItems = {
@@ -3139,14 +3235,18 @@ ItemMasterList.weapon_pose_pack_kruber_1h_shield = {
 	information_text = "information_weapon_pose",
 	selection = "versus",
 	name = "weapon_pose_pack_kruber_1h_shield_name",
-	template = "",
 	hud_icon = "",
+	template = "",
 	item_type = "weapon_pose_bundle",
 	can_wield = {
 		"es_huntsman",
 		"es_knight",
 		"es_mercenary",
 		"es_questingknight"
+	},
+	icon_size = {
+		160,
+		160
 	},
 	bundle = {
 		BundledItems = {
@@ -3185,14 +3285,18 @@ ItemMasterList.weapon_pose_pack_kruber_bastard_sword = {
 	information_text = "information_weapon_pose",
 	selection = "versus",
 	name = "weapon_pose_pack_kruber_bastard_sword_name",
-	template = "",
 	hud_icon = "",
+	template = "",
 	item_type = "weapon_pose_bundle",
 	can_wield = {
 		"es_huntsman",
 		"es_knight",
 		"es_mercenary",
 		"es_questingknight"
+	},
+	icon_size = {
+		160,
+		160
 	},
 	bundle = {
 		BundledItems = {
@@ -3213,14 +3317,18 @@ ItemMasterList.weapon_pose_pack_kruber_2h_hammer = {
 	information_text = "information_weapon_pose",
 	selection = "versus",
 	name = "weapon_pose_pack_kruber_2h_hammer_name",
-	template = "",
 	hud_icon = "",
+	template = "",
 	item_type = "weapon_pose_bundle",
 	can_wield = {
 		"es_huntsman",
 		"es_knight",
 		"es_mercenary",
 		"es_questingknight"
+	},
+	icon_size = {
+		160,
+		160
 	},
 	bundle = {
 		BundledItems = {
@@ -3241,14 +3349,18 @@ ItemMasterList.weapon_pose_pack_sienna_staff_a = {
 	information_text = "information_weapon_pose",
 	selection = "versus",
 	name = "weapon_pose_pack_sienna_staff_a_name",
-	template = "",
 	hud_icon = "",
+	template = "",
 	item_type = "weapon_pose_bundle",
 	can_wield = {
 		"bw_scholar",
 		"bw_adept",
 		"bw_unchained",
 		"bw_necromancer"
+	},
+	icon_size = {
+		160,
+		160
 	},
 	bundle = {
 		BundledItems = {
@@ -3276,7 +3388,6 @@ ItemMasterList.weapon_pose_pack_sienna_staff_a = {
 			"bw_skullstaff_flamethrower_weapon_pose_04",
 			"bw_skullstaff_flamethrower_weapon_pose_05",
 			"bw_skullstaff_flamethrower_weapon_pose_06",
-			"bw_skullstaff_flamethrower_weapon_pose_06",
 			"bw_skullstaff_geiser_weapon_pose_01",
 			"bw_skullstaff_geiser_weapon_pose_02",
 			"bw_skullstaff_geiser_weapon_pose_03",
@@ -3294,7 +3405,13 @@ ItemMasterList.weapon_pose_pack_sienna_staff_a = {
 			"bw_skullstaff_fireball_weapon_pose_03",
 			"bw_skullstaff_fireball_weapon_pose_04",
 			"bw_skullstaff_fireball_weapon_pose_05",
-			"bw_skullstaff_fireball_weapon_pose_06"
+			"bw_skullstaff_fireball_weapon_pose_06",
+			"bw_deus_01_weapon_pose_01",
+			"bw_deus_01_weapon_pose_02",
+			"bw_deus_01_weapon_pose_03",
+			"bw_deus_01_weapon_pose_04",
+			"bw_deus_01_weapon_pose_05",
+			"bw_deus_01_weapon_pose_06"
 		}
 	}
 }
@@ -3306,14 +3423,18 @@ ItemMasterList.weapon_pose_pack_sienna_1h = {
 	information_text = "information_weapon_pose",
 	selection = "versus",
 	name = "weapon_pose_pack_sienna_1h_name",
-	template = "",
 	hud_icon = "",
+	template = "",
 	item_type = "weapon_pose_bundle",
 	can_wield = {
 		"bw_scholar",
 		"bw_adept",
 		"bw_unchained",
 		"bw_necromancer"
+	},
+	icon_size = {
+		160,
+		160
 	},
 	bundle = {
 		BundledItems = {
@@ -3346,14 +3467,18 @@ ItemMasterList.weapon_pose_pack_sienna_1h_dagger = {
 	information_text = "information_weapon_pose",
 	selection = "versus",
 	name = "weapon_pose_pack_sienna_1h_dagger_name",
-	template = "",
 	hud_icon = "",
+	template = "",
 	item_type = "weapon_pose_bundle",
 	can_wield = {
 		"bw_scholar",
 		"bw_adept",
 		"bw_unchained",
 		"bw_necromancer"
+	},
+	icon_size = {
+		160,
+		160
 	},
 	bundle = {
 		BundledItems = {
@@ -3374,14 +3499,18 @@ ItemMasterList.weapon_pose_pack_sienna_1h_spells = {
 	information_text = "information_weapon_pose",
 	selection = "versus",
 	name = "weapon_pose_pack_sienna_1h_spells_name",
-	template = "",
 	hud_icon = "",
+	template = "",
 	item_type = "weapon_pose_bundle",
 	can_wield = {
 		"bw_scholar",
 		"bw_adept",
 		"bw_unchained",
 		"bw_necromancer"
+	},
+	icon_size = {
+		160,
+		160
 	},
 	bundle = {
 		BundledItems = {
@@ -3402,14 +3531,18 @@ ItemMasterList.weapon_pose_pack_sienna_ghost_scythe = {
 	information_text = "information_weapon_pose",
 	selection = "versus",
 	name = "weapon_pose_pack_sienna_ghost_scythe_name",
-	template = "",
 	hud_icon = "",
+	template = "",
 	item_type = "weapon_pose_bundle",
 	can_wield = {
 		"bw_scholar",
 		"bw_adept",
 		"bw_unchained",
 		"bw_necromancer"
+	},
+	icon_size = {
+		160,
+		160
 	},
 	bundle = {
 		BundledItems = {
@@ -3422,22 +3555,26 @@ ItemMasterList.weapon_pose_pack_sienna_ghost_scythe = {
 		}
 	}
 }
-ItemMasterList.weapon_pose_pack_sienna_ghost_scythe = {
-	description = "weapon_pose_pack_sienna_ghost_scythe_description",
+ItemMasterList.weapon_pose_pack_sienna_1h_mace = {
+	description = "weapon_pose_pack_sienna_1h_mace_description",
 	rarity = "promo",
-	display_name = "weapon_pose_pack_sienna_ghost_scythe_name",
+	display_name = "weapon_pose_pack_sienna_1h_mace_name",
 	slot_type = "weapon_pose_bundle",
 	information_text = "information_weapon_pose",
 	selection = "versus",
-	name = "weapon_pose_pack_sienna_ghost_scythe_name",
-	template = "",
+	name = "weapon_pose_pack_sienna_1h_mace_name",
 	hud_icon = "",
+	template = "",
 	item_type = "weapon_pose_bundle",
 	can_wield = {
 		"bw_scholar",
 		"bw_adept",
 		"bw_unchained",
 		"bw_necromancer"
+	},
+	icon_size = {
+		160,
+		160
 	},
 	bundle = {
 		BundledItems = {

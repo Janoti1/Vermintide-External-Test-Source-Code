@@ -323,20 +323,39 @@ for index, slot in ipairs(InventorySettings.slots) do
 end
 
 local equipment_slots = {
-	slot_necklace = true,
-	slot_trinket_1 = true,
-	slot_ring = true,
-	slot_melee = true,
-	slot_ranged = true
+	default = {
+		slot_necklace = true,
+		slot_trinket_1 = true,
+		slot_ring = true,
+		slot_melee = true,
+		slot_ranged = true
+	},
+	deus = {
+		slot_ranged = true,
+		slot_melee = true
+	},
+	versus = {
+		slot_ranged = true,
+		slot_melee = true
+	}
 }
 
 InventorySettings.equipment_slots = {}
+InventorySettings.equipment_slots_by_mechanism = {}
 
-for index, slot in ipairs(InventorySettings.slots) do
-	if equipment_slots[slot.name] then
-		InventorySettings.equipment_slots[#InventorySettings.equipment_slots + 1] = slot
+for mechanism, mechanism_equipment_slots in pairs(equipment_slots) do
+	for index, slot in ipairs(InventorySettings.slots) do
+		InventorySettings.equipment_slots_by_mechanism[mechanism] = InventorySettings.equipment_slots_by_mechanism[mechanism] or {}
+
+		local equipment_slots_by_mechanism = InventorySettings.equipment_slots_by_mechanism[mechanism]
+
+		if mechanism_equipment_slots[slot.name] then
+			equipment_slots_by_mechanism[#equipment_slots_by_mechanism + 1] = slot
+		end
 	end
 end
+
+InventorySettings.equipment_slots = InventorySettings.equipment_slots_by_mechanism.default
 
 local jewellery_slots = {
 	slot_necklace = true,

@@ -3159,6 +3159,33 @@ DamageUtils._projectile_hit_character = function (current_action, owner_unit, ow
 			if ranged_block and Managers.state.side:versus_is_dark_pact(owner_unit) then
 				WwiseUtils.trigger_unit_event(world, "Play_versus_ui_damage_mitigated_indicator", hit_unit)
 			end
+
+			local owner_breed = Unit.get_data(owner_unit, "breed")
+
+			if shield_blocked and owner_breed.track_projectile_blocked_vo then
+				local t = Managers.time:time("game")
+				local tracked_blocked_projectiles = Unit.get_data(owner_unit, "blocked_projectile_hits") or {}
+				local num_blocked = #tracked_blocked_projectiles + 1
+
+				tracked_blocked_projectiles[num_blocked] = t
+
+				for i = num_blocked, 1, -1 do
+					if t > tracked_blocked_projectiles[i] + DialogueSettings.vs_track_projectiles_blocked_timer then
+						table.swap_delete(tracked_blocked_projectiles, i)
+
+						num_blocked = num_blocked - 1
+					end
+				end
+
+				if num_blocked > DialogueSettings.vs_num_blocked_projectiles_to_track then
+					local dialogue_input = ScriptUnit.extension_input(owner_unit, "dialogue_system")
+
+					dialogue_input:trigger_networked_dialogue_event("vs_ratling_hitting_shield")
+					table.clear(tracked_blocked_projectiles)
+				end
+
+				Unit.set_data(owner_unit, "blocked_projectile_hits", tracked_blocked_projectiles)
+			end
 		end
 
 		if hit_unit_player and breed.boss and Managers.state.side:versus_is_dark_pact(owner_unit) then

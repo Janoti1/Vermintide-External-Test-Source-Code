@@ -1,7 +1,8 @@
 return function ()
 	define_rule({
-		name = "vmg_vs_about_to_early_loss_a",
 		response = "vmg_vs_about_to_early_loss_a",
+		name = "vmg_vs_about_to_early_loss_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -10,30 +11,23 @@ return function ()
 				"vs_mg_about_to_early_loss"
 			},
 			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
+			},
+			{
 				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_pactsworn_mission_giver"
-			},
-			{
-				"user_memory",
-				"mg_about_to_early_loss",
-				OP.EQ,
-				0
-			}
-		},
-		on_done = {
-			{
-				"user_memory",
-				"mg_about_to_early_loss",
-				OP.ADD,
-				1
 			}
 		}
 	})
 	define_rule({
-		name = "vmg_vs_about_to_early_win_a",
 		response = "vmg_vs_about_to_early_win_a",
+		name = "vmg_vs_about_to_early_win_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -42,30 +36,23 @@ return function ()
 				"vs_mg_about_to_early_win"
 			},
 			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
+			},
+			{
 				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_pactsworn_mission_giver"
-			},
-			{
-				"user_memory",
-				"mg_about_to_early_win",
-				OP.EQ,
-				0
-			}
-		},
-		on_done = {
-			{
-				"user_memory",
-				"mg_about_to_early_win",
-				OP.ADD,
-				1
 			}
 		}
 	})
 	define_rule({
-		name = "vmg_vs_early_loss_a",
 		response = "vmg_vs_early_loss_a",
+		name = "vmg_vs_early_loss_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -78,26 +65,13 @@ return function ()
 				"source_name",
 				OP.EQ,
 				"vs_pactsworn_mission_giver"
-			},
-			{
-				"user_memory",
-				"mg_early_loss",
-				OP.EQ,
-				0
-			}
-		},
-		on_done = {
-			{
-				"user_memory",
-				"mg_early_loss",
-				OP.ADD,
-				1
 			}
 		}
 	})
 	define_rule({
-		name = "vmg_vs_early_win_a",
 		response = "vmg_vs_early_win_a",
+		name = "vmg_vs_early_win_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -110,24 +84,11 @@ return function ()
 				"source_name",
 				OP.EQ,
 				"vs_pactsworn_mission_giver"
-			},
-			{
-				"user_memory",
-				"mg_early_win",
-				OP.EQ,
-				0
-			}
-		},
-		on_done = {
-			{
-				"user_memory",
-				"mg_early_win",
-				OP.ADD,
-				1
 			}
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "vmg_vs_hero_bright_wizard_dead_a",
 		response = "vmg_vs_hero_bright_wizard_dead_a",
 		criterias = {
@@ -150,6 +111,12 @@ return function ()
 				"vs_pactsworn_mission_giver"
 			},
 			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
+			},
+			{
 				"user_memory",
 				"mg_hero_bright_wizard_dead",
 				OP.EQ,
@@ -166,6 +133,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "vmg_vs_hero_bright_wizard_rushing_a",
 		response = "vmg_vs_hero_bright_wizard_rushing_a",
 		criterias = {
@@ -180,6 +148,12 @@ return function ()
 				"target_name",
 				OP.EQ,
 				"bright_wizard"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"query_context",
@@ -204,6 +178,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "vmg_vs_hero_dwarf_ranger_dead_a",
 		response = "vmg_vs_hero_dwarf_ranger_dead_a",
 		criterias = {
@@ -226,6 +201,12 @@ return function ()
 				"vs_pactsworn_mission_giver"
 			},
 			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
+			},
+			{
 				"user_memory",
 				"mg_hero_dwarf_ranger_dead",
 				OP.EQ,
@@ -242,6 +223,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "vmg_vs_hero_dwarf_ranger_rushing_a",
 		response = "vmg_vs_hero_dwarf_ranger_rushing_a",
 		criterias = {
@@ -256,6 +238,12 @@ return function ()
 				"target_name",
 				OP.EQ,
 				"dwarf_ranger"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"query_context",
@@ -280,6 +268,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "vmg_vs_hero_empire_soldier_dead_a",
 		response = "vmg_vs_hero_empire_soldier_dead_a",
 		criterias = {
@@ -302,6 +291,12 @@ return function ()
 				"vs_pactsworn_mission_giver"
 			},
 			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
+			},
+			{
 				"user_memory",
 				"mg_hero_empire_soldier_dead",
 				OP.EQ,
@@ -318,6 +313,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "vmg_vs_hero_empire_soldier_rushing_a",
 		response = "vmg_vs_hero_empire_soldier_rushing_a",
 		criterias = {
@@ -332,6 +328,12 @@ return function ()
 				"target_name",
 				OP.EQ,
 				"empire_soldier"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"query_context",
@@ -356,6 +358,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "vmg_vs_hero_witch_hunter_dead_a",
 		response = "vmg_vs_hero_witch_hunter_dead_a",
 		criterias = {
@@ -378,6 +381,12 @@ return function ()
 				"vs_pactsworn_mission_giver"
 			},
 			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
+			},
+			{
 				"user_memory",
 				"mg_hero_witch_hunter_dead",
 				OP.EQ,
@@ -394,6 +403,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "vmg_vs_hero_witch_hunter_rushing_a",
 		response = "vmg_vs_hero_witch_hunter_rushing_a",
 		criterias = {
@@ -408,6 +418,12 @@ return function ()
 				"target_name",
 				OP.EQ,
 				"witch_hunter"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"query_context",
@@ -432,6 +448,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "vmg_vs_hero_wood_elf_dead_a",
 		response = "vmg_vs_hero_wood_elf_dead_a",
 		criterias = {
@@ -454,6 +471,12 @@ return function ()
 				"vs_pactsworn_mission_giver"
 			},
 			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
+			},
+			{
 				"user_memory",
 				"mg_hero_wood_elf_dead",
 				OP.EQ,
@@ -470,6 +493,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "vmg_vs_hero_wood_elf_rushing_a",
 		response = "vmg_vs_hero_wood_elf_rushing_a",
 		criterias = {
@@ -484,6 +508,12 @@ return function ()
 				"target_name",
 				OP.EQ,
 				"wood_elf"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"query_context",
@@ -508,46 +538,46 @@ return function ()
 		}
 	})
 	define_rule({
-		name = "vmg_vs_heroes_last_man_standing_a",
 		response = "vmg_vs_heroes_last_man_standing_a",
+		name = "vmg_vs_heroes_last_man_standing_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
 				"concept",
 				OP.EQ,
-				"vs_mg_heroes_last_man_standing"
+				"last_man_standing_pact_dummy"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_pactsworn_mission_giver"
-			},
-			{
-				"user_memory",
-				"mg_heroes_last_man_standing",
-				OP.EQ,
-				0
-			}
-		},
-		on_done = {
-			{
-				"user_memory",
-				"mg_heroes_last_man_standing",
-				OP.ADD,
-				1
 			}
 		}
 	})
 	define_rule({
 		response = "vmg_vs_heroes_objective_almost_completed_a",
 		name = "vmg_vs_heroes_objective_almost_completed_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
 				"concept",
 				OP.EQ,
 				"vs_mg_heroes_objective_almost_completed"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"query_context",
@@ -560,12 +590,19 @@ return function ()
 	define_rule({
 		response = "vmg_vs_heroes_objective_completed_a",
 		name = "vmg_vs_heroes_objective_completed_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
 				"concept",
 				OP.EQ,
 				"vs_mg_heroes_objective_completed"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"query_context",
@@ -578,12 +615,19 @@ return function ()
 	define_rule({
 		response = "vmg_vs_heroes_objective_completed_b",
 		name = "vmg_vs_heroes_objective_completed_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
 				"concept",
 				OP.EQ,
 				"vmg_vs_heroes_objective_completed_a_done"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"query_context",
@@ -596,12 +640,19 @@ return function ()
 	define_rule({
 		response = "vmg_vs_heroes_objective_reached_a",
 		name = "vmg_vs_heroes_objective_reached_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
 				"concept",
 				OP.EQ,
 				"vs_mg_heroes_objective_reached"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"query_context",
@@ -612,8 +663,9 @@ return function ()
 		}
 	})
 	define_rule({
-		name = "vmg_vs_heroes_reached_safe_room_a",
 		response = "vmg_vs_heroes_reached_safe_room_a",
+		name = "vmg_vs_heroes_reached_safe_room_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -626,26 +678,13 @@ return function ()
 				"source_name",
 				OP.EQ,
 				"vs_pactsworn_mission_giver"
-			},
-			{
-				"user_memory",
-				"mg_heroes_reached_safe_room",
-				OP.EQ,
-				0
-			}
-		},
-		on_done = {
-			{
-				"user_memory",
-				"mg_heroes_reached_safe_room",
-				OP.ADD,
-				1
 			}
 		}
 	})
 	define_rule({
-		name = "vmg_vs_heroes_reached_waystone_a",
 		response = "vmg_vs_heroes_reached_waystone_a",
+		name = "vmg_vs_heroes_reached_waystone_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -658,26 +697,13 @@ return function ()
 				"source_name",
 				OP.EQ,
 				"vs_pactsworn_mission_giver"
-			},
-			{
-				"user_memory",
-				"mg_heroes_reached_waystone",
-				OP.EQ,
-				0
-			}
-		},
-		on_done = {
-			{
-				"user_memory",
-				"mg_heroes_reached_waystone",
-				OP.ADD,
-				1
 			}
 		}
 	})
 	define_rule({
-		name = "vmg_vs_heroes_team_wipe_a",
 		response = "vmg_vs_heroes_team_wipe_a",
+		name = "vmg_vs_heroes_team_wipe_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -690,26 +716,13 @@ return function ()
 				"source_name",
 				OP.EQ,
 				"vs_pactsworn_mission_giver"
-			},
-			{
-				"user_memory",
-				"mg_heroes_team_wipe",
-				OP.EQ,
-				0
-			}
-		},
-		on_done = {
-			{
-				"user_memory",
-				"mg_heroes_team_wipe",
-				OP.ADD,
-				1
 			}
 		}
 	})
 	define_rule({
-		name = "vmg_vs_match_draw_a",
 		response = "vmg_vs_match_draw_a",
+		name = "vmg_vs_match_draw_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -722,26 +735,13 @@ return function ()
 				"source_name",
 				OP.EQ,
 				"vs_pactsworn_mission_giver"
-			},
-			{
-				"user_memory",
-				"mg_match_draw",
-				OP.EQ,
-				0
-			}
-		},
-		on_done = {
-			{
-				"user_memory",
-				"mg_match_draw",
-				OP.ADD,
-				1
 			}
 		}
 	})
 	define_rule({
-		response = "vmg_vs_new_spawn_horde_a",
+		probability = 0.4,
 		name = "vmg_vs_new_spawn_horde_a",
+		response = "vmg_vs_new_spawn_horde_a",
 		criterias = {
 			{
 				"query_context",
@@ -750,22 +750,49 @@ return function ()
 				"horde"
 			},
 			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
+			},
+			{
 				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_pactsworn_mission_giver"
+			},
+			{
+				"user_memory",
+				"time_since_mg_horde",
+				OP.TIMEDIFF,
+				OP.GT,
+				60
+			}
+		},
+		on_done = {
+			{
+				"user_memory",
+				"time_since_mg_horde",
+				OP.TIMESET
 			}
 		}
 	})
 	define_rule({
 		response = "vmg_vs_new_spawn_monster_a",
 		name = "vmg_vs_new_spawn_monster_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
 				"concept",
 				OP.EQ,
 				"vs_mg_new_spawn_monster"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"query_context",
@@ -776,6 +803,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "vmg_vs_pactsworn_wipe_a",
 		response = "vmg_vs_pactsworn_wipe_a",
 		criterias = {
@@ -784,6 +812,12 @@ return function ()
 				"concept",
 				OP.EQ,
 				"vs_mg_pactsworn_wipe"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"query_context",
@@ -808,8 +842,9 @@ return function ()
 		}
 	})
 	define_rule({
-		name = "vmg_vs_round_start_go_a",
 		response = "vmg_vs_round_start_go_a",
+		name = "vmg_vs_round_start_go_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -822,26 +857,13 @@ return function ()
 				"source_name",
 				OP.EQ,
 				"vs_pactsworn_mission_giver"
-			},
-			{
-				"user_memory",
-				"mg_heroes_left_safe_room",
-				OP.EQ,
-				0
-			}
-		},
-		on_done = {
-			{
-				"user_memory",
-				"mg_heroes_left_safe_room",
-				OP.ADD,
-				1
 			}
 		}
 	})
 	define_rule({
-		name = "vmg_vs_round_start_rant_a",
 		response = "vmg_vs_round_start_rant_a",
+		name = "vmg_vs_round_start_rant_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -854,20 +876,6 @@ return function ()
 				"source_name",
 				OP.EQ,
 				"vs_pactsworn_mission_giver"
-			},
-			{
-				"user_memory",
-				"mg_round_started_vo",
-				OP.EQ,
-				0
-			}
-		},
-		on_done = {
-			{
-				"user_memory",
-				"mg_round_started_vo",
-				OP.ADD,
-				1
 			}
 		}
 	})

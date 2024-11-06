@@ -2,6 +2,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_forest_ambush_set1_briefing_a",
 		name = "nde_vs_forest_ambush_set1_briefing_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -16,7 +17,7 @@ return function ()
 				"nde_vs_safe_room_start_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
@@ -44,6 +45,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_forest_ambush_set1_obj1_a",
 		name = "nde_vs_forest_ambush_set1_obj1_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -58,7 +60,7 @@ return function ()
 				"nde_vs_safe_room_round_started_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
@@ -74,18 +76,13 @@ return function ()
 				"current_set",
 				OP.EQ,
 				1
-			},
-			{
-				"global_context",
-				"current_objective",
-				OP.EQ,
-				"one"
 			}
 		}
 	})
 	define_rule({
 		response = "nde_vs_forest_ambush_set1_obj1_reached",
 		name = "nde_vs_forest_ambush_set1_obj1_reached",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -94,10 +91,16 @@ return function ()
 				"vs_mg_heroes_objective_reached"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"global_context",
@@ -122,6 +125,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_forest_ambush_set1_obj2_a",
 		name = "nde_vs_forest_ambush_set1_obj2_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -133,13 +137,19 @@ return function ()
 				"query_context",
 				"dialogue_name",
 				OP.EQ,
-				"nde_vs_new_objective_intro_a"
+				"nde_vs_objective_completed_agnostic_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"global_context",
@@ -164,6 +174,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_forest_ambush_set1_obj2_reached_p1",
 		name = "nde_vs_forest_ambush_set1_obj2_reached_p1",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -172,10 +183,16 @@ return function ()
 				"vs_mg_heroes_objective_reached"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"global_context",
@@ -206,6 +223,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_forest_ambush_set1_obj2_reached_p2",
 		name = "nde_vs_forest_ambush_set1_obj2_reached_p2",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -214,10 +232,16 @@ return function ()
 				"vs_mg_heroes_objective_reached"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"global_context",
@@ -248,6 +272,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_forest_ambush_set2_obj1_a",
 		name = "nde_vs_forest_ambush_set2_obj1_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -262,7 +287,7 @@ return function ()
 				"nde_vs_safe_room_round_started_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
@@ -278,18 +303,13 @@ return function ()
 				"current_set",
 				OP.EQ,
 				2
-			},
-			{
-				"global_context",
-				"current_objective",
-				OP.EQ,
-				"one"
 			}
 		}
 	})
 	define_rule({
 		response = "nde_vs_forest_ambush_set2_obj1_reached",
 		name = "nde_vs_forest_ambush_set2_obj1_reached",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -298,10 +318,16 @@ return function ()
 				"vs_mg_heroes_objective_reached"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"global_context",
@@ -326,6 +352,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_forest_ambush_set2_obj2_a",
 		name = "nde_vs_forest_ambush_set2_obj2_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -337,13 +364,19 @@ return function ()
 				"query_context",
 				"dialogue_name",
 				OP.EQ,
-				"nde_vs_new_objective_intro_a"
+				"nde_vs_objective_completed_agnostic_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"global_context",
@@ -368,6 +401,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_forest_ambush_set2_obj2_reached",
 		name = "nde_vs_forest_ambush_set2_obj2_reached",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -376,10 +410,16 @@ return function ()
 				"vs_mg_heroes_objective_reached"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"global_context",
@@ -404,6 +444,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_forest_ambush_set2_obj3_reached",
 		name = "nde_vs_forest_ambush_set2_obj3_reached",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -412,10 +453,16 @@ return function ()
 				"vs_mg_heroes_objective_reached"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"global_context",
@@ -440,6 +487,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_forest_ambush_set3_obj1_a",
 		name = "nde_vs_forest_ambush_set3_obj1_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -454,7 +502,7 @@ return function ()
 				"nde_vs_safe_room_round_started_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
@@ -470,18 +518,13 @@ return function ()
 				"current_set",
 				OP.EQ,
 				3
-			},
-			{
-				"global_context",
-				"current_objective",
-				OP.EQ,
-				"one"
 			}
 		}
 	})
 	define_rule({
 		response = "nde_vs_forest_ambush_set3_obj1_reached_new",
 		name = "nde_vs_forest_ambush_set3_obj1_reached_new",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -490,10 +533,16 @@ return function ()
 				"vs_mg_heroes_objective_reached"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"global_context",
@@ -518,6 +567,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_forest_ambush_set3_obj2_a",
 		name = "nde_vs_forest_ambush_set3_obj2_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -529,13 +579,19 @@ return function ()
 				"query_context",
 				"dialogue_name",
 				OP.EQ,
-				"nde_vs_new_objective_intro_a"
+				"nde_vs_objective_completed_agnostic_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"global_context",
@@ -560,6 +616,7 @@ return function ()
 	define_rule({
 		response = "nde_vs_forest_ambush_set3_obj2_reached",
 		name = "nde_vs_forest_ambush_set3_obj2_reached",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -568,10 +625,16 @@ return function ()
 				"vs_mg_heroes_objective_reached"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"vs_heroes_mission_giver"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"global_context",
@@ -594,8 +657,52 @@ return function ()
 		}
 	})
 	define_rule({
+		response = "nde_vs_forest_ambush_set3_obj2_reminder",
+		name = "nde_vs_forest_ambush_set3_obj2_reminder",
+		probability = 1,
+		criterias = {
+			{
+				"query_context",
+				"concept",
+				OP.EQ,
+				"vs_mg_heroes_objective_almost_completed"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
+			},
+			{
+				"global_context",
+				"current_level",
+				OP.EQ,
+				"forest_ambush_pvp"
+			},
+			{
+				"global_context",
+				"current_set",
+				OP.EQ,
+				3
+			},
+			{
+				"global_context",
+				"current_objective",
+				OP.EQ,
+				"two"
+			},
+			{
+				"query_context",
+				"source_name",
+				OP.EQ,
+				"vs_heroes_mission_giver"
+			}
+		}
+	})
+	define_rule({
 		response = "pbw_objective_forest_ambush_boat_arrives_PVP",
 		name = "pbw_objective_forest_ambush_boat_arrives_PVP",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -626,6 +733,7 @@ return function ()
 	define_rule({
 		response = "pbw_objective_forest_ambush_doomwheel_objective_done_PVP",
 		name = "pbw_objective_forest_ambush_doomwheel_objective_done_PVP",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -656,6 +764,7 @@ return function ()
 	define_rule({
 		response = "pbw_objective_forest_ambush_reaching_skaven_camp_PVP",
 		name = "pbw_objective_forest_ambush_reaching_skaven_camp_PVP",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -684,6 +793,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_objective_forest_ambush_ring_bell_PVP",
 		response = "pbw_objective_forest_ambush_ring_bell_PVP",
 		criterias = {
@@ -728,6 +838,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_objective_forest_ambush_spotting_bridge_PVP",
 		response = "pbw_objective_forest_ambush_spotting_bridge_PVP",
 		criterias = {
@@ -774,6 +885,7 @@ return function ()
 	define_rule({
 		response = "pbw_vs_safe_room_forest_ambush_01_b",
 		name = "pbw_vs_safe_room_forest_ambush_01_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -798,6 +910,7 @@ return function ()
 	define_rule({
 		response = "pbw_vs_safe_room_forest_ambush_02_a",
 		name = "pbw_vs_safe_room_forest_ambush_02_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -812,7 +925,7 @@ return function ()
 				"nde_vs_forest_ambush_set1_briefing_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"bright_wizard"
@@ -846,6 +959,7 @@ return function ()
 	define_rule({
 		response = "pbw_vs_safe_room_forest_ambush_03_b",
 		name = "pbw_vs_safe_room_forest_ambush_03_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -870,6 +984,7 @@ return function ()
 	define_rule({
 		response = "pbw_vs_safe_room_forest_ambush_04_b",
 		name = "pbw_vs_safe_room_forest_ambush_04_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -894,6 +1009,7 @@ return function ()
 	define_rule({
 		response = "pbw_vs_safe_room_forest_ambush_05_b",
 		name = "pbw_vs_safe_room_forest_ambush_05_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -918,6 +1034,7 @@ return function ()
 	define_rule({
 		response = "pbw_vs_safe_room_forest_ambush_06_b",
 		name = "pbw_vs_safe_room_forest_ambush_06_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -942,6 +1059,7 @@ return function ()
 	define_rule({
 		response = "pbw_vs_safe_room_forest_ambush_07_a",
 		name = "pbw_vs_safe_room_forest_ambush_07_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -956,7 +1074,7 @@ return function ()
 				"nde_vs_forest_ambush_set1_briefing_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"bright_wizard"
@@ -990,6 +1108,7 @@ return function ()
 	define_rule({
 		response = "pbw_vs_safe_room_forest_ambush_08_b",
 		name = "pbw_vs_safe_room_forest_ambush_08_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1014,6 +1133,7 @@ return function ()
 	define_rule({
 		response = "pbw_vs_safe_room_forest_ambush_09_b",
 		name = "pbw_vs_safe_room_forest_ambush_09_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1038,6 +1158,7 @@ return function ()
 	define_rule({
 		response = "pbw_vs_safe_room_forest_ambush_10_b",
 		name = "pbw_vs_safe_room_forest_ambush_10_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1062,6 +1183,7 @@ return function ()
 	define_rule({
 		response = "pdr_objective_forest_ambush_boat_arrives_PVP",
 		name = "pdr_objective_forest_ambush_boat_arrives_PVP",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1092,6 +1214,7 @@ return function ()
 	define_rule({
 		response = "pdr_objective_forest_ambush_doomwheel_objective_done_PVP",
 		name = "pdr_objective_forest_ambush_doomwheel_objective_done_PVP",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1122,6 +1245,7 @@ return function ()
 	define_rule({
 		response = "pdr_objective_forest_ambush_reaching_skaven_camp_PVP",
 		name = "pdr_objective_forest_ambush_reaching_skaven_camp_PVP",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1150,6 +1274,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_objective_forest_ambush_ring_bell_PVP",
 		response = "pdr_objective_forest_ambush_ring_bell_PVP",
 		criterias = {
@@ -1194,6 +1319,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_objective_forest_ambush_spotting_bridge_PVP",
 		response = "pdr_objective_forest_ambush_spotting_bridge_PVP",
 		criterias = {
@@ -1240,6 +1366,7 @@ return function ()
 	define_rule({
 		response = "pdr_vs_safe_room_forest_ambush_01_b",
 		name = "pdr_vs_safe_room_forest_ambush_01_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1264,6 +1391,7 @@ return function ()
 	define_rule({
 		response = "pdr_vs_safe_room_forest_ambush_02_b",
 		name = "pdr_vs_safe_room_forest_ambush_02_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1288,6 +1416,7 @@ return function ()
 	define_rule({
 		response = "pdr_vs_safe_room_forest_ambush_03_a",
 		name = "pdr_vs_safe_room_forest_ambush_03_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1302,7 +1431,7 @@ return function ()
 				"nde_vs_forest_ambush_set1_briefing_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"dwarf_ranger"
@@ -1336,6 +1465,7 @@ return function ()
 	define_rule({
 		response = "pdr_vs_safe_room_forest_ambush_04_b",
 		name = "pdr_vs_safe_room_forest_ambush_04_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1360,6 +1490,7 @@ return function ()
 	define_rule({
 		response = "pdr_vs_safe_room_forest_ambush_05_b",
 		name = "pdr_vs_safe_room_forest_ambush_05_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1384,6 +1515,7 @@ return function ()
 	define_rule({
 		response = "pdr_vs_safe_room_forest_ambush_06_b",
 		name = "pdr_vs_safe_room_forest_ambush_06_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1408,6 +1540,7 @@ return function ()
 	define_rule({
 		response = "pdr_vs_safe_room_forest_ambush_07_b",
 		name = "pdr_vs_safe_room_forest_ambush_07_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1432,6 +1565,7 @@ return function ()
 	define_rule({
 		response = "pdr_vs_safe_room_forest_ambush_08_a",
 		name = "pdr_vs_safe_room_forest_ambush_08_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1446,7 +1580,7 @@ return function ()
 				"nde_vs_forest_ambush_set1_briefing_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"dwarf_ranger"
@@ -1480,6 +1614,7 @@ return function ()
 	define_rule({
 		response = "pdr_vs_safe_room_forest_ambush_09_b",
 		name = "pdr_vs_safe_room_forest_ambush_09_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1504,6 +1639,7 @@ return function ()
 	define_rule({
 		response = "pdr_vs_safe_room_forest_ambush_10_b",
 		name = "pdr_vs_safe_room_forest_ambush_10_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1528,6 +1664,7 @@ return function ()
 	define_rule({
 		response = "pes_objective_forest_ambush_boat_arrives_PVP",
 		name = "pes_objective_forest_ambush_boat_arrives_PVP",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1558,6 +1695,7 @@ return function ()
 	define_rule({
 		response = "pes_objective_forest_ambush_doomwheel_objective_done_PVP",
 		name = "pes_objective_forest_ambush_doomwheel_objective_done_PVP",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1586,6 +1724,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_objective_forest_ambush_spotting_bridge_PVP",
 		response = "pes_objective_forest_ambush_spotting_bridge_PVP",
 		criterias = {
@@ -1632,6 +1771,7 @@ return function ()
 	define_rule({
 		response = "pes_vs_safe_room_forest_ambush_01_b",
 		name = "pes_vs_safe_room_forest_ambush_01_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1656,6 +1796,7 @@ return function ()
 	define_rule({
 		response = "pes_vs_safe_room_forest_ambush_02_b",
 		name = "pes_vs_safe_room_forest_ambush_02_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1680,6 +1821,7 @@ return function ()
 	define_rule({
 		response = "pes_vs_safe_room_forest_ambush_03_b",
 		name = "pes_vs_safe_room_forest_ambush_03_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1704,6 +1846,7 @@ return function ()
 	define_rule({
 		response = "pes_vs_safe_room_forest_ambush_04_b",
 		name = "pes_vs_safe_room_forest_ambush_04_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1728,6 +1871,7 @@ return function ()
 	define_rule({
 		response = "pes_vs_safe_room_forest_ambush_05_a",
 		name = "pes_vs_safe_room_forest_ambush_05_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1742,7 +1886,7 @@ return function ()
 				"nde_vs_forest_ambush_set1_briefing_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"empire_soldier"
@@ -1776,6 +1920,7 @@ return function ()
 	define_rule({
 		response = "pes_vs_safe_room_forest_ambush_06_b",
 		name = "pes_vs_safe_room_forest_ambush_06_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1800,6 +1945,7 @@ return function ()
 	define_rule({
 		response = "pes_vs_safe_room_forest_ambush_07_b",
 		name = "pes_vs_safe_room_forest_ambush_07_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1824,6 +1970,7 @@ return function ()
 	define_rule({
 		response = "pes_vs_safe_room_forest_ambush_08_b",
 		name = "pes_vs_safe_room_forest_ambush_08_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1848,6 +1995,7 @@ return function ()
 	define_rule({
 		response = "pes_vs_safe_room_forest_ambush_09_b",
 		name = "pes_vs_safe_room_forest_ambush_09_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1872,6 +2020,7 @@ return function ()
 	define_rule({
 		response = "pes_vs_safe_room_forest_ambush_10_a",
 		name = "pes_vs_safe_room_forest_ambush_10_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1886,7 +2035,7 @@ return function ()
 				"nde_vs_forest_ambush_set1_briefing_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"empire_soldier"
@@ -1920,6 +2069,7 @@ return function ()
 	define_rule({
 		response = "pwe_objective_forest_ambush_boat_arrives_PVP",
 		name = "pwe_objective_forest_ambush_boat_arrives_PVP",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1950,6 +2100,7 @@ return function ()
 	define_rule({
 		response = "pwe_objective_forest_ambush_doomwheel_objective_done_PVP",
 		name = "pwe_objective_forest_ambush_doomwheel_objective_done_PVP",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -1980,6 +2131,7 @@ return function ()
 	define_rule({
 		response = "pwe_objective_forest_ambush_reaching_skaven_camp_PVP",
 		name = "pwe_objective_forest_ambush_reaching_skaven_camp_PVP",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2008,6 +2160,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_objective_forest_ambush_ring_bell_PVP",
 		response = "pwe_objective_forest_ambush_ring_bell_PVP",
 		criterias = {
@@ -2052,6 +2205,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_objective_forest_ambush_spotting_bridge_PVP",
 		response = "pwe_objective_forest_ambush_spotting_bridge_PVP",
 		criterias = {
@@ -2098,6 +2252,7 @@ return function ()
 	define_rule({
 		response = "pwe_vs_safe_room_forest_ambush_01_b",
 		name = "pwe_vs_safe_room_forest_ambush_01_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2122,6 +2277,7 @@ return function ()
 	define_rule({
 		response = "pwe_vs_safe_room_forest_ambush_02_b",
 		name = "pwe_vs_safe_room_forest_ambush_02_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2146,6 +2302,7 @@ return function ()
 	define_rule({
 		response = "pwe_vs_safe_room_forest_ambush_03_b",
 		name = "pwe_vs_safe_room_forest_ambush_03_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2170,6 +2327,7 @@ return function ()
 	define_rule({
 		response = "pwe_vs_safe_room_forest_ambush_04_a",
 		name = "pwe_vs_safe_room_forest_ambush_04_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2184,7 +2342,7 @@ return function ()
 				"nde_vs_forest_ambush_set1_briefing_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"wood_elf"
@@ -2218,6 +2376,7 @@ return function ()
 	define_rule({
 		response = "pwe_vs_safe_room_forest_ambush_05_b",
 		name = "pwe_vs_safe_room_forest_ambush_05_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2242,6 +2401,7 @@ return function ()
 	define_rule({
 		response = "pwe_vs_safe_room_forest_ambush_06_b",
 		name = "pwe_vs_safe_room_forest_ambush_06_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2266,6 +2426,7 @@ return function ()
 	define_rule({
 		response = "pwe_vs_safe_room_forest_ambush_07_b",
 		name = "pwe_vs_safe_room_forest_ambush_07_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2290,6 +2451,7 @@ return function ()
 	define_rule({
 		response = "pwe_vs_safe_room_forest_ambush_08_b",
 		name = "pwe_vs_safe_room_forest_ambush_08_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2314,6 +2476,7 @@ return function ()
 	define_rule({
 		response = "pwe_vs_safe_room_forest_ambush_09_a",
 		name = "pwe_vs_safe_room_forest_ambush_09_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2328,7 +2491,7 @@ return function ()
 				"nde_vs_forest_ambush_set1_briefing_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"wood_elf"
@@ -2362,6 +2525,7 @@ return function ()
 	define_rule({
 		response = "pwe_vs_safe_room_forest_ambush_10_b",
 		name = "pwe_vs_safe_room_forest_ambush_10_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2386,6 +2550,7 @@ return function ()
 	define_rule({
 		response = "pwh_objective_forest_ambush_boat_arrives_PVP",
 		name = "pwh_objective_forest_ambush_boat_arrives_PVP",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2416,6 +2581,7 @@ return function ()
 	define_rule({
 		response = "pwh_objective_forest_ambush_doomwheel_objective_done_PVP",
 		name = "pwh_objective_forest_ambush_doomwheel_objective_done_PVP",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2446,6 +2612,7 @@ return function ()
 	define_rule({
 		response = "pwh_objective_forest_ambush_reaching_skaven_camp_PVP",
 		name = "pwh_objective_forest_ambush_reaching_skaven_camp_PVP",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2474,6 +2641,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_objective_forest_ambush_ring_bell_PVP",
 		response = "pwh_objective_forest_ambush_ring_bell_PVP",
 		criterias = {
@@ -2518,6 +2686,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_objective_forest_ambush_spotting_bridge_PVP",
 		response = "pwh_objective_forest_ambush_spotting_bridge_PVP",
 		criterias = {
@@ -2564,6 +2733,7 @@ return function ()
 	define_rule({
 		response = "pwh_vs_safe_room_forest_ambush_01_a",
 		name = "pwh_vs_safe_room_forest_ambush_01_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2578,7 +2748,7 @@ return function ()
 				"nde_vs_forest_ambush_set1_briefing_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"witch_hunter"
@@ -2612,6 +2782,7 @@ return function ()
 	define_rule({
 		response = "pwh_vs_safe_room_forest_ambush_02_b",
 		name = "pwh_vs_safe_room_forest_ambush_02_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2636,6 +2807,7 @@ return function ()
 	define_rule({
 		response = "pwh_vs_safe_room_forest_ambush_03_b",
 		name = "pwh_vs_safe_room_forest_ambush_03_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2660,6 +2832,7 @@ return function ()
 	define_rule({
 		response = "pwh_vs_safe_room_forest_ambush_04_b",
 		name = "pwh_vs_safe_room_forest_ambush_04_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2684,6 +2857,7 @@ return function ()
 	define_rule({
 		response = "pwh_vs_safe_room_forest_ambush_05_b",
 		name = "pwh_vs_safe_room_forest_ambush_05_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2708,6 +2882,7 @@ return function ()
 	define_rule({
 		response = "pwh_vs_safe_room_forest_ambush_06_a",
 		name = "pwh_vs_safe_room_forest_ambush_06_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2722,7 +2897,7 @@ return function ()
 				"nde_vs_forest_ambush_set1_briefing_a"
 			},
 			{
-				"user_context",
+				"query_context",
 				"source_name",
 				OP.EQ,
 				"witch_hunter"
@@ -2756,6 +2931,7 @@ return function ()
 	define_rule({
 		response = "pwh_vs_safe_room_forest_ambush_07_b",
 		name = "pwh_vs_safe_room_forest_ambush_07_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2780,6 +2956,7 @@ return function ()
 	define_rule({
 		response = "pwh_vs_safe_room_forest_ambush_08_b",
 		name = "pwh_vs_safe_room_forest_ambush_08_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2804,6 +2981,7 @@ return function ()
 	define_rule({
 		response = "pwh_vs_safe_room_forest_ambush_09_b",
 		name = "pwh_vs_safe_room_forest_ambush_09_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2828,6 +3006,7 @@ return function ()
 	define_rule({
 		response = "pwh_vs_safe_room_forest_ambush_10_b",
 		name = "pwh_vs_safe_room_forest_ambush_10_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -3494,6 +3673,56 @@ return function ()
 				3.7241666316986,
 				4.6360626220703,
 				4.341166973114
+			}
+		},
+		nde_vs_forest_ambush_set3_obj2_reminder = {
+			only_allies = true,
+			randomize_indexes_n = 0,
+			face_animations_n = 6,
+			database = "vs_level_forest_ambush_pvp",
+			sound_events_n = 6,
+			category = "npc_talk",
+			dialogue_animations_n = 6,
+			dialogue_animations = {
+				"dialogue_talk",
+				"dialogue_talk",
+				"dialogue_talk",
+				"dialogue_talk",
+				"dialogue_talk",
+				"dialogue_talk"
+			},
+			face_animations = {
+				"face_neutral",
+				"face_neutral",
+				"face_neutral",
+				"face_neutral",
+				"face_neutral",
+				"face_neutral"
+			},
+			localization_strings = {
+				"nde_vs_agnostic_survive_a_01",
+				"nde_vs_agnostic_survive_a_02",
+				"nde_vs_agnostic_survive_a_03",
+				"nde_vs_agnostic_survive_a_04",
+				"nde_vs_agnostic_survive_a_05",
+				"nde_vs_agnostic_survive_a_06"
+			},
+			randomize_indexes = {},
+			sound_events = {
+				"nde_vs_agnostic_survive_a_01",
+				"nde_vs_agnostic_survive_a_02",
+				"nde_vs_agnostic_survive_a_03",
+				"nde_vs_agnostic_survive_a_04",
+				"nde_vs_agnostic_survive_a_05",
+				"nde_vs_agnostic_survive_a_06"
+			},
+			sound_events_duration = {
+				3.1959998607635,
+				3.4609999656677,
+				3.7438750267029,
+				3.0457499027252,
+				3.0737082958221,
+				5.335000038147
 			}
 		},
 		pbw_objective_forest_ambush_boat_arrives_PVP = {

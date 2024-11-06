@@ -92,6 +92,7 @@ LevelEndViewVersus._calculate_awards = function (self)
 		end
 	end
 
+	table.dump(players_session_scores, "PLAYERS_SESSION_SCORES", 2)
 	self:_calculate_mvp(awards, players_session_scores)
 
 	local sorted_awards = {}
@@ -123,6 +124,22 @@ LevelEndViewVersus._calculate_awards = function (self)
 	table.sort(sorted_awards, sort_func)
 
 	self._sorted_awards = sorted_awards
+
+	table.dump(self._sorted_awards, "AWARDS", 3)
+
+	local scores = {}
+
+	for stats_id, player_session_score in pairs(players_session_scores) do
+		scores[#scores + 1] = player_session_score
+		scores[#scores].stats_id = stats_id
+	end
+
+	local function sort_func(a, b)
+		return a.stats_id > b.stats_id
+	end
+
+	table.sort(scores, sort_func)
+	table.dump(scores, "SCORES", 2)
 end
 
 LevelEndViewVersus._calculate_mvp = function (self, awards, player_session_scores)
@@ -506,13 +523,17 @@ LevelEndViewVersus._start_award_presentation = function (self)
 	local hips_pose = Unit.world_pose(character_unit, node_index)
 	local base_pose = Unit.world_pose(character_unit, 0)
 	local distance = 2
-	local time = 3
+	local time = 5
 	local right = Vector3(-1, 0, 0)
 	local forward = Matrix4x4.forward(self._camera_pose:unbox())
 	local neck_pos = Matrix4x4.translation(neck_pose)
 	local hips_pos = Matrix4x4.translation(hips_pose)
 	local base_pos = Matrix4x4.translation(base_pose)
-	local index = Math.random(#self._camera_movement_functions)
+	local random_seed, index
+
+	random_seed, index = Math.next_random(self._random_seed, 1, #self._camera_movement_functions)
+	self._random_seed = random_seed
+
 	local movement_data = self._camera_movement_functions[index]
 
 	self._award_presentation_data = movement_data.func(neck_pose, neck_pos, hips_pos, base_pos, right, forward, distance, time)
@@ -851,6 +872,7 @@ LevelEndViewVersus.get_hero_from_score = function (self, player_data, award_data
 		weapon_slot = breed_weapon_slot or weapon_pose_slot or weapon_slot,
 		breed = breed,
 		weapon_pose_anim_event = weapon_pose_anim_event,
+		random_seed = self._random_seed,
 		preview_items = {
 			table.is_empty(breed) and player_data.hat or nil,
 			breed_weapon_item or weapon_pose_weapon or player_data.weapon

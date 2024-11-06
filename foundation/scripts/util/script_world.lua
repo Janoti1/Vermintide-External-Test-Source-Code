@@ -297,28 +297,17 @@ ScriptWorld.free_flight_viewport = function (world, name)
 	return viewports[name]
 end
 
-ScriptWorld._start_unsafe_animation_scope = function ()
+ScriptWorld._run_safe_animation_callbacks = function ()
 	local entity_manager = Managers.state.entity
 
-	if entity_manager then
-		local animation_system = entity_manager:system("animation_system")
-
-		if animation_system then
-			animation_system:set_safe_to_trigger_animation(false)
-		end
+	if not entity_manager then
+		return
 	end
-end
 
-ScriptWorld._end_unsafe_animation_scope = function ()
-	local entity_manager = Managers.state.entity
+	local animation_system = entity_manager:system("animation_system")
 
-	if entity_manager then
-		local animation_system = entity_manager:system("animation_system")
-
-		if animation_system then
-			animation_system:set_safe_to_trigger_animation(true)
-			animation_system:run_safe_animation_callbacks()
-		end
+	if animation_system then
+		animation_system:run_safe_animation_callbacks()
 	end
 end
 
@@ -328,15 +317,13 @@ ScriptWorld.update = function (world, dt, anim_callback, scene_callback)
 			dt = 0
 		end
 
-		ScriptWorld._start_unsafe_animation_scope()
-
 		if anim_callback then
 			World.update_animations_with_callback(world, dt, anim_callback)
 		else
 			World.update_animations(world, dt)
 		end
 
-		ScriptWorld._end_unsafe_animation_scope()
+		ScriptWorld._run_safe_animation_callbacks()
 
 		if scene_callback then
 			World.update_scene_with_callback(world, dt, scene_callback)

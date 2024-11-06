@@ -60,6 +60,7 @@ require("scripts/managers/status_effect/status_effect_manager")
 require("scripts/utils/fps_reporter")
 require("scripts/utils/ping_reporter")
 require("scripts/managers/side/side_manager")
+require("scripts/managers/vce/vce_manager")
 require("scripts/managers/flow_helper/flow_helper_manager")
 DLCUtils.require_list("statistics_database")
 
@@ -434,12 +435,28 @@ StateIngame.on_enter = function (self)
 		Managers.state.networked_flow_state:load_checkpoint_data(checkpoint_data.networked_flow_state)
 	end
 
-	if self.is_in_inn and not SaveData.first_time_in_inn then
-		Level.trigger_event(level, "first_time_started_game")
+	if self.is_in_inn then
+		local current_mechanism_name = Managers.mechanism:current_mechanism_name()
 
-		SaveData.first_time_in_inn = true
+		if current_mechanism_name == "adventure" and not SaveData.first_time_in_inn then
+			Level.trigger_event(level, "first_time_started_game")
 
-		Managers.save:auto_save(SaveFileName, SaveData, callback(self, "cb_save_data"))
+			SaveData.first_time_in_inn = true
+
+			Managers.save:auto_save(SaveFileName, SaveData, callback(self, "cb_save_data"))
+		elseif current_mechanism_name == "versus" and not SaveData.first_time_in_versus_inn then
+			Level.trigger_event(level, "first_time_started_versus_game")
+
+			SaveData.first_time_in_versus_inn = true
+
+			Managers.save:auto_save(SaveFileName, SaveData, callback(self, "cb_save_data"))
+		elseif current_mechanism_name == "deus" and not SaveData.first_time_in_deus_inn then
+			Level.trigger_event(level, "first_time_started_deus_game")
+
+			SaveData.first_time_in_deus_inn = true
+
+			Managers.save:auto_save(SaveFileName, SaveData, callback(self, "cb_save_data"))
+		end
 	end
 
 	local platform = PLATFORM
@@ -2393,6 +2410,8 @@ StateIngame._setup_state_context = function (self, world, is_server, network_eve
 	Managers.state.network:set_entity_system(entity_system)
 	Managers.state.network:set_unit_storage(unit_storage)
 	Managers.state.network:set_unit_spawner(unit_spawner)
+
+	Managers.state.vce = VCEManager:new()
 
 	local ai_system = Managers.state.entity:system("ai_system")
 	local nav_world = ai_system:nav_world()

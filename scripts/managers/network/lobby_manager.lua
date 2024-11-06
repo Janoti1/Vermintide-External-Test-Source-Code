@@ -76,7 +76,3 @@ LobbyManager.setup_network_options = function (self, increment_lobby_port)
 
 	print("LobbyManager:setup_network_options server_port:", network_options.server_port)
 end
-
-LobbyManager.update_network_options_max_members = function (self)
-	network_options.max_members = Managers.mechanism:max_instance_members()
-end

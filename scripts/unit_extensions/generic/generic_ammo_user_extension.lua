@@ -236,9 +236,14 @@ GenericAmmoUserExtension._check_ammo = function (self)
 			local owner_unit = self.owner_unit
 			local player_manager = Managers.player
 			local owner_player = player_manager:owner(self.owner_unit)
+			local buff_extension = self.owner_buff_extension
 
 			if not owner_player or not owner_player.bot_player then
 				Unit.flow_event(unit, "used_last_ammo_clip")
+
+				if buff_extension then
+					buff_extension:trigger_procs("on_ammo_clip_used")
+				end
 			end
 
 			if self._available_ammo == 0 then

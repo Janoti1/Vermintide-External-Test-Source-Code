@@ -228,6 +228,20 @@ local scenegraph_definition = {
 			0,
 			0
 		}
+	},
+	button_remove = {
+		vertical_alignment = "bottom",
+		parent = "item_grid",
+		horizontal_alignment = "left",
+		size = {
+			214,
+			60
+		},
+		position = {
+			153,
+			-80,
+			0
+		}
 	}
 }
 local page_number_left_text_style = {
@@ -919,6 +933,7 @@ local function create_illusion_button()
 	}
 end
 
+local DISABLE_WITH_GAMEPAD = true
 local widgets = {
 	item_grid = UIWidgets.create_grid("item_grid", scenegraph_definition.item_grid.size, 6, 5, 16, 10, false),
 	page_button_next = UIWidgets.create_arrow_button("page_button_next", math.pi),
@@ -941,15 +956,15 @@ local widgets = {
 	page_text_right = UIWidgets.create_simple_text("0", "page_text_area", nil, nil, page_number_right_text_style),
 	page_text_area = UIWidgets.create_simple_texture("tab_menu_bg_03", "page_text_area"),
 	item_tooltip = UIWidgets.create_simple_item_presentation("item_tooltip", UISettings.console_tooltip_pass_definitions),
-	item_tooltip_compare = UIWidgets.create_simple_item_presentation("item_tooltip_compare", UISettings.console_tooltip_pass_definitions)
+	item_tooltip_compare = UIWidgets.create_simple_item_presentation("item_tooltip_compare", UISettings.console_tooltip_pass_definitions),
+	button_remove = UIWidgets.create_default_button("button_remove", scenegraph_definition.button_remove.size, nil, nil, Localize("input_description_remove"), 32, nil, nil, nil, DISABLE_WITH_GAMEPAD, true)
 }
-local disable_with_gamepad = false
 local weapon_illusion_base_widgets = {
 	illusions_divider = UIWidgets.create_simple_texture("divider_01_bottom", "illusions_divider"),
 	illusions_title = UIWidgets.create_simple_text(Localize("inventory_screen_weapon_skins_title"), "illusions_title", nil, nil, illusion_title_style),
 	illusions_counter = UIWidgets.create_simple_text(Localize("inventory_screen_weapon_skins_title"), "illusions_title", nil, nil, illusion_counter_style),
 	illusions_name = UIWidgets.create_simple_text("", "illusions_name", nil, nil, illusion_name_style),
-	apply_illusion_button = UIWidgets.create_default_button("apply_illusion_button", scenegraph_definition.apply_illusion_button.size, nil, nil, Localize("crafting_recipe_apply_weapon_skin"), 32, nil, nil, nil, disable_with_gamepad)
+	apply_illusion_button = UIWidgets.create_default_button("apply_illusion_button", scenegraph_definition.apply_illusion_button.size, nil, nil, Localize("crafting_recipe_apply_weapon_skin"), 32, nil, nil, nil, false)
 }
 local generic_input_actions = {
 	default = {
@@ -974,6 +989,11 @@ local generic_input_actions = {
 			input_action = "confirm",
 			priority = 4,
 			description_text = "input_description_select"
+		},
+		{
+			input_action = "refresh",
+			priority = 5,
+			description_text = "input_description_remove"
 		},
 		{
 			input_action = "back",
@@ -1010,8 +1030,13 @@ local generic_input_actions = {
 			description_text = "input_description_equip"
 		},
 		{
-			input_action = "back",
+			input_action = "refresh",
 			priority = 6,
+			description_text = "input_description_remove"
+		},
+		{
+			input_action = "back",
+			priority = 7,
 			description_text = "input_description_back"
 		}
 	},

@@ -428,8 +428,6 @@ SideManager._update_ally_frame_tables = function (self, side)
 	for i = num_non_disabled + 1, #non_disabled_player_units do
 		non_disabled_player_units[i] = nil
 	end
-
-	self:_check_hero_alive_mission_giver_vo(side)
 end
 
 SideManager._update_enemy_frame_tables = function (self, side)
@@ -602,28 +600,4 @@ end
 
 SideManager.update_testify = function (self, dt, t)
 	Testify:poll_requests_through_handler(side_manager_testify, self)
-end
-
-SideManager._check_hero_alive_mission_giver_vo = function (self, side)
-	if not Managers.state.network.is_server then
-		return
-	end
-
-	local game_mode_manager = Managers.state.game_mode
-	local game_mode_name = game_mode_manager:game_mode_key()
-
-	if game_mode_name == "versus" and not game_mode_manager:is_round_started() then
-		return
-	end
-
-	local last_num_hero_alive = self._last_num_non_disabled_heroes
-	local current_non_disabled_heroes = #side.NON_DISABLED_PLAYER_AND_BOT_UNITS
-
-	if last_num_hero_alive and last_num_hero_alive ~= current_non_disabled_heroes and side.name == "heroes" and current_non_disabled_heroes == 1 then
-		local dialogue_system = Managers.state.entity:system("dialogue_system")
-
-		dialogue_system:trigger_mission_giver_event("vs_mg_heroes_last_man_standing")
-
-		self._last_num_non_disabled_heroes = current_non_disabled_heroes
-	end
 end

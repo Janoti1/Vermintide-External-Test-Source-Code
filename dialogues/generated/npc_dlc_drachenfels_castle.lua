@@ -2,6 +2,7 @@ return function ()
 	define_rule({
 		response = "nngl_castle_vo_sorcerer_intro",
 		name = "nngl_castle_vo_sorcerer_intro",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -18,6 +19,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "nngl_castle_vo_sorcerer_taunt",
 		response = "nngl_castle_vo_sorcerer_taunt",
 		criterias = {
@@ -52,6 +54,7 @@ return function ()
 	define_rule({
 		response = "pbw_castle_vo_meet_sorcerer_heard_npc",
 		name = "pbw_castle_vo_meet_sorcerer_heard_npc",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -76,6 +79,7 @@ return function ()
 	define_rule({
 		response = "pdr_castle_vo_meet_sorcerer_heard_npc",
 		name = "pdr_castle_vo_meet_sorcerer_heard_npc",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -100,6 +104,7 @@ return function ()
 	define_rule({
 		response = "pes_castle_vo_meet_sorcerer_heard_npc",
 		name = "pes_castle_vo_meet_sorcerer_heard_npc",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -124,6 +129,7 @@ return function ()
 	define_rule({
 		response = "pwe_castle_vo_meet_sorcerer_heard_npc",
 		name = "pwe_castle_vo_meet_sorcerer_heard_npc",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -148,6 +154,7 @@ return function ()
 	define_rule({
 		response = "pwh_castle_vo_meet_sorcerer_heard_npc",
 		name = "pwh_castle_vo_meet_sorcerer_heard_npc",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",

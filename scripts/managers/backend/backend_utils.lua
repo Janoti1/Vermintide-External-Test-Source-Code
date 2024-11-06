@@ -315,12 +315,19 @@ local CURRENCY_LOOKUP = {
 	}
 }
 
+CURRENCY_DESC_LOOKUP = {
+	SM = "achv_menu_curreny_reward_claimed",
+	ES = "achv_menu_es_currency_reward_claimed ",
+	VS = "achv_menu_vs_currency_reward_claimed"
+}
+
 BackendUtils.get_fake_currency_item = function (currency_code, amount)
 	local lookup = CURRENCY_LOOKUP[currency_code]
 
 	fassert(lookup, "Unsupported currency code '%s'", currency_code)
 
 	local item_key = lookup[amount]
+	local description = CURRENCY_DESC_LOOKUP[currency_code]
 
 	if not item_key then
 		if amount >= 1 and amount < 50 then
@@ -334,5 +341,5 @@ BackendUtils.get_fake_currency_item = function (currency_code, amount)
 
 	local data = Currencies[item_key]
 
-	return table.clone(data), item_key
+	return table.clone(data), item_key, description
 end

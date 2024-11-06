@@ -5,11 +5,3 @@ StartGameWindowVersusPanel = class(StartGameWindowVersusPanel, StartGameWindowPa
 StartGameWindowVersusPanel._create_ui_elements = function (self, _, params, offset)
 	return StartGameWindowVersusPanel.super._create_ui_elements(self, definitions, params, offset)
 end
-
-StartGameWindowVersusPanel.update = function (self, dt, t)
-	if self._versus_player_hosted_lobby_ui_is_active then
-		return
-	end
-
-	StartGameWindowVersusPanel.super.update(self, dt, t)
-end

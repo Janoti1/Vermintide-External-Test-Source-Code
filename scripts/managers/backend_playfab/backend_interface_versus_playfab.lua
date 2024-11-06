@@ -169,6 +169,10 @@ end
 BackendInterfaceVersusPlayFab._start_matchmaking_cb = function (self, external_cb, result, code, headers, data)
 	local parsed_data = parse_response(data)
 
+	if parsed_data.debug_msg then
+		Managers.chat:add_local_system_message(1, parsed_data.debug_msg, true)
+	end
+
 	if not result or code ~= 200 then
 		print_error(parsed_data, code, "Failed to start matchmaking. result: %s", tostring(result))
 		Crashify.print_exception("BackendInterfaceVersusPlayFab", "Failed to start matchmaking")
@@ -228,6 +232,10 @@ BackendInterfaceVersusPlayFab._cancel_matchmaking_cb = function (self, external_
 
 	local parsed_data = parse_response(data)
 
+	if parsed_data.debug_msg then
+		Managers.chat:add_local_system_message(1, parsed_data.debug_msg, true)
+	end
+
 	if not result or code ~= 200 then
 		print_error(parsed_data, code, "Failed to cancel matchmaking. result: %s", tostring(result))
 
@@ -265,6 +273,10 @@ end
 
 BackendInterfaceVersusPlayFab._fetch_matchmaking_session_data_cb = function (self, external_cb, result, code, headers, data)
 	local parsed_data = parse_response(data)
+
+	if parsed_data.debug_msg then
+		Managers.chat:add_local_system_message(1, parsed_data.debug_msg, true)
+	end
 
 	if not result or code ~= 200 then
 		print_error(parsed_data, code, "Failed to fetch matchmaking session data. result: %s", tostring(result))

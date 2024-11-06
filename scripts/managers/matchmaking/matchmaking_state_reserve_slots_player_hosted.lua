@@ -136,7 +136,7 @@ MatchmakingStateReserveSlotsPlayerHosted.update = function (self, dt, t)
 
 				return self:_reservation_success(true)
 			else
-				mm_printf_force("Failed to reserve slots  due to host responding '%s'. lobby_id=%s, host_id:%s", game_reply, lobby_id, host_name)
+				mm_printf_force("Failed to reserve slots  due to host responding '%s'. lobby_id=%s, host_id:%s", reservation_reply, lobby_id, host_name)
 
 				return self:_reservation_success(false)
 			end

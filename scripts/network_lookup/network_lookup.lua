@@ -2062,8 +2062,6 @@ NetworkLookup.game_ping_reply = {
 	"lobby_ok",
 	"lobby_id_mismatch",
 	"game_mode_ended",
-	"friend_joining_disabled",
-	"friend_joining_friends_only",
 	"not_searching_for_players",
 	"lobby_has_active_deed",
 	"obsolete_request",

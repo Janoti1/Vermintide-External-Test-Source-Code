@@ -38,10 +38,6 @@ LobbyBrowserConsoleUI.init = function (self, parent, ingame_ui_context, game_mod
 
 	self:_create_ui_elements()
 	self:_start_transition_animation("on_enter")
-
-	self._event_manager = Managers.state.event
-
-	self._event_manager:register(self, "versus_custom_lobby_state_changed", "on_versus_custom_lobby_state_changed")
 end
 
 LobbyBrowserConsoleUI._start_transition_animation = function (self, animation_name)
@@ -289,10 +285,6 @@ LobbyBrowserConsoleUI.setup_filter_entries = function (self)
 end
 
 LobbyBrowserConsoleUI.update = function (self, dt, t, loading)
-	if self._window_paused then
-		return
-	end
-
 	self:_update_info_text(dt, t, loading)
 	self:_handle_input(dt, t, loading)
 	self:_handle_mouse_input(dt, t, loading)
@@ -2538,8 +2530,4 @@ end
 
 LobbyBrowserConsoleUI.destroy = function (self)
 	return
-end
-
-LobbyBrowserConsoleUI.on_versus_custom_lobby_state_changed = function (self, activated)
-	self._window_paused = activated
 end

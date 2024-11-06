@@ -5,6 +5,7 @@ settings.dialogue_lookup = {
 	"dialogues/generated/lookup_vs_player_vo_heroes",
 	"dialogues/generated/lookup_vs_mission_giver_pactsworn",
 	"dialogues/generated/lookup_vs_mission_giver_heroes",
+	"dialogues/generated/lookup_hub_conversations_carousel",
 	"dialogues/generated/lookup_vs_level_bell_pvp",
 	"dialogues/generated/lookup_vs_level_military_pvp",
 	"dialogues/generated/lookup_vs_level_farmlands_pvp",
@@ -20,6 +21,9 @@ settings.auto_load_files_mechanism = {
 	}
 }
 settings.dialogue_settings = {
+	carousel_hub = {
+		"dialogues/generated/hub_conversations_carousel"
+	},
 	bell_pvp = {
 		"dialogues/generated/vs_level_bell_pvp"
 	},
@@ -90,5 +94,6 @@ settings.versus_close_to_win_score_ticks = {
 	"Play_hud_versus_score_5_ticks_to_win"
 }
 settings.music_overrides = {
+	carousel_hub = "Play_loading_screen_music_versus_small",
 	versus_between_rounds = "Play_loading_screen_music_versus_small"
 }

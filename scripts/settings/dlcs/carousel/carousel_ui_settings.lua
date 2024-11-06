@@ -130,9 +130,6 @@ settings.start_game_windows = {
 	"scripts/ui/dlc_versus/views/start_game_view/windows/start_game_window_versus_panel",
 	"scripts/ui/dlc_versus/views/start_game_view/windows/start_game_window_versus_background",
 	"scripts/ui/dlc_versus/views/start_game_view/windows/start_game_window_versus_quickplay",
-	"scripts/ui/dlc_versus/views/start_game_view/windows/start_game_window_versus_custom_game",
-	"scripts/ui/dlc_versus/views/start_game_view/windows/start_game_window_versus_additional_settings",
-	"scripts/ui/dlc_versus/views/start_game_view/windows/start_game_window_host_versus_additional_settings",
 	"scripts/ui/dlc_versus/views/start_game_view/windows/start_game_window_versus_lobby_browser"
 }
 settings.start_game_layout_console_generic_inputs = {
@@ -246,23 +243,6 @@ settings.start_game_window_layout_console = {
 			name = "versus_quickplay",
 			class_name = "StartGameWindowVersusQuickplay"
 		},
-		versus_custom_game = {
-			ignore_alignment = true,
-			name = "versus_custom_game",
-			class_name = "StartGameWindowVersusCustomGame"
-		},
-		versus_additional_quickplay_settings = {
-			parent_window_name = "versus_quickplay",
-			name = "versus_additional_quickplay_settings",
-			class_name = "StartGameWindowVersusAdditionalSettings",
-			ignore_alignment = true
-		},
-		versus_additional_custom_settings = {
-			parent_window_name = "versus_custom_game",
-			name = "versus_additional_custom_settings",
-			class_name = "StartGameWindowHostVersusAdditionalSettings",
-			ignore_alignment = true
-		},
 		versus_lobby_browser = {
 			ignore_alignment = true,
 			name = "versus_lobby_browser",
@@ -271,7 +251,7 @@ settings.start_game_window_layout_console = {
 	},
 	window_layouts = {
 		{
-			sound_event_enter = "hud_morris_start_menu_category",
+			sound_event_enter = "Play_vs_hud_play_menu_category",
 			display_name = "start_game_window_adventure_title",
 			game_mode_option = true,
 			name = "versus_quickplay",
@@ -290,59 +270,20 @@ settings.start_game_window_layout_console = {
 				return overview:is_in_mechanism("versus")
 			end,
 			save_data_table = versus_save_data_table_map_console.quickplay
-		},
-		{
-			sound_event_enter = "hud_morris_start_menu_category",
-			display_name = "start_game_window_other_options_always_host",
-			game_mode_option = true,
-			name = "versus_custom_game",
-			disable_function_name = "_versus_custom_disable_function",
-			panel_sorting = 20,
-			background_object_set = "quick_play_chaos_wastes",
-			input_focus_window = "versus_custom_game",
-			close_on_exit = true,
-			background_flow_event = "quick_play_chaos_wastes",
-			windows = {
-				versus_additional_custom_settings = 4,
-				versus_panel = 1,
-				versus_background = 2,
-				versus_custom_game = 3
-			},
-			can_add_function = function (overview)
-				return overview:is_in_mechanism("versus")
-			end,
-			save_data_table = versus_save_data_table_map_console.custom
-		},
-		{
-			sound_event_enter = "hud_morris_start_menu_category",
-			display_name = "start_game_window_lobby_browser",
-			disable_function_name = "_versus_lobby_browser_disable_function",
-			name = "versus_lobby_browser",
-			panel_sorting = 100,
-			background_object_set = "lobby_browser_chaos_wastes",
-			close_on_exit = true,
-			background_flow_event = "lobby_browser_chaos_wastes",
-			windows = {
-				versus_panel = 1,
-				versus_background = 2,
-				versus_lobby_browser = 3
-			},
-			can_add_function = function (overview)
-				return overview:is_in_mechanism("versus") and not IS_XB1
-			end,
-			save_data_table = versus_save_data_table_map_console.lobby_browser
 		}
 	},
 	mechanism_quickplay_settings = {
-		mechanism_name = "versus",
+		force_area_name = "versus",
 		game_mode_type = "versus_quickplay",
-		layout_name = "area_selection"
+		mechanism_name = "versus",
+		layout_name = "mission_selection"
 	},
 	mechanism_custom_game = {
-		mechanism_name = "versus",
+		force_area_name = "versus",
 		game_mode_type = "versus_custom",
 		difficulty_index_getter_name = "completed_level_difficulty_index",
-		layout_name = "area_selection"
+		layout_name = "versus_mission_selection",
+		mechanism_name = "versus"
 	}
 }
 settings.controller_settings = {
@@ -455,6 +396,9 @@ settings.stats_string_lookup = {
 	vs_poison_wind_globadier_eliminations = "vs_scoreboard_eliminations",
 	vs_packmaster_damage = "inventory_screen_compare_damage_tooltip",
 	vs_chaos_troll_eliminations = "vs_scoreboard_eliminations"
+}
+settings.item_type_store_icons = {
+	weapon_pose = "store_tag_icon_pose"
 }
 settings.stats_icons_lookup = {
 	vs_ratling_gunner_eliminations = "killfeed_icon_12",

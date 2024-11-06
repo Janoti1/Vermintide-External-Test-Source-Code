@@ -1385,6 +1385,11 @@ local weapon_sway_lerp_variables = {
 		5,
 		5,
 		5
+	},
+	vs_rat_ogre = {
+		5,
+		5,
+		5
 	}
 }
 local math_min = math.min

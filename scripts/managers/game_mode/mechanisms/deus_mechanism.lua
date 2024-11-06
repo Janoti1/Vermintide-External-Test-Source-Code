@@ -1394,3 +1394,7 @@ DeusMechanism.try_reserve_profile_for_peer_by_mechanism = function (self, profil
 
 	return profile_synchronizer:try_reserve_profile_for_peer(party_id, peer_id, profile_index, career_index)
 end
+
+DeusMechanism.entered_mechanism_due_to_switch = function (self)
+	Managers.chat:set_chat_enabled(true)
+end

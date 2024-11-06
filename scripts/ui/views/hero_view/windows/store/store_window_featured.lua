@@ -43,6 +43,10 @@ local GRID_SIZE_BY_TYPE = {
 	frame = {
 		1,
 		1
+	},
+	cosmetic_bundle = {
+		1,
+		1
 	}
 }
 local BACKFILL_ITEM_ORDER = {

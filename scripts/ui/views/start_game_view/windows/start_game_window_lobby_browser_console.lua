@@ -605,10 +605,6 @@ StartGameWindowLobbyBrowserConsole.is_lobby_joinable = function (self, lobby_dat
 		return false, "lobby_id_mismatch"
 	end
 
-	if Managers.matchmaking:is_matchmaking_paused() then
-		return false, "matchmaking_paused"
-	end
-
 	local statistics_db = self._statistics_db
 	local player_stats_id = self._stats_id
 	local profile_name = self._profile_name

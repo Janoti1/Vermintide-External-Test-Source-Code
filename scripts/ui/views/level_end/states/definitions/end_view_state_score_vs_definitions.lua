@@ -597,7 +597,7 @@ local disable_with_gamepad = true
 local widgets = {
 	level = UIWidgets.create_level_widget("level"),
 	level_text = UIWidgets.create_simple_text("Righteous Stand", "level_text", nil, nil, level_text_style),
-	match_finsihed_text = UIWidgets.create_simple_text("Match finished", "match_finished_text", nil, nil, match_finished_text_style),
+	match_finsihed_text = UIWidgets.create_simple_text(Localize("vs_match_completed"), "match_finished_text", nil, nil, match_finished_text_style),
 	banner = UIWidgets.create_shader_tiled_texture("panel", "carousel_end_screen_panel", {
 		512,
 		200

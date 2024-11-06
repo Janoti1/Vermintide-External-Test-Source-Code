@@ -89,6 +89,7 @@ DialogueSystem.init = function (self, entity_system_creation_context, system_nam
 	self._query_results = {}
 	self._is_server = entity_system_creation_context.is_server
 	self._debug_state = nil
+	self._mission_giver_events = {}
 	self._tagquery_database = TagQueryDatabase:new()
 	self._dialogues = {}
 	self._markers = {}
@@ -250,6 +251,7 @@ DialogueSystem.init = function (self, entity_system_creation_context, system_nam
 
 	self.statistics_db = entity_system_creation_context.statistics_db
 	self._global_context = {
+		game_about_to_end = 0,
 		current_level = level_name,
 		weather = environment_variation_name
 	}
@@ -828,7 +830,14 @@ DialogueSystem._update_currently_playing_dialogues = function (self, dt)
 			end
 
 			if currently_playing_dialogue.dialogue_timer then
-				if extension.input:is_silenced() then
+				local ghost_mode_blocked = false
+				local ghost_mode_extension = ScriptUnit.has_extension(unit, "ghost_mode_system")
+
+				if ghost_mode_extension and ghost_mode_extension:is_in_ghost_mode() and not currently_playing_dialogue.only_local and not currently_playing_dialogue.only_allies then
+					ghost_mode_blocked = true
+				end
+
+				if extension.input:is_silenced() or ghost_mode_blocked then
 					if self._is_server then
 						local go_id, is_level_unit = Managers.state.network:game_object_or_level_id(unit)
 
@@ -1119,6 +1128,7 @@ DialogueSystem.physics_async_update = function (self, context, t)
 		self:_update_player_jumping(t)
 	end
 
+	self:_update_mission_giver_events(dt)
 	self:_update_new_events(t)
 end
 
@@ -1579,14 +1589,55 @@ DialogueSystem._update_player_jumping = function (self, t)
 	end
 end
 
-DialogueSystem.trigger_mission_giver_event = function (self, event_name, event_data)
+DialogueSystem.queue_mission_giver_event = function (self, event_name, event_data)
+	self._mission_giver_events[#self._mission_giver_events + 1] = {
+		delay = DialogueSettings.mission_giver_events_delay,
+		event_name = event_name,
+		event_data = event_data
+	}
+end
+
+DialogueSystem.queue_mission_giver_event_for_side = function (self, side_name, event_name, event_data)
+	local side = Managers.state.side:get_side_from_name(side_name)
+	local side_id = side.side_id
+
+	self._mission_giver_events[#self._mission_giver_events + 1] = {
+		delay = DialogueSettings.mission_giver_events_delay,
+		event_name = event_name,
+		event_data = event_data,
+		side_id = side_id
+	}
+end
+
+DialogueSystem._update_mission_giver_events = function (self, dt)
 	local surrounding_aware_system = Managers.state.entity:system("surrounding_aware_system")
 	local global_observers = surrounding_aware_system:get_global_observers()
+	local events = self._mission_giver_events
+	local num_events = #events
+	local i = 1
 
-	for unit, surrounding_aware_extension in pairs(global_observers) do
-		local dialogue_input = ScriptUnit.extension_input(unit, "dialogue_system")
+	while i <= num_events do
+		local event = events[i]
 
-		dialogue_input:trigger_networked_dialogue_event(event_name, event_data)
+		event.delay = event.delay - dt
+
+		if event.delay < 0 then
+			for unit, surrounding_aware_extension in pairs(global_observers) do
+				local side_id = event.side_id
+
+				if not side_id or side_id == surrounding_aware_extension.side_id then
+					local dialogue_input = ScriptUnit.extension_input(unit, "dialogue_system")
+
+					dialogue_input:trigger_networked_dialogue_event(event.event_name, event.event_data)
+				end
+			end
+
+			table.swap_delete(events, i)
+
+			num_events = num_events - 1
+		else
+			i = i + 1
+		end
 	end
 end
 
@@ -1667,6 +1718,10 @@ DialogueSystem._check_play_debug_sound = function (self, sound_event, subtitles_
 	return
 end
 
+DialogueSystem.is_unit_playing_dialogue = function (self, unit)
+	return self._playing_units[unit]
+end
+
 DialogueSystem.rpc_play_dialogue_event = function (self, channel_id, go_id, is_level_unit, dialogue_id, dialogue_index)
 	local dialogue_actor_unit = Managers.state.network:game_object_or_level_unit(go_id, is_level_unit)
 
@@ -1743,6 +1798,8 @@ DialogueSystem.rpc_play_dialogue_event = function (self, channel_id, go_id, is_l
 			local playing_id, _ = self:_check_play_debug_sound(sound_event, subtitles_event)
 
 			if not playing_id then
+				Managers.state.vce:interrupt_vce(dialogue_actor_unit)
+
 				playing_id, _ = WwiseWorld.trigger_event(wwise_world, sound_event, wwise_source_id)
 				dialogue.currently_playing_id = playing_id
 			end

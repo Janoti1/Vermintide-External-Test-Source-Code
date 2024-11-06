@@ -952,7 +952,7 @@ PartyManager._draw_debug = function (self, t)
 							dist_str = string.format("dist: %.1f%%", data.distance_traveled * 100)
 						end
 
-						local info = string.format("Party %s -> Score: %s/%s(%s) %s", party_id, data.claimed_points, tostring(data.max_points), data.unclaimed_points, dist_str)
+						local info = string.format("Party %s -> Score: %s/%s(%s) %s", party_id, data.claimed_points, tostring(data.max_points), data.max_points - data.claimed_points, dist_str)
 
 						Gui.text(self._gui, info, font, small_txt_height, font_material, Vector3(win_start_x + margin, y, 0), game_mode_color)
 					end
@@ -1388,6 +1388,23 @@ PartyManager._server_set_client_friend_party = function (self, friend_party_id)
 	local friend_party_peers = self:_collect_peers_from_friend_party(friend_party_id)
 
 	self:_server_send_rpc_to_friend_party("rpc_set_client_friend_party", friend_party_id, friend_party_peers)
+end
+
+PartyManager.server_get_friend_party_leaders = function (self, exclude_own_peer_id)
+	local friend_party_leaders = {}
+	local own_peer_id = Network.peer_id()
+
+	if not self._friend_parties then
+		return friend_party_leaders
+	end
+
+	for _, friend_party in pairs(self._friend_parties) do
+		if not exclude_own_peer_id and friend_party.leader == own_peer_id then
+			friend_party_leaders[#friend_party_leaders + 1] = friend_party.leader
+		end
+	end
+
+	return friend_party_leaders
 end
 
 PartyManager._server_send_rpc_to_friend_party = function (self, rpc_name, friend_party_id, ...)

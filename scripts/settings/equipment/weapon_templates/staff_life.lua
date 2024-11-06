@@ -670,7 +670,7 @@ weapon_template.synced_states = {
 			end
 		end,
 		leave = function (self, owner_unit, weapon_unit, state_data, is_local_player, world, next_state, is_destroy)
-			if is_destroy or not is_local_player then
+			if not is_local_player then
 				return
 			end
 
@@ -701,7 +701,7 @@ weapon_template.synced_states = {
 			return
 		end,
 		leave = function (self, owner_unit, weapon_unit, state_data, is_local_player, world, next_state, is_destroy)
-			if is_destroy or not is_local_player then
+			if not is_local_player then
 				return
 			end
 

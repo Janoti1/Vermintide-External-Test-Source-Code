@@ -302,13 +302,10 @@ ExperienceSettings.get_versus_level_from_experience = function (experience)
 	local level = 0
 	local progress = 0
 	local experience_into_level = 0
-	local previous_exp_total = 0
+	local previous_exp_total
 
 	if experience >= total_defined_versus_experience then
-		local experience_into_level = 0
-		local progress = 0
-
-		return num_defined_levels, progress, experience_into_level
+		return num_defined_versus_levels, progress, experience_into_level
 	end
 
 	for i = 1, num_defined_versus_levels do
@@ -333,11 +330,15 @@ ExperienceSettings.get_versus_progress_breakdown = function (start_experience, t
 	local breakdown = {}
 
 	for i = start_level, end_level do
-		local end_level_experience = versus_experience_levels[i + 1] * (i == end_level and end_experience_level_progress or 1)
-		local start_level_experience = end_level_experience * start_experience_level_progress
+		if not versus_experience_levels[i + 1] then
+			breakdown[i] = 0
+		else
+			local end_level_experience = versus_experience_levels[i + 1] * (i == end_level and end_experience_level_progress or 1)
+			local start_level_experience = end_level_experience * start_experience_level_progress
 
-		breakdown[i] = (end_level_experience - start_level_experience) / total_experience_gained
-		start_experience_level_progress = 0
+			breakdown[i] = (end_level_experience - start_level_experience) / total_experience_gained
+			start_experience_level_progress = 0
+		end
 	end
 
 	return breakdown, start_level

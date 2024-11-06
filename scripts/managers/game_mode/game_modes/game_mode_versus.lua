@@ -267,18 +267,25 @@ GameModeVersus.destroy = function (self)
 end
 
 GameModeVersus.evaluate_end_conditions = function (self, round_started, dt, t)
-	if self._training_mode or script_data.disable_gamemode_end then
-		return false
-	end
+	repeat
+		if script_data.auto_complete_rounds and (self._game_mode_state == "match_running_state" or self._game_mode_state == "pre_start_round_state") then
+			break
+		end
 
-	if not round_started and not self._level_completed and not self._level_failed then
-		return false
-	end
+		if self._training_mode or script_data.disable_gamemode_end then
+			return false
+		end
+
+		if not round_started and not self._level_completed and not self._level_failed then
+			return false
+		end
+	until true
 
 	local ignore_bots = true
 	local round_ended = false
 	local round_timer_over = self._win_conditions:is_round_timer_over()
-	local all_objectives_completed = self._objective_system:all_objectives_completed()
+	local objective_system = Managers.state.entity:system("objective_system")
+	local all_objectives_completed = objective_system:all_objectives_completed()
 	local party_won_early_data = self._win_conditions.party_won_early
 	local humans_dead = GameModeHelper.side_is_dead("heroes", ignore_bots)
 	local heroes_disabled = GameModeHelper.side_is_disabled("heroes")
@@ -288,7 +295,7 @@ GameModeVersus.evaluate_end_conditions = function (self, round_started, dt, t)
 		heroes_dead_or_disabled = false
 	end
 
-	local game_should_end_early = not self._lose_condition_disabled and (heroes_dead_or_disabled or self._level_failed) or round_timer_over or all_objectives_completed or party_won_early_data or false
+	local game_should_end_early = not self._lose_condition_disabled and (heroes_dead_or_disabled or self._level_failed) or round_timer_over or all_objectives_completed or party_won_early_data or script_data.auto_complete_rounds or self._last_gameplay_frame or false
 
 	if self._level_completed then
 		self._level_complete_timer = self._level_complete_timer or t + 0.4
@@ -322,17 +329,15 @@ GameModeVersus.evaluate_end_conditions = function (self, round_started, dt, t)
 	elseif game_should_end_early then
 		self:set_about_to_end_game_early(true)
 
-		if party_won_early_data then
-			self:_trigger_about_to_early_win_vo()
-		end
-
 		local audio_system = Managers.state.entity:system("audio_system")
 
 		audio_system:play_2d_audio_event("Play_versus_hud_last_hero_down_riser")
 
 		self._last_hero_down_riser_played = true
 
-		if humans_dead then
+		if script_data.auto_complete_rounds then
+			self._game_end_condition_timer = t
+		elseif humans_dead then
 			self._game_end_condition_timer = t + GameModeSettings.versus.lose_condition_time_dead
 		else
 			self._game_end_condition_timer = t + GameModeSettings.versus.lose_condition_time
@@ -340,20 +345,9 @@ GameModeVersus.evaluate_end_conditions = function (self, round_started, dt, t)
 	end
 
 	if round_ended then
-		self:_round_end_telemetry()
+		local reason, reason_data = self:_get_end_reason(party_won_early_data)
 
-		local hero_party_id = Managers.state.side:get_side_from_name("heroes").party.party_id
-		local heroes_won_early = party_won_early_data and party_won_early_data.party_id == hero_party_id or false
-		local heroes_won = all_objectives_completed or heroes_won_early
-
-		self:_server_on_round_over(heroes_won)
-
-		if not heroes_won then
-			local dialogue_system = Managers.state.entity:system("dialogue_system")
-
-			dialogue_system:trigger_mission_giver_event("vs_mg_heroes_team_wipe")
-		end
-
+		self:_trigger_last_gameplay_frame(reason, reason_data, all_objectives_completed)
 		self._mechanism:server_decide_side_order()
 
 		if DEDICATED_SERVER or self._mechanism:is_hosting_versus_custom_game() then
@@ -364,37 +358,7 @@ GameModeVersus.evaluate_end_conditions = function (self, round_started, dt, t)
 		self._game_end_condition_timer = nil
 		self._round_timer = nil
 
-		local reason = "round_end"
-		local reason_data
-		local all_rounds_played = Development.parameter("versus_quick_match_end") or self._current_mechanism_state == "round_2" and self._mechanism:is_last_set()
-
 		self:change_game_mode_state("post_round_state")
-
-		if not party_won_early_data then
-			self._win_conditions:wipe_unclaimed_points()
-
-			local dark_pact_party_id = Managers.state.side:get_side_from_name("dark_pact").party.party_id
-			local _
-
-			_, party_won_early_data = self._win_conditions:update_party_has_won_early(dark_pact_party_id)
-		end
-
-		if party_won_early_data then
-			self:_trigger_early_win_vo()
-
-			reason = party_won_early_data.party_id == 1 and "party_one_won_early" or "party_two_won_early"
-			reason_data = party_won_early_data
-		elseif all_rounds_played then
-			reason = self._win_conditions:get_match_results()
-		end
-
-		if reason == "draw" then
-			self:_trigger_draw_vo()
-		end
-
-		if reason ~= "round_end" then
-			self:_match_end_telemetry(reason)
-		end
 
 		return true, reason, reason_data
 	else
@@ -402,10 +366,58 @@ GameModeVersus.evaluate_end_conditions = function (self, round_started, dt, t)
 	end
 end
 
+GameModeVersus._trigger_last_gameplay_frame = function (self, reason, reason_data, all_objectives_completed)
+	local all_rounds_played = Development.parameter("versus_quick_match_end") or self._current_mechanism_state == "round_2" and self._mechanism:is_last_set()
+	local hero_party_id = Managers.state.side:get_side_from_name("heroes").party.party_id
+	local heroes_won_early = reason_data and reason_data.party_id == hero_party_id or false
+	local heroes_won = all_objectives_completed or heroes_won_early
+
+	if reason == "party_one_won_early" or reason == "party_two_won_early" then
+		self:_trigger_early_win_vo(reason_data.party_id)
+	elseif all_rounds_played then
+		reason = self._win_conditions:get_match_results()
+
+		if reason == "draw" then
+			self:_trigger_draw_vo()
+		end
+	elseif not heroes_won then
+		local dialogue_system = Managers.state.entity:system("dialogue_system")
+
+		dialogue_system:queue_mission_giver_event("vs_mg_heroes_team_wipe")
+	end
+
+	self:_server_on_round_over(heroes_won)
+	self:_round_end_telemetry()
+
+	if reason ~= "round_end" then
+		self:_match_end_telemetry(reason)
+	end
+end
+
+GameModeVersus._get_end_reason = function (self, party_won_early_data)
+	local reason = "round_end"
+	local reason_data
+
+	if not party_won_early_data then
+		local _
+
+		_, party_won_early_data = self._win_conditions:update_early_win_conditions()
+	end
+
+	if party_won_early_data then
+		self:_trigger_early_win_vo(party_won_early_data.party_id)
+
+		reason = party_won_early_data.party_id == 1 and "party_one_won_early" or "party_two_won_early"
+		reason_data = party_won_early_data
+	end
+
+	return reason, reason_data
+end
+
 GameModeVersus.ready_to_transition = function (self)
 	local all_rounds_played = self._current_mechanism_state == "round_2" and not self._mechanism:should_start_next_set()
 
-	if self._is_server and (all_rounds_played or self._win_conditions.party_won_early) then
+	if all_rounds_played or self._win_conditions.party_won_early then
 		self._network_transmit:send_rpc_clients("rpc_rejoin_parties")
 
 		if not DEDICATED_SERVER then
@@ -419,6 +431,8 @@ GameModeVersus.ready_to_transition = function (self)
 
 		Managers.level_transition_handler:promote_next_level_data()
 	end
+
+	printf("[GameModeVersus] Ready to transition. _transition_state: %s, _is_server: %s, all_rounds_played: %s, party_won-early: %s", self._transition_state, self._is_server, all_rounds_played, self._win_conditions.party_won_early)
 end
 
 GameModeVersus.wanted_transition = function (self)
@@ -689,7 +703,7 @@ GameModeVersus.round_started = function (self)
 	if self._is_server then
 		local dialogue_system = Managers.state.entity:system("dialogue_system")
 
-		dialogue_system:trigger_mission_giver_event("vs_mg_heroes_left_safe_room")
+		dialogue_system:queue_mission_giver_event("vs_mg_heroes_left_safe_room")
 	end
 end
 
@@ -749,7 +763,7 @@ GameModeVersus.server_update = function (self, t, dt)
 				local member_is_done_loading = self._network_server:is_peer_ready(peer_id)
 
 				if not member_is_done_loading then
-					print("[game_mode_versus] kicking timed out peer", peer_id)
+					printf("[game_mode_versus] kicking timed out peer %s in state %s", peer_id, self._game_mode_state)
 					self._network_server:kick_peer(peer_id)
 				end
 			end
@@ -789,7 +803,7 @@ GameModeVersus.server_update = function (self, t, dt)
 				if dialogue_system:has_local_player_moved_from_start_position() then
 					self._pre_round_start_vo = true
 
-					dialogue_system:trigger_mission_giver_event("vs_mg_round_start")
+					dialogue_system:queue_mission_giver_event("vs_mg_round_start")
 				end
 			end
 
@@ -893,7 +907,7 @@ GameModeVersus._start_game_timeout = function (self)
 	local timeout = 10
 
 	if self._game_mode_state == "waiting_for_players_to_join" then
-		timeout = 45
+		timeout = 120
 	end
 
 	return timeout < self._start_game_timeout_timer
@@ -972,11 +986,10 @@ GameModeVersus.evaluate_end_condition_outcome = function (self, reason, player)
 end
 
 GameModeVersus.gm_event_end_conditions_met = function (self, reason, checkpoint_available, percentages_completed)
-	if self._objective_system then
-		self._objectives_completed = self._objective_system:num_completed_main_objectives()
-		self._total_main_objectives = self._objective_system:num_main_objectives()
-	end
+	local objective_system = Managers.state.entity:system("objective_system")
 
+	self._objectives_completed = objective_system:num_completed_main_objectives()
+	self._total_main_objectives = objective_system:num_main_objectives()
 	self._end_reason = reason
 end
 
@@ -1295,12 +1308,12 @@ GameModeVersus._start_objective = function (self)
 		return
 	end
 
-	self._objective_system = Managers.state.entity:system("objective_system")
-
 	local objectives = self:_get_objectives_current_set()
 
 	if objectives then
-		self._objective_system:server_activate_first_objective()
+		local objective_system = Managers.state.entity:system("objective_system")
+
+		objective_system:server_activate_first_objective()
 	end
 end
 
@@ -1320,15 +1333,17 @@ GameModeVersus._get_objectives_current_set = function (self)
 end
 
 GameModeVersus.get_current_objective_data = function (self)
+	local objective_system = Managers.state.entity:system("objective_system")
 	local objectives = self:_get_objectives_current_set()
-	local current_objective_id = self._objective_system:current_objective_index()
+	local current_objective_id = objective_system:current_objective_index()
 
 	return objectives[current_objective_id]
 end
 
 GameModeVersus.get_next_objective_data = function (self)
+	local objective_system = Managers.state.entity:system("objective_system")
 	local objectives = self:_get_objectives_current_set()
-	local next_objective_id = self._objective_system:current_objective_index() + 1
+	local next_objective_id = objective_system:current_objective_index() + 1
 
 	return objectives[next_objective_id]
 end
@@ -1652,7 +1667,7 @@ end
 GameModeVersus.get_end_screen_config = function (self, game_won, game_lost, player, reason)
 	local screen_name, screen_config, params
 	local mechanism_state = self._current_mechanism_state
-	local ended_early = reason == "party_one_won_early" or reason == "party_two_won_early"
+	local ended_early = reason == "party_one_won_early" or reason == "party_two_won_early" or Development.parameter("versus_quick_match_end")
 
 	if not ended_early and (mechanism_state == "round_1" or self._mechanism:should_start_next_set()) then
 		screen_name = "carousel_round_end"
@@ -1662,7 +1677,7 @@ GameModeVersus.get_end_screen_config = function (self, game_won, game_lost, play
 			display_screen_delay = self._settings.end_of_match_view_display_screen_delay
 		}
 	elseif ended_early or mechanism_state == "round_2" then
-		screen_name = game_won and "victory" or game_lost and "defeat" or "carousel_draw"
+		screen_name = game_won and "victory" or game_lost and "defeat" or "draw"
 		screen_config = {
 			show_act_presentation = false,
 			display_screen_delay = self._settings.end_of_match_view_display_screen_delay
@@ -1755,6 +1770,8 @@ GameModeVersus.rpc_rejoin_parties = function (self, channel_id)
 	if self._is_server then
 		return
 	end
+
+	print("[GameModeVersus] Told to rejoin parties")
 
 	self._transition_state = "versus_migration"
 end
@@ -2014,33 +2031,25 @@ GameModeVersus.projectile_hit_character = function (self, attacker_player, sourc
 	end
 end
 
-GameModeVersus._trigger_about_to_early_win_vo = function (self)
-	if self._about_to_early_win_vo_played then
-		return
-	end
-
-	self._about_to_early_win_vo_played = true
-
+GameModeVersus._trigger_early_win_vo = function (self, winning_party_id)
+	local party = Managers.party:get_party(winning_party_id)
+	local side = Managers.state.side.side_by_party[party]
+	local losing_party_id = winning_party_id == 1 and 2 or 1
+	local losing_party = Managers.party:get_party(losing_party_id)
+	local losing_side = Managers.state.side.side_by_party[losing_party]
 	local dialogue_system = Managers.state.entity:system("dialogue_system")
 
-	dialogue_system:trigger_mission_giver_event("vs_mg_about_to_early_win")
-	dialogue_system:trigger_mission_giver_event("vs_mg_about_to_early_loss")
-end
-
-GameModeVersus._trigger_early_win_vo = function (self)
-	local dialogue_system = Managers.state.entity:system("dialogue_system")
-
-	dialogue_system:trigger_mission_giver_event("vs_mg_early_win")
-	dialogue_system:trigger_mission_giver_event("vs_mg_early_loss")
+	dialogue_system:queue_mission_giver_event_for_side(side:name(), "vs_mg_early_win")
+	dialogue_system:queue_mission_giver_event_for_side(losing_side:name(), "vs_mg_early_loss")
 end
 
 GameModeVersus._trigger_draw_vo = function (self)
 	local dialogue_system = Managers.state.entity:system("dialogue_system")
 
-	dialogue_system:trigger_mission_giver_event("vs_mg_match_draw")
+	dialogue_system:queue_mission_giver_event("vs_mg_match_draw")
 end
 
-local hero_rush_min_dist = 50
+local hero_rush_min_dist = 70
 local hero_rush_grace_delay = 5
 local hero_rush_unit_scratch = {}
 local hero_rush_distance_scratch = {}
@@ -2096,7 +2105,7 @@ GameModeVersus._update_hero_rushing = function (self, t)
 				local profile_name = profile.display_name
 				local dialogue_system = Managers.state.entity:system("dialogue_system")
 
-				dialogue_system:trigger_mission_giver_event("vs_mg_hero_rushing", {
+				dialogue_system:queue_mission_giver_event("vs_mg_hero_rushing", {
 					target_name = profile_name
 				})
 

@@ -263,13 +263,14 @@ local skins = {
 		data = {
 			description = "es_dual_wield_hammer_sword_skin_02_magic_02_description",
 			rarity = "unique",
-			display_name = "es_dual_wield_hammer_sword_skin_02_magic_02_name",
 			right_hand_unit = "units/weapons/player/wpn_emp_mace_04_t3/wpn_emp_mace_04_t3_magic_01",
+			template = "dual_wield_hammer_sword_template",
 			inventory_icon = "icon_es_dual_wield_hammer_sword_skin_02_magic_02",
 			slot_type = "melee",
+			display_name = "es_dual_wield_hammer_sword_skin_02_magic_02_name",
 			left_hand_unit = "units/weapons/player/wpn_emp_sword_06_t2/wpn_emp_sword_06_t2_magic_01",
 			hud_icon = "weapon_generic_icon_falken",
-			template = "dual_wield_hammer_sword_template",
+			display_unit = "units/weapons/weapon_display/display_dual_weapons",
 			material_settings = WeaponMaterialSettingsTemplates.versus
 		}
 	},
@@ -436,13 +437,14 @@ local skins = {
 		data = {
 			description = "dr_dual_wield_hammers_skin_01_magic_02_description",
 			rarity = "unique",
-			display_name = "dr_dual_wield_hammers_skin_01_magic_02_name",
 			right_hand_unit = "units/weapons/player/wpn_dw_hammer_02_t1/wpn_dw_hammer_02_t1_magic_01",
+			template = "dual_wield_axe_falchion_template",
 			inventory_icon = "icon_dr_dual_wield_hammers_skin_01_magic_02",
 			slot_type = "melee",
+			display_name = "dr_dual_wield_hammers_skin_01_magic_02_name",
 			left_hand_unit = "units/weapons/player/wpn_dw_hammer_02_t1/wpn_dw_hammer_02_t1_magic_01",
 			hud_icon = "weapon_generic_icon_falken",
-			template = "dual_wield_axe_falchion_template",
+			display_unit = "units/weapons/weapon_display/display_dual_weapons",
 			material_settings = WeaponMaterialSettingsTemplates.versus
 		}
 	},
@@ -734,7 +736,7 @@ local skins = {
 		data = {
 			description = "bw_1h_flaming_sword_skin_06_magic_02_description",
 			rarity = "unique",
-			right_hand_unit = "units/weapons/player/wpn_brw_sword_03_t2/wpn_brw_sword_03_t2_magic_01",
+			right_hand_unit = "units/weapons/player/wpn_brw_sword_03_t2/wpn_brw_flaming_sword_03_t2_magic_01",
 			hud_icon = "weapon_generic_icon_staff_3",
 			inventory_icon = "icon_bw_1h_flaming_sword_skin_06_magic_02",
 			display_name = "bw_1h_flaming_sword_skin_06_magic_02_name",
@@ -753,7 +755,7 @@ local skins = {
 			inventory_icon = "icon_bw_1h_mace_skin_02_magic_02",
 			display_name = "bw_1h_mace_skin_02_magic_02_name",
 			template = "one_handed_hammer_wizard_template_1",
-			display_unit = "units/weapons/weapon_display/display_1h_weapon",
+			display_unit = "units/weapons/weapon_display/display_1h_hammer_wizard",
 			material_settings = WeaponMaterialSettingsTemplates.versus
 		}
 	},
@@ -797,7 +799,7 @@ local skins = {
 			inventory_icon = "icon_bw_dagger_skin_02_magic_02",
 			display_name = "bw_dagger_skin_02_magic_02_name",
 			template = "one_handed_daggers_template_1",
-			display_unit = "units/weapons/weapon_display/display_1h_weapon",
+			display_unit = "units/weapons/weapon_display/display_1h_dagger_wizard",
 			material_settings = WeaponMaterialSettingsTemplates.versus
 		}
 	},
@@ -918,7 +920,7 @@ local skins = {
 			inventory_icon = "icon_es_2h_heavy_spear_skin_02_magic_02",
 			display_name = "es_2h_heavy_spear_skin_02_magic_02_name",
 			template = "two_handed_heavy_spears_template",
-			display_unit = "units/weapons/weapon_display/display_2h_weapon",
+			display_unit = "units/weapons/weapon_display/display_2h_heavy_spears",
 			material_settings = WeaponMaterialSettingsTemplates.versus
 		}
 	},
@@ -1139,9 +1141,9 @@ local skins = {
 	{
 		name = "bw_ghost_scythe_skin_02_magic_02",
 		data = {
-			description = "bw_ghost_scythe_skin_02_description",
+			description = "bw_ghost_scythe_skin_02_magic_02_description",
 			rarity = "unique",
-			display_name = "bw_ghost_scythe_skin_02_name",
+			display_name = "bw_ghost_scythe_skin_02_magic_02_name",
 			right_hand_unit = "units/weapons/player/wpn_bw_ghost_scythe_02/wpn_bw_ghost_scythe_02_magic_01",
 			inventory_icon = "icon_bw_ghost_scythe_skin_02_magic_02",
 			template = "staff_scythe",
@@ -1161,11 +1163,12 @@ local skins = {
 			description = "bw_necromancy_staff_skin_02_magic_02_description",
 			rarity = "unique",
 			right_hand_unit = "units/weapons/player/wpn_bw_necromancy_staff_02/wpn_bw_necromancy_staff_02_magic_01",
-			hud_icon = "hud_icon_default",
+			display_name = "bw_necromancy_staff_skin_02_magic_02_name",
 			inventory_icon = "icon_bw_necromancy_staff_skin_02_magic_02",
 			left_hand_unit = "units/weapons/player/wpn_invisible_weapon",
-			display_name = "bw_necromancy_staff_skin_02_magic_02_name",
 			template = "staff_death",
+			hud_icon = "hud_icon_default",
+			display_unit = "units/weapons/weapon_display/display_staff",
 			material_settings = WeaponMaterialSettingsTemplates.versus
 		}
 	},

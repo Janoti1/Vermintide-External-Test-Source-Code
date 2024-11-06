@@ -23,58 +23,59 @@ RangedAttackTypes = {
 }
 StatBuffApplicationMethods = {
 	reduced_spread_hit = "stacking_multiplier",
-	non_headshot_damage = "stacking_multiplier",
+	max_fatigue = "stacking_bonus",
 	gromril_cooldown = "stacking_bonus",
 	explosion_damage = "stacking_multiplier",
 	headshot_multiplier = "stacking_multiplier",
-	increased_max_targets = "stacking_bonus",
 	attack_speed_drakefire = "stacking_multiplier",
-	increased_burn_dot_damage = "stacking_multiplier",
-	debuff_armoured = "stacking_bonus",
 	increased_drone_count = "stacking_bonus",
+	increased_weapon_damage_ranged_to_wounded = "stacking_multiplier",
+	increased_max_targets = "stacking_bonus",
+	increased_damage_to_balefire = "stacking_multiplier",
 	increased_balefire_dot_duration = "stacking_multiplier",
-	critical_strike_effectiveness = "stacking_multiplier",
+	power_level_large = "stacking_multiplier",
 	critical_strike_chance_heavy = "stacking_bonus",
-	critical_strike_chance_ranged = "stacking_bonus",
+	critical_strike_chance_melee = "stacking_bonus",
 	protection_gutter_runner = "stacking_multiplier",
-	first_melee_hit_damage = "stacking_multiplier",
 	vent_speed = "stacking_multiplier",
-	power_level_critical_strike = "stacking_multiplier",
-	coop_stamina = "proc",
-	damage_taken_elites = "stacking_multiplier",
-	damage_taken_kd = "stacking_multiplier",
+	attack_speed_melee = "stacking_multiplier",
 	total_ammo = "stacking_multiplier",
+	damage_taken_elites = "stacking_multiplier",
+	coop_stamina = "proc",
+	damage_taken_kd = "stacking_multiplier",
+	max_damage_taken = "min",
 	not_consume_potion = "proc",
 	reduced_overcharge = "stacking_multiplier",
-	max_damage_taken = "min",
-	power_level_large = "stacking_multiplier",
-	not_consume_grenade = "proc",
-	faster_revive = "stacking_multiplier",
+	damage_taken_to_overcharge = "stacking_multiplier",
+	critical_strike_effectiveness = "stacking_multiplier",
 	reduced_overcharge_from_passive = "stacking_multiplier",
+	faster_revive = "stacking_multiplier",
+	damage_taken = "stacking_multiplier_multiplicative",
 	grenade_extra_shot = "stacking_bonus",
 	block_cost = "stacking_multiplier",
 	applied_stagger_distance = "stacking_multiplier",
 	timed_block_cost = "stacking_multiplier",
 	push_range = "stacking_bonus",
-	curse_protection = "stacking_multiplier",
-	power_level_armoured = "stacking_multiplier",
-	max_fatigue = "stacking_bonus",
 	clip_size = "stacking_multiplier",
+	power_level_armoured = "stacking_multiplier",
+	critical_strike_chance_ranged = "stacking_bonus",
+	protection_poison_wind = "stacking_multiplier",
+	debuff_armoured = "stacking_bonus",
 	throw_speed_increase = "stacking_multiplier",
 	hit_mass_amount = "stacking_multiplier",
 	hit_force = "stacking_multiplier",
 	health_curse = "stacking_bonus",
-	extra_wounds = "stacking_bonus",
 	attack_intensity_decay = "stacking_multiplier",
 	reload_speed = "stacking_multiplier",
 	stun_duration = "stacking_multiplier",
 	cooldown_regen = "stacking_multiplier",
+	extra_wounds = "stacking_bonus",
 	life_essence = "stacking_multiplier",
 	max_controlled_pets = "stacking_bonus_and_multiplier",
 	power_level_chaos = "stacking_multiplier",
 	dummy_stagger = "stacking_bonus",
 	ammo_used_multiplier = "stacking_multiplier",
-	increased_damage_to_balefire = "stacking_multiplier",
+	power_level_critical_strike = "stacking_multiplier",
 	increased_weapon_damage_melee = "stacking_multiplier",
 	power_level = "stacking_multiplier",
 	max_damage_taken_from_boss_or_elite = "min",
@@ -89,7 +90,7 @@ StatBuffApplicationMethods = {
 	grimoire_max_health = "stacking_multiplier",
 	overcharge_damage_immunity = "proc",
 	power_level_impact = "stacking_multiplier",
-	damage_taken = "stacking_multiplier_multiplicative",
+	curse_protection = "stacking_multiplier",
 	increased_weapon_damage = "stacking_multiplier",
 	outer_block_angle = "stacking_multiplier",
 	damage_dealt = "stacking_multiplier",
@@ -109,7 +110,7 @@ StatBuffApplicationMethods = {
 	headshot_damage = "stacking_multiplier",
 	vent_damage = "stacking_multiplier",
 	counter_push_power = "stacking_multiplier",
-	damage_taken_to_overcharge = "stacking_multiplier",
+	not_consume_grenade = "proc",
 	fatigue_regen = "stacking_multiplier",
 	grenade_throw_range = "stacking_multiplier",
 	block_angle = "stacking_multiplier",
@@ -131,8 +132,8 @@ StatBuffApplicationMethods = {
 	no_push_fatigue_cost = "proc",
 	reduced_spread = "stacking_multiplier",
 	reduced_spread_moving = "stacking_multiplier",
-	critical_strike_chance_melee = "stacking_bonus",
-	increased_weapon_damage_ranged_to_wounded = "stacking_multiplier",
+	increased_burn_dot_damage = "stacking_multiplier",
+	non_headshot_damage = "stacking_multiplier",
 	flat_power_level = "stacking_bonus",
 	reduced_spread_shot = "stacking_multiplier",
 	explosion_radius = "stacking_multiplier",
@@ -154,7 +155,7 @@ StatBuffApplicationMethods = {
 	increased_weapon_damage_melee_2h = "stacking_multiplier",
 	damage_taken_melee = "stacking_multiplier",
 	backstab_multiplier = "stacking_bonus",
-	protection_poison_wind = "stacking_multiplier",
+	first_melee_hit_damage = "stacking_multiplier",
 	increased_weapon_damage_melee_1h = "stacking_multiplier",
 	ranged_additional_penetrations = "stacking_bonus",
 	power_level_skaven = "stacking_multiplier",
@@ -213,6 +214,7 @@ ProcEvents = {
 	"on_unwield",
 	"on_critical_hit",
 	"on_last_ammo_used",
+	"on_ammo_clip_used",
 	"on_gained_ammo_from_no_ammo",
 	"on_player_damage_dealt",
 	"on_stagger",
@@ -2649,29 +2651,6 @@ ProcFunctions = {
 
 			if ammo_extension then
 				ammo_extension:add_ammo_to_reserve(ammo_amount)
-			end
-		end
-	end,
-	victor_bounty_hunter_add_power_on_no_ammo_proc = function (owner_unit, buff, params)
-		if not Managers.state.network.is_server then
-			return
-		end
-
-		local buff_template = buff.template
-		local buff_to_add = buff_template.buff_to_add
-		local buff_system = Managers.state.entity:system("buff_system")
-
-		if ALIVE[owner_unit] then
-			local side = Managers.state.side.side_by_unit[owner_unit]
-			local player_and_bot_units = side.PLAYER_AND_BOT_UNITS
-			local num_units = #player_and_bot_units
-
-			for i = 1, num_units do
-				local unit = player_and_bot_units[i]
-
-				if Unit.alive(unit) then
-					buff_system:add_buff(unit, buff_to_add, owner_unit, false)
-				end
 			end
 		end
 	end,

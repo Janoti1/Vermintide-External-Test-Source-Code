@@ -48,7 +48,7 @@ settings.hotkey_mapping = {
 				not_matchmaking = false
 			},
 			versus = {
-				matchmaking = true,
+				matchmaking = false,
 				matchmaking_ready = true,
 				not_matchmaking = false
 			},
@@ -146,9 +146,10 @@ settings.currency_ui_settings = {
 	}
 }
 settings.allowed_store_item_types = {
-	chips = true,
+	weapon_pose = true,
 	weapon_skin = true,
 	hat = true,
+	chips = true,
 	frame = true,
 	skin = true,
 	weapon_pose_bundle = true

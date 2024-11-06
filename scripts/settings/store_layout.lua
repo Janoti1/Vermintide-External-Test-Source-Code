@@ -146,10 +146,9 @@ if not StoreLayoutConfig then
 			}
 		},
 		versus = {
-			pactsworn = "item_details",
 			weapon_skins = "item_details",
-			skins = "item_details",
-			poses = "item_details",
+			pactsworn = "item_details",
+			poses = "poses",
 			frames = "item_details"
 		}
 	}
@@ -241,7 +240,7 @@ if not StoreLayoutConfig then
 		StoreLayoutConfig.pages.versus = {
 			sound_event_enter = "Play_hud_store_category_cosmetics",
 			layout = "category",
-			item_filter = "selection == versus",
+			item_filter = "selection == versus and item_type ~= weapon_pose_bundle",
 			display_name = "menu_store_panel_title_versus",
 			global_shader_flag_overrides = {
 				NECROMANCER_CAREER_REMAP = false
@@ -299,12 +298,13 @@ if not StoreLayoutConfig then
 	if not IS_CONSOLE then
 		StoreLayoutConfig.pages.poses = {
 			sound_event_enter = "Play_hud_store_category_button",
-			layout = "item_list",
+			layout = "category",
 			display_name = "weapon_pose",
-			type = "item",
-			item_filter = "item_type == weapon_pose_bundle",
+			type = "collection_item",
+			item_filter = "item_type == weapon_pose_bundle and selection == versus",
 			sort_order = 6,
-			category_button_texture = "store_category_icon_poses"
+			category_button_texture = "store_category_icon_poses",
+			exclusive_filter = true
 		}
 		StoreLayoutConfig.pages.pactsworn = {
 			sound_event_enter = "Play_hud_store_category_button",
@@ -547,7 +547,7 @@ StoreLayoutConfig.make_sort_key = function (item)
 	local owned = not (not backend_items:has_item(key) and not backend_items:has_weapon_illusion(key)) and 2 or 0
 
 	if data then
-		item_type = data.item_type
+		item_type = data.item_type or item.item_type
 
 		if item_type == "weapon_skin" then
 			item_type = data.matching_item_key or "weapon_skin"

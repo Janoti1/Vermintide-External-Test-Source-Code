@@ -1,5 +1,6 @@
 return function ()
 	define_rule({
+		probability = 1,
 		name = "pwe_portals_castle_gate",
 		response = "pwe_portals_castle_gate",
 		criterias = {
@@ -44,6 +45,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_portals_castle_road",
 		response = "pwe_portals_castle_road",
 		criterias = {
@@ -88,6 +90,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_portals_crypt_event_blood",
 		response = "pwe_portals_crypt_event_blood",
 		criterias = {
@@ -132,6 +135,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_portals_crypt_event_entering_crypt",
 		response = "pwe_portals_crypt_event_entering_crypt",
 		criterias = {
@@ -176,6 +180,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_portals_crypt_event_hole",
 		response = "pwe_portals_crypt_event_hole",
 		criterias = {
@@ -220,6 +225,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_portals_crypt_exit",
 		response = "pwe_portals_crypt_exit",
 		criterias = {
@@ -264,6 +270,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_portals_enter_village",
 		response = "pwe_portals_enter_village",
 		criterias = {
@@ -308,6 +315,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_portals_event_missing_gargoyle_heads",
 		response = "pwe_portals_event_missing_gargoyle_heads",
 		criterias = {
@@ -352,6 +360,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_portals_everyone_gone",
 		response = "pwe_portals_everyone_gone",
 		criterias = {
@@ -396,6 +405,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_portals_find_map",
 		response = "pwe_portals_find_map",
 		criterias = {
@@ -440,6 +450,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_portals_find_survivors",
 		response = "pwe_portals_find_survivors",
 		criterias = {
@@ -484,6 +495,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_portals_follow_trail",
 		response = "pwe_portals_follow_trail",
 		criterias = {
@@ -528,6 +540,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_portals_get_to_temple",
 		response = "pwe_portals_get_to_temple",
 		criterias = {
@@ -572,6 +585,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_portals_help_search",
 		response = "pwe_portals_help_search",
 		criterias = {
@@ -616,6 +630,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_portals_intro_line_a",
 		response = "pwe_portals_intro_line_a",
 		criterias = {
@@ -660,6 +675,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_portals_intro_line_b",
 		response = "pwe_portals_intro_line_b",
 		criterias = {
@@ -704,6 +720,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_portals_intro_line_c",
 		response = "pwe_portals_intro_line_c",
 		criterias = {
@@ -748,6 +765,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_portals_kidnapped_traces",
 		response = "pwe_portals_kidnapped_traces",
 		criterias = {
@@ -792,6 +810,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_portals_map_first_clue",
 		response = "pwe_portals_map_first_clue",
 		criterias = {
@@ -836,6 +855,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_portals_map_second_clue",
 		response = "pwe_portals_map_second_clue",
 		criterias = {
@@ -880,6 +900,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_portals_memory_portals",
 		response = "pwe_portals_memory_portals",
 		criterias = {
@@ -924,6 +945,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_portals_objective_recap",
 		response = "pwe_portals_objective_recap",
 		criterias = {
@@ -968,6 +990,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_portals_portal_event",
 		response = "pwe_portals_portal_event",
 		criterias = {
@@ -1012,6 +1035,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_portals_portal_interact_one",
 		response = "pwe_portals_portal_interact_one",
 		criterias = {
@@ -1056,6 +1080,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_portals_portal_interact_three",
 		response = "pwe_portals_portal_interact_three",
 		criterias = {
@@ -1100,6 +1125,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_portals_portal_interact_two",
 		response = "pwe_portals_portal_interact_two",
 		criterias = {
@@ -1144,6 +1170,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_portals_pwe_castle_vista",
 		response = "pwe_portals_pwe_castle_vista",
 		criterias = {
@@ -1188,6 +1215,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_portals_raid_trace",
 		response = "pwe_portals_raid_trace",
 		criterias = {
@@ -1232,6 +1260,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_portals_secret_entrance_gate_opens",
 		response = "pwe_portals_secret_entrance_gate_opens",
 		criterias = {
@@ -1276,6 +1305,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_portals_stairs",
 		response = "pwe_portals_stairs",
 		criterias = {
@@ -1320,6 +1350,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_portals_temple_bell_tower",
 		response = "pwe_portals_temple_bell_tower",
 		criterias = {
@@ -1364,6 +1395,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_portals_temple_event",
 		response = "pwe_portals_temple_event",
 		criterias = {
@@ -1408,6 +1440,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_portals_temple_locked",
 		response = "pwe_portals_temple_locked",
 		criterias = {
@@ -1452,6 +1485,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_portals_the_map",
 		response = "pwe_portals_the_map",
 		criterias = {
@@ -1496,6 +1530,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_portals_waystone",
 		response = "pwe_portals_waystone",
 		criterias = {

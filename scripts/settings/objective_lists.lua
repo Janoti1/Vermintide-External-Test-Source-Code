@@ -43,8 +43,8 @@ ObjectiveLists.bell_pvp_set_1 = {
 		versus_capture_objective_01 = {
 			description = "level_objective_description_bell_02",
 			play_arrive_vo = true,
-			num_sections = 75,
-			capture_time = 150,
+			num_sections = 90,
+			capture_time = 180,
 			play_complete_vo = true,
 			objective_type = ObjectiveTypes.objective_capture_point,
 			score_per_section = capture_points,
@@ -150,7 +150,7 @@ ObjectiveLists.bell_pvp_set_2 = {
 	{
 		versus_payload_objective_01 = {
 			description = "level_objective_description_bell_07",
-			num_sections = 50,
+			num_sections = 90,
 			play_complete_vo = true,
 			play_arrive_vo = true,
 			objective_type = ObjectiveTypes.objective_payload,
@@ -381,7 +381,7 @@ ObjectiveLists.military_pvp_set_1 = {
 	{
 		versus_survive_objective_01 = {
 			description = "level_objective_description_military_05",
-			num_sections = 45,
+			num_sections = 40,
 			time_for_completion = 90,
 			score_for_completion = 0,
 			play_complete_vo = true,
@@ -494,7 +494,7 @@ ObjectiveLists.military_pvp_set_2 = {
 		versus_survive_objective_03 = {
 			description = "level_objective_description_military_12_B",
 			time_for_completion = 33,
-			num_sections = 15,
+			num_sections = 20,
 			play_complete_vo = true,
 			score_for_completion = 0,
 			play_arrive_vo = true,
@@ -566,7 +566,7 @@ ObjectiveLists.military_pvp_set_3 = {
 		versus_capture_point_objective_004 = {
 			description = "level_objective_description_military_17",
 			play_arrive_vo = true,
-			num_sections = 105,
+			num_sections = 95,
 			capture_time = 210,
 			play_complete_vo = true,
 			objective_type = ObjectiveTypes.objective_capture_point,
@@ -779,20 +779,24 @@ ObjectiveLists.farmlands_pvp_set_1 = {
 		versus_mission_objective_monster = {
 			description = "level_objective_description_farmlands_09",
 			mission_name = "versus_mission_monster",
+			play_complete_vo = true,
 			score_for_completion = 30,
-			objective_type = ObjectiveTypes.objective_survive
+			play_arrive_vo = true,
+			objective_type = ObjectiveTypes.objective_survive,
+			vo_context_on_activate = {
+				current_objective = "three"
+			},
+			vo_context_on_complete = {
+				current_objective = "safe_room"
+			}
 		}
 	},
 	{
 		versus_socket_objective_01 = {
 			description = "level_objective_description_farmlands_09_B",
-			play_complete_vo = true,
 			num_sockets = 1,
 			objective_type = ObjectiveTypes.objective_socket,
 			score_per_socket = socket_points,
-			vo_context_on_complete = {
-				current_objective = "safe_room"
-			},
 			almost_done = function (self, active_objectives)
 				local num_sockets = self.num_sockets
 				local objective_name = active_objectives[1]
@@ -838,6 +842,28 @@ ObjectiveLists.farmlands_pvp_set_2 = {
 			volume_name = "volume_versus_reach_006",
 			objective_type = ObjectiveTypes.objective_reach,
 			score_for_completion = reach_points
+		}
+	},
+	{
+		versus_capture_point_objective_road = {
+			description = "level_objective_description_farmlands_12",
+			play_arrive_vo = true,
+			num_sections = 80,
+			capture_time = 180,
+			play_complete_vo = true,
+			objective_type = ObjectiveTypes.objective_capture_point,
+			score_per_section = capture_points,
+			vo_context_on_complete = {
+				current_objective = "two"
+			},
+			almost_done = function (self, active_objectives)
+				local objective_name = active_objectives[1]
+				local objective_extension = Managers.state.entity:system("objective_system"):extension_by_objective_name(objective_name)
+
+				if objective_extension:get_percentage_done() > 0.75 then
+					return true
+				end
+			end
 		}
 	},
 	{
@@ -1032,7 +1058,7 @@ ObjectiveLists.fort_pvp_set_1 = {
 		versus_capture_point_objective_001 = {
 			description = "level_objective_description_fort_02",
 			play_arrive_vo = true,
-			num_sections = 60,
+			num_sections = 50,
 			capture_time = 120,
 			play_complete_vo = true,
 			objective_type = ObjectiveTypes.objective_capture_point,
@@ -1071,7 +1097,7 @@ ObjectiveLists.fort_pvp_set_1 = {
 	{
 		versus_payload_objective_01 = {
 			description = "level_objective_description_fort_04",
-			num_sections = 60,
+			num_sections = 70,
 			play_complete_vo = true,
 			play_arrive_vo = true,
 			objective_type = ObjectiveTypes.objective_payload,
@@ -1207,7 +1233,7 @@ ObjectiveLists.fort_pvp_set_2 = {
 	{
 		versus_payload_objective_02 = {
 			description = "level_objective_description_fort_10",
-			num_sections = 70,
+			num_sections = 90,
 			play_arrive_vo = true,
 			objective_type = ObjectiveTypes.objective_payload,
 			score_per_section = payload_points,
@@ -1343,7 +1369,7 @@ ObjectiveLists.fort_pvp_set_3 = {
 		versus_survive_objective_fort_portcullis = {
 			description = "level_objective_description_military_20",
 			time_for_completion = 25,
-			num_sections = 15,
+			num_sections = 10,
 			play_complete_vo = true,
 			score_for_completion = 0,
 			play_arrive_vo = true,
@@ -1506,7 +1532,7 @@ ObjectiveLists.forest_ambush_pvp_set_1 = {
 	{
 		versus_payload_objective_01 = {
 			description = "level_objective_description_forest_ambush_05",
-			num_sections = 25,
+			num_sections = 20,
 			play_arrive_vo = true,
 			objective_type = ObjectiveTypes.objective_payload,
 			score_per_section = payload_points,
@@ -1530,7 +1556,7 @@ ObjectiveLists.forest_ambush_pvp_set_1 = {
 		versus_survive_objective_02 = {
 			description = "mission_bastion_survive",
 			time_for_completion = 120,
-			num_sections = 60,
+			num_sections = 30,
 			play_complete_vo = true,
 			score_for_completion = 0,
 			play_arrive_vo = true,
@@ -1694,26 +1720,31 @@ ObjectiveLists.forest_ambush_pvp_set_2 = {
 				versus_interact_objective_prisoners_001 = {
 					description = "level_objective_description_forest_ambush_11_B",
 					objective_type = ObjectiveTypes.objective_interact,
+					objective_tag = ObjectiveTags.objective_tag_prisoner,
 					score_for_completion = interact_points
 				},
 				versus_interact_objective_prisoners_002 = {
 					description = "level_objective_description_forest_ambush_11_B",
 					objective_type = ObjectiveTypes.objective_interact,
+					objective_tag = ObjectiveTags.objective_tag_prisoner,
 					score_for_completion = interact_points
 				},
 				versus_interact_objective_prisoners_003 = {
 					description = "level_objective_description_forest_ambush_11_B",
 					objective_type = ObjectiveTypes.objective_interact,
+					objective_tag = ObjectiveTags.objective_tag_prisoner,
 					score_for_completion = interact_points
 				},
 				versus_interact_objective_prisoners_004 = {
 					description = "level_objective_description_forest_ambush_11_B",
 					objective_type = ObjectiveTypes.objective_interact,
+					objective_tag = ObjectiveTags.objective_tag_prisoner,
 					score_for_completion = interact_points
 				},
 				versus_interact_objective_prisoners_005 = {
 					description = "level_objective_description_forest_ambush_11_B",
 					objective_type = ObjectiveTypes.objective_interact,
+					objective_tag = ObjectiveTags.objective_tag_prisoner,
 					score_for_completion = interact_points
 				}
 			}
@@ -1758,7 +1789,7 @@ ObjectiveLists.forest_ambush_pvp_set_3 = {
 	{
 		versus_capture_point_001 = {
 			description = "level_objective_description_forest_ambush_12_B",
-			num_sections = 90,
+			num_sections = 80,
 			play_arrive_vo = true,
 			capture_time = 180,
 			play_complete_vo = true,
@@ -1790,7 +1821,7 @@ ObjectiveLists.forest_ambush_pvp_set_3 = {
 		versus_survive_objective_01 = {
 			description = "level_objective_description_forest_ambush_15",
 			time_for_completion = 180,
-			num_sections = 90,
+			num_sections = 100,
 			play_complete_vo = true,
 			score_for_completion = 0,
 			objective_type = ObjectiveTypes.objective_survive,

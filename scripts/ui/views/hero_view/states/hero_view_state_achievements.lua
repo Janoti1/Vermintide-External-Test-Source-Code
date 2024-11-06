@@ -1643,14 +1643,15 @@ HeroViewStateAchievements._setup_reward_presentation = function (self, reward_po
 				}
 				presentation_data[#presentation_data + 1] = entry
 			elseif reward_type == "currency" then
+				local fake_item_data, _, description_str = BackendUtils.get_fake_currency_item(data.currency_code, data.amount)
 				local fake_item = {
-					data = BackendUtils.get_fake_currency_item(data.currency_code, data.amount)
+					data = fake_item_data
 				}
 				local description = {}
 				local _, display_name, _ = UIUtils.get_ui_information_from_item(fake_item)
 
 				description[1] = Localize(display_name)
-				description[2] = string.format(Localize("achv_menu_curreny_reward_claimed"), data.amount)
+				description[2] = string.format(Localize(description_str), data.amount)
 
 				local entry = {}
 

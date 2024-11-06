@@ -1205,11 +1205,12 @@ UIRenderer.draw_justified_text = function (self, text, font_material, font_size,
 
 	color = color and Color(color[1] * alpha_multiplier, color[2], color[3], color[4])
 
-	local flags = 0
+	local flags = Gui.FormatDirectives
 	local font = Fonts[font_name]
+	local font_flags = font and font[4]
 
-	if font then
-		flags = font[4] or 0
+	if font_flags then
+		flags = bit.bor(flags, font_flags)
 	end
 
 	local scaled_justify_width = justify_width * RESOLUTION_LOOKUP.scale

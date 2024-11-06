@@ -37,9 +37,13 @@ IgnoreChatPings = {
 	[PingTypes.MOVEMENT_GENERIC] = true,
 	[PingTypes.PING_ONLY] = true,
 	[PingTypes.ENEMY_POSITION] = true,
-	[PingTypes.ENEMY_GENERIC] = true,
-	[PingTypes.PLAYER_PICK_UP] = true,
-	[PingTypes.ACKNOWLEDGE] = true
+	mechanism_overrides = {
+		versus = {
+			[PingTypes.ENEMY_GENERIC] = true,
+			[PingTypes.PLAYER_PICK_UP] = true,
+			[PingTypes.ACKNOWLEDGE] = true
+		}
+	}
 }
 PingMessagesByPingType = {
 	versus = {

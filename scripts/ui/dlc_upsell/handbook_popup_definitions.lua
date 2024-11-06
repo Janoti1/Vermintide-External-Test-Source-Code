@@ -184,7 +184,7 @@ local scenegraph_definition = {
 		position = {
 			0,
 			30,
-			3
+			20
 		}
 	},
 	input_icon_previous = {

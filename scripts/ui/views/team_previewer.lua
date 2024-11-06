@@ -136,7 +136,15 @@ TeamPreviewer.cb_hero_unit_spawned_skin_preview = function (self, hero_previewer
 	if weapon_pose_anim_event and table.is_empty(hero_data.breed or EMPTY_TABLE) then
 		hero_previewer:play_character_animation(weapon_pose_anim_event)
 	elseif hero_data.breed and not table.is_empty(hero_data.breed or EMPTY_TABLE) then
-		local anim_event = string.format("parading_pose_%02d", Math.random(6))
+		local random_value = Math.random(6)
+
+		if hero_data.random_seed then
+			local random_seed
+
+			random_seed, random_value = Math.next_random(hero_data.random_seed, 1, 6)
+		end
+
+		local anim_event = string.format("parading_pose_%02d", random_value)
 
 		hero_previewer:play_character_animation(anim_event)
 	else

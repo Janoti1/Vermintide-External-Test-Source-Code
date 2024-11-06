@@ -149,6 +149,21 @@ NetworkServer.num_active_peers = function (self)
 	return num_peers
 end
 
+NetworkServer.active_peers = function (self)
+	local peers = {}
+
+	for peer_id, statemachine in pairs(self.peer_state_machines) do
+		local state = statemachine.current_state
+		local is_active = state ~= PeerStates.Disconnecting and state ~= PeerStates.Disconnected
+
+		if is_active then
+			peers[#peers + 1] = peer_id
+		end
+	end
+
+	return peers
+end
+
 NetworkServer.num_joining_peers = function (self)
 	local num_peers = 0
 

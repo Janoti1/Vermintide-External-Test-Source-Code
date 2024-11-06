@@ -964,3 +964,9 @@ VersusGameServerSlotReservationHandler.party_id_by_peer = function (self, peer_i
 
 	return party_id
 end
+
+VersusGameServerSlotReservationHandler.handle_slot_reservation_for_connecting_peer = function (self, peer_state, dt)
+	if not DEDICATED_SERVER or not script_data.flexmatch_matchmaking then
+		return SlotReservationConnectStatus.SUCCEEDED
+	end
+end

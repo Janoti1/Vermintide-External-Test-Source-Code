@@ -380,7 +380,7 @@ StateLoading._trigger_loading_view = function (self, level_key, act_progression_
 		if game_mechanism.override_loading_screen_music then
 			local music_override = game_mechanism:override_loading_screen_music()
 
-			event_name = music_override or nil
+			event_name = music_override or event_name
 		end
 
 		local active_weave = Managers.weave:get_active_weave()
@@ -2121,10 +2121,6 @@ StateLoading._destroy_network = function (self, application_shutdown)
 	end
 
 	Managers.chat:unregister_channel(1)
-
-	if Managers.mechanism:game_mechanism().unregister_chats then
-		Managers.mechanism:game_mechanism():unregister_chats()
-	end
 
 	self.parent.loading_context = {}
 

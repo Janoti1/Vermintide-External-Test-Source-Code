@@ -55,6 +55,8 @@ StateTitleScreenMainMenu._start_game = function (self, level_key)
 
 	if Managers.mechanism then
 		current_mechanism_name = Managers.mechanism:current_mechanism_name()
+
+		Managers.mechanism:destroy()
 	end
 
 	Managers.mechanism = GameMechanismManager:new(current_mechanism_name)

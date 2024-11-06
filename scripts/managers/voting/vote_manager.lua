@@ -284,6 +284,10 @@ VoteManager.is_mission_vote = function (self)
 	return self.active_voting.template.mission_vote
 end
 
+VoteManager.cancel_disabled = function (self)
+	return self.active_voting and self.active_voting.template.cancel_disabled
+end
+
 VoteManager.allow_vote_input = function (self, enable)
 	self._allow_vote_input = enable
 end

@@ -3860,9 +3860,9 @@ DamageProfileTemplates.engineer_grenade = {
 		attack = {
 			1,
 			0.5,
-			3,
+			1.5,
 			1,
-			1
+			0.25
 		},
 		impact = {
 			1,

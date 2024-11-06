@@ -1067,12 +1067,6 @@ MatchmakingManager.find_game = function (self, search_config)
 				end
 			elseif search_config.matchmaking_start_state then
 				next_state = rawget(_G, search_config.matchmaking_start_state)
-			elseif search_config.dedicated_server and search_config.join_method == "party" then
-				if search_config.aws then
-					next_state = MatchmakingStateFlexmatchHost
-				else
-					next_state = MatchmakingStateReserveLobby
-				end
 			else
 				next_state = MatchmakingStateSearchGame
 			end
@@ -1163,12 +1157,6 @@ MatchmakingManager.cancel_matchmaking = function (self)
 
 		if ui_manager:get_active_popup("profile_picker") then
 			ui_manager:close_popup("profile_picker")
-		end
-
-		local mechanism = Managers.mechanism:game_mechanism()
-
-		if mechanism.is_hosting_versus_custom_game and mechanism:is_hosting_versus_custom_game() then
-			mechanism:set_is_hosting_versus_custom_game(false)
 		end
 
 		self:_change_state(MatchmakingStateIdle, self.params, self.state_context, "cancel_matchmaking")
@@ -1417,7 +1405,7 @@ MatchmakingManager.rpc_matchmaking_request_join_lobby = function (self, channel_
 	local is_friend = false
 
 	if not DEDICATED_SERVER then
-		is_friend = IS_CONSOLE and true or LobbyInternal.is_friend(peer_id)
+		is_friend = IS_CONSOLE and true or LobbyInternal.is_friend(peer_id) or friend_join
 	end
 
 	local user_blocked
@@ -1429,7 +1417,6 @@ MatchmakingManager.rpc_matchmaking_request_join_lobby = function (self, channel_
 	end
 
 	local missing_dlc = self:_missing_required_dlc(lobby_mechanism, difficulty_key, client_unlocked_dlcs)
-	local friend_join_mode = Application.user_setting("friend_join_mode")
 
 	if not lobby_id_match then
 		reply = "lobby_id_mismatch"
@@ -1437,11 +1424,7 @@ MatchmakingManager.rpc_matchmaking_request_join_lobby = function (self, channel_
 		reply = "user_blocked"
 	elseif is_venture_over then
 		reply = "game_mode_ended"
-	elseif not DEDICATED_SERVER and not is_searching_for_players and friend_join_mode == "host_friends_only" and not is_friend then
-		reply = "friend_joining_friends_only"
-	elseif not DEDICATED_SERVER and not is_searching_for_players and friend_join_mode == "disabled" then
-		reply = "friend_joining_disabled"
-	elseif not DEDICATED_SERVER and not is_friend and not is_searching_for_players and friend_join_mode ~= "lobby_friends" then
+	elseif not DEDICATED_SERVER and not is_friend and not is_searching_for_players then
 		reply = "not_searching_for_players"
 	elseif is_searching_for_dedicated_server then
 		reply = "is_searching_for_dedicated_server"
@@ -1471,12 +1454,6 @@ MatchmakingManager.rpc_matchmaking_request_join_lobby = function (self, channel_
 				reply = "cannot_join_weave"
 			end
 		end
-	end
-
-	local mechanism = Managers.mechanism:game_mechanism()
-
-	if not reply and mechanism.ok_to_friend_join then
-		reply = mechanism.ok_to_friend_join(peer_id)
 	end
 
 	mm_printf_force("Got request to join matchmaking lobby %s from %s, replying %s", lobby_id, peer_id, reply)
@@ -2028,7 +2005,7 @@ MatchmakingManager.rpc_matchmaking_client_join_player_hosted = function (self, c
 	})
 end
 
-MatchmakingManager.rpc_matchmaking_sync_player_data = function (self, channel_id, peer_id, player_name, profile_index, career_index, frame_item_id, melee_weapon_id, ranged_weapon_id, party_id, do_full_sync)
+MatchmakingManager.rpc_matchmaking_sync_player_data = function (self, channel_id, peer_id, player_name, profile_index, career_index, frame_item_id, melee_weapon_id, ranged_weapon_id, party_id, versus_level, do_full_sync)
 	local state_name = self._state and self._state.NAME or "none"
 
 	if state_name == "MatchmakingStatePlayerHostedGame" then
@@ -2037,7 +2014,7 @@ MatchmakingManager.rpc_matchmaking_sync_player_data = function (self, channel_id
 		local client_peer_id = CHANNEL_TO_PEER_ID[channel_id]
 		local verified_party_id = slot_reservation_handler:party_id(peer_id)
 
-		self:_add_sync_data(peer_id, player_name, profile_index, career_index, frame_item_id, melee_weapon_id, ranged_weapon_id, verified_party_id)
+		self:_add_sync_data(peer_id, player_name, profile_index, career_index, frame_item_id, melee_weapon_id, ranged_weapon_id, verified_party_id, versus_level)
 
 		local sync_data = self.state_context.sync_data
 
@@ -2045,7 +2022,7 @@ MatchmakingManager.rpc_matchmaking_sync_player_data = function (self, channel_id
 			if sync_peer_id ~= my_peer_id then
 				local client_full_sync = false
 
-				self.network_transmit:send_rpc("rpc_matchmaking_sync_player_data", sync_peer_id, client_peer_id, player_name, profile_index, career_index, frame_item_id, melee_weapon_id, ranged_weapon_id, verified_party_id, client_full_sync)
+				self.network_transmit:send_rpc("rpc_matchmaking_sync_player_data", sync_peer_id, client_peer_id, player_name, profile_index, career_index, frame_item_id, melee_weapon_id, ranged_weapon_id, verified_party_id, versus_level, client_full_sync)
 			end
 		end
 
@@ -2058,19 +2035,20 @@ MatchmakingManager.rpc_matchmaking_sync_player_data = function (self, channel_id
 				local melee_weapon_id = NetworkLookup.item_names[data.slot_melee]
 				local ranged_weapon_id = NetworkLookup.item_names[data.slot_ranged]
 				local synced_party_id = slot_reservation_handler:party_id(sync_peer_id)
+				local player_level = data.player_level
 				local client_full_sync = false
 
-				self.network_transmit:send_rpc("rpc_matchmaking_sync_player_data", client_peer_id, sync_peer_id, player_name, profile_index, career_index, frame_item_id, melee_weapon_id, ranged_weapon_id, synced_party_id, client_full_sync)
+				self.network_transmit:send_rpc("rpc_matchmaking_sync_player_data", client_peer_id, sync_peer_id, player_name, profile_index, career_index, frame_item_id, melee_weapon_id, ranged_weapon_id, synced_party_id, versus_level, client_full_sync)
 			end
 		end
 	elseif state_name == "MatchmakingStateWaitJoinPlayerHosted" or state_name == "MatchmakingStateFriendClient" then
-		self:_add_sync_data(peer_id, player_name, profile_index, career_index, frame_item_id, melee_weapon_id, ranged_weapon_id, party_id)
+		self:_add_sync_data(peer_id, player_name, profile_index, career_index, frame_item_id, melee_weapon_id, ranged_weapon_id, party_id, versus_level)
 	else
 		mm_printf_force("rpc_matchmaking_sync_player_data, got this in wrong state current_state:%s", state_name)
 	end
 end
 
-MatchmakingManager._add_sync_data = function (self, peer_id, player_name, profile_index, career_index, frame_id, melee_weapon_id, ranged_weapon_id, party_id)
+MatchmakingManager._add_sync_data = function (self, peer_id, player_name, profile_index, career_index, frame_id, melee_weapon_id, ranged_weapon_id, party_id, versus_level)
 	local profile = SPProfiles[profile_index]
 	local career = profile.careers[career_index]
 	local career_name = career.name
@@ -2090,7 +2068,8 @@ MatchmakingManager._add_sync_data = function (self, peer_id, player_name, profil
 		slot_frame = frame_item_name,
 		slot_melee = melee_item_name,
 		slot_ranged = ranged_item_name,
-		party_id = party_id
+		party_id = party_id,
+		versus_level = versus_level
 	}
 end
 
@@ -2846,12 +2825,4 @@ end
 
 MatchmakingManager.get_matchmaking_settings_for_mechanism = function (mechanism_name)
 	return MatchmakingSettingsOverrides[mechanism_name] or MatchmakingSettings
-end
-
-MatchmakingManager.is_matchmaking_paused = function (self)
-	return self._pause_matchmaking_until and self._pause_matchmaking_until > self.t
-end
-
-MatchmakingManager.pause_matchmaking_for_seconds = function (self, seconds)
-	self._pause_matchmaking_until = self.t + seconds
 end

@@ -30,14 +30,12 @@ EnemyCharacterStateLeaping.on_enter = function (self, unit, input, dt, context, 
 	local projected_hit_pos = leap_data.projected_hit_pos:unbox()
 	local distance = Vector3.length(projected_hit_pos - start_position)
 
+	self._percentage_done = 0
 	self.jump_direction = Vector3Box(look_direction_flat)
 
 	self:_start_leap(unit, t)
 	CharacterStateHelper.look(input_extension, player.viewport_name, first_person_extension, status_extension, self._inventory_extension)
 	CharacterStateHelper.update_weapon_actions(t, unit, input_extension, inventory_extension, self._health_extension)
-
-	local position = POSITION_LOOKUP[unit]
-
 	ScriptUnit.extension(unit, "whereabouts_system"):set_jumped()
 
 	self._time_slided = 0
@@ -134,7 +132,13 @@ EnemyCharacterStateLeaping.update = function (self, unit, input, dt, context, t)
 	local starting_pos = self._leap_data.starting_pos:unbox()
 	local projected_hit_pos = self._leap_data.projected_hit_pos:unbox()
 	local distance_travelled = Vector3.length(current_position - starting_pos)
-	local percentage_done = distance_travelled / Vector3.length(projected_hit_pos - starting_pos)
+
+	self._percentage_done = distance_travelled / Vector3.length(projected_hit_pos - starting_pos)
+
+	if self._leap_data.update_leap_anim_variable then
+		self._leap_data.update_leap_anim_variable(self, unit)
+	end
+
 	local distance_to_goal_sqr = Vector3.distance_squared(current_position, projected_hit_pos)
 
 	if distance_to_goal_sqr < 0.25 then
@@ -336,8 +340,10 @@ EnemyCharacterStateLeaping._finish = function (self, unit, t)
 	locomotion_extension:set_wanted_velocity(Vector3.zero())
 	locomotion_extension:reset_maximum_upwards_velocity()
 
-	if self._leap_data.leap_finish then
-		self._leap_data.leap_finish(unit)
+	if self._leap_data.leap_events.finished then
+		local final_position = POSITION_LOOKUP[unit]
+
+		self._leap_data.leap_events.finished(self, unit, false, final_position)
 	end
 
 	self._leap_done = true

@@ -1,5 +1,6 @@
 return function ()
 	define_rule({
+		probability = 1,
 		name = "pbw_vw_affirmative",
 		response = "pbw_vw_affirmative",
 		criterias = {
@@ -44,6 +45,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_vw_answer_ping",
 		response = "pbw_vw_answer_ping",
 		criterias = {
@@ -88,6 +90,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_vw_attack_now",
 		response = "pbw_vw_attack_now",
 		criterias = {
@@ -132,6 +135,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_vw_cover_me",
 		response = "pbw_vw_cover_me",
 		criterias = {
@@ -182,6 +186,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_vw_gather",
 		response = "pbw_vw_gather",
 		criterias = {
@@ -226,6 +231,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_vw_go_there",
 		response = "pbw_vw_go_there",
 		criterias = {
@@ -270,6 +276,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_vw_negation",
 		response = "pbw_vw_negation",
 		criterias = {
@@ -314,6 +321,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_vw_objective_in_sight",
 		response = "pbw_vw_objective_in_sight",
 		criterias = {
@@ -358,6 +366,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_vw_thank_you",
 		response = "pbw_vw_thank_you",
 		criterias = {
@@ -402,6 +411,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_vw_wait",
 		response = "pbw_vw_wait",
 		criterias = {
@@ -446,6 +456,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_vw_affirmative",
 		response = "pdr_vw_affirmative",
 		criterias = {
@@ -490,6 +501,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_vw_answer_ping",
 		response = "pdr_vw_answer_ping",
 		criterias = {
@@ -534,6 +546,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_vw_attack_now",
 		response = "pdr_vw_attack_now",
 		criterias = {
@@ -578,6 +591,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_vw_cover_me",
 		response = "pdr_vw_cover_me",
 		criterias = {
@@ -628,6 +642,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_vw_gather",
 		response = "pdr_vw_gather",
 		criterias = {
@@ -672,6 +687,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_vw_go_there",
 		response = "pdr_vw_go_there",
 		criterias = {
@@ -716,6 +732,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_vw_negation",
 		response = "pdr_vw_negation",
 		criterias = {
@@ -760,6 +777,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_vw_objective_in_sight",
 		response = "pdr_vw_objective_in_sight",
 		criterias = {
@@ -804,6 +822,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_vw_thank_you",
 		response = "pdr_vw_thank_you",
 		criterias = {
@@ -848,6 +867,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_vw_wait",
 		response = "pdr_vw_wait",
 		criterias = {
@@ -892,6 +912,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_vw_affirmative",
 		response = "pes_vw_affirmative",
 		criterias = {
@@ -936,6 +957,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_vw_answer_ping",
 		response = "pes_vw_answer_ping",
 		criterias = {
@@ -980,6 +1002,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_vw_attack_now",
 		response = "pes_vw_attack_now",
 		criterias = {
@@ -1024,6 +1047,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_vw_cover_me",
 		response = "pes_vw_cover_me",
 		criterias = {
@@ -1074,6 +1098,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_vw_gather",
 		response = "pes_vw_gather",
 		criterias = {
@@ -1118,6 +1143,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_vw_go_there",
 		response = "pes_vw_go_there",
 		criterias = {
@@ -1162,6 +1188,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_vw_negation",
 		response = "pes_vw_negation",
 		criterias = {
@@ -1206,6 +1233,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_vw_objective_in_sight",
 		response = "pes_vw_objective_in_sight",
 		criterias = {
@@ -1250,6 +1278,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_vw_thank_you",
 		response = "pes_vw_thank_you",
 		criterias = {
@@ -1294,6 +1323,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_vw_wait",
 		response = "pes_vw_wait",
 		criterias = {
@@ -1338,6 +1368,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_vw_affirmative",
 		response = "pwe_vw_affirmative",
 		criterias = {
@@ -1382,6 +1413,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_vw_answer_ping",
 		response = "pwe_vw_answer_ping",
 		criterias = {
@@ -1426,6 +1458,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_vw_attack_now",
 		response = "pwe_vw_attack_now",
 		criterias = {
@@ -1470,6 +1503,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_vw_cover_me",
 		response = "pwe_vw_cover_me",
 		criterias = {
@@ -1520,6 +1554,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_vw_gather",
 		response = "pwe_vw_gather",
 		criterias = {
@@ -1564,6 +1599,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_vw_go_there",
 		response = "pwe_vw_go_there",
 		criterias = {
@@ -1608,6 +1644,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_vw_negation",
 		response = "pwe_vw_negation",
 		criterias = {
@@ -1652,6 +1689,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_vw_objective_in_sight",
 		response = "pwe_vw_objective_in_sight",
 		criterias = {
@@ -1696,6 +1734,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_vw_thank_you",
 		response = "pwe_vw_thank_you",
 		criterias = {
@@ -1740,6 +1779,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_vw_wait",
 		response = "pwe_vw_wait",
 		criterias = {
@@ -1784,6 +1824,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_vw_affirmative",
 		response = "pwh_vw_affirmative",
 		criterias = {
@@ -1828,6 +1869,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_vw_answer_ping",
 		response = "pwh_vw_answer_ping",
 		criterias = {
@@ -1872,6 +1914,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_vw_attack_now",
 		response = "pwh_vw_attack_now",
 		criterias = {
@@ -1916,6 +1959,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_vw_cover_me",
 		response = "pwh_vw_cover_me",
 		criterias = {
@@ -1966,6 +2010,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_vw_gather",
 		response = "pwh_vw_gather",
 		criterias = {
@@ -2010,6 +2055,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_vw_go_there",
 		response = "pwh_vw_go_there",
 		criterias = {
@@ -2054,6 +2100,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_vw_negation",
 		response = "pwh_vw_negation",
 		criterias = {
@@ -2098,6 +2145,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_vw_objective_in_sight",
 		response = "pwh_vw_objective_in_sight",
 		criterias = {
@@ -2142,6 +2190,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_vw_thank_you",
 		response = "pwh_vw_thank_you",
 		criterias = {
@@ -2186,6 +2235,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_vw_wait",
 		response = "pwh_vw_wait",
 		criterias = {

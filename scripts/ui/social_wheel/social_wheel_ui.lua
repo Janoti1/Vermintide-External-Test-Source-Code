@@ -889,11 +889,26 @@ SocialWheelUI._inject_weapon_poses = function (self)
 end
 
 SocialWheelUI._reset_social_wheel = function (self)
-	local social_wheel_general = SocialWheelSettings.general
-	local social_wheel_general_gamepad = SocialWheelSettings.general_gamepad
+	local side = Managers.state.side.side_by_unit[self._player.player_unit]
+	local side_name = side:name()
+	local side_settings = Managers.state.game_mode:setting("social_wheel_by_side")
+	local category = "general"
 
-	table.remove(social_wheel_general, SOCIAL_WHEEL_PAGE_NUM)
-	table.remove(social_wheel_general_gamepad, SOCIAL_WHEEL_PAGE_NUM)
+	if side_settings then
+		category = side_settings[side_name]
+	end
+
+	local social_wheel = SocialWheelSettings[category]
+	local social_wheel_gamepad = SocialWheelSettings[category .. "_gamepad"]
+
+	if social_wheel then
+		table.remove(social_wheel, SOCIAL_WHEEL_PAGE_NUM)
+	end
+
+	if social_wheel_gamepad then
+		table.remove(social_wheel_gamepad, SOCIAL_WHEEL_PAGE_NUM)
+	end
+
 	self:_create_social_wheel()
 end
 
@@ -944,11 +959,26 @@ SocialWheelUI._create_weapon_pose_wheel = function (self, parent_item)
 		SocialWheelSettingsLookup[name] = settings
 	end
 
-	local social_wheel_general = SocialWheelSettings.general
-	local social_wheel_general_gamepad = SocialWheelSettings.general_gamepad
+	local side = Managers.state.side.side_by_unit[self._player.player_unit]
+	local side_name = side:name()
+	local side_settings = Managers.state.game_mode:setting("social_wheel_by_side")
+	local category = "general"
 
-	table.insert(social_wheel_general, SOCIAL_WHEEL_PAGE_NUM, weapon_pose_social_wheel_settings)
-	table.insert(social_wheel_general_gamepad, SOCIAL_WHEEL_PAGE_NUM, weapon_pose_social_wheel_settings)
+	if side_settings then
+		category = side_settings[side_name]
+	end
+
+	local social_wheel = SocialWheelSettings[category]
+	local social_wheel_gamepad = SocialWheelSettings[category .. "_gamepad"]
+
+	if social_wheel then
+		table.insert(social_wheel, SOCIAL_WHEEL_PAGE_NUM, weapon_pose_social_wheel_settings)
+	end
+
+	if social_wheel_gamepad then
+		table.insert(social_wheel_gamepad, SOCIAL_WHEEL_PAGE_NUM, weapon_pose_social_wheel_settings)
+	end
+
 	self:_create_social_wheel()
 end
 

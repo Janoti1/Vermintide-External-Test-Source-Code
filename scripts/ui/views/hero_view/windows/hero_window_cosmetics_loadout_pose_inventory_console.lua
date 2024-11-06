@@ -105,9 +105,9 @@ HeroWindowCosmeticsLoadoutPoseInventoryConsole.on_enter = function (self, params
 
 	self._item_grid = item_grid
 
-	item_grid:mark_equipped_items(true)
 	item_grid:mark_locked_items(true)
 	item_grid:disable_locked_items(true)
+	item_grid:disable_unwieldable_items(true)
 	item_grid:disable_item_drag()
 	item_grid:apply_item_sorting_function(item_sort_func)
 	self:_set_item_compare_enable_state(false)
@@ -159,7 +159,7 @@ HeroWindowCosmeticsLoadoutPoseInventoryConsole.create_ui_elements = function (se
 	local input_service = Managers.input:get_service("hero_view")
 	local gui_layer = UILayer.controller_description
 
-	self._menu_input_description = MenuInputDescriptionUI:new(nil, self._ui_top_renderer, input_service, 6, gui_layer, generic_input_actions.default, true)
+	self._menu_input_description = MenuInputDescriptionUI:new(nil, self._ui_top_renderer, input_service, 7, gui_layer, generic_input_actions.default, true)
 
 	self._menu_input_description:set_input_description(nil)
 	UIRenderer.clear_scenegraph_queue(self._ui_renderer)
@@ -395,6 +395,8 @@ HeroWindowCosmeticsLoadoutPoseInventoryConsole._update_animations = function (se
 	if not table.is_empty(self._illusion_base_widgets) then
 		UIWidgetUtils.animate_default_button(widgets_by_name.apply_illusion_button, dt)
 	end
+
+	UIWidgetUtils.animate_default_button(widgets_by_name.button_remove, dt)
 end
 
 HeroWindowCosmeticsLoadoutPoseInventoryConsole._handle_gamepad_input = function (self, dt, t)
@@ -495,6 +497,10 @@ HeroWindowCosmeticsLoadoutPoseInventoryConsole._handle_gamepad_input = function 
 
 		if self._selected_blueprint_name and (input_service:get("back_menu", true) or input_service:get("toggle_menu", true)) then
 			self:_back()
+		elseif input_service:get("refresh") then
+			self:_equip_default()
+
+			return
 		end
 
 		local page_index = self._current_page
@@ -535,6 +541,12 @@ HeroWindowCosmeticsLoadoutPoseInventoryConsole._handle_input = function (self, d
 	local mouse_active = Managers.input:is_device_active("mouse")
 
 	if not mouse_active then
+		return
+	end
+
+	if self._selected_blueprint_name and input_service:get("toggle_menu", true) then
+		self:_back()
+
 		return
 	end
 
@@ -579,16 +591,12 @@ HeroWindowCosmeticsLoadoutPoseInventoryConsole._handle_input = function (self, d
 				self._current_anim_event = anim_event
 			end
 		end
-	elseif self._current_anim_event then
-		self._parent:clear_character_animation(string.gsub(self._selected_blueprint_name or "", "^vs_", ""))
-
-		self._current_anim_event = nil
 	end
 
 	local page_button_next = widgets_by_name.page_button_next
 	local page_button_previous = widgets_by_name.page_button_previous
 
-	if UIUtils.is_button_hover(page_button_next) or UIUtils.is_button_hover(page_button_previous) then
+	if UIUtils.is_button_hover_enter(page_button_next) or UIUtils.is_button_hover_enter(page_button_previous) then
 		self:_play_sound("play_gui_inventory_next_hover")
 	end
 
@@ -602,6 +610,31 @@ HeroWindowCosmeticsLoadoutPoseInventoryConsole._handle_input = function (self, d
 
 		item_grid:set_item_page(next_page_index)
 		self:_play_sound("play_gui_equipment_inventory_next_click")
+	end
+
+	local button_remove_widget = widgets_by_name.button_remove
+
+	if UIUtils.is_button_hover_enter(button_remove_widget) then
+		self:_play_sound("play_gui_equipment_inventory_hover")
+	end
+
+	if UIUtils.is_button_pressed(button_remove_widget) then
+		self:_equip_default()
+	end
+end
+
+HeroWindowCosmeticsLoadoutPoseInventoryConsole._equip_default = function (self)
+	self:_play_sound("play_gui_equipment_equip_hero")
+
+	local backend_items = Managers.backend:get_interface("items")
+	local selected_item = backend_items:get_item_from_key("default_weapon_pose_01")
+
+	self._parent:_set_loadout_item(selected_item)
+
+	local previous_layout_key = self._parent:get_previous_selected_game_mode_index()
+
+	if previous_layout_key then
+		self._parent:set_layout(previous_layout_key)
 	end
 end
 
@@ -906,6 +939,7 @@ HeroWindowCosmeticsLoadoutPoseInventoryConsole._back = function (self)
 	self._parent:set_character_pose_animation(nil)
 	self._parent:clear_temporary_loadout()
 	self:_clear_illusion_widgets()
+	self._item_grid:mark_equipped_items(false)
 end
 
 HeroWindowCosmeticsLoadoutPoseInventoryConsole._change_item_filter = function (self, item_filter)
@@ -921,6 +955,8 @@ HeroWindowCosmeticsLoadoutPoseInventoryConsole._change_item_filter = function (s
 
 		item_grid:set_item_selected(first_item)
 	end
+
+	self._item_grid:mark_equipped_items(true)
 end
 
 HeroWindowCosmeticsLoadoutPoseInventoryConsole._update_page_info = function (self)

@@ -1942,6 +1942,14 @@ GenericStatusExtension.set_pack_master = function (self, grabbed_status, is_grab
 			if horde_ability_system then
 				horde_ability_system:server_ability_recharge_boost(grabber_player.peer_id, "pack_master_hoist")
 			end
+
+			local packmaster_player = Managers.player:owner(grabber_unit)
+
+			if packmaster_player then
+				local dialogue_input = ScriptUnit.extension_input(grabber_unit, "dialogue_system")
+
+				dialogue_input:trigger_dialogue_event("vs_packmaster_hoisted_player")
+			end
 		end
 	elseif grabbed_status == "pack_master_dropping" then
 		local t = Managers.time:time("game")

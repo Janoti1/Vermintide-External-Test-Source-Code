@@ -556,7 +556,7 @@ VersusTabUI._update_party_slots_data = function (self, party_id, team_slots, tea
 
 					if is_player_controlled then
 						local player_insignia_scenegraph_id = "team_" .. team .. "_player_insignia_" .. j
-						local versus_level = ExperienceSettings.get_versus_player_level(player)
+						local versus_level = ExperienceSettings.get_versus_player_level(player) or 0
 						local insignia_widget_def = UIWidgets.create_small_insignia(player_insignia_scenegraph_id, versus_level)
 						local insignia_widget = UIWidget.init(insignia_widget_def)
 

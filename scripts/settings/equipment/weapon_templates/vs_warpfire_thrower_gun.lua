@@ -216,6 +216,7 @@ local function update_warpfire_vfx(owner_unit, weapon_unit, state_data, world)
 	local muzzle_position = Unit.world_position(weapon_unit, muzzle_node)
 	local muzzle_rotation = Unit.world_rotation(weapon_unit, muzzle_node)
 	local flamethrower_effect = state_data.flamethrower_effect
+	local flamethrower_effect_name = state_data.flamethrower_effect_name
 	local physics_world = World.physics_world(world)
 	local raycast_filter = "filter_in_line_of_sight_no_players_no_enemies"
 	local max_length = current_action.attack_range * 2
@@ -226,19 +227,18 @@ local function update_warpfire_vfx(owner_unit, weapon_unit, state_data, world)
 
 	length = length or max_length
 
-	local particle_name = "fx/chr_warp_fire_flamethrower_01"
-
-	muzzle_rotation = Quaternion.forward(muzzle_rotation)
-
-	local effect_variable_id = World.find_particles_variable(world, particle_name, "firepoint_1")
-
-	World.set_particles_variable(world, flamethrower_effect, effect_variable_id, muzzle_position + muzzle_rotation * 0.1)
-
-	effect_variable_id = World.find_particles_variable(world, particle_name, "firepoint_2")
+	local muzzle_forward = Quaternion.forward(muzzle_rotation)
+	local effect_variable_id = World.find_particles_variable(world, flamethrower_effect_name, "firepoint_1")
 
 	World.set_particles_variable(world, flamethrower_effect, effect_variable_id, muzzle_position - Vector3.up())
 
-	effect_variable_id = World.find_particles_variable(world, particle_name, "firelife_1")
+	local end_point = muzzle_position + muzzle_forward * length - Vector3.up()
+
+	effect_variable_id = World.find_particles_variable(world, flamethrower_effect_name, "firepoint_2")
+
+	World.set_particles_variable(world, flamethrower_effect, effect_variable_id, end_point)
+
+	effect_variable_id = World.find_particles_variable(world, flamethrower_effect_name, "firelife_1")
 
 	local lifetime = length / 4
 	local particle_life_time_vector = state_data.particle_life_time:unbox()
@@ -254,9 +254,9 @@ weapon_template.synced_states = {
 			local node_id = 0
 
 			if is_local_player then
-				WwiseUtils.trigger_unit_event(world, "player_enemy_vce_warpfire_shoot_start_sequence", weapon_unit, node_id)
+				Managers.state.vce:trigger_vce_unit(owner_unit, world, "player_enemy_vce_warpfire_shoot_start_sequence", weapon_unit, node_id)
 			else
-				WwiseUtils.trigger_unit_event(world, "husk_vce_warpfire_shoot_start_sequence", weapon_unit, node_id)
+				Managers.state.vce:trigger_vce_unit(owner_unit, world, "husk_vce_warpfire_shoot_start_sequence", weapon_unit, node_id)
 			end
 
 			state_data.particle_life_time = Vector3Box(1, 0, 0)
@@ -274,9 +274,8 @@ weapon_template.synced_states = {
 			local muzzle_node = Unit.node(weapon_unit, node_name)
 			local muzzle_position = Unit.world_position(weapon_unit, muzzle_node)
 			local muzzle_rotation = Unit.world_rotation(weapon_unit, muzzle_node)
-			local flamethrower_effect = current_action.particle_effect_flames
-
-			flamethrower_effect = World.create_particles(world, flamethrower_effect, muzzle_position, muzzle_rotation)
+			local flamethrower_effect_name = current_action.particle_effect_flames
+			local flamethrower_effect = World.create_particles(world, flamethrower_effect_name, muzzle_position, muzzle_rotation)
 
 			World.link_particles(world, flamethrower_effect, weapon_unit, muzzle_node, Matrix4x4.identity(), "destroy")
 
@@ -292,6 +291,7 @@ weapon_template.synced_states = {
 				end
 			end
 
+			state_data.flamethrower_effect_name = flamethrower_effect_name
 			state_data.flamethrower_effect = flamethrower_effect
 			state_data.muzzle_node = muzzle_node
 			state_data.weapon_unit = weapon_unit

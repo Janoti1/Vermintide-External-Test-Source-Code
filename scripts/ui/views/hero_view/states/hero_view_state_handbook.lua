@@ -494,11 +494,9 @@ HeroViewStateHandbook._go_to_page = function (self, page_index)
 
 	local entry_widgets, total_height = self._handbook_logic:create_entry_widgets(page_settings)
 
+	total_height = total_height + 150
 	self._achievement_widgets = entry_widgets
-
-	local scrollbar_bottom_inset = 150
-
-	self._total_scroll_height = math.max(total_height + scrollbar_bottom_inset - ACHIEVEMENT_WINDOW_HEIGHT, 0)
+	self._total_scroll_height = math.max(total_height - ACHIEVEMENT_WINDOW_HEIGHT, 0)
 	self._scroll_value = nil
 
 	self:_setup_scrollbar(total_height)

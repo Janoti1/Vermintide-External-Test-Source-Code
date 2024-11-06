@@ -348,10 +348,6 @@ PingSystem._handle_ping = function (self, ping_type, social_wheel_event_id, send
 end
 
 PingSystem._handle_chat = function (self, ping_type, social_wheel_event_id, sender_player, pinger_unit, pinged_unit, chat_messages)
-	if IgnoreChatPings[ping_type] then
-		return
-	end
-
 	if pinged_unit and ping_type == PingTypes.ENEMY_GENERIC then
 		local breed = Unit.get_data(pinged_unit, "breed")
 
@@ -360,51 +356,50 @@ PingSystem._handle_chat = function (self, ping_type, social_wheel_event_id, send
 		end
 	end
 
-	local event_text, localization_parameters, social_wheel_event_settings
 	local valid_social_wheel_id = social_wheel_event_id and social_wheel_event_id ~= NetworkLookup.social_wheel_events["n/a"]
+	local social_wheel_event_settings = valid_social_wheel_id and SocialWheelSettingsLookup[NetworkLookup.social_wheel_events[social_wheel_event_id]]
+	local event_text, localization_parameters
 
-	if valid_social_wheel_id then
-		local social_wheel_event_name = NetworkLookup.social_wheel_events[social_wheel_event_id]
+	if not MechanismOverrides.get(IgnoreChatPings)[ping_type] then
+		if valid_social_wheel_id then
+			if IS_CONSOLE and ping_type ~= PingTypes.LOCAL_ONLY then
+				local party = sender_player:get_party()
+				local pinged_unit_id = pinged_unit and Managers.state.network:unit_game_object_id(pinged_unit) or 0
+				local include_spectators = true
 
-		social_wheel_event_settings = SocialWheelSettingsLookup[social_wheel_event_name]
+				self.network_transmit:send_rpc_party("rpc_social_wheel_event", party, include_spectators, sender_player.peer_id, social_wheel_event_id, pinged_unit_id)
+			end
 
-		if IS_CONSOLE and ping_type ~= PingTypes.LOCAL_ONLY then
-			local party = sender_player:get_party()
-			local pinged_unit_id = pinged_unit and Managers.state.network:unit_game_object_id(pinged_unit) or 0
-			local include_spectators = true
+			local text_func = social_wheel_event_settings.event_text_func
+			local text = social_wheel_event_settings.event_text
 
-			self.network_transmit:send_rpc_party("rpc_social_wheel_event", party, include_spectators, sender_player.peer_id, social_wheel_event_id, pinged_unit_id)
-		end
+			event_text, localization_parameters = text
 
-		local text_func = social_wheel_event_settings.event_text_func
-		local text = social_wheel_event_settings.event_text
+			if text_func and pinged_unit then
+				local do_localize = false
 
-		event_text, localization_parameters = text
+				event_text, localization_parameters = text_func(pinged_unit, social_wheel_event_settings, do_localize)
+			end
 
-		if text_func and pinged_unit then
-			local do_localize = false
-
-			event_text, localization_parameters = text_func(pinged_unit, social_wheel_event_settings, do_localize)
-		end
-
-		if not event_text and chat_messages then
+			if not event_text and chat_messages then
+				event_text = chat_messages[math.random(1, #chat_messages)]
+			end
+		elseif chat_messages then
 			event_text = chat_messages[math.random(1, #chat_messages)]
 		end
-	elseif chat_messages then
-		event_text = chat_messages[math.random(1, #chat_messages)]
-	end
 
-	if event_text then
-		local localize, localize_parameters = true, true
-		local sended_peer_id = sender_player:network_id()
-		local channel_id, message_target = 1
-		local mechanism = Managers.mechanism:game_mechanism()
+		if event_text then
+			local localize, localize_parameters = true, true
+			local sended_peer_id = sender_player:network_id()
+			local channel_id, message_target = 1
+			local mechanism = Managers.mechanism:game_mechanism()
 
-		if mechanism.get_chat_channel then
-			channel_id, message_target = mechanism:get_chat_channel(sended_peer_id, false)
+			if mechanism.get_chat_channel then
+				channel_id, message_target = mechanism:get_chat_channel(sended_peer_id, false)
+			end
+
+			Managers.chat:send_chat_message(channel_id, sender_player:local_player_id(), event_text, localize, localization_parameters, localize_parameters, nil, message_target, nil, nil, sended_peer_id)
 		end
-
-		Managers.chat:send_chat_message(channel_id, sender_player:local_player_id(), event_text, localize, localization_parameters, localize_parameters, nil, message_target, nil, nil, sended_peer_id)
 	end
 
 	if valid_social_wheel_id then
@@ -602,7 +597,7 @@ PingSystem._add_world_marker = function (self, pinger_unit, pinged_unit, positio
 
 	for _, data in pairs(ping_templates) do
 		if data:check_func(pinger_unit, pinged_unit) then
-			do_ping, chat_messages, ping_icon = data:exec_func(self, pinger_unit, pinged_unit, ping_type, self._current_mechanism_name)
+			do_ping, chat_messages, ping_icon = data:exec_func(self, pinger_unit, pinged_unit, ping_type, social_wheel_event_id, self._current_mechanism_name)
 
 			break
 		end

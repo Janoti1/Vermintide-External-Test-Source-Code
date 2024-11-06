@@ -229,6 +229,31 @@ PlayerUnitHealthExtension.knock_down = function (self, unit)
 		local target_breed = Unit.get_data(unit, "breed")
 
 		statistics_db:increment_stat(stats_id, "vs_badge_knocked_down_target_per_breed", target_breed.name)
+
+		local side_manager = Managers.state.side
+		local attacker_unit_is_dark_pact = side_manager:versus_is_dark_pact(attacker_unit)
+		local killed_unit_is_hero = side_manager:versus_is_hero(unit)
+
+		if attacker_unit_is_dark_pact and killed_unit_is_hero then
+			local dialogue_input = ScriptUnit.extension_input(attacker_unit, "dialogue_system")
+			local side = side_manager.side_by_unit[unit]
+			local num_heroes_downed = 0
+			local human_and_bot_units = side.PLAYER_AND_BOT_UNITS
+
+			for i = 1, #human_and_bot_units do
+				local status_extension = ScriptUnit.has_extension(human_and_bot_units[i], "status_system")
+
+				if status_extension and status_extension:is_knocked_down() then
+					num_heroes_downed = num_heroes_downed + 1
+				end
+			end
+
+			if num_heroes_downed >= DialogueSettings.vs_many_heroes_incapacitated_num then
+				dialogue_input:trigger_dialogue_event("vs_many_heroes_incapacitated")
+			else
+				dialogue_input:trigger_dialogue_event("vs_downed_hero")
+			end
+		end
 	end
 end
 

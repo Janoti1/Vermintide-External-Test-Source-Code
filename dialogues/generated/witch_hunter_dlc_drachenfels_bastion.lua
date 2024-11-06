@@ -1,5 +1,6 @@
 return function ()
 	define_rule({
+		probability = 1,
 		name = "pwh_bastion_intro_line_a",
 		response = "pwh_bastion_intro_line_a",
 		criterias = {
@@ -44,6 +45,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_bastion_intro_line_b",
 		response = "pwh_bastion_intro_line_b",
 		criterias = {
@@ -88,6 +90,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_bastion_intro_line_c",
 		response = "pwh_bastion_intro_line_c",
 		criterias = {
@@ -132,6 +135,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_bastion_vo_caves",
 		response = "pwh_bastion_vo_caves",
 		criterias = {
@@ -176,6 +180,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_bastion_vo_courtyard_done",
 		response = "pwh_bastion_vo_courtyard_done",
 		criterias = {
@@ -220,6 +225,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_bastion_vo_courtyard_first_villager",
 		response = "pwh_bastion_vo_courtyard_first_villager",
 		criterias = {
@@ -264,6 +270,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_bastion_vo_entering_courtyard",
 		response = "pwh_bastion_vo_entering_courtyard",
 		criterias = {
@@ -308,6 +315,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_bastion_vo_entering_darkness",
 		response = "pwh_bastion_vo_entering_darkness",
 		criterias = {
@@ -352,6 +360,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_bastion_vo_entering_finale",
 		response = "pwh_bastion_vo_entering_finale",
 		criterias = {
@@ -396,6 +405,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_bastion_vo_entrance",
 		response = "pwh_bastion_vo_entrance",
 		criterias = {
@@ -440,6 +450,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_bastion_vo_exiting_pwh_bastion",
 		response = "pwh_bastion_vo_exiting_pwh_bastion",
 		criterias = {
@@ -484,6 +495,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_bastion_vo_finale_done",
 		response = "pwh_bastion_vo_finale_done",
 		criterias = {
@@ -528,6 +540,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_bastion_vo_finale_missile",
 		response = "pwh_bastion_vo_finale_missile",
 		criterias = {
@@ -572,6 +585,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_bastion_vo_finale_tiring",
 		response = "pwh_bastion_vo_finale_tiring",
 		criterias = {
@@ -616,6 +630,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_bastion_vo_head_to_surface",
 		response = "pwh_bastion_vo_head_to_surface",
 		criterias = {
@@ -660,6 +675,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_bastion_vo_inside_cellblock",
 		response = "pwh_bastion_vo_inside_cellblock",
 		criterias = {
@@ -704,6 +720,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_bastion_vo_no_prisoners",
 		response = "pwh_bastion_vo_no_prisoners",
 		criterias = {
@@ -748,6 +765,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_bastion_vo_possessed",
 		response = "pwh_bastion_vo_possessed",
 		criterias = {
@@ -792,6 +810,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_bastion_vo_search_cells",
 		response = "pwh_bastion_vo_search_cells",
 		criterias = {

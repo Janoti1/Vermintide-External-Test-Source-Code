@@ -2,6 +2,7 @@ return function ()
 	define_rule({
 		response = "ngkd_portals_daemon_challenge",
 		name = "ngkd_portals_daemon_challenge",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -18,6 +19,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pbw_portals_crypt_event_demon_voice",
 		response = "pbw_portals_crypt_event_demon_voice",
 		criterias = {
@@ -62,6 +64,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pdr_portals_crypt_event_demon_voice",
 		response = "pdr_portals_crypt_event_demon_voice",
 		criterias = {
@@ -106,6 +109,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_portals_crypt_event_demon_voice",
 		response = "pes_portals_crypt_event_demon_voice",
 		criterias = {
@@ -150,6 +154,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwe_portals_crypt_event_demon_voice",
 		response = "pwe_portals_crypt_event_demon_voice",
 		criterias = {
@@ -194,6 +199,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_portals_crypt_event_demon_voice",
 		response = "pwh_portals_crypt_event_demon_voice",
 		criterias = {

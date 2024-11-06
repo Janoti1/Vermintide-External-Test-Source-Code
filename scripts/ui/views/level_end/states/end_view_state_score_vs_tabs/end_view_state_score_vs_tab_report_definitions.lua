@@ -339,7 +339,7 @@ local function create_level_up_widget(scenegraph_id)
 		texture_id = "static_marker",
 		pass_type = "rotated_texture",
 		content_check_function = function (content, style)
-			return content.starting_progress > 0
+			return content.starting_progress >= bar_thresholds[1] and content.starting_progress < bar_thresholds[2]
 		end,
 		content_change_function = function (content, style)
 			style.angle = content.starting_progress * 2 * math.pi
@@ -1323,7 +1323,7 @@ end
 
 local completed_string = string.gsub(Localize("search_filter_completed"), "^%l", string.upper)
 local challenge_progress_text_string = Localize("achv_menu_achievements_category_title") .. " {#color(181,181,181,255)}(%d " .. completed_string .. ")"
-local hero_progress_text_string = "Hero Progress"
+local hero_progress_text_string = Localize("hero_level_tag")
 local summary_value_string = "%d XP"
 local widget_definitions = {
 	level_up = create_level_up_widget("level_up_anchor"),
@@ -1367,7 +1367,7 @@ local widget_definitions = {
 		scenegraph_definition.versus_progress_anchor.size[1],
 		2
 	}),
-	versus_progress_text = UIWidgets.create_simple_text("Versus Progress", "versus_progress_anchor", nil, nil, versus_progress_text_style),
+	versus_progress_text = UIWidgets.create_simple_text(Localize("versus_level_tag"), "versus_progress_anchor", nil, nil, versus_progress_text_style),
 	summary_text = UIWidgets.create_simple_text("achv_menu_summary_category_title", "versus_progress_anchor", nil, nil, versus_progress_summary_text_style),
 	summary_value_text = UIWidgets.create_simple_text(string.format(summary_value_string, 0), "versus_progress_anchor", nil, nil, versus_progress_summary_value_text_style)
 }
@@ -1767,8 +1767,8 @@ local animation_definitions = {
 				local widget = widgets.level_up
 
 				widget.content.level_text = params.data.level
-				widget.content.starting_progress = 0
-				widget.content.final_progress = 0
+				widget.content.starting_progress = params.data.on_complete_optional_starting_progress or 0
+				widget.content.final_progress = params.data.on_complete_optional_final_progress or 0
 
 				local insignia_widget = widgets.insignia
 				local insignia_main_uvs, insignia_addon_uvs = UIAtlasHelper.get_insignia_texture_settings_from_level(params.data.level)
@@ -1886,6 +1886,25 @@ local animation_definitions = {
 				widget.content.final_progress = math.lerp(bar_thresholds[1], bar_thresholds[2], params.data.final_progress)
 
 				params.play_sound("Stop_vs_hud_progression_level_counter_loop")
+			end
+		}
+	},
+	animate_level_up_instant = {
+		{
+			name = "animate_level_up_widget",
+			start_progress = 0,
+			end_progress = 0,
+			init = function (ui_scenegraph, scenegraph_definition, widgets, params)
+				local widget = widgets.level_up
+
+				widget.content.starting_progress = 1
+				widget.content.final_progress = 1
+			end,
+			update = function (ui_scenegraph, scenegraph_definition, widgets, progress, params)
+				return
+			end,
+			on_complete = function (ui_scenegraph, scenegraph_definition, widgets, params)
+				return
 			end
 		}
 	},

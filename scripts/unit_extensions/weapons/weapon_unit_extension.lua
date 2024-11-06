@@ -269,11 +269,11 @@ end
 WeaponUnitExtension.destroy = function (self)
 	Managers.state.event:unregister("on_game_options_changed", self)
 
-	if self._synced_weapon_states then
-		for synced_state, weapon_state in pairs(self._synced_weapon_states) do
-			if weapon_state.leave then
-				weapon_state:leave(self.owner_unit, self.unit, self._synced_weapon_state_data, self:_is_local_player(), self.world, nil, true)
-			end
+	if self._synced_weapon_state then
+		local weapon_state = self._synced_weapon_states[self._synced_weapon_state]
+
+		if weapon_state.leave then
+			weapon_state:leave(self.owner_unit, self.unit, self._synced_weapon_state_data, self:_is_local_player(), self.world, nil, true)
 		end
 	end
 
@@ -1408,6 +1408,14 @@ end
 WeaponUnitExtension.on_unwield = function (self, hand_name)
 	if self._weapon_unwield then
 		self._weapon_unwield(self, hand_name)
+	end
+
+	if self._synced_weapon_state then
+		local weapon_state = self._synced_weapon_states[self._synced_weapon_state]
+
+		if weapon_state.leave then
+			weapon_state:leave(self.owner_unit, self.unit, self._synced_weapon_state_data, self:_is_local_player(), self.world, nil, false)
+		end
 	end
 end
 

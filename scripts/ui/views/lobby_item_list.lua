@@ -921,7 +921,7 @@ LobbyItemsList.destroy = function (self)
 	return
 end
 
-LobbyItemsList.lobby_status_text = function (lobby_data)
+LobbyItemsList.lobby_status_text = function (self, lobby_data)
 	local lobby_mechanism = self.lobby:lobby_data("mechanism")
 	local is_dedicated_server = lobby_data.server_info ~= nil
 	local matchmaking_settings = Managers.matchmaking.get_matchmaking_settings_for_mechanism(lobby_data.mechanism)

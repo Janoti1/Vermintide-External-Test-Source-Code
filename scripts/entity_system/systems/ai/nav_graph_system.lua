@@ -541,12 +541,10 @@ end
 
 local LevelJumpStates = table.enum("shown", "hidden", "partial")
 
-NavGraphSystem._event_local_player_spawned = function (self, is_initial_spawn, player_unit)
+NavGraphSystem._event_local_player_spawned = function (self, is_initial_spawn, player_unit, side, breed)
 	if not self._use_level_jumps or Managers.state.game_mode:setting("hide_level_jumps") then
 		return
 	end
-
-	local side = Managers.state.side.side_by_unit[player_unit]
 
 	if side:name() ~= "dark_pact" then
 		if self._level_jump_state ~= LevelJumpStates.hidden then
@@ -555,7 +553,6 @@ NavGraphSystem._event_local_player_spawned = function (self, is_initial_spawn, p
 			end
 		end
 	else
-		local breed = Unit.get_data(player_unit, "breed")
 		local is_boss = breed.boss
 
 		if is_boss and self._level_jump_state ~= LevelJumpStates.partial then

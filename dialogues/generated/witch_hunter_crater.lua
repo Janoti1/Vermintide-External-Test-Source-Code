@@ -1,5 +1,6 @@
 return function ()
 	define_rule({
+		probability = 1,
 		name = "pwh_crater_ambush_done",
 		response = "pwh_crater_ambush_done",
 		criterias = {
@@ -44,6 +45,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_crater_ambush_interactable",
 		response = "pwh_crater_ambush_interactable",
 		criterias = {
@@ -88,6 +90,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_crater_arena_end",
 		response = "pwh_crater_arena_end",
 		criterias = {
@@ -132,6 +135,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_crater_arena_standard",
 		response = "pwh_crater_arena_standard",
 		criterias = {
@@ -176,6 +180,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_crater_arena_standard_02",
 		response = "pwh_crater_arena_standard_02",
 		criterias = {
@@ -220,6 +225,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_crater_arena_waystone",
 		response = "pwh_crater_arena_waystone",
 		criterias = {
@@ -264,6 +270,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_crater_bridge_sighted",
 		response = "pwh_crater_bridge_sighted",
 		criterias = {
@@ -308,6 +315,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_crater_climb_top",
 		response = "pwh_crater_climb_top",
 		criterias = {
@@ -352,6 +360,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_crater_devastation",
 		response = "pwh_crater_devastation",
 		criterias = {
@@ -396,6 +405,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_crater_dummy",
 		response = "pwh_crater_dummy",
 		criterias = {
@@ -440,6 +450,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_crater_forest_ascent_top",
 		response = "pwh_crater_forest_ascent_top",
 		criterias = {
@@ -484,6 +495,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_crater_intro_banter_a",
 		response = "pwh_crater_intro_banter_a",
 		criterias = {
@@ -528,6 +540,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_crater_intro_banter_b",
 		response = "pwh_crater_intro_banter_b",
 		criterias = {
@@ -572,6 +585,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_crater_intro_banter_c",
 		response = "pwh_crater_intro_banter_c",
 		criterias = {
@@ -616,6 +630,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_crater_plan_banter_a",
 		response = "pwh_crater_plan_banter_a",
 		criterias = {
@@ -660,6 +675,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_crater_plan_banter_b",
 		response = "pwh_crater_plan_banter_b",
 		criterias = {
@@ -704,6 +720,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_crater_plan_banter_c",
 		response = "pwh_crater_plan_banter_c",
 		criterias = {
@@ -748,6 +765,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_crater_rim_vista",
 		response = "pwh_crater_rim_vista",
 		criterias = {
@@ -792,6 +810,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_crater_tracking_camp",
 		response = "pwh_crater_tracking_camp",
 		criterias = {
@@ -836,6 +855,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_crater_vista_reveal",
 		response = "pwh_crater_vista_reveal",
 		criterias = {
@@ -880,6 +900,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_crater_wasteland_intro",
 		response = "pwh_crater_wasteland_intro",
 		criterias = {
@@ -924,6 +945,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pwh_crater_wasteland_tree_push",
 		response = "pwh_crater_wasteland_tree_push",
 		criterias = {

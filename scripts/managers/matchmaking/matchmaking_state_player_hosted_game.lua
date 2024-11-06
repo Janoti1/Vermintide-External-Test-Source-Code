@@ -61,11 +61,6 @@ MatchmakingStatePlayerHostedGame._start_hosting_game = function (self)
 	slot_reservation_handler:update_slot_settings(Managers.party:parties())
 
 	local party_id = Managers.mechanism:reserved_party_id_by_peer(Network.peer_id())
-
-	if game_mechanism.set_is_hosting_versus_custom_game then
-		game_mechanism:set_is_hosting_versus_custom_game(true)
-	end
-
 	local eac_authorized = false
 
 	if IS_WINDOWS then
@@ -104,9 +99,10 @@ MatchmakingStatePlayerHostedGame._sync_player_data = function (self)
 		local slot_ranged_item_data = slot_ranged_data.item_data
 		local slot_ranged_item_name = slot_ranged_item_data.key
 		local ranged_weapon_id = NetworkLookup.item_names[slot_ranged_item_name]
+		local versus_level = ExperienceSettings.get_versus_player_level(player)
 		local do_full_sync = false
 		local fake_party_id = 0
 
-		self._network_transmit:send_rpc("rpc_matchmaking_sync_player_data", my_peer_id, peer_id, player_name, profile_index, career_index, frame_item_id, melee_weapon_id, ranged_weapon_id, fake_party_id, do_full_sync)
+		self._network_transmit:send_rpc("rpc_matchmaking_sync_player_data", my_peer_id, peer_id, player_name, profile_index, career_index, frame_item_id, melee_weapon_id, ranged_weapon_id, fake_party_id, versus_level, do_full_sync)
 	end
 end

@@ -463,7 +463,7 @@ PlayerUnitGhostModeExtension._leave_ghost_mode = function (self)
 		if not self._has_played_boss_sound and self._breed.boss then
 			local dialogue_system = Managers.state.entity:system("dialogue_system")
 
-			dialogue_system:trigger_mission_giver_event("vs_mg_new_spawn_monster")
+			dialogue_system:queue_mission_giver_event("vs_mg_new_spawn_monster")
 
 			self._has_played_boss_sound = true
 		end

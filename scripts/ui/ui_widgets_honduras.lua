@@ -8118,7 +8118,7 @@ UIWidgets.create_default_button = function (scenegraph_id, size, frame_name, bac
 			},
 			title_text = {
 				upper_case = true,
-				word_wrap = true,
+				word_wrap = false,
 				horizontal_alignment = "center",
 				vertical_alignment = "center",
 				dynamic_font_size = true,
@@ -8140,7 +8140,7 @@ UIWidgets.create_default_button = function (scenegraph_id, size, frame_name, bac
 			},
 			title_text_disabled = {
 				upper_case = true,
-				word_wrap = true,
+				word_wrap = false,
 				horizontal_alignment = "center",
 				vertical_alignment = "center",
 				dynamic_font_size = true,
@@ -8161,7 +8161,7 @@ UIWidgets.create_default_button = function (scenegraph_id, size, frame_name, bac
 			},
 			title_text_shadow = {
 				upper_case = true,
-				word_wrap = true,
+				word_wrap = false,
 				horizontal_alignment = "center",
 				vertical_alignment = "center",
 				dynamic_font_size = true,
@@ -15735,7 +15735,7 @@ UIWidgets.create_start_game_console_setting_button = function (scenegraph_id, ti
 		text_id = input_text_name,
 		style_id = input_text_shadow_name
 	}
-	content[input_text_name] = Localize("not_assigned")
+	content[input_text_name] = input_text or Localize("not_assigned")
 
 	local input_text_style = {
 		vertical_alignment = "center",
@@ -16480,7 +16480,7 @@ UIWidgets.create_icon_and_name_button = function (scenegraph_id, icon, text)
 				vertical_alignment = "center",
 				horizontal_alignment = "left",
 				texture_size = {
-					300,
+					400,
 					72
 				},
 				color = {
@@ -16499,7 +16499,7 @@ UIWidgets.create_icon_and_name_button = function (scenegraph_id, icon, text)
 				vertical_alignment = "center",
 				horizontal_alignment = "left",
 				texture_size = {
-					300,
+					400,
 					76
 				},
 				color = Colors.get_color_table_with_alpha("font_title", 0),
@@ -16518,7 +16518,7 @@ UIWidgets.create_icon_and_name_button = function (scenegraph_id, icon, text)
 				vertical_alignment = "bottom",
 				font_type = "hell_shark",
 				size = {
-					300,
+					400,
 					50
 				},
 				text_color = Colors.get_color_table_with_alpha("font_button_normal", 255),
@@ -16537,7 +16537,7 @@ UIWidgets.create_icon_and_name_button = function (scenegraph_id, icon, text)
 				vertical_alignment = "bottom",
 				font_type = "hell_shark",
 				size = {
-					300,
+					400,
 					50
 				},
 				text_color = Colors.get_color_table_with_alpha("white", 0),
@@ -16556,7 +16556,7 @@ UIWidgets.create_icon_and_name_button = function (scenegraph_id, icon, text)
 				vertical_alignment = "bottom",
 				font_type = "hell_shark",
 				size = {
-					300,
+					400,
 					50
 				},
 				text_color = {
@@ -16580,7 +16580,7 @@ UIWidgets.create_icon_and_name_button = function (scenegraph_id, icon, text)
 				vertical_alignment = "bottom",
 				font_type = "hell_shark",
 				size = {
-					300,
+					400,
 					50
 				},
 				text_color = Colors.get_color_table_with_alpha("black", 255),

@@ -42,8 +42,12 @@ ImguiGenerateWeaponPoses._generate_weapon_poses = function (self)
 			local skin_combination_table = item.skin_combination_table
 
 			if skin_combination_table then
-				print(item.name)
-				self:_add_weapon_poses(output_archive, item)
+				if not string.find(item.name, "^vs_") then
+					print(item.name)
+					self:_add_weapon_poses(output_archive, item)
+				else
+					print("skipping:", item.name)
+				end
 			end
 		end
 	end
@@ -82,12 +86,12 @@ ImguiGenerateWeaponPoses._add_default_pose = function (self, output_archive)
 	OutputArchive.write(output_archive, "ItemMasterList.default_weapon_pose_01 = {\n")
 	OutputArchive.write(output_archive, "\tname = \"default_weapon_pose_01\",\n")
 	OutputArchive.write(output_archive, "\tdisplay_name = \"default_weapon_pose_01\",\n")
-	OutputArchive.write(output_archive, "\tdescription = \"deafult_weapon_pose_01_desc\",\n")
+	OutputArchive.write(output_archive, "\tdescription = \"default_weapon_pose_01_desc\",\n")
 	OutputArchive.write(output_archive, "\tslot_type = \"weapon_pose\",\n")
 	OutputArchive.write(output_archive, "\titem_type = \"weapon_pose\",\n")
 	OutputArchive.write(output_archive, "\tinformation_text = \"information_weapon_pose\",\n")
 	OutputArchive.write(output_archive, "\tdata = {},\n")
-	OutputArchive.write(output_archive, "\thud_icon = \"icons_placeholder\",\n")
+	OutputArchive.write(output_archive, "\thud_icon = \"empty\",\n")
 	OutputArchive.write(output_archive, "\trarity = \"plentiful\",\n")
 	OutputArchive.write(output_archive, "\tpose_index = 1,\n")
 	OutputArchive.write(output_archive, "\tparent = \"default\",\n")

@@ -1,5 +1,6 @@
 return function ()
 	define_rule({
+		probability = 1,
 		name = "pes_gameplay_path_clear",
 		response = "pes_gameplay_path_clear",
 		criterias = {
@@ -44,6 +45,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_generic_assemble",
 		response = "pes_generic_assemble",
 		criterias = {
@@ -88,6 +90,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_generic_cold_inside",
 		response = "pes_generic_cold_inside",
 		criterias = {
@@ -132,6 +135,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_generic_cold_outside",
 		response = "pes_generic_cold_outside",
 		criterias = {
@@ -176,6 +180,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_generic_dark",
 		response = "pes_generic_dark",
 		criterias = {
@@ -220,6 +225,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_generic_door_locked",
 		response = "pes_generic_door_locked",
 		criterias = {
@@ -266,6 +272,7 @@ return function ()
 	define_rule({
 		response = "pes_generic_falling",
 		name = "pes_generic_falling",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -288,6 +295,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_generic_found_key_known_purpose_a",
 		response = "pes_generic_found_key_known_purpose_a",
 		criterias = {
@@ -332,6 +340,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_generic_found_key_unknown_purpose_a",
 		response = "pes_generic_found_key_unknown_purpose_a",
 		criterias = {
@@ -376,6 +385,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_generic_getting_dark_outside",
 		response = "pes_generic_getting_dark_outside",
 		criterias = {
@@ -420,6 +430,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_generic_objective_complete",
 		response = "pes_generic_objective_complete",
 		criterias = {
@@ -464,6 +475,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_generic_path_blocked",
 		response = "pes_generic_path_blocked",
 		criterias = {
@@ -508,6 +520,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_generic_rain",
 		response = "pes_generic_rain",
 		criterias = {
@@ -552,6 +565,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_generic_reaction_action",
 		response = "pes_generic_reaction_action",
 		criterias = {
@@ -596,6 +610,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_generic_reaction_sound",
 		response = "pes_generic_reaction_sound",
 		criterias = {
@@ -640,6 +655,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_generic_search_complete",
 		response = "pes_generic_search_complete",
 		criterias = {
@@ -684,6 +700,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_generic_search_progressing",
 		response = "pes_generic_search_progressing",
 		criterias = {
@@ -728,6 +745,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_generic_search_start",
 		response = "pes_generic_search_start",
 		criterias = {
@@ -772,6 +790,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_generic_success",
 		response = "pes_generic_success",
 		criterias = {
@@ -816,6 +835,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "pes_generic_unexpected_event_01",
 		response = "pes_generic_unexpected_event_01",
 		criterias = {

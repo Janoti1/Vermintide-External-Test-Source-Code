@@ -99,7 +99,7 @@ HordeSpawner._add_horde = function (self, horde)
 	if not horde_already_alive then
 		local dialogue_system = Managers.state.entity:system("dialogue_system")
 
-		dialogue_system:trigger_mission_giver_event("horde")
+		dialogue_system:queue_mission_giver_event("horde")
 	end
 end
 

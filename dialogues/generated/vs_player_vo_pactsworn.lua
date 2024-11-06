@@ -1,5 +1,6 @@
 return function ()
 	define_rule({
+		probability = 1,
 		name = "ebt_vs_low_on_health",
 		response = "ebt_vs_low_on_health",
 		criterias = {
@@ -56,6 +57,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "ebt_vs_spawning_troll",
 		response = "ebt_vs_spawning_troll",
 		criterias = {
@@ -94,6 +96,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "egt_spawning_gutter_runner",
 		response = "egt_spawning_gutter_runner",
 		criterias = {
@@ -132,6 +135,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "egt_taunting_bardin",
 		response = "egt_taunting_bardin",
 		criterias = {
@@ -209,6 +213,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "egt_taunting_kerillian",
 		response = "egt_taunting_kerillian",
 		criterias = {
@@ -286,6 +291,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "egt_taunting_kruber",
 		response = "egt_taunting_kruber",
 		criterias = {
@@ -363,6 +369,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "egt_taunting_saltzpyre",
 		response = "egt_taunting_saltzpyre",
 		criterias = {
@@ -440,6 +447,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "egt_taunting_sienna",
 		response = "egt_taunting_sienna",
 		criterias = {
@@ -517,202 +525,7 @@ return function ()
 		}
 	})
 	define_rule({
-		response = "egt_vs_ability_horde_a",
-		name = "egt_vs_ability_horde_a",
-		criterias = {
-			{
-				"query_context",
-				"concept",
-				OP.EQ,
-				"vs_ability_horde"
-			},
-			{
-				"query_context",
-				"source_name",
-				OP.EQ,
-				"vs_gutter_runner"
-			},
-			{
-				"user_context",
-				"player_profile",
-				OP.EQ,
-				"vs_gutter_runner"
-			}
-		}
-	})
-	define_rule({
-		response = "egt_vs_downed_hero_a",
-		name = "egt_vs_downed_hero_a",
-		criterias = {
-			{
-				"query_context",
-				"concept",
-				OP.EQ,
-				"vs_downed_hero"
-			},
-			{
-				"query_context",
-				"source_name",
-				OP.EQ,
-				"vs_gutter_runner"
-			},
-			{
-				"user_context",
-				"player_profile",
-				OP.EQ,
-				"vs_gutter_runner"
-			}
-		}
-	})
-	define_rule({
-		name = "egt_vs_globadier_hitting_many_a",
-		response = "egt_vs_globadier_hitting_many_a",
-		criterias = {
-			{
-				"query_context",
-				"concept",
-				OP.EQ,
-				"vs_globadier_hitting_many"
-			},
-			{
-				"query_context",
-				"source_name",
-				OP.EQ,
-				"vs_gutter_runner"
-			},
-			{
-				"user_context",
-				"player_profile",
-				OP.EQ,
-				"vs_gutter_runner"
-			},
-			{
-				"user_memory",
-				"vs_globadier_globe_thrown",
-				OP.EQ,
-				0
-			},
-			{
-				"faction_memory",
-				"time_since_globe_thrown",
-				OP.TIMEDIFF,
-				OP.GT,
-				60
-			}
-		},
-		on_done = {
-			{
-				"user_memory",
-				"vs_globadier_globe_thrown",
-				OP.ADD,
-				1
-			},
-			{
-				"faction_memory",
-				"time_since_globe_thrown",
-				OP.TIMESET
-			}
-		}
-	})
-	define_rule({
-		name = "egt_vs_globadier_missing_globe_a",
-		response = "egt_vs_globadier_missing_globe_a",
-		criterias = {
-			{
-				"query_context",
-				"concept",
-				OP.EQ,
-				"vs_globadier_missing_globe"
-			},
-			{
-				"query_context",
-				"source_name",
-				OP.EQ,
-				"vs_gutter_runner"
-			},
-			{
-				"user_context",
-				"player_profile",
-				OP.EQ,
-				"vs_gutter_runner"
-			},
-			{
-				"user_memory",
-				"vs_globadier_globe_thrown",
-				OP.EQ,
-				0
-			},
-			{
-				"faction_memory",
-				"time_since_globe_thrown",
-				OP.TIMEDIFF,
-				OP.GT,
-				60
-			}
-		},
-		on_done = {
-			{
-				"user_memory",
-				"vs_globadier_globe_thrown",
-				OP.ADD,
-				1
-			},
-			{
-				"faction_memory",
-				"time_since_globe_thrown",
-				OP.TIMESET
-			}
-		}
-	})
-	define_rule({
-		response = "egt_vs_heroes_objective_almost_completed_b",
-		name = "egt_vs_heroes_objective_almost_completed_b",
-		criterias = {
-			{
-				"query_context",
-				"concept",
-				OP.EQ,
-				"heard_speak"
-			},
-			{
-				"query_context",
-				"dialogue_name_nopre",
-				OP.EQ,
-				"vs_heroes_objective_almost_completed_a"
-			},
-			{
-				"user_context",
-				"player_profile",
-				OP.EQ,
-				"vs_gutter_runner"
-			}
-		}
-	})
-	define_rule({
-		response = "egt_vs_many_heroes_incapacitated_a",
-		name = "egt_vs_many_heroes_incapacitated_a",
-		criterias = {
-			{
-				"query_context",
-				"concept",
-				OP.EQ,
-				"vs_many_heroes_incapacitated"
-			},
-			{
-				"query_context",
-				"source_name",
-				OP.EQ,
-				"vs_gutter_runner"
-			},
-			{
-				"user_context",
-				"player_profile",
-				OP.EQ,
-				"vs_gutter_runner"
-			}
-		}
-	})
-	define_rule({
+		probability = 1,
 		name = "egt_vs_pact_proximity_banter_eight_b",
 		response = "egt_vs_pact_proximity_banter_eight_b",
 		criterias = {
@@ -720,7 +533,7 @@ return function ()
 				"query_context",
 				"concept",
 				OP.EQ,
-				"heard_speak"
+				"gutter_runner_temp_disabled_heard"
 			},
 			{
 				"query_context",
@@ -739,6 +552,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -750,6 +569,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "egt_vs_pact_proximity_banter_eighteen_b",
 		response = "egt_vs_pact_proximity_banter_eighteen_b",
 		criterias = {
@@ -757,7 +577,7 @@ return function ()
 				"query_context",
 				"concept",
 				OP.EQ,
-				"heard_speak"
+				"gutter_runner_temp_disabled_heard"
 			},
 			{
 				"query_context",
@@ -776,6 +596,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -787,6 +613,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "egt_vs_pact_proximity_banter_eleven_b",
 		response = "egt_vs_pact_proximity_banter_eleven_b",
 		criterias = {
@@ -794,7 +621,7 @@ return function ()
 				"query_context",
 				"concept",
 				OP.EQ,
-				"heard_speak"
+				"gutter_runner_temp_disabled_heard"
 			},
 			{
 				"query_context",
@@ -813,6 +640,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -824,6 +657,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 0.5,
 		name = "egt_vs_pact_proximity_banter_fifteen_a",
 		response = "egt_vs_pact_proximity_banter_fifteen_a",
 		criterias = {
@@ -831,7 +665,7 @@ return function ()
 				"query_context",
 				"concept",
 				OP.EQ,
-				"friends_close"
+				"gutter_runner_temp_disabled_instigator"
 			},
 			{
 				"query_context",
@@ -850,6 +684,18 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"enemies_close",
+				OP.EQ,
+				0
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			},
 			{
 				"faction_memory",
@@ -892,6 +738,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 0.5,
 		name = "egt_vs_pact_proximity_banter_five_a",
 		response = "egt_vs_pact_proximity_banter_five_a",
 		criterias = {
@@ -899,7 +746,7 @@ return function ()
 				"query_context",
 				"concept",
 				OP.EQ,
-				"friends_close"
+				"gutter_runner_temp_disabled_instigator"
 			},
 			{
 				"query_context",
@@ -918,6 +765,18 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"enemies_close",
+				OP.EQ,
+				0
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			},
 			{
 				"faction_memory",
@@ -960,6 +819,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "egt_vs_pact_proximity_banter_four_b",
 		response = "egt_vs_pact_proximity_banter_four_b",
 		criterias = {
@@ -967,7 +827,7 @@ return function ()
 				"query_context",
 				"concept",
 				OP.EQ,
-				"heard_speak"
+				"gutter_runner_temp_disabled_heard"
 			},
 			{
 				"query_context",
@@ -986,6 +846,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -997,6 +863,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "egt_vs_pact_proximity_banter_fourteen_b",
 		response = "egt_vs_pact_proximity_banter_fourteen_b",
 		criterias = {
@@ -1004,7 +871,7 @@ return function ()
 				"query_context",
 				"concept",
 				OP.EQ,
-				"heard_speak"
+				"gutter_runner_temp_disabled_heard"
 			},
 			{
 				"query_context",
@@ -1023,6 +890,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -1034,6 +907,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "egt_vs_pact_proximity_banter_nine_b",
 		response = "egt_vs_pact_proximity_banter_nine_b",
 		criterias = {
@@ -1041,7 +915,7 @@ return function ()
 				"query_context",
 				"concept",
 				OP.EQ,
-				"heard_speak"
+				"gutter_runner_temp_disabled_heard"
 			},
 			{
 				"query_context",
@@ -1060,6 +934,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -1071,6 +951,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "egt_vs_pact_proximity_banter_nineteen_b",
 		response = "egt_vs_pact_proximity_banter_nineteen_b",
 		criterias = {
@@ -1078,7 +959,7 @@ return function ()
 				"query_context",
 				"concept",
 				OP.EQ,
-				"heard_speak"
+				"gutter_runner_temp_disabled_heard"
 			},
 			{
 				"query_context",
@@ -1097,6 +978,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -1108,6 +995,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "egt_vs_pact_proximity_banter_one_b",
 		response = "egt_vs_pact_proximity_banter_one_b",
 		criterias = {
@@ -1115,7 +1003,7 @@ return function ()
 				"query_context",
 				"concept",
 				OP.EQ,
-				"heard_speak"
+				"gutter_runner_temp_disabled_heard"
 			},
 			{
 				"query_context",
@@ -1134,6 +1022,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -1145,6 +1039,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "egt_vs_pact_proximity_banter_seven_b",
 		response = "egt_vs_pact_proximity_banter_seven_b",
 		criterias = {
@@ -1152,7 +1047,7 @@ return function ()
 				"query_context",
 				"concept",
 				OP.EQ,
-				"heard_speak"
+				"gutter_runner_temp_disabled_heard"
 			},
 			{
 				"query_context",
@@ -1171,6 +1066,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -1182,6 +1083,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "egt_vs_pact_proximity_banter_seventeen_b",
 		response = "egt_vs_pact_proximity_banter_seventeen_b",
 		criterias = {
@@ -1189,7 +1091,7 @@ return function ()
 				"query_context",
 				"concept",
 				OP.EQ,
-				"heard_speak"
+				"gutter_runner_temp_disabled_heard"
 			},
 			{
 				"query_context",
@@ -1208,6 +1110,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -1219,6 +1127,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "egt_vs_pact_proximity_banter_six_b",
 		response = "egt_vs_pact_proximity_banter_six_b",
 		criterias = {
@@ -1226,7 +1135,7 @@ return function ()
 				"query_context",
 				"concept",
 				OP.EQ,
-				"heard_speak"
+				"gutter_runner_temp_disabled_heard"
 			},
 			{
 				"query_context",
@@ -1245,6 +1154,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -1256,6 +1171,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "egt_vs_pact_proximity_banter_sixteen_b",
 		response = "egt_vs_pact_proximity_banter_sixteen_b",
 		criterias = {
@@ -1263,7 +1179,7 @@ return function ()
 				"query_context",
 				"concept",
 				OP.EQ,
-				"heard_speak"
+				"gutter_runner_temp_disabled_heard"
 			},
 			{
 				"query_context",
@@ -1282,6 +1198,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -1293,6 +1215,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 0.5,
 		name = "egt_vs_pact_proximity_banter_ten_a",
 		response = "egt_vs_pact_proximity_banter_ten_a",
 		criterias = {
@@ -1300,7 +1223,7 @@ return function ()
 				"query_context",
 				"concept",
 				OP.EQ,
-				"friends_close"
+				"gutter_runner_temp_disabled_instigator"
 			},
 			{
 				"query_context",
@@ -1319,6 +1242,18 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"enemies_close",
+				OP.EQ,
+				0
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			},
 			{
 				"faction_memory",
@@ -1361,6 +1296,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "egt_vs_pact_proximity_banter_thirteen_b",
 		response = "egt_vs_pact_proximity_banter_thirteen_b",
 		criterias = {
@@ -1368,7 +1304,7 @@ return function ()
 				"query_context",
 				"concept",
 				OP.EQ,
-				"heard_speak"
+				"gutter_runner_temp_disabled_heard"
 			},
 			{
 				"query_context",
@@ -1387,6 +1323,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -1398,6 +1340,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "egt_vs_pact_proximity_banter_three_b",
 		response = "egt_vs_pact_proximity_banter_three_b",
 		criterias = {
@@ -1405,7 +1348,7 @@ return function ()
 				"query_context",
 				"concept",
 				OP.EQ,
-				"heard_speak"
+				"gutter_runner_temp_disabled_heard"
 			},
 			{
 				"query_context",
@@ -1424,6 +1367,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -1435,6 +1384,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "egt_vs_pact_proximity_banter_twelve_b",
 		response = "egt_vs_pact_proximity_banter_twelve_b",
 		criterias = {
@@ -1442,7 +1392,7 @@ return function ()
 				"query_context",
 				"concept",
 				OP.EQ,
-				"heard_speak"
+				"gutter_runner_temp_disabled_heard"
 			},
 			{
 				"query_context",
@@ -1461,6 +1411,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -1472,6 +1428,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 0.5,
 		name = "egt_vs_pact_proximity_banter_twenty_a",
 		response = "egt_vs_pact_proximity_banter_twenty_a",
 		criterias = {
@@ -1479,7 +1436,7 @@ return function ()
 				"query_context",
 				"concept",
 				OP.EQ,
-				"friends_close"
+				"gutter_runner_temp_disabled_instigator"
 			},
 			{
 				"query_context",
@@ -1498,6 +1455,18 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"enemies_close",
+				OP.EQ,
+				0
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			},
 			{
 				"faction_memory",
@@ -1540,6 +1509,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "egt_vs_pact_proximity_banter_two_b",
 		response = "egt_vs_pact_proximity_banter_two_b",
 		criterias = {
@@ -1547,7 +1517,7 @@ return function ()
 				"query_context",
 				"concept",
 				OP.EQ,
-				"heard_speak"
+				"gutter_runner_temp_disabled_heard"
 			},
 			{
 				"query_context",
@@ -1566,6 +1536,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -1577,106 +1553,7 @@ return function ()
 		}
 	})
 	define_rule({
-		name = "egt_vs_passing_hoisted_hero_a",
-		response = "egt_vs_passing_hoisted_hero_a",
-		criterias = {
-			{
-				"query_context",
-				"concept",
-				OP.EQ,
-				"vs_passing_hoisted_hero"
-			},
-			{
-				"query_context",
-				"source_name",
-				OP.EQ,
-				"vs_gutter_runner"
-			},
-			{
-				"user_context",
-				"player_profile",
-				OP.EQ,
-				"vs_gutter_runner"
-			},
-			{
-				"user_memory",
-				"vs_passing_hoisted_hero",
-				OP.EQ,
-				0
-			}
-		},
-		on_done = {
-			{
-				"user_memory",
-				"vs_passing_hoisted_hero",
-				OP.ADD,
-				1
-			}
-		}
-	})
-	define_rule({
-		name = "egt_vs_vw_cheer_a",
-		response = "egt_vs_vw_cheer_a",
-		criterias = {
-			{
-				"query_context",
-				"concept",
-				OP.EQ,
-				"vw_cheer"
-			},
-			{
-				"query_context",
-				"source_name",
-				OP.EQ,
-				"vs_gutter_runner"
-			},
-			{
-				"user_context",
-				"player_profile",
-				OP.EQ,
-				"vs_gutter_runner"
-			},
-			{
-				"user_memory",
-				"time_since_vw_cheer",
-				OP.TIMEDIFF,
-				OP.GT,
-				5
-			}
-		},
-		on_done = {
-			{
-				"user_memory",
-				"time_since_vw_cheer",
-				OP.TIMESET
-			}
-		}
-	})
-	define_rule({
-		response = "egt_vs_vw_thanks_a",
-		name = "egt_vs_vw_thanks_a",
-		criterias = {
-			{
-				"query_context",
-				"concept",
-				OP.EQ,
-				"vw_thank_you_AAAATEMP123"
-			},
-			{
-				"query_context",
-				"source_name",
-				OP.EQ,
-				"vs_gutter_runner"
-			},
-			{
-				"user_context",
-				"player_profile",
-				OP.EQ,
-				"vs_gutter_runner"
-			}
-		}
-	})
-	define_rule({
+		probability = 1,
 		name = "egt_vw_affirmative",
 		response = "egt_vw_affirmative",
 		criterias = {
@@ -1721,6 +1598,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "egt_vw_ambush",
 		response = "egt_vw_ambush",
 		criterias = {
@@ -1765,6 +1643,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "egt_vw_attack_now",
 		response = "egt_vw_attack_now",
 		criterias = {
@@ -1809,6 +1688,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "egt_vw_cover_me",
 		response = "egt_vw_cover_me",
 		criterias = {
@@ -1853,6 +1733,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "egt_vw_gather",
 		response = "egt_vw_gather",
 		criterias = {
@@ -1897,6 +1778,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "egt_vw_go_here",
 		response = "egt_vw_go_here",
 		criterias = {
@@ -1941,6 +1823,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "egt_vw_negation",
 		response = "egt_vw_negation",
 		criterias = {
@@ -1985,6 +1868,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "egt_vw_thanks",
 		response = "egt_vw_thanks",
 		criterias = {
@@ -2029,6 +1913,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "egt_vw_wait",
 		response = "egt_vw_wait",
 		criterias = {
@@ -2073,6 +1958,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epg_spawning_globadier",
 		response = "epg_spawning_globadier",
 		criterias = {
@@ -2111,6 +1997,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epg_taunting_bardin",
 		response = "epg_taunting_bardin",
 		criterias = {
@@ -2188,6 +2075,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epg_taunting_kerillian",
 		response = "epg_taunting_kerillian",
 		criterias = {
@@ -2265,6 +2153,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epg_taunting_kruber",
 		response = "epg_taunting_kruber",
 		criterias = {
@@ -2342,6 +2231,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epg_taunting_saltzpyre",
 		response = "epg_taunting_saltzpyre",
 		criterias = {
@@ -2419,6 +2309,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epg_taunting_sienna",
 		response = "epg_taunting_sienna",
 		criterias = {
@@ -2496,6 +2387,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epg_versus_throwing_globe",
 		response = "epg_versus_throwing_globe",
 		criterias = {
@@ -2534,32 +2426,9 @@ return function ()
 		}
 	})
 	define_rule({
-		response = "epg_vs_ability_explosion_a",
-		name = "epg_vs_ability_explosion_a",
-		criterias = {
-			{
-				"query_context",
-				"concept",
-				OP.EQ,
-				"vs_globadier_ability"
-			},
-			{
-				"query_context",
-				"source_name",
-				OP.EQ,
-				"vs_poison_wind_globadier"
-			},
-			{
-				"user_context",
-				"player_profile",
-				OP.EQ,
-				"vs_poison_wind_globadier"
-			}
-		}
-	})
-	define_rule({
 		response = "epg_vs_ability_horde_a",
 		name = "epg_vs_ability_horde_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2584,6 +2453,7 @@ return function ()
 	define_rule({
 		response = "epg_vs_downed_hero_a",
 		name = "epg_vs_downed_hero_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2606,6 +2476,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epg_vs_globadier_hitting_many_a",
 		response = "epg_vs_globadier_hitting_many_a",
 		criterias = {
@@ -2628,6 +2499,12 @@ return function ()
 				"vs_poison_wind_globadier"
 			},
 			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
+			},
+			{
 				"user_memory",
 				"vs_globadier_globe_thrown",
 				OP.EQ,
@@ -2656,6 +2533,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epg_vs_globadier_missing_globe_a",
 		response = "epg_vs_globadier_missing_globe_a",
 		criterias = {
@@ -2678,6 +2556,12 @@ return function ()
 				"vs_poison_wind_globadier"
 			},
 			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
+			},
+			{
 				"user_memory",
 				"vs_globadier_globe_thrown",
 				OP.EQ,
@@ -2706,6 +2590,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epg_vs_globe_on_disabled_hero_a",
 		response = "epg_vs_globe_on_disabled_hero_a",
 		criterias = {
@@ -2728,6 +2613,12 @@ return function ()
 				"vs_poison_wind_globadier"
 			},
 			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
+			},
+			{
 				"user_memory",
 				"vs_globe_on_disabled_hero",
 				OP.EQ,
@@ -2746,6 +2637,7 @@ return function ()
 	define_rule({
 		response = "epg_vs_heroes_objective_almost_completed_b",
 		name = "epg_vs_heroes_objective_almost_completed_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2761,6 +2653,12 @@ return function ()
 			},
 			{
 				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
+			},
+			{
+				"user_context",
 				"player_profile",
 				OP.EQ,
 				"vs_poison_wind_globadier"
@@ -2770,6 +2668,7 @@ return function ()
 	define_rule({
 		response = "epg_vs_many_heroes_incapacitated_a",
 		name = "epg_vs_many_heroes_incapacitated_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -2792,6 +2691,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epg_vs_pact_proximity_banter_eight_b",
 		response = "epg_vs_pact_proximity_banter_eight_b",
 		criterias = {
@@ -2818,6 +2718,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -2829,6 +2735,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epg_vs_pact_proximity_banter_eighteen_b",
 		response = "epg_vs_pact_proximity_banter_eighteen_b",
 		criterias = {
@@ -2855,6 +2762,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -2866,6 +2779,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 0.5,
 		name = "epg_vs_pact_proximity_banter_eleven_a",
 		response = "epg_vs_pact_proximity_banter_eleven_a",
 		criterias = {
@@ -2894,6 +2808,18 @@ return function ()
 				1
 			},
 			{
+				"user_context",
+				"enemies_close",
+				OP.EQ,
+				0
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
+			},
+			{
 				"faction_memory",
 				"pact_proximity_banter_master_limit",
 				OP.LT,
@@ -2934,6 +2860,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epg_vs_pact_proximity_banter_fifteen_b",
 		response = "epg_vs_pact_proximity_banter_fifteen_b",
 		criterias = {
@@ -2960,6 +2887,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -2971,6 +2904,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epg_vs_pact_proximity_banter_five_b",
 		response = "epg_vs_pact_proximity_banter_five_b",
 		criterias = {
@@ -2997,6 +2931,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -3008,6 +2948,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epg_vs_pact_proximity_banter_four_b",
 		response = "epg_vs_pact_proximity_banter_four_b",
 		criterias = {
@@ -3034,6 +2975,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -3045,6 +2992,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epg_vs_pact_proximity_banter_fourteen_b",
 		response = "epg_vs_pact_proximity_banter_fourteen_b",
 		criterias = {
@@ -3071,6 +3019,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -3082,6 +3036,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epg_vs_pact_proximity_banter_nine_b",
 		response = "epg_vs_pact_proximity_banter_nine_b",
 		criterias = {
@@ -3108,6 +3063,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -3119,6 +3080,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epg_vs_pact_proximity_banter_nineteen_b",
 		response = "epg_vs_pact_proximity_banter_nineteen_b",
 		criterias = {
@@ -3145,6 +3107,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -3156,6 +3124,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 0.5,
 		name = "epg_vs_pact_proximity_banter_one_a",
 		response = "epg_vs_pact_proximity_banter_one_a",
 		criterias = {
@@ -3184,6 +3153,18 @@ return function ()
 				1
 			},
 			{
+				"user_context",
+				"enemies_close",
+				OP.EQ,
+				0
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
+			},
+			{
 				"faction_memory",
 				"pact_proximity_banter_master_limit",
 				OP.LT,
@@ -3200,7 +3181,7 @@ return function ()
 				"time_since_pact_banter",
 				OP.TIMEDIFF,
 				OP.GT,
-				160
+				140
 			}
 		},
 		on_done = {
@@ -3224,6 +3205,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epg_vs_pact_proximity_banter_seven_b",
 		response = "epg_vs_pact_proximity_banter_seven_b",
 		criterias = {
@@ -3250,6 +3232,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -3261,6 +3249,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epg_vs_pact_proximity_banter_seventeen_b",
 		response = "epg_vs_pact_proximity_banter_seventeen_b",
 		criterias = {
@@ -3287,6 +3276,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -3298,6 +3293,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 0.5,
 		name = "epg_vs_pact_proximity_banter_six_a",
 		response = "epg_vs_pact_proximity_banter_six_a",
 		criterias = {
@@ -3326,6 +3322,18 @@ return function ()
 				1
 			},
 			{
+				"user_context",
+				"enemies_close",
+				OP.EQ,
+				0
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
+			},
+			{
 				"faction_memory",
 				"pact_proximity_banter_master_limit",
 				OP.LT,
@@ -3366,6 +3374,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 0.5,
 		name = "epg_vs_pact_proximity_banter_sixteen_a",
 		response = "epg_vs_pact_proximity_banter_sixteen_a",
 		criterias = {
@@ -3394,6 +3403,18 @@ return function ()
 				1
 			},
 			{
+				"user_context",
+				"enemies_close",
+				OP.EQ,
+				0
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
+			},
+			{
 				"faction_memory",
 				"pact_proximity_banter_master_limit",
 				OP.LT,
@@ -3434,6 +3455,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epg_vs_pact_proximity_banter_ten_b",
 		response = "epg_vs_pact_proximity_banter_ten_b",
 		criterias = {
@@ -3460,6 +3482,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -3471,6 +3499,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epg_vs_pact_proximity_banter_thirteen_b",
 		response = "epg_vs_pact_proximity_banter_thirteen_b",
 		criterias = {
@@ -3497,6 +3526,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -3508,6 +3543,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epg_vs_pact_proximity_banter_three_b",
 		response = "epg_vs_pact_proximity_banter_three_b",
 		criterias = {
@@ -3534,6 +3570,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -3545,6 +3587,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epg_vs_pact_proximity_banter_twelve_b",
 		response = "epg_vs_pact_proximity_banter_twelve_b",
 		criterias = {
@@ -3571,6 +3614,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -3582,6 +3631,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epg_vs_pact_proximity_banter_twenty_b",
 		response = "epg_vs_pact_proximity_banter_twenty_b",
 		criterias = {
@@ -3608,6 +3658,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -3619,6 +3675,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epg_vs_pact_proximity_banter_two_b",
 		response = "epg_vs_pact_proximity_banter_two_b",
 		criterias = {
@@ -3645,6 +3702,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -3656,6 +3719,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epg_vs_passing_hoisted_hero_a",
 		response = "epg_vs_passing_hoisted_hero_a",
 		criterias = {
@@ -3678,6 +3742,12 @@ return function ()
 				"vs_poison_wind_globadier"
 			},
 			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
+			},
+			{
 				"user_memory",
 				"vs_passing_hoisted_hero",
 				OP.EQ,
@@ -3694,6 +3764,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epg_vs_vw_cheer_a",
 		response = "epg_vs_vw_cheer_a",
 		criterias = {
@@ -3732,6 +3803,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epg_vw_affirmative",
 		response = "epg_vw_affirmative",
 		criterias = {
@@ -3776,6 +3848,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epg_vw_ambush",
 		response = "epg_vw_ambush",
 		criterias = {
@@ -3820,6 +3893,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epg_vw_attack_now",
 		response = "epg_vw_attack_now",
 		criterias = {
@@ -3864,6 +3938,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epg_vw_cover_me",
 		response = "epg_vw_cover_me",
 		criterias = {
@@ -3908,6 +3983,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epg_vw_gather",
 		response = "epg_vw_gather",
 		criterias = {
@@ -3952,6 +4028,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epg_vw_go_here",
 		response = "epg_vw_go_here",
 		criterias = {
@@ -3996,6 +4073,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epg_vw_negation",
 		response = "epg_vw_negation",
 		criterias = {
@@ -4040,6 +4118,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epg_vw_thanks",
 		response = "epg_vw_thanks",
 		criterias = {
@@ -4084,6 +4163,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epg_vw_wait",
 		response = "epg_vw_wait",
 		criterias = {
@@ -4128,6 +4208,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epm_packmaster_grab_walk",
 		response = "epm_packmaster_grab_walk",
 		criterias = {
@@ -4166,6 +4247,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epm_packmaster_hook_fail",
 		response = "epm_packmaster_hook_fail",
 		criterias = {
@@ -4204,6 +4286,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epm_packmaster_hook_success",
 		response = "epm_packmaster_hook_success",
 		criterias = {
@@ -4242,44 +4325,7 @@ return function ()
 		}
 	})
 	define_rule({
-		name = "epm_packmaster_skulking",
-		response = "epm_packmaster_skulking",
-		criterias = {
-			{
-				"query_context",
-				"concept",
-				OP.EQ,
-				"skulking"
-			},
-			{
-				"query_context",
-				"source_name",
-				OP.EQ,
-				"vs_packmaster"
-			},
-			{
-				"user_context",
-				"player_profile",
-				OP.EQ,
-				"vs_packmaster"
-			},
-			{
-				"user_memory",
-				"time_since_skulking",
-				OP.TIMEDIFF,
-				OP.GT,
-				10
-			}
-		},
-		on_done = {
-			{
-				"user_memory",
-				"time_since_skulking",
-				OP.TIMESET
-			}
-		}
-	})
-	define_rule({
+		probability = 1,
 		name = "epm_spawning_packmaster",
 		response = "epm_spawning_packmaster",
 		criterias = {
@@ -4318,6 +4364,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epm_taunting_bardin",
 		response = "epm_taunting_bardin",
 		criterias = {
@@ -4395,6 +4442,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epm_taunting_kerillian",
 		response = "epm_taunting_kerillian",
 		criterias = {
@@ -4472,6 +4520,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epm_taunting_kruber",
 		response = "epm_taunting_kruber",
 		criterias = {
@@ -4549,6 +4598,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epm_taunting_saltzpyre",
 		response = "epm_taunting_saltzpyre",
 		criterias = {
@@ -4626,6 +4676,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epm_taunting_sienna",
 		response = "epm_taunting_sienna",
 		criterias = {
@@ -4705,6 +4756,7 @@ return function ()
 	define_rule({
 		response = "epm_vs_ability_horde_a",
 		name = "epm_vs_ability_horde_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -4729,6 +4781,7 @@ return function ()
 	define_rule({
 		response = "epm_vs_downed_hero_a",
 		name = "epm_vs_downed_hero_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -4751,6 +4804,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epm_vs_globadier_hitting_many_a",
 		response = "epm_vs_globadier_hitting_many_a",
 		criterias = {
@@ -4771,6 +4825,12 @@ return function ()
 				"player_profile",
 				OP.EQ,
 				"vs_packmaster"
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			},
 			{
 				"user_memory",
@@ -4801,6 +4861,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epm_vs_globadier_missing_globe_a",
 		response = "epm_vs_globadier_missing_globe_a",
 		criterias = {
@@ -4821,6 +4882,12 @@ return function ()
 				"player_profile",
 				OP.EQ,
 				"vs_packmaster"
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			},
 			{
 				"user_memory",
@@ -4853,6 +4920,7 @@ return function ()
 	define_rule({
 		response = "epm_vs_heroes_objective_almost_completed_b",
 		name = "epm_vs_heroes_objective_almost_completed_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -4868,27 +4936,9 @@ return function ()
 			},
 			{
 				"user_context",
-				"player_profile",
+				"is_in_ghost_mode",
 				OP.EQ,
-				"vs_packmaster"
-			}
-		}
-	})
-	define_rule({
-		response = "epm_vs_hook_success_a",
-		name = "epm_vs_hook_success_a",
-		criterias = {
-			{
-				"query_context",
-				"concept",
-				OP.EQ,
-				"vs_hook_successTEMP"
-			},
-			{
-				"query_context",
-				"source_name",
-				OP.EQ,
-				"vs_packmaster"
+				0
 			},
 			{
 				"user_context",
@@ -4901,6 +4951,7 @@ return function ()
 	define_rule({
 		response = "epm_vs_many_heroes_incapacitated_a",
 		name = "epm_vs_many_heroes_incapacitated_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -4925,6 +4976,7 @@ return function ()
 	define_rule({
 		response = "epm_vs_packmaster_hoisted_player_a",
 		name = "epm_vs_packmaster_hoisted_player_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -4947,6 +4999,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epm_vs_pact_proximity_banter_eight_b",
 		response = "epm_vs_pact_proximity_banter_eight_b",
 		criterias = {
@@ -4973,6 +5026,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -4984,6 +5043,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epm_vs_pact_proximity_banter_eighteen_b",
 		response = "epm_vs_pact_proximity_banter_eighteen_b",
 		criterias = {
@@ -5010,6 +5070,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -5021,6 +5087,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epm_vs_pact_proximity_banter_eleven_b",
 		response = "epm_vs_pact_proximity_banter_eleven_b",
 		criterias = {
@@ -5047,6 +5114,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -5058,6 +5131,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epm_vs_pact_proximity_banter_fifteen_b",
 		response = "epm_vs_pact_proximity_banter_fifteen_b",
 		criterias = {
@@ -5084,6 +5158,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -5095,6 +5175,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epm_vs_pact_proximity_banter_five_b",
 		response = "epm_vs_pact_proximity_banter_five_b",
 		criterias = {
@@ -5121,6 +5202,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -5132,6 +5219,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epm_vs_pact_proximity_banter_four_b",
 		response = "epm_vs_pact_proximity_banter_four_b",
 		criterias = {
@@ -5158,6 +5246,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -5169,6 +5263,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epm_vs_pact_proximity_banter_fourteen_b",
 		response = "epm_vs_pact_proximity_banter_fourteen_b",
 		criterias = {
@@ -5195,6 +5290,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -5206,6 +5307,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epm_vs_pact_proximity_banter_nine_b",
 		response = "epm_vs_pact_proximity_banter_nine_b",
 		criterias = {
@@ -5232,6 +5334,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -5243,6 +5351,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epm_vs_pact_proximity_banter_nineteen_b",
 		response = "epm_vs_pact_proximity_banter_nineteen_b",
 		criterias = {
@@ -5269,6 +5378,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -5280,6 +5395,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epm_vs_pact_proximity_banter_one_b",
 		response = "epm_vs_pact_proximity_banter_one_b",
 		criterias = {
@@ -5306,6 +5422,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -5317,6 +5439,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 0.5,
 		name = "epm_vs_pact_proximity_banter_seven_a",
 		response = "epm_vs_pact_proximity_banter_seven_a",
 		criterias = {
@@ -5345,6 +5468,18 @@ return function ()
 				1
 			},
 			{
+				"user_context",
+				"enemies_close",
+				OP.EQ,
+				0
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
+			},
+			{
 				"faction_memory",
 				"pact_proximity_banter_master_limit",
 				OP.LT,
@@ -5385,6 +5520,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 0.5,
 		name = "epm_vs_pact_proximity_banter_seventeen_a",
 		response = "epm_vs_pact_proximity_banter_seventeen_a",
 		criterias = {
@@ -5413,6 +5549,18 @@ return function ()
 				1
 			},
 			{
+				"user_context",
+				"enemies_close",
+				OP.EQ,
+				0
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
+			},
+			{
 				"faction_memory",
 				"pact_proximity_banter_master_limit",
 				OP.LT,
@@ -5453,6 +5601,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epm_vs_pact_proximity_banter_six_b",
 		response = "epm_vs_pact_proximity_banter_six_b",
 		criterias = {
@@ -5479,6 +5628,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -5490,6 +5645,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epm_vs_pact_proximity_banter_sixteen_b",
 		response = "epm_vs_pact_proximity_banter_sixteen_b",
 		criterias = {
@@ -5516,6 +5672,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -5527,6 +5689,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epm_vs_pact_proximity_banter_ten_b",
 		response = "epm_vs_pact_proximity_banter_ten_b",
 		criterias = {
@@ -5553,6 +5716,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -5564,6 +5733,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epm_vs_pact_proximity_banter_thirteen_b",
 		response = "epm_vs_pact_proximity_banter_thirteen_b",
 		criterias = {
@@ -5590,6 +5760,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -5601,6 +5777,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epm_vs_pact_proximity_banter_three_b",
 		response = "epm_vs_pact_proximity_banter_three_b",
 		criterias = {
@@ -5627,6 +5804,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -5638,6 +5821,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 0.5,
 		name = "epm_vs_pact_proximity_banter_twelve_a",
 		response = "epm_vs_pact_proximity_banter_twelve_a",
 		criterias = {
@@ -5666,6 +5850,18 @@ return function ()
 				1
 			},
 			{
+				"user_context",
+				"enemies_close",
+				OP.EQ,
+				0
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
+			},
+			{
 				"faction_memory",
 				"pact_proximity_banter_master_limit",
 				OP.LT,
@@ -5706,6 +5902,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epm_vs_pact_proximity_banter_twenty_b",
 		response = "epm_vs_pact_proximity_banter_twenty_b",
 		criterias = {
@@ -5732,6 +5929,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -5743,6 +5946,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 0.5,
 		name = "epm_vs_pact_proximity_banter_two_a",
 		response = "epm_vs_pact_proximity_banter_two_a",
 		criterias = {
@@ -5771,6 +5975,18 @@ return function ()
 				1
 			},
 			{
+				"user_context",
+				"enemies_close",
+				OP.EQ,
+				0
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
+			},
+			{
 				"faction_memory",
 				"pact_proximity_banter_master_limit",
 				OP.LT,
@@ -5811,6 +6027,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epm_vs_passing_hoisted_hero_a",
 		response = "epm_vs_passing_hoisted_hero_a",
 		criterias = {
@@ -5833,6 +6050,12 @@ return function ()
 				"vs_packmaster"
 			},
 			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
+			},
+			{
 				"user_memory",
 				"vs_passing_hoisted_hero",
 				OP.EQ,
@@ -5849,6 +6072,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epm_vs_vw_cheer_a",
 		response = "epm_vs_vw_cheer_a",
 		criterias = {
@@ -5887,6 +6111,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epm_vw_affirmative",
 		response = "epm_vw_affirmative",
 		criterias = {
@@ -5931,6 +6156,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epm_vw_ambush",
 		response = "epm_vw_ambush",
 		criterias = {
@@ -5975,6 +6201,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epm_vw_attack_now",
 		response = "epm_vw_attack_now",
 		criterias = {
@@ -6019,6 +6246,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epm_vw_cover_me",
 		response = "epm_vw_cover_me",
 		criterias = {
@@ -6063,6 +6291,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epm_vw_gather",
 		response = "epm_vw_gather",
 		criterias = {
@@ -6107,6 +6336,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epm_vw_go_here",
 		response = "epm_vw_go_here",
 		criterias = {
@@ -6151,6 +6381,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epm_vw_negation",
 		response = "epm_vw_negation",
 		criterias = {
@@ -6195,6 +6426,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epm_vw_thanks",
 		response = "epm_vw_thanks",
 		criterias = {
@@ -6239,6 +6471,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "epm_vw_wait",
 		response = "epm_vw_wait",
 		criterias = {
@@ -6283,6 +6516,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "erg_spawning_ratling_gunner",
 		response = "erg_spawning_ratling_gunner",
 		criterias = {
@@ -6321,6 +6555,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "erg_taunting_bardin",
 		response = "erg_taunting_bardin",
 		criterias = {
@@ -6398,6 +6633,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "erg_taunting_kerillian",
 		response = "erg_taunting_kerillian",
 		criterias = {
@@ -6475,6 +6711,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "erg_taunting_kruber",
 		response = "erg_taunting_kruber",
 		criterias = {
@@ -6552,6 +6789,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "erg_taunting_saltzpyre",
 		response = "erg_taunting_saltzpyre",
 		criterias = {
@@ -6629,6 +6867,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "erg_taunting_sienna",
 		response = "erg_taunting_sienna",
 		criterias = {
@@ -6708,6 +6947,7 @@ return function ()
 	define_rule({
 		response = "erg_vs_ability_horde_a",
 		name = "erg_vs_ability_horde_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -6732,6 +6972,7 @@ return function ()
 	define_rule({
 		response = "erg_vs_downed_hero_a",
 		name = "erg_vs_downed_hero_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -6754,6 +6995,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "erg_vs_globadier_hitting_many_a",
 		response = "erg_vs_globadier_hitting_many_a",
 		criterias = {
@@ -6774,6 +7016,12 @@ return function ()
 				"player_profile",
 				OP.EQ,
 				"vs_ratling_gunner"
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			},
 			{
 				"user_memory",
@@ -6804,6 +7052,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "erg_vs_globadier_missing_globe_a",
 		response = "erg_vs_globadier_missing_globe_a",
 		criterias = {
@@ -6824,6 +7073,12 @@ return function ()
 				"player_profile",
 				OP.EQ,
 				"vs_ratling_gunner"
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			},
 			{
 				"user_memory",
@@ -6856,6 +7111,7 @@ return function ()
 	define_rule({
 		response = "erg_vs_heroes_objective_almost_completed_b",
 		name = "erg_vs_heroes_objective_almost_completed_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -6871,27 +7127,9 @@ return function ()
 			},
 			{
 				"user_context",
-				"player_profile",
+				"is_in_ghost_mode",
 				OP.EQ,
-				"vs_ratling_gunner"
-			}
-		}
-	})
-	define_rule({
-		response = "erg_vs_many_heroes_incapacitated_a",
-		name = "erg_vs_many_heroes_incapacitated_a",
-		criterias = {
-			{
-				"query_context",
-				"concept",
-				OP.EQ,
-				"vs_many_heroes_incapacitated"
-			},
-			{
-				"query_context",
-				"source_name",
-				OP.EQ,
-				"vs_ratling_gunner"
+				0
 			},
 			{
 				"user_context",
@@ -6902,6 +7140,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "erg_vs_pact_proximity_banter_eight_b",
 		response = "erg_vs_pact_proximity_banter_eight_b",
 		criterias = {
@@ -6928,6 +7167,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -6939,6 +7184,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "erg_vs_pact_proximity_banter_eighteen_b",
 		response = "erg_vs_pact_proximity_banter_eighteen_b",
 		criterias = {
@@ -6965,6 +7211,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -6976,6 +7228,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "erg_vs_pact_proximity_banter_eleven_b",
 		response = "erg_vs_pact_proximity_banter_eleven_b",
 		criterias = {
@@ -7002,6 +7255,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -7013,6 +7272,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "erg_vs_pact_proximity_banter_fifteen_b",
 		response = "erg_vs_pact_proximity_banter_fifteen_b",
 		criterias = {
@@ -7039,6 +7299,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -7050,6 +7316,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "erg_vs_pact_proximity_banter_five_b",
 		response = "erg_vs_pact_proximity_banter_five_b",
 		criterias = {
@@ -7076,6 +7343,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -7087,6 +7360,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 0.5,
 		name = "erg_vs_pact_proximity_banter_four_a",
 		response = "erg_vs_pact_proximity_banter_four_a",
 		criterias = {
@@ -7115,6 +7389,18 @@ return function ()
 				1
 			},
 			{
+				"user_context",
+				"enemies_close",
+				OP.EQ,
+				0
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
+			},
+			{
 				"faction_memory",
 				"pact_proximity_banter_master_limit",
 				OP.LT,
@@ -7155,6 +7441,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 0.5,
 		name = "erg_vs_pact_proximity_banter_fourteen_a",
 		response = "erg_vs_pact_proximity_banter_fourteen_a",
 		criterias = {
@@ -7183,6 +7470,18 @@ return function ()
 				1
 			},
 			{
+				"user_context",
+				"enemies_close",
+				OP.EQ,
+				0
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
+			},
+			{
 				"faction_memory",
 				"pact_proximity_banter_master_limit",
 				OP.LT,
@@ -7223,6 +7522,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 0.5,
 		name = "erg_vs_pact_proximity_banter_nine_a",
 		response = "erg_vs_pact_proximity_banter_nine_a",
 		criterias = {
@@ -7251,6 +7551,18 @@ return function ()
 				1
 			},
 			{
+				"user_context",
+				"enemies_close",
+				OP.EQ,
+				0
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
+			},
+			{
 				"faction_memory",
 				"pact_proximity_banter_master_limit",
 				OP.LT,
@@ -7291,6 +7603,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 0.5,
 		name = "erg_vs_pact_proximity_banter_nineteen_a",
 		response = "erg_vs_pact_proximity_banter_nineteen_a",
 		criterias = {
@@ -7319,6 +7632,18 @@ return function ()
 				1
 			},
 			{
+				"user_context",
+				"enemies_close",
+				OP.EQ,
+				0
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
+			},
+			{
 				"faction_memory",
 				"pact_proximity_banter_master_limit",
 				OP.LT,
@@ -7359,6 +7684,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "erg_vs_pact_proximity_banter_one_b",
 		response = "erg_vs_pact_proximity_banter_one_b",
 		criterias = {
@@ -7385,6 +7711,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -7396,6 +7728,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "erg_vs_pact_proximity_banter_seven_b",
 		response = "erg_vs_pact_proximity_banter_seven_b",
 		criterias = {
@@ -7422,6 +7755,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -7433,6 +7772,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "erg_vs_pact_proximity_banter_seventeen_b",
 		response = "erg_vs_pact_proximity_banter_seventeen_b",
 		criterias = {
@@ -7459,6 +7799,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -7470,6 +7816,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "erg_vs_pact_proximity_banter_six_b",
 		response = "erg_vs_pact_proximity_banter_six_b",
 		criterias = {
@@ -7496,6 +7843,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -7507,6 +7860,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "erg_vs_pact_proximity_banter_sixteen_b",
 		response = "erg_vs_pact_proximity_banter_sixteen_b",
 		criterias = {
@@ -7533,6 +7887,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -7544,6 +7904,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "erg_vs_pact_proximity_banter_ten_b",
 		response = "erg_vs_pact_proximity_banter_ten_b",
 		criterias = {
@@ -7570,6 +7931,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -7581,6 +7948,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "erg_vs_pact_proximity_banter_thirteen_b",
 		response = "erg_vs_pact_proximity_banter_thirteen_b",
 		criterias = {
@@ -7607,6 +7975,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -7618,6 +7992,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "erg_vs_pact_proximity_banter_three_b",
 		response = "erg_vs_pact_proximity_banter_three_b",
 		criterias = {
@@ -7644,6 +8019,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -7655,6 +8036,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "erg_vs_pact_proximity_banter_twelve_b",
 		response = "erg_vs_pact_proximity_banter_twelve_b",
 		criterias = {
@@ -7681,6 +8063,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -7692,6 +8080,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "erg_vs_pact_proximity_banter_twenty_b",
 		response = "erg_vs_pact_proximity_banter_twenty_b",
 		criterias = {
@@ -7718,6 +8107,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -7729,6 +8124,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "erg_vs_pact_proximity_banter_two_b",
 		response = "erg_vs_pact_proximity_banter_two_b",
 		criterias = {
@@ -7755,6 +8151,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -7766,44 +8168,7 @@ return function ()
 		}
 	})
 	define_rule({
-		name = "erg_vs_passing_hoisted_hero_a",
-		response = "erg_vs_passing_hoisted_hero_a",
-		criterias = {
-			{
-				"query_context",
-				"concept",
-				OP.EQ,
-				"vs_passing_hoisted_hero"
-			},
-			{
-				"query_context",
-				"source_name",
-				OP.EQ,
-				"vs_ratling_gunner"
-			},
-			{
-				"user_context",
-				"player_profile",
-				OP.EQ,
-				"vs_ratling_gunner"
-			},
-			{
-				"user_memory",
-				"vs_passing_hoisted_hero",
-				OP.EQ,
-				0
-			}
-		},
-		on_done = {
-			{
-				"user_memory",
-				"vs_passing_hoisted_hero",
-				OP.ADD,
-				1
-			}
-		}
-	})
-	define_rule({
+		probability = 1,
 		name = "erg_vs_ratling_hitting_shield_a",
 		response = "erg_vs_ratling_hitting_shield_a",
 		criterias = {
@@ -7842,6 +8207,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "erg_vs_shooting_hooked_hero_a",
 		response = "erg_vs_shooting_hooked_hero_a",
 		criterias = {
@@ -7880,6 +8246,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "erg_vs_vw_cheer_a",
 		response = "erg_vs_vw_cheer_a",
 		criterias = {
@@ -7918,6 +8285,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "erg_vw_affirmative",
 		response = "erg_vw_affirmative",
 		criterias = {
@@ -7962,6 +8330,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "erg_vw_ambush",
 		response = "erg_vw_ambush",
 		criterias = {
@@ -8006,6 +8375,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "erg_vw_attack_now",
 		response = "erg_vw_attack_now",
 		criterias = {
@@ -8050,6 +8420,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "erg_vw_cover_me",
 		response = "erg_vw_cover_me",
 		criterias = {
@@ -8094,6 +8465,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "erg_vw_gather",
 		response = "erg_vw_gather",
 		criterias = {
@@ -8138,6 +8510,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "erg_vw_go_here",
 		response = "erg_vw_go_here",
 		criterias = {
@@ -8182,6 +8555,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "erg_vw_negation",
 		response = "erg_vw_negation",
 		criterias = {
@@ -8226,6 +8600,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "erg_vw_thanks",
 		response = "erg_vw_thanks",
 		criterias = {
@@ -8270,6 +8645,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "erg_vw_wait",
 		response = "erg_vw_wait",
 		criterias = {
@@ -8314,6 +8690,46 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
+		name = "ewt_combat_idle",
+		response = "ewt_combat_idle",
+		criterias = {
+			{
+				"query_context",
+				"concept",
+				OP.EQ,
+				"walking"
+			},
+			{
+				"query_context",
+				"source_name",
+				OP.EQ,
+				"vs_warpfire_thrower"
+			},
+			{
+				"user_context",
+				"player_profile",
+				OP.EQ,
+				"vs_warpfire_thrower"
+			},
+			{
+				"user_memory",
+				"time_since_walk_warpfire_thrower",
+				OP.TIMEDIFF,
+				OP.GT,
+				30
+			}
+		},
+		on_done = {
+			{
+				"user_memory",
+				"time_since_walk_warpfire_thrower",
+				OP.TIMESET
+			}
+		}
+	})
+	define_rule({
+		probability = 1,
 		name = "ewt_spawning_warpfire_thrower",
 		response = "ewt_spawning_warpfire_thrower",
 		criterias = {
@@ -8352,6 +8768,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "ewt_taunting_bardin",
 		response = "ewt_taunting_bardin",
 		criterias = {
@@ -8429,6 +8846,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "ewt_taunting_kerillian",
 		response = "ewt_taunting_kerillian",
 		criterias = {
@@ -8506,6 +8924,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "ewt_taunting_kruber",
 		response = "ewt_taunting_kruber",
 		criterias = {
@@ -8583,6 +9002,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "ewt_taunting_saltzpyre",
 		response = "ewt_taunting_saltzpyre",
 		criterias = {
@@ -8660,6 +9080,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "ewt_taunting_sienna",
 		response = "ewt_taunting_sienna",
 		criterias = {
@@ -8739,6 +9160,7 @@ return function ()
 	define_rule({
 		response = "ewt_vs_ability_horde_a",
 		name = "ewt_vs_ability_horde_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -8763,6 +9185,7 @@ return function ()
 	define_rule({
 		response = "ewt_vs_downed_hero_a",
 		name = "ewt_vs_downed_hero_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -8785,6 +9208,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "ewt_vs_globadier_hitting_many_a",
 		response = "ewt_vs_globadier_hitting_many_a",
 		criterias = {
@@ -8805,6 +9229,12 @@ return function ()
 				"player_profile",
 				OP.EQ,
 				"vs_warpfire_thrower"
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			},
 			{
 				"user_memory",
@@ -8835,6 +9265,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "ewt_vs_globadier_missing_globe_a",
 		response = "ewt_vs_globadier_missing_globe_a",
 		criterias = {
@@ -8855,6 +9286,12 @@ return function ()
 				"player_profile",
 				OP.EQ,
 				"vs_warpfire_thrower"
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			},
 			{
 				"user_memory",
@@ -8887,6 +9324,7 @@ return function ()
 	define_rule({
 		response = "ewt_vs_heroes_objective_almost_completed_b",
 		name = "ewt_vs_heroes_objective_almost_completed_b",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -8902,6 +9340,12 @@ return function ()
 			},
 			{
 				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
+			},
+			{
+				"user_context",
 				"player_profile",
 				OP.EQ,
 				"vs_warpfire_thrower"
@@ -8911,6 +9355,7 @@ return function ()
 	define_rule({
 		response = "ewt_vs_many_heroes_incapacitated_a",
 		name = "ewt_vs_many_heroes_incapacitated_a",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -8933,6 +9378,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 0.5,
 		name = "ewt_vs_pact_proximity_banter_eight_a",
 		response = "ewt_vs_pact_proximity_banter_eight_a",
 		criterias = {
@@ -8961,6 +9407,18 @@ return function ()
 				1
 			},
 			{
+				"user_context",
+				"enemies_close",
+				OP.EQ,
+				0
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
+			},
+			{
 				"faction_memory",
 				"pact_proximity_banter_master_limit",
 				OP.LT,
@@ -9001,6 +9459,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 0.5,
 		name = "ewt_vs_pact_proximity_banter_eighteen_a",
 		response = "ewt_vs_pact_proximity_banter_eighteen_a",
 		criterias = {
@@ -9029,6 +9488,18 @@ return function ()
 				1
 			},
 			{
+				"user_context",
+				"enemies_close",
+				OP.EQ,
+				0
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
+			},
+			{
 				"faction_memory",
 				"pact_proximity_banter_master_limit",
 				OP.LT,
@@ -9069,6 +9540,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "ewt_vs_pact_proximity_banter_eleven_b",
 		response = "ewt_vs_pact_proximity_banter_eleven_b",
 		criterias = {
@@ -9095,6 +9567,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -9106,6 +9584,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "ewt_vs_pact_proximity_banter_fifteen_b",
 		response = "ewt_vs_pact_proximity_banter_fifteen_b",
 		criterias = {
@@ -9132,6 +9611,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -9143,6 +9628,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "ewt_vs_pact_proximity_banter_five_b",
 		response = "ewt_vs_pact_proximity_banter_five_b",
 		criterias = {
@@ -9169,6 +9655,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -9180,6 +9672,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "ewt_vs_pact_proximity_banter_four_b",
 		response = "ewt_vs_pact_proximity_banter_four_b",
 		criterias = {
@@ -9206,6 +9699,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -9217,6 +9716,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "ewt_vs_pact_proximity_banter_fourteen_b",
 		response = "ewt_vs_pact_proximity_banter_fourteen_b",
 		criterias = {
@@ -9243,6 +9743,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -9254,6 +9760,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "ewt_vs_pact_proximity_banter_nine_b",
 		response = "ewt_vs_pact_proximity_banter_nine_b",
 		criterias = {
@@ -9280,6 +9787,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -9291,6 +9804,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "ewt_vs_pact_proximity_banter_nineteen_b",
 		response = "ewt_vs_pact_proximity_banter_nineteen_b",
 		criterias = {
@@ -9317,6 +9831,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -9328,6 +9848,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "ewt_vs_pact_proximity_banter_one_b",
 		response = "ewt_vs_pact_proximity_banter_one_b",
 		criterias = {
@@ -9354,6 +9875,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -9365,6 +9892,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "ewt_vs_pact_proximity_banter_seven_b",
 		response = "ewt_vs_pact_proximity_banter_seven_b",
 		criterias = {
@@ -9391,6 +9919,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -9402,6 +9936,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "ewt_vs_pact_proximity_banter_seventeen_b",
 		response = "ewt_vs_pact_proximity_banter_seventeen_b",
 		criterias = {
@@ -9428,6 +9963,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -9439,6 +9980,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "ewt_vs_pact_proximity_banter_six_b",
 		response = "ewt_vs_pact_proximity_banter_six_b",
 		criterias = {
@@ -9465,6 +10007,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -9476,6 +10024,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "ewt_vs_pact_proximity_banter_sixteen_b",
 		response = "ewt_vs_pact_proximity_banter_sixteen_b",
 		criterias = {
@@ -9502,6 +10051,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -9513,6 +10068,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "ewt_vs_pact_proximity_banter_ten_b",
 		response = "ewt_vs_pact_proximity_banter_ten_b",
 		criterias = {
@@ -9539,6 +10095,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -9550,6 +10112,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 0.5,
 		name = "ewt_vs_pact_proximity_banter_thirteen_a",
 		response = "ewt_vs_pact_proximity_banter_thirteen_a",
 		criterias = {
@@ -9578,6 +10141,18 @@ return function ()
 				1
 			},
 			{
+				"user_context",
+				"enemies_close",
+				OP.EQ,
+				0
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
+			},
+			{
 				"faction_memory",
 				"pact_proximity_banter_master_limit",
 				OP.LT,
@@ -9618,6 +10193,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 0.5,
 		name = "ewt_vs_pact_proximity_banter_three_a",
 		response = "ewt_vs_pact_proximity_banter_three_a",
 		criterias = {
@@ -9646,6 +10222,18 @@ return function ()
 				1
 			},
 			{
+				"user_context",
+				"enemies_close",
+				OP.EQ,
+				0
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
+			},
+			{
 				"faction_memory",
 				"pact_proximity_banter_master_limit",
 				OP.LT,
@@ -9686,6 +10274,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "ewt_vs_pact_proximity_banter_twelve_b",
 		response = "ewt_vs_pact_proximity_banter_twelve_b",
 		criterias = {
@@ -9712,6 +10301,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -9723,6 +10318,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "ewt_vs_pact_proximity_banter_twenty_b",
 		response = "ewt_vs_pact_proximity_banter_twenty_b",
 		criterias = {
@@ -9749,6 +10345,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -9760,6 +10362,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "ewt_vs_pact_proximity_banter_two_b",
 		response = "ewt_vs_pact_proximity_banter_two_b",
 		criterias = {
@@ -9786,6 +10389,12 @@ return function ()
 				"friends_close",
 				OP.GTEQ,
 				1
+			},
+			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
 			}
 		},
 		on_done = {
@@ -9797,6 +10406,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "ewt_vs_passing_hoisted_hero_a",
 		response = "ewt_vs_passing_hoisted_hero_a",
 		criterias = {
@@ -9819,6 +10429,12 @@ return function ()
 				"vs_warpfire_thrower"
 			},
 			{
+				"user_context",
+				"is_in_ghost_mode",
+				OP.EQ,
+				0
+			},
+			{
 				"user_memory",
 				"vs_passing_hoisted_hero",
 				OP.EQ,
@@ -9835,6 +10451,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "ewt_vs_shooting_hooked_hero_a",
 		response = "ewt_vs_shooting_hooked_hero_a",
 		criterias = {
@@ -9873,6 +10490,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "ewt_vs_vw_cheer_a",
 		response = "ewt_vs_vw_cheer_a",
 		criterias = {
@@ -9911,6 +10529,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "ewt_vw_affirmative",
 		response = "ewt_vw_affirmative",
 		criterias = {
@@ -9955,6 +10574,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "ewt_vw_ambush",
 		response = "ewt_vw_ambush",
 		criterias = {
@@ -9999,6 +10619,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "ewt_vw_attack_now",
 		response = "ewt_vw_attack_now",
 		criterias = {
@@ -10043,6 +10664,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "ewt_vw_cover_me",
 		response = "ewt_vw_cover_me",
 		criterias = {
@@ -10087,6 +10709,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "ewt_vw_gather",
 		response = "ewt_vw_gather",
 		criterias = {
@@ -10131,6 +10754,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "ewt_vw_go_here",
 		response = "ewt_vw_go_here",
 		criterias = {
@@ -10175,6 +10799,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "ewt_vw_negation",
 		response = "ewt_vw_negation",
 		criterias = {
@@ -10219,6 +10844,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "ewt_vw_thanks",
 		response = "ewt_vw_thanks",
 		criterias = {
@@ -10263,6 +10889,7 @@ return function ()
 		}
 	})
 	define_rule({
+		probability = 1,
 		name = "ewt_vw_wait",
 		response = "ewt_vw_wait",
 		criterias = {
@@ -10302,44 +10929,6 @@ return function ()
 			{
 				"user_memory",
 				"time_since_vw_wait",
-				OP.TIMESET
-			}
-		}
-	})
-	define_rule({
-		name = "ewt_walking",
-		response = "ewt_walking",
-		criterias = {
-			{
-				"query_context",
-				"concept",
-				OP.EQ,
-				"walking"
-			},
-			{
-				"query_context",
-				"source_name",
-				OP.EQ,
-				"vs_warpfire_thrower"
-			},
-			{
-				"user_context",
-				"player_profile",
-				OP.EQ,
-				"vs_warpfire_thrower"
-			},
-			{
-				"user_memory",
-				"time_since_walk_warpfire_thrower",
-				OP.TIMEDIFF,
-				OP.GT,
-				10
-			}
-		},
-		on_done = {
-			{
-				"user_memory",
-				"time_since_walk_warpfire_thrower",
 				OP.TIMESET
 			}
 		}
@@ -10844,250 +11433,6 @@ return function ()
 				2.1568818092346
 			}
 		},
-		egt_vs_ability_horde_a = {
-			randomize_indexes_n = 0,
-			face_animations_n = 6,
-			database = "vs_player_vo_pactsworn",
-			sound_events_n = 6,
-			category = "player_feedback",
-			dialogue_animations_n = 6,
-			dialogue_animations = {
-				"dialogue_talk",
-				"dialogue_talk",
-				"dialogue_talk",
-				"dialogue_talk",
-				"dialogue_talk",
-				"dialogue_talk"
-			},
-			face_animations = {
-				"face_neutral",
-				"face_neutral",
-				"face_neutral",
-				"face_neutral",
-				"face_neutral",
-				"face_neutral"
-			},
-			localization_strings = {
-				"egt_vs_ability_horde_a_01",
-				"egt_vs_ability_horde_a_02",
-				"egt_vs_ability_horde_a_03",
-				"egt_vs_ability_horde_a_04",
-				"egt_vs_ability_horde_a_05",
-				"egt_vs_ability_horde_a_06"
-			},
-			randomize_indexes = {},
-			sound_events = {
-				"egt_vs_ability_horde_a_01",
-				"egt_vs_ability_horde_a_02",
-				"egt_vs_ability_horde_a_03",
-				"egt_vs_ability_horde_a_04",
-				"egt_vs_ability_horde_a_05",
-				"egt_vs_ability_horde_a_06"
-			},
-			sound_events_duration = {
-				1.6599999666214,
-				2.5250000953674,
-				3.0999999046326,
-				2.085000038147,
-				2.5350000858307,
-				3.6449999809265
-			}
-		},
-		egt_vs_downed_hero_a = {
-			randomize_indexes_n = 0,
-			face_animations_n = 4,
-			database = "vs_player_vo_pactsworn",
-			sound_events_n = 4,
-			category = "player_feedback",
-			dialogue_animations_n = 4,
-			dialogue_animations = {
-				"dialogue_talk",
-				"dialogue_talk",
-				"dialogue_talk",
-				"dialogue_talk"
-			},
-			face_animations = {
-				"face_neutral",
-				"face_neutral",
-				"face_neutral",
-				"face_neutral"
-			},
-			localization_strings = {
-				"egt_vs_downed_hero_a_01",
-				"egt_vs_downed_hero_a_02",
-				"egt_vs_downed_hero_a_03",
-				"egt_vs_downed_hero_a_04"
-			},
-			randomize_indexes = {},
-			sound_events = {
-				"egt_vs_downed_hero_a_01",
-				"egt_vs_downed_hero_a_02",
-				"egt_vs_downed_hero_a_03",
-				"egt_vs_downed_hero_a_04"
-			},
-			sound_events_duration = {
-				2.2750000953674,
-				2.039999961853,
-				1.9650000333786,
-				2.8900001049042
-			}
-		},
-		egt_vs_globadier_hitting_many_a = {
-			randomize_indexes_n = 0,
-			face_animations_n = 4,
-			database = "vs_player_vo_pactsworn",
-			sound_events_n = 4,
-			category = "player_feedback",
-			dialogue_animations_n = 4,
-			dialogue_animations = {
-				"dialogue_talk",
-				"dialogue_talk",
-				"dialogue_talk",
-				"dialogue_talk"
-			},
-			face_animations = {
-				"face_neutral",
-				"face_neutral",
-				"face_neutral",
-				"face_neutral"
-			},
-			localization_strings = {
-				"egt_vs_globadier_hitting_many_a_01",
-				"egt_vs_globadier_hitting_many_a_02",
-				"egt_vs_globadier_hitting_many_a_03",
-				"egt_vs_globadier_hitting_many_a_04"
-			},
-			randomize_indexes = {},
-			sound_events = {
-				"egt_vs_globadier_hitting_many_a_01",
-				"egt_vs_globadier_hitting_many_a_02",
-				"egt_vs_globadier_hitting_many_a_03",
-				"egt_vs_globadier_hitting_many_a_04"
-			},
-			sound_events_duration = {
-				2.4349999427795,
-				2.9400000572205,
-				3.5999999046326,
-				3.454999923706
-			}
-		},
-		egt_vs_globadier_missing_globe_a = {
-			randomize_indexes_n = 0,
-			face_animations_n = 4,
-			database = "vs_player_vo_pactsworn",
-			sound_events_n = 4,
-			category = "player_feedback",
-			dialogue_animations_n = 4,
-			dialogue_animations = {
-				"dialogue_talk",
-				"dialogue_talk",
-				"dialogue_talk",
-				"dialogue_talk"
-			},
-			face_animations = {
-				"face_neutral",
-				"face_neutral",
-				"face_neutral",
-				"face_neutral"
-			},
-			localization_strings = {
-				"egt_vs_globadier_missing_globe_a_01",
-				"egt_vs_globadier_missing_globe_a_02",
-				"egt_vs_globadier_missing_globe_a_03",
-				"egt_vs_globadier_missing_globe_a_04"
-			},
-			randomize_indexes = {},
-			sound_events = {
-				"egt_vs_globadier_missing_globe_a_01",
-				"egt_vs_globadier_missing_globe_a_02",
-				"egt_vs_globadier_missing_globe_a_03",
-				"egt_vs_globadier_missing_globe_a_04"
-			},
-			sound_events_duration = {
-				3.5699999332428,
-				3.4049999713898,
-				2.335000038147,
-				2.5950000286102
-			}
-		},
-		egt_vs_heroes_objective_almost_completed_b = {
-			randomize_indexes_n = 0,
-			face_animations_n = 4,
-			database = "vs_player_vo_pactsworn",
-			sound_events_n = 4,
-			category = "player_feedback",
-			dialogue_animations_n = 4,
-			dialogue_animations = {
-				"dialogue_talk",
-				"dialogue_talk",
-				"dialogue_talk",
-				"dialogue_talk"
-			},
-			face_animations = {
-				"face_neutral",
-				"face_neutral",
-				"face_neutral",
-				"face_neutral"
-			},
-			localization_strings = {
-				"egt_vs_heroes_objective_almost_completed_b_01",
-				"egt_vs_heroes_objective_almost_completed_b_02",
-				"egt_vs_heroes_objective_almost_completed_b_03",
-				"egt_vs_heroes_objective_almost_completed_b_04"
-			},
-			randomize_indexes = {},
-			sound_events = {
-				"egt_vs_heroes_objective_almost_completed_b_01",
-				"egt_vs_heroes_objective_almost_completed_b_02",
-				"egt_vs_heroes_objective_almost_completed_b_03",
-				"egt_vs_heroes_objective_almost_completed_b_04"
-			},
-			sound_events_duration = {
-				2.3150000572205,
-				2.2750000953674,
-				2.3399999141693,
-				1.6449999809265
-			}
-		},
-		egt_vs_many_heroes_incapacitated_a = {
-			randomize_indexes_n = 0,
-			face_animations_n = 4,
-			database = "vs_player_vo_pactsworn",
-			sound_events_n = 4,
-			category = "player_feedback",
-			dialogue_animations_n = 4,
-			dialogue_animations = {
-				"dialogue_talk",
-				"dialogue_talk",
-				"dialogue_talk",
-				"dialogue_talk"
-			},
-			face_animations = {
-				"face_neutral",
-				"face_neutral",
-				"face_neutral",
-				"face_neutral"
-			},
-			localization_strings = {
-				"egt_vs_many_heroes_incapacitated_a_01",
-				"egt_vs_many_heroes_incapacitated_a_02",
-				"egt_vs_many_heroes_incapacitated_a_03",
-				"egt_vs_many_heroes_incapacitated_a_04"
-			},
-			randomize_indexes = {},
-			sound_events = {
-				"egt_vs_many_heroes_incapacitated_a_01",
-				"egt_vs_many_heroes_incapacitated_a_02",
-				"egt_vs_many_heroes_incapacitated_a_03",
-				"egt_vs_many_heroes_incapacitated_a_04"
-			},
-			sound_events_duration = {
-				2.920000076294,
-				2.414999961853,
-				2.7550001144409,
-				3.8099999427795
-			}
-		},
 		egt_vs_pact_proximity_banter_eight_b = {
 			sound_events_n = 1,
 			face_animations_n = 1,
@@ -11107,7 +11452,7 @@ return function ()
 				[1] = "egt_vs_pact_proximity_banter_eight_b_01"
 			},
 			sound_events_duration = {
-				[1] = 3.1199998855591
+				[1] = 3.4567
 			}
 		},
 		egt_vs_pact_proximity_banter_eighteen_b = {
@@ -11129,7 +11474,7 @@ return function ()
 				[1] = "egt_vs_pact_proximity_banter_eighteen_b_01"
 			},
 			sound_events_duration = {
-				[1] = 6.6500000953674
+				[1] = 3.4567
 			}
 		},
 		egt_vs_pact_proximity_banter_eleven_b = {
@@ -11151,7 +11496,7 @@ return function ()
 				[1] = "egt_vs_pact_proximity_banter_eleven_b_01"
 			},
 			sound_events_duration = {
-				[1] = 5.6999998092651
+				[1] = 3.4567
 			}
 		},
 		egt_vs_pact_proximity_banter_fifteen_a = {
@@ -11173,7 +11518,7 @@ return function ()
 				[1] = "egt_vs_pact_proximity_banter_fifteen_a_01"
 			},
 			sound_events_duration = {
-				[1] = 6.0799999237061
+				[1] = 3.4567
 			}
 		},
 		egt_vs_pact_proximity_banter_five_a = {
@@ -11195,7 +11540,7 @@ return function ()
 				[1] = "egt_vs_pact_proximity_banter_five_a_01"
 			},
 			sound_events_duration = {
-				[1] = 4.460000038147
+				[1] = 3.4567
 			}
 		},
 		egt_vs_pact_proximity_banter_four_b = {
@@ -11217,7 +11562,7 @@ return function ()
 				[1] = "egt_vs_pact_proximity_banter_four_b_01"
 			},
 			sound_events_duration = {
-				[1] = 7.8449997901917
+				[1] = 3.4567
 			}
 		},
 		egt_vs_pact_proximity_banter_fourteen_b = {
@@ -11239,7 +11584,7 @@ return function ()
 				[1] = "egt_vs_pact_proximity_banter_fourteen_b_01"
 			},
 			sound_events_duration = {
-				[1] = 2.8849999904633
+				[1] = 3.4567
 			}
 		},
 		egt_vs_pact_proximity_banter_nine_b = {
@@ -11261,7 +11606,7 @@ return function ()
 				[1] = "egt_vs_pact_proximity_banter_nine_b_01"
 			},
 			sound_events_duration = {
-				[1] = 3.6050000190735
+				[1] = 3.4567
 			}
 		},
 		egt_vs_pact_proximity_banter_nineteen_b = {
@@ -11283,7 +11628,7 @@ return function ()
 				[1] = "egt_vs_pact_proximity_banter_nineteen_b_01"
 			},
 			sound_events_duration = {
-				[1] = 3.295000076294
+				[1] = 3.4567
 			}
 		},
 		egt_vs_pact_proximity_banter_one_b = {
@@ -11305,7 +11650,7 @@ return function ()
 				[1] = "egt_vs_pact_proximity_banter_one_b_01"
 			},
 			sound_events_duration = {
-				[1] = 5.5149998664856
+				[1] = 3.4567
 			}
 		},
 		egt_vs_pact_proximity_banter_seven_b = {
@@ -11327,7 +11672,7 @@ return function ()
 				[1] = "egt_vs_pact_proximity_banter_seven_b_01"
 			},
 			sound_events_duration = {
-				[1] = 4.1500000953674
+				[1] = 3.4567
 			}
 		},
 		egt_vs_pact_proximity_banter_seventeen_b = {
@@ -11349,7 +11694,7 @@ return function ()
 				[1] = "egt_vs_pact_proximity_banter_seventeen_b_01"
 			},
 			sound_events_duration = {
-				[1] = 5.7849998474121
+				[1] = 3.4567
 			}
 		},
 		egt_vs_pact_proximity_banter_six_b = {
@@ -11371,7 +11716,7 @@ return function ()
 				[1] = "egt_vs_pact_proximity_banter_six_b_01"
 			},
 			sound_events_duration = {
-				[1] = 6.6050000190735
+				[1] = 3.4567
 			}
 		},
 		egt_vs_pact_proximity_banter_sixteen_b = {
@@ -11393,7 +11738,7 @@ return function ()
 				[1] = "egt_vs_pact_proximity_banter_sixteen_b_01"
 			},
 			sound_events_duration = {
-				[1] = 5.0250000953674
+				[1] = 3.4567
 			}
 		},
 		egt_vs_pact_proximity_banter_ten_a = {
@@ -11415,7 +11760,7 @@ return function ()
 				[1] = "egt_vs_pact_proximity_banter_ten_a_01"
 			},
 			sound_events_duration = {
-				[1] = 2.539999961853
+				[1] = 3.4567
 			}
 		},
 		egt_vs_pact_proximity_banter_thirteen_b = {
@@ -11437,7 +11782,7 @@ return function ()
 				[1] = "egt_vs_pact_proximity_banter_thirteen_b_01"
 			},
 			sound_events_duration = {
-				[1] = 7.1950001716614
+				[1] = 3.4567
 			}
 		},
 		egt_vs_pact_proximity_banter_three_b = {
@@ -11459,7 +11804,7 @@ return function ()
 				[1] = "egt_vs_pact_proximity_banter_three_b_01"
 			},
 			sound_events_duration = {
-				[1] = 2.914999961853
+				[1] = 3.4567
 			}
 		},
 		egt_vs_pact_proximity_banter_twelve_b = {
@@ -11481,7 +11826,7 @@ return function ()
 				[1] = "egt_vs_pact_proximity_banter_twelve_b_01"
 			},
 			sound_events_duration = {
-				[1] = 4.9650001525879
+				[1] = 3.4567
 			}
 		},
 		egt_vs_pact_proximity_banter_twenty_a = {
@@ -11503,7 +11848,7 @@ return function ()
 				[1] = "egt_vs_pact_proximity_banter_twenty_a_01"
 			},
 			sound_events_duration = {
-				[1] = 4.4499998092651
+				[1] = 3.4567
 			}
 		},
 		egt_vs_pact_proximity_banter_two_b = {
@@ -11525,164 +11870,7 @@ return function ()
 				[1] = "egt_vs_pact_proximity_banter_two_b_01"
 			},
 			sound_events_duration = {
-				[1] = 6.4549999237061
-			}
-		},
-		egt_vs_passing_hoisted_hero_a = {
-			randomize_indexes_n = 0,
-			face_animations_n = 2,
-			database = "vs_player_vo_pactsworn",
-			sound_events_n = 2,
-			category = "player_feedback",
-			dialogue_animations_n = 2,
-			dialogue_animations = {
-				[1] = "dialogue_talk",
-				[2] = "dialogue_talk"
-			},
-			face_animations = {
-				[1] = "face_neutral",
-				[2] = "face_neutral"
-			},
-			localization_strings = {
-				[1] = "egt_vs_passing_hoisted_hero_a_01",
-				[2] = "egt_vs_passing_hoisted_hero_a_02"
-			},
-			randomize_indexes = {},
-			sound_events = {
-				[1] = "egt_vs_passing_hoisted_hero_a_01",
-				[2] = "egt_vs_passing_hoisted_hero_a_02"
-			},
-			sound_events_duration = {
-				[1] = 4.914999961853,
-				[2] = 3.875
-			}
-		},
-		egt_vs_vw_cheer_a = {
-			randomize_indexes_n = 0,
-			face_animations_n = 6,
-			database = "vs_player_vo_pactsworn",
-			sound_events_n = 6,
-			category = "player_feedback",
-			dialogue_animations_n = 6,
-			dialogue_animations = {
-				"dialogue_talk",
-				"dialogue_talk",
-				"dialogue_talk",
-				"dialogue_talk",
-				"dialogue_talk",
-				"dialogue_talk"
-			},
-			face_animations = {
-				"face_neutral",
-				"face_neutral",
-				"face_neutral",
-				"face_neutral",
-				"face_neutral",
-				"face_neutral"
-			},
-			localization_strings = {
-				"egt_vs_vw_cheer_a_01",
-				"egt_vs_vw_cheer_a_02",
-				"egt_vs_vw_cheer_a_03",
-				"egt_vs_vw_cheer_a_04",
-				"egt_vs_vw_cheer_a_05",
-				"egt_vs_vw_cheer_a_06"
-			},
-			randomize_indexes = {},
-			sound_events = {
-				"egt_vs_vw_cheer_a_01",
-				"egt_vs_vw_cheer_a_02",
-				"egt_vs_vw_cheer_a_03",
-				"egt_vs_vw_cheer_a_04",
-				"egt_vs_vw_cheer_a_05",
-				"egt_vs_vw_cheer_a_06"
-			},
-			sound_events_duration = {
-				3.4567,
-				3.4567,
-				3.4567,
-				3.4567,
-				3.4567,
-				3.4567
-			}
-		},
-		egt_vs_vw_thanks_a = {
-			randomize_indexes_n = 0,
-			face_animations_n = 12,
-			database = "vs_player_vo_pactsworn",
-			sound_events_n = 12,
-			category = "player_feedback",
-			dialogue_animations_n = 12,
-			dialogue_animations = {
-				"dialogue_talk",
-				"dialogue_talk",
-				"dialogue_talk",
-				"dialogue_talk",
-				"dialogue_talk",
-				"dialogue_talk",
-				"dialogue_talk",
-				"dialogue_talk",
-				"dialogue_talk",
-				"dialogue_talk",
-				"dialogue_talk",
-				"dialogue_talk"
-			},
-			face_animations = {
-				"face_neutral",
-				"face_neutral",
-				"face_neutral",
-				"face_neutral",
-				"face_neutral",
-				"face_neutral",
-				"face_neutral",
-				"face_neutral",
-				"face_neutral",
-				"face_neutral",
-				"face_neutral",
-				"face_neutral"
-			},
-			localization_strings = {
-				"egt_vs_vw_thanks_a_01",
-				"egt_vs_vw_thanks_a_02",
-				"egt_vs_vw_thanks_a_03",
-				"egt_vs_vw_thanks_a_04",
-				"egt_vs_vw_thanks_a_05",
-				"egt_vs_vw_thanks_a_06",
-				"egt_vs_vw_thanks_a_07",
-				"egt_vs_vw_thanks_a_08",
-				"egt_vs_vw_thanks_a_09",
-				"egt_vs_vw_thanks_a_10",
-				"egt_vs_vw_thanks_a_11",
-				"egt_vs_vw_thanks_a_12"
-			},
-			randomize_indexes = {},
-			sound_events = {
-				"egt_vs_vw_thanks_a_01",
-				"egt_vs_vw_thanks_a_02",
-				"egt_vs_vw_thanks_a_03",
-				"egt_vs_vw_thanks_a_04",
-				"egt_vs_vw_thanks_a_05",
-				"egt_vs_vw_thanks_a_06",
-				"egt_vs_vw_thanks_a_07",
-				"egt_vs_vw_thanks_a_08",
-				"egt_vs_vw_thanks_a_09",
-				"egt_vs_vw_thanks_a_10",
-				"egt_vs_vw_thanks_a_11",
-				"egt_vs_vw_thanks_a_12"
-			},
-			sound_events_duration = {
-				3.4567,
-				3.4567,
-				3.4567,
-				3.4567,
-				3.4567,
-				3.4567,
-				3.4567,
-				3.4567,
-				3.4567,
-				3.4567,
-				3.4567,
-				3.4567
+				[1] = 3.4567
 			}
 		},
 		egt_vw_affirmative = {
@@ -12363,11 +12551,11 @@ return function ()
 				"epg_spawning_globadier_05"
 			},
 			sound_events_duration = {
-				4.0289790630341,
-				3.9064791202545,
-				3.0499792098999,
-				3.2234791517258,
-				4.8373522758484
+				4.0489792823792,
+				3.926479101181,
+				3.0699791908264,
+				3.2434791326523,
+				4.8573522567749
 			}
 		},
 		epg_taunting_bardin = {
@@ -12423,15 +12611,15 @@ return function ()
 				"epg_taunting_bardin_10"
 			},
 			sound_events_duration = {
-				1.7489792108536,
-				2.5139791965485,
-				2.9979791641235,
-				2.2329790592194,
-				1.852979183197,
-				1.8509792089462,
-				1.3309791088104,
-				1.5809791088104,
-				1.6419792175293
+				1.7689791917801,
+				2.533979177475,
+				3.0179791450501,
+				2.2529792785645,
+				1.8729791641235,
+				1.8709791898727,
+				1.3509792089462,
+				1.6009999513626,
+				1.6619791984558
 			}
 		},
 		epg_taunting_kerillian = {
@@ -12491,16 +12679,16 @@ return function ()
 				"epg_taunting_kerillian_10"
 			},
 			sound_events_duration = {
-				2.7269792556763,
-				2.5399792194366,
-				3.7399792671204,
-				2.198979139328,
-				2.8489999771118,
-				2.7039792537689,
-				1.3649791479111,
-				1.4309791326523,
-				1.4709792137146,
-				1.686979174614
+				2.7469792366028,
+				2.5599792003632,
+				3.7599792480469,
+				2.2189791202545,
+				2.868979215622,
+				2.7239792346954,
+				1.3849791288376,
+				1.4509791135788,
+				1.4909791946411,
+				1.7069791555405
 			}
 		},
 		epg_taunting_kruber = {
@@ -12560,16 +12748,16 @@ return function ()
 				"epg_taunting_kruber_10"
 			},
 			sound_events_duration = {
-				2.9039790630341,
-				2.1539790630341,
-				2.2669792175293,
-				2.716979265213,
-				3.6929790973663,
-				3.0119791030884,
-				1.5579792261124,
-				1.7400000095367,
-				3.0309791564941,
-				2.716979265213
+				2.9239792823791,
+				2.1739792823791,
+				2.2869791984558,
+				2.7369792461395,
+				3.7129790782928,
+				3.0319790840149,
+				1.5779792070389,
+				1.7599791288376,
+				3.0509791374206,
+				2.7369792461395
 			}
 		},
 		epg_taunting_saltzpyre = {
@@ -12629,16 +12817,16 @@ return function ()
 				"epg_taunting_saltzpyre_10"
 			},
 			sound_events_duration = {
-				2.283979177475,
-				3.8999791145325,
-				2.7109792232513,
-				2.3259792327881,
-				2.1829791069031,
-				2.3159792423248,
-				1.3739792108536,
-				2.493979215622,
-				1.4800000190735,
-				3.0719792842865
+				2.3039791584015,
+				3.919979095459,
+				2.7309792041779,
+				2.3459792137146,
+				2.2029790878296,
+				2.3359792232513,
+				1.3939791917801,
+				2.5139791965485,
+				1.5,
+				3.091979265213
 			}
 		},
 		epg_taunting_sienna = {
@@ -12698,16 +12886,16 @@ return function ()
 				"epg_taunting_sienna_10"
 			},
 			sound_events_duration = {
-				1.8579791784286,
-				2.4369790554047,
-				2.8409790992737,
-				3.0579791069031,
-				2.1919791698456,
-				1.9049791097641,
-				1.4689999818802,
-				1.7589999437332,
-				1.6349791288376,
-				1.7489792108536
+				1.8779791593552,
+				2.4569792747498,
+				2.8609790802002,
+				3.0779790878296,
+				2.2119791507721,
+				1.9249792098999,
+				1.4889792203903,
+				1.7789791822434,
+				1.6549791097641,
+				1.7689791917801
 			}
 		},
 		epg_versus_throwing_globe = {
@@ -12759,58 +12947,14 @@ return function ()
 				"epg_versus_throwing_globe_10"
 			},
 			sound_events_duration = {
-				1.5894895792007,
-				1.6729791760445,
-				1.6929792165756,
-				1.5524791479111,
-				1.8364791870117,
-				1.1564791202545,
-				1.7709791064262,
-				1.6454792022705
-			}
-		},
-		epg_vs_ability_explosion_a = {
-			randomize_indexes_n = 0,
-			face_animations_n = 5,
-			database = "vs_player_vo_pactsworn",
-			sound_events_n = 5,
-			category = "player_feedback",
-			dialogue_animations_n = 5,
-			dialogue_animations = {
-				"dialogue_talk",
-				"dialogue_talk",
-				"dialogue_talk",
-				"dialogue_talk",
-				"dialogue_talk"
-			},
-			face_animations = {
-				"face_neutral",
-				"face_neutral",
-				"face_neutral",
-				"face_neutral",
-				"face_neutral"
-			},
-			localization_strings = {
-				"epg_vs_ability_explosion_a_01",
-				"epg_vs_ability_explosion_a_02",
-				"epg_vs_ability_explosion_a_03",
-				"epg_vs_ability_explosion_a_04",
-				"epg_vs_ability_explosion_a_05"
-			},
-			randomize_indexes = {},
-			sound_events = {
-				"epg_vs_ability_explosion_a_01",
-				"epg_vs_ability_explosion_a_02",
-				"epg_vs_ability_explosion_a_03",
-				"epg_vs_ability_explosion_a_04",
-				"epg_vs_ability_explosion_a_05"
-			},
-			sound_events_duration = {
-				1.7749999761581,
-				1.7749999761581,
-				1.5650000572205,
-				2.7550001144409,
-				2.8599998950958
+				1.6094791889191,
+				1.4309791326523,
+				1.7129791975021,
+				1.5724791884422,
+				1.8564791679382,
+				1.1764791607857,
+				1.790979206562,
+				1.665479183197
 			}
 		},
 		epg_vs_ability_horde_a = {
@@ -12854,15 +12998,16 @@ return function ()
 				"epg_vs_ability_horde_a_06"
 			},
 			sound_events_duration = {
-				1.5249999761581,
-				2.1949999332428,
-				2.3599998950958,
-				1.7949999570847,
-				2.6050000190735,
-				3.1600000858307
+				2.4853957891464,
+				4.1422710418701,
+				3.8384165763855,
+				4.0857917070389,
+				5.6463751792908,
+				4.1743957996368
 			}
 		},
 		epg_vs_downed_hero_a = {
+			only_allies = true,
 			randomize_indexes_n = 0,
 			face_animations_n = 4,
 			database = "vs_player_vo_pactsworn",
@@ -12895,10 +13040,10 @@ return function ()
 				"epg_vs_downed_hero_a_04"
 			},
 			sound_events_duration = {
-				1.9199999570847,
-				1.6499999761581,
-				2.0350000858307,
-				1.3200000524521
+				1.5739687681198,
+				0.86397916078568,
+				1.3741979002953,
+				1.5689582824707
 			}
 		},
 		epg_vs_globadier_hitting_many_a = {
@@ -12934,10 +13079,10 @@ return function ()
 				"epg_vs_globadier_hitting_many_a_04"
 			},
 			sound_events_duration = {
-				2.4249999523163,
-				3.664999961853,
-				2.0250000953674,
-				3.7550001144409
+				2.2619895339012,
+				2.1694375276566,
+				2.9708541631699,
+				2.9632709026337
 			}
 		},
 		epg_vs_globadier_missing_globe_a = {
@@ -12973,10 +13118,10 @@ return function ()
 				"epg_vs_globadier_missing_globe_a_04"
 			},
 			sound_events_duration = {
-				1.414999961853,
-				1.7350000143051,
-				1.6200000047684,
-				2.7200000286102
+				1.4596562981606,
+				1.4893333315849,
+				2.4838854074478,
+				1.8706458210945
 			}
 		},
 		epg_vs_globe_on_disabled_hero_a = {
@@ -13012,10 +13157,10 @@ return function ()
 				"epg_vs_globe_on_disabled_hero_a_04"
 			},
 			sound_events_duration = {
-				2.5099999904633,
-				2.6749999523163,
-				2.170000076294,
-				2.789999961853
+				1.8928750157356,
+				2.4793125391007,
+				1.8167499899864,
+				1.8946562409401
 			}
 		},
 		epg_vs_heroes_objective_almost_completed_b = {
@@ -13051,13 +13196,14 @@ return function ()
 				"epg_vs_heroes_objective_almost_completed_b_04"
 			},
 			sound_events_duration = {
-				2.170000076294,
-				1.5249999761581,
-				2.585000038147,
-				1.5249999761581
+				0.75333335995674,
+				1.6483333110809,
+				1.7566041946411,
+				1.5559583902359
 			}
 		},
 		epg_vs_many_heroes_incapacitated_a = {
+			only_allies = true,
 			randomize_indexes_n = 0,
 			face_animations_n = 4,
 			database = "vs_player_vo_pactsworn",
@@ -13090,10 +13236,10 @@ return function ()
 				"epg_vs_many_heroes_incapacitated_a_04"
 			},
 			sound_events_duration = {
-				2.3599998950958,
-				2.295000076294,
-				1.5299999713898,
-				2.7750000953674
+				2.1101040840149,
+				2.0368124842644,
+				0.95401042699814,
+				2.3365624547005
 			}
 		},
 		epg_vs_pact_proximity_banter_eight_b = {
@@ -13115,7 +13261,7 @@ return function ()
 				[1] = "epg_vs_pact_proximity_banter_eight_b_01"
 			},
 			sound_events_duration = {
-				[1] = 3.6050000190735
+				[1] = 3.7312500476837
 			}
 		},
 		epg_vs_pact_proximity_banter_eighteen_b = {
@@ -13137,7 +13283,7 @@ return function ()
 				[1] = "epg_vs_pact_proximity_banter_eighteen_b_01"
 			},
 			sound_events_duration = {
-				[1] = 4.5199999809265
+				[1] = 4.4328956604004
 			}
 		},
 		epg_vs_pact_proximity_banter_eleven_a = {
@@ -13159,7 +13305,7 @@ return function ()
 				[1] = "epg_vs_pact_proximity_banter_eleven_a_01"
 			},
 			sound_events_duration = {
-				[1] = 9.4700002670288
+				[1] = 9.5584373474121
 			}
 		},
 		epg_vs_pact_proximity_banter_fifteen_b = {
@@ -13181,7 +13327,7 @@ return function ()
 				[1] = "epg_vs_pact_proximity_banter_fifteen_b_01"
 			},
 			sound_events_duration = {
-				[1] = 5.8000001907349
+				[1] = 5.9198751449585
 			}
 		},
 		epg_vs_pact_proximity_banter_five_b = {
@@ -13203,7 +13349,7 @@ return function ()
 				[1] = "epg_vs_pact_proximity_banter_five_b_01"
 			},
 			sound_events_duration = {
-				[1] = 5.2950000762939
+				[1] = 6.5415625572205
 			}
 		},
 		epg_vs_pact_proximity_banter_four_b = {
@@ -13225,7 +13371,7 @@ return function ()
 				[1] = "epg_vs_pact_proximity_banter_four_b_01"
 			},
 			sound_events_duration = {
-				[1] = 3.9500000476837
+				[1] = 4.2673540115356
 			}
 		},
 		epg_vs_pact_proximity_banter_fourteen_b = {
@@ -13247,7 +13393,7 @@ return function ()
 				[1] = "epg_vs_pact_proximity_banter_fourteen_b_01"
 			},
 			sound_events_duration = {
-				[1] = 2.8949999809265
+				[1] = 3.8897500038147
 			}
 		},
 		epg_vs_pact_proximity_banter_nine_b = {
@@ -13269,7 +13415,7 @@ return function ()
 				[1] = "epg_vs_pact_proximity_banter_nine_b_01"
 			},
 			sound_events_duration = {
-				[1] = 3.9000000953674
+				[1] = 5.0101041793823
 			}
 		},
 		epg_vs_pact_proximity_banter_nineteen_b = {
@@ -13291,7 +13437,7 @@ return function ()
 				[1] = "epg_vs_pact_proximity_banter_nineteen_b_01"
 			},
 			sound_events_duration = {
-				[1] = 7.2300000190735
+				[1] = 6.434645652771
 			}
 		},
 		epg_vs_pact_proximity_banter_one_a = {
@@ -13313,7 +13459,7 @@ return function ()
 				[1] = "epg_vs_pact_proximity_banter_one_a_01"
 			},
 			sound_events_duration = {
-				[1] = 2.25
+				[1] = 2.8331665992737
 			}
 		},
 		epg_vs_pact_proximity_banter_seven_b = {
@@ -13335,7 +13481,7 @@ return function ()
 				[1] = "epg_vs_pact_proximity_banter_seven_b_01"
 			},
 			sound_events_duration = {
-				[1] = 6.4850001335144
+				[1] = 5.6720418930054
 			}
 		},
 		epg_vs_pact_proximity_banter_seventeen_b = {
@@ -13357,7 +13503,7 @@ return function ()
 				[1] = "epg_vs_pact_proximity_banter_seventeen_b_01"
 			},
 			sound_events_duration = {
-				[1] = 3.8199999332428
+				[1] = 3.2515625953674
 			}
 		},
 		epg_vs_pact_proximity_banter_six_a = {
@@ -13379,7 +13525,7 @@ return function ()
 				[1] = "epg_vs_pact_proximity_banter_six_a_01"
 			},
 			sound_events_duration = {
-				[1] = 5.4899997711182
+				[1] = 4.1357498168945
 			}
 		},
 		epg_vs_pact_proximity_banter_sixteen_a = {
@@ -13401,7 +13547,7 @@ return function ()
 				[1] = "epg_vs_pact_proximity_banter_sixteen_a_01"
 			},
 			sound_events_duration = {
-				[1] = 3.3050000667572
+				[1] = 2.7954165935516
 			}
 		},
 		epg_vs_pact_proximity_banter_ten_b = {
@@ -13423,7 +13569,7 @@ return function ()
 				[1] = "epg_vs_pact_proximity_banter_ten_b_01"
 			},
 			sound_events_duration = {
-				[1] = 3.039999961853
+				[1] = 2.5683958530426
 			}
 		},
 		epg_vs_pact_proximity_banter_thirteen_b = {
@@ -13445,7 +13591,7 @@ return function ()
 				[1] = "epg_vs_pact_proximity_banter_thirteen_b_01"
 			},
 			sound_events_duration = {
-				[1] = 2.2599999904633
+				[1] = 3.1262707710266
 			}
 		},
 		epg_vs_pact_proximity_banter_three_b = {
@@ -13467,7 +13613,7 @@ return function ()
 				[1] = "epg_vs_pact_proximity_banter_three_b_01"
 			},
 			sound_events_duration = {
-				[1] = 3.0950000286102
+				[1] = 3.0974583625794
 			}
 		},
 		epg_vs_pact_proximity_banter_twelve_b = {
@@ -13489,7 +13635,7 @@ return function ()
 				[1] = "epg_vs_pact_proximity_banter_twelve_b_01"
 			},
 			sound_events_duration = {
-				[1] = 6.2649998664856
+				[1] = 4.8321876525879
 			}
 		},
 		epg_vs_pact_proximity_banter_twenty_b = {
@@ -13511,7 +13657,7 @@ return function ()
 				[1] = "epg_vs_pact_proximity_banter_twenty_b_01"
 			},
 			sound_events_duration = {
-				[1] = 9.3850002288818
+				[1] = 10.622812271118
 			}
 		},
 		epg_vs_pact_proximity_banter_two_b = {
@@ -13533,7 +13679,7 @@ return function ()
 				[1] = "epg_vs_pact_proximity_banter_two_b_01"
 			},
 			sound_events_duration = {
-				[1] = 4.7350001335144
+				[1] = 3.7598750591278
 			}
 		},
 		epg_vs_passing_hoisted_hero_a = {
@@ -13561,8 +13707,8 @@ return function ()
 				[2] = "epg_vs_passing_hoisted_hero_a_02"
 			},
 			sound_events_duration = {
-				[1] = 2.3450000286102,
-				[2] = 2.6349999904633
+				[1] = 2.036812543869,
+				[2] = 2.2063125371933
 			}
 		},
 		epg_vs_vw_cheer_a = {
@@ -13606,12 +13752,12 @@ return function ()
 				"epg_vs_vw_cheer_a_06"
 			},
 			sound_events_duration = {
-				3.4567,
-				3.4567,
-				3.4567,
-				3.4567,
-				3.4567,
-				3.4567
+				2.0105520486832,
+				1.5138541460037,
+				2.3434166908264,
+				2.0044583082199,
+				2.2452396154404,
+				2.5033229589462
 			}
 		},
 		epg_vw_affirmative = {
@@ -13672,16 +13818,16 @@ return function ()
 				"epg_vw_affirmative_10"
 			},
 			sound_events_duration = {
-				0.60197919607162,
-				0.73497915267944,
-				0.60997915267944,
-				1.8939791917801,
-				1.8489999771118,
-				0.77697914838791,
-				2.0639791488648,
+				0.62197917699814,
+				0.7549791932106,
+				0.6299791932106,
+				1.9139791727066,
+				1.868979215622,
+				0.79697918891907,
+				2.0839791297913,
 				2.3164596557617,
-				0.99299997091293,
-				1.4079791307449
+				1.0130000114441,
+				1.4279791116715
 			}
 		},
 		epg_vw_ambush = {
@@ -13738,15 +13884,15 @@ return function ()
 				"epg_vw_ambush_10"
 			},
 			sound_events_duration = {
-				1.6899791955948,
-				1.680999994278,
+				1.7099791765213,
+				1.7009791135788,
 				2.109375,
-				1.6139999628067,
-				1.3339999914169,
+				1.6339792013168,
+				1.3539999723434,
 				2.9916851520538,
-				2.772979259491,
-				3.7319791316986,
-				1.2809791564941
+				2.7929792404175,
+				3.7519791126251,
+				1.3009791374207
 			}
 		},
 		epg_vw_attack_now = {
@@ -13807,16 +13953,16 @@ return function ()
 				"epg_vw_attack_now_10"
 			},
 			sound_events_duration = {
-				1.1000000238419,
-				1.5879791975021,
-				1.5930000543594,
-				1.7299791574478,
-				0.63997918367386,
-				1.0740000009537,
-				1.9179999828339,
-				1.7699999809265,
-				2.5539999008179,
-				3.3880000114441
+				1.1199791431427,
+				1.6079791784286,
+				1.6129791736603,
+				1.7499791383743,
+				0.65997916460037,
+				1.0939999818802,
+				1.937979221344,
+				1.7899792194366,
+				2.573979139328,
+				3.4079999923706
 			}
 		},
 		epg_vw_cover_me = {
@@ -13861,12 +14007,12 @@ return function ()
 				"epg_vw_cover_me_10"
 			},
 			sound_events_duration = {
-				0.63397914171219,
-				0.95800000429153,
-				0.68699997663498,
+				0.65397918224335,
+				0.97799998521805,
+				0.70697915554047,
 				1.5835760831833,
-				1.6109791994095,
-				1.7410000562668
+				1.630979180336,
+				1.7609791755676
 			}
 		},
 		epg_vw_gather = {
@@ -13923,15 +14069,15 @@ return function ()
 				"epg_vw_gather_10"
 			},
 			sound_events_duration = {
-				1.0859792232513,
-				0.56197917461395,
-				0.97000002861023,
-				1.6619791984558,
-				0.61599999666214,
-				1.0299999713898,
-				0.875,
-				0.71799999475479,
-				2.5889792442322
+				1.1059792041779,
+				0.58197915554047,
+				0.99000000953674,
+				1.6819791793823,
+				0.63599997758865,
+				1.0499999523163,
+				0.89499998092651,
+				0.73799997568131,
+				2.6089792251587
 			}
 		},
 		epg_vw_go_here = {
@@ -13992,16 +14138,16 @@ return function ()
 				"epg_vw_go_here_10"
 			},
 			sound_events_duration = {
-				0.92497915029526,
-				1.2979999780655,
-				0.7490000128746,
-				1.7769999504089,
-				1.3829791545868,
-				2.073979139328,
-				2.8619792461395,
-				1.2409791946411,
-				1.6319999694824,
-				1.6230000257492
+				0.94497919082642,
+				1.3179792165756,
+				0.76899999380112,
+				1.7969791889191,
+				1.4029791355133,
+				2.0939791202545,
+				2.881979227066,
+				1.2609791755676,
+				1.6519792079925,
+				1.64297914505
 			}
 		},
 		epg_vw_negation = {
@@ -14062,27 +14208,30 @@ return function ()
 				"epg_vw_negation_10"
 			},
 			sound_events_duration = {
-				0.47200000286102,
-				0.54997915029526,
-				0.82599997520447,
-				0.908999979496,
-				1.8739792108536,
-				1.4899791479111,
-				1.0599792003632,
-				1.4569791555405,
-				2.3869791030884,
-				0.92299997806549
+				0.49197915196419,
+				0.56997919082642,
+				0.84597915410995,
+				0.92897915840149,
+				1.8939791917801,
+				1.5099791288376,
+				1.0799791812897,
+				1.476979136467,
+				2.4069790840149,
+				0.94297915697098
 			}
 		},
 		epg_vw_thanks = {
 			only_allies = true,
 			randomize_indexes_n = 0,
-			face_animations_n = 9,
+			face_animations_n = 12,
 			database = "vs_player_vo_pactsworn",
-			sound_events_n = 9,
+			sound_events_n = 12,
 			category = "player_alerts",
-			dialogue_animations_n = 9,
+			dialogue_animations_n = 12,
 			dialogue_animations = {
+				"dialogue_talk",
+				"dialogue_talk",
+				"dialogue_talk",
 				"dialogue_talk",
 				"dialogue_talk",
 				"dialogue_talk",
@@ -14102,41 +14251,53 @@ return function ()
 				"face_neutral",
 				"face_neutral",
 				"face_neutral",
+				"face_neutral",
+				"face_neutral",
+				"face_neutral",
 				"face_neutral"
 			},
 			localization_strings = {
-				"epg_vw_thanks_01",
-				"epg_vw_thanks_02",
-				"epg_vw_thanks_03",
-				"epg_vw_thanks_04",
-				"epg_vw_thanks_05",
-				"epg_vw_thanks_06",
-				"epg_vw_thanks_07",
-				"epg_vw_thanks_08",
-				"epg_vw_thanks_09"
+				"epg_vs_vw_thanks_a_01",
+				"epg_vs_vw_thanks_a_02",
+				"epg_vs_vw_thanks_a_03",
+				"epg_vs_vw_thanks_a_04",
+				"epg_vs_vw_thanks_a_05",
+				"epg_vs_vw_thanks_a_06",
+				"epg_vs_vw_thanks_a_07",
+				"epg_vs_vw_thanks_a_08",
+				"epg_vs_vw_thanks_a_09",
+				"epg_vs_vw_thanks_a_10",
+				"epg_vs_vw_thanks_a_11",
+				"epg_vs_vw_thanks_a_12"
 			},
 			randomize_indexes = {},
 			sound_events = {
-				"epg_vw_thanks_01",
-				"epg_vw_thanks_02",
-				"epg_vw_thanks_03",
-				"epg_vw_thanks_04",
-				"epg_vw_thanks_05",
-				"epg_vw_thanks_06",
-				"epg_vw_thanks_07",
-				"epg_vw_thanks_08",
-				"epg_vw_thanks_09"
+				"epg_vs_vw_thanks_a_01",
+				"epg_vs_vw_thanks_a_02",
+				"epg_vs_vw_thanks_a_03",
+				"epg_vs_vw_thanks_a_04",
+				"epg_vs_vw_thanks_a_05",
+				"epg_vs_vw_thanks_a_06",
+				"epg_vs_vw_thanks_a_07",
+				"epg_vs_vw_thanks_a_08",
+				"epg_vs_vw_thanks_a_09",
+				"epg_vs_vw_thanks_a_10",
+				"epg_vs_vw_thanks_a_11",
+				"epg_vs_vw_thanks_a_12"
 			},
 			sound_events_duration = {
-				1.3530207872391,
-				0.74779164791107,
-				0.6630625128746,
-				0.78754168748856,
-				0.57833331823349,
-				0.84850001335144,
-				0.93527084589005,
-				2.0857291221619,
-				1.6955208778381
+				0.98168751597405,
+				0.53894792497158,
+				0.7084479033947,
+				0.85560417175293,
+				0.93669790029526,
+				1.2722707986832,
+				0.64266666769981,
+				0.89914581179619,
+				0.74645835161209,
+				0.64958333969116,
+				1.7831457853317,
+				1.4487083554268
 			}
 		},
 		epg_vw_wait = {
@@ -14197,16 +14358,16 @@ return function ()
 				"epg_vw_wait_10"
 			},
 			sound_events_duration = {
-				1.8150000572205,
-				0.56297916173935,
-				0.77497917413712,
-				0.71397918462753,
-				0.74597918987274,
-				2.0799791812897,
-				2.8459792137146,
-				1.6739791631699,
-				1.2899792194366,
-				2.2809791564941
+				1.8349791765213,
+				0.58297914266586,
+				0.79497915506363,
+				0.73397916555405,
+				0.76597917079926,
+				2.0999791622162,
+				2.8659791946411,
+				1.6939791440964,
+				1.3099792003632,
+				2.3009791374206
 			}
 		},
 		epm_packmaster_grab_walk = {
@@ -14255,12 +14416,16 @@ return function ()
 		},
 		epm_packmaster_hook_success = {
 			randomize_indexes_n = 0,
-			face_animations_n = 21,
+			face_animations_n = 25,
 			database = "vs_player_vo_pactsworn",
-			sound_events_n = 21,
+			sound_events_n = 25,
 			category = "player_alerts",
-			dialogue_animations_n = 21,
+			dialogue_animations_n = 25,
 			dialogue_animations = {
+				"dialogue_talk",
+				"dialogue_talk",
+				"dialogue_talk",
+				"dialogue_talk",
 				"dialogue_talk",
 				"dialogue_talk",
 				"dialogue_talk",
@@ -14304,6 +14469,10 @@ return function ()
 				"face_neutral",
 				"face_neutral",
 				"face_neutral",
+				"face_neutral",
+				"face_neutral",
+				"face_neutral",
+				"face_neutral",
 				"face_neutral"
 			},
 			localization_strings = {
@@ -14327,7 +14496,11 @@ return function ()
 				"epm_hook_success_18",
 				"epm_hook_success_19",
 				"epm_hook_success_20",
-				"epm_hook_success_21"
+				"epm_hook_success_21",
+				"epm_vs_hook_success_a_01",
+				"epm_vs_hook_success_a_02",
+				"epm_vs_hook_success_a_03",
+				"epm_vs_hook_success_a_04"
 			},
 			randomize_indexes = {},
 			sound_events = {
@@ -14351,7 +14524,11 @@ return function ()
 				"epm_hook_success_18",
 				"epm_hook_success_19",
 				"epm_hook_success_20",
-				"epm_hook_success_21"
+				"epm_hook_success_21",
+				"epm_vs_hook_success_a_01",
+				"epm_vs_hook_success_a_02",
+				"epm_vs_hook_success_a_03",
+				"epm_vs_hook_success_a_04"
 			},
 			sound_events_duration = {
 				1.0299253463745,
@@ -14374,29 +14551,11 @@ return function ()
 				3.7510356903076,
 				2.1861534118652,
 				3.8420219421387,
-				4.4523773193359
-			}
-		},
-		epm_packmaster_skulking = {
-			sound_events_n = 1,
-			face_animations_n = 1,
-			database = "vs_player_vo_pactsworn",
-			category = "player_feedback",
-			dialogue_animations_n = 1,
-			dialogue_animations = {
-				[1] = "dialogue_talk"
-			},
-			face_animations = {
-				[1] = "face_neutral"
-			},
-			localization_strings = {
-				[1] = "Play_packmaster_vce_skulking"
-			},
-			sound_events = {
-				[1] = "Play_packmaster_vce_skulking"
-			},
-			sound_events_duration = {
-				[1] = 2.302490144968
+				4.4523773193359,
+				1.8369759321213,
+				1.6320371627808,
+				3.1155813932419,
+				2.8133449554443
 			}
 		},
 		epm_spawning_packmaster = {
@@ -14437,11 +14596,11 @@ return function ()
 				"epm_spawning_packmaster_05"
 			},
 			sound_events_duration = {
-				5.6024127006531,
-				5.4268517494202,
-				4.8473134040833,
+				5.3605642318726,
+				5.1071343421936,
+				4.6781826019287,
 				6.229145526886,
-				6.9880199432373
+				6.6739654541016
 			}
 		},
 		epm_taunting_bardin = {
@@ -14501,16 +14660,16 @@ return function ()
 				"epm_taunting_bardin_10"
 			},
 			sound_events_duration = {
-				3.5470597743988,
-				2.213365316391,
-				2.0472435951233,
-				3.0977754592895,
-				3.8981809616089,
-				3.1194846630096,
-				1.8801777362824,
-				2.0859422683716,
-				2.2577276229858,
-				2.5210685729981
+				3.3167939186096,
+				2.0629944801331,
+				1.8194159269333,
+				2.9107902050018,
+				3.6839413642883,
+				2.9855527877808,
+				1.5558782815933,
+				1.8112553358078,
+				2.0925102233887,
+				2.2521233558655
 			}
 		},
 		epm_taunting_kerillian = {
@@ -14566,15 +14725,15 @@ return function ()
 				"epm_taunting_kerillian_10"
 			},
 			sound_events_duration = {
-				2.4634921550751,
-				3.6820337772369,
-				2.8976743221283,
-				3.1600711345673,
-				2.6475474834442,
-				2.7202260494232,
-				2.2973704338074,
-				3.9651961326599,
-				2.4125230312347
+				2.3073987960815,
+				3.5802133083344,
+				2.7296252250671,
+				2.9478764533997,
+				2.435647726059,
+				2.4642984867096,
+				2.1972999572754,
+				3.8002145290375,
+				2.1999938488007
 			}
 		},
 		epm_taunting_kruber = {
@@ -14634,16 +14793,16 @@ return function ()
 				"epm_taunting_kruber_10"
 			},
 			sound_events_duration = {
-				2.8882355690002,
-				2.2435693740845,
-				3.7745332717895,
-				2.9618577957153,
-				3.0694591999054,
-				2.6447157859802,
-				1.5054597854614,
-				2.6173436641693,
-				3.3148665428162,
-				5.3205995559692
+				2.7907016277313,
+				2.0880267620087,
+				3.6477003097534,
+				2.8252122402191,
+				2.6199786663055,
+				2.4567670822144,
+				1.2860286235809,
+				2.4678966999054,
+				3.0628716945648,
+				4.9473757743835
 			}
 		},
 		epm_taunting_saltzpyre = {
@@ -14703,16 +14862,16 @@ return function ()
 				"epm_taunting_saltzpyre_10"
 			},
 			sound_events_duration = {
-				3.4939000606537,
-				3.737722158432,
-				3.7962427139282,
-				5.3536348342895,
-				3.450784444809,
-				2.7976236343384,
-				2.6418843269348,
-				2.7240014076233,
-				1.7206630706787,
-				2.3426761627197
+				3.3467814922333,
+				3.3468601703644,
+				3.5441496372223,
+				5.0833921432495,
+				3.1736786365509,
+				2.4214699268341,
+				2.1617670059204,
+				2.3701469898224,
+				1.5008976459503,
+				1.9748601913452
 			}
 		},
 		epm_taunting_sienna = {
@@ -14772,16 +14931,16 @@ return function ()
 				"epm_taunting_sienna_10"
 			},
 			sound_events_duration = {
-				3.014714717865,
-				2.1331362724304,
-				4.2323126792908,
-				3.2016017436981,
-				2.8023428916931,
-				4.0152215957642,
-				1.6121175289154,
-				1.9471929073334,
-				3.125147819519,
-				2.3634414672852
+				2.402533531189,
+				1.9972968101502,
+				3.9664936065674,
+				3.0381739139557,
+				2.4866366386414,
+				3.341255903244,
+				1.4310313463211,
+				1.615873336792,
+				2.8181331157684,
+				2.0521793365478
 			}
 		},
 		epm_vs_ability_horde_a = {
@@ -14825,15 +14984,16 @@ return function ()
 				"epm_vs_ability_horde_a_06"
 			},
 			sound_events_duration = {
-				1.5249999761581,
-				2.1949999332428,
-				2.3599998950958,
-				1.7949999570847,
-				2.6050000190735,
-				3.1600000858307
+				5.5769166946411,
+				4.2157082557678,
+				5.0871043205261,
+				3.6119478940964,
+				5.1249167919159,
+				6.2895936965942
 			}
 		},
 		epm_vs_downed_hero_a = {
+			only_allies = true,
 			randomize_indexes_n = 0,
 			face_animations_n = 4,
 			database = "vs_player_vo_pactsworn",
@@ -14866,10 +15026,10 @@ return function ()
 				"epm_vs_downed_hero_a_04"
 			},
 			sound_events_duration = {
-				1.9199999570847,
-				3.1500000953674,
-				2.2449998855591,
-				3.170000076294
+				2.5919573307037,
+				1.9467504024506,
+				1.9160450696945,
+				2.7556211948395
 			}
 		},
 		epm_vs_globadier_hitting_many_a = {
@@ -14905,10 +15065,10 @@ return function ()
 				"epm_vs_globadier_hitting_many_a_04"
 			},
 			sound_events_duration = {
-				3.8849999904633,
-				3.3150000572205,
-				3.1449999809265,
-				4.289999961853
+				2.6478916406632,
+				3.5436773300171,
+				2.0840941667557,
+				3.4749615192413
 			}
 		},
 		epm_vs_globadier_missing_globe_a = {
@@ -14944,10 +15104,10 @@ return function ()
 				"epm_vs_globadier_missing_globe_a_04"
 			},
 			sound_events_duration = {
-				1.9750000238419,
-				1.8099999427795,
-				1.8799999952316,
-				2.625
+				1.9392879605293,
+				1.5503528118134,
+				1.6636667847633,
+				1.6278783082962
 			}
 		},
 		epm_vs_heroes_objective_almost_completed_b = {
@@ -14983,52 +15143,14 @@ return function ()
 				"epm_vs_heroes_objective_almost_completed_b_04"
 			},
 			sound_events_duration = {
-				2.170000076294,
-				1.4349999427795,
-				1.6000000238419,
-				1.4550000429153
-			}
-		},
-		epm_vs_hook_success_a = {
-			randomize_indexes_n = 0,
-			face_animations_n = 4,
-			database = "vs_player_vo_pactsworn",
-			sound_events_n = 4,
-			category = "player_feedback",
-			dialogue_animations_n = 4,
-			dialogue_animations = {
-				"dialogue_talk",
-				"dialogue_talk",
-				"dialogue_talk",
-				"dialogue_talk"
-			},
-			face_animations = {
-				"face_neutral",
-				"face_neutral",
-				"face_neutral",
-				"face_neutral"
-			},
-			localization_strings = {
-				"epm_vs_hook_success_a_01",
-				"epm_vs_hook_success_a_02",
-				"epm_vs_hook_success_a_03",
-				"epm_vs_hook_success_a_04"
-			},
-			randomize_indexes = {},
-			sound_events = {
-				"epm_vs_hook_success_a_01",
-				"epm_vs_hook_success_a_02",
-				"epm_vs_hook_success_a_03",
-				"epm_vs_hook_success_a_04"
-			},
-			sound_events_duration = {
-				2.4849998950958,
-				2.5350000858307,
-				1.6100000143051,
-				1.6900000572205
+				1.4174433946609,
+				2.2407379150391,
+				1.8182950615883,
+				1.5528304576874
 			}
 		},
 		epm_vs_many_heroes_incapacitated_a = {
+			only_allies = true,
 			randomize_indexes_n = 0,
 			face_animations_n = 4,
 			database = "vs_player_vo_pactsworn",
@@ -15061,10 +15183,10 @@ return function ()
 				"epm_vs_many_heroes_incapacitated_a_04"
 			},
 			sound_events_duration = {
-				2.3250000476837,
-				2.2400000095367,
-				1.4349999427795,
-				2.1500000953674
+				2.7119964361191,
+				2.3415848016739,
+				2.5715363025665,
+				1.8976492881775
 			}
 		},
 		epm_vs_packmaster_hoisted_player_a = {
@@ -15100,10 +15222,10 @@ return function ()
 				"epm_vs_packmaster_hoisted_player_a_04"
 			},
 			sound_events_duration = {
-				2.6150000095367,
-				1.875,
-				1.5,
-				3.1150000095367
+				2.4504548311233,
+				1.8881810307503,
+				2.118309378624,
+				2.4483016729355
 			}
 		},
 		epm_vs_pact_proximity_banter_eight_b = {
@@ -15125,7 +15247,7 @@ return function ()
 				[1] = "epm_vs_pact_proximity_banter_eight_b_01"
 			},
 			sound_events_duration = {
-				[1] = 6.9549999237061
+				[1] = 4.4684381484985
 			}
 		},
 		epm_vs_pact_proximity_banter_eighteen_b = {
@@ -15147,7 +15269,7 @@ return function ()
 				[1] = "epm_vs_pact_proximity_banter_eighteen_b_01"
 			},
 			sound_events_duration = {
-				[1] = 3.2750000953674
+				[1] = 3.2970904111862
 			}
 		},
 		epm_vs_pact_proximity_banter_eleven_b = {
@@ -15169,7 +15291,7 @@ return function ()
 				[1] = "epm_vs_pact_proximity_banter_eleven_b_01"
 			},
 			sound_events_duration = {
-				[1] = 7.0949997901917
+				[1] = 7.7464351654053
 			}
 		},
 		epm_vs_pact_proximity_banter_fifteen_b = {
@@ -15191,7 +15313,7 @@ return function ()
 				[1] = "epm_vs_pact_proximity_banter_fifteen_b_01"
 			},
 			sound_events_duration = {
-				[1] = 4.8800001144409
+				[1] = 4.6304306983948
 			}
 		},
 		epm_vs_pact_proximity_banter_five_b = {
@@ -15213,7 +15335,7 @@ return function ()
 				[1] = "epm_vs_pact_proximity_banter_five_b_01"
 			},
 			sound_events_duration = {
-				[1] = 5.2300000190735
+				[1] = 6.0004053115845
 			}
 		},
 		epm_vs_pact_proximity_banter_four_b = {
@@ -15235,7 +15357,7 @@ return function ()
 				[1] = "epm_vs_pact_proximity_banter_four_b_01"
 			},
 			sound_events_duration = {
-				[1] = 2.164999961853
+				[1] = 1.9324842691422
 			}
 		},
 		epm_vs_pact_proximity_banter_fourteen_b = {
@@ -15257,7 +15379,7 @@ return function ()
 				[1] = "epm_vs_pact_proximity_banter_fourteen_b_01"
 			},
 			sound_events_duration = {
-				[1] = 3.5199999809265
+				[1] = 3.4212982654572
 			}
 		},
 		epm_vs_pact_proximity_banter_nine_b = {
@@ -15279,7 +15401,7 @@ return function ()
 				[1] = "epm_vs_pact_proximity_banter_nine_b_01"
 			},
 			sound_events_duration = {
-				[1] = 3.539999961853
+				[1] = 2.993094086647
 			}
 		},
 		epm_vs_pact_proximity_banter_nineteen_b = {
@@ -15301,7 +15423,7 @@ return function ()
 				[1] = "epm_vs_pact_proximity_banter_nineteen_b_01"
 			},
 			sound_events_duration = {
-				[1] = 4.4250001907349
+				[1] = 3.7144500017166
 			}
 		},
 		epm_vs_pact_proximity_banter_one_b = {
@@ -15323,7 +15445,7 @@ return function ()
 				[1] = "epm_vs_pact_proximity_banter_one_b_01"
 			},
 			sound_events_duration = {
-				[1] = 4.8000001907349
+				[1] = 3.9229183197022
 			}
 		},
 		epm_vs_pact_proximity_banter_seven_a = {
@@ -15345,7 +15467,7 @@ return function ()
 				[1] = "epm_vs_pact_proximity_banter_seven_a_01"
 			},
 			sound_events_duration = {
-				[1] = 3.1349999904633
+				[1] = 5.118649482727
 			}
 		},
 		epm_vs_pact_proximity_banter_seventeen_a = {
@@ -15367,7 +15489,7 @@ return function ()
 				[1] = "epm_vs_pact_proximity_banter_seventeen_a_01"
 			},
 			sound_events_duration = {
-				[1] = 4
+				[1] = 4.3503360748291
 			}
 		},
 		epm_vs_pact_proximity_banter_six_b = {
@@ -15389,7 +15511,7 @@ return function ()
 				[1] = "epm_vs_pact_proximity_banter_six_b_01"
 			},
 			sound_events_duration = {
-				[1] = 7.0149998664856
+				[1] = 6.2029447555542
 			}
 		},
 		epm_vs_pact_proximity_banter_sixteen_b = {
@@ -15411,7 +15533,7 @@ return function ()
 				[1] = "epm_vs_pact_proximity_banter_sixteen_b_01"
 			},
 			sound_events_duration = {
-				[1] = 8.6850004196167
+				[1] = 9.0967748165131
 			}
 		},
 		epm_vs_pact_proximity_banter_ten_b = {
@@ -15433,7 +15555,7 @@ return function ()
 				[1] = "epm_vs_pact_proximity_banter_ten_b_01"
 			},
 			sound_events_duration = {
-				[1] = 2.4400000572205
+				[1] = 2.3985025882721
 			}
 		},
 		epm_vs_pact_proximity_banter_thirteen_b = {
@@ -15455,7 +15577,7 @@ return function ()
 				[1] = "epm_vs_pact_proximity_banter_thirteen_b_01"
 			},
 			sound_events_duration = {
-				[1] = 6.0749998092651
+				[1] = 4.0120947360992
 			}
 		},
 		epm_vs_pact_proximity_banter_three_b = {
@@ -15477,7 +15599,7 @@ return function ()
 				[1] = "epm_vs_pact_proximity_banter_three_b_01"
 			},
 			sound_events_duration = {
-				[1] = 7.8099999427795
+				[1] = 6.4127407073975
 			}
 		},
 		epm_vs_pact_proximity_banter_twelve_a = {
@@ -15499,7 +15621,7 @@ return function ()
 				[1] = "epm_vs_pact_proximity_banter_twelve_a_01"
 			},
 			sound_events_duration = {
-				[1] = 4.3200001716614
+				[1] = 4.0987935066223
 			}
 		},
 		epm_vs_pact_proximity_banter_twenty_b = {
@@ -15521,7 +15643,7 @@ return function ()
 				[1] = "epm_vs_pact_proximity_banter_twenty_b_01"
 			},
 			sound_events_duration = {
-				[1] = 8.375
+				[1] = 8.9637472629547
 			}
 		},
 		epm_vs_pact_proximity_banter_two_a = {
@@ -15543,7 +15665,7 @@ return function ()
 				[1] = "epm_vs_pact_proximity_banter_two_a_01"
 			},
 			sound_events_duration = {
-				[1] = 14.064999580383
+				[1] = 9.1949672698975
 			}
 		},
 		epm_vs_passing_hoisted_hero_a = {
@@ -15571,8 +15693,8 @@ return function ()
 				[2] = "epm_vs_passing_hoisted_hero_a_02"
 			},
 			sound_events_duration = {
-				[1] = 2.6349999904633,
-				[2] = 2.8250000476837
+				[1] = 2.1896308064461,
+				[2] = 3.2292788028717
 			}
 		},
 		epm_vs_vw_cheer_a = {
@@ -15616,12 +15738,12 @@ return function ()
 				"epm_vs_vw_cheer_a_06"
 			},
 			sound_events_duration = {
-				3.4567,
-				3.4567,
-				3.4567,
-				3.4567,
-				3.4567,
-				3.4567
+				2.1676466464996,
+				2.415158033371,
+				1.7564712762833,
+				2.3419880867004,
+				2.2907336950302,
+				3.0116274356842
 			}
 		},
 		epm_vw_affirmative = {
@@ -15682,7 +15804,7 @@ return function ()
 				"epm_vw_affirmative_10"
 			},
 			sound_events_duration = {
-				0.61444246768951,
+				0.55143886804581,
 				0.5181673169136,
 				0.32372918725014,
 				0.77584493160248,
@@ -15896,11 +16018,11 @@ return function ()
 				0.5889578461647,
 				0.66729938983917,
 				0.66635555028915,
-				0.98349732160568,
+				0.98351699113846,
 				0.8758956193924,
 				1.0788285732269,
 				1.9585193395615,
-				1.6914030313492,
+				1.6419085264206,
 				1.5639799833298
 			}
 		},
@@ -16033,15 +16155,15 @@ return function ()
 			},
 			sound_events_duration = {
 				0.96461987495422,
-				1.2081393003464,
-				0.7220441699028,
-				1.9207643270493,
-				1.0958182811737,
-				1.5082913637161,
-				1.6583672761917,
-				1.2657157182693,
-				1.0967621803284,
-				2.0991566181183
+				1.1096225976944,
+				0.68904787302017,
+				1.8223065137863,
+				1.0438659191132,
+				1.4331550598145,
+				1.576623916626,
+				1.1998018026352,
+				1.0415651798248,
+				1.9574770927429
 			}
 		},
 		epm_vw_negation = {
@@ -16105,24 +16227,29 @@ return function ()
 				0.68428915739059,
 				0.61821794509888,
 				0.41245338320732,
-				2.0245907306671,
-				1.8226014375687,
+				1.8907964229584,
+				1.7880125045776,
 				1.1647212505341,
 				0.9693391919136,
 				1.5592606067658,
-				2.6786954402924,
+				2.6267430782318,
 				2.0481872558594
 			}
 		},
 		epm_vw_thanks = {
 			only_allies = true,
 			randomize_indexes_n = 0,
-			face_animations_n = 7,
+			face_animations_n = 12,
 			database = "vs_player_vo_pactsworn",
-			sound_events_n = 7,
+			sound_events_n = 12,
 			category = "player_alerts",
-			dialogue_animations_n = 7,
+			dialogue_animations_n = 12,
 			dialogue_animations = {
+				"dialogue_talk",
+				"dialogue_talk",
+				"dialogue_talk",
+				"dialogue_talk",
+				"dialogue_talk",
 				"dialogue_talk",
 				"dialogue_talk",
 				"dialogue_talk",
@@ -16138,35 +16265,55 @@ return function ()
 				"face_neutral",
 				"face_neutral",
 				"face_neutral",
+				"face_neutral",
+				"face_neutral",
+				"face_neutral",
+				"face_neutral",
+				"face_neutral",
 				"face_neutral"
 			},
 			localization_strings = {
-				"epm_vw_thanks_01",
-				"epm_vw_thanks_02",
-				"epm_vw_thanks_03",
-				"epm_vw_thanks_04",
-				"epm_vw_thanks_05",
-				"epm_vw_thanks_06",
-				"epm_vw_thanks_07"
+				"epm_vs_vw_thanks_a_01",
+				"epm_vs_vw_thanks_a_02",
+				"epm_vs_vw_thanks_a_03",
+				"epm_vs_vw_thanks_a_04",
+				"epm_vs_vw_thanks_a_05",
+				"epm_vs_vw_thanks_a_06",
+				"epm_vs_vw_thanks_a_07",
+				"epm_vs_vw_thanks_a_08",
+				"epm_vs_vw_thanks_a_09",
+				"epm_vs_vw_thanks_a_10",
+				"epm_vs_vw_thanks_a_11",
+				"epm_vs_vw_thanks_a_12"
 			},
 			randomize_indexes = {},
 			sound_events = {
-				"epm_vw_thanks_01",
-				"epm_vw_thanks_02",
-				"epm_vw_thanks_03",
-				"epm_vw_thanks_04",
-				"epm_vw_thanks_05",
-				"epm_vw_thanks_06",
-				"epm_vw_thanks_07"
+				"epm_vs_vw_thanks_a_01",
+				"epm_vs_vw_thanks_a_02",
+				"epm_vs_vw_thanks_a_03",
+				"epm_vs_vw_thanks_a_04",
+				"epm_vs_vw_thanks_a_05",
+				"epm_vs_vw_thanks_a_06",
+				"epm_vs_vw_thanks_a_07",
+				"epm_vs_vw_thanks_a_08",
+				"epm_vs_vw_thanks_a_09",
+				"epm_vs_vw_thanks_a_10",
+				"epm_vs_vw_thanks_a_11",
+				"epm_vs_vw_thanks_a_12"
 			},
 			sound_events_duration = {
-				1.4985773563385,
-				1.0977257490158,
-				1.0677380561829,
-				1.3363883495331,
-				0.61996805667877,
-				0.73706746101379,
-				1.0805590152741
+				1.6661936044693,
+				0.47384452819824,
+				0.96231907606125,
+				1.7021985054016,
+				0.9973800778389,
+				1.2725784182549,
+				0.39524734020233,
+				0.99183481931686,
+				1.2619008421898,
+				1.2373208105564,
+				0.66956079006195,
+				1.9211969971657
 			}
 		},
 		epm_vw_wait = {
@@ -16670,15 +16817,16 @@ return function ()
 				"erg_vs_ability_horde_a_06"
 			},
 			sound_events_duration = {
-				1.6599999666214,
-				2.5250000953674,
-				3.0999999046326,
-				2.085000038147,
-				2.5350000858307,
-				3.6449999809265
+				2.2112290859222,
+				3.9369375705719,
+				3.5963125228882,
+				2.7414062023163,
+				3.1426665782928,
+				3.4690728187561
 			}
 		},
 		erg_vs_downed_hero_a = {
+			only_allies = true,
 			randomize_indexes_n = 0,
 			face_animations_n = 4,
 			database = "vs_player_vo_pactsworn",
@@ -16711,10 +16859,10 @@ return function ()
 				"erg_vs_downed_hero_a_04"
 			},
 			sound_events_duration = {
-				2.2750000953674,
-				3.4000000953674,
-				2.8849999904633,
-				2.3450000286102
+				1.0715833902359,
+				2.4983438253403,
+				2.0298540592194,
+				1.9546458125114
 			}
 		},
 		erg_vs_globadier_hitting_many_a = {
@@ -16750,10 +16898,10 @@ return function ()
 				"erg_vs_globadier_hitting_many_a_04"
 			},
 			sound_events_duration = {
-				3.9300000667572,
-				2.2249999046326,
-				2.5999999046326,
-				2.6349999904633
+				2.5417499542236,
+				1.937979221344,
+				2.2320103645325,
+				3.3510625362396
 			}
 		},
 		erg_vs_globadier_missing_globe_a = {
@@ -16789,10 +16937,10 @@ return function ()
 				"erg_vs_globadier_missing_globe_a_04"
 			},
 			sound_events_duration = {
-				3.0299999713898,
-				2.920000076294,
-				2.1300001144409,
-				2.3099999427795
+				2.5323333740234,
+				2.0942499637604,
+				1.6389791965485,
+				2.6538333892822
 			}
 		},
 		erg_vs_heroes_objective_almost_completed_b = {
@@ -16828,49 +16976,10 @@ return function ()
 				"erg_vs_heroes_objective_almost_completed_b_04"
 			},
 			sound_events_duration = {
-				2.3150000572205,
-				1.835000038147,
-				1.8650000095367,
-				2.664999961853
-			}
-		},
-		erg_vs_many_heroes_incapacitated_a = {
-			randomize_indexes_n = 0,
-			face_animations_n = 4,
-			database = "vs_player_vo_pactsworn",
-			sound_events_n = 4,
-			category = "player_feedback",
-			dialogue_animations_n = 4,
-			dialogue_animations = {
-				"dialogue_talk",
-				"dialogue_talk",
-				"dialogue_talk",
-				"dialogue_talk"
-			},
-			face_animations = {
-				"face_neutral",
-				"face_neutral",
-				"face_neutral",
-				"face_neutral"
-			},
-			localization_strings = {
-				"erg_vs_many_heroes_incapacitated_a_01",
-				"erg_vs_many_heroes_incapacitated_a_02",
-				"erg_vs_many_heroes_incapacitated_a_03",
-				"erg_vs_many_heroes_incapacitated_a_04"
-			},
-			randomize_indexes = {},
-			sound_events = {
-				"erg_vs_many_heroes_incapacitated_a_01",
-				"erg_vs_many_heroes_incapacitated_a_02",
-				"erg_vs_many_heroes_incapacitated_a_03",
-				"erg_vs_many_heroes_incapacitated_a_04"
-			},
-			sound_events_duration = {
-				2.5599999427795,
-				2.329999923706,
-				3.1349999904633,
-				1.9650000333786
+				1.846895813942,
+				1.687895834446,
+				1.8469062447548,
+				2.5807707309723
 			}
 		},
 		erg_vs_pact_proximity_banter_eight_b = {
@@ -16892,7 +17001,7 @@ return function ()
 				[1] = "erg_vs_pact_proximity_banter_eight_b_01"
 			},
 			sound_events_duration = {
-				[1] = 9.5649995803833
+				[1] = 7.5952081680298
 			}
 		},
 		erg_vs_pact_proximity_banter_eighteen_b = {
@@ -16914,7 +17023,7 @@ return function ()
 				[1] = "erg_vs_pact_proximity_banter_eighteen_b_01"
 			},
 			sound_events_duration = {
-				[1] = 8.8199996948242
+				[1] = 8.530312538147
 			}
 		},
 		erg_vs_pact_proximity_banter_eleven_b = {
@@ -16936,7 +17045,7 @@ return function ()
 				[1] = "erg_vs_pact_proximity_banter_eleven_b_01"
 			},
 			sound_events_duration = {
-				[1] = 7.9850001335144
+				[1] = 7.8339688777924
 			}
 		},
 		erg_vs_pact_proximity_banter_fifteen_b = {
@@ -16958,7 +17067,7 @@ return function ()
 				[1] = "erg_vs_pact_proximity_banter_fifteen_b_01"
 			},
 			sound_events_duration = {
-				[1] = 3.5650000572205
+				[1] = 2.3817915916443
 			}
 		},
 		erg_vs_pact_proximity_banter_five_b = {
@@ -16980,7 +17089,7 @@ return function ()
 				[1] = "erg_vs_pact_proximity_banter_five_b_01"
 			},
 			sound_events_duration = {
-				[1] = 3.8949999809265
+				[1] = 4.3372917175293
 			}
 		},
 		erg_vs_pact_proximity_banter_four_a = {
@@ -17002,7 +17111,7 @@ return function ()
 				[1] = "erg_vs_pact_proximity_banter_four_a_01"
 			},
 			sound_events_duration = {
-				[1] = 9.3999996185303
+				[1] = 9.109582901001
 			}
 		},
 		erg_vs_pact_proximity_banter_fourteen_a = {
@@ -17024,7 +17133,7 @@ return function ()
 				[1] = "erg_vs_pact_proximity_banter_fourteen_a_01"
 			},
 			sound_events_duration = {
-				[1] = 1.4249999523163
+				[1] = 3.9854791164398
 			}
 		},
 		erg_vs_pact_proximity_banter_nine_a = {
@@ -17046,7 +17155,7 @@ return function ()
 				[1] = "erg_vs_pact_proximity_banter_nine_a_01"
 			},
 			sound_events_duration = {
-				[1] = 5.9650001525879
+				[1] = 4.1189270019531
 			}
 		},
 		erg_vs_pact_proximity_banter_nineteen_a = {
@@ -17068,7 +17177,7 @@ return function ()
 				[1] = "erg_vs_pact_proximity_banter_nineteen_a_01"
 			},
 			sound_events_duration = {
-				[1] = 5.7849998474121
+				[1] = 5.3741042613983
 			}
 		},
 		erg_vs_pact_proximity_banter_one_b = {
@@ -17090,7 +17199,7 @@ return function ()
 				[1] = "erg_vs_pact_proximity_banter_one_b_01"
 			},
 			sound_events_duration = {
-				[1] = 12.295000076294
+				[1] = 9.3068122863769
 			}
 		},
 		erg_vs_pact_proximity_banter_seven_b = {
@@ -17112,7 +17221,7 @@ return function ()
 				[1] = "erg_vs_pact_proximity_banter_seven_b_01"
 			},
 			sound_events_duration = {
-				[1] = 3.3050000667572
+				[1] = 3.1813125610352
 			}
 		},
 		erg_vs_pact_proximity_banter_seventeen_b = {
@@ -17134,7 +17243,7 @@ return function ()
 				[1] = "erg_vs_pact_proximity_banter_seventeen_b_01"
 			},
 			sound_events_duration = {
-				[1] = 4.9800000190735
+				[1] = 4.3256459236145
 			}
 		},
 		erg_vs_pact_proximity_banter_six_b = {
@@ -17156,7 +17265,7 @@ return function ()
 				[1] = "erg_vs_pact_proximity_banter_six_b_01"
 			},
 			sound_events_duration = {
-				[1] = 5.9499998092651
+				[1] = 4.86954164505
 			}
 		},
 		erg_vs_pact_proximity_banter_sixteen_b = {
@@ -17178,7 +17287,7 @@ return function ()
 				[1] = "erg_vs_pact_proximity_banter_sixteen_b_01"
 			},
 			sound_events_duration = {
-				[1] = 2.3599998950958
+				[1] = 3.0060000419617
 			}
 		},
 		erg_vs_pact_proximity_banter_ten_b = {
@@ -17200,7 +17309,7 @@ return function ()
 				[1] = "erg_vs_pact_proximity_banter_ten_b_01"
 			},
 			sound_events_duration = {
-				[1] = 2.329999923706
+				[1] = 2.3274374604225
 			}
 		},
 		erg_vs_pact_proximity_banter_thirteen_b = {
@@ -17222,7 +17331,7 @@ return function ()
 				[1] = "erg_vs_pact_proximity_banter_thirteen_b_01"
 			},
 			sound_events_duration = {
-				[1] = 3.4449999332428
+				[1] = 3.1031041145325
 			}
 		},
 		erg_vs_pact_proximity_banter_three_b = {
@@ -17244,7 +17353,7 @@ return function ()
 				[1] = "erg_vs_pact_proximity_banter_three_b_01"
 			},
 			sound_events_duration = {
-				[1] = 7.5100002288818
+				[1] = 5.0212292671204
 			}
 		},
 		erg_vs_pact_proximity_banter_twelve_b = {
@@ -17266,7 +17375,7 @@ return function ()
 				[1] = "erg_vs_pact_proximity_banter_twelve_b_01"
 			},
 			sound_events_duration = {
-				[1] = 5.9800000190735
+				[1] = 5.1100311279297
 			}
 		},
 		erg_vs_pact_proximity_banter_twenty_b = {
@@ -17288,7 +17397,7 @@ return function ()
 				[1] = "erg_vs_pact_proximity_banter_twenty_b_01"
 			},
 			sound_events_duration = {
-				[1] = 5.539999961853
+				[1] = 4.1666250228882
 			}
 		},
 		erg_vs_pact_proximity_banter_two_b = {
@@ -17310,36 +17419,7 @@ return function ()
 				[1] = "erg_vs_pact_proximity_banter_two_b_01"
 			},
 			sound_events_duration = {
-				[1] = 2.920000076294
-			}
-		},
-		erg_vs_passing_hoisted_hero_a = {
-			randomize_indexes_n = 0,
-			face_animations_n = 2,
-			database = "vs_player_vo_pactsworn",
-			sound_events_n = 2,
-			category = "player_feedback",
-			dialogue_animations_n = 2,
-			dialogue_animations = {
-				[1] = "dialogue_talk",
-				[2] = "dialogue_talk"
-			},
-			face_animations = {
-				[1] = "face_neutral",
-				[2] = "face_neutral"
-			},
-			localization_strings = {
-				[1] = "erg_vs_passing_hoisted_hero_a_01",
-				[2] = "erg_vs_passing_hoisted_hero_a_02"
-			},
-			randomize_indexes = {},
-			sound_events = {
-				[1] = "erg_vs_passing_hoisted_hero_a_01",
-				[2] = "erg_vs_passing_hoisted_hero_a_02"
-			},
-			sound_events_duration = {
-				[1] = 4.8049998283386,
-				[2] = 4.375
+				[1] = 2.5010833740234
 			}
 		},
 		erg_vs_ratling_hitting_shield_a = {
@@ -17375,10 +17455,10 @@ return function ()
 				"erg_vs_ratling_hitting_shield_a_04"
 			},
 			sound_events_duration = {
-				1.3400000333786,
-				3.8650000095367,
-				2.25,
-				2.0650000572205
+				2.1894791126251,
+				2.4817917346954,
+				1.6761354207993,
+				2.4879791736603
 			}
 		},
 		erg_vs_shooting_hooked_hero_a = {
@@ -17414,10 +17494,10 @@ return function ()
 				"erg_vs_shooting_hooked_hero_a_04"
 			},
 			sound_events_duration = {
-				1.8799999952316,
-				1.7300000190735,
-				1.7699999809265,
-				2.085000038147
+				2.8337082862854,
+				1.8375728726387,
+				2.1347916126251,
+				1.663125038147
 			}
 		},
 		erg_vs_vw_cheer_a = {
@@ -17962,12 +18042,16 @@ return function ()
 		erg_vw_thanks = {
 			only_allies = true,
 			randomize_indexes_n = 0,
-			face_animations_n = 7,
+			face_animations_n = 11,
 			database = "vs_player_vo_pactsworn",
-			sound_events_n = 7,
+			sound_events_n = 11,
 			category = "player_alerts",
-			dialogue_animations_n = 7,
+			dialogue_animations_n = 11,
 			dialogue_animations = {
+				"dialogue_talk",
+				"dialogue_talk",
+				"dialogue_talk",
+				"dialogue_talk",
 				"dialogue_talk",
 				"dialogue_talk",
 				"dialogue_talk",
@@ -17983,35 +18067,51 @@ return function ()
 				"face_neutral",
 				"face_neutral",
 				"face_neutral",
+				"face_neutral",
+				"face_neutral",
+				"face_neutral",
+				"face_neutral",
 				"face_neutral"
 			},
 			localization_strings = {
-				"erg_vw_thanks_01",
-				"erg_vw_thanks_02",
-				"erg_vw_thanks_03",
-				"erg_vw_thanks_04",
-				"erg_vw_thanks_05",
-				"erg_vw_thanks_06",
-				"erg_vw_thanks_07"
+				"erg_vs_vw_thanks_01",
+				"erg_vs_vw_thanks_02",
+				"erg_vs_vw_thanks_03",
+				"erg_vs_vw_thanks_04",
+				"erg_vs_vw_thanks_05",
+				"erg_vs_vw_thanks_06",
+				"erg_vs_vw_thanks_07",
+				"erg_vs_vw_thanks_08",
+				"erg_vs_vw_thanks_09",
+				"erg_vs_vw_thanks_10",
+				"erg_vs_vw_thanks_12"
 			},
 			randomize_indexes = {},
 			sound_events = {
-				"erg_vw_thanks_01",
-				"erg_vw_thanks_02",
-				"erg_vw_thanks_03",
-				"erg_vw_thanks_04",
-				"erg_vw_thanks_05",
-				"erg_vw_thanks_06",
-				"erg_vw_thanks_07"
+				"erg_vs_vw_thanks_01",
+				"erg_vs_vw_thanks_02",
+				"erg_vs_vw_thanks_03",
+				"erg_vs_vw_thanks_04",
+				"erg_vs_vw_thanks_05",
+				"erg_vs_vw_thanks_06",
+				"erg_vs_vw_thanks_07",
+				"erg_vs_vw_thanks_08",
+				"erg_vs_vw_thanks_09",
+				"erg_vs_vw_thanks_10",
+				"erg_vs_vw_thanks_12"
 			},
 			sound_events_duration = {
-				1.2559791505337,
-				0.95097917318344,
-				1.2859791517258,
-				1.227979183197,
-				1.5129791498184,
-				2.0469791889191,
-				1.6394791603088
+				3.4567,
+				3.4567,
+				3.4567,
+				3.4567,
+				3.4567,
+				3.4567,
+				3.4567,
+				3.4567,
+				3.4567,
+				3.4567,
+				3.4567
 			}
 		},
 		erg_vw_wait = {
@@ -18084,6 +18184,28 @@ return function ()
 				3.2249791622162
 			}
 		},
+		ewt_combat_idle = {
+			sound_events_n = 1,
+			face_animations_n = 1,
+			database = "vs_player_vo_pactsworn",
+			category = "casual_talk",
+			dialogue_animations_n = 1,
+			dialogue_animations = {
+				[1] = "dialogue_talk"
+			},
+			face_animations = {
+				[1] = "face_neutral"
+			},
+			localization_strings = {
+				[1] = "player_combat_walk_normal"
+			},
+			sound_events = {
+				[1] = "player_combat_walk_normal"
+			},
+			sound_events_duration = {
+				[1] = 4.3557691574097
+			}
+		},
 		ewt_spawning_warpfire_thrower = {
 			only_allies = true,
 			randomize_indexes_n = 0,
@@ -18122,11 +18244,11 @@ return function ()
 				"ewt_spawning_warpfire_thrower_05"
 			},
 			sound_events_duration = {
-				6.410388469696,
-				5.9884572029114,
-				4.8433690071106,
-				6.163074016571,
-				3.7080764770508
+				6.5747857093811,
+				6.1404910087585,
+				4.9618492126465,
+				6.3202242851257,
+				3.793289899826
 			}
 		},
 		ewt_taunting_bardin = {
@@ -18182,15 +18304,15 @@ return function ()
 				"ewt_taunting_bardin_10"
 			},
 			sound_events_duration = {
-				3.4706256389618,
-				2.5295631885529,
-				2.8637144565582,
-				3.6197576522827,
-				4.6655702590942,
-				2.499359369278,
-				1.4733877182007,
-				1.9896869659424,
-				1.6649942398071
+				3.572322845459,
+				2.6036851406097,
+				2.9476277828217,
+				3.725804567337,
+				4.802282333374,
+				2.5725963115692,
+				1.5165612697601,
+				2.0479893684387,
+				1.7137824296951
 			}
 		},
 		ewt_taunting_kerillian = {
@@ -18250,16 +18372,16 @@ return function ()
 				"ewt_taunting_kerillian_10"
 			},
 			sound_events_duration = {
-				2.371955871582,
-				3.7349104881287,
-				4.7410607337952,
-				3.2818312644959,
-				2.4096913337708,
-				1.8952797651291,
-				2.0066568851471,
-				1.935866355896,
-				1.6621625423431,
-				4.1709804534912
+				2.4414596557617,
+				3.8443517684937,
+				4.8799848556519,
+				3.3779964447022,
+				2.4803009033203,
+				1.9508159160614,
+				2.0654566287994,
+				1.9925917387009,
+				1.7108677625656,
+				4.2931995391846
 			}
 		},
 		ewt_taunting_kruber = {
@@ -18319,16 +18441,16 @@ return function ()
 				"ewt_taunting_kruber_10"
 			},
 			sound_events_duration = {
-				3.3771820068359,
-				5.0808553695679,
-				3.4158809185028,
-				4.5636320114136,
-				3.2299180030823,
-				2.1105029582977,
-				1.7103002071381,
-				2.1661715507507,
-				1.6347901821136,
-				3.4205806255341
+				3.4761412143707,
+				5.229736328125,
+				3.5159740447998,
+				4.6973366737366,
+				3.3245620727539,
+				2.1723453998566,
+				1.7604159116745,
+				2.2296454906464,
+				1.6826932430267,
+				3.5208113193512
 			}
 		},
 		ewt_taunting_saltzpyre = {
@@ -18384,15 +18506,15 @@ return function ()
 				"ewt_taunting_saltzpyre_10"
 			},
 			sound_events_duration = {
-				5.8453936576843,
-				4.8581013679504,
-				3.353565454483,
-				3.7075183391571,
-				5.8954381942749,
-				1.4157916307449,
-				1.4695925712585,
-				1.6008106470108,
-				1.8546931743622
+				6.0166773796081,
+				5.0004549026489,
+				3.4518327713013,
+				3.8161573410034,
+				6.0681881904602,
+				1.4572776556015,
+				1.5126550197601,
+				1.6477180719376,
+				1.9090399742127
 			}
 		},
 		ewt_taunting_sienna = {
@@ -18452,16 +18574,16 @@ return function ()
 				"ewt_taunting_sienna_10"
 			},
 			sound_events_duration = {
-				1.6432851552963,
-				5.3527107238769,
-				4.2040157318115,
-				3.718864440918,
-				5.1006960868835,
-				3.0185098648071,
-				2.2020585536957,
-				1.6999175548554,
-				3.5130999088287,
-				3.6518495082855
+				1.691437125206,
+				5.509557723999,
+				4.3272032737732,
+				3.8278357982635,
+				5.2501583099365,
+				3.106959104538,
+				2.2665839195252,
+				1.7497290372849,
+				3.6160416603088,
+				3.758857011795
 			}
 		},
 		ewt_vs_ability_horde_a = {
@@ -18505,15 +18627,16 @@ return function ()
 				"ewt_vs_ability_horde_a_06"
 			},
 			sound_events_duration = {
-				2.6600933074951,
-				4.0674785375595,
-				3.8313426971435,
-				3.5708532333374,
-				4.6096258163452,
-				4.6405284404755
+				2.8182709217072,
+				4.3093436956406,
+				4.059166431427,
+				3.7831873893738,
+				4.8837289810181,
+				4.9164791107178
 			}
 		},
 		ewt_vs_downed_hero_a = {
+			only_allies = true,
 			randomize_indexes_n = 0,
 			face_animations_n = 4,
 			database = "vs_player_vo_pactsworn",
@@ -18546,10 +18669,10 @@ return function ()
 				"ewt_vs_downed_hero_a_04"
 			},
 			sound_events_duration = {
-				2.5980532169342,
-				3.0196701288223,
-				2.363697052002,
-				1.9011200070381
+				2.67418217659,
+				3.1081533432007,
+				2.4329588413238,
+				1.9568272233009
 			}
 		},
 		ewt_vs_globadier_hitting_many_a = {
@@ -18585,10 +18708,10 @@ return function ()
 				"ewt_vs_globadier_hitting_many_a_04"
 			},
 			sound_events_duration = {
-				1.9959400892258,
-				1.739933848381,
-				2.507972240448,
-				2.1215834617615
+				2.0544257164002,
+				1.7909178733826,
+				2.5814616680145,
+				2.1837610006332
 			}
 		},
 		ewt_vs_globadier_missing_globe_a = {
@@ -18624,10 +18747,10 @@ return function ()
 				"ewt_vs_globadier_missing_globe_a_04"
 			},
 			sound_events_duration = {
-				3.1237223148346,
-				1.90516102314,
-				2.0608412027359,
-				2.4785154461861
+				3.2152544260025,
+				1.960976421833,
+				2.1212286353111,
+				2.5511415600777
 			}
 		},
 		ewt_vs_heroes_objective_almost_completed_b = {
@@ -18663,13 +18786,14 @@ return function ()
 				"ewt_vs_heroes_objective_almost_completed_b_04"
 			},
 			sound_events_duration = {
-				1.1141255497932,
-				0.90077060461044,
-				1.3559048771858,
-				1.2942777872086
+				1.146771967411,
+				0.92716526985169,
+				1.3956359624863,
+				1.3322030901909
 			}
 		},
 		ewt_vs_many_heroes_incapacitated_a = {
+			only_allies = true,
 			randomize_indexes_n = 0,
 			face_animations_n = 4,
 			database = "vs_player_vo_pactsworn",
@@ -18702,10 +18826,10 @@ return function ()
 				"ewt_vs_many_heroes_incapacitated_a_04"
 			},
 			sound_events_duration = {
-				3.9265365600586,
-				3.1635518074036,
-				1.9644775390625,
-				2.2005839347839
+				4.0415930747986,
+				3.2562510967255,
+				2.0220413208008,
+				2.2650661468506
 			}
 		},
 		ewt_vs_pact_proximity_banter_eight_a = {
@@ -18727,7 +18851,7 @@ return function ()
 				[1] = "ewt_vs_pact_proximity_banter_eight_a_01"
 			},
 			sound_events_duration = {
-				[1] = 4.6497015953064
+				[1] = 4.7859485149384
 			}
 		},
 		ewt_vs_pact_proximity_banter_eighteen_a = {
@@ -18749,7 +18873,7 @@ return function ()
 				[1] = "ewt_vs_pact_proximity_banter_eighteen_a_01"
 			},
 			sound_events_duration = {
-				[1] = 2.5601408481598
+				[1] = 2.6351587772369
 			}
 		},
 		ewt_vs_pact_proximity_banter_eleven_b = {
@@ -18771,7 +18895,7 @@ return function ()
 				[1] = "ewt_vs_pact_proximity_banter_eleven_b_01"
 			},
 			sound_events_duration = {
-				[1] = 5.602463722229
+				[1] = 5.766628742218
 			}
 		},
 		ewt_vs_pact_proximity_banter_fifteen_b = {
@@ -18793,7 +18917,7 @@ return function ()
 				[1] = "ewt_vs_pact_proximity_banter_fifteen_b_01"
 			},
 			sound_events_duration = {
-				[1] = 4.1994142532349
+				[1] = 4.3224668502808
 			}
 		},
 		ewt_vs_pact_proximity_banter_five_b = {
@@ -18815,7 +18939,7 @@ return function ()
 				[1] = "ewt_vs_pact_proximity_banter_five_b_01"
 			},
 			sound_events_duration = {
-				[1] = 3.8701301813126
+				[1] = 3.9835338592529
 			}
 		},
 		ewt_vs_pact_proximity_banter_four_b = {
@@ -18837,7 +18961,7 @@ return function ()
 				[1] = "ewt_vs_pact_proximity_banter_four_b_01"
 			},
 			sound_events_duration = {
-				[1] = 4.4744849205017
+				[1] = 4.6055979728699
 			}
 		},
 		ewt_vs_pact_proximity_banter_fourteen_b = {
@@ -18859,7 +18983,7 @@ return function ()
 				[1] = "ewt_vs_pact_proximity_banter_fourteen_b_01"
 			},
 			sound_events_duration = {
-				[1] = 4.5179915428162
+				[1] = 4.6503791809082
 			}
 		},
 		ewt_vs_pact_proximity_banter_nine_b = {
@@ -18881,7 +19005,7 @@ return function ()
 				[1] = "ewt_vs_pact_proximity_banter_nine_b_01"
 			},
 			sound_events_duration = {
-				[1] = 5.6720547676086
+				[1] = 5.8382592201233
 			}
 		},
 		ewt_vs_pact_proximity_banter_nineteen_b = {
@@ -18903,7 +19027,7 @@ return function ()
 				[1] = "ewt_vs_pact_proximity_banter_nineteen_b_01"
 			},
 			sound_events_duration = {
-				[1] = 9.2653846740723
+				[1] = 9.5368814468384
 			}
 		},
 		ewt_vs_pact_proximity_banter_one_b = {
@@ -18925,7 +19049,7 @@ return function ()
 				[1] = "ewt_vs_pact_proximity_banter_one_b_01"
 			},
 			sound_events_duration = {
-				[1] = 5.486819267273
+				[1] = 5.6475958824158
 			}
 		},
 		ewt_vs_pact_proximity_banter_seven_b = {
@@ -18947,7 +19071,7 @@ return function ()
 				[1] = "ewt_vs_pact_proximity_banter_seven_b_01"
 			},
 			sound_events_duration = {
-				[1] = 3.2660998106003
+				[1] = 3.3618041276932
 			}
 		},
 		ewt_vs_pact_proximity_banter_seventeen_b = {
@@ -18969,7 +19093,7 @@ return function ()
 				[1] = "ewt_vs_pact_proximity_banter_seventeen_b_01"
 			},
 			sound_events_duration = {
-				[1] = 9.3473834991455
+				[1] = 9.621283531189
 			}
 		},
 		ewt_vs_pact_proximity_banter_six_b = {
@@ -18991,7 +19115,7 @@ return function ()
 				[1] = "ewt_vs_pact_proximity_banter_six_b_01"
 			},
 			sound_events_duration = {
-				[1] = 5.5603041648865
+				[1] = 5.7232336997986
 			}
 		},
 		ewt_vs_pact_proximity_banter_sixteen_b = {
@@ -19013,7 +19137,7 @@ return function ()
 				[1] = "ewt_vs_pact_proximity_banter_sixteen_b_01"
 			},
 			sound_events_duration = {
-				[1] = 6.0896210670471
+				[1] = 6.2680611610413
 			}
 		},
 		ewt_vs_pact_proximity_banter_ten_b = {
@@ -19035,7 +19159,7 @@ return function ()
 				[1] = "ewt_vs_pact_proximity_banter_ten_b_01"
 			},
 			sound_events_duration = {
-				[1] = 3.3715286254883
+				[1] = 3.4703222513199
 			}
 		},
 		ewt_vs_pact_proximity_banter_thirteen_a = {
@@ -19057,7 +19181,7 @@ return function ()
 				[1] = "ewt_vs_pact_proximity_banter_thirteen_a_01"
 			},
 			sound_events_duration = {
-				[1] = 2.6029789447784
+				[1] = 2.6792522668839
 			}
 		},
 		ewt_vs_pact_proximity_banter_three_a = {
@@ -19079,7 +19203,7 @@ return function ()
 				[1] = "ewt_vs_pact_proximity_banter_three_a_01"
 			},
 			sound_events_duration = {
-				[1] = 6.1569700241089
+				[1] = 6.3373837471008
 			}
 		},
 		ewt_vs_pact_proximity_banter_twelve_b = {
@@ -19101,7 +19225,7 @@ return function ()
 				[1] = "ewt_vs_pact_proximity_banter_twelve_b_01"
 			},
 			sound_events_duration = {
-				[1] = 4.1327238082886
+				[1] = 4.2538220882416
 			}
 		},
 		ewt_vs_pact_proximity_banter_twenty_b = {
@@ -19123,7 +19247,7 @@ return function ()
 				[1] = "ewt_vs_pact_proximity_banter_twenty_b_01"
 			},
 			sound_events_duration = {
-				[1] = 5.6813364028931
+				[1] = 5.8478121757507
 			}
 		},
 		ewt_vs_pact_proximity_banter_two_b = {
@@ -19145,7 +19269,7 @@ return function ()
 				[1] = "ewt_vs_pact_proximity_banter_two_b_01"
 			},
 			sound_events_duration = {
-				[1] = 4.6114153862
+				[1] = 4.7335867881775
 			}
 		},
 		ewt_vs_passing_hoisted_hero_a = {
@@ -19173,8 +19297,8 @@ return function ()
 				[2] = "ewt_vs_passing_hoisted_hero_a_02"
 			},
 			sound_events_duration = {
-				[1] = 4.0856580734253,
-				[2] = 3.5028944015503
+				[1] = 4.2053771018982,
+				[2] = 3.6055371761322
 			}
 		},
 		ewt_vs_shooting_hooked_hero_a = {
@@ -19210,10 +19334,10 @@ return function ()
 				"ewt_vs_shooting_hooked_hero_a_04"
 			},
 			sound_events_duration = {
-				3.926428437233,
-				2.5624907016754,
-				3.5144469738007,
-				4.0172667503357
+				4.0414817333221,
+				2.6375776529312,
+				3.6174281835556,
+				4.1349816322327
 			}
 		},
 		ewt_vs_vw_cheer_a = {
@@ -19257,12 +19381,12 @@ return function ()
 				"ewt_vs_vw_cheer_a_06"
 			},
 			sound_events_duration = {
-				2.068696975708,
-				2.4156887531281,
-				2.1487691402435,
-				2.7026264667511,
-				2.181244134903,
-				3.1486072540283
+				2.129314661026,
+				2.4864740371704,
+				2.2117328643799,
+				2.7818195819855,
+				2.2451596856117,
+				3.2408788204193
 			}
 		},
 		ewt_vw_affirmative = {
@@ -19323,16 +19447,16 @@ return function ()
 				"ewt_vw_affirmative_10"
 			},
 			sound_events_duration = {
-				0.63992708921432,
-				0.77395725250244,
-				0.72676348686218,
-				1.3497204780579,
-				1.9283155202866,
-				1.2072151899338,
-				2.5795884132385,
-				3.5404527187347,
-				1.7404843568802,
-				2.274717092514
+				0.65867841243744,
+				0.79663598537445,
+				0.74805933237076,
+				1.3892704248428,
+				1.9848195314407,
+				1.2425893545151,
+				2.6551764011383,
+				3.6441960334778,
+				1.7914845943451,
+				2.3413715362549
 			}
 		},
 		ewt_vw_ambush = {
@@ -19393,16 +19517,16 @@ return function ()
 				"ewt_vw_ambush_10"
 			},
 			sound_events_duration = {
-				0.67770171165466,
-				2.0142078399658,
-				2.5314705371857,
-				2.2983140945435,
-				1.2978073358536,
-				1.0401296615601,
-				1.8282843828201,
-				2.4068596363068,
-				3.0732347965241,
-				2.1661715507507
+				0.69755989313126,
+				2.0732288360596,
+				2.6056485176086,
+				2.3656599521637,
+				1.3358361721039,
+				1.0706079006195,
+				1.8818573951721,
+				2.4773862361908,
+				3.1632876396179,
+				2.2296454906464
 			}
 		},
 		ewt_vw_attack_now = {
@@ -19463,16 +19587,16 @@ return function ()
 				"ewt_vw_attack_now_10"
 			},
 			sound_events_duration = {
-				2.1350436210632,
-				1.6819838285446,
-				1.5158424377441,
-				1.9188767671585,
-				2.6466035842895,
-				0.69655954837799,
-				1.4073165655136,
-				1.5809893608093,
-				1.4337253570557,
-				3.9415991306305
+				2.1976053714752,
+				1.7312698364258,
+				1.5602600574493,
+				1.9751042127609,
+				2.7241551876068,
+				0.7169703245163,
+				1.4485541582108,
+				1.6273158788681,
+				1.4757367372513,
+				4.0570969581604
 			}
 		},
 		ewt_vw_cover_me = {
@@ -19525,14 +19649,14 @@ return function ()
 				"ewt_vw_cover_me_09"
 			},
 			sound_events_duration = {
-				0.74469709396362,
-				0.72676348686218,
-				1.3148168325424,
-				1.8924679756165,
-				1.4554344415665,
-				0.8419161438942,
-				1.3752248287201,
-				1.0495882034302
+				0.76651847362518,
+				0.74805933237076,
+				1.3533439636231,
+				1.9479216337204,
+				1.4980820417404,
+				0.86658620834351,
+				1.415521979332,
+				1.0803434848785
 			}
 		},
 		ewt_vw_gather = {
@@ -19593,16 +19717,16 @@ return function ()
 				"ewt_vw_gather_10"
 			},
 			sound_events_duration = {
-				1.4488273859024,
-				0.56252938508987,
-				1.0108696222305,
-				1.992498755455,
-				0.89196115732193,
-				0.52005499601364,
-				1.5413269996643,
-				0.88912951946259,
-				1.1184713840485,
-				2.4748187065124
+				1.4912812709808,
+				0.57901275157929,
+				1.0404903888702,
+				2.0508835315704,
+				0.91809767484665,
+				0.53529381752014,
+				1.5864913463593,
+				0.91518306732178,
+				1.1512451171875,
+				2.5473365783691
 			}
 		},
 		ewt_vw_go_here = {
@@ -19655,14 +19779,14 @@ return function ()
 				"ewt_vw_go_here_08"
 			},
 			sound_events_duration = {
-				1.2827054262161,
-				1.5167862176895,
-				0.63426387310028,
-				1.2062516212463,
-				1.6347705125809,
-				2.3115282058716,
-				1.9736212491989,
-				1.5743625164032
+				1.3202917575836,
+				1.5612314939499,
+				0.65284925699234,
+				1.241597533226,
+				1.6826932430267,
+				2.3792614936829,
+				2.0314528942108,
+				1.6204949617386
 			}
 		},
 		ewt_vw_negation = {
@@ -19719,26 +19843,30 @@ return function ()
 				"ewt_vw_negation_09"
 			},
 			sound_events_duration = {
-				0.75793099403381,
-				1.0155889987946,
-				2.0000693798065,
-				2.1520137786865,
-				1.9103817939758,
-				1.1137520074844,
-				1.3893828392029,
-				1.3072460889816,
-				2.1690032482147
+				0.78014010190964,
+				1.0453480482101,
+				2.0586760044098,
+				2.2150726318359,
+				1.9663604497909,
+				1.1463874578476,
+				1.4300949573517,
+				1.3455514907837,
+				2.2325601577759
 			}
 		},
 		ewt_vw_thanks = {
 			only_allies = true,
 			randomize_indexes_n = 0,
-			face_animations_n = 8,
+			face_animations_n = 12,
 			database = "vs_player_vo_pactsworn",
-			sound_events_n = 8,
+			sound_events_n = 12,
 			category = "player_alerts",
-			dialogue_animations_n = 8,
+			dialogue_animations_n = 12,
 			dialogue_animations = {
+				"dialogue_talk",
+				"dialogue_talk",
+				"dialogue_talk",
+				"dialogue_talk",
 				"dialogue_talk",
 				"dialogue_talk",
 				"dialogue_talk",
@@ -19756,38 +19884,54 @@ return function ()
 				"face_neutral",
 				"face_neutral",
 				"face_neutral",
+				"face_neutral",
+				"face_neutral",
+				"face_neutral",
+				"face_neutral",
 				"face_neutral"
 			},
 			localization_strings = {
-				"ewt_vw_thanks_01",
-				"ewt_vw_thanks_02",
-				"ewt_vw_thanks_03",
-				"ewt_vw_thanks_04",
-				"ewt_vw_thanks_05",
-				"ewt_vw_thanks_06",
-				"ewt_vw_thanks_07",
-				"ewt_vw_thanks_08"
+				"ewt_vs_vw_thanks_01",
+				"ewt_vs_vw_thanks_02",
+				"ewt_vs_vw_thanks_03",
+				"ewt_vs_vw_thanks_04",
+				"ewt_vs_vw_thanks_05",
+				"ewt_vs_vw_thanks_06",
+				"ewt_vs_vw_thanks_07",
+				"ewt_vs_vw_thanks_08",
+				"ewt_vs_vw_thanks_09",
+				"ewt_vs_vw_thanks_10",
+				"ewt_vs_vw_thanks_11",
+				"ewt_vs_vw_thanks_12"
 			},
 			randomize_indexes = {},
 			sound_events = {
-				"ewt_vw_thanks_01",
-				"ewt_vw_thanks_02",
-				"ewt_vw_thanks_03",
-				"ewt_vw_thanks_04",
-				"ewt_vw_thanks_05",
-				"ewt_vw_thanks_06",
-				"ewt_vw_thanks_07",
-				"ewt_vw_thanks_08"
+				"ewt_vs_vw_thanks_01",
+				"ewt_vs_vw_thanks_02",
+				"ewt_vs_vw_thanks_03",
+				"ewt_vs_vw_thanks_04",
+				"ewt_vs_vw_thanks_05",
+				"ewt_vs_vw_thanks_06",
+				"ewt_vs_vw_thanks_07",
+				"ewt_vs_vw_thanks_08",
+				"ewt_vs_vw_thanks_09",
+				"ewt_vs_vw_thanks_10",
+				"ewt_vs_vw_thanks_11",
+				"ewt_vs_vw_thanks_12"
 			},
 			sound_events_duration = {
-				1.2391299009323,
-				0.87314265966415,
-				1.4217694997788,
-				0.94475907087326,
-				1.1693028211594,
-				0.82583093643188,
-				1.347557425499,
-				1.0429416894913
+				3.4567,
+				3.4567,
+				3.4567,
+				3.4567,
+				3.4567,
+				3.4567,
+				3.4567,
+				3.4567,
+				3.4567,
+				3.4567,
+				3.4567,
+				3.4567
 			}
 		},
 		ewt_vw_wait = {
@@ -19858,28 +20002,6 @@ return function ()
 				3.4567,
 				3.4567,
 				3.4567
-			}
-		},
-		ewt_walking = {
-			sound_events_n = 1,
-			face_animations_n = 1,
-			database = "vs_player_vo_pactsworn",
-			category = "player_feedback",
-			dialogue_animations_n = 1,
-			dialogue_animations = {
-				[1] = "dialogue_talk"
-			},
-			face_animations = {
-				[1] = "face_neutral"
-			},
-			localization_strings = {
-				[1] = "player_combat_walk_normal"
-			},
-			sound_events = {
-				[1] = "player_combat_walk_normal"
-			},
-			sound_events_duration = {
-				[1] = 4.4834024906158
 			}
 		}
 	})

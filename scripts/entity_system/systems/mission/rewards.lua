@@ -430,11 +430,10 @@ Rewards._evaluate_backend_mission_results = function (self)
 		local settings = Managers.state.game_mode:settings()
 		local experience_settings = settings.experience
 		local versus_interface = Managers.backend:get_interface("versus")
-		local old_first_win_of_the_day_timestamp = versus_interface:get_profile_data("old_first_win_of_the_day_timestamp") or 0
 		local first_win_of_the_day_timestamp = versus_interface:get_profile_data("first_win_of_the_day_timestamp") or 0
-		local diff = first_win_of_the_day_timestamp - old_first_win_of_the_day_timestamp
+		local last_win_timestamp = versus_interface:get_profile_data("last_win_timestamp") or 0
 
-		if diff >= 86400000 then
+		if last_win_timestamp == first_win_of_the_day_timestamp then
 			table.insert(self._mission_results, 3, {
 				text = "vs_first_win_of_the_day",
 				experience = experience_settings.first_win_of_the_day

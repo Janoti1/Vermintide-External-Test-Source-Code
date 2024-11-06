@@ -88,9 +88,12 @@ TagQueryDatabase.define_rule = function (self, rule_definition)
 	rule_definition.n_criterias = num_criterias
 
 	fassert(num_criterias <= (RuleDatabase.RULE_MAX_NUM_CRITERIA or 8), "Too many criteria in dialogue %s", dialogue_name)
+
+	local probability = rule_definition.probability or 1
+
 	self:_optimize_rule_definition(rule_definition)
 
-	local rule_id = RuleDatabase.add_rule(self.database, dialogue_name, num_criterias, criterias)
+	local rule_id = RuleDatabase.add_rule(self.database, dialogue_name, num_criterias, criterias, probability)
 
 	self.rule_id_mapping[rule_id] = rule_definition
 	self.rule_id_mapping[rule_definition.name] = rule_id
@@ -239,8 +242,10 @@ TagQueryDatabase.parse_criteria = function (self, criteria, criterias, parsed_cr
 	}
 end
 
+local iteration_weight = {}
+
 local function _iteration_sort(a, b)
-	return a.validated_rule.n_criterias > b.validated_rule.n_criterias
+	return iteration_weight[a] > iteration_weight[b]
 end
 
 local iteration_scratch = {
@@ -248,16 +253,18 @@ local iteration_scratch = {
 }
 
 TagQueryDatabase.iterate_queries = function (self, out_results, t)
-	local num_iterations = #self.queries
+	table.clear(iteration_weight)
+
 	local result_i = 0
 
-	for i = 1, num_iterations do
+	for i = 1, #self.queries do
 		local query = self:iterate_query(t)
 		local result = query.result
 
 		if result then
 			result_i = result_i + 1
 			iteration_scratch[result_i] = query
+			iteration_weight[query] = math.random(1, query.validated_rule.n_criterias)
 		end
 	end
 

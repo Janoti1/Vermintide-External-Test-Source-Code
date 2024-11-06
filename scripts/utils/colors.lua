@@ -1582,6 +1582,17 @@ if not Colors.distinct_colors_lookup then
 	}
 end
 
+Colors.get_categorical_color = function (index)
+	local golden_ratio = 1.61803398875
+	local hue = index * golden_ratio % 1
+	local color = {
+		255,
+		Colors.hsl2rgb(hue, 0.4, 0.5)
+	}
+
+	return color
+end
+
 Colors.get = function (name)
 	local color = Colors.color_definitions[name]
 

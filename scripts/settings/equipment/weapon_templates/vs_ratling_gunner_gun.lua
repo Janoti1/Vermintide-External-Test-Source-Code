@@ -385,7 +385,7 @@ weapon_template.synced_states = {
 
 			if is_local_player then
 				WwiseWorld.trigger_event(wwise_world, "Play_player_ratling_gunner_shooting_loop", use_occlusion, wwise_source_id)
-				WwiseWorld.trigger_event(wwise_world, "Play_player_enemy_vce_ratling_gunner_shoot_start", use_occlusion, wwise_source_id)
+				Managers.state.vce:trigger_vce(owner_unit, wwise_world, "Play_player_enemy_vce_ratling_gunner_shoot_start", use_occlusion, wwise_source_id)
 			else
 				WwiseWorld.trigger_event(wwise_world, "Play_ratling_gunner_shooting_loop", use_occlusion, wwise_source_id)
 			end

@@ -35,6 +35,7 @@ GameModeSettings.adventure.difficulties = DefaultDifficulties
 GameModeSettings.adventure.end_mission_rewards = true
 GameModeSettings.adventure.hud_component_list_path = "scripts/ui/hud_ui/component_list_definitions/hud_component_list_adventure"
 GameModeSettings.adventure.use_keep_decorations = true
+GameModeSettings.adventure.has_art_scraps = true
 GameModeSettings.adventure.ping_mode = {
 	world_markers = false,
 	outlines = {

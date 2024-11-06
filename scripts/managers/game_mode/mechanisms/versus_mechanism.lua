@@ -140,6 +140,8 @@ VersusMechanism._reset = function (self, settings, on_init)
 	self._total_rounds_started = 0
 	self._profiles_reservable = false
 
+	self:_clear_horde_ability_data()
+
 	local changing_to_inn = self._state ~= "inn"
 
 	if self._shared_state then
@@ -214,7 +216,7 @@ end
 
 VersusMechanism.state_context_set_up = function (self)
 	if Managers.mechanism:is_server() and not DEDICATED_SERVER then
-		self._slot_reservation_handler:try_reserve_slots(Network.peer_id(), Managers.state.network.network_server:get_peers(), Network.peer_id())
+		self._slot_reservation_handler:try_reserve_slots(Network.peer_id(), Managers.state.network.network_server:active_peers())
 	end
 end
 
@@ -259,6 +261,7 @@ VersusMechanism.destroy = function (self)
 		end
 	end
 
+	self:unregister_chats()
 	self:_unload_sound_bank()
 end
 
@@ -306,25 +309,6 @@ VersusMechanism.max_instance_members = function (self)
 	else
 		return Managers.mechanism:max_party_members()
 	end
-end
-
-VersusMechanism.set_is_hosting_versus_custom_game = function (self, is_hosting)
-	self._is_hosting_custom_game = is_hosting
-
-	if Managers.mechanism:is_server() then
-		Managers.lobby:update_network_options_max_members()
-		Managers.mechanism:update_lobby_max_members()
-	end
-
-	if is_hosting then
-		Managers.party:server_init_friend_parties(true)
-	else
-		Managers.party:server_clear_friend_parties()
-	end
-end
-
-VersusMechanism.is_hosting_versus_custom_game = function (self)
-	return self._is_hosting_custom_game
 end
 
 VersusMechanism.sync_mechanism_data = function (self, peer_id, mechanism_newly_initialized)
@@ -1115,11 +1099,13 @@ VersusMechanism.setup_chats = function (self)
 end
 
 VersusMechanism.unregister_chats = function (self)
-	Managers.chat:unregister_channel(2)
-	Managers.chat:unregister_channel(3)
+	if Managers.chat then
+		Managers.chat:unregister_channel(2)
+		Managers.chat:unregister_channel(3)
 
-	for _, message_target_data in pairs(CHAT_MESSAGE_TARGETS) do
-		Managers.chat:remove_message_target(message_target_data.message_target)
+		for _, message_target_data in pairs(CHAT_MESSAGE_TARGETS) do
+			Managers.chat:remove_message_target(message_target_data.message_target)
+		end
 	end
 
 	self._message_targets_initiated = false
@@ -1310,9 +1296,6 @@ VersusMechanism.handle_party_assignment_for_joining_peer = function (self, peer_
 
 	if not reserved_party_id then
 		Crashify.print_exception("[VersusMechanism]", "Peer %s has not been assigned to a party before entering the game.", peer_id)
-		self._slot_reservation_handler:try_reserve_slots(peer_id, {
-			peer_id
-		})
 
 		reserved_party_id = Managers.mechanism:reserved_party_id_by_peer(peer_id)
 
@@ -1810,6 +1793,12 @@ VersusMechanism.cache_horde_ability_charge_data = function (self, server_player_
 	end
 end
 
+VersusMechanism._clear_horde_ability_data = function (self, server_player_data)
+	if self._horde_ability_charges then
+		table.clear(self._horde_ability_charges)
+	end
+end
+
 VersusMechanism.get_cached_horde_ability_charges = function (self, peer_id)
 	if self._horde_ability_charges and self._horde_ability_charges[peer_id] then
 		local ability_charge = self._horde_ability_charges[peer_id]
@@ -1821,5 +1810,16 @@ VersusMechanism.get_cached_horde_ability_charges = function (self, peer_id)
 end
 
 VersusMechanism.override_loading_screen_music = function (self)
-	return self._win_conditions:num_rounds_played() > 0 and dlc_settings.music_overrides.versus_between_rounds
+	local music_override
+	local music_override_settings = dlc_settings.music_overrides
+
+	if self._win_conditions:num_rounds_played() > 0 and dlc_settings.music_overrides.versus_between_rounds then
+		music_override = music_override_settings.versus_between_rounds
+	else
+		local level_key = Managers.level_transition_handler:get_current_level_key()
+
+		music_override = music_override_settings[level_key]
+	end
+
+	return music_override
 end

@@ -178,6 +178,14 @@ VersusHordeAbilitySystem.server_spawn_horde = function (self, peer_id)
 	local player = Managers.player:player(peer_id, 1)
 
 	if player then
+		local player_unit = player.player_unit
+
+		if ALIVE[player_unit] then
+			local dialogue_input = ScriptUnit.extension_input(player_unit, "dialogue_system")
+
+			dialogue_input:trigger_dialogue_event("vs_ability_horde")
+		end
+
 		self:_activation_chat_box_message(player:name())
 	end
 end
@@ -352,4 +360,8 @@ VersusHordeAbilitySystem._activation_chat_box_message = function (self, player_n
 
 		chat:send_system_chat_message(1, "vs_chat_message_horde_ability", player_name, localize_parameters, pop_chat)
 	end
+end
+
+VersusHordeAbilitySystem.settings = function (self)
+	return settings
 end

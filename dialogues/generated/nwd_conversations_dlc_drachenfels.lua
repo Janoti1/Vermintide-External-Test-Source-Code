@@ -2,6 +2,7 @@ return function ()
 	define_rule({
 		response = "ndw_daemon_whispers_bright_wizard",
 		name = "ndw_daemon_whispers_bright_wizard",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -32,6 +33,7 @@ return function ()
 	define_rule({
 		response = "ndw_daemon_whispers_dwarf_ranger",
 		name = "ndw_daemon_whispers_dwarf_ranger",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -56,6 +58,7 @@ return function ()
 	define_rule({
 		response = "ndw_daemon_whispers_empire_soldier",
 		name = "ndw_daemon_whispers_empire_soldier",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -80,6 +83,7 @@ return function ()
 	define_rule({
 		response = "ndw_daemon_whispers_witch_hunter",
 		name = "ndw_daemon_whispers_witch_hunter",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -104,6 +108,7 @@ return function ()
 	define_rule({
 		response = "ndw_daemon_whispers_wood_elf",
 		name = "ndw_daemon_whispers_wood_elf",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -128,6 +133,7 @@ return function ()
 	define_rule({
 		response = "pbw_archdaemon_response",
 		name = "pbw_archdaemon_response",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -152,6 +158,7 @@ return function ()
 	define_rule({
 		response = "pbw_archdaemon_response_overheard",
 		name = "pbw_archdaemon_response_overheard",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -182,6 +189,7 @@ return function ()
 	define_rule({
 		response = "pdr_archdaemon_response",
 		name = "pdr_archdaemon_response",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -206,6 +214,7 @@ return function ()
 	define_rule({
 		response = "pdr_archdaemon_response_overheard",
 		name = "pdr_archdaemon_response_overheard",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -236,6 +245,7 @@ return function ()
 	define_rule({
 		response = "pes_archdaemon_response",
 		name = "pes_archdaemon_response",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -260,6 +270,7 @@ return function ()
 	define_rule({
 		response = "pes_archdaemon_response_overheard",
 		name = "pes_archdaemon_response_overheard",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -290,6 +301,7 @@ return function ()
 	define_rule({
 		response = "pwe_archdaemon_response",
 		name = "pwe_archdaemon_response",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -314,6 +326,7 @@ return function ()
 	define_rule({
 		response = "pwe_archdaemon_response_overheard",
 		name = "pwe_archdaemon_response_overheard",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -344,6 +357,7 @@ return function ()
 	define_rule({
 		response = "pwh_archdaemon_response",
 		name = "pwh_archdaemon_response",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",
@@ -368,6 +382,7 @@ return function ()
 	define_rule({
 		response = "pwh_archdaemon_response_overheard",
 		name = "pwh_archdaemon_response_overheard",
+		probability = 1,
 		criterias = {
 			{
 				"query_context",

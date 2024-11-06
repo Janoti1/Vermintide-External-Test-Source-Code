@@ -6,12 +6,14 @@ PlayerHostedSlotReservationHandler.init = function (self, party_settings)
 	self:update_slot_settings(party_settings)
 
 	self._party_manager = Managers.party
+	self._pending_peer_informations = {}
 end
 
 PlayerHostedSlotReservationHandler.update_slot_settings = function (self, party_settings)
 	self._max_party_slots = 0
 	self._num_slots_total = 0
 	self._peer_id_to_party_id = {}
+	self._num_slots_per_party = {}
 
 	local old_reservations = self._reserved_peers or {}
 
@@ -32,6 +34,7 @@ PlayerHostedSlotReservationHandler.update_slot_settings = function (self, party_
 			local num_slots = party_data.num_slots
 
 			self._num_slots_total = self._num_slots_total + num_slots
+			self._num_slots_per_party[party_id] = num_slots
 
 			if num_slots > self._max_party_slots then
 				self._max_party_slots = num_slots
@@ -51,6 +54,12 @@ end
 PlayerHostedSlotReservationHandler.try_reserve_slots = function (self, group_leader_peer_id, peers_to_reserve, invitee)
 	local reserved = false
 	local selected_party_id
+
+	if table.is_empty(peers_to_reserve) then
+		printf("[PlayerHostedSlotReservationHandler] Tried to reserve slots for peer %s, but no peers were provided", group_leader_peer_id)
+
+		return reserved, selected_party_id
+	end
 
 	if invitee then
 		group_leader_peer_id = invitee
@@ -100,16 +109,6 @@ PlayerHostedSlotReservationHandler.try_reserve_slots = function (self, group_lea
 
 	self:_update_reservations()
 
-	if reserved and Managers.mechanism:game_mechanism():is_hosting_versus_custom_game() then
-		if invitee then
-			self._party_manager:server_add_friend_party_peer_from_invitee(group_leader_peer_id, invitee)
-		else
-			self._party_manager:server_create_friend_party(peers_to_reserve, group_leader_peer_id)
-		end
-
-		self._party_manager:sync_friend_party_ids()
-	end
-
 	return reserved, selected_party_id
 end
 
@@ -128,13 +127,12 @@ PlayerHostedSlotReservationHandler._filter_already_reserved_peers = function (se
 end
 
 PlayerHostedSlotReservationHandler._update_reservations = function (self)
-	local parties = Managers.party:parties()
 	local reserved_slots = 0
 	local start_bit = 0
 	local printable_value = ""
 
 	for party_id, peers in ipairs(self._reserved_peers) do
-		local num_slots = parties[party_id].num_slots
+		local num_slots = self._num_slots_per_party[party_id]
 		local num_peers = #peers
 
 		for i = 1, num_peers do
@@ -156,7 +154,9 @@ PlayerHostedSlotReservationHandler._update_reservations = function (self)
 	if network_manager then
 		self._dirty_reserved_slots = nil
 
-		self:_update_lobby_data(reserved_slots)
+		local lobby = network_manager:lobby()
+
+		self:_update_lobby_data(lobby, reserved_slots)
 	else
 		self._dirty_reserved_slots = reserved_slots
 	end
@@ -174,7 +174,7 @@ PlayerHostedSlotReservationHandler.remove_peer_reservations = function (self, pe
 					if PEER_ID_TO_CHANNEL[remove_peer_id] then
 						peers_to_remove[remove_peer_id] = nil
 					else
-						printf("[PlayerHostedSlotReservationHandler] Removing peer %s since they are in a party with peer %s and we don't have a connection to them.")
+						printf("[PlayerHostedSlotReservationHandler] Removing peer %s since they are in a party with peer %s and we don't have a connection to them.", remove_peer_id, leader_peer_id)
 					end
 				end
 			end
@@ -192,14 +192,13 @@ end
 
 PlayerHostedSlotReservationHandler.network_context_created = function (self, lobby, server_peer_id, own_peer_id, is_server, network_handler)
 	if self._dirty_reserved_slots then
-		self:_update_lobby_data(self._dirty_reserved_slots)
+		self:_update_lobby_data(lobby, self._dirty_reserved_slots)
 
 		self._dirty_reserved_slots = nil
 	end
 end
 
-PlayerHostedSlotReservationHandler._update_lobby_data = function (self, reserved_slots)
-	local lobby = Managers.state.network:lobby()
+PlayerHostedSlotReservationHandler._update_lobby_data = function (self, lobby, reserved_slots)
 	local lobby_data = lobby.lobby_data_table
 
 	lobby_data.reserved_slots_mask = reserved_slots
@@ -298,6 +297,13 @@ PlayerHostedSlotReservationHandler.player_joined_party = function (self, peer_id
 	self:move_player(peer_id, party_id)
 end
 
+PlayerHostedSlotReservationHandler.request_party_change = function (self, wanted_party_id)
+	local peer_id = Network.peer_id()
+	local network_transmit = Managers.state.network.network_transmit
+
+	network_transmit:send_rpc_server("rpc_slot_reservation_request_party_change", peer_id, wanted_party_id)
+end
+
 PlayerHostedSlotReservationHandler.move_player = function (self, peer_id, party_id)
 	local unreserved_slots = self:_num_unreserved_slots(party_id)
 
@@ -333,9 +339,9 @@ PlayerHostedSlotReservationHandler.move_player = function (self, peer_id, party_
 end
 
 PlayerHostedSlotReservationHandler._num_unreserved_slots = function (self, party_id)
-	local parties = Managers.party:parties()
+	local num_slots = self._num_slots_per_party[party_id]
 
-	return parties[party_id].num_slots - #self._reserved_peers[party_id]
+	return num_slots - #self._reserved_peers[party_id]
 end
 
 PlayerHostedSlotReservationHandler.remote_client_connecting = function (self, peer_id)
@@ -346,8 +352,43 @@ end
 
 PlayerHostedSlotReservationHandler.remote_client_disconnected = function (self, peer_id)
 	self:remove_peer_reservations(peer_id)
+
+	self._pending_peer_informations[peer_id] = nil
 end
 
 PlayerHostedSlotReservationHandler.has_reservation = function (self, peer_id)
 	return self._peer_id_to_party_id[peer_id]
+end
+
+PlayerHostedSlotReservationHandler.handle_slot_reservation_for_connecting_peer = function (self, peer_state, dt)
+	return SlotReservationConnectStatus.SUCCEEDED
+end
+
+PlayerHostedSlotReservationHandler.connecting_slot_reservation_info_received = function (self, peer_id, peers, group_leader)
+	local info = self._pending_peer_informations[peer_id]
+
+	if info.status ~= SlotReservationConnectStatus.PENDING then
+		printf("[PlayerHostedSlotReservationHandler]", "Received slot reservation info from already handled peer '%s'.", peer_id)
+
+		return
+	end
+
+	for i = 1, #peers do
+		local other_peer = peers[i]
+
+		self._pending_peer_informations[other_peer] = info
+		info.peers[i] = other_peer
+	end
+
+	local invitee
+	local success = self:try_reserve_slots(peer_id, info.peers, invitee)
+
+	printf("[PlayerHostedSlotReservationHandler] Peer info from peer '%s' received. (%s) joining. Success: %s", peer_id, table.concat(peers, ","), success)
+
+	if success then
+		info.reserved = true
+		info.status = SlotReservationConnectStatus.SUCCEEDED
+	else
+		info.status = SlotReservationConnectStatus.FAILED
+	end
 end

@@ -1187,7 +1187,8 @@ LevelAnalysis._give_events = function (self, main_paths, terror_spawners, genera
 			if event_settings.terror_events_using_packs then
 				self.enemy_recycler:add_terror_event_in_area(boxed_pos, terror_event_name, event_data)
 			else
-				local activation_distance = 45
+				local override_boss_activation_distance = terror_event_kind == "event_boss" and Managers.mechanism:mechanism_setting_for_title("override_boss_activation_distance")
+				local activation_distance = override_boss_activation_distance or 45
 				local spawn_dist
 
 				if override_spawn_distance then
@@ -1325,10 +1326,11 @@ LevelAnalysis._hand_placed_terror_creation = function (self, main_paths, terror_
 	self:_override_generated_event_list(generated_event_list, conflict_director_section_list, terror_event_category)
 
 	local always_spawn_a_boss = Managers.mechanism:mechanism_setting_for_title("always_spawn_a_boss")
+	local num_bosses_to_spawn = Managers.mechanism:mechanism_setting_for_title("num_bosses_to_spawn")
 	local spawn_boss_every_section = Managers.mechanism:mechanism_setting_for_title("spawn_boss_every_section")
 
-	if always_spawn_a_boss then
-		generated_event_list = self:_add_boss_to_generated_list(generated_event_list)
+	if always_spawn_a_boss or num_bosses_to_spawn then
+		generated_event_list = self:_add_boss_to_generated_list(generated_event_list, num_bosses_to_spawn)
 	end
 
 	if spawn_boss_every_section then
@@ -2814,13 +2816,41 @@ LevelAnalysis.check_splines_integrity = function (self)
 	print("----> Checking splines integrity ENDS.")
 end
 
-LevelAnalysis._add_boss_to_generated_list = function (self, generated_event_list)
+LevelAnalysis._add_boss_to_generated_list = function (self, generated_event_list, num_bosses_to_spawn)
 	local boss_event = false
+	local boss_in_section = {}
+	local no_boss_in_section = {}
 
 	for i, k in ipairs(generated_event_list) do
 		if k == "event_boss" then
-			return generated_event_list
+			boss_event = true
+			boss_in_section[#boss_in_section + 1] = i
+		else
+			no_boss_in_section[#no_boss_in_section + 1] = i
 		end
+	end
+
+	if boss_event and not num_bosses_to_spawn then
+		return generated_event_list
+	elseif num_bosses_to_spawn > #boss_in_section then
+		local bosses_to_add = #no_boss_in_section
+
+		for i = 1, bosses_to_add do
+			local index = math.random(1, #no_boss_in_section)
+
+			if index then
+				local section = no_boss_in_section[index]
+
+				if section then
+					generated_event_list[section] = "event_boss"
+					boss_event = true
+
+					table.swap_delete(no_boss_in_section, index)
+				end
+			end
+		end
+
+		return generated_event_list
 	end
 
 	if not boss_event then

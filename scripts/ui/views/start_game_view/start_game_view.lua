@@ -71,9 +71,6 @@ StartGameView.init = function (self, ingame_ui_context)
 	self.ui_animations = {}
 	self.ingame_ui_context = ingame_ui_context
 	DO_RELOAD = false
-	self._event_manager = Managers.state.event
-
-	self._event_manager:register(self, "versus_custom_lobby_state_changed", "on_versus_custom_lobby_state_changed")
 end
 
 StartGameView._init_menu_views = function (self)
@@ -558,12 +555,10 @@ StartGameView.exit = function (self, return_to_game, ignore_sound)
 	end
 
 	if not ignore_sound then
-		self:play_sound("Play_hud_button_close")
+		self:play_mechanism_sound("close_start_menu_sound_event", "Play_hud_button_close")
 	end
 
 	self.exiting = true
-
-	self._event_manager:unregister("versus_custom_lobby_state_changed", self)
 end
 
 StartGameView.transitioning = function (self)
@@ -647,11 +642,6 @@ StartGameView.start_game = function (self, params)
 
 	mechanism_manager:request_vote(params)
 	self:play_mechanism_sound("start_game_play_sound_event", "play_gui_lobby_button_play")
-
-	if params.matchmaking_type == "custom" and params.player_hosted == true and params.mechanism == "versus" then
-		return
-	end
-
 	self:close_menu()
 end
 
@@ -661,8 +651,4 @@ StartGameView.cancel_matchmaking = function (self)
 	if matchmaking_manager:is_game_matchmaking() then
 		matchmaking_manager:cancel_matchmaking()
 	end
-end
-
-StartGameView.on_versus_custom_lobby_state_changed = function (self, active)
-	self._versus_player_hosted_lobby_ui_active = active
 end

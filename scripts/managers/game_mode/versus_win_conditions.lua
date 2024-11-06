@@ -17,6 +17,7 @@ VersusWinConditions.init = function (self, versus_mechanism)
 	self._num_sections_completed = 0
 	self.party_won_early = nil
 	self._current_objective_marker_positions = {}
+	self._early_win_data = {}
 end
 
 VersusWinConditions._reset_set_score = function (self, level_id)
@@ -41,7 +42,6 @@ VersusWinConditions._reset_set_score = function (self, level_id)
 					win_data[k] = {
 						distance_traveled = 0,
 						claimed_points = 0,
-						unclaimed_points = objective_list.max_score,
 						max_points = objective_list.max_score
 					}
 					self._has_objectives = true
@@ -56,6 +56,7 @@ VersusWinConditions._reset_set_score = function (self, level_id)
 end
 
 VersusWinConditions.hot_join_sync = function (self, peer_id)
+	local current_round = self._current_round
 	local channel_id = PEER_ID_TO_CHANNEL[peer_id]
 
 	for party_id, total_data in pairs(self._win_data) do
@@ -64,7 +65,7 @@ VersusWinConditions.hot_join_sync = function (self, peer_id)
 		for i = 1, #sets_data do
 			local data = sets_data[i]
 
-			RPC.rpc_versus_set_score(channel_id, party_id, data.claimed_points, i)
+			RPC.rpc_versus_set_score(channel_id, party_id, data.claimed_points, i, current_round)
 		end
 	end
 end
@@ -94,6 +95,7 @@ VersusWinConditions.setup_round = function (self, is_server)
 	self._current_level_progress = 0
 	self._round_started = false
 	self._heroes_close_to_winning = false
+	self._heroes_close_to_safe_zone = false
 	self._num_sections_completed = 0
 	self._pactsworn_party_id = Managers.state.side:get_side_from_name("dark_pact").party.party_id
 	self._hero_party_id = Managers.state.side:get_side_from_name("heroes").party.party_id
@@ -118,14 +120,8 @@ VersusWinConditions.on_game_mode_data_created = function (self, game_session, go
 	end
 end
 
-VersusWinConditions.wipe_unclaimed_points = function (self)
-	local set_data = self:current_set_data(self._hero_party_id)
-
-	set_data.unclaimed_points = 0
-end
-
 VersusWinConditions.round_ended = function (self)
-	self:wipe_unclaimed_points()
+	return
 end
 
 VersusWinConditions.on_game_mode_data_destroyed = function (self)
@@ -140,6 +136,10 @@ VersusWinConditions.server_update = function (self, t, dt)
 	end
 
 	self:_server_update_round_timer(dt)
+
+	if Managers.state.game_mode:is_round_started() then
+		self:update_early_win_conditions()
+	end
 end
 
 VersusWinConditions._server_update_round_timer = function (self, dt)
@@ -179,6 +179,11 @@ VersusWinConditions.client_update = function (self, t, dt)
 
 	self._round_timer = GameSession.game_object_field(game, self._go_id, "round_timer")
 	self._heroes_close_to_winning = GameSession.game_object_field(game, self._go_id, "heroes_close_to_winning")
+	self._heroes_close_to_safe_zone = GameSession.game_object_field(game, self._go_id, "heroes_close_to_safe_zone")
+
+	if script_data.debug_early_win then
+		Debug.text("Heroes about to win: %s", self._heroes_close_to_winning)
+	end
 end
 
 VersusWinConditions.is_heroes_close_to_win = function (self)
@@ -324,7 +329,7 @@ VersusWinConditions.on_objective_section_completed = function (self, objective_e
 end
 
 VersusWinConditions._check_heroes_close_to_win_conditions_met = function (self, current_section, total_sections)
-	local early_win_data = self:_get_early_win_data(self._hero_party_id)
+	local early_win_data = self:_get_hero_early_win_data()
 	local objective_data, score_per_section
 
 	if current_section and total_sections and current_section < total_sections then
@@ -350,34 +355,68 @@ VersusWinConditions._check_heroes_close_to_win_conditions_met = function (self, 
 	score_per_section = score_per_section or objective_data.score_per_section or objective_data.score_per_socket or nil
 
 	local is_granular_objective = total_sections and score_per_section and total_sections >= 10
-	local close_to_win = false
+	local score_after_current_objective = 0
+	local score_needed_for_early_win = early_win_data.other_party_score_potential
 
 	if objective_data.score_for_completion then
-		close_to_win = early_win_data.score + objective_data.score_for_completion > early_win_data.other_party_score_potential
+		score_after_current_objective = early_win_data.score + objective_data.score_for_completion
 	elseif is_granular_objective then
-		close_to_win = early_win_data.score + score_per_section * total_sections > early_win_data.other_party_score_potential
+		score_after_current_objective = early_win_data.score + score_per_section * total_sections - (self._num_sections_completed or 0 * score_per_section)
 	elseif total_sections and score_per_section and total_sections then
-		close_to_win = early_win_data.score + score_per_section > early_win_data.other_party_score_potential
+		score_after_current_objective = early_win_data.score + score_per_section
 	end
 
-	if not close_to_win then
+	local close_to_win = score_needed_for_early_win < score_after_current_objective
+
+	if script_data.debug_early_win then
+		Debug.text("Potential score needed for close to win: %s / %s", score_after_current_objective, score_needed_for_early_win)
+		Debug.text("Heroes about to win: %s", close_to_win)
+	end
+
+	if not close_to_win and not self._heroes_close_to_safe_zone then
 		if objective_data.objective_type and objective_data.objective_type == ObjectiveTypes.objective_safehouse then
-			close_to_win = true
+			self._heroes_close_to_safe_zone = true
 		elseif objective_data.close_to_win_on_completion then
-			close_to_win = true
+			self._heroes_close_to_safe_zone = true
 		elseif objective_data.close_to_win_on_section then
-			close_to_win = self._num_sections_completed >= objective_data.close_to_win_on_section
-			close_to_win = close_to_win or early_win_data.score + score_per_section > early_win_data.other_party_score_potential
+			self._heroes_close_to_safe_zone = self._num_sections_completed >= objective_data.close_to_win_on_section
 		end
 	end
 
+	if self._heroes_close_to_safe_zone then
+		local game = Network.game_session()
+
+		GameSession.set_game_object_field(game, self._go_id, "heroes_close_to_safe_zone", true)
+	end
+
 	if close_to_win then
+		self:_trigger_about_to_early_win_vo()
+
 		self._heroes_close_to_winning = true
 
 		local game = Network.game_session()
 
 		GameSession.set_game_object_field(game, self._go_id, "heroes_close_to_winning", true)
 	end
+end
+
+VersusWinConditions._trigger_about_to_early_win_vo = function (self)
+	local is_about_to_end_game_early = Managers.state.game_mode:game_mode():is_about_to_end_game_early()
+
+	if is_about_to_end_game_early then
+		return
+	end
+
+	if self._about_to_early_win_vo_played then
+		return
+	end
+
+	self._about_to_early_win_vo_played = true
+
+	local dialogue_system = Managers.state.entity:system("dialogue_system")
+
+	dialogue_system:queue_mission_giver_event_for_side("heroes", "vs_mg_about_to_early_win")
+	dialogue_system:queue_mission_giver_event_for_side("dark_pact", "vs_mg_about_to_early_loss")
 end
 
 VersusWinConditions._has_nested_parent_objectives = function (self, objective_data)
@@ -391,7 +430,11 @@ VersusWinConditions._has_nested_parent_objectives = function (self, objective_da
 	return nested_parent_objective.sub_objectives, nested_parent_objective.sub_objectives and num_nested_objectives or nil
 end
 
-VersusWinConditions.rpc_versus_set_score = function (self, sender, party_id, points, set_number)
+VersusWinConditions.rpc_versus_set_score = function (self, sender, party_id, points, set_number, current_round)
+	if current_round ~= 0 then
+		self._current_round = current_round
+	end
+
 	local sets_data = self._win_data[party_id]
 
 	if not sets_data then
@@ -401,7 +444,6 @@ VersusWinConditions.rpc_versus_set_score = function (self, sender, party_id, poi
 	local data = sets_data[set_number]
 
 	data.claimed_points = points
-	data.unclaimed_points = data.max_points - points
 
 	Presence.set_presence("score", PresenceHelper.get_game_score())
 end
@@ -416,6 +458,10 @@ end
 
 VersusWinConditions.is_round_almost_over = function (self)
 	return self._round_timer <= self._round_almost_over_time_breakpoint
+end
+
+VersusWinConditions.heroes_close_to_safe_zone = function (self)
+	return self._heroes_close_to_safe_zone
 end
 
 VersusWinConditions.round_timer = function (self)
@@ -449,7 +495,6 @@ end
 VersusWinConditions.add_score = function (self, score_to_add, objective_extension)
 	if self._is_server then
 		self:_add_points_collected(self._hero_party_id, score_to_add)
-		self:update_party_has_won_early(self._hero_party_id)
 
 		if not DEDICATED_SERVER then
 			Presence.set_presence("score", PresenceHelper.get_game_score())
@@ -466,7 +511,7 @@ end
 VersusWinConditions.play_score_sfx = function (self, current_objective_extension)
 	local event = "Play_hud_versus_score_points"
 	local close_to_win_events = settings.versus_close_to_win_score_ticks
-	local early_win_data = self:_get_early_win_data(self._hero_party_id)
+	local early_win_data = self:_get_hero_early_win_data()
 	local score_to_win = early_win_data.other_party_score_potential - early_win_data.score + 1
 	local num_score_ticks_to_win = 0
 	local current_objective_sections_left = current_objective_extension:get_num_sections_left()
@@ -533,10 +578,11 @@ VersusWinConditions._add_points_collected = function (self, party_id, score)
 		return
 	end
 
-	data.claimed_points = data.claimed_points + score
-	data.unclaimed_points = data.unclaimed_points - score
+	local current_round = self._current_round
 
-	Managers.state.network.network_transmit:send_rpc_clients("rpc_versus_set_score", party_id, data.claimed_points, set_index)
+	data.claimed_points = data.claimed_points + score
+
+	Managers.state.network.network_transmit:send_rpc_clients("rpc_versus_set_score", party_id, data.claimed_points, set_index, current_round)
 end
 
 VersusWinConditions.save_points_collected = function (self, party_id, set_number, score)
@@ -549,49 +595,96 @@ VersusWinConditions.save_points_collected = function (self, party_id, set_number
 	local data = sets_data[set_number]
 
 	data.claimed_points = score
-	data.unclaimed_points = data.unclaimed_points - score
 end
 
-VersusWinConditions.update_party_has_won_early = function (self, party_id, ignore_last_round)
-	if ignore_last_round and self._final_round then
-		return
-	end
-
+VersusWinConditions.update_early_win_conditions = function (self)
 	if not self._has_objectives then
 		return
 	end
 
-	local early_win_data = self:_get_early_win_data(party_id)
-
-	if early_win_data.score > early_win_data.other_party_score_potential then
-		self.party_won_early = early_win_data
-
-		return true, self.party_won_early
+	if script_data.debug_early_win and Network.game_session() then
+		self:_check_heroes_close_to_win_conditions_met()
 	end
+
+	local hero_early_win_data = self:_get_hero_early_win_data()
+	local hero_wins = hero_early_win_data.score > hero_early_win_data.other_party_score_potential
+	local pactsworn_wins = hero_early_win_data.score_potential < hero_early_win_data.other_party_score
+
+	if not self.party_won_early then
+		if hero_wins or pactsworn_wins then
+			table.dump(hero_early_win_data, "self.party_won_early")
+		end
+
+		if hero_wins then
+			self.party_won_early = hero_early_win_data
+		elseif pactsworn_wins then
+			local pactsworn_party_id = self._hero_party_id == 1 and 2 or 1
+			local pactsworn_early_win_data = {}
+
+			pactsworn_early_win_data.party_id = pactsworn_party_id
+			pactsworn_early_win_data.score = hero_early_win_data.other_score
+			pactsworn_early_win_data.score_potential = hero_early_win_data.other_party_score_potential
+			pactsworn_early_win_data.other_party_score = hero_early_win_data.score
+			pactsworn_early_win_data.other_party_score_potential = hero_early_win_data.score_potential
+			self.party_won_early = pactsworn_early_win_data
+
+			table.dump(self.party_won_early, "pactsworn_early_win_data")
+		end
+
+		if self.party_won_early then
+			printf("[VersusWinConditions] Party %s won early due to score %s being higher than opponent potential score %s", self.party_won_early.party_id, self.party_won_early.score, self.party_won)
+		end
+	end
+
+	return hero_wins or pactsworn_wins, self.party_won_early
 end
 
-VersusWinConditions._get_early_win_data = function (self, party_id, ignore_last_round)
+local safe_room_points_per_player = 10
+
+VersusWinConditions._get_hero_early_win_data = function (self)
+	local party_id = self._hero_party_id
 	local set_number = self.mechanism:get_current_set()
 	local other_party_id = party_id == 1 and 2 or 1
 	local score = self:get_total_score(party_id)
 	local other_score = self:get_total_score(other_party_id)
-	local set_data = self._win_data[other_party_id]
-	local unclaimed = 0
+	local party = Managers.party:get_party(party_id)
+	local hero_score_to_subtract = 0
+	local side = Managers.state.side:get_side_from_name(party.name)
+	local heroes = side.PLAYER_AND_BOT_UNITS
+	local dead_heroes = party.num_slots - #heroes
 
-	for i = set_number, #set_data do
-		unclaimed = unclaimed + set_data[i].unclaimed_points
+	if dead_heroes > 0 then
+		hero_score_to_subtract = dead_heroes * safe_room_points_per_player
 	end
 
-	local other_party_score_potential = other_score + unclaimed
-	local early_win_data = {
-		party_id = party_id,
-		score = score,
-		other_party_score = other_score,
-		other_party_unclaimed_points = unclaimed,
-		other_party_score_potential = other_party_score_potential
-	}
+	local hero_set_data = self._win_data[party_id]
+	local unclaimed_points = 0
 
-	return early_win_data
+	for i = set_number, #hero_set_data do
+		unclaimed_points = unclaimed_points + hero_set_data[i].max_points - hero_set_data[i].claimed_points
+	end
+
+	local potential_score = score + unclaimed_points - hero_score_to_subtract
+	local pactsworn_win_data = self._win_data[other_party_id]
+	local other_unclaimed_points = 0
+
+	if self._current_round % 2 == 1 then
+		other_unclaimed_points = other_unclaimed_points + pactsworn_win_data[set_number].max_points - pactsworn_win_data[set_number].claimed_points
+	end
+
+	for i = set_number + 1, #pactsworn_win_data do
+		other_unclaimed_points = other_unclaimed_points + pactsworn_win_data[i].max_points - pactsworn_win_data[i].claimed_points
+	end
+
+	local other_party_score_potential = other_score + other_unclaimed_points
+
+	self._early_win_data.party_id = party_id
+	self._early_win_data.score = score
+	self._early_win_data.score_potential = potential_score
+	self._early_win_data.other_party_score = other_score
+	self._early_win_data.other_party_score_potential = other_party_score_potential
+
+	return self._early_win_data
 end
 
 VersusWinConditions.set_score = function (self, value)
@@ -604,7 +697,7 @@ VersusWinConditions.set_score = function (self, value)
 		local network_transmit = Managers.state.network.network_transmit
 		local set_number = self.mechanism:get_current_set()
 
-		network_transmit:send_rpc_clients("rpc_versus_set_score", self._hero_party_id, value, set_number)
+		network_transmit:send_rpc_clients("rpc_versus_set_score", self._hero_party_id, value, set_number, 0)
 	end
 end
 

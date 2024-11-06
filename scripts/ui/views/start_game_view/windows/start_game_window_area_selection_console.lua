@@ -425,12 +425,7 @@ StartGameWindowAreaSelectionConsole._on_select_button_pressed = function (self)
 
 		if requirements_fulfilled then
 			local parent = self.parent
-			local selected_layout_name = parent:get_selected_layout_name()
 			local new_layout_name = "mission_selection"
-
-			if selected_layout_name == "area_selection" then
-				new_layout_name = "mission_selection"
-			end
 
 			parent:set_selected_area_name(area_name)
 			parent:set_layout_by_name(new_layout_name)

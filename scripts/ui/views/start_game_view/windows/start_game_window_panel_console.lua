@@ -27,10 +27,6 @@ StartGameWindowPanelConsole.on_enter = function (self, params, offset)
 	self:_create_ui_elements(definitions, params, offset)
 	self:_setup_text_buttons_width_and_position()
 	self:_setup_input_buttons()
-
-	self._event_manager = Managers.state.event
-
-	self._event_manager:register(self, "versus_custom_lobby_state_changed", "on_versus_custom_lobby_state_changed")
 end
 
 StartGameWindowPanelConsole._create_ui_elements = function (self, definitions, params, offset)
@@ -126,8 +122,6 @@ StartGameWindowPanelConsole.on_exit = function (self, params)
 	print("[HeroViewWindow] Exit Substate StartGameWindowPanelConsole")
 
 	self.ui_animator = nil
-
-	self._event_manager:unregister("versus_custom_lobby_state_changed", self)
 end
 
 StartGameWindowPanelConsole.update = function (self, dt, t)
@@ -464,19 +458,11 @@ StartGameWindowPanelConsole._deus_custom_disable_function = function (self)
 end
 
 StartGameWindowPanelConsole._versus_quickplay_disable_function = function (self)
-	return self:_is_in_quickplay_weave_menu() or not self:_is_supported_with_twitch("versus_quickplay") or self._versus_player_hosted_lobby_ui_is_active
-end
-
-StartGameWindowPanelConsole._versus_lobby_browser_disable_function = function (self)
-	return self._versus_player_hosted_lobby_ui_is_active
+	return self:_is_in_quickplay_weave_menu() or not self:_is_supported_with_twitch("versus_quickplay")
 end
 
 StartGameWindowPanelConsole._versus_custom_disable_function = function (self)
-	return self:_is_in_quickplay_weave_menu() or not self:_is_supported_with_twitch("versus_custom") or self._versus_player_hosted_lobby_ui_is_active
-end
-
-StartGameWindowPanelConsole.on_versus_custom_lobby_state_changed = function (self, versus_player_hosted_lobby_ui_is_active)
-	self._versus_player_hosted_lobby_ui_is_active = versus_player_hosted_lobby_ui_is_active
+	return self:_is_in_quickplay_weave_menu() or not self:_is_supported_with_twitch("versus_custom")
 end
 
 StartGameWindowPanelConsole._streaming_disable_function = function (self)

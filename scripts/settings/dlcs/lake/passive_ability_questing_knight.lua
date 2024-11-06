@@ -183,142 +183,52 @@ local challenge_settings = {
 		always_reset_quest_pool = true,
 		possible_challenges = {
 			{
-				reward = "markus_questing_knight_passive_cooldown_reduction",
-				type = "kill_elites",
+				reward = "markus_questing_knight_passive_damage_taken",
+				type = "kill_specials",
 				amount = {
-					2,
-					4,
-					6,
-					8,
-					10,
-					12,
 					14,
 					16,
-					18
-				}
-			},
-			{
-				reward = "markus_questing_knight_passive_attack_speed",
-				type = "kill_elites",
-				amount = {
-					2,
-					4,
-					6,
-					8,
-					10,
-					12,
-					14,
-					16,
-					18
+					18,
+					20,
+					22,
+					24,
+					26,
+					28,
+					30
 				}
 			},
 			{
 				reward = "markus_questing_knight_passive_power_level",
 				type = "kill_elites",
 				amount = {
-					2,
-					4,
 					6,
 					8,
 					10,
 					12,
 					14,
 					16,
-					18
-				}
-			},
-			{
-				reward = "markus_questing_knight_passive_damage_taken",
-				type = "kill_elites",
-				amount = {
-					2,
-					4,
-					6,
-					8,
-					10,
-					12,
-					14,
-					16,
-					18
-				}
-			},
-			{
-				reward = "markus_questing_knight_passive_health_regen",
-				type = "kill_elites",
-				amount = {
-					2,
-					4,
-					6,
-					8,
-					10,
-					12,
-					14,
-					16,
-					18
-				}
-			},
-			{
-				reward = "markus_questing_knight_passive_cooldown_reduction",
-				type = "kill_enemies",
-				amount = {
-					30,
-					35,
-					40,
-					45,
-					50,
-					55,
-					60,
-					65,
-					70
-				}
-			},
-			{
-				reward = "markus_questing_knight_passive_attack_speed",
-				type = "kill_enemies",
-				amount = {
-					30,
-					35,
-					40,
-					45,
-					50,
-					55,
-					60,
-					65,
-					70
+					18,
+					20,
+					22
 				}
 			},
 			{
 				reward = "markus_questing_knight_passive_power_level",
-				type = "kill_enemies",
+				type = "kill_monsters",
 				amount = {
-					30,
-					35,
-					40,
-					45,
-					50,
-					55,
-					60,
-					65,
-					70
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1
 				}
 			},
 			{
-				reward = "markus_questing_knight_passive_damage_taken",
-				type = "kill_enemies",
-				amount = {
-					30,
-					35,
-					40,
-					45,
-					50,
-					55,
-					60,
-					65,
-					70
-				}
-			},
-			{
-				reward = "markus_questing_knight_passive_health_regen",
+				reward = "markus_questing_knight_passive_attack_speed",
 				type = "kill_enemies",
 				amount = {
 					30,

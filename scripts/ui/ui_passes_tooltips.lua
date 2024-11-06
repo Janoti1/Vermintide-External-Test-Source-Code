@@ -5482,7 +5482,7 @@ UITooltipPasses = {
 				},
 				text_size = {},
 				content = {
-					prefix = "Rarities: "
+					prefix = Localize("loot_chest_rarity_rates") .. " "
 				},
 				style = {
 					title_text = {

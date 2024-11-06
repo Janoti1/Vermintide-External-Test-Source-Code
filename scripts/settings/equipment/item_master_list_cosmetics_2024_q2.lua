@@ -233,9 +233,9 @@ ItemMasterList.skaven_warpfire_thrower_skin_1001_bundle = {
 	bundle_contains = {}
 }
 ItemMasterList.skaven_ratling_gunner_skin_1001_bundle = {
-	description = "description_skaven_ratling_gunner_skin_1001_bundle",
+	description = "description_skaven_ratling_gunner_skin_1001",
 	temporary_template = "",
-	display_name = "display_name_skaven_ratling_gunner_skin_1001_bundle",
+	display_name = "display_name_skaven_ratling_gunner_skin_1001",
 	name = "skaven_ratling_gunner_skin_1001_bundle",
 	inventory_icon = "icons_placeholder",
 	slot_type = "cosmetic_bundle",
@@ -302,4 +302,27 @@ ItemMasterList.skaven_globadier_skin_1001_bundle = {
 	can_wield = {
 		"vs_poison_wind_globadier"
 	}
+}
+ItemMasterList.skaven_skins_bundle_0001 = {
+	optional_item_name = true,
+	product_layout = "skaven_skins_bundle_0001",
+	display_name = "display_name_skaven_skins_bundle_0001",
+	template = "",
+	slot_type = "bundle",
+	store_texture_package = "resource_packages/store/bundle_icons/store_item_icon_skaven_skins_bundle_0001",
+	information_text = "skaven_skins_bundle_0001",
+	rarity = "promo",
+	description = "description_skaven_skins_bundle_0001",
+	prio = 4700,
+	hud_icon = "",
+	show_old_price = true,
+	item_type = "bundle",
+	unit = "",
+	steam_itemdefid = 849,
+	store_bundle_big_image = "gui/1080p/single_textures/store/slideshow/store_slideshow_bundle_skaven_skins_bundle_0001",
+	store_texture = "gui/1080p/single_textures/store_bundle/store_item_icon_skaven_skins_bundle_0001",
+	subtitle = "five_career_bundle_0001_subtitle",
+	inventory_icon = "",
+	can_wield = {},
+	bundle_contains = {}
 }

@@ -1446,7 +1446,7 @@ end
 
 StoreItemPurchasePopup._popup_on_enter = function (self)
 	local product = self._product
-	local item = product.item
+	local item = product.product_item or product.item
 	local item_data = item.data
 	local item_rarity = item_data.rarity
 	local item_type = item_data.item_type
@@ -1506,7 +1506,7 @@ end
 StoreItemPurchasePopup._create_popup_widget = function (self, product, scenegraph_id, display_as_owned)
 	local product = self._product
 	local product_id = product.product_id
-	local item = product.item
+	local item = product.product_item or product.item
 	local masked = false
 	local item_size = {
 		260,
@@ -1556,7 +1556,7 @@ end
 StoreItemPurchasePopup._poll_result_on_enter = function (self)
 	local item_currency_settings = DLCSettings.store.currency_ui_settings
 	local product = self._product
-	local item = product.item
+	local item = product.product_item or product.item
 	local item_key = item.key
 	local regular_prices = item.regular_prices
 	local current_prices = item.current_prices
@@ -1805,9 +1805,6 @@ StoreItemPurchasePopup._approved_update = function (self, input_service, dt, t)
 
 	if progress == 1 then
 		widgets_by_name.loading_icon.content.fade_out = false
-
-		self:_play_sound("play_gui_chest_reward_enter")
-
 		self._purchase_confirmation_anim_duration = nil
 		self._approved_anim_params = nil
 

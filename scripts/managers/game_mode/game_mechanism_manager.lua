@@ -312,6 +312,8 @@ GameMechanismManager.destroy = function (self)
 
 	if self._game_mechanism.destroy then
 		self._game_mechanism:destroy()
+
+		self._game_mechanism = nil
 	end
 
 	if self._network_event_delegate then
@@ -470,8 +472,16 @@ GameMechanismManager._init_mechanism = function (self)
 	self:_unregister_mechanism_rpcs()
 
 	if not self._game_mechanism or switching_mechanism then
-		if self._game_mechanism and self._game_mechanism.left_mechanism_due_to_switch then
-			self._game_mechanism:left_mechanism_due_to_switch()
+		if self._game_mechanism then
+			if self._game_mechanism.left_mechanism_due_to_switch then
+				self._game_mechanism:left_mechanism_due_to_switch()
+			end
+
+			if self._game_mechanism.destroy then
+				self._game_mechanism:destroy()
+
+				self._game_mechanism = nil
+			end
 		end
 
 		self:_setup_mechanism_specific_career_settings()
@@ -1141,12 +1151,6 @@ GameMechanismManager.setup_mechanism_parties = function (self)
 	end
 
 	if not IS_CONSOLE and self._lobby and self._lobby.set_max_members then
-		self._lobby:set_max_members(self:max_instance_members())
-	end
-end
-
-GameMechanismManager.update_lobby_max_members = function (self)
-	if self._lobby.set_max_members then
 		self._lobby:set_max_members(self:max_instance_members())
 	end
 end

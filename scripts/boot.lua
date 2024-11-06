@@ -721,10 +721,6 @@ Boot.game_update = function (self, real_world_dt)
 	local Managers = Managers
 	local dt = Managers.time:scaled_delta_time(real_world_dt)
 
-	if PlayerUnitLocomotionExtension then
-		PlayerUnitLocomotionExtension.set_new_frame()
-	end
-
 	if Managers.mod then
 		Managers.mod:update(dt)
 	end

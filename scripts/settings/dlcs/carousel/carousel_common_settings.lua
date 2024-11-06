@@ -4,26 +4,33 @@ require("scripts/unit_extensions/weapons/area_damage/area_damage_templates_vs")
 
 settings.mechanism_settings = {
 	versus = {
-		query_port = 27016,
-		server_port = 27017,
-		loading_screen_override = "loading_screen_carousel",
-		using_ghost_mode_system = true,
-		sync_backend_id = true,
+		num_bosses_to_spawn = 2,
 		keep_leaving_players_grace_period = 120,
-		spawn_boss_every_section = true,
-		file = "scripts/managers/game_mode/mechanisms/versus_mechanism",
-		class_name = "VersusMechanism",
 		display_name = "area_selection_carousel_name",
-		always_spawn_a_boss = true,
-		steam_port = 8766,
+		server_port = 27017,
+		close_start_menu_sound_event = "Play_vs_hud_play_menu_close",
+		start_game_open_sound_event = "Play_vs_hud_play_menu_open",
+		hero_respawn_time = 1800,
 		disadvantaged_team_starts = true,
-		server_universe = "carousel",
+		spawn_boss_every_section = false,
 		social_wheel = "VersusSocialWheelUI",
 		check_matchmaking_hero_availability = true,
 		playfab_mirror = "PlayFabMirrorAdventure",
 		use_gamepad_layout = true,
-		hero_respawn_time = 1800,
+		override_boss_activation_distance = 1,
 		rcon_port = 27015,
+		loading_screen_override = "loading_screen_carousel",
+		start_game_play_sound_event = "versus_hud_player_lobby_searching_for_match",
+		using_ghost_mode_system = true,
+		sync_backend_id = true,
+		file = "scripts/managers/game_mode/mechanisms/versus_mechanism",
+		query_port = 27016,
+		class_name = "VersusMechanism",
+		always_spawn_a_boss = true,
+		steam_port = 8766,
+		server_universe = "carousel",
+		vote_switch_mechanism_background = "vote_switch_mechanism_versus_background",
+		vote_switch_mechanism_text = "vote_switch_mechanism_versus_description",
 		states = {
 			"inn",
 			"round_1",
@@ -229,7 +236,8 @@ settings.anim_lookup = {
 	"attack_ogre_slam_charge",
 	"death_dissolve",
 	"death_crawl",
-	"attack_vomit_into"
+	"attack_vomit_into",
+	"attack_jump_air"
 }
 settings.inventory_package_list = {
 	"units/beings/player/dark_pact_first_person_base/chaos_troll/chr_first_person_base",
@@ -331,7 +339,8 @@ settings.dialogue_events = {
 	"vw_cover_me",
 	"vw_answer_ping",
 	"hook_success",
-	"hook_fail"
+	"hook_fail",
+	"vs_ratling_hitting_shield"
 }
 settings.social_wheel_sfx_events = {
 	dark_pact = {

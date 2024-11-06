@@ -2084,7 +2084,7 @@ local function player_widget_definition(index)
 					pass_type = "texture_uv",
 					content_id = "grimoire_bar",
 					content_change_function = function (content, style)
-						style.texture_size[1] = 200 * style.grimoire_debuff
+						style.texture_size[1] = (200 - insignia_offset) * style.grimoire_debuff
 						content.uvs[1][1] = 1 - style.grimoire_debuff
 					end
 				},
@@ -2096,7 +2096,7 @@ local function player_widget_definition(index)
 						local grimoire_debuff = style.grimoire_debuff
 						local offset = style.offset
 
-						offset[1] = style.base_offset[1] - 200 * grimoire_debuff
+						offset[1] = style.base_offset[1] - (200 - insignia_offset) * grimoire_debuff
 					end
 				},
 				{
@@ -3193,7 +3193,7 @@ local function player_widget_definition(index)
 					255
 				},
 				offset = {
-					-PLAYER_LIST_SIZE[1] + 150 + 200 + insignia_offset,
+					-PLAYER_LIST_SIZE[1] + 150 + 200,
 					-82,
 					13
 				}
@@ -3213,12 +3213,12 @@ local function player_widget_definition(index)
 					255
 				},
 				base_offset = {
-					-PLAYER_LIST_SIZE[1] + 150 + 200 + 1.5 + insignia_offset,
+					-PLAYER_LIST_SIZE[1] + 150 + 200 + 1.5,
 					-84,
 					20
 				},
 				offset = {
-					-PLAYER_LIST_SIZE[1] + 150 + 200 + insignia_offset,
+					-PLAYER_LIST_SIZE[1] + 150 + 200,
 					-82,
 					20
 				}

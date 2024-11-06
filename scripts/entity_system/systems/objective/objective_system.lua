@@ -252,6 +252,10 @@ ObjectiveSystem._activate_objective = function (self, objective_name)
 
 	assert(objective_data, "[ObjectiveSystem] Tried activating objective before registering it.")
 
+	if self._is_server then
+		self:_check_trigger_start_vo(objective_data)
+	end
+
 	if objective_data.vo_context_on_activate then
 		local dialogue_system = Managers.state.entity:system("dialogue_system")
 
@@ -471,15 +475,11 @@ ObjectiveSystem._update_activate_objectives = function (self)
 			self:objective_started_telemetry(self._current_objective_list_index)
 
 			self._main_objective_scratch = {}
-
-			self:_check_trigger_start_vo()
 		elseif not only_kill_objective_left then
 			self:_destroy_all_sync_objects(true)
 
 			self._activated = false
 			self._all_objectives_completed = true
-
-			self:_check_trigger_complete_vo()
 		end
 	end
 end
@@ -487,6 +487,8 @@ end
 ObjectiveSystem._complete_objective_server = function (self, extension, objects_to_remove)
 	local objective_name = extension:objective_name()
 	local objective_data = self._data_by_name[objective_name]
+
+	self:_check_trigger_complete_vo(objective_data)
 
 	if objective_data.vo_context_on_complete then
 		local dialogue_system = Managers.state.entity:system("dialogue_system")
@@ -920,7 +922,7 @@ ObjectiveSystem._update_objective_vo = function (self)
 
 				local dialogue_system = Managers.state.entity:system("dialogue_system")
 
-				dialogue_system:trigger_mission_giver_event("vs_mg_heroes_objective_almost_completed")
+				dialogue_system:queue_mission_giver_event("vs_mg_heroes_objective_almost_completed")
 
 				break
 			end
@@ -928,38 +930,26 @@ ObjectiveSystem._update_objective_vo = function (self)
 	end
 end
 
-ObjectiveSystem._check_trigger_complete_vo = function (self)
-	local objective_index = self._current_objective_list_index
-	local objectives = self._objective_lists[objective_index]
+ObjectiveSystem._check_trigger_complete_vo = function (self, objective_data)
+	if objective_data.play_complete_vo then
+		local dialogue_system = Managers.state.entity:system("dialogue_system")
 
-	for _, objective_data in pairs(objectives) do
-		if objective_data.play_complete_vo then
-			local dialogue_system = Managers.state.entity:system("dialogue_system")
+		dialogue_system:queue_mission_giver_event("vs_mg_heroes_objective_completed")
+	elseif objective_data.play_safehouse_vo then
+		local dialogue_system = Managers.state.entity:system("dialogue_system")
 
-			dialogue_system:trigger_mission_giver_event("vs_mg_heroes_objective_completed")
-		elseif objective_data.play_safehouse_vo then
-			local dialogue_system = Managers.state.entity:system("dialogue_system")
+		dialogue_system:queue_mission_giver_event("vs_mg_heroes_reached_safe_room")
+	elseif objective_data.play_waystone_vo then
+		local dialogue_system = Managers.state.entity:system("dialogue_system")
 
-			dialogue_system:trigger_mission_giver_event("vs_mg_heroes_reached_safe_room")
-		elseif objective_data.play_waystone_vo then
-			local dialogue_system = Managers.state.entity:system("dialogue_system")
-
-			dialogue_system:trigger_mission_giver_event("vs_mg_heroes_reached_waystone")
-		end
+		dialogue_system:queue_mission_giver_event("vs_mg_heroes_reached_waystone")
 	end
 end
 
-ObjectiveSystem._check_trigger_start_vo = function (self)
-	local objective_index = self._current_objective_list_index
-	local objectives = self._objective_lists[objective_index]
+ObjectiveSystem._check_trigger_start_vo = function (self, objective_data)
+	if objective_data.play_arrive_vo then
+		local dialogue_system = Managers.state.entity:system("dialogue_system")
 
-	for _, objective_data in pairs(objectives) do
-		if objective_data.play_arrive_vo then
-			local dialogue_system = Managers.state.entity:system("dialogue_system")
-
-			dialogue_system:trigger_mission_giver_event("vs_mg_heroes_objective_reached")
-
-			break
-		end
+		dialogue_system:queue_mission_giver_event("vs_mg_heroes_objective_reached")
 	end
 end

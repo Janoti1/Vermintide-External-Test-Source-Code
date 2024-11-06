@@ -43,7 +43,6 @@ AnimationSystem.init = function (self, entity_system_creation_context, system_na
 	self._animation_safe_callbacks_buffer_1 = {}
 	self._animation_safe_callbacks_buffer_2 = {}
 	self._animation_safe_callbacks = self._animation_safe_callbacks_buffer_1
-	self._safe_to_trigger_animation = true
 end
 
 AnimationSystem.destroy = function (self)
@@ -51,8 +50,6 @@ AnimationSystem.destroy = function (self)
 end
 
 AnimationSystem.animation_callback = function (self, unit, callback, param)
-	self:set_safe_to_trigger_animation(true)
-
 	local cb
 
 	if self.is_server then
@@ -478,14 +475,6 @@ AnimationSystem.start_anim_variable_update_by_time = function (self, unit, anim_
 
 	self.network_transmit:send_rpc_clients("rpc_anim_set_variable_by_time", unit_id, anim_variable_index, int_16bit_duration, scale)
 	self:_set_variable_by_time(unit, anim_variable_index, duration, scale)
-end
-
-AnimationSystem.set_safe_to_trigger_animation = function (self, safe)
-	self._safe_to_trigger_animation = safe
-end
-
-AnimationSystem.is_safe_to_trigger_animation = function (self)
-	return self._safe_to_trigger_animation
 end
 
 AnimationSystem.add_safe_animation_callback = function (self, cb)

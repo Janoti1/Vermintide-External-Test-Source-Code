@@ -1,4 +1,5 @@
 PeerStates = {}
+SlotReservationConnectStatus = table.enum("PENDING", "FAILED", "SUCCEEDED")
 
 local time_between_resend_rpc_notify_connected = 2
 
@@ -70,26 +71,46 @@ PeerStates.Connecting = {
 			return PeerStates.Disconnecting
 		end
 
-		if not self.has_received_rpc_notify_lobby_joined then
-			self.resend_timer = self.resend_timer - dt
+		local reservation_status = SlotReservationConnectStatus.SUCCEEDED
 
-			local resend_rpc_notify_connected = self.resend_timer < 0
+		if self.peer_id ~= self.server.my_peer_id then
+			local mechanism_manager = Managers.mechanism
+			local slot_reservation_handler = mechanism_manager:get_slot_reservation_handler()
 
-			if resend_rpc_notify_connected then
-				if PEER_ID_TO_CHANNEL[self.peer_id] then
-					local game_mode = Managers.state.game_mode and Managers.state.game_mode:game_mode()
+			if slot_reservation_handler then
+				reservation_status = slot_reservation_handler:handle_slot_reservation_for_connecting_peer(self, dt)
+			end
+		end
 
-					if game_mode and game_mode:is_joinable() then
-						self.server.network_transmit:send_rpc("rpc_notify_connected", self.peer_id)
+		if reservation_status == SlotReservationConnectStatus.SUCCEEDED then
+			if not self.has_received_rpc_notify_lobby_joined then
+				self.resend_timer = self.resend_timer - dt
 
-						self.resend_timer = time_between_resend_rpc_notify_connected
+				local resend_rpc_notify_connected = self.resend_timer < 0
+
+				if resend_rpc_notify_connected then
+					if PEER_ID_TO_CHANNEL[self.peer_id] then
+						local game_mode = Managers.state.game_mode and Managers.state.game_mode:game_mode()
+
+						if game_mode and game_mode:is_joinable() then
+							self.server.network_transmit:send_rpc("rpc_notify_connected", self.peer_id)
+
+							self.resend_timer = time_between_resend_rpc_notify_connected
+						end
+					else
+						print("PeerState.Connecting lost connection, cannot send rpc_notify_connected")
+
+						return PeerStates.Disconnecting
 					end
-				else
-					print("PeerState.Connecting lost connection, cannot send rpc_notify_connected")
-
-					return PeerStates.Disconnecting
 				end
 			end
+		elseif reservation_status == SlotReservationConnectStatus.FAILED then
+			printf("[PSM] Disconnecting player (%s) due to not being able to reserve slots", self.peer_id)
+			self.server:disconnect_peer(self.peer_id, "host_has_no_backend_connection")
+
+			return PeerStates.Disconnecting
+		else
+			return
 		end
 
 		if not Development.parameter("allow_weave_joining") then

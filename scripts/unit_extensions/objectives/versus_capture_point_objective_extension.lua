@@ -95,7 +95,7 @@ VersusCapturePointObjectiveExtension._update_local_player = function (self, dt, 
 		self._audio_system:set_global_parameter("versus_checkpoint", percentage_done * 100)
 	end
 
-	if self._local_side:name() ~= "heroes" then
+	if self:_local_side():name() ~= "heroes" then
 		return
 	end
 

@@ -5,9 +5,11 @@ local CLIENT_PAUSE_SYNC_DURATION = 2
 VersusHordeAbilityExtension.init = function (self, extension_init_context, unit, extension_init_data)
 	self.is_server = Managers.player.is_server
 	self._horde_ability_system = Managers.state.entity:system("versus_horde_ability_system")
+	self._settings = self._horde_ability_system:settings()
 	self._unit = unit
 	self.network_manager = Managers.state.network
 	self._game = Managers.state.network:game()
+	self._world = extension_init_context.world
 
 	if self.is_server then
 		self:create_ability_game_object()
@@ -50,11 +52,9 @@ VersusHordeAbilityExtension.update = function (self, t)
 		return
 	end
 
-	if self:cooldown() > self:get_ability_charge(t) then
-		return
-	end
+	local cooldown_ready = self:get_ability_charge(t) >= self:cooldown()
 
-	if not self._fully_charged then
+	if cooldown_ready and not self._fully_charged then
 		self._audio_system:play_sound_local("Play_versus_pactsworn_horde_ability_ready")
 
 		self._fully_charged = true
@@ -62,9 +62,16 @@ VersusHordeAbilityExtension.update = function (self, t)
 
 	local input_activated = self._input_extension and self._input_extension:get("versus_horde_ability")
 	local is_in_ghost_mode = self._ghost_mode_extension:is_in_ghost_mode()
+	local allowed_to_use = cooldown_ready and (self._settings.enable_activation_in_ghost_mode or not is_in_ghost_mode)
 
-	if input_activated and not is_in_ghost_mode then
-		self:_activate(t)
+	if input_activated then
+		if allowed_to_use then
+			self:_activate(t)
+		else
+			local wwise_world = Managers.world:wwise_world(self._world)
+
+			WwiseWorld.trigger_event(wwise_world, "versus_hud_ability_not_ready")
+		end
 	end
 end
 

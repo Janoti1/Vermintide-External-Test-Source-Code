@@ -1111,9 +1111,10 @@ VoteTemplates = {
 		end
 	},
 	game_settings_vote_switch_mechanism = {
-		client_start_vote_rpc = "rpc_server_request_start_vote_lookup",
-		ingame_vote = false,
 		mission_vote = true,
+		cancel_disabled = true,
+		ingame_vote = false,
+		client_start_vote_rpc = "rpc_server_request_start_vote_lookup",
 		gamepad_support = true,
 		text = "vote_switch_mechanism",
 		minimum_voter_percent = 1,

@@ -150,19 +150,25 @@ end
 
 HandbookSettings.popups = {
 	mission_select = {
-		page = "mission_select",
+		pages = {
+			"mission_select"
+		},
 		triggers = {
 			"start_game_menu_opened"
 		}
 	},
 	equipment = {
-		page = "equipment",
+		pages = {
+			"equipment"
+		},
 		triggers = {
 			"loot_menu_opened"
 		}
 	},
 	talents = {
-		page = "talents",
+		pages = {
+			"talents"
+		},
 		triggers = {
 			"keep_menu_left"
 		},
@@ -171,7 +177,9 @@ HandbookSettings.popups = {
 		}
 	},
 	crafting = {
-		page = "crafting",
+		pages = {
+			"crafting"
+		},
 		triggers = {
 			"keep_menu_left"
 		},
@@ -180,7 +188,9 @@ HandbookSettings.popups = {
 		end
 	},
 	new_career_unlocked = {
-		page = "new_career_unlocked",
+		pages = {
+			"new_career_unlocked"
+		},
 		triggers = {
 			"keep_menu_left"
 		},
@@ -189,7 +199,9 @@ HandbookSettings.popups = {
 		}
 	},
 	difficulty_unlocked_champion = {
-		page = "difficulty_unlocked_champion",
+		pages = {
+			"difficulty_unlocked_champion"
+		},
 		triggers = {
 			"keep_menu_left"
 		},
@@ -198,7 +210,9 @@ HandbookSettings.popups = {
 		}
 	},
 	difficulty_unlocked_legend = {
-		page = "difficulty_unlocked_legend",
+		pages = {
+			"difficulty_unlocked_legend"
+		},
 		triggers = {
 			"keep_menu_left"
 		},
@@ -207,7 +221,9 @@ HandbookSettings.popups = {
 		}
 	},
 	difficulty_unlocked_cataclysm = {
-		page = "difficulty_unlocked_cataclysm",
+		pages = {
+			"difficulty_unlocked_cataclysm"
+		},
 		triggers = {
 			"keep_menu_left"
 		},
@@ -216,13 +232,28 @@ HandbookSettings.popups = {
 		}
 	},
 	game_modes = {
-		page = "game_modes",
+		pages = {
+			"game_modes"
+		},
 		triggers = {
 			"keep_menu_left"
 		},
 		custom_condition = function (context)
 			return context:get("player_level") >= 15
 		end
+	},
+	tutorial_introduction = {
+		pages = {
+			"tutorial_introduction_01",
+			"tutorial_introduction_02",
+			"tutorial_introduction_03"
+		},
+		triggers = {
+			"keep_menu_left"
+		},
+		conditions = {
+			"is_versus_mechanism"
+		}
 	}
 }
 HandbookSettings.pages = {
@@ -1034,7 +1065,7 @@ HandbookSettings.pages = {
 	},
 	bile_troll_03 = {
 		{
-			texture = "tutorial_bile_troll_03",
+			texture = "tutorial_playable_monsters_01",
 			type = "image"
 		},
 		{
