@@ -1000,6 +1000,14 @@ CharacterSelectionStateVersusLoadouts._confirm_loadout = function (self)
 		self._parent:set_input_blocked(true)
 
 		self._new_loadout_confirmed = true
+
+		if self._selected_loadout_index then
+			local loadout_settings = InventorySettings.loadouts[self._selected_loadout_index]
+
+			if loadout_settings.loadout_type == "default" then
+				Managers.telemetry_events:default_loadout_equipped()
+			end
+		end
 	else
 		self._parent:close_menu()
 	end

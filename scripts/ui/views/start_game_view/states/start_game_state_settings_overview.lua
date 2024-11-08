@@ -498,6 +498,14 @@ StartGameStateSettingsOverview.close_on_exit = function (self)
 	return self._close_on_exit
 end
 
+StartGameStateSettingsOverview.set_hide_panel_title_butttons = function (self, bool)
+	self._hide_panel_title_buttons = bool
+end
+
+StartGameStateSettingsOverview.hide_panel_title_buttons = function (self)
+	return self._hide_panel_title_buttons
+end
+
 StartGameStateSettingsOverview.get_current_window_layout_settings = function (self)
 	for index, layout_setting in ipairs(self._window_layouts) do
 		if layout_setting.name == self._selected_layout_name then
@@ -569,13 +577,13 @@ StartGameStateSettingsOverview.set_layout = function (self, index)
 
 	local close_on_exit = layout_setting.close_on_exit
 	local reset_on_exit = layout_setting.reset_on_exit
-	local var_34_0 = self._widgets_by_name.exit_button.content
+	local var_36_0 = self._widgets_by_name.exit_button.content
 
 	if reset_on_exit then
 		-- Nothing
 	end
 
-	var_34_0.visible = close_on_exit
+	var_36_0.visible = close_on_exit
 	self._widgets_by_name.back_button.content.visible = reset_on_exit or not close_on_exit
 	self._close_on_exit = close_on_exit
 	self._reset_on_exit = reset_on_exit
@@ -1078,7 +1086,7 @@ StartGameStateSettingsOverview.play = function (self, t, vote_type, force_close_
 
 		self.parent:start_game(params)
 	elseif vote_type == "versus_custom" then
-		local is_private = is_offline or self:is_private_option_enabled()
+		local is_private = self:is_private_option_enabled()
 		local mission_id = self:get_selected_level_id()
 		local params = {
 			player_hosted = true,

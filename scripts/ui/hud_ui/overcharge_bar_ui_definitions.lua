@@ -3,8 +3,8 @@ local DEFAULT_BAR_SIZE = {
 	16
 }
 local DEFAULT_DARK_PACT_BAR_SIZE = {
-	200,
-	56
+	250,
+	70
 }
 local scenegraph_definition = {
 	screen = {

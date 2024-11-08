@@ -42,9 +42,6 @@ StartGameWindowMissionSelectionConsole.on_enter = function (self, params, offset
 
 	local area_name = self._parent:get_selected_area_name()
 
-	self._return_layout_name = params.return_layout_name or self._parent:get_selected_layout_name()
-	params.return_layout_name = nil
-
 	self:_set_presentation_info()
 	self:_setup_levels_by_area(area_name)
 	self:_setup_grid_navigation()
@@ -876,7 +873,10 @@ StartGameWindowMissionSelectionConsole._handle_input = function (self, dt, t)
 
 			if UIUtils.is_button_pressed(widget) then
 				parent:set_selected_level_id(level_id)
-				parent:set_layout_by_name(self._return_layout_name)
+
+				local game_mode_layout_name = parent:get_selected_game_mode_layout_name()
+
+				parent:set_layout_by_name(game_mode_layout_name)
 
 				return
 			end

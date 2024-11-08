@@ -812,6 +812,7 @@ HeroPreviewer._poll_item_package_loading = function (self)
 	end
 
 	local item_info_by_slot = self._item_info_by_slot
+	local all_items_loaded = true
 
 	for slot_name, data in pairs(item_info_by_slot) do
 		if not data.loaded then
@@ -835,8 +836,14 @@ HeroPreviewer._poll_item_package_loading = function (self)
 				local spawn_data = data.spawn_data
 
 				self:_spawn_item(item_name, spawn_data)
+			else
+				all_items_loaded = false
 			end
 		end
+	end
+
+	if all_items_loaded and self._delayed_pose_animation then
+		self:trigger_pose_animation()
 	end
 end
 

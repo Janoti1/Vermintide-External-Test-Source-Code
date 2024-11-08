@@ -247,15 +247,9 @@ ActionGeiserTargeting.finish = function (self, reason, data)
 	chain_action_data.position = self.position
 
 	if self.targeting_effect_id then
-		if data and data.new_sub_action == "geiser_launch" then
-			World.stop_spawning_particles(world, self.targeting_effect_id)
+		World.destroy_particles(world, self.targeting_effect_id)
 
-			chain_action_data.targeting_effect_id = self.targeting_effect_id
-		else
-			World.destroy_particles(world, self.targeting_effect_id)
-
-			self.targeting_effect_id = nil
-		end
+		self.targeting_effect_id = nil
 	end
 
 	self:_stop_charge_sound()

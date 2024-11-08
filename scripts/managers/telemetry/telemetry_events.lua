@@ -1163,7 +1163,7 @@ TelemetryEvents.default_loadout_equipped = function (self)
 	self._manager:register_event(event)
 end
 
-TelemetryEvents.start_versus_experience = function (self, versus_experience_start, versus_level_start)
+TelemetryEvents.start_versus_experience = function (self, versus_level_start, versus_experience_start)
 	local event = self:_create_event("start_versus_experience")
 
 	event:set_data({

@@ -261,7 +261,7 @@ Commands = {
 			local response = ""
 
 			if Managers.level_transition_handler:in_hub_level() then
-				local peers = Managers.mechanism:game_mechanism()._slot_reservation_handler:peers()
+				local peers = Managers.mechanism:game_mechanism():get_slot_reservation_handler():peers()
 
 				for i = 1, #peers do
 					local peer_id = peers[i]
@@ -290,7 +290,7 @@ Commands = {
 			party_id = tonumber(party_id)
 
 			if Managers.level_transition_handler:in_hub_level() then
-				local reservers = Managers.mechanism:game_mechanism()._slot_reservation_handler._reserved_peers[party_id]
+				local reservers = Managers.mechanism:game_mechanism():get_slot_reservation_handler()._reserved_peers[party_id]
 
 				if not reservers then
 					return false, string.format("Failed to list party - Invalid party id %d", party_id)
@@ -838,7 +838,7 @@ MetaCommands = {
 		end
 
 		if Managers.level_transition_handler:in_hub_level() then
-			num_players = Managers.mechanism:game_mechanism()._slot_reservation_handler._num_slots_reserved
+			num_players = Managers.mechanism:game_mechanism():get_slot_reservation_handler()._num_slots_reserved
 		else
 			num_players = Managers.player:num_human_players()
 		end

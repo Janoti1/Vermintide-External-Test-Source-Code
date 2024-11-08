@@ -168,20 +168,14 @@ CosmeticUtils.get_weapon_skin_id = function (slot, optional_skin_name)
 	elseif slot == "slot_pose" then
 		local item = ItemMasterList[optional_skin_name]
 		local backend_items = Managers.backend:get_interface("items")
-		local unlocked_weapon_poses = backend_items:get_unlocked_weapon_poses()
 		local parent_name = item.parent
-		local current_weapon_poses = unlocked_weapon_poses[parent_name]
-		local weapon_pose_skin_backend_id = current_weapon_poses and current_weapon_poses.skin
+		local weapon_pose_skin = backend_items:get_equipped_weapon_pose_skin(parent_name)
 
-		if weapon_pose_skin_backend_id then
-			local weapon_pose_skin = backend_items:get_item_from_id(weapon_pose_skin_backend_id)
+		if weapon_pose_skin then
+			local weapon_pose_skin_id = NetworkLookup.item_names[weapon_pose_skin]
 
-			if weapon_pose_skin then
-				local weapon_pose_skin_id = NetworkLookup.item_names[weapon_pose_skin.skin]
-
-				if weapon_pose_skin_id then
-					skin_id = weapon_pose_skin_id
-				end
+			if weapon_pose_skin_id then
+				skin_id = weapon_pose_skin_id
 			end
 		else
 			skin_id = NetworkLookup.item_names["n/a"]
@@ -203,10 +197,10 @@ CosmeticUtils.update_cosmetic_slot = function (player, slot, item_name, skin_nam
 
 		local skin_id
 
-		if skin_name then
-			skin_id = CosmeticUtils.get_weapon_skin_id(slot, skin_name)
-		elseif slot == "slot_pose" then
+		if slot == "slot_pose" then
 			skin_id = CosmeticUtils.get_weapon_skin_id(slot, item_name)
+		elseif skin_name then
+			skin_id = CosmeticUtils.get_weapon_skin_id(slot, skin_name)
 		end
 
 		if skin_id then

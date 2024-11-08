@@ -19,7 +19,9 @@ local CHAT_MESSAGE_TARGETS = {
 	}
 }
 local RPCS = {
-	"rpc_versus_setup_match"
+	"rpc_versus_setup_match",
+	"rpc_sync_vs_custom_game_slot_data",
+	"rpc_request_slot_reservation_sync"
 }
 local REAL_PLAYER_LOCAL_ID = 1
 local PACKAGE_REFERENCE_NAME = "VersusMechanism"
@@ -74,6 +76,7 @@ local vote_requests = {
 			mission_id = params.mission_id,
 			any_level = params.any_level,
 			difficulty = params.difficulty,
+			private_game = params.private_game,
 			quick_game = params.quick_game,
 			player_hosted = params.player_hosted,
 			use_dedicated_win_servers = params.dedicated_servers_win,
@@ -194,7 +197,7 @@ VersusMechanism._reset = function (self, settings, on_init)
 	self._peer_backend_id = {}
 end
 
-VersusMechanism.setup_mechanism_parties = function (self)
+VersusMechanism.setup_mechanism_parties = function (self, mechanism_manager)
 	self:_create_party_info()
 
 	local parties = Managers.party:parties()
@@ -202,7 +205,7 @@ VersusMechanism.setup_mechanism_parties = function (self)
 	if DEDICATED_SERVER then
 		self._slot_reservation_handler = VersusGameServerSlotReservationHandler:new(parties)
 	else
-		self._slot_reservation_handler = PlayerHostedSlotReservationHandler:new({
+		self._slot_reservation_handler = PlayerHostedSlotReservationHandler:new(mechanism_manager, {
 			parties[1]
 		})
 	end
@@ -211,12 +214,6 @@ VersusMechanism.setup_mechanism_parties = function (self)
 
 	for party_id = 1, #parties do
 		self._saved_bot_profiles[party_id] = {}
-	end
-end
-
-VersusMechanism.state_context_set_up = function (self)
-	if Managers.mechanism:is_server() and not DEDICATED_SERVER then
-		self._slot_reservation_handler:try_reserve_slots(Network.peer_id(), Managers.state.network.network_server:active_peers())
 	end
 end
 
@@ -261,6 +258,7 @@ VersusMechanism.destroy = function (self)
 		end
 	end
 
+	self._slot_reservation_handler:destroy()
 	self:unregister_chats()
 	self:_unload_sound_bank()
 end
@@ -311,6 +309,30 @@ VersusMechanism.max_instance_members = function (self)
 	end
 end
 
+VersusMechanism.set_is_hosting_versus_custom_game = function (self, is_hosting)
+	self._is_hosting_custom_game = is_hosting
+
+	if Managers.mechanism:is_server() then
+		LobbySetup.update_network_options_max_members()
+		Managers.mechanism:update_lobby_max_members()
+	end
+
+	if is_hosting then
+		Managers.party:server_init_friend_parties(true)
+	else
+		local party_manager = Managers.party
+
+		party_manager:server_clear_friend_parties()
+		self._slot_reservation_handler:update_slot_settings({
+			party_manager:parties()[1]
+		})
+	end
+end
+
+VersusMechanism.is_hosting_versus_custom_game = function (self)
+	return self._is_hosting_custom_game
+end
+
 VersusMechanism.sync_mechanism_data = function (self, peer_id, mechanism_newly_initialized)
 	local channel_id = PEER_ID_TO_CHANNEL[peer_id]
 
@@ -330,6 +352,10 @@ VersusMechanism.sync_mechanism_data = function (self, peer_id, mechanism_newly_i
 
 	if self._win_conditions then
 		self._win_conditions:hot_join_sync(peer_id)
+	end
+
+	if self._slot_reservation_handler.hot_join_sync then
+		self._slot_reservation_handler:hot_join_sync(peer_id)
 	end
 
 	if not mechanism_newly_initialized then
@@ -652,7 +678,7 @@ VersusMechanism.generate_level_seed = function (self)
 	return Managers.mechanism:get_level_seed()
 end
 
-VersusMechanism.get_end_of_level_rewards_arguments = function (self, game_won, quickplay, statistics_db, stats_id)
+VersusMechanism.get_end_of_level_rewards_arguments = function (self, game_won, quickplay, statistics_db, stats_id, level_key, hero_name)
 	local kill_count = statistics_db:get_stat(stats_id, "kills_total")
 
 	return {
@@ -1044,25 +1070,31 @@ end
 
 local dummy_members_table = {}
 
-function register_chat_channel_for_party(channel_id, party_id)
+local function register_chat_channel_for_party(channel_id, party_id)
 	local function member_func()
 		table.clear(dummy_members_table)
 
-		local party = Managers.party:get_party(party_id)
-		local occupied_slots = party.occupied_slots
+		local reservation_handler = Managers.mechanism:get_slot_reservation_handler()
 
-		for i = 1, #occupied_slots do
-			local status = occupied_slots[i]
+		if reservation_handler.supports_syncing then
+			local peers = reservation_handler:peers_by_party(party_id)
 
-			if status.is_player then
-				dummy_members_table[#dummy_members_table + 1] = status.peer_id
+			table.append(dummy_members_table, peers)
+		else
+			local party = Managers.party:get_party(party_id)
+			local occupied_slots = party.occupied_slots
+
+			for i = 1, #occupied_slots do
+				local status = occupied_slots[i]
+
+				if status.is_player then
+					dummy_members_table[#dummy_members_table + 1] = status.peer_id
+				end
 			end
 		end
 
 		return dummy_members_table
 	end
-
-	local party = Managers.party:get_party(party_id)
 
 	Managers.chat:register_channel(channel_id, member_func)
 end
@@ -1168,6 +1200,21 @@ end
 
 VersusMechanism.get_dedicated_slot_info = function (self)
 	return self._num_reserved_slots, self._num_total_slots, self._member_info_by_party, self._server_id
+end
+
+VersusMechanism.rpc_sync_vs_custom_game_slot_data = function (self, channel_id, reserved_peers, reserved_peers_party_ids, friend_party_ids, party_leaders)
+	if self._slot_reservation_handler then
+		printf("[VersusMechanism] 'rpc_sync_vs_custom_game_slot_data' received from peer %s", CHANNEL_TO_PEER_ID[channel_id])
+		self._slot_reservation_handler:update_slots(reserved_peers, reserved_peers_party_ids, friend_party_ids, party_leaders)
+	end
+end
+
+VersusMechanism.rpc_request_slot_reservation_sync = function (self, channel_id)
+	if self._slot_reservation_handler and self._slot_reservation_handler.slot_reservation_sync_requested then
+		local peer_id = CHANNEL_TO_PEER_ID[channel_id]
+
+		self._slot_reservation_handler:slot_reservation_sync_requested(peer_id)
+	end
 end
 
 VersusMechanism.dedicated_party_slot_status_changed = function (self, server_name, party_id, party_members_names, party_member_state)
@@ -1696,7 +1743,7 @@ VersusMechanism.player_joined_party = function (self, peer_id, local_player_id, 
 	end
 end
 
-VersusMechanism.try_reserve_profile_for_peer_by_mechanism = function (self, profile_synchronizer, peer_id, profile_index, career_index, force_respawn)
+VersusMechanism.try_reserve_profile_for_peer_by_mechanism = function (self, profile_synchronizer, peer_id, profile_index, career_index, allow_switching)
 	local profile = SPProfiles[profile_index]
 
 	if profile.affiliation ~= "heroes" then
@@ -1720,7 +1767,7 @@ VersusMechanism.try_reserve_profile_for_peer_by_mechanism = function (self, prof
 		return true
 	end
 
-	if not force_respawn then
+	if not allow_switching then
 		local previous_profile_index, previous_career_index = Managers.mechanism:get_persistent_profile_index_reservation(peer_id)
 
 		if previous_profile_index ~= 0 and previous_profile_index ~= profile_index then
@@ -1737,12 +1784,6 @@ end
 
 VersusMechanism.reserved_party_id_by_peer = function (self, peer_id)
 	return self._slot_reservation_handler:party_id_by_peer(peer_id)
-end
-
-VersusMechanism.remote_client_connecting = function (self, peer_id)
-	if self._slot_reservation_handler.remote_client_connecting then
-		self._slot_reservation_handler:remote_client_connecting(peer_id)
-	end
 end
 
 VersusMechanism.remote_client_disconnected = function (self, peer_id)

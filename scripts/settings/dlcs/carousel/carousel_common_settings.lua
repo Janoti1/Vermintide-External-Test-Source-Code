@@ -54,7 +54,11 @@ settings.mechanism_settings = {
 		override_item_availability = {},
 		override_career_talents = {},
 		map_pool = {
-			"bell_pvp"
+			"fort_pvp",
+			"military_pvp",
+			"bell_pvp",
+			"farmlands_pvp",
+			"forest_ambush_pvp"
 		},
 		party_data = {
 			heroes = {

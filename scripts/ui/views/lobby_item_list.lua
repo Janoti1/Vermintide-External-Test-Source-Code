@@ -637,8 +637,6 @@ local function difficulty_is_locked(lobby_data)
 end
 
 local function status_is_locked(lobby_data)
-	local matchmaking = self.lobby:lobby_data("matchmaking")
-	local lobby_mechanism = self.lobby:lobby_data("mechanism")
 	local matchmaking_settings = Managers.matchmaking.get_matchmaking_settings_for_mechanism(lobby_data.mechanism)
 	local num_players = lobby_data.num_players
 	local matchmaking = lobby_data.matchmaking
@@ -921,8 +919,7 @@ LobbyItemsList.destroy = function (self)
 	return
 end
 
-LobbyItemsList.lobby_status_text = function (self, lobby_data)
-	local lobby_mechanism = self.lobby:lobby_data("mechanism")
+LobbyItemsList.lobby_status_text = function (lobby_data)
 	local is_dedicated_server = lobby_data.server_info ~= nil
 	local matchmaking_settings = Managers.matchmaking.get_matchmaking_settings_for_mechanism(lobby_data.mechanism)
 	local mission_id = lobby_data.mission_id

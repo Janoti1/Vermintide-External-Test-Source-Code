@@ -57,7 +57,7 @@ CareerSettings.vs_gutter_runner = {
 	profile_name = "vs_gutter_runner",
 	display_name = "vs_gutter_runner",
 	package_name = "resource_packages/careers/wh_zealot",
-	store_tag_icon = "icons_placeholder",
+	store_tag_icon = "store_tag_icon_vs_pactsworn",
 	excluded_from_weave_loadouts = true,
 	name = "vs_gutter_runner",
 	preview_idle_animation = "career_idle_01",
@@ -162,7 +162,7 @@ CareerSettings.vs_poison_wind_globadier = {
 	profile_name = "vs_poison_wind_globadier",
 	display_name = "vs_poison_wind_globadier",
 	hide_weapons = true,
-	store_tag_icon = "icons_placeholder",
+	store_tag_icon = "store_tag_icon_vs_pactsworn",
 	package_name = "resource_packages/careers/dr_slayer",
 	name = "vs_poison_wind_globadier",
 	preview_idle_animation = "career_idle_01",
@@ -258,7 +258,7 @@ CareerSettings.vs_packmaster = {
 	profile_name = "vs_packmaster",
 	display_name = "vs_packmaster",
 	package_name = "resource_packages/careers/dr_slayer",
-	store_tag_icon = "icons_placeholder",
+	store_tag_icon = "store_tag_icon_vs_pactsworn",
 	excluded_from_weave_loadouts = true,
 	name = "vs_packmaster",
 	preview_idle_animation = "career_idle_01",
@@ -356,7 +356,7 @@ CareerSettings.vs_ratling_gunner = {
 	profile_name = "vs_ratling_gunner",
 	display_name = "vs_ratling_gunner",
 	package_name = "resource_packages/careers/dr_slayer",
-	store_tag_icon = "icons_placeholder",
+	store_tag_icon = "store_tag_icon_vs_pactsworn",
 	excluded_from_weave_loadouts = true,
 	name = "vs_ratling_gunner",
 	preview_idle_animation = "career_idle_01",
@@ -456,7 +456,7 @@ CareerSettings.vs_warpfire_thrower = {
 	profile_name = "vs_warpfire_thrower",
 	display_name = "vs_warpfire_thrower",
 	package_name = "resource_packages/careers/dr_slayer",
-	store_tag_icon = "icons_placeholder",
+	store_tag_icon = "store_tag_icon_vs_pactsworn",
 	excluded_from_weave_loadouts = true,
 	name = "vs_warpfire_thrower",
 	preview_idle_animation = "career_idle_01",
@@ -549,7 +549,7 @@ CareerSettings.vs_chaos_troll = {
 	profile_name = "vs_chaos_troll",
 	display_name = "vs_chaos_troll",
 	package_name = "resource_packages/careers/dr_slayer",
-	store_tag_icon = "icons_placeholder",
+	store_tag_icon = "store_tag_icon_vs_pactsworn",
 	excluded_from_weave_loadouts = true,
 	name = "vs_chaos_troll",
 	preview_idle_animation = "career_idle_01",
@@ -679,24 +679,9 @@ OverchargeData.vs_warpfire_thrower = {
 	end,
 	overcharge_ui = {
 		material = "dark_pact_overcharge_bar",
-		color_normal = {
-			255,
-			180,
-			195,
-			182
-		},
-		color_medium = {
-			255,
-			38,
-			255,
-			0
-		},
-		color_high = {
-			255,
-			255,
-			0,
-			0
-		}
+		color_normal = Colors.get_color_table_with_alpha("pactsworn_green", 255),
+		color_medium = Colors.get_color_table_with_alpha("pactsworn_green", 255),
+		color_high = Colors.get_color_table_with_alpha("pactsworn_green", 255)
 	}
 }
 PlayerUnitStatusSettings = PlayerUnitStatusSettings or {}

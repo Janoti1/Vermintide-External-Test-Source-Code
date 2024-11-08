@@ -40,6 +40,8 @@ AchievementManager = class(AchievementManager)
 
 local ACHIEVEMENT_CHECK_DELAY = 1
 
+AchievementManager.STORE_COMPLETED_LEVEL = false
+
 AchievementManager.init = function (self, world, statistics_db)
 	self.initialized = false
 	self.world = world
@@ -52,6 +54,7 @@ AchievementManager.init = function (self, world, statistics_db)
 	self._available_careers = {}
 	self._achievement_data = {}
 	self._incompleted_achievements = {}
+	self._state_completed_achievements = {}
 	self._timed_events = {}
 	self._canceled_timed_events_n = 0
 	self._canceled_timed_events = {}
@@ -470,21 +473,40 @@ AchievementManager.setup_achievement_data = function (self)
 			end
 
 			if category.entries then
-				achievement_manager:setup_achievement_data_from_list(category.entries)
+				local skip_commit = true
+
+				achievement_manager:setup_achievement_data_from_list(category.entries, skip_commit)
 			end
+		end
+
+		if not table.is_empty(achievement_manager._state_completed_achievements) then
+			local statistics_interface = Managers.backend:get_interface("statistics")
+
+			statistics_interface:save_state_completed_achievements(achievement_manager._state_completed_achievements)
+			Managers.backend:commit(true)
 		end
 	end
 
 	setup_achievement_data_from_categories(self, outline.categories)
 end
 
-AchievementManager.setup_achievement_data_from_list = function (self, achievement_ids)
+AchievementManager.setup_achievement_data_from_list = function (self, achievement_ids, skip_commit)
 	if not self._enabled then
 		return
 	end
 
+	local statistics_interface = Managers.backend:get_interface("statistics")
+	local achievement_reward_levels = statistics_interface:get_achievement_reward_levels()
+
 	for i, achievement_id in ipairs(achievement_ids) do
-		self:_setup_achievement_data(achievement_id)
+		self:_setup_achievement_data(achievement_id, achievement_reward_levels)
+	end
+
+	if not skip_commit and not table.is_empty(self._state_completed_achievements) then
+		statistics_interface:save_state_completed_achievements(self._state_completed_achievements)
+		Managers.backend:commit(true)
+
+		self._state_completed_achievements = {}
 	end
 end
 
@@ -669,6 +691,15 @@ AchievementManager._check_for_completed_achievements = function (self)
 
 		if self:_achievement_completed(incompleted_template_id) then
 			self:_display_completion_ui(incompleted_template_id)
+
+			if AchievementManager.STORE_COMPLETED_LEVEL then
+				self._state_completed_achievements[#self._state_completed_achievements + 1] = incompleted_template_id
+
+				local statistics_interface = Managers.backend:get_interface("statistics")
+
+				statistics_interface:save_state_completed_achievements(self._state_completed_achievements)
+			end
+
 			swap_erase_element(self._incompleted_achievements, incompleted_template_idx, self._incompleted_template_count)
 
 			self._incompleted_template_count = self._incompleted_template_count - 1
@@ -716,7 +747,7 @@ AchievementManager.setup_incompleted_achievements = function (self)
 	self._incompleted_template_curr_idx = 1
 end
 
-AchievementManager._setup_achievement_data = function (self, achievement_id)
+AchievementManager._setup_achievement_data = function (self, achievement_id, achievement_reward_levels)
 	local achievement_data = AchievementTemplates.achievements[achievement_id]
 
 	fassert(achievement_data, "Missing achievemnt for [\"%s\"]", achievement_id)
@@ -806,6 +837,10 @@ AchievementManager._setup_achievement_data = function (self, achievement_id)
 	local backend_interface_loot = self._backend_interface_loot
 
 	claimed = backend_interface_loot:achievement_rewards_claimed(achievement_id)
+
+	if AchievementManager.STORE_COMPLETED_LEVEL and completed and not claimed and (not achievement_reward_levels or not achievement_reward_levels[achievement_id]) then
+		self._state_completed_achievements[#self._state_completed_achievements + 1] = achievement_id
+	end
 
 	local reward = backend_interface_loot:get_achievement_rewards(achievement_id)
 	local achievement_data = {

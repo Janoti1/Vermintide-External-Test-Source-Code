@@ -210,7 +210,7 @@ MatchmakingStateStartGame._setup_lobby_data = function (self)
 				private_game = true
 			end
 		end
-	elseif mechanism == "versus" then
+	elseif mechanism == "versus" and not search_config.player_hosted then
 		local map_pool = script_data.versus_map_pool or Managers.mechanism:mechanism_setting_for_title("map_pool")
 
 		mission_id = map_pool[Math.random(#map_pool)]
@@ -371,7 +371,11 @@ end
 
 MatchmakingStateStartGame._start_game = function (self)
 	self:_capture_telemetry()
-	self:_send_rpc_clients("rpc_matchmaking_join_game")
+
+	local network_handler = Managers.mechanism:network_handler()
+	local match_handler = network_handler:get_match_handler()
+
+	match_handler:send_rpc_down("rpc_matchmaking_join_game")
 
 	local game_server_lobby_client = self.state_context.game_server_lobby_client
 

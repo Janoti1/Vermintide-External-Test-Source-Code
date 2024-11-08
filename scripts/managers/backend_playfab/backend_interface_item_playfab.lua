@@ -557,6 +557,12 @@ BackendInterfaceItemPlayfab.get_equipped_weapon_pose_skins = function (self)
 	return mirror:get_equipped_weapon_pose_skins()
 end
 
+BackendInterfaceItemPlayfab.get_equipped_weapon_pose_skin = function (self, parent_item_name)
+	local mirror = self._backend_mirror
+
+	return mirror:get_equipped_weapon_pose_skin(parent_item_name)
+end
+
 BackendInterfaceItemPlayfab.get_weapon_pose_from_pose_key = function (self, pose_key)
 	local items = self:get_all_fake_backend_items()
 

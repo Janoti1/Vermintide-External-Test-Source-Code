@@ -275,16 +275,21 @@ AdventureMechanism.get_level_seed = function (self, level_seed, optional_system)
 	return level_seed
 end
 
-AdventureMechanism.get_end_of_level_rewards_arguments = function (self, game_won, quickplay, statistics_db, stats_id)
+AdventureMechanism.get_end_of_level_rewards_arguments = function (self, game_won, quickplay, statistics_db, stats_id, level_key, hero_name)
 	local is_weave_game_mode = self._current_game_mode == WEAVE_GAME_MODE_KEY
 	local kill_count = statistics_db:get_stat(stats_id, "kills_total")
 	local weave_tier, weave_progress
+	local first_time_completion = false
 
 	if is_weave_game_mode then
 		local weave_manager = Managers.weave
 
 		weave_tier = weave_manager:get_weave_tier()
 		weave_progress = weave_manager:current_bar_score()
+	elseif game_won then
+		local num_times_completed = statistics_db:get_persistent_stat(stats_id, "completed_levels_" .. hero_name, level_key)
+
+		first_time_completion = num_times_completed == 1
 	end
 
 	local ignore_dlc_check = false
@@ -311,7 +316,8 @@ AdventureMechanism.get_end_of_level_rewards_arguments = function (self, game_won
 		weave_tier = weave_tier,
 		weave_progress = weave_progress,
 		kill_count = kill_count,
-		chest_upgrade_data = chest_upgrade_data
+		chest_upgrade_data = chest_upgrade_data,
+		first_time_completion = first_time_completion
 	}
 end
 
@@ -608,7 +614,7 @@ AdventureMechanism.reserved_party_id_by_peer = function (self, peer_id)
 	return 1
 end
 
-AdventureMechanism.try_reserve_profile_for_peer_by_mechanism = function (self, profile_synchronizer, peer_id, profile_index, career_index, force_respawning)
+AdventureMechanism.try_reserve_profile_for_peer_by_mechanism = function (self, profile_synchronizer, peer_id, profile_index, career_index, allow_switching)
 	local party_id = self:reserved_party_id_by_peer(peer_id)
 
 	return profile_synchronizer:try_reserve_profile_for_peer(party_id, peer_id, profile_index, career_index)

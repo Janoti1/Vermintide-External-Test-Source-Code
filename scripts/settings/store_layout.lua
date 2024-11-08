@@ -148,8 +148,14 @@ if not StoreLayoutConfig then
 		versus = {
 			weapon_skins = "item_details",
 			pactsworn = "item_details",
-			poses = "poses",
-			frames = "item_details"
+			frames = "item_details",
+			poses = {
+				kruber_poses = "pose_items",
+				sienna_poses = "pose_items",
+				kerillian_poses = "pose_items",
+				bardin_poses = "pose_items",
+				victor_poses = "pose_items"
+			}
 		}
 	}
 	StoreLayoutConfig.pages.featured = {
@@ -296,7 +302,7 @@ if not StoreLayoutConfig then
 	}
 
 	if not IS_CONSOLE then
-		StoreLayoutConfig.pages.poses = {
+		StoreLayoutConfig.pages.pose_items = {
 			sound_event_enter = "Play_hud_store_category_button",
 			layout = "category",
 			display_name = "weapon_pose",
@@ -305,6 +311,62 @@ if not StoreLayoutConfig then
 			sort_order = 6,
 			category_button_texture = "store_category_icon_poses",
 			exclusive_filter = true
+		}
+		StoreLayoutConfig.pages.poses = {
+			sound_event_enter = "Play_hud_store_category_button",
+			layout = "category",
+			display_name = "weapon_pose",
+			item_filter = "item_type == weapon_pose_bundle and selection == versus",
+			category_button_texture = "store_category_icon_poses",
+			exclusive_filter = true,
+			global_shader_flag_overrides = {
+				NECROMANCER_CAREER_REMAP = false
+			}
+		}
+		StoreLayoutConfig.pages.kerillian_poses = {
+			sound_event_enter = "Play_hud_store_kerillian",
+			layout = "category",
+			item_filter = "item_type == weapon_pose_bundle and selection == versus and can_wield_wood_elf",
+			type = "collection_item",
+			display_name = "inventory_name_wood_elf",
+			sort_order = 3,
+			category_button_texture = "store_category_icon_kerillian_waystalker"
+		}
+		StoreLayoutConfig.pages.kruber_poses = {
+			sound_event_enter = "Play_hud_store_kruber",
+			layout = "category",
+			item_filter = "item_type == weapon_pose_bundle and selection == versus and can_wield_empire_soldier",
+			type = "collection_item",
+			display_name = "inventory_name_empire_soldier",
+			sort_order = 1,
+			category_button_texture = "store_category_icon_kruber_mercenary"
+		}
+		StoreLayoutConfig.pages.bardin_poses = {
+			sound_event_enter = "Play_hud_store_bardin",
+			layout = "category",
+			item_filter = "item_type == weapon_pose_bundle and selection == versus and can_wield_dwarf_ranger",
+			type = "collection_item",
+			display_name = "inventory_name_dwarf_ranger",
+			sort_order = 2,
+			category_button_texture = "store_category_icon_bardin_ranger"
+		}
+		StoreLayoutConfig.pages.victor_poses = {
+			sound_event_enter = "Play_hud_store_saltzpyre",
+			layout = "category",
+			item_filter = "item_type == weapon_pose_bundle and selection == versus and can_wield_witch_hunter",
+			type = "collection_item",
+			display_name = "inventory_name_witch_hunter",
+			sort_order = 4,
+			category_button_texture = "store_category_icon_victor_captain"
+		}
+		StoreLayoutConfig.pages.sienna_poses = {
+			sound_event_enter = "Play_hud_store_sienna",
+			layout = "category",
+			item_filter = "item_type == weapon_pose_bundle and selection == versus and can_wield_bright_wizard",
+			type = "collection_item",
+			display_name = "inventory_name_bright_wizard",
+			sort_order = 5,
+			category_button_texture = "store_category_icon_sienna_scholar"
 		}
 		StoreLayoutConfig.pages.pactsworn = {
 			sound_event_enter = "Play_hud_store_category_button",

@@ -771,6 +771,7 @@ local view_settings = {
 			disable_for_mechanism = default_disable_for_mechanism
 		},
 		hotkey_map = {
+			can_interact_func = "_handle_versus_matchmaking",
 			in_transition = "start_game_view_force",
 			error_message = "matchmaking_ready_interaction_message_map",
 			view = "start_game_view",
@@ -792,7 +793,13 @@ local view_settings = {
 					matchmaking_ready = true,
 					not_matchmaking = false
 				}
-			}
+			},
+			inject_transition_params_func = function (params)
+				if Managers.matchmaking:is_in_versus_custom_game_lobby() then
+					params.menu_sub_state_name = "versus_player_hosted_lobby"
+					params.hide_panel_title_buttons = true
+				end
+			end
 		},
 		hotkey_inventory = {
 			in_transition = "hero_view_force",

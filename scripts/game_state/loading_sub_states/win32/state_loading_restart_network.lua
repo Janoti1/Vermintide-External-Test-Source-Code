@@ -53,9 +53,9 @@ StateLoadingRestartNetwork._init_network = function (self)
 	local loading_context = self.parent.parent.loading_context
 	local increment_lobby_port = IS_WINDOWS and true
 
-	Managers.lobby:setup_network_options(increment_lobby_port)
+	LobbySetup.setup_network_options(increment_lobby_port)
 
-	local network_options = Managers.lobby:network_options()
+	local network_options = LobbySetup.network_options()
 	local platform = PLATFORM
 
 	if not rawget(_G, "LobbyInternal") or not LobbyInternal.network_initialized() then

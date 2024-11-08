@@ -429,9 +429,7 @@ StartGameWindowLobbyBrowserConsole._create_filter_requirements = function (self)
 end
 
 StartGameWindowLobbyBrowserConsole._join = function (self, lobby_data, join_params)
-	Managers.matchmaking:request_join_lobby(lobby_data, join_params)
-
-	self.join_lobby_data_id = lobby_data.id
+	return
 end
 
 StartGameWindowLobbyBrowserConsole._search = function (self, skip_populate)
@@ -605,6 +603,10 @@ StartGameWindowLobbyBrowserConsole.is_lobby_joinable = function (self, lobby_dat
 		return false, "lobby_id_mismatch"
 	end
 
+	if Managers.matchmaking:is_matchmaking_paused() then
+		return false, "matchmaking_paused"
+	end
+
 	local statistics_db = self._statistics_db
 	local player_stats_id = self._stats_id
 	local profile_name = self._profile_name
@@ -646,6 +648,10 @@ StartGameWindowLobbyBrowserConsole.is_lobby_joinable = function (self, lobby_dat
 			if difficulty_settings.dlc_requirement then
 				required_dlcs[difficulty_settings.dlc_requirement] = true
 			end
+		end
+	elseif mechanism == "versus" then
+		if not quick_game and Managers.mechanism:current_mechanism_name() ~= "versus" then
+			return false, "vs_player_hosted_lobby_wrong_mechanism_error"
 		end
 	else
 		local level_key = mission_id

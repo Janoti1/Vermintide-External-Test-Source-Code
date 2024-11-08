@@ -56,7 +56,7 @@ StartGameWindowLobbyBrowser.on_enter = function (self, params, offset)
 	self._career_name = local_player:career_name()
 	self._ui_animations = {}
 
-	local network_options = Managers.lobby:network_options()
+	local network_options = LobbySetup.network_options()
 	local lobby_finder = LobbyFinder:new(network_options, MatchmakingSettings.MAX_NUM_LOBBIES, true)
 
 	self.lobby_finder = lobby_finder

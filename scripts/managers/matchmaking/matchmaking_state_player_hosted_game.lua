@@ -20,7 +20,6 @@ MatchmakingStatePlayerHostedGame.on_enter = function (self, state_context)
 	self._search_config.is_player_hosted = true
 
 	self:_start_hosting_game()
-	self:_sync_player_data()
 	self._matchmaking_manager:send_system_chat_message("matchmaking_status_start_hosting_game")
 	self._matchmaking_manager:set_lobby_data_match_started(false)
 end
@@ -61,6 +60,11 @@ MatchmakingStatePlayerHostedGame._start_hosting_game = function (self)
 	slot_reservation_handler:update_slot_settings(Managers.party:parties())
 
 	local party_id = Managers.mechanism:reserved_party_id_by_peer(Network.peer_id())
+
+	if game_mechanism.set_is_hosting_versus_custom_game then
+		game_mechanism:set_is_hosting_versus_custom_game(true)
+	end
+
 	local eac_authorized = false
 
 	if IS_WINDOWS then
@@ -75,34 +79,4 @@ MatchmakingStatePlayerHostedGame._start_hosting_game = function (self)
 	Managers.party:set_leader(self._lobby:lobby_host())
 	self._matchmaking_manager:set_matchmaking_data(mission_id, difficulty, nil, matchmaking_type, private_game, quick_game, eac_authorized, 0, mechanism)
 	self._matchmaking_manager:set_game_privacy(private_game)
-end
-
-MatchmakingStatePlayerHostedGame._sync_player_data = function (self)
-	local my_peer_id = Network.peer_id()
-	local players = Managers.player:human_players()
-
-	for _, player in pairs(players) do
-		local peer_id = player:network_id()
-		local player_name = player:name()
-		local profile_index = player:profile_index()
-		local career_index = player:career_index()
-		local player_unit = player.player_unit
-		local cosmetic_ext = ScriptUnit.extension(player_unit, "cosmetic_system")
-		local frame_item_name = cosmetic_ext:get_equipped_frame().name
-		local frame_item_id = NetworkLookup.item_names[frame_item_name]
-		local inventory_ext = ScriptUnit.extension(player_unit, "inventory_system")
-		local slot_melee_data = inventory_ext:get_slot_data("slot_melee")
-		local slot_melee_item_data = slot_melee_data.item_data
-		local slot_melee_item_name = slot_melee_item_data.key
-		local melee_weapon_id = NetworkLookup.item_names[slot_melee_item_name]
-		local slot_ranged_data = inventory_ext:get_slot_data("slot_ranged")
-		local slot_ranged_item_data = slot_ranged_data.item_data
-		local slot_ranged_item_name = slot_ranged_item_data.key
-		local ranged_weapon_id = NetworkLookup.item_names[slot_ranged_item_name]
-		local versus_level = ExperienceSettings.get_versus_player_level(player)
-		local do_full_sync = false
-		local fake_party_id = 0
-
-		self._network_transmit:send_rpc("rpc_matchmaking_sync_player_data", my_peer_id, peer_id, player_name, profile_index, career_index, frame_item_id, melee_weapon_id, ranged_weapon_id, fake_party_id, versus_level, do_full_sync)
-	end
 end

@@ -389,6 +389,11 @@ end
 MatchmakingStateJoinGame.rpc_matchmaking_join_game = function (self, channel_id)
 	mm_printf_force("Transition from join due to rpc_matchmaking_join_game")
 	self:_set_state_to_start_lobby()
+
+	local network_handler = Managers.mechanism:network_handler()
+	local match_handler = network_handler:get_match_handler()
+
+	match_handler:send_rpc_down("rpc_matchmaking_join_game")
 end
 
 MatchmakingStateJoinGame._sync_backend_id = function (self)

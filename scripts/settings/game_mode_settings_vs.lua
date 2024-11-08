@@ -23,6 +23,7 @@ GameModeSettings.versus.max_health_kd = 250
 GameModeSettings.versus.healing_draught_heal_amount = 40
 GameModeSettings.versus.min_streak_font_size = 28
 GameModeSettings.versus.max_streak_font_size = 40
+GameModeSettings.versus.max_num_rewards_displayed = 7
 GameModeSettings.versus.round_start_pact_sworn_spawn_delay = 5
 GameModeSettings.versus.round_start_heroes_left_safe_zone_spawn_delay = 2
 GameModeSettings.versus.object_sets = {

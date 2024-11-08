@@ -318,7 +318,7 @@ LobbyInternal.serialize_psn_data = function (data_table)
 end
 
 LobbyInternal.verify_lobby_data = function (lobby_data_table)
-	local my_network_hash = Managers.lobby:network_hash()
+	local my_network_hash = LobbySetup.network_hash()
 	local lobby_network_hash = lobby_data_table.network_hash
 
 	return lobby_network_hash == my_network_hash
@@ -340,7 +340,7 @@ LobbyInternal.unserialize_psn_data = function (data_string, verify_lobby_data)
 			return t, false
 		end
 
-		local my_network_hash = Managers.lobby:network_hash()
+		local my_network_hash = LobbySetup.network_hash()
 		local index = LobbyInternal.key_index.network_hash
 		local lobby_network_hash = data_string_table[index]
 

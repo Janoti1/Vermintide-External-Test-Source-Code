@@ -108,9 +108,11 @@ HeroWindowCosmeticsLoadoutPoseInventoryConsole.on_enter = function (self, params
 	item_grid:mark_locked_items(true)
 	item_grid:disable_locked_items(true)
 	item_grid:disable_unwieldable_items(true)
+	item_grid:mark_equipped_weapon_pose_parent(true)
 	item_grid:disable_item_drag()
 	item_grid:apply_item_sorting_function(item_sort_func)
 	self:_set_item_compare_enable_state(false)
+	self:_show_equipped_weapon_pose()
 
 	local player_unit = local_player and local_player.player_unit
 
@@ -123,6 +125,32 @@ HeroWindowCosmeticsLoadoutPoseInventoryConsole.on_enter = function (self, params
 	end
 
 	self:_start_transition_animation("on_enter")
+end
+
+HeroWindowCosmeticsLoadoutPoseInventoryConsole._show_equipped_weapon_pose = function (self)
+	local backend_items = Managers.backend:get_interface("items")
+	local current_weapon_pose_id = backend_items:get_loadout_item_id(self._career_name, "slot_pose")
+	local current_weapon_pose_item = backend_items:get_item_from_id(current_weapon_pose_id)
+	local current_weapon_pose_item_data = current_weapon_pose_item.data
+	local current_weapon_pose_parent = current_weapon_pose_item_data.parent
+	local current_weapon_pose_parent_item = rawget(ItemMasterList, current_weapon_pose_parent)
+
+	if current_weapon_pose_parent_item then
+		current_weapon_pose_parent_item = table.clone(current_weapon_pose_parent_item)
+
+		local current_weapon_pose_skin = backend_items:get_equipped_weapon_pose_skin(current_weapon_pose_parent)
+		local skin
+
+		if current_weapon_pose_skin then
+			skin = current_weapon_pose_skin
+		end
+
+		self._parent:set_temporary_loadout_item({
+			data = current_weapon_pose_parent_item,
+			skin = skin
+		})
+		self._parent:set_character_pose_animation(current_weapon_pose_item_data.data.anim_event)
+	end
 end
 
 local EMPTY_TABLE = {}
@@ -227,6 +255,7 @@ HeroWindowCosmeticsLoadoutPoseInventoryConsole.update = function (self, dt, t)
 	self:_update_page_info()
 	self:_update_input_description()
 	self:_update_illusions(dt, t)
+	self:_update_remove_button_state(dt, t)
 
 	if self._focused then
 		self:_handle_gamepad_activity()
@@ -290,6 +319,15 @@ HeroWindowCosmeticsLoadoutPoseInventoryConsole._update_illusions = function (sel
 	end
 end
 
+HeroWindowCosmeticsLoadoutPoseInventoryConsole._update_remove_button_state = function (self, dt, t)
+	local backend_items = Managers.backend:get_interface("items")
+	local backend_id = BackendUtils.get_loadout_item_id(self._career_name, "slot_pose")
+	local item = backend_items:get_item_from_id(backend_id)
+	local widget = self._widgets_by_name.button_remove
+
+	UIUtils.enable_button(widget, item.key ~= "default_weapon_pose_01")
+end
+
 HeroWindowCosmeticsLoadoutPoseInventoryConsole._apply_illusion = function (self)
 	local illusion_widgets = self._illusion_widgets
 	local selected_skin_index = self._selected_skin_index
@@ -301,17 +339,29 @@ HeroWindowCosmeticsLoadoutPoseInventoryConsole._apply_illusion = function (self)
 		local skin_key = content.skin_key
 		local item_data = ItemMasterList[skin_key]
 		local backend_items = Managers.backend:get_interface("items")
+		local blueprint_item_key = string.gsub(self._selected_blueprint_name, "^vs_", "")
 		local matching_item_key = item_data.matching_item_key
 
-		if matching_item_key == string.gsub(self._selected_blueprint_name, "^vs_", "") then
+		if matching_item_key == blueprint_item_key then
 			local weapon_pose_skin_backend_id, _ = backend_items:get_weapon_skin_from_skin_key(skin_key)
 
-			backend_items:set_weapon_pose_skin(string.gsub(self._selected_blueprint_name, "^vs_", ""), weapon_pose_skin_backend_id)
+			backend_items:set_weapon_pose_skin(blueprint_item_key, weapon_pose_skin_backend_id)
 
 			local mark_as_equipped = true
 			local skip_wield_anim = true
 
 			self:_select_illusion_by_key(skin_key, mark_as_equipped, skip_wield_anim)
+
+			local current_weapon_pose_id = backend_items:get_loadout_item_id(self._career_name, "slot_pose")
+			local current_weapon_pose_item = backend_items:get_item_from_id(current_weapon_pose_id)
+			local current_weapon_pose_data = current_weapon_pose_item.data
+			local current_weapon_pose_parent = current_weapon_pose_data.parent
+
+			if blueprint_item_key == current_weapon_pose_parent then
+				local local_player = Managers.player:local_player()
+
+				CosmeticUtils.update_cosmetic_slot(local_player, "slot_pose", current_weapon_pose_item.key)
+			end
 		end
 	end
 end
@@ -630,12 +680,6 @@ HeroWindowCosmeticsLoadoutPoseInventoryConsole._equip_default = function (self)
 	local selected_item = backend_items:get_item_from_key("default_weapon_pose_01")
 
 	self._parent:_set_loadout_item(selected_item)
-
-	local previous_layout_key = self._parent:get_previous_selected_game_mode_index()
-
-	if previous_layout_key then
-		self._parent:set_layout(previous_layout_key)
-	end
 end
 
 HeroWindowCosmeticsLoadoutPoseInventoryConsole._set_loadout_item = function (self, item)
@@ -645,20 +689,6 @@ HeroWindowCosmeticsLoadoutPoseInventoryConsole._set_loadout_item = function (sel
 	local local_player = Managers.player:local_player()
 
 	CosmeticUtils.update_cosmetic_slot(local_player, "slot_pose", item_data.name)
-
-	local backend_items = Managers.backend:get_interface("items")
-	local unlocked_weapon_poses = backend_items:get_unlocked_weapon_poses()
-	local parent_name = item_data.parent
-	local current_weapon_poses = unlocked_weapon_poses[parent_name]
-	local weapon_pose_skin_backend_id = current_weapon_poses.skin
-
-	if weapon_pose_skin_backend_id then
-		local weapon_pose_skin = backend_items:get_item_from_id(weapon_pose_skin_backend_id)
-
-		if weapon_pose_skin then
-			CosmeticUtils.update_cosmetic_slot(local_player, "slot_pose_skin", weapon_pose_skin.skin)
-		end
-	end
 end
 
 HeroWindowCosmeticsLoadoutPoseInventoryConsole._select_illusion_by_key = function (self, key, mark_as_equipped, skip_wield_anim)
@@ -694,6 +724,7 @@ HeroWindowCosmeticsLoadoutPoseInventoryConsole._on_illusion_index_pressed = func
 
 	selected_blueprint_item.skin = skin_key
 
+	self._parent:clear_temporary_loadout()
 	self._parent:set_temporary_loadout_item(selected_blueprint_item, skip_wield_anim)
 
 	if not locked then
@@ -701,14 +732,13 @@ HeroWindowCosmeticsLoadoutPoseInventoryConsole._on_illusion_index_pressed = func
 		local unlocked_weapon_poses = backend_items:get_unlocked_weapon_poses()
 		local blueprint = self._selected_blueprint_name
 		local item = ItemMasterList[blueprint]
-		local current_item_key = item.name
+		local current_item_key = string.gsub(item.name, "^vs_", "")
 		local unlocked_weapon_poses_for_blueprint = unlocked_weapon_poses[current_item_key] or EMPTY_TABLE
 		local default_skin_key = WeaponSkins.default_skins[current_item_key]
 		local default_skin_backend_id, _ = backend_items:get_weapon_skin_from_skin_key(default_skin_key)
-		local current_skin_backend_id = unlocked_weapon_poses_for_blueprint.skin
-		local skin_backend_id, _ = backend_items:get_weapon_skin_from_skin_key(skin_key)
+		local current_weapon_pose_skin = backend_items:get_equipped_weapon_pose_skin(current_item_key)
 
-		if not current_skin_backend_id and skin_key ~= default_skin_key or current_skin_backend_id and current_skin_backend_id ~= skin_backend_id then
+		if not current_weapon_pose_skin and skin_key ~= default_skin_key or current_weapon_pose_skin and current_weapon_pose_skin ~= skin_key then
 			self:_enable_apply_illusion_button(true, true)
 		else
 			self:_enable_apply_illusion_button(false)
@@ -936,8 +966,7 @@ HeroWindowCosmeticsLoadoutPoseInventoryConsole._back = function (self)
 		item_grid:set_item_selected(first_item)
 	end
 
-	self._parent:set_character_pose_animation(nil)
-	self._parent:clear_temporary_loadout()
+	self:_show_equipped_weapon_pose()
 	self:_clear_illusion_widgets()
 	self._item_grid:mark_equipped_items(false)
 end

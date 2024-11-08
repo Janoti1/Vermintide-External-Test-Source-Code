@@ -1387,8 +1387,12 @@ StoreWindowItemPreview._present_item = function (self, item, product)
 				local settings = StoreDlcSettingsByName[item_data.required_dlc]
 
 				disclaimer_text = settings and string.format(Localize("menu_store_disclaimer_missing_required_dlc"), Localize(settings.name)) or Localize("dlc_required")
+			elseif slot_type == "weapon_pose" then
+				disclaimer_text = ""
+			elseif slot_type == "cosmetic_bundle" then
+				disclaimer_text = Localize("menu_store_product_pactsworn_skin_disclaimer_desc")
 			else
-				disclaimer_text = slot_type == "weapon_pose" and "" or Localize("menu_store_product_hero_skin_disclaimer_desc")
+				disclaimer_text = Localize("menu_store_product_hero_skin_disclaimer_desc")
 			end
 		end
 

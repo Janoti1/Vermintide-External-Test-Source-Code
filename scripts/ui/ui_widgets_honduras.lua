@@ -23990,3 +23990,49 @@ UIWidgets.create_tag = function (scenegraph_id, text, optional_fixed_size)
 
 	return widget_def
 end
+
+UIWidgets.create_loading_spinner = function (scenegraph_id)
+	return {
+		scenegraph_id = scenegraph_id,
+		element = {
+			passes = {
+				{
+					style_id = "loading_icon",
+					texture_id = "loading_icon",
+					pass_type = "rotated_texture",
+					content_change_function = function (content, style, _, dt)
+						local progress = (content.loading_progress + dt) % 1
+
+						style.angle = 2^math.smoothstep(progress, 0, 1) * math.tau
+						content.loading_progress = progress
+					end
+				}
+			}
+		},
+		content = {
+			loading_icon = "loot_loading",
+			loading_progress = 0
+		},
+		style = {
+			loading_icon = {
+				vertical_alignment = "center",
+				angle = 0,
+				horizontal_alignment = "center",
+				texture_size = {
+					150,
+					150
+				},
+				pivot = {
+					75,
+					75
+				},
+				color = {
+					255,
+					255,
+					255,
+					255
+				}
+			}
+		}
+	}
+end

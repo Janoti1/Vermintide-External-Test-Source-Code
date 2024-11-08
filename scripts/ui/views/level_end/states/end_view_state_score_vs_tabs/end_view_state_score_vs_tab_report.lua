@@ -45,6 +45,7 @@ EndViewStateScoreVSTabReport.on_enter = function (self, params)
 	end
 
 	self._parent:hide_team()
+	self:_trigger_telemetry_events()
 end
 
 EndViewStateScoreVSTabReport._show_final_progression = function (self)
@@ -109,12 +110,32 @@ EndViewStateScoreVSTabReport._extract_rewards = function (self)
 	self._mission_results = self._rewards.mission_results
 	self._player_session_scores = self._context.players_session_score
 	self._challenge_progression_status = self._context.challenge_progression_status
-
-	self:_trigger_telemetry_events()
 end
 
 EndViewStateScoreVSTabReport._trigger_telemetry_events = function (self)
-	return
+	local start_level, start_experience = self._versus_level_start[1], self._versus_level_start[2]
+
+	Managers.telemetry_events:start_versus_experience(start_level, start_experience)
+
+	local end_experience = ExperienceSettings.get_versus_experience()
+
+	Managers.telemetry_events:versus_experience_gained(end_experience - start_experience)
+
+	local end_level, _, _ = ExperienceSettings.get_versus_level_from_experience(start_experience + self._total_experience_gained)
+
+	Managers.telemetry_events:versus_level_gained(start_level, end_level)
+
+	local currency_gained = 0
+
+	for _, level_up_rewards in pairs(self._versus_level_up_rewards) do
+		for _, reward in pairs(level_up_rewards) do
+			if reward.currency == "VS" then
+				currency_gained = currency_gained + reward.awarded
+			end
+		end
+	end
+
+	Managers.telemetry_events:versus_currency_gained(currency_gained)
 end
 
 EndViewStateScoreVSTabReport._setup_hero_progression = function (self)
@@ -468,7 +489,7 @@ EndViewStateScoreVSTabReport._handle_rewards = function (self, rewards)
 			local data = {
 				widget = widget,
 				offset = table.clone(offset),
-				sound = item.key == "level_chest" and "Play_vs_hud_progression_hero_chest_appear" or "Play_vs_hud_progression_hero_item_appear"
+				sound = not (item.key ~= "level_chest" and item.key ~= "level_chest_lesser") and "Play_vs_hud_progression_hero_chest_appear" or "Play_vs_hud_progression_hero_item_appear"
 			}
 
 			if idx > 1 then
@@ -529,11 +550,22 @@ EndViewStateScoreVSTabReport._create_summary_entries = function (self)
 		if experience and experience > 0 then
 			local name = "summary_entry_" .. summary_index
 			local text = mission_reward.text
+			local format_values = mission_reward.format_values
+			local title_text
+
+			if text then
+				if format_values then
+					title_text = UIUtils.format_localized_description(text, format_values)
+				else
+					title_text = Localize(text)
+				end
+			end
+
 			local value = mission_reward.value
 			local bonus = mission_reward.bonus
 			local icon = mission_reward.icon
 			local value_text = experience and tostring(experience) or value and tostring(value) or ""
-			local localized_text = Localize(text) .. (value and " (" .. tostring(value) .. ")" or "")
+			local localized_text = title_text .. (value and " (" .. tostring(value) .. ")" or "")
 			local entry = {
 				name = name,
 				title_text = localized_text,

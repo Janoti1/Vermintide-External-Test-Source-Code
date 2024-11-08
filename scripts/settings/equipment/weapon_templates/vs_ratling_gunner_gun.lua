@@ -103,12 +103,13 @@ weapon_template.actions = {
 			looping_anim = true,
 			rps_loss_per_second = 1.5,
 			kind = "minigun",
-			dont_shoot_near_wall = true,
+			weapon_action_hand = "left",
+			spread_template_override = "vs_ratling_gunner_gun_shooting",
+			disallow_ghost_mode = true,
 			hit_effect = "bullet_impact",
 			critical_hit_effect = "bullet_critical_impact",
-			weapon_action_hand = "left",
+			dont_shoot_near_wall = true,
 			ammo_usage = 1,
-			disallow_ghost_mode = true,
 			near_wall_anim = "",
 			hold_input = "action_one_hold",
 			power_level = 100,
@@ -130,7 +131,8 @@ weapon_template.actions = {
 				{
 					start_time = 0,
 					external_multiplier = 0.4,
-					buff_name = "planted_fast_decrease_movement"
+					buff_name = "planted_fast_decrease_movement",
+					end_time = math.huge
 				}
 			},
 			allowed_chain_actions = {
@@ -152,6 +154,7 @@ weapon_template.actions = {
 			anim_end_event = "cooldown_ready",
 			weapon_action_hand = "either",
 			kind = "dummy",
+			crosshair_style = "dot",
 			anim_event = "wind_up_start",
 			condition_func = reload_condition_func,
 			chain_condition_func = reload_condition_func,
@@ -177,19 +180,20 @@ weapon_template.actions = {
 				end
 			end,
 			total_time = reload_time,
+			buff_data = {
+				{
+					start_time = 0,
+					external_multiplier = 0.6,
+					buff_name = "planted_fast_decrease_movement",
+					end_time = math.huge
+				}
+			},
 			allowed_chain_actions = {
 				{
 					sub_action = "default",
 					start_time = 0,
 					action = "action_two",
 					input = "action_two"
-				}
-			},
-			buff_data = {
-				{
-					start_time = 0,
-					external_multiplier = 0.6,
-					buff_name = "planted_fast_decrease_movement"
 				}
 			}
 		}
@@ -223,6 +227,8 @@ weapon_template.outer_block_angle = 360
 weapon_template.block_fatigue_point_multiplier = 0.5
 weapon_template.outer_block_fatigue_point_multiplier = 2
 weapon_template.sound_event_block_within_arc = "weapon_foley_blunt_1h_block_wood"
+weapon_template.crosshair_style = "default"
+weapon_template.default_spread_template = "vs_ratling_gunner_gun"
 weapon_template.buffs = {
 	change_dodge_distance = {
 		external_optional_multiplier = 1.2
@@ -487,8 +493,6 @@ weapon_template.synced_states = {
 	}
 }
 weapon_template.left_hand_attachment_node_linking = AttachmentNodeLinking.vs_ratling_gunner_gun.left
-weapon_template.unit_extension_template = "weapon_unit_ammo"
-weapon_template.crosshair_style = "dot"
 weapon_template.ammo_data = {
 	ammo_immediately_available = true,
 	play_reload_anim_on_wield_reload = true,

@@ -1184,7 +1184,7 @@ StateLoading._update_lobby_join = function (self, dt, t)
 		if lobby.valid and auto_join_this_lobby then
 			print("=======================Autojoining this lobby")
 
-			local network_options = Managers.lobby:network_options()
+			local network_options = LobbySetup.network_options()
 
 			self:_load_global_packages()
 
@@ -2249,7 +2249,7 @@ StateLoading.setup_join_lobby = function (self, optional_wait_time, setup_voip)
 	end
 
 	if not self._lobby_client then
-		local network_options = Managers.lobby:network_options()
+		local network_options = LobbySetup.network_options()
 		local loading_context = self.parent.loading_context
 
 		if loading_context.join_lobby_data then
@@ -2293,7 +2293,7 @@ StateLoading.setup_lobby_finder = function (self, lobby_joined_callback, lobby_t
 		Managers.package:load("resource_packages/careers", "global")
 	end
 
-	local network_options = Managers.lobby:network_options()
+	local network_options = LobbySetup.network_options()
 
 	if lobby_is_server then
 		local game_server_data = {
@@ -2347,7 +2347,7 @@ StateLoading.setup_lobby_host = function (self, wait_for_joined_callback, platfo
 	assert(not loading_context.profile_synchronizer)
 	assert(not loading_context.network_server)
 
-	local network_options = Managers.lobby:network_options()
+	local network_options = LobbySetup.network_options()
 	local network_options_info = table.tostring(network_options)
 	local platform_lobby_info = type(platform_lobby) == "table" and table.tostring(platform_lobby) or tostring(platform_lobby)
 

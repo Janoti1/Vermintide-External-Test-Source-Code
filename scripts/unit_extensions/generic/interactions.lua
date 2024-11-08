@@ -2395,10 +2395,16 @@ InteractionDefinitions.map_access.config.swap_to_3p = false
 InteractionDefinitions.map_access.client.stop = function (world, interactor_unit, interactable_unit, data, config, t, result)
 	data.start_time = nil
 
+	local menu_sub_state_name
+	local is_in_versus_custom_lobby = Managers.matchmaking:is_in_versus_custom_game_lobby()
+
+	menu_sub_state_name = is_in_versus_custom_lobby and "versus_player_hosted_lobby" or nil
+
 	if result == InteractionResult.SUCCESS and not data.is_husk then
 		Managers.ui:handle_transition("start_game_view_force", {
+			menu_state_name = "play",
 			use_fade = true,
-			menu_state_name = "play"
+			menu_sub_state_name = menu_sub_state_name
 		})
 	end
 end
@@ -2408,9 +2414,13 @@ InteractionDefinitions.map_access.client.hud_description = function (interactabl
 end
 
 InteractionDefinitions.map_access.client.can_interact = function (interactor_unit, interactable_unit, data, config)
+	local is_in_versus_custom_lobby
+
+	is_in_versus_custom_lobby = Managers.matchmaking:is_in_versus_custom_game_lobby()
+
 	local is_game_matchmaking = Managers.matchmaking:is_game_matchmaking()
 
-	return not is_game_matchmaking
+	return not is_game_matchmaking or is_in_versus_custom_lobby
 end
 
 InteractionDefinitions.unlock_key_access = InteractionDefinitions.unlock_key_access or table.clone(InteractionDefinitions.smartobject)

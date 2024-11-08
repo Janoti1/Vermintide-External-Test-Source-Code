@@ -2047,7 +2047,7 @@ StoreBundleLayouts = {
 			type = "spacing",
 			settings = {
 				size = {
-					130,
+					260,
 					0
 				}
 			}
@@ -2081,7 +2081,7 @@ StoreBundleLayouts = {
 			type = "spacing",
 			settings = {
 				size = {
-					130,
+					260,
 					0
 				}
 			}
@@ -2115,7 +2115,7 @@ StoreBundleLayouts = {
 			type = "spacing",
 			settings = {
 				size = {
-					130,
+					260,
 					0
 				}
 			}
@@ -2149,7 +2149,7 @@ StoreBundleLayouts = {
 			type = "spacing",
 			settings = {
 				size = {
-					130,
+					260,
 					0
 				}
 			}
@@ -2183,7 +2183,7 @@ StoreBundleLayouts = {
 			type = "spacing",
 			settings = {
 				size = {
-					130,
+					260,
 					0
 				}
 			}

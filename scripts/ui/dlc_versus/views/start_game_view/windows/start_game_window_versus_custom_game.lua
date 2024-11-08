@@ -54,13 +54,6 @@ StartGameWindowVersusCustomGame.on_enter = function (self, params, offset)
 	end
 
 	self:_start_transition_animation("on_enter")
-
-	self._event_manager = Managers.state.event
-
-	self._event_manager:register(self, "versus_custom_lobby_state_changed", "on_versus_custom_lobby_state_changed")
-
-	self._custom_lobby_ui_active = false
-	self._slots_status_ui = VersusPlayerHostedLobbyUI:new(self, ingame_ui_context)
 end
 
 StartGameWindowVersusCustomGame._start_transition_animation = function (self, animation_name)
@@ -114,8 +107,6 @@ StartGameWindowVersusCustomGame.on_exit = function (self, params)
 	else
 		params.input_index = self._input_index
 	end
-
-	self._slots_status_ui:destroy()
 end
 
 StartGameWindowVersusCustomGame.set_focus = function (self, focused)
@@ -130,11 +121,7 @@ StartGameWindowVersusCustomGame.update = function (self, dt, t)
 		self:_handle_input(dt, t)
 	end
 
-	self._slots_status_ui:update(t, dt)
-
-	if not self._custom_lobby_ui_active then
-		self:_draw(dt)
-	end
+	self:_draw(dt)
 end
 
 StartGameWindowVersusCustomGame.post_update = function (self, dt, t)
@@ -263,7 +250,7 @@ StartGameWindowVersusCustomGame._update_mission_option = function (self)
 	local level_settings = LevelSettings[selected_level_id]
 	local display_name = level_settings.display_name
 	local icon_texture = level_settings.level_image
-	local completed_difficulty_index = self._parent:get_completed_level_difficulty_index(self._statistics_db, self._stats_id, selected_level_id)
+	local completed_difficulty_index = 0
 	local mission_widget = self._widgets_by_name.mission_setting
 
 	mission_widget.content.input_text = Localize(display_name)
@@ -303,6 +290,8 @@ StartGameWindowVersusCustomGame._option_selected = function (self, input_index, 
 		self._play_button_pressed = true
 
 		self._parent:play(t, custom_game_settings.game_mode_type)
+		self._parent:play_sound("Play_vs_hud_play_menu_host_lobby")
+		self._parent:set_layout_by_name("versus_player_hosted_lobby")
 	else
 		ferror("Unknown selector_input_definition: %s", selected_widget_name)
 	end
@@ -375,8 +364,4 @@ StartGameWindowVersusCustomGame._draw = function (self, dt)
 	end
 
 	UIRenderer.end_pass(ui_top_renderer)
-end
-
-StartGameWindowVersusCustomGame.on_versus_custom_lobby_state_changed = function (self, is_active)
-	self._custom_lobby_ui_active = is_active
 end

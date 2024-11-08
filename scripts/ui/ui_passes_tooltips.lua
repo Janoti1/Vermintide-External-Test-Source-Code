@@ -5413,16 +5413,27 @@ UITooltipPasses = {
 				return 0
 			end
 
-			local chest_level = loot_interface:get_highest_chest_level(reward_name)
+			local chest_level
+			local achievement_id = ui_content.achievement_id
 
-			if not chest_level then
-				chest_level = ExperienceSettings.get_highest_hero_level()
+			if achievement_id then
+				if AchievementManager.STORE_COMPLETED_LEVEL then
+					if ui_content.completed and not ui_content.claimed then
+						local statistics_interface = Managers.backend:get_interface("statistics")
+						local level_on_complete = statistics_interface:get_achievement_reward_level(achievement_id)
 
-				if not rawget(_G, "ui_passes_tooltips_CHEST_LEVEL_ERROR") then
-					rawset(_G, "ui_passes_tooltips_CHEST_LEVEL_ERROR", true)
-					Crashify.print_exception("[LootChestData]", "Chest %s contains no chest level. Backend may have a mismatch in number of chests and number of chests levels.", reward_name)
+						chest_level = level_on_complete and math.min(level_on_complete, LootChestData.LEVEL_USED_FOR_POOL_LEVELS)
+					else
+						return 0
+					end
+				elseif ui_content.claimed then
+					return 0
 				end
+			else
+				chest_level = loot_interface:get_highest_chest_level(reward_name)
 			end
+
+			chest_level = chest_level or ExperienceSettings.get_highest_hero_level()
 
 			local min, max = LootChestData.calculate_power_level(chest_level, power_level_pivots)
 			local chest_tier = item_data.chest_tier or 1

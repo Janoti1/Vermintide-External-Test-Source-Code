@@ -974,17 +974,19 @@ StatisticsUtil._register_completed_level_difficulty = function (statistics_db, l
 	local difficulties = difficulty_manager:get_level_difficulties(level_id)
 	local difficulty = table.find(difficulties, difficulty_name)
 
-	Managers.state.achievement:trigger_event("register_completed_level", difficulty_name, level_id, career_name, local_player)
+	if difficulty then
+		Managers.state.achievement:trigger_event("register_completed_level", difficulty_name, level_id, career_name, local_player)
 
-	if current_completed_difficulty < difficulty then
-		statistics_db:set_stat(stats_id, "completed_levels_difficulty", level_difficulty_name, difficulty)
-	end
+		if current_completed_difficulty < difficulty then
+			statistics_db:set_stat(stats_id, "completed_levels_difficulty", level_difficulty_name, difficulty)
+		end
 
-	if statistics_db:has_stat(stats_id, "mission_streak", career_name) then
-		local current_streak_difficulty = statistics_db:get_persistent_stat(stats_id, "mission_streak", career_name, level_id)
+		if statistics_db:has_stat(stats_id, "mission_streak", career_name) then
+			local current_streak_difficulty = statistics_db:get_persistent_stat(stats_id, "mission_streak", career_name, level_id)
 
-		if current_streak_difficulty < difficulty then
-			statistics_db:set_stat(stats_id, "mission_streak", career_name, level_id, difficulty)
+			if current_streak_difficulty < difficulty then
+				statistics_db:set_stat(stats_id, "mission_streak", career_name, level_id, difficulty)
+			end
 		end
 	end
 

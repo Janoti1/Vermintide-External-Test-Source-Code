@@ -327,7 +327,7 @@ LevelEndViewWeave.get_hero_from_score = function (self, player_data)
 		if item then
 			local skin_name = player_data.weapon_pose.skin_name
 			local parent_item_name = item.parent
-			local parent_item = ItemMasterList[parent_item_name]
+			local parent_item = rawget(ItemMasterList, parent_item_name)
 
 			if parent_item then
 				weapon_pose_weapon = {

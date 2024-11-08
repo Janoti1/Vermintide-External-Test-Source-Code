@@ -357,7 +357,7 @@ achievements.vs_hero_obj_chains = {
 	end
 }
 
-local value = 50
+local value = 25
 
 achievements.vs_hero_obj_capture = {
 	name = "achv_hero_obj_capture_vs_name",
@@ -407,11 +407,11 @@ achievements.vs_hero_obj_capture = {
 }
 
 local values = {
-	10,
+	5,
+	25,
 	50,
 	100,
-	250,
-	500
+	250
 }
 
 for i = 1, #values do
@@ -715,10 +715,10 @@ achievements.vs_clutch_revive = {
 
 local values = {
 	10,
+	50,
 	100,
 	250,
-	500,
-	1000
+	500
 }
 
 for i = 1, #values do
@@ -908,10 +908,10 @@ achievements.vs_drag_heroes = {
 
 local values = {
 	10,
+	50,
 	100,
 	250,
-	500,
-	1000
+	500
 }
 
 for i = 1, #values do
@@ -1144,10 +1144,10 @@ achievements.vs_gas_combo_pounce = {
 
 local values = {
 	500,
+	2500,
 	5000,
-	12500,
-	25000,
-	50000
+	10000,
+	25000
 }
 
 for i = 1, #values do
@@ -1400,10 +1400,10 @@ achievements.vs_kill_hoisted_hero = {
 
 local values = {
 	500,
+	2500,
 	5000,
-	12500,
-	25000,
-	50000
+	10000,
+	25000
 }
 
 for i = 1, #values do
@@ -1593,10 +1593,10 @@ achievements.vs_kill_ko_hero = {
 
 local values = {
 	500,
+	2500,
 	5000,
-	12500,
-	25000,
-	50000
+	10000,
+	25000
 }
 
 for i = 1, #values do
@@ -1818,9 +1818,9 @@ achievements.vs_globe_damage = {
 }
 
 local values = {
-	500,
-	5000,
-	12500
+	100,
+	1000,
+	2500
 }
 
 for i = 1, #values do

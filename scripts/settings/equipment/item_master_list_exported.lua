@@ -12208,11 +12208,11 @@ ItemMasterList.deed_4040 = {
 	}
 }
 ItemMasterList.level_chest = {
-	description = "level_chest_description_01",
+	description = "level_chest_greater_description",
 	rarity = "plentiful",
-	display_name = "display_name_loot_level_chest_01",
+	display_name = "display_name_loot_level_chest_greater",
 	rarity_key = "level_up",
-	inventory_icon = "icon_loot_chest_level_up",
+	inventory_icon = "icon_loot_chest_level_up_2",
 	slot_type = "loot_chest",
 	power_level_key = "category_24",
 	temporary_template = "",
@@ -12225,6 +12225,26 @@ ItemMasterList.level_chest = {
 	can_wield = CanWieldAllItemTemplates,
 	chest_categories = {
 		"level_up"
+	}
+}
+ItemMasterList.level_chest_lesser = {
+	description = "level_chest_description_01",
+	rarity = "plentiful",
+	display_name = "display_name_loot_level_chest_01",
+	rarity_key = "level_up",
+	inventory_icon = "icon_loot_chest_level_up",
+	slot_type = "loot_chest",
+	power_level_key = "category_24",
+	temporary_template = "",
+	content_key = "level_chest_lesser",
+	can_stack = true,
+	display_unit = "chest_1",
+	item_type = "loot_chest",
+	chest_sort_order = 0,
+	chest_tier = 1,
+	can_wield = CanWieldAllItemTemplates,
+	chest_categories = {
+		"level_chest_lesser"
 	}
 }
 ItemMasterList.level_chest_02 = {

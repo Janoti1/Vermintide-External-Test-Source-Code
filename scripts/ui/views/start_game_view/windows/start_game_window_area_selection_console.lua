@@ -36,7 +36,6 @@ StartGameWindowAreaSelectionConsole.on_enter = function (self, params, offset)
 
 	self:create_ui_elements(params, offset)
 
-	params.return_layout_name = self.parent:get_selected_game_mode_layout_name()
 	self._area_unavailable = true
 
 	self.parent:set_input_description("select_area_confirm")
@@ -259,9 +258,6 @@ StartGameWindowAreaSelectionConsole.on_exit = function (self, params)
 	self._has_exited = true
 
 	self:_destroy_video_widget()
-
-	params.return_layout_name = nil
-
 	self:_play_sound("Stop_hud_menu_area_music")
 end
 

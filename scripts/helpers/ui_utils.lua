@@ -43,6 +43,13 @@ UIUtils.format_localized_description = function (fmt_str, fmt_def)
 		local value_type = value_data.value_type
 		local value_fmt = value_data.value_fmt
 		local value = value_data.value
+		local localize = value_data.localize
+
+		if localize then
+			local value_fmt_def = value_data.format_values
+
+			value = UIUtils.format_localized_description(value, value_fmt_def)
+		end
 
 		if value_type == "percent" then
 			value = math.abs(100 * value)

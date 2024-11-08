@@ -577,6 +577,12 @@ BackendInterfaceLootPlayfab.achievement_rewards_request_cb = function (self, dat
 		backend_mirror:set_read_only_data("chest_inventory", chest_inventory, true)
 	end
 
+	local achievement_reward_levels = function_result.achievement_reward_levels
+
+	if achievement_reward_levels then
+		backend_mirror:set_read_only_data("achievement_reward_levels", achievement_reward_levels, true)
+	end
+
 	backend_mirror:set_achievement_claimed(achievement_id)
 
 	self._loot_requests[id] = loot
@@ -776,6 +782,12 @@ BackendInterfaceLootPlayfab.claim_multiple_achievement_rewards_request_cb = func
 
 	if chest_inventory then
 		backend_mirror:set_read_only_data("chest_inventory", chest_inventory, true)
+	end
+
+	local achievement_reward_levels = function_result.achievement_reward_levels
+
+	if achievement_reward_levels then
+		backend_mirror:set_read_only_data("achievement_reward_levels", achievement_reward_levels, true)
 	end
 
 	if awarded_achievement_ids then

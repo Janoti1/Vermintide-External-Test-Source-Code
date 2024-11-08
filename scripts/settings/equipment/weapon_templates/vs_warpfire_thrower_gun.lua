@@ -23,22 +23,29 @@ local weapon_template = {}
 weapon_template.actions = {
 	action_one = {
 		default = {
-			hold_input = "action_one_hold",
 			disallow_ghost_mode = true,
 			weapon_action_hand = "left",
-			kind = "dummy",
 			anim_end_event = "attack_finished",
+			kind = "dummy",
+			aim_assist_ramp_multiplier = 0.4,
 			aim_assist_ramp_decay_delay = 0.3,
 			anim_time_scale = 1,
 			minimum_hold_time = 0.1,
 			aim_assist_max_ramp_multiplier = 0.8,
-			aim_assist_ramp_multiplier = 0.4,
+			hold_input = "action_one_hold",
 			anim_event = "attack_shoot_start",
 			anim_end_event_condition_func = function (unit, end_reason)
 				return end_reason ~= "new_interupting_action" and end_reason ~= "action_complete"
 			end,
 			fire_time = fire_time,
 			total_time = math.huge,
+			buff_data = {
+				{
+					start_time = 0,
+					external_multiplier = 0.75,
+					buff_name = "planted_fast_decrease_movement"
+				}
+			},
 			allowed_chain_actions = {
 				{
 					sub_action = "fire",
@@ -120,6 +127,21 @@ weapon_template.actions = {
 				return end_reason ~= "new_interupting_action" and end_reason ~= "action_complete"
 			end,
 			total_time = math.huge,
+			buff_data = {
+				{
+					start_time = 0,
+					external_multiplier = 0.25,
+					buff_name = "planted_decrease_movement"
+				}
+			},
+			allowed_chain_actions = {
+				{
+					sub_action = "default",
+					start_time = 0,
+					action = "weapon_reload",
+					input = "weapon_reload"
+				}
+			},
 			enter_function = function (owner_unit, input_extension, remaining_time, weapon_extension)
 				input_extension:clear_input_buffer()
 				input_extension:reset_release_input()
@@ -133,43 +155,29 @@ weapon_template.actions = {
 						Managers.state.entity:system("weapon_system"):change_synced_weapon_state(owner_unit, "cooling_down")
 					end
 				end
-			end,
-			buff_data = {
-				{
-					start_time = 0,
-					external_multiplier = 0.25,
-					buff_name = "planted_charging_decrease_movement"
-				}
-			},
-			allowed_chain_actions = {
-				{
-					sub_action = "default",
-					start_time = 0,
-					action = "weapon_reload",
-					input = "weapon_reload"
-				}
-			}
+			end
 		}
 	},
 	weapon_reload = {
 		default = {
 			charge_sound_stop_event = "stop_player_combat_weapon_staff_cooldown",
-			weapon_action_hand = "left",
 			disallow_ghost_mode = true,
+			weapon_action_hand = "left",
+			crosshair_style = "dot",
 			kind = "charge",
 			charge_sound_parameter_name = "drakegun_charge_fire",
+			charge_effect_material_variable_name = "intensity",
 			charge_sound_name = "player_enemy_warpfire_steam_after_flame_start",
-			hold_input = "weapon_reload_hold",
 			do_not_validate_with_hold = true,
 			charge_effect_material_name = "Fire",
-			charge_effect_material_variable_name = "intensity",
+			uninterruptible = true,
 			particle_effect_cooling = "fx/wpnfx_warpfire_gun_cooldown_1p",
 			minimum_hold_time = 0.5,
 			vent_overcharge = true,
 			anim_end_event = "attack_finished",
 			charge_sound_switch = "projectile_charge_sound",
 			charge_time = 3,
-			uninterruptible = true,
+			hold_input = "weapon_reload_hold",
 			anim_event = "wind_up_start",
 			anim_end_event_condition_func = function (unit, end_reason)
 				return end_reason ~= "new_interupting_action" and end_reason ~= "action_complete"
@@ -179,8 +187,7 @@ weapon_template.actions = {
 				{
 					start_time = 0,
 					external_multiplier = 0.8,
-					buff_name = "planted_fast_decrease_movement",
-					end_time = math.huge
+					buff_name = "planted_fast_decrease_movement"
 				}
 			},
 			enter_function = function (owner_unit, input_extension, remaining_time, weapon_extension)
@@ -398,6 +405,8 @@ weapon_template.outer_block_angle = 360
 weapon_template.block_fatigue_point_multiplier = 0.5
 weapon_template.outer_block_fatigue_point_multiplier = 2
 weapon_template.sound_event_block_within_arc = "weapon_foley_blunt_1h_block_wood"
+weapon_template.crosshair_style = "shotgun"
+weapon_template.default_spread_template = "vs_warpfire_thrower_gun"
 weapon_template.buffs = {
 	change_dodge_distance = {
 		external_optional_multiplier = 1.2

@@ -2,7 +2,7 @@ local horde_ability_settings = {
 	save_charges_between_rounds = true,
 	enable_activation_in_ghost_mode = true,
 	horde_units_batch_sync_interval = 1,
-	max_score_difference_modifier = 200,
+	max_score_difference_modifier = 250,
 	cooldown = 300,
 	recharge_boosts_on_downed_units = false,
 	max_num_horde_units_per_player = 32,
@@ -13,41 +13,49 @@ local horde_ability_settings = {
 		2.5
 	},
 	score_difference_recharge_modifier = {
+		[250] = {
+			boost_mod = 1,
+			cooldown_mod = 0.5
+		},
 		[200] = {
-			boost_mod = 1,
-			cooldown_mod = 0.2
-		},
-		[150] = {
-			boost_mod = 1,
-			cooldown_mod = 0.4
-		},
-		[100] = {
 			boost_mod = 1,
 			cooldown_mod = 0.6
 		},
-		[50] = {
+		[150] = {
+			boost_mod = 1,
+			cooldown_mod = 0.7
+		},
+		[100] = {
 			boost_mod = 1,
 			cooldown_mod = 0.8
+		},
+		[50] = {
+			boost_mod = 1,
+			cooldown_mod = 0.9
 		},
 		[0] = {
 			boost_mod = 1,
 			cooldown_mod = 1
 		},
 		[-50] = {
-			boost_mod = 1.125,
-			cooldown_mod = 1.25
+			boost_mod = 1.2,
+			cooldown_mod = 1.1
 		},
 		[-100] = {
-			boost_mod = 1.25,
-			cooldown_mod = 1.5
+			boost_mod = 1.4,
+			cooldown_mod = 1.2
 		},
 		[-150] = {
-			boost_mod = 1.375,
-			cooldown_mod = 1.75
+			boost_mod = 1.6,
+			cooldown_mod = 1.3
 		},
 		[-200] = {
-			boost_mod = 1.5,
-			cooldown_mod = 2
+			boost_mod = 1.8,
+			cooldown_mod = 1.4
+		},
+		[-250] = {
+			boost_mod = 2,
+			cooldown_mod = 1.5
 		}
 	},
 	compositions_per_faction = {

@@ -699,7 +699,7 @@ StateInGameRunning.gm_event_end_conditions_met = function (self, reason, checkpo
 
 		if end_mission_rewards then
 			if not is_booted_unstrusted and (game_lost or is_final_objective) then
-				self:_award_end_of_level_rewards(statistics_db, stats_id, game_won, difficulty_key)
+				self:_award_end_of_level_rewards(statistics_db, stats_id, game_won, difficulty_key, level_key)
 			end
 
 			print("end screen_name:", screen_name, screen_config, screen_params)
@@ -740,14 +740,17 @@ StateInGameRunning.gm_event_end_conditions_met = function (self, reason, checkpo
 	end
 end
 
-StateInGameRunning._award_end_of_level_rewards = function (self, statistics_db, stats_id, game_won, difficulty_key)
+StateInGameRunning._award_end_of_level_rewards = function (self, statistics_db, stats_id, game_won, difficulty_key, level_key)
 	local peer_id = Network.peer_id()
 	local profile_index, career_index = self.profile_synchronizer:get_persistent_profile_index_reservation(peer_id)
 	local profile = SPProfiles[profile_index]
 	local hero_name = profile.display_name
 	local game_time = math.floor(Managers.time:time("game"))
-	local end_of_level_rewards_arguments = Managers.mechanism:get_end_of_level_rewards_arguments(game_won, self.is_quickplay, statistics_db, stats_id)
+	local end_of_level_rewards_arguments = Managers.mechanism:get_end_of_level_rewards_arguments(game_won, self.is_quickplay, statistics_db, stats_id, level_key, hero_name)
 	local extra_mission_results = Managers.mechanism:get_end_of_level_extra_mission_results()
+
+	end_of_level_rewards_arguments.hero_name = hero_name
+	end_of_level_rewards_arguments.ingame_display_name = profile.ingame_display_name
 
 	self.rewards:award_end_of_level_rewards(game_won, hero_name, self._is_in_event_game_mode, game_time, end_of_level_rewards_arguments, extra_mission_results)
 

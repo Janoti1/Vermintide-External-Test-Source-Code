@@ -800,6 +800,7 @@ HeroViewStateAchievements._create_entries = function (self, entries, entry_type,
 							content.completed = completed
 							content.claimed = claimed
 							content.id = entry_id
+							content.achievement_id = entry_id
 							content.original_order_index = i
 
 							local name = entry_data.name
@@ -1534,7 +1535,7 @@ HeroViewStateAchievements._update_new_status_for_current_tab = function (self)
 		local data = active_tab.content.data
 
 		fill_achievement_list(data)
-		self._achievement_manager:setup_achievement_data_from_list(achievement_list)
+		self._achievement_manager:setup_achievement_data_from_list(achievement_list, false)
 		self:_setup_tab_widget(active_tab, data)
 	elseif self._achievement_layout_type == "quest" then
 		local layout = self:_get_layout(self._achievement_layout_type)

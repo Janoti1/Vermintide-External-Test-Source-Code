@@ -232,7 +232,10 @@ MatchmakingUI.update = function (self, dt, t)
 
 		self:_handle_gamepad_activity()
 
-		if Managers.party:is_leader(self._my_peer_id) then
+		local network_handler = Managers.mechanism:network_handler()
+		local match_handler = network_handler:get_match_handler()
+
+		if match_handler:is_leader(self._my_peer_id) then
 			local allow_cancel_matchmaking = self.matchmaking_manager:allow_cancel_matchmaking()
 
 			self._allow_cancel_matchmaking = allow_cancel_matchmaking and not has_mission_vote
@@ -395,6 +398,7 @@ MatchmakingUI._update_matchmaking_info = function (self, t)
 		end
 	elseif mechanism == "versus" then
 		local detail_text = "mission_vote_quick_play"
+		local difficulty_text = "vs_ui_versus_tag"
 
 		if not matchmaking_info.quick_game then
 			local mission_id = matchmaking_info.mission_id
@@ -405,12 +409,14 @@ MatchmakingUI._update_matchmaking_info = function (self, t)
 				local level_settings = mission_id and LevelSettings[mission_id]
 				local display_name = level_settings and level_settings.display_name
 
-				detail_text = display_name and display_name or detail_text
+				detail_text = display_name or detail_text
 			end
+
+			difficulty_text = "player_hosted_title"
 		end
 
 		self:_set_detail_level_text(detail_text, true)
-		self:_set_detail_difficulty_text("vs_ui_versus_tag")
+		self:_set_detail_difficulty_text(difficulty_text)
 	else
 		local difficulty = matchmaking_info.difficulty
 
@@ -463,9 +469,7 @@ MatchmakingUI._update_matchmaking_info = function (self, t)
 end
 
 MatchmakingUI._update_status = function (self, dt)
-	if self._active_mechanism == "versus" then
-		local slot_reservations = Managers.matchmaking:get_reserved_slots()
-	else
+	if self._active_mechanism ~= "versus" then
 		local rotation_progresss = ((self._rotation_progresss or 0) + dt * 0.2) % 1
 
 		self._rotation_progresss = rotation_progresss

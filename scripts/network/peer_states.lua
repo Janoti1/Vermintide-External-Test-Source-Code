@@ -7,11 +7,6 @@ PeerStates.Connecting = {
 	approved_for_joining = false,
 	on_enter = function (self, previous_state)
 		Network.write_dump_tag(string.format("%s connecting", self.peer_id))
-
-		if self.peer_id ~= Network.peer_id() then
-			Managers.mechanism:remote_client_connecting(self.peer_id)
-		end
-
 		self.server.network_transmit:send_rpc("rpc_notify_connected", self.peer_id)
 
 		self.loaded_level = nil
@@ -38,6 +33,16 @@ PeerStates.Connecting = {
 	end,
 	rpc_level_loaded = function (self, level_id)
 		self.loaded_level = NetworkLookup.level_keys[level_id]
+	end,
+	rpc_provide_slot_reservation_info = function (self, peers, group_leader)
+		local match_handler = self.server:get_match_handler()
+
+		match_handler:register_pending_peer(self.peer_id, group_leader)
+
+		local mechanism_manager = Managers.mechanism
+		local slot_reservation_handler = mechanism_manager:get_slot_reservation_handler()
+
+		slot_reservation_handler:connecting_slot_reservation_info_received(self.peer_id, peers, group_leader)
 	end,
 	update = function (self, dt)
 		local ban_list_manager = Managers.ban_list
@@ -79,6 +84,10 @@ PeerStates.Connecting = {
 
 			if slot_reservation_handler then
 				reservation_status = slot_reservation_handler:handle_slot_reservation_for_connecting_peer(self, dt)
+			else
+				local match_handler = self.server:get_match_handler()
+
+				match_handler:register_pending_peer(self.peer_id, self.server.my_peer_id)
 			end
 		end
 

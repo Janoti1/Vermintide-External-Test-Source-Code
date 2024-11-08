@@ -503,40 +503,19 @@ BulldozerPlayer.reevaluate_highest_difficulty = function (self)
 end
 
 BulldozerPlayer.name = function (self)
-	if HAS_STEAM then
-		if self._cached_name then
-			return self._cached_name
-		else
-			local clan_tag = ""
-			local clan_tag_id = Application.user_setting("clan_tag")
+	if self._cached_name then
+		return self._cached_name
+	end
 
-			if clan_tag_id and clan_tag_id ~= "0" then
-				local clan_tag_string = tostring(Clans.clan_tag(clan_tag_id))
+	local name = PlayerUtils.player_name(self:network_id())
 
-				if clan_tag_string ~= "" then
-					clan_tag = clan_tag_string .. "|"
-				end
-			end
-
-			local name = clan_tag .. Steam.user_name(self:network_id())
-
-			self._cached_name = name
-
-			return name
-		end
-	elseif IS_CONSOLE then
-		if self._cached_name then
-			return self._cached_name
-		end
-
-		local name = Managers.state.network:lobby():user_name(self:network_id()) or "Remote #" .. tostring(self.peer_id:sub(-3, -1))
-
+	if name then
 		self._cached_name = name
 
 		return name
-	else
-		return self._debug_name
 	end
+
+	return self._debug_name
 end
 
 BulldozerPlayer.cached_name = function (self)

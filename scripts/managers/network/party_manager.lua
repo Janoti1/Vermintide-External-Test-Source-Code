@@ -538,7 +538,9 @@ PartyManager.assign_peer_to_party = function (self, peer_id, local_player_id, wa
 	local player = Managers.player:player(peer_id, local_player_id)
 	local is_local_player = player and player.local_player
 
-	Managers.state.event:trigger("player_party_changed", player, is_local_player, old_party_id, party_id)
+	if Managers.state.event then
+		Managers.state.event:trigger("player_party_changed", player, is_local_player, old_party_id, party_id)
+	end
 
 	if Managers.state.game_mode then
 		Managers.state.game_mode:player_joined_party(peer_id, local_player_id, party_id, slot_id, old_party_id)
@@ -906,7 +908,7 @@ PartyManager._draw_debug = function (self, t)
 
 	y = y - row_height
 
-	local info3 = string.format("    state: '%s' max: %s", game_mode:game_mode_state(), Managers.lobby._network_options.max_members)
+	local info3 = string.format("    state: '%s' max: %s", game_mode:game_mode_state(), LobbySetup._network_options.max_members)
 
 	Gui.text(self._gui, info3, font, text_height, font_material, Vector3(win_start_x + margin, y, 0), game_mode_color)
 
@@ -1399,7 +1401,7 @@ PartyManager.server_get_friend_party_leaders = function (self, exclude_own_peer_
 	end
 
 	for _, friend_party in pairs(self._friend_parties) do
-		if not exclude_own_peer_id and friend_party.leader == own_peer_id then
+		if not exclude_own_peer_id or friend_party.leader ~= own_peer_id then
 			friend_party_leaders[#friend_party_leaders + 1] = friend_party.leader
 		end
 	end

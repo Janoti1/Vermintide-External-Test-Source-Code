@@ -777,6 +777,15 @@ local talents = {
 		},
 		buffs = {
 			"bardin_engineer_5_2"
+		},
+		mechanism_overrides = {
+			versus = {
+				description_values = {
+					{
+						value = 1
+					}
+				}
+			}
 		}
 	},
 	{

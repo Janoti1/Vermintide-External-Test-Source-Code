@@ -72,6 +72,26 @@ local function is_husk(unit)
 	return is_husk
 end
 
+local function is_grail_knight_blocking(unit, attacker_unit, buff, params, world)
+	local unit_id = Managers.state.unit_storage:go_id(unit)
+	local game = Managers.state.network:game()
+	local unit_forward = GameSession.game_object_field(game, unit_id, "aim_direction")
+	local unit_pos = POSITION_LOOKUP[unit]
+	local attacker_pos = POSITION_LOOKUP[attacker_unit]
+	local to_attacker = Vector3.flat(attacker_pos - unit_pos)
+	local to_attacker_normalized, distance = Vector3.direction_length(to_attacker)
+
+	if distance < math.epsilon then
+		return true, 1
+	end
+
+	local unit_facing_attacker_dot = Vector3.dot(unit_forward, to_attacker_normalized)
+	local max_block_angle = math.cos(math.pi * 0.6666666666666666)
+	local is_power_blocking = max_block_angle < unit_facing_attacker_dot
+
+	return is_power_blocking
+end
+
 BuffFunctionTemplates.functions = {
 	heal_owner = function (unit, buff, params)
 		local heal_amount = buff.template.heal_amount
@@ -1742,14 +1762,22 @@ BuffFunctionTemplates.functions = {
 		if Managers.state.network.is_server then
 			local attacker_unit_is_alive = ALIVE[params.attacker_unit]
 			local attacker_unit = attacker_unit_is_alive and params.attacker_unit or unit
+			local attacker_unit = params.attacker_unit
+			local target_buff_extension = ScriptUnit.has_extension(unit, "buff_system")
+			local target_power_block_perk = target_buff_extension:has_buff_perk("power_block")
+			local is_power_blocking = false
 
-			if HEALTH_ALIVE[unit] then
+			if target_power_block_perk then
+				is_power_blocking = is_grail_knight_blocking(unit, attacker_unit, buff, params, world)
+			end
+
+			if (not is_power_blocking or not DamageUtils.check_ranged_block(attacker_unit, unit, "blocked_berzerker")) and HEALTH_ALIVE[unit] then
 				local armor_type = buff.armor_type
 				local damage_type = buff_template.damage_type
 				local damage = buff.damage[armor_type]
 				local damage_source = buff.damage_source
 
-				DamageUtils.add_damage_network(unit, attacker_unit, damage, "torso", damage_type, nil, Vector3(1, 0, 0), damage_source, nil, attacker_unit)
+				DamageUtils.add_damage_network(unit, attacker_unit, damage, "torso", damage_type, nil, Vector3(1, 0, 0), damage_source)
 			end
 
 			local is_friendly_target = not DamageUtils.is_enemy(attacker_unit, unit)

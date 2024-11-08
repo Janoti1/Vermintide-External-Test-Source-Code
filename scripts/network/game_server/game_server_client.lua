@@ -32,6 +32,10 @@ GameServerLobbyClient.init = function (self, network_options, game_server_data, 
 	self._advertising_playing = true
 end
 
+GameServerLobbyClient.lobby_host = function (self)
+	return GameServerInternal.lobby_host(self._game_server_lobby)
+end
+
 GameServerLobbyClient.destroy = function (self)
 	dprintf("Destroying Game Server Client, leaving server...")
 

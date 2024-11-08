@@ -21,6 +21,17 @@ MatchmakingStateHostGame.on_enter = function (self, state_context)
 
 	if DEDICATED_SERVER then
 		self._matchmaking_manager:send_system_chat_message("matchmaking_status_found_game")
+
+		local audio_event = "versus_hud_player_lobby_match_found"
+		local network_transmit = Managers.state.network.network_transmit
+		local event_id = NetworkLookup.sound_events[audio_event]
+		local leaders = Managers.party:server_get_friend_party_leaders()
+
+		for _, leader in pairs(leaders) do
+			if PEER_ID_TO_CHANNEL[leader] then
+				network_transmit:send_rpc("rpc_vs_play_matchmaking_sfx", leader, event_id)
+			end
+		end
 	else
 		self._matchmaking_manager:send_system_chat_message("matchmaking_status_start_hosting_game")
 	end

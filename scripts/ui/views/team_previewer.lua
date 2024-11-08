@@ -147,6 +147,8 @@ TeamPreviewer.cb_hero_unit_spawned_skin_preview = function (self, hero_previewer
 		local anim_event = string.format("parading_pose_%02d", random_value)
 
 		hero_previewer:play_character_animation(anim_event)
+	elseif hero_data.preview_animation then
+		hero_previewer:play_character_animation(hero_data.preview_animation)
 	else
 		hero_previewer:play_character_animation(preview_idle_animation)
 	end

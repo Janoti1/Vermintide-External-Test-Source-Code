@@ -363,7 +363,7 @@ StateIngame.on_enter = function (self)
 
 		self.viewport_name = viewport_name
 
-		local network_options = Managers.lobby:network_options()
+		local network_options = LobbySetup.network_options()
 		local params = {
 			local_player_id = i,
 			viewport_name = viewport_name,

@@ -54,3 +54,21 @@ StartGameWindowVersusLobbyBrowser._join = function (self, lobby_data, join_param
 
 	self._parent:set_layout_by_name("versus_player_hosted_lobby")
 end
+
+StartGameWindowVersusLobbyBrowser.update = function (self, dt, t)
+	self._lobby_finder:update(dt)
+
+	local is_refreshing = self:_is_refreshing()
+
+	if not is_refreshing then
+		if self._do_populate then
+			self:_populate_lobby_list()
+		end
+
+		self._searching = false
+		self._do_populate = false
+	end
+
+	self:_update_auto_refresh(dt)
+	self._lobby_browser_console_ui:update(dt, t, self._searching and self._do_populate)
+end

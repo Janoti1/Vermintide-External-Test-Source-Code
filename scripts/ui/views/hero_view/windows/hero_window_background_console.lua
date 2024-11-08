@@ -31,7 +31,9 @@ local object_sets_per_layout = {
 	cosmetics_selection = {
 		keep_current_object_set = true
 	},
-	pose_selection = {},
+	pose_selection = {
+		pose_cosmetics = true
+	},
 	system = {
 		main_menu = true
 	},
@@ -102,9 +104,31 @@ local camera_move_duration_per_layout = {
 local disable_camera_position_per_layout = {}
 local character_camera_location = {
 	pose_selection = {
-		-0.35,
-		-1.5,
-		0.5
+		witch_hunter = {
+			-0.6,
+			-1,
+			0.4
+		},
+		bright_wizard = {
+			-0.5,
+			-0.8,
+			0.3
+		},
+		dwarf_ranger = {
+			-0.5,
+			-0.7,
+			0
+		},
+		wood_elf = {
+			-0.5,
+			-0.7,
+			0.2
+		},
+		empire_soldier = {
+			-0.5,
+			-1,
+			0.3
+		}
 	},
 	default = {
 		0,
@@ -159,8 +183,13 @@ end
 HeroWindowBackgroundConsole._get_with_mechanism = function (self, lookup)
 	local mechanism_name = Managers.mechanism:current_mechanism_name()
 
-	return lookup[mechanism_name] or lookup.adventure
+	return lookup[mechanism_name] or lookup.default
 end
+
+local MOOD_PER_MECHANISM = {
+	default = "default",
+	versus = "menu_versus"
+}
 
 HeroWindowBackgroundConsole._create_viewport_definition = function (self)
 	return {
@@ -337,6 +366,8 @@ HeroWindowBackgroundConsole._update_character_visibility = function (self, layou
 
 	if draw_character then
 		local character_location = character_camera_location[layout_name] or character_camera_location.default
+
+		character_location = character_location[self.hero_name] or character_location
 
 		self.world_previewer:set_hero_location_lerped(character_location, 0.5)
 	end

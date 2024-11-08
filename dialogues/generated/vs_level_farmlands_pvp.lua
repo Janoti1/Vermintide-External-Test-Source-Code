@@ -253,7 +253,7 @@ return function ()
 				"global_context",
 				"current_objective",
 				OP.EQ,
-				"two"
+				"three"
 			}
 		}
 	})

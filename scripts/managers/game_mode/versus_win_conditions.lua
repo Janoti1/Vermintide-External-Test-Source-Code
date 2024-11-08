@@ -329,7 +329,7 @@ VersusWinConditions.on_objective_section_completed = function (self, objective_e
 end
 
 VersusWinConditions._check_heroes_close_to_win_conditions_met = function (self, current_section, total_sections)
-	local early_win_data = self:_get_hero_early_win_data()
+	local early_win_data = self:_get_hero_early_win_data(false)
 	local objective_data, score_per_section
 
 	if current_section and total_sections and current_section < total_sections then
@@ -511,7 +511,7 @@ end
 VersusWinConditions.play_score_sfx = function (self, current_objective_extension)
 	local event = "Play_hud_versus_score_points"
 	local close_to_win_events = settings.versus_close_to_win_score_ticks
-	local early_win_data = self:_get_hero_early_win_data()
+	local early_win_data = self:_get_hero_early_win_data(false)
 	local score_to_win = early_win_data.other_party_score_potential - early_win_data.score + 1
 	local num_score_ticks_to_win = 0
 	local current_objective_sections_left = current_objective_extension:get_num_sections_left()
@@ -606,7 +606,7 @@ VersusWinConditions.update_early_win_conditions = function (self)
 		self:_check_heroes_close_to_win_conditions_met()
 	end
 
-	local hero_early_win_data = self:_get_hero_early_win_data()
+	local hero_early_win_data = self:_get_hero_early_win_data(false)
 	local hero_wins = hero_early_win_data.score > hero_early_win_data.other_party_score_potential
 	local pactsworn_wins = hero_early_win_data.score_potential < hero_early_win_data.other_party_score
 
@@ -632,7 +632,8 @@ VersusWinConditions.update_early_win_conditions = function (self)
 		end
 
 		if self.party_won_early then
-			printf("[VersusWinConditions] Party %s won early due to score %s being higher than opponent potential score %s", self.party_won_early.party_id, self.party_won_early.score, self.party_won)
+			printf("[VersusWinConditions] Party %s (%s) won early due to score %s being higher than opponent potential score %s", self.party_won_early.party_id, self.party_won_early.party_id == self._hero_party_id and "heroes" or "pact_sworn", self.party_won_early.score, self.party_won_early.other_party_score_potential)
+			self:_get_hero_early_win_data(true)
 		end
 	end
 
@@ -641,7 +642,7 @@ end
 
 local safe_room_points_per_player = 10
 
-VersusWinConditions._get_hero_early_win_data = function (self)
+VersusWinConditions._get_hero_early_win_data = function (self, print_context)
 	local party_id = self._hero_party_id
 	local set_number = self.mechanism:get_current_set()
 	local other_party_id = party_id == 1 and 2 or 1
@@ -655,28 +656,63 @@ VersusWinConditions._get_hero_early_win_data = function (self)
 
 	if dead_heroes > 0 then
 		hero_score_to_subtract = dead_heroes * safe_room_points_per_player
+
+		if print_context then
+			printf("[VersusWinConditions] There are %s dead heroes resulting in %s less potential score", dead_heroes, hero_score_to_subtract)
+		end
 	end
 
 	local hero_set_data = self._win_data[party_id]
-	local unclaimed_points = 0
+	local unclaimed_points = hero_set_data[set_number].max_points
 
-	for i = set_number, #hero_set_data do
-		unclaimed_points = unclaimed_points + hero_set_data[i].max_points - hero_set_data[i].claimed_points
+	if print_context then
+		printf("[VersusWinConditions] Counting %s hero points from set %s", unclaimed_points, set_number)
+	end
+
+	for i = set_number + 1, #hero_set_data do
+		local points_from_set = hero_set_data[i].max_points - hero_set_data[i].claimed_points
+
+		unclaimed_points = unclaimed_points + points_from_set
+
+		if print_context then
+			printf("[VersusWinConditions] Counting %s hero points from set %s", points_from_set, i)
+		end
 	end
 
 	local potential_score = score + unclaimed_points - hero_score_to_subtract
+
+	if print_context then
+		printf("[VersusWinConditions] Counted %s potential score for heroes", potential_score)
+	end
+
 	local pactsworn_win_data = self._win_data[other_party_id]
 	local other_unclaimed_points = 0
 
 	if self._current_round % 2 == 1 then
-		other_unclaimed_points = other_unclaimed_points + pactsworn_win_data[set_number].max_points - pactsworn_win_data[set_number].claimed_points
+		local points_from_set = pactsworn_win_data[set_number].max_points - pactsworn_win_data[set_number].claimed_points
+
+		other_unclaimed_points = other_unclaimed_points + points_from_set
+
+		if print_context then
+			printf("[VersusWinConditions] Counting %s pactsworn points from set %s", points_from_set, set_number)
+		end
 	end
 
 	for i = set_number + 1, #pactsworn_win_data do
-		other_unclaimed_points = other_unclaimed_points + pactsworn_win_data[i].max_points - pactsworn_win_data[i].claimed_points
+		local points_from_set = pactsworn_win_data[i].max_points - pactsworn_win_data[i].claimed_points
+
+		other_unclaimed_points = other_unclaimed_points + points_from_set
+
+		if print_context then
+			printf("[VersusWinConditions] Counting %s pactsworn points from set %s", points_from_set, set_number)
+		end
 	end
 
 	local other_party_score_potential = other_score + other_unclaimed_points
+
+	if print_context then
+		printf("[VersusWinConditions] Counted %s potential score for pactsworn", other_party_score_potential)
+	end
 
 	self._early_win_data.party_id = party_id
 	self._early_win_data.score = score

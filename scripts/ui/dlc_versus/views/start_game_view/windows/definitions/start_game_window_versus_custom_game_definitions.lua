@@ -286,9 +286,11 @@ local widgets = {
 	custom_game_title = UIWidgets.create_simple_text(Localize("map_host_setting"), "custom_game_title", nil, nil, custom_game_title_style),
 	custom_game_divider = UIWidgets.create_simple_texture("divider_01_top", "custom_game_divider"),
 	custom_game_description = UIWidgets.create_simple_text(Localize("start_game_host_versus_desc"), "custom_game_description", nil, nil, custom_game_description_style),
+	mission_setting = UIWidgets.create_start_game_console_setting_button("game_option_2", Localize("start_game_window_mission"), nil, nil, nil, scenegraph_definition.game_option_1.size),
 	play_button = UIWidgets.create_icon_and_name_button("play_button", "options_button_icon_quickplay", Localize("start_game_window_other_options_always_host"))
 }
 local selector_input_definition = {
+	"mission_setting",
 	"play_button"
 }
 

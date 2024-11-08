@@ -360,6 +360,22 @@ IngameUI.weaves_requirements_fulfilled = function (self)
 	return true
 end
 
+IngameUI._handle_versus_matchmaking = function (self)
+	local matchmaking_manager = Managers.matchmaking
+
+	if not matchmaking_manager:is_matchmaking_versus() then
+		return true
+	end
+
+	if matchmaking_manager:is_in_versus_custom_game_lobby() then
+		return true
+	end
+
+	self:add_local_system_message("matchmaking_ready_interaction_message_map")
+
+	return false
+end
+
 IngameUI.not_in_modded = function (self)
 	return not script_data["eac-untrusted"]
 end

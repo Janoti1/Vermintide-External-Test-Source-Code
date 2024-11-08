@@ -58,7 +58,7 @@ PlayFabMirrorBase.init = function (self, signin_result)
 	self._fake_inventory_items = {}
 	self._unlocked_cosmetics = {}
 	self._unlocked_weapon_poses = {}
-	self._equipped_weapon_skins = {}
+	self._equipped_weapon_pose_skins = {}
 	self._best_power_levels = nil
 	self.sum_best_power_levels = nil
 	self._belakor_data_loaded = false
@@ -1449,6 +1449,16 @@ PlayFabMirrorBase._cb_steam_user_inventory = function (self, result, item_list, 
 					ItemId = item_key,
 					ItemInstanceId = backend_id
 				}
+				local item_data = ItemMasterList[item_key]
+
+				if (item_data.slot_type == "melee" or item_data.slot_type == "ranged") and (not steam_item.CustomData or not steam_item.CustomData.power_level) then
+					local custom_data = {
+						power_level = 5,
+						rarity = item_data.rarity or "default"
+					}
+
+					steam_item.CustomData = custom_data
+				end
 
 				self:add_item(backend_id, steam_item, true, skip_mark_as_new)
 				debug_printf("Steam Item: %q, %q, %q, %q, %q", item_key, steam_itemdefid, steam_backend_unique_id, flags, amount)
@@ -2117,6 +2127,10 @@ end
 
 PlayFabMirrorBase.get_equipped_weapon_pose_skins = function (self)
 	return self._equipped_weapon_pose_skins
+end
+
+PlayFabMirrorBase.get_equipped_weapon_pose_skin = function (self, parent_item_name)
+	return self._equipped_weapon_pose_skins[parent_item_name]
 end
 
 PlayFabMirrorBase.set_weapon_pose_skin = function (self, parent_item_name, weapon_skin_name)
@@ -2889,7 +2903,16 @@ PlayFabMirrorBase.save_statistics_cb = function (self, commit_id, stats, result)
 	local commit = self._commits[commit_id]
 	local stats_interface = Managers.backend:get_interface("statistics")
 
-	stats_interface:clear_dirty_flags(stats)
+	if stats then
+		stats_interface:clear_dirty_flags(stats)
+	end
+
+	local function_result = result.FunctionResult
+	local achievement_reward_levels = function_result and function_result.achievement_reward_levels
+
+	if achievement_reward_levels then
+		self:set_read_only_data("achievement_reward_levels", achievement_reward_levels, true)
+	end
 
 	commit.wait_for_stats = false
 end

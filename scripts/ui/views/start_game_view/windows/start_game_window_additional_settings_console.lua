@@ -97,6 +97,8 @@ StartGameWindowAdditionalSettingsConsole.on_exit = function (self, params)
 	print("[StartGameWindow] Exit Substate StartGameWindowAdditionalSettingsConsole")
 
 	self.ui_animator = nil
+
+	Managers.state.event:unregister("versus_custom_lobby_state_changed", self)
 end
 
 StartGameWindowAdditionalSettingsConsole.set_focus = function (self, focused)
@@ -110,6 +112,10 @@ StartGameWindowAdditionalSettingsConsole.set_focus = function (self, focused)
 end
 
 StartGameWindowAdditionalSettingsConsole.update = function (self, dt, t)
+	if self._mechanism_name == "versus" and Managers.matchmaking:is_matchmaking_versus() then
+		return
+	end
+
 	if self._additional_option_enabled then
 		self:_update_additional_options()
 	end

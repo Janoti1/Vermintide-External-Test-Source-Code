@@ -322,7 +322,7 @@ BackendInterfaceVersusPlayFab.request_matchmaking_ticket = function (self, laten
 			matchmaking_type = "quickplay",
 			peer_id = Network.peer_id(),
 			latency_list = latency_list,
-			network_hash = Managers.lobby:network_hash()
+			network_hash = LobbySetup.network_hash()
 		}
 	}
 	local success_callback = callback(self, "request_matchmaking_ticket_cb", external_cb)

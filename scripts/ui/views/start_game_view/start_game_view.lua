@@ -642,6 +642,11 @@ StartGameView.start_game = function (self, params)
 
 	mechanism_manager:request_vote(params)
 	self:play_mechanism_sound("start_game_play_sound_event", "play_gui_lobby_button_play")
+
+	if params.matchmaking_type == "custom" and params.player_hosted == true and params.mechanism == "versus" then
+		return
+	end
+
 	self:close_menu()
 end
 

@@ -5745,8 +5745,8 @@ UIWidgets.create_dark_pact_overcharge_bar_widget = function (scenegraph_id, over
 			},
 			icon = {
 				size = {
-					34,
-					34
+					0,
+					0
 				},
 				offset = {
 					size[1],
@@ -5754,16 +5754,16 @@ UIWidgets.create_dark_pact_overcharge_bar_widget = function (scenegraph_id, over
 					5
 				},
 				color = {
-					100,
-					0,
-					0,
-					1
+					255,
+					255,
+					255,
+					255
 				}
 			},
 			icon_shadow = {
 				size = {
-					34,
-					34
+					0,
+					0
 				},
 				offset = {
 					size[1] + 2,
@@ -5784,7 +5784,7 @@ UIWidgets.create_dark_pact_overcharge_bar_widget = function (scenegraph_id, over
 					5
 				},
 				color = {
-					204,
+					255,
 					255,
 					255,
 					255

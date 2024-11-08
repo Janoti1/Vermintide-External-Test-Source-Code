@@ -464,7 +464,7 @@ DeusMechanism.get_hub_level_key = function (self)
 	return HUB_LEVEL_NAME
 end
 
-DeusMechanism.get_end_of_level_rewards_arguments = function (self, game_won, quickplay, statistics_db, stats_id)
+DeusMechanism.get_end_of_level_rewards_arguments = function (self, game_won, quickplay, statistics_db, stats_id, level_key, hero_name)
 	local end_of_level_rewards_arguments = self._deus_run_controller:get_end_of_level_rewards_arguments(game_won, quickplay)
 	local ignore_dlc_check = false
 	local current_weave = LevelUnlockUtils.current_weave(statistics_db, stats_id, ignore_dlc_check)
@@ -1389,7 +1389,7 @@ DeusMechanism.reserved_party_id_by_peer = function (self, peer_id)
 	return 1
 end
 
-DeusMechanism.try_reserve_profile_for_peer_by_mechanism = function (self, profile_synchronizer, peer_id, profile_index, career_index, force_respawning)
+DeusMechanism.try_reserve_profile_for_peer_by_mechanism = function (self, profile_synchronizer, peer_id, profile_index, career_index, allow_switching)
 	local party_id = self:reserved_party_id_by_peer(peer_id)
 
 	return profile_synchronizer:try_reserve_profile_for_peer(party_id, peer_id, profile_index, career_index)

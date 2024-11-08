@@ -223,9 +223,9 @@ GameMechanismManager.get_level_seed = function (self, optional_system)
 	end
 end
 
-GameMechanismManager.get_end_of_level_rewards_arguments = function (self, game_won, quickplay, statistics_db, stats_id)
+GameMechanismManager.get_end_of_level_rewards_arguments = function (self, game_won, quickplay, statistics_db, stats_id, level_key, hero_name)
 	if self._game_mechanism.get_end_of_level_rewards_arguments then
-		return self._game_mechanism:get_end_of_level_rewards_arguments(game_won, quickplay, statistics_db, stats_id)
+		return self._game_mechanism:get_end_of_level_rewards_arguments(game_won, quickplay, statistics_db, stats_id, level_key, hero_name)
 	else
 		return {}
 	end
@@ -373,18 +373,26 @@ GameMechanismManager.network_context_created = function (self, lobby, server_pee
 	self._peer_id = own_peer_id
 	self._is_server = is_server
 
-	if is_server then
-		self._network_server = network_handler
-		self._network_client = nil
-	else
-		self._network_client = network_handler
-		self._network_server = nil
-	end
-
 	local game_mechanism = self._game_mechanism
 
 	if game_mechanism and game_mechanism.network_context_created then
 		game_mechanism:network_context_created(lobby, server_peer_id, own_peer_id, is_server, network_handler)
+	end
+end
+
+GameMechanismManager.set_network_server = function (self, network_server)
+	self._network_server = network_server
+
+	if network_server then
+		self._network_client = nil
+	end
+end
+
+GameMechanismManager.set_network_client = function (self, network_client)
+	self._network_client = network_client
+
+	if network_client then
+		self._network_server = nil
 	end
 end
 
@@ -402,8 +410,6 @@ GameMechanismManager.network_context_destroyed = function (self, level_key)
 	self._lobby = nil
 	self._server_peer_id = nil
 	self._peer_id = nil
-	self._network_client = nil
-	self._network_server = nil
 	self._is_server = nil
 
 	if self._game_mechanism and self._game_mechanism.network_context_destroyed then
@@ -1147,10 +1153,16 @@ GameMechanismManager.setup_mechanism_parties = function (self)
 	Managers.party:register_parties(party_data)
 
 	if self._game_mechanism.setup_mechanism_parties then
-		self._game_mechanism:setup_mechanism_parties()
+		self._game_mechanism:setup_mechanism_parties(self)
 	end
 
 	if not IS_CONSOLE and self._lobby and self._lobby.set_max_members then
+		self._lobby:set_max_members(self:max_instance_members())
+	end
+end
+
+GameMechanismManager.update_lobby_max_members = function (self)
+	if self._lobby.set_max_members then
 		self._lobby:set_max_members(self:max_instance_members())
 	end
 end
@@ -1239,8 +1251,8 @@ GameMechanismManager.reserved_party_id_by_peer = function (self, peer_id)
 	return self._game_mechanism:reserved_party_id_by_peer(peer_id)
 end
 
-GameMechanismManager.try_reserve_profile_for_peer_by_mechanism = function (self, peer_id, profile_index, career_index, force_respawning)
-	return self._game_mechanism:try_reserve_profile_for_peer_by_mechanism(self._profile_synchronizer, peer_id, profile_index, career_index, force_respawning)
+GameMechanismManager.try_reserve_profile_for_peer_by_mechanism = function (self, peer_id, profile_index, career_index, allow_switching)
+	return self._game_mechanism:try_reserve_profile_for_peer_by_mechanism(self._profile_synchronizer, peer_id, profile_index, career_index, allow_switching)
 end
 
 GameMechanismManager.get_persistent_profile_index_reservation = function (self, peer_id)
