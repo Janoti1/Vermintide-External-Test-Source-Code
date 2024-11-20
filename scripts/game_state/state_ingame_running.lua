@@ -409,6 +409,10 @@ StateInGameRunning.check_invites = function (self)
 			mm_printf("Found an invite, but someone is trying to join the game.")
 
 			self.popup_id = Managers.popup:queue_popup(Localize("popup_join_blocked_by_joining_player"), Localize("popup_invite_not_installed_header"), "not_installed", Localize("menu_ok"))
+		elseif invite_data.mechanism and invite_data.mechanism == "versus" and invite_data.matchmaking and invite_data.matchmaking == "searching" then
+			mm_printf("Inviting player is currently matchmaking into a quick play game/dedicated server lobby.")
+
+			self.popup_id = Managers.popup:queue_popup(Localize("matchmaking_status_join_game_failed_is_searching_for_dedicated_server"), Localize("popup_invite_not_installed_header"), "not_installed", Localize("menu_ok"))
 		elseif self._lobby_client or not self.is_in_inn then
 			self._invite_lobby_data = invite_data
 		elseif not self.popup_id then

@@ -49,7 +49,7 @@ StartGameWindowDifficultyConsole.on_enter = function (self, params, offset)
 end
 
 StartGameWindowDifficultyConsole._verify_difficulty = function (self, difficulty_key)
-	local difficulties = Managers.state.difficulty:get_level_difficulties()
+	local difficulties = Managers.state.difficulty:get_default_difficulties()
 
 	for _, difficulty in pairs(difficulties) do
 		if difficulty == difficulty_key then
@@ -161,55 +161,12 @@ StartGameWindowDifficultyConsole._setup_difficulties = function (self)
 	self._difficulty_reward_widgets = difficulty_reward_widgets
 end
 
-local rewards = {
-	normal = {
-		"loot_chest_01_01",
-		"loot_chest_01_02",
-		"loot_chest_01_03",
-		"loot_chest_01_04",
-		"loot_chest_01_05",
-		"loot_chest_01_06"
-	},
-	hard = {
-		"loot_chest_02_01",
-		"loot_chest_02_02",
-		"loot_chest_02_03",
-		"loot_chest_02_04",
-		"loot_chest_02_05",
-		"loot_chest_02_06"
-	},
-	harder = {
-		"loot_chest_03_01",
-		"loot_chest_03_02",
-		"loot_chest_03_03",
-		"loot_chest_03_04",
-		"loot_chest_03_05",
-		"loot_chest_03_06"
-	},
-	hardest = {
-		"loot_chest_04_01",
-		"loot_chest_04_02",
-		"loot_chest_04_03",
-		"loot_chest_04_04",
-		"loot_chest_04_05",
-		"loot_chest_04_06"
-	},
-	cataclysm = {
-		"loot_chest_04_01",
-		"loot_chest_04_02",
-		"loot_chest_04_03",
-		"loot_chest_04_04",
-		"loot_chest_04_05",
-		"loot_chest_04_06"
-	}
-}
-
 StartGameWindowDifficultyConsole._rewards_by_difficulty = function (self, difficulty_name)
-	return rewards[difficulty_name]
+	return LootChestData.chests_by_category[difficulty_name].backend_keys
 end
 
 StartGameWindowDifficultyConsole._get_difficulty_options = function (self)
-	return Managers.state.difficulty:get_level_difficulties()
+	return Managers.state.difficulty:get_default_difficulties()
 end
 
 StartGameWindowDifficultyConsole.on_exit = function (self, params)
@@ -419,7 +376,7 @@ end
 StartGameWindowDifficultyConsole._update_difficulty_locks = function (self)
 	local widgets_by_name = self._widgets_by_name
 	local widget_prefix = "difficulty_option_"
-	local level_difficulties = Managers.state.difficulty:get_level_difficulties()
+	local level_difficulties = Managers.state.difficulty:get_default_difficulties()
 
 	for i = 1, #level_difficulties do
 		local difficulty_key = level_difficulties[i]

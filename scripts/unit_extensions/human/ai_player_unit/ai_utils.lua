@@ -326,7 +326,6 @@ AiUtils.damage_target = function (target_unit, attacker_unit, action, damage, da
 			end
 		else
 			local target_blackboard = BLACKBOARDS[target_unit]
-			local attacker_blackboard = BLACKBOARDS[attacker_unit]
 
 			if target_blackboard and attacker_blackboard then
 				local t = Managers.time:time("game")
@@ -740,10 +739,60 @@ end
 AiUtils.get_actual_attacker_unit = function (attacker_unit)
 	local projectile_extension = ScriptUnit.has_extension(attacker_unit, "projectile_system")
 
-	if projectile_extension and not ScriptUnit.has_extension(attacker_unit, "limited_item_track_system") then
-		attacker_unit = projectile_extension.owner_unit
+	if projectile_extension and not ScriptUnit.has_extension(attacker_unit, "limited_item_track_system") and ALIVE[projectile_extension.owner_unit] then
+		return projectile_extension.owner_unit
+	end
 
-		return attacker_unit
+	local area_damage_system = ScriptUnit.has_extension(attacker_unit, "area_damage_system")
+
+	if area_damage_system then
+		local owner_player = area_damage_system.owner_player
+
+		if owner_player and ALIVE[owner_player.player_unit] then
+			return owner_player.player_unit
+		end
+	end
+
+	return attacker_unit
+end
+
+AiUtils.get_actual_attacker_breed = function (attacker_breed, victim_unit, damage_source_name, attacker_unit, attacker_player)
+	local status_extension = ScriptUnit.has_extension(victim_unit, "status_system")
+	local packmaster_player = status_extension and status_extension:query_pack_master_player()
+
+	if packmaster_player and packmaster_player == attacker_player and damage_source_name == "skaven_pack_master" then
+		return PlayerBreeds.vs_packmaster
+	end
+
+	local area_damage_system = Managers.state.entity:system("area_damage_system")
+	local source_attacker_unit_data = area_damage_system:has_source_attacker_unit_data(attacker_unit)
+
+	if source_attacker_unit_data then
+		return source_attacker_unit_data.breed
+	end
+
+	if attacker_player then
+		local profile_index, career_index = attacker_player:profile_index(), attacker_player:career_index()
+
+		if profile_index and career_index then
+			return SPProfiles[profile_index].careers[career_index].breed
+		end
+	end
+
+	return attacker_breed
+end
+
+AiUtils.get_actual_attacker_player = function (attacker_unit, victim_unit, damage_source_name)
+	local attacker_player = Managers.player:owner(attacker_unit)
+	local projectile_extension = ScriptUnit.has_extension(attacker_unit, "projectile_system")
+
+	if projectile_extension and not ScriptUnit.has_extension(attacker_unit, "limited_item_track_system") then
+		local owner_unit = projectile_extension.owner_unit
+		local owner_player = Managers.player:owner(owner_unit)
+
+		if owner_player then
+			return owner_player
+		end
 	end
 
 	local area_damage_system = ScriptUnit.has_extension(attacker_unit, "area_damage_system")
@@ -752,13 +801,28 @@ AiUtils.get_actual_attacker_unit = function (attacker_unit)
 		local owner_player = area_damage_system.owner_player
 
 		if owner_player then
-			attacker_unit = owner_player.player_unit
-
-			return attacker_unit
+			return owner_player
 		end
 	end
 
-	return attacker_unit
+	if damage_source_name == "skaven_pack_master" then
+		local status_extension = ScriptUnit.has_extension(victim_unit, "status_system")
+		local actual_player = status_extension and status_extension:query_pack_master_player()
+
+		if actual_player then
+			return actual_player
+		end
+	end
+
+	local commander_system = Managers.state.entity:system("ai_commander_system")
+	local commander_unit = commander_system:get_commander_unit(attacker_unit)
+	local commander_player = Managers.player:owner(commander_unit)
+
+	if commander_player then
+		return commander_player
+	end
+
+	return attacker_player
 end
 
 AiUtils.unit_breed = function (unit)
@@ -1801,8 +1865,6 @@ AiUtils.calculate_animation_movespeed = function (animation_move_speed_config, u
 	return wanted_value
 end
 
-local stagger_types = require("scripts/utils/stagger_types")
-
 AiUtils.magic_entrance_optional_spawned_func = function (unit, breed, optional_data)
 	if not breed.special and not breed.boss and not breed.cannot_be_aggroed then
 		local player_unit = PlayerUtils.get_random_alive_hero()
@@ -1838,6 +1900,10 @@ AiUtils.is_part_of_patrol = function (unit)
 	local game_object_id = Managers.state.unit_storage:go_id(unit)
 
 	if not game_object_id then
+		return false
+	end
+
+	if not ScriptUnit.has_extension(unit, "ai_group_system") then
 		return false
 	end
 

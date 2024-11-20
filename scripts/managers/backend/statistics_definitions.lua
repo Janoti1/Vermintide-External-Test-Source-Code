@@ -497,6 +497,8 @@ player.damage_taken = {
 	sync_on_hot_join = true
 }
 player.damage_dealt_per_breed = {}
+player.damage_dealt_as_breed = {}
+player.eliminations_as_breed = {}
 player.completed_levels = {}
 player.completed_levels_difficulty = {}
 player.completed_career_levels = {}
@@ -632,6 +634,18 @@ for breed_name, breed in pairs(PlayerBreeds) do
 	player.damage_dealt_per_breed[breed_name] = {
 		value = 0,
 		name = breed_name
+	}
+	player.damage_dealt_as_breed[breed_name] = {
+		value = 0,
+		source = "player_data",
+		name = breed_name,
+		database_name = "damage_dealt_as_" .. breed_name
+	}
+	player.eliminations_as_breed[breed_name] = {
+		value = 0,
+		source = "player_data",
+		name = breed_name,
+		database_name = "eliminations_as_" .. breed_name
 	}
 
 	local race = breed.race

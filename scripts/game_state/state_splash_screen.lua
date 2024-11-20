@@ -90,6 +90,7 @@ StateSplashScreen.on_enter = function (self)
 		local skip_splash_screen_parameters = {
 			"auto_host_level",
 			"auto_join",
+			"vs_auto_search",
 			"skip_splash",
 			"attract_mode",
 			"benchmark_mode",

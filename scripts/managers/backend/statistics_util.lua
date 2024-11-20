@@ -173,6 +173,17 @@ StatisticsUtil.register_kill = function (victim_unit, damage_data, statistics_db
 	local attacker_side = victim_damage_data.attacker_side
 	local attacker_unique_id = victim_damage_data.attacker_unique_id
 	local attacker_player = player_manager:player_from_unique_id(attacker_unique_id)
+	local side_manager = Managers.state.side
+	local victim_side = side_manager.side_by_unit[victim_unit]
+	local local_player = Managers.player:local_player()
+	local recent_attack = victim_player and victim_health_extension:was_attacked_by(local_player and local_player:unique_id())
+
+	if recent_attack and victim_player ~= local_player and side_manager:is_enemy_by_side(attacker_side, victim_side) then
+		local local_stats_id = local_player:stats_id()
+		local attacker_breed_name = recent_attack.attacker_breed.name
+
+		statistics_db:increment_stat(local_stats_id, "eliminations_as_breed", attacker_breed_name)
+	end
 
 	if attacker_player and attacker_player ~= victim_player then
 		local stats_id = attacker_player:stats_id()
@@ -182,14 +193,10 @@ StatisticsUtil.register_kill = function (victim_unit, damage_data, statistics_db
 		if breed_killed then
 			Managers.state.achievement:trigger_event("register_kill", stats_id, victim_unit, damage_data, breed_killed)
 
-			local breed_killed_name = breed_killed.name
 			local killed_race_name = breed_killed.race
-			local victim_side = Managers.state.side.side_by_unit[victim_unit]
 
 			if Breeds[breed_killed_name] or PlayerBreeds[breed_killed_name] and Managers.state.side:is_enemy_by_side(attacker_side, victim_side) then
 				statistics_db:increment_stat(stats_id, "kills_per_breed", breed_killed_name)
-
-				local local_player = Managers.player:local_player()
 
 				if victim_player and attacker_player == local_player then
 					Managers.state.event:trigger("add_player_kill_confirmation", attacker_side:name(), victim_player)
@@ -302,14 +309,28 @@ StatisticsUtil.register_knockdown = function (victim_unit, damage_data, statisti
 	local player_manager = Managers.player
 	local victim_player = player_manager:owner(victim_unit)
 	local breed_killed = Unit_get_data(victim_unit, "breed")
+	local breed_killed_name = breed_killed and breed_killed.name
 	local breed_attacker = victim_damage_data.breed
 	local attacker_unique_id = victim_damage_data.attacker_unique_id
 	local attacker_player = player_manager:player_from_unique_id(attacker_unique_id)
+	local local_player = Managers.player:local_player()
 
-	if attacker_player and is_server and breed_killed and attacker_player ~= victim_player then
-		local stats_id = attacker_player:stats_id()
+	if breed_killed_name then
+		if attacker_player and attacker_player ~= victim_player then
+			local stats_id = attacker_player:stats_id()
 
-		statistics_db:increment_stat(stats_id, "vs_knockdowns_per_breed", breed_killed.name)
+			statistics_db:increment_stat(stats_id, "vs_knockdowns_per_breed", breed_killed_name)
+		end
+
+		local recent_attack = victim_health_extension:was_attacked_by(local_player and local_player:unique_id())
+
+		if recent_attack and victim_player ~= local_player then
+			local attacker_breed_name = recent_attack.attacker_breed.name
+			local local_stats_id = local_player:stats_id()
+
+			statistics_db:increment_stat(local_stats_id, "eliminations_as_breed", attacker_breed_name)
+			statistics_db:increment_stat(local_stats_id, "vs_knockdowns_per_breed", breed_killed_name)
+		end
 	end
 
 	if breed_killed and breed_attacker then
@@ -317,7 +338,6 @@ StatisticsUtil.register_knockdown = function (victim_unit, damage_data, statisti
 
 		if print_message then
 			local breed_attacker_name = breed_attacker.name
-			local breed_killed_name = breed_killed.name
 			local predicate = "player_knocked_down"
 			local local_human = false
 			local stats_id = ""
@@ -329,11 +349,12 @@ StatisticsUtil.register_knockdown = function (victim_unit, damage_data, statisti
 
 			Managers.state.event:trigger("add_coop_feedback_kill", stats_id .. breed_killed_name, local_human, predicate, breed_attacker_name, breed_killed_name)
 
-			local local_player = Managers.player:local_player()
-
-			if victim_player and attacker_player == local_player then
-				Managers.state.event:trigger("add_player_knock_confirmation", victim_player)
+			if victim_player and attacker_player then
 				Managers.state.achievement:trigger_event("register_knockdown", stats_id, victim_unit, attacker_player, breed_killed)
+
+				if attacker_player == local_player then
+					Managers.state.event:trigger("add_player_knock_confirmation", attacker_player, victim_player)
+				end
 			end
 		end
 	end
@@ -491,10 +512,40 @@ StatisticsUtil.register_heal = function (healer_unit, healed_unit, statistics_db
 end
 
 StatisticsUtil.register_damage = function (victim_unit, damage_data, statistics_db)
-	local damage_amount = damage_data[DamageDataIndex.DAMAGE_AMOUNT]
+	local damage_data_attacker_unit = damage_data[DamageDataIndex.ATTACKER]
 	local damage_source_name = damage_data[DamageDataIndex.DAMAGE_SOURCE_NAME]
+	local attacker_unit = damage_data_attacker_unit
 	local player_manager = Managers.player
+	local attacker_player = AiUtils.get_actual_attacker_player(attacker_unit, victim_unit, damage_source_name)
+
+	if attacker_player then
+		attacker_unit = attacker_player.player_unit
+	else
+		attacker_unit = damage_data[DamageDataIndex.SOURCE_ATTACKER_UNIT] or attacker_unit
+		attacker_unit = AiUtils.get_actual_attacker_unit(attacker_unit)
+		attacker_player = player_manager:owner(attacker_unit)
+	end
+
+	local victim_breed = Unit_alive(victim_unit) and Unit_get_data(victim_unit, "breed")
+	local attacker_breed = Unit_alive(attacker_unit) and Unit_get_data(attacker_unit, "breed")
+	local actual_attacker_breed = AiUtils.get_actual_attacker_breed(attacker_breed, victim_unit, damage_source_name, damage_data_attacker_unit, attacker_player)
+
+	if attacker_breed and attacker_breed ~= actual_attacker_breed then
+		attacker_unit = nil
+
+		if actual_attacker_breed and not actual_attacker_breed.is_player then
+			attacker_player = nil
+		end
+	end
+
+	attacker_breed = actual_attacker_breed
+
+	if attacker_player and not statistics_db:is_registered(attacker_player:stats_id()) then
+		return
+	end
+
 	local victim_player = player_manager:owner(victim_unit)
+	local damage_amount = damage_data[DamageDataIndex.DAMAGE_AMOUNT]
 
 	if victim_player then
 		local stats_id = victim_player:stats_id()
@@ -520,80 +571,60 @@ StatisticsUtil.register_damage = function (victim_unit, damage_data, statistics_
 		end
 	end
 
-	local attacker_unit = damage_data[DamageDataIndex.ATTACKER]
+	if attacker_player and victim_breed then
+		local breed_name = victim_breed.name
+		local health_extension = ScriptUnit.extension(victim_unit, "health_system")
+		local current_health = health_extension:current_health()
 
-	attacker_unit = AiUtils.get_actual_attacker_unit(attacker_unit)
+		if current_health > 0 then
+			local side_manager = Managers.state.side
+			local stats_id = attacker_player:stats_id()
 
-	local attacker_player = player_manager:owner(attacker_unit)
+			Managers.state.achievement:trigger_event("register_damage", stats_id, victim_unit, damage_data, attacker_unit, victim_breed)
 
-	if not attacker_player and Unit.alive(attacker_unit) then
-		local attacker_breed = Unit.get_data(attacker_unit, "breed")
+			damage_amount = math.clamp(damage_amount, 0, current_health)
 
-		if attacker_breed then
-			local commander_system = Managers.state.entity:system("ai_commander_system")
-			local commander_unit = commander_system:get_commander_unit(attacker_unit)
-			local commander_player = player_manager:owner(commander_unit)
+			statistics_db:modify_stat_by_amount(stats_id, "damage_dealt", damage_amount)
 
-			if commander_player then
-				attacker_unit = commander_unit
-				attacker_player = commander_player
+			local attacker_side = side_manager:get_side_from_player_unique_id(attacker_player:unique_id())
+			local victim_side = side_manager.side_by_unit[victim_unit]
+			local is_enemy = side_manager:is_enemy_by_side(attacker_side, victim_side)
+
+			if Breeds[breed_name] or PlayerBreeds[breed_name] and is_enemy then
+				statistics_db:modify_stat_by_amount(stats_id, "damage_dealt_per_breed", breed_name, damage_amount)
 			end
-		else
-			attacker_unit = damage_data[DamageDataIndex.SOURCE_ATTACKER_UNIT] or attacker_unit
-			attacker_player = player_manager:owner(attacker_unit)
-		end
-	end
 
-	if attacker_player then
-		local target_breed = Unit_alive(victim_unit) and Unit_get_data(victim_unit, "breed")
+			local hit_zone = damage_data[DamageDataIndex.HIT_ZONE]
 
-		if target_breed then
-			local breed_name = target_breed.name
-			local health_extension = ScriptUnit.extension(victim_unit, "health_system")
-			local current_health = health_extension:current_health()
+			if hit_zone == "head" then
+				statistics_db:increment_stat(stats_id, "headshots")
+			end
 
-			if current_health > 0 then
-				local stats_id = attacker_player:stats_id()
+			local attacker_breed_name = attacker_breed and attacker_breed.name
 
-				Managers.state.achievement:trigger_event("register_damage", stats_id, victim_unit, damage_data, attacker_unit, target_breed)
+			if is_enemy then
+				if Managers.mechanism:current_mechanism_name() == "versus" then
+					if attacker_side:name() == "heroes" then
+						statistics_db:modify_stat_by_amount(stats_id, "vs_damage_dealt_to_pactsworn", damage_amount)
+					end
 
-				damage_amount = math.clamp(damage_amount, 0, current_health)
-
-				statistics_db:modify_stat_by_amount(stats_id, "damage_dealt", damage_amount)
-
-				if Breeds[breed_name] or PlayerBreeds[breed_name] and Managers.state.side:is_enemy(attacker_unit, victim_unit) then
-					statistics_db:modify_stat_by_amount(stats_id, "damage_dealt_per_breed", breed_name, damage_amount)
-				end
-
-				local hit_zone = damage_data[DamageDataIndex.HIT_ZONE]
-
-				if hit_zone == "head" then
-					statistics_db:increment_stat(stats_id, "headshots")
-				end
-
-				local is_enemy, attacker_side = Managers.state.side:is_enemy(attacker_unit, victim_unit)
-
-				if is_enemy and attacker_side:name() == "heroes" and Managers.mechanism:current_mechanism_name() == "versus" then
-					statistics_db:modify_stat_by_amount(stats_id, "vs_damage_dealt_to_pactsworn", damage_amount)
-				elseif is_enemy and attacker_side:name() == "dark_pact" and Managers.mechanism:current_mechanism_name() == "versus" then
-					local attacker_breed = Unit_alive(attacker_unit) and Unit_get_data(attacker_unit, "breed")
-
-					if attacker_breed then
-						local attacker_breed_name = attacker_breed.name
-
-						statistics_db:modify_stat_by_amount(stats_id, "vs_damage_dealt_as_breed", attacker_breed_name, damage_amount)
+					if attacker_breed and attacker_side:name() == "dark_pact" then
+						statistics_db:modify_stat_by_amount(stats_id, "state_damage_dealt_as_pactsworn_breed", attacker_breed_name, damage_amount)
 					end
 				end
 
-				if target_breed.is_player and is_enemy and attacker_side.show_damage_feedback and HEALTH_ALIVE[victim_unit] then
+				if victim_player and attacker_side.show_damage_feedback and HEALTH_ALIVE[victim_unit] then
 					local target_player = player_manager:owner(victim_unit)
 					local local_human = not attacker_player.remote and not attacker_player.bot_player
 					local event_type = local_human and "dealing_damage" or "other_dealing_damage"
-					local profile_index = target_player:profile_index()
 					local damage_type = damage_data[DamageDataIndex.DAMAGE_TYPE]
 
 					Managers.state.event:trigger("add_damage_feedback_event", stats_id .. breed_name, local_human, event_type, attacker_player, target_player, damage_amount, damage_type)
 				end
+			end
+
+			if attacker_breed_name then
+				statistics_db:modify_stat_by_amount(stats_id, "damage_dealt_as_breed", attacker_breed_name, damage_amount)
 			end
 		end
 	end
@@ -971,7 +1002,7 @@ StatisticsUtil._register_completed_level_difficulty = function (statistics_db, l
 	local level_difficulty_name = LevelDifficultyDBNames[level_id]
 	local current_completed_difficulty = statistics_db:get_persistent_stat(stats_id, "completed_levels_difficulty", level_difficulty_name)
 	local difficulty_manager = Managers.state.difficulty
-	local difficulties = difficulty_manager:get_level_difficulties(level_id)
+	local difficulties = difficulty_manager:get_default_difficulties()
 	local difficulty = table.find(difficulties, difficulty_name)
 
 	if difficulty then
@@ -1011,7 +1042,7 @@ StatisticsUtil._register_completed_journey_difficulty = function (statistics_db,
 	local current_completed_difficulty = statistics_db:get_persistent_stat(stats_id, "completed_journeys_difficulty", journey_db_name)
 	local current_completed_journey_dominant_god_difficulty = statistics_db:get_persistent_stat(stats_id, "completed_journey_dominant_god_difficulty", journey_dominant_god_db_name)
 	local current_completed_hero_journey_difficulty = statistics_db:get_persistent_stat(stats_id, "completed_hero_journey_difficulty", profile_abbreviation, journey_db_name)
-	local difficulties = Managers.state.difficulty:get_level_difficulties()
+	local difficulties = Managers.state.difficulty:get_default_difficulties()
 	local difficulty_index = table.find(difficulties, difficulty_name)
 
 	if current_completed_difficulty < difficulty_index then
@@ -1165,7 +1196,7 @@ StatisticsUtil.register_complete_survival_level = function (statistics_db)
 
 		local completed_difficulty
 		local difficulty_manager = Managers.state.difficulty
-		local level_difficulties = difficulty_manager:get_level_difficulties(level_id)
+		local level_difficulties = difficulty_manager:get_default_difficulties()
 		local start_difficulty_index = table.find(level_difficulties, start_difficulty)
 		local level_difficulty_name = LevelDifficultyDBNames[level_id]
 		local current_completed_difficulty_index = statistics_db:get_persistent_stat(stats_id, "completed_levels_difficulty", level_difficulty_name)

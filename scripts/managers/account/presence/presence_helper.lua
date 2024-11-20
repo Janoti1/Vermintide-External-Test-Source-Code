@@ -128,7 +128,7 @@ end
 PresenceHelper.get_current_set = function ()
 	local game_mechanism = Managers.mechanism:game_mechanism()
 	local win_conditions = game_mechanism and game_mechanism:win_conditions()
-	local rounds_played = win_conditions and win_conditions:num_rounds_played()
+	local rounds_played = win_conditions and win_conditions:get_current_round()
 
 	return rounds_played and math.round(rounds_played / 2) or 0
 end

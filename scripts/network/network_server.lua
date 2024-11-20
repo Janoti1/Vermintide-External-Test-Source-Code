@@ -11,6 +11,7 @@ CHANNEL_TO_PEER_ID = CHANNEL_TO_PEER_ID or {}
 
 local NUM_PROFILES = #PROFILES_BY_AFFILIATION.heroes
 local KICK_PEER_WAIT_TIMER = 5
+local EAC_MATCH_TIMER = 10
 
 local function network_printf(format, ...)
 	if script_data.network_debug_connections then
@@ -55,6 +56,7 @@ NetworkServer.init = function (self, player_manager, lobby_host, wanted_profile_
 	self.kicked_peers_disconnect_timer = {}
 	self._game_server_manager = game_server_manager
 	self._connections = {}
+	self._eac_peers = {}
 	self._joined_peers = {}
 	self._peer_initialized_mechanisms = {}
 	self._shared_states = {}
@@ -125,7 +127,7 @@ NetworkServer.init = function (self, player_manager, lobby_host, wanted_profile_
 		end
 	end
 
-	self._match_handler = NetworkMatchHandler:new(self, true, my_peer_id, my_peer_id)
+	self._match_handler = NetworkMatchHandler:new(self, true, my_peer_id, my_peer_id, lobby_host)
 end
 
 NetworkServer.eac_server = function (self)
@@ -504,6 +506,80 @@ NetworkServer.update_disconnect_kicked_peers_by_time = function (self, dt)
 	end
 end
 
+NetworkServer._update_lobby_data = function (self, dt, t)
+	if self.profile_synchronizer:poll_sync_lobby_data_required() then
+		self._lobby_data_sync_requested = true
+	end
+
+	local has_srh, slot_handler = Managers.mechanism:mechanism_try_call("get_slot_reservation_handler")
+
+	if has_srh and slot_handler:poll_sync_lobby_data_required() then
+		self._lobby_data_sync_requested = true
+	end
+
+	if not self._lobby_data_sync_requested then
+		return
+	end
+
+	self._lobby_data_sync_requested = false
+
+	local lobby = self.lobby_host
+	local lobby_data = lobby:get_stored_lobby_data()
+
+	if not lobby_data then
+		return
+	end
+
+	local members
+
+	if has_srh then
+		members = slot_handler:peers()
+	else
+		members = lobby:members():get_members()
+	end
+
+	local reserved_profiles = {}
+	local num_parties = Managers.party:get_num_game_participating_parties()
+
+	for i = 1, num_parties do
+		reserved_profiles[i] = {}
+	end
+
+	for i = 1, #members do
+		do
+			local peer_id = members[i]
+			local party_id
+
+			if has_srh then
+				party_id = slot_handler:party_id_by_peer(peer_id)
+
+				if not party_id then
+					goto label_34_0
+				end
+			else
+				party_id = 1
+			end
+
+			local profile_index = self.profile_synchronizer:get_persistent_profile_index_reservation(peer_id) or -1
+
+			table.insert(reserved_profiles[party_id], {
+				peer_id = peer_id,
+				profile_index = profile_index
+			})
+		end
+
+		::label_34_0::
+	end
+
+	local serialized_reserved_profiles = LobbyAux.serialize_lobby_reservation_data(reserved_profiles)
+
+	if serialized_reserved_profiles ~= lobby_data.reserved_profiles then
+		lobby_data.reserved_profiles = serialized_reserved_profiles
+
+		lobby:set_lobby_data(lobby_data)
+	end
+end
+
 NetworkServer.disconnect_all_peers = function (self, reason)
 	local reason_id = NetworkLookup.connection_fails[reason]
 	local peer_state_machines = self.peer_state_machines
@@ -536,7 +612,6 @@ NetworkServer.force_disconnect_all_client_peers = function (self)
 		local client = peer_id ~= self.my_peer_id
 
 		if client and peer_state_machine.current_state ~= PeerStates.Disconnecting and peer_state_machine.current_state ~= PeerStates.Disconnected then
-			self._match_handler:client_disconnected(peer_id)
 			peer_state_machine.state_data:change_state(PeerStates.Disconnecting)
 		end
 	end
@@ -550,7 +625,6 @@ NetworkServer.force_disconnect_client_by_peer_id = function (self, peer_id)
 		local client = peer_id ~= self.my_peer_id
 
 		if client and peer_state_machine.current_state ~= PeerStates.Disconnecting and peer_state_machine.current_state ~= PeerStates.Disconnected then
-			self._match_handler:client_disconnected(peer_id)
 			peer_state_machine.state_data:change_state(PeerStates.Disconnecting)
 		end
 	end
@@ -734,9 +808,17 @@ NetworkServer.approve_channel = function (self, channel_id, peer_id, instance_id
 		peer_id = peer_id,
 		channel_state = Network.channel_state(channel_id)
 	}
+	local add_eac_peer = true
+	local matchmaking_manager = Managers.matchmaking
 
-	if self._eac_server then
+	if matchmaking_manager and matchmaking_manager:is_in_versus_custom_game_lobby() then
+		add_eac_peer = false
+	end
+
+	if self._eac_server and add_eac_peer then
 		EACServer.add_peer(self._eac_server, channel_id)
+
+		self._eac_peers[peer_id] = true
 	end
 
 	connections[peer_id] = connection
@@ -752,8 +834,10 @@ NetworkServer.close_channel = function (self, peer_id)
 
 	print("GOT close_channel", channel_id, peer_id)
 
-	if self._eac_server and channel_id then
+	if self._eac_server and channel_id and self._eac_peers[peer_id] then
 		EACServer.remove_peer(self._eac_server, channel_id)
+
+		self._eac_peers[peer_id] = nil
 	end
 
 	if channel_id then
@@ -768,10 +852,10 @@ end
 
 NetworkServer._update_connections = function (self, peer_state_machines)
 	for peer_id, connection in pairs(self._connections) do
-		local state = Network.channel_state(connection.channel_id)
+		local state, reason = Network.channel_state(connection.channel_id)
 
 		if state ~= connection.channel_state then
-			printf("CHANNEL_STATE changed: %s -> %s for peer_id: '%s'", connection.channel_state, state, peer_id)
+			printf("CHANNEL_STATE changed: %s -> %s for peer_id: '%s'%s", connection.channel_state, state, peer_id, reason and ". With reason: " .. reason or "")
 
 			if state == "connected" then
 				local state_id = NetworkLookup.connection_states[state]
@@ -785,7 +869,6 @@ NetworkServer._update_connections = function (self, peer_state_machines)
 					local enemy_package_loader = Managers.level_transition_handler.enemy_package_loader
 
 					enemy_package_loader:client_disconnected(peer_id)
-					self._match_handler:client_disconnected(peer_id)
 					peer_state_machine.state_data:change_state(PeerStates.Disconnecting)
 
 					local state_id = NetworkLookup.connection_states[state]
@@ -920,6 +1003,7 @@ NetworkServer.update = function (self, dt, t)
 
 	self:_update_reserve_slots(dt)
 	self:update_disconnect_kicked_peers_by_time(dt)
+	self:_update_lobby_data(dt, t)
 
 	if self._eac_server ~= nil then
 		EACServer.update(self._eac_server)
@@ -1014,8 +1098,19 @@ NetworkServer._handle_peer_left_game = function (self, peer_id)
 		local peer_state_machine = self.peer_state_machines[peer_id]
 
 		if peer_state_machine and peer_state_machine.current_state ~= PeerStates.Disconnecting and peer_state_machine.current_state ~= PeerStates.Disconnected then
-			self._match_handler:client_disconnected(peer_id)
 			peer_state_machine.state_data:change_state(PeerStates.Disconnecting)
+		end
+	end
+end
+
+NetworkServer.set_custom_game_started_or_cancelled = function (self)
+	for peer_id in pairs(self._connections) do
+		local channel_id = PEER_ID_TO_CHANNEL[peer_id]
+
+		if channel_id and self._eac_server and not self._eac_peers[peer_id] then
+			EACServer.add_peer(self._eac_server, channel_id)
+
+			self._eac_peers[peer_id] = true
 		end
 	end
 end
@@ -1039,17 +1134,20 @@ NetworkServer._update_eac_match = function (self, dt)
 				else
 					printf("[NetworkServer] Peer's EAC status doesn't match the server, disconnecting peer (%s)", peer_id)
 					self:disconnect_peer(peer_id, "eac_authorize_failed")
-					self._match_handler:client_disconnected(peer_id)
 					peer_state_machine.state_data:change_state(PeerStates.Disconnecting)
 				end
 
-				data.eac_match_timer = 10
+				data.eac_match_timer = EAC_MATCH_TIMER
 			end
 		end
 	end
 end
 
 NetworkServer.eac_check_peer = function (self, peer_id)
+	if self._eac_server and peer_id ~= Network.peer_id() and not self._eac_peers[peer_id] then
+		return false, true
+	end
+
 	local server_state, peer_state
 
 	if DEDICATED_SERVER then

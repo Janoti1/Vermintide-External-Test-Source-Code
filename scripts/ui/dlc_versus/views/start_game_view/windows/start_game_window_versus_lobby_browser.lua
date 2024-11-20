@@ -55,6 +55,14 @@ StartGameWindowVersusLobbyBrowser._join = function (self, lobby_data, join_param
 	self._parent:set_layout_by_name("versus_player_hosted_lobby")
 end
 
+StartGameWindowVersusLobbyBrowser.is_lobby_joinable = function (self, lobby_data)
+	if not Managers.player.is_server then
+		return false, "matchmaking_promotion_popup_no_wom_title"
+	end
+
+	return StartGameWindowVersusLobbyBrowser.super.is_lobby_joinable(self, lobby_data)
+end
+
 StartGameWindowVersusLobbyBrowser.update = function (self, dt, t)
 	self._lobby_finder:update(dt)
 

@@ -109,12 +109,11 @@ MatchmakingStateFriendClient._update_requesting_regions = function (self, dt, t)
 	end
 
 	self._requesting_regions = true
+	self._timeout = t + TimeOutCheckingLatency
 
 	local cb = callback(self, "_request_regions_cb")
 
 	interface:request_regions(cb)
-
-	self._timeout = t + TimeOutCheckingLatency
 end
 
 MatchmakingStateFriendClient._request_regions_cb = function (self, result)

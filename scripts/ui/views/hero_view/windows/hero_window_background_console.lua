@@ -683,7 +683,7 @@ HeroWindowBackgroundConsole._populate_loadout = function (self)
 		end
 
 		if post_crashify_exception then
-			Crashify.print_exception("[Cosmetic] Failed to equip slot for career in hero previewer")
+			Crashify.print_exception("[Cosmetic]", "Failed to equip slot for career in hero previewer")
 		end
 	end
 end

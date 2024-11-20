@@ -44,7 +44,7 @@ GutterRunnerStateProwling.on_enter = function (self, unit, input, dt, context, t
 		self.last_input_direction:store(local_move_vector)
 	end
 
-	local move_anim_3p, move_anim_1p = CharacterStateHelper.get_move_animation(self._locomotion_extension, input_extension, status_extension)
+	local move_anim_3p, move_anim_1p = CharacterStateHelper.get_move_animation(self._locomotion_extension, input_extension, status_extension, self.move_anim_3p)
 
 	self.move_anim_3p = move_anim_3p
 	self.move_anim_1p = move_anim_1p
@@ -211,13 +211,17 @@ GutterRunnerStateProwling.update = function (self, unit, input, dt, context, t)
 	CharacterStateHelper.move_on_ground(first_person_extension, input_extension, locomotion_extension, move_input_direction, final_move_speed, unit)
 	CharacterStateHelper.look(input_extension, self._player.viewport_name, first_person_extension, status_extension, inventory_extension)
 
-	local move_anim_3p, move_anim_1p = CharacterStateHelper.get_move_animation(locomotion_extension, input_extension, status_extension)
+	local move_anim_3p, move_anim_1p = CharacterStateHelper.get_move_animation(locomotion_extension, input_extension, status_extension, self.move_anim_3p)
 
-	if move_anim_3p ~= self.move_anim_3p or move_anim_1p ~= self.move_anim_1p then
+	if move_anim_3p ~= self.move_anim_3p then
 		CharacterStateHelper.play_animation_event(unit, move_anim_3p)
-		CharacterStateHelper.play_animation_event_first_person(first_person_extension, move_anim_1p)
 
 		self.move_anim_3p = move_anim_3p
+	end
+
+	if move_anim_1p ~= self.move_anim_1p then
+		CharacterStateHelper.play_animation_event_first_person(first_person_extension, move_anim_1p)
+
 		self.move_anim_1p = move_anim_1p
 	end
 

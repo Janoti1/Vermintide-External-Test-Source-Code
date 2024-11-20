@@ -7,11 +7,12 @@ MechanismSettings = {
 		default_inventory = true,
 		display_name = "game_mode_adventure",
 		check_matchmaking_hero_availability = true,
-		server_port = 27015,
+		server_universe = "carousel",
 		tobii_available = true,
 		vote_switch_mechanism_background = "vote_switch_mechanism_adventure_background",
 		vote_switch_mechanism_text = "vote_switch_mechanism_adventure_description",
-		server_universe = "carousel",
+		server_port = 27015,
+		default_difficulty = "hard",
 		class_name = "AdventureMechanism",
 		states = {
 			"inn",
@@ -140,7 +141,6 @@ local rpcs = {
 	"rpc_set_current_mechanism_state",
 	"rpc_level_load_started",
 	"rpc_carousel_set_local_match",
-	"rpc_carousel_update_set_count",
 	"rpc_carousel_set_private_lobby",
 	"rpc_set_peer_backend_id",
 	"rpc_dedicated_or_player_hosted_search",
@@ -520,6 +520,34 @@ GameMechanismManager._init_mechanism = function (self)
 	self:clear_stored_challenge_progression_status()
 end
 
+GameMechanismManager.mechanism_try_call = function (self, method_name, ...)
+	local mechanism = self._game_mechanism
+
+	if mechanism then
+		local method = mechanism[method_name]
+
+		if method then
+			return true, method(mechanism, ...)
+		end
+	end
+
+	return false
+end
+
+GameMechanismManager.mechanism_try_call = function (self, method_name, ...)
+	local mechanism = self._game_mechanism
+
+	if mechanism then
+		local method = mechanism[method_name]
+
+		if method then
+			return true, method(mechanism, ...)
+		end
+	end
+
+	return false
+end
+
 GameMechanismManager.rpc_level_load_started = function (self, channel_id, session_id)
 	local level_transition_handler = Managers.level_transition_handler
 	local current_session_id = level_transition_handler:get_current_level_session_id()
@@ -802,7 +830,7 @@ GameMechanismManager.default_level_key = function (self)
 	end
 
 	local attract_mode_level = check_bool_string(Development.parameter("attract_mode")) and BenchmarkSettings.auto_host_level
-	local level_name = check_bool_string(Development.parameter("auto_host_level")) or attract_mode_level or self:get_starting_level()
+	local level_name = check_bool_string(Development.parameter("auto_host_level")) or Development.parameter("vs_auto_search") and "carousel_hub" or attract_mode_level or self:get_starting_level()
 
 	return level_name
 end
@@ -935,17 +963,6 @@ GameMechanismManager.rpc_set_current_mechanism_state = function (self, channel_i
 	self._game_mechanism:set_current_state(state_name)
 end
 
-GameMechanismManager.rpc_carousel_update_set_count = function (self, channel_id, set, last_set)
-	fassert(not self._is_server, "Server handles the set internally, this should only end up on clients.")
-	print("Received set from server ", set)
-
-	if last_set then
-		self._game_mechanism:set_should_start_next_set(false)
-	else
-		self._game_mechanism:update_set_count_clients(set)
-	end
-end
-
 GameMechanismManager.rpc_carousel_set_local_match = function (self, channel_id, local_match)
 	local peer_id = CHANNEL_TO_PEER_ID[channel_id]
 
@@ -953,7 +970,7 @@ GameMechanismManager.rpc_carousel_set_local_match = function (self, channel_id, 
 		return
 	end
 
-	self._game_mechanism:set_local_match(local_match)
+	self:mechanism_try_call("set_local_match", local_match)
 end
 
 GameMechanismManager.rpc_carousel_set_private_lobby = function (self, channel_id, private_lobby)
@@ -963,7 +980,7 @@ GameMechanismManager.rpc_carousel_set_private_lobby = function (self, channel_id
 		return
 	end
 
-	self._game_mechanism:set_private_lobby(private_lobby)
+	self:mechanism_try_call("set_private_lobby", private_lobby)
 end
 
 GameMechanismManager.rpc_dedicated_or_player_hosted_search = function (self, channel_id, use_dedicated_servers, use_dedicated_aws_servers, use_player_hosted)
@@ -973,7 +990,7 @@ GameMechanismManager.rpc_dedicated_or_player_hosted_search = function (self, cha
 		return
 	end
 
-	self._game_mechanism:set_dedicated_or_player_hosted_search(use_dedicated_servers, use_dedicated_aws_servers, use_player_hosted)
+	self:mechanism_try_call("set_dedicated_or_player_hosted_search", use_dedicated_servers, use_dedicated_aws_servers, use_player_hosted)
 end
 
 GameMechanismManager.rpc_reserved_slots_count = function (self, channel_id, num_reserved_slots, num_slots_total)

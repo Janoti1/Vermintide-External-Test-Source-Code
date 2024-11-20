@@ -396,6 +396,12 @@ StartGameWindowAreaSelectionConsole._handle_input = function (self, dt, t)
 	if not self._area_unavailable and gamepad_confirm_pressed then
 		self:_on_select_button_pressed()
 	end
+
+	if input_service:get("toggle_menu", true) then
+		local layout_name = "custom_game"
+
+		self.parent:set_layout_by_name(layout_name)
+	end
 end
 
 StartGameWindowAreaSelectionConsole._on_select_button_pressed = function (self)

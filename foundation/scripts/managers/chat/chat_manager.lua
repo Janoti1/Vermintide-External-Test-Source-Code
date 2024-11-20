@@ -77,7 +77,7 @@ ChatManager.init = function (self)
 	self.current_message_target_index = 1
 	self.current_view_index = 1
 
-	self:add_message_target("Party", Irc.PARTY_MSG)
+	self:add_message_target("Party", Irc.PARTY_MSG, "vs_chat_msg_target_team")
 
 	if (IS_WINDOWS or IS_LINUX) and GameSettingsDevelopment.use_global_chat and rawget(_G, "Steam") then
 		Steam.retrieve_encrypted_app_ticket()

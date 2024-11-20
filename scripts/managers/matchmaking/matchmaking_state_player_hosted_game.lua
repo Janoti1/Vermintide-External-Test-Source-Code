@@ -42,6 +42,10 @@ MatchmakingStatePlayerHostedGame.force_start_game = function (self)
 		self._new_state = MatchmakingStateStartGame
 
 		Managers.matchmaking:set_lobby_data_match_started(true)
+
+		if Managers.state.network.is_server then
+			Managers.state.network.network_server:set_custom_game_started_or_cancelled()
+		end
 	end
 end
 

@@ -2,8 +2,6 @@ local buff_perks = require("scripts/unit_extensions/default_player_unit/buffs/se
 
 PlayerUnitHealthExtension = class(PlayerUnitHealthExtension, GenericHealthExtension)
 
-local RECENT_ATTACKER_DAMAGE_WINDOW = 2
-
 PlayerUnitHealthExtension.init = function (self, extension_init_context, unit, extension_init_data)
 	PlayerUnitHealthExtension.super.init(self, extension_init_context, unit, extension_init_data)
 
@@ -521,9 +519,38 @@ PlayerUnitHealthExtension.add_damage = function (self, attacker_unit, damage_amo
 	end
 
 	local unit = self.unit
+	local attacker_player = AiUtils.get_actual_attacker_player(attacker_unit, unit, damage_source_name)
+
+	if not source_attacker_unit then
+		if attacker_player and ALIVE[attacker_player.player_unit] then
+			source_attacker_unit = attacker_player.player_unit
+		end
+
+		source_attacker_unit = AiUtils.get_actual_attacker_unit(source_attacker_unit or attacker_unit)
+
+		if not source_attacker_unit then
+			local last_attacker_id = self.last_damage_data.attacker_unit_id
+
+			source_attacker_unit = last_attacker_id and Managers.state.unit_storage:unit(last_attacker_id)
+		end
+	end
+
 	local bb = BLACKBOARDS[source_attacker_unit]
-	local attacker_breed = Unit.get_data(attacker_unit, "breed") or bb and bb.breed
-	local attacker_player = Managers.player:owner(attacker_unit)
+	local attacker_breed = ALIVE[source_attacker_unit] and Unit.get_data(source_attacker_unit, "breed") or bb and bb.breed or ALIVE[attacker_unit] and Unit.get_data(attacker_unit, "breed")
+
+	attacker_breed = AiUtils.get_actual_attacker_breed(attacker_breed, unit, damage_source_name, attacker_unit, attacker_player)
+
+	if attacker_player then
+		local attacker_player_unique_id = attacker_player:unique_id()
+		local owner_player = Managers.player:owner(unit)
+		local owner_player_unique_id = owner_player:unique_id()
+
+		if attacker_player_unique_id ~= owner_player_unique_id then
+			local damage_t = Managers.time:time("game")
+
+			self:_register_attacker(attacker_player_unique_id, attacker_breed, damage_t)
+		end
+	end
 
 	if attacker_breed then
 		if self._use_floating_damage_numbers then
@@ -638,8 +665,6 @@ PlayerUnitHealthExtension.add_damage = function (self, attacker_unit, damage_amo
 
 		Managers.telemetry_events:player_damaged(player, damage_type, damage_source_name or "n/a", damage_amount, position)
 
-		local attacker_player = Managers.player:owner(attacker_unit)
-
 		if not DEDICATED_SERVER and attacker_player then
 			local local_player = Managers.player:local_player()
 
@@ -648,18 +673,6 @@ PlayerUnitHealthExtension.add_damage = function (self, attacker_unit, damage_amo
 				local target_breed = Unit.get_data(unit, "breed")
 
 				Managers.telemetry_events:local_player_damaged_player(attacker_player, target_breed.name, damage_amount, attacker_position, position)
-			end
-		end
-
-		if attacker_player then
-			local attacker_player_unique_id = attacker_player:unique_id()
-			local owner_player = Managers.player:owner(unit)
-			local owner_player_unique_id = owner_player:unique_id()
-
-			if attacker_player_unique_id ~= owner_player_unique_id then
-				local damage_t = Managers.time:time("game")
-
-				self:_register_attacker(attacker_player_unique_id, damage_t)
 			end
 		end
 	end
@@ -1274,19 +1287,4 @@ PlayerUnitHealthExtension.health_degen_settings = function (self)
 	end
 
 	return degen_amount, degen_delay, degen_start
-end
-
-PlayerUnitHealthExtension._register_attacker = function (self, attacker_player_unique_id, damage_t)
-	self._recent_attackers[attacker_player_unique_id] = damage_t
-end
-
-PlayerUnitHealthExtension.was_attacked_by = function (self, player_unique_id)
-	local t = Managers.time:time("game")
-	local recent_damage_t = self._recent_attackers[player_unique_id]
-
-	return recent_damage_t and recent_damage_t <= t + RECENT_ATTACKER_DAMAGE_WINDOW
-end
-
-PlayerUnitHealthExtension.recent_attackers = function (self)
-	return self._recent_attackers
 end

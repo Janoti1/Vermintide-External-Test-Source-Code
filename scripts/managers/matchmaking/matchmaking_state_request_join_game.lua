@@ -310,6 +310,8 @@ MatchmakingStateRequestJoinGame.update = function (self, dt, t)
 				mm_printf("Successfully joined game after %.2f seconds: lobby_id=%s host_id:%s", join_time, lobby_id, host_name)
 
 				return self:_join_game_success(t)
+			elseif game_reply == "custom_lobby_ok" then
+				return self:_try_friend_join_custom_lobby()
 			else
 				mm_printf_force("Failed to join game due to host responding '%s'. lobby_id=%s, host_id:%s", game_reply, lobby_id, host_name)
 
@@ -337,14 +339,34 @@ MatchmakingStateRequestJoinGame._gather_dlc_ids = function (self)
 	return unlocked_dlcs
 end
 
-MatchmakingStateRequestJoinGame._join_game_success = function (self, t)
-	self.state_context.lobby_client = Managers.lobby:free_lobby("matchmaking_join_lobby")
+MatchmakingStateRequestJoinGame._try_friend_join_custom_lobby = function (self)
+	local new_state = MatchmakingStateIdle
+	local ok, is_allowed_to_join = Managers.mechanism:mechanism_try_call("can_join_custom_lobby")
+	local status_message
 
+	if ok and is_allowed_to_join then
+		new_state = MatchmakingStateReserveSlotsPlayerHosted
+	else
+		status_message = "vs_player_hosted_lobby_wrong_mechanism_error"
+	end
+
+	if status_message then
+		Managers.matchmaking:send_system_chat_message(status_message)
+	end
+
+	self.state_context.join_lobby_data = self._join_lobby_data
+
+	return new_state, self.state_context
+end
+
+MatchmakingStateRequestJoinGame._join_game_success = function (self, t)
 	local join_method = self.state_context.search_config and self.state_context.search_config.join_method
 
 	if join_method == "party" then
 		return MatchmakingStatePartyJoins, self.state_context
 	else
+		self.state_context.lobby_client = Managers.lobby:free_lobby("matchmaking_join_lobby")
+
 		return MatchmakingStateRequestProfiles, self.state_context
 	end
 end

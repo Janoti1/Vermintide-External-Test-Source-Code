@@ -240,7 +240,7 @@ end
 VersusMissionObjectiveUI._get_round_count = function (self)
 	local mechanism = Managers.mechanism:game_mechanism()
 	local win_conditions = mechanism:win_conditions()
-	local round_count = win_conditions:num_rounds_played()
+	local round_count = win_conditions:get_current_round()
 
 	return round_count
 end

@@ -549,6 +549,27 @@ UIPlayerPortraitFrameSettings = {
 			}
 		}
 	},
+	frame_termite_01 = {
+		{
+			texture = "portrait_frame_termite_01_child",
+			layer = 10,
+			color = {
+				255,
+				255,
+				255,
+				255
+			},
+			size = {
+				128,
+				140
+			},
+			offset = {
+				0,
+				-61,
+				0
+			}
+		}
+	},
 	frame_necromancer_01 = {
 		{
 			texture = "portrait_frame_necromancer_01_child",

@@ -121,6 +121,11 @@ settings.ui_texture_settings = {
 		"unit_frame_portrait_vs_chaos_troll_masked",
 		"unit_frame_portrait_vs_chaos_troll_twitch_icon",
 		"unit_frame_portrait_vs_chaos_troll_saturated",
+		"unit_frame_portrait_vs_rat_ogre",
+		"unit_frame_portrait_vs_rat_ogre_twitch",
+		"unit_frame_portrait_vs_rat_ogre_masked",
+		"unit_frame_portrait_vs_rat_ogre_twitch_icon",
+		"unit_frame_portrait_vs_rat_ogre_saturated",
 		"vs_info_ghost_spawn",
 		"vs_info_ghost_cantspawn",
 		"vs_info_ghost_catchup"
@@ -221,7 +226,7 @@ settings.start_game_layout_console_generic_inputs = {
 		ignore_generic_actions = true,
 		actions = {
 			{
-				input_action = "d_vertical",
+				input_action = "left_stick",
 				priority = 1,
 				description_text = "input_description_navigate",
 				ignore_keybinding = true
@@ -237,8 +242,13 @@ settings.start_game_layout_console_generic_inputs = {
 				description_text = "input_description_play"
 			},
 			{
-				input_action = "back",
+				input_action = "cancel_matchmaking",
 				priority = 4,
+				description_text = "input_description_cancel"
+			},
+			{
+				input_action = "back",
+				priority = 5,
 				description_text = "input_description_close"
 			}
 		}
@@ -315,10 +325,10 @@ settings.start_game_window_layout_console = {
 			name = "versus_quickplay",
 			disable_function_name = "_versus_quickplay_disable_function",
 			panel_sorting = 10,
-			background_object_set = "quick_play_chaos_wastes",
+			background_object_set = "versus_menu",
 			input_focus_window = "versus_quickplay",
 			close_on_exit = true,
-			background_flow_event = "quick_play_chaos_wastes",
+			background_flow_event = "versus_menu",
 			windows = {
 				versus_panel = 1,
 				versus_quickplay = 3,
@@ -336,10 +346,10 @@ settings.start_game_window_layout_console = {
 			name = "versus_custom_game",
 			disable_function_name = "_versus_custom_disable_function",
 			panel_sorting = 20,
-			background_object_set = "quick_play_chaos_wastes",
+			background_object_set = "skaven_cosmetics_view",
 			input_focus_window = "versus_custom_game",
 			close_on_exit = true,
-			background_flow_event = "quick_play_chaos_wastes",
+			background_flow_event = "skaven_cosmetics_view",
 			windows = {
 				versus_additional_custom_settings = 4,
 				versus_panel = 1,
@@ -355,9 +365,9 @@ settings.start_game_window_layout_console = {
 			sound_event_enter = "Play_vs_hud_play_menu_category",
 			display_name = "player_hosted_title",
 			name = "versus_player_hosted_lobby",
-			background_object_set = "quick_play_chaos_wastes",
+			background_object_set = "skaven_cosmetics_view",
 			close_on_exit = true,
-			background_flow_event = "quick_play_chaos_wastes",
+			background_flow_event = "skaven_cosmetics_view",
 			windows = {
 				versus_player_hosted_lobby = 3,
 				versus_panel = 1,
@@ -385,9 +395,9 @@ settings.start_game_window_layout_console = {
 			display_name = "start_game_window_lobby_browser",
 			name = "versus_lobby_browser",
 			panel_sorting = 100,
-			background_object_set = "lobby_browser_chaos_wastes",
+			background_object_set = "",
 			close_on_exit = true,
-			background_flow_event = "lobby_browser_chaos_wastes",
+			background_flow_event = "",
 			windows = {
 				versus_panel = 1,
 				versus_background = 2,
@@ -480,66 +490,86 @@ settings.hero_window_mood_settings = {
 }
 settings.hero_window_pactsworn_stats_by_name = {
 	vs_chaos_troll = {
-		"vs_chaos_troll_eliminations",
-		"vs_chaos_troll_damage"
+		{
+			"eliminations_as_breed",
+			"vs_chaos_troll"
+		},
+		{
+			"damage_dealt_as_breed",
+			"vs_chaos_troll"
+		}
 	},
 	vs_gutter_runner = {
-		"vs_gutter_runner_eliminations",
-		"vs_gutter_runner_damage"
+		{
+			"eliminations_as_breed",
+			"vs_gutter_runner"
+		},
+		{
+			"damage_dealt_as_breed",
+			"vs_gutter_runner"
+		}
 	},
 	vs_packmaster = {
-		"vs_packmaster_eliminations",
-		"vs_packmaster_damage"
+		{
+			"eliminations_as_breed",
+			"vs_packmaster"
+		},
+		{
+			"damage_dealt_as_breed",
+			"vs_packmaster"
+		}
 	},
 	vs_ratling_gunner = {
-		"vs_ratling_gunner_eliminations",
-		"vs_ratling_gunner_damage"
+		{
+			"eliminations_as_breed",
+			"vs_ratling_gunner"
+		},
+		{
+			"damage_dealt_as_breed",
+			"vs_ratling_gunner"
+		}
 	},
 	vs_warpfire_thrower = {
-		"vs_warpfire_thrower_eliminations",
-		"vs_warpfire_thrower_damage"
+		{
+			"eliminations_as_breed",
+			"vs_warpfire_thrower"
+		},
+		{
+			"damage_dealt_as_breed",
+			"vs_warpfire_thrower"
+		}
 	},
 	vs_poison_wind_globadier = {
-		"vs_poison_wind_globadier_eliminations",
-		"vs_poison_wind_globadier_damage"
+		{
+			"eliminations_as_breed",
+			"vs_poison_wind_globadier"
+		},
+		{
+			"damage_dealt_as_breed",
+			"vs_poison_wind_globadier"
+		}
 	},
 	default = {
-		"vs_game_won",
-		"vs_hero_monster_kill"
+		{
+			"vs_game_won"
+		},
+		{
+			"vs_hero_monster_kill"
+		}
 	}
 }
 settings.stats_string_lookup = {
-	vs_ratling_gunner_eliminations = "vs_scoreboard_eliminations",
-	vs_warpfire_thrower_eliminations = "vs_scoreboard_eliminations",
-	vs_warpfire_thrower_damage = "inventory_screen_compare_damage_tooltip",
+	damage_dealt_as_breed = "inventory_screen_compare_damage_tooltip",
 	vs_game_won = "not_assigned",
-	vs_gutter_runner_eliminations = "vs_scoreboard_eliminations",
-	vs_ratling_gunner_damage = "inventory_screen_compare_damage_tooltip",
 	vs_hero_monster_kill = "not_assigned",
-	vs_packmaster_eliminations = "vs_scoreboard_eliminations",
-	vs_gutter_runner_damage = "inventory_screen_compare_damage_tooltip",
-	vs_chaos_troll_damage = "inventory_screen_compare_damage_tooltip",
-	vs_poison_wind_globadier_damage = "inventory_screen_compare_damage_tooltip",
-	vs_poison_wind_globadier_eliminations = "vs_scoreboard_eliminations",
-	vs_packmaster_damage = "inventory_screen_compare_damage_tooltip",
-	vs_chaos_troll_eliminations = "vs_scoreboard_eliminations"
+	eliminations_as_breed = "vs_scoreboard_eliminations"
 }
 settings.item_type_store_icons = {
 	weapon_pose = "store_tag_icon_pose"
 }
 settings.stats_icons_lookup = {
-	vs_ratling_gunner_eliminations = "killfeed_icon_12",
-	vs_warpfire_thrower_eliminations = "killfeed_icon_12",
-	vs_warpfire_thrower_damage = "icon_damage",
+	damage_dealt_as_breed = "icon_damage",
 	vs_game_won = "icons_placeholder",
-	vs_gutter_runner_eliminations = "killfeed_icon_12",
-	vs_ratling_gunner_damage = "icon_damage",
 	vs_hero_monster_kill = "icons_placeholder",
-	vs_packmaster_eliminations = "killfeed_icon_12",
-	vs_gutter_runner_damage = "icon_damage",
-	vs_chaos_troll_damage = "icon_damage",
-	vs_poison_wind_globadier_damage = "icon_damage",
-	vs_poison_wind_globadier_eliminations = "killfeed_icon_12",
-	vs_packmaster_damage = "icon_damage",
-	vs_chaos_troll_eliminations = "killfeed_icon_12"
+	eliminations_as_breed = "killfeed_icon_12"
 }

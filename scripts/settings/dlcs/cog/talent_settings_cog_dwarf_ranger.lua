@@ -23,7 +23,7 @@ local buff_tweak_data = {
 	bardin_engineer_heal_share = {},
 	bardin_engineer_2_1 = {},
 	bardin_engineer_2_1_cooldown = {
-		duration = 180
+		duration = 80
 	},
 	bardin_engineer_ranged_pierce = {
 		bonus = 1
@@ -218,10 +218,10 @@ local talent_buff_templates = {
 	bardin_engineer_2_1 = {
 		buffs = {
 			{
-				update_start_delay = 180,
+				update_start_delay = 80,
 				update_func = "bardin_engineer_bomb_grant",
 				cooldown_buff = "bardin_engineer_2_1_cooldown",
-				update_frequency = 180,
+				update_frequency = 80,
 				perks = {
 					buff_perks.no_explosion_friendly_fire
 				}

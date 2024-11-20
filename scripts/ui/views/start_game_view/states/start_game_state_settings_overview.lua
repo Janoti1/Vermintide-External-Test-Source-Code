@@ -499,11 +499,11 @@ StartGameStateSettingsOverview.close_on_exit = function (self)
 end
 
 StartGameStateSettingsOverview.set_hide_panel_title_butttons = function (self, bool)
-	self._hide_panel_title_buttons = bool
+	self._panel_title_buttons_hidden = bool
 end
 
-StartGameStateSettingsOverview.hide_panel_title_buttons = function (self)
-	return self._hide_panel_title_buttons
+StartGameStateSettingsOverview.panel_title_buttons_hidden = function (self)
+	return self._panel_title_buttons_hidden
 end
 
 StartGameStateSettingsOverview.get_current_window_layout_settings = function (self)
@@ -834,6 +834,21 @@ StartGameStateSettingsOverview.update = function (self, dt, t)
 		DO_RELOAD = false
 
 		self:_create_ui_elements()
+	end
+
+	if Managers.matchmaking:is_in_versus_custom_game_lobby() then
+		local network_handler = Managers.mechanism:network_handler()
+		local match_handler = network_handler:get_match_handler()
+		local is_match_host = match_handler:query_peer_data(Network.peer_id(), "is_match_owner")
+
+		if not is_match_host then
+			local current_layout = self._selected_layout_name
+			local wanted_layout = "versus_player_hosted_lobby"
+
+			if current_layout ~= wanted_layout then
+				self:set_layout_by_name(wanted_layout)
+			end
+		end
 	end
 
 	local input_manager = self._input_manager
@@ -1467,6 +1482,8 @@ StartGameStateSettingsOverview.is_strict_matchmaking_option_enabled = function (
 	return self._use_strict_matchmaking
 end
 
+local host_human_players = {}
+
 StartGameStateSettingsOverview.is_difficulty_approved = function (self, difficulty_key)
 	if Development.parameter("unlock_all_difficulties") then
 		return true
@@ -1501,7 +1518,14 @@ StartGameStateSettingsOverview.is_difficulty_approved = function (self, difficul
 	end
 
 	if difficulty_settings.extra_requirement_name then
-		local players_not_meeting_requirements = DifficultyManager.players_locked_difficulty_rank(difficulty_key, human_players)
+		local players = human_players
+
+		if Managers.state.network.is_server then
+			host_human_players[1] = Managers.player:local_player()
+			players = host_human_players
+		end
+
+		local players_not_meeting_requirements = DifficultyManager.players_locked_difficulty_rank(difficulty_key, players)
 
 		if #players_not_meeting_requirements > 0 then
 			local extra_requirement_name = difficulty_settings.extra_requirement_name
@@ -1524,11 +1548,19 @@ StartGameStateSettingsOverview.set_difficulty_option = function (self, difficult
 end
 
 StartGameStateSettingsOverview.get_difficulty_option = function (self, ignore_approval)
+	local default_mechanism_difficulty = Managers.mechanism:mechanism_setting("default_difficulty")
 	local selected_difficulty_key = self._selected_difficulty_key
+	local difficulty_index = table.find(Difficulties, selected_difficulty_key) or table.index_of(Difficulties, default_mechanism_difficulty)
 
-	if not ignore_approval and selected_difficulty_key and not self:is_difficulty_approved(selected_difficulty_key) then
-		selected_difficulty_key = nil
+	for i = difficulty_index, 1, -1 do
+		selected_difficulty_key = Difficulties[i]
+
+		if self:is_difficulty_approved(selected_difficulty_key) then
+			break
+		end
 	end
+
+	self:set_difficulty_option(selected_difficulty_key)
 
 	return selected_difficulty_key
 end

@@ -582,6 +582,8 @@ MenuWorldPreviewer._load_hero_unit = function (self, profile_name, career_index,
 	local item_data = skin_item and skin_item.data
 	local skin_name = optional_skin or item_data and item_data.name or career.base_skin
 
+	GlobalShaderFlags.set_global_shader_flag("NECROMANCER_CAREER_REMAP", career_name == "bw_necromancer")
+
 	if state_character then
 		skin_name = career.base_skin
 	end

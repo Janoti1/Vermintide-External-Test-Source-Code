@@ -475,6 +475,23 @@ DLCSettings = DLCSettings or {
 			equipment = "scripts/settings/dlcs/cosmetics_2024_q2/cosmetics_2024_q2_equipment_settings"
 		}
 	},
+	cosmetics_2024_q3 = {
+		localization = "localization/cosmetics_2024_q3",
+		package_name = "resource_packages/dlcs/cosmetics_2024_q3",
+		additional_settings = {
+			common = "scripts/settings/dlcs/cosmetics_2024_q3/cosmetics_2024_q3_common_settings",
+			equipment = "scripts/settings/dlcs/cosmetics_2024_q3/cosmetics_2024_q3_equipment_settings"
+		}
+	},
+	termite_part_1 = {
+		localization = "localization/termite_1",
+		package_name = "resource_packages/dlcs/termite_part_1",
+		additional_settings = {
+			common = "scripts/settings/dlcs/termite/termite_common_settings_part_1",
+			sound = "scripts/settings/dlcs/termite/termite_sound_settings_part_1",
+			level = "scripts/settings/dlcs/termite/termite_level_settings_part_1"
+		}
+	},
 	handbook = {
 		localization = "localization/handbook_tutorials"
 	}

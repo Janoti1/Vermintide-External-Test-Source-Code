@@ -329,6 +329,22 @@ SimpleHuskInventoryExtension.wield = function (self, slot_name)
 				outline_extension:reapply_outline()
 			end
 
+			if slot_name == "slot_packmaster_claw" then
+				local claw_unit = self:get_weapon_unit()
+				local status_extension = ScriptUnit.extension(self._unit, "status_system")
+				local grabber_unit = status_extension:get_pack_master_grabber()
+				local grabber_player = Managers.player:unit_owner(grabber_unit)
+				local cosmetic_slot = CosmeticUtils.get_cosmetic_slot(grabber_player, "slot_skin")
+
+				if cosmetic_slot then
+					if cosmetic_slot.item_name ~= "skaven_pack_master_skin_1001" then
+						Unit.flow_event(claw_unit, "lua_wield_0000")
+					else
+						Unit.flow_event(claw_unit, "lua_wield_1001")
+					end
+				end
+			end
+
 			self:_reapply_fade(equipment)
 
 			local reason = "wield"

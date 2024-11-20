@@ -29,6 +29,7 @@ HeroViewStateHandbook.on_enter = function (self, params)
 		snap_pixel_positions = false
 	}
 	self._voting_manager = ingame_ui_context.voting_manager
+	SaveData.seen_handbook_pages = SaveData.seen_handbook_pages or {}
 
 	local input_service = self:input_service()
 
@@ -48,8 +49,6 @@ HeroViewStateHandbook.on_enter = function (self, params)
 
 		self:_start_transition_animation("on_enter", "on_enter")
 	end
-
-	SaveData.seen_handbook_pages = SaveData.seen_handbook_pages or {}
 end
 
 HeroViewStateHandbook.on_exit = function (self, params)
@@ -460,6 +459,7 @@ HeroViewStateHandbook._handle_input = function (self, input_service, is_gamepad_
 	local page_button_next = widgets_by_name.page_button_next
 	local page_button_previous = widgets_by_name.page_button_previous
 
+	self:_set_gamepad_input_buttons_visibility(is_gamepad_active)
 	UIWidgetUtils.animate_arrow_button(page_button_next, dt)
 	UIWidgetUtils.animate_arrow_button(page_button_previous, dt)
 
@@ -573,6 +573,8 @@ HeroViewStateHandbook._activate_tab = function (self, widget, index, tab_list_in
 	content.button_hotspot.is_selected = true
 	content.active = true
 	content.list_content.active = true
+	self._active_list_index = nil
+	tab_list_index = tab_list_index or 1
 
 	if tab_list_index then
 		local pages = content.children[tab_list_index]
@@ -627,7 +629,9 @@ HeroViewStateHandbook.close_menu = function (self, ignore_sound_on_close_menu)
 
 	ignore_sound_on_close_menu = true
 
-	self.parent:close_menu(nil, ignore_sound_on_close_menu)
+	local no_fade = true
+
+	self.parent:close_menu(nil, ignore_sound_on_close_menu, no_fade)
 end
 
 HeroViewStateHandbook._update_page_info = function (self)
@@ -654,6 +658,23 @@ HeroViewStateHandbook._update_page_info = function (self)
 	widgets_by_name.page_text_area.content.visible = has_pages
 
 	self._menu_input_description:set_input_description(has_pages and generic_input_actions.has_pages or nil)
+end
+
+HeroViewStateHandbook._set_gamepad_input_buttons_visibility = function (self, visible)
+	local widgets_by_name = self._widgets_by_name
+	local has_pages = self._total_pages > 1
+
+	visible = visible and has_pages
+
+	local input_1_widget = widgets_by_name.input_icon_next
+	local input_2_widget = widgets_by_name.input_icon_previous
+	local input_arrow_1_widget = widgets_by_name.input_arrow_next
+	local input_arrow_2_widget = widgets_by_name.input_arrow_previous
+
+	input_1_widget.content.visible = visible
+	input_2_widget.content.visible = visible
+	input_arrow_1_widget.content.visible = visible
+	input_arrow_2_widget.content.visible = visible
 end
 
 HeroViewStateHandbook.draw = function (self, input_service, is_gamepad_active, dt)

@@ -6,8 +6,17 @@ end
 
 TutorialConditions.hero_name = function (ctx)
 	local player = ctx:get("player")
+	local hero_name = player:profile_display_name()
 
-	return player:profile_display_name()
+	if hero_name then
+		return hero_name
+	end
+
+	local wanted_profile_index = Managers.matchmaking.selected_profile_index or SaveData.wanted_profile_index or 1
+
+	hero_name = SPProfiles[wanted_profile_index].display_name
+
+	return hero_name
 end
 
 TutorialConditions.career_name = function (ctx)
@@ -152,6 +161,10 @@ end
 
 TutorialConditions.is_versus_mechanism = function (ctx)
 	return ctx:get("current_mechanism_name") == "versus"
+end
+
+TutorialConditions.is_adventure_mechanism = function (ctx)
+	return ctx:get("current_mechanism_name") == "adventure"
 end
 
 TutorialConditionEvaluator = class(TutorialConditionEvaluator)

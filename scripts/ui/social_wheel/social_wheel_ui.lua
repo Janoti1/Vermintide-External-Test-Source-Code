@@ -106,6 +106,7 @@ SocialWheelUI.init = function (self, parent, ingame_ui_context)
 	self._active_context = nil
 	self._num_free_events = MAX_FREE_EVENTS
 	self._valid_selection = true
+	self._cloned_materials_by_reference = {}
 
 	local settings = Managers.state.game_mode:settings()
 	local ping_mode = settings.ping_mode
@@ -1076,8 +1077,6 @@ SocialWheelUI._set_material_diffuse_by_texture_path = function (self, material_n
 end
 
 SocialWheelUI._reset_cloned_material = function (self, reference_name)
-	local ui_renderer = self._ui_top_renderer
-	local gui = ui_renderer.gui
 	local material_name = self._cloned_materials_by_reference[reference_name]
 
 	if material_name then

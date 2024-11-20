@@ -932,7 +932,7 @@ local category_settings = {
 	},
 	{
 		name = "poses",
-		item_filter = "gather_weapon_pose_blueprints",
+		item_filter = "item_type == weapon_pose",
 		hero_specific_filter = true,
 		display_name = Localize("inventory_screen_poses_title"),
 		item_types = {

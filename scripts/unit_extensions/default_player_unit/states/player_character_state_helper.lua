@@ -1508,28 +1508,43 @@ end
 local EPSILON_MOVEMENT_SPEED_TO_IDLE_ANIM = 0.05
 local SLOW_MOVEMENT_SPEED = 2.1
 
-CharacterStateHelper.get_move_animation = function (locomotion_extension, input_extension, status_extension)
+CharacterStateHelper.get_move_animation = function (locomotion_extension, input_extension, status_extension, last_anim_3p)
 	local move_direction = CharacterStateHelper.get_movement_input(input_extension)
-	local slowed = Vector3.length(Vector3.flat(locomotion_extension:current_velocity())) < SLOW_MOVEMENT_SPEED
+	local move_fwd = "move_fwd"
+	local move_bwd = "move_bwd"
+	local running
 
 	if status_extension.unit then
 		local unit = status_extension.unit
 		local breed = Unit.get_data(unit, "breed")
 
-		if breed and breed.run_threshold then
-			slowed = Vector3.length(Vector3.flat(locomotion_extension:current_velocity())) < breed.run_threshold
+		if breed then
+			local run_threshold = breed.run_threshold
+
+			if run_threshold then
+				local return_to_walk_threshold = breed.walk_threshold or run_threshold * 0.9
+				local threshold = run_threshold
+
+				if last_anim_3p == move_fwd or last_anim_3p == move_bwd then
+					threshold = return_to_walk_threshold
+				end
+
+				running = threshold < Vector3.length(Vector3.flat(locomotion_extension:current_velocity()))
+			end
 		end
 	end
+
+	running = running or Vector3.length(Vector3.flat(locomotion_extension:current_velocity())) > SLOW_MOVEMENT_SPEED
 
 	if Vector3.length(locomotion_extension:current_velocity()) < EPSILON_MOVEMENT_SPEED_TO_IDLE_ANIM then
 		return "idle", "idle"
 	end
 
 	if move_direction.y < 0 then
-		return "move_bwd", slowed and "walk_bwd" or "move_bwd"
+		return move_bwd, running and move_bwd or "walk_bwd"
 	end
 
-	return "move_fwd", slowed and "walk_fwd" or "move_fwd"
+	return move_fwd, running and move_fwd or "walk_fwd"
 end
 
 CharacterStateHelper.is_colliding_down = function (unit)

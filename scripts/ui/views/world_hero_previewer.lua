@@ -463,6 +463,8 @@ HeroPreviewer._load_hero_unit = function (self, profile_name, career_index, call
 	local item_data = skin_item and skin_item.data
 	local skin_name = optional_skin or item_data and item_data.name or career.base_skin
 
+	GlobalShaderFlags.set_global_shader_flag("NECROMANCER_CAREER_REMAP", career_name == "bw_necromancer")
+
 	self._current_career_name = career_name
 	self.character_unit_skin_data = nil
 

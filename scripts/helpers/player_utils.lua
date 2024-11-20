@@ -131,21 +131,23 @@ PlayerUtils.peer_id_compare = function (peer_a, peer_b)
 	return true
 end
 
-PlayerUtils.player_name = function (peer_id)
-	if HAS_STEAM then
-		local clan_tag = ""
-		local clan_tag_id = Application.user_setting("clan_tag")
-
-		if clan_tag_id and clan_tag_id ~= "0" then
-			local clan_tag_string = tostring(Clans.clan_tag(clan_tag_id))
-
-			if clan_tag_string ~= "" then
-				clan_tag = clan_tag_string .. "|"
-			end
-		end
-
-		return clan_tag .. Steam.user_name(peer_id)
-	elseif IS_CONSOLE then
-		return Managers.state.network:lobby():user_name(peer_id) or "Remote #" .. tostring(peer_id:sub(-3, -1))
+PlayerUtils.player_name = function (peer_id, lobby)
+	if not peer_id then
+		return "Peer #nil"
 	end
+
+	local Steam = rawget(_G, "Steam") or stingray.Steam
+	local name
+
+	if IS_CONSOLE then
+		name = lobby:user_name(peer_id)
+	elseif Steam then
+		name = Steam.user_name(peer_id)
+	end
+
+	if not name or name == "" then
+		name = string.format("Peer #%s", string.sub(peer_id, -3))
+	end
+
+	return name
 end

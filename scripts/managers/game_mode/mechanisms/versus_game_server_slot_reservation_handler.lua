@@ -48,6 +48,8 @@ VersusGameServerSlotReservationHandler.init = function (self, parties)
 
 		self._reserved_peers[party_id] = party_slots
 	end
+
+	self._reserved_peers_map = {}
 end
 
 VersusGameServerSlotReservationHandler.destroy = function (self)
@@ -418,13 +420,14 @@ VersusGameServerSlotReservationHandler._print_reservations = function (self)
 				num_reserved_slots = num_reserved_slots + 1
 
 				local name = Managers.game_server:peer_name(slot.peer_id)
+				local player_disconnected_string = ""
 
 				if slot.reserver then
 					party_result = party_result .. "L"
-					party_details = string.format("%sL %s (%s)\n", party_details, slot.peer_id, name)
+					party_details = string.format("%sL %s (%s)%s\n", party_details, slot.peer_id, name, player_disconnected_string)
 				else
 					party_result = party_result .. "C"
-					party_details = string.format("%sC %s (%s)\n", party_details, slot.peer_id, name)
+					party_details = string.format("%sC %s (%s)%s\n", party_details, slot.peer_id, name, player_disconnected_string)
 				end
 			end
 		end
@@ -581,6 +584,10 @@ VersusGameServerSlotReservationHandler._reserve_slots_in_party = function (self,
 	self:_print_reservations()
 end
 
+VersusGameServerSlotReservationHandler.reserved_peers_map = function (self)
+	return self._reserved_peers_map
+end
+
 VersusGameServerSlotReservationHandler._num_reserved_slots_per_party = function (self)
 	local num_reserved_slots_per_party = {}
 
@@ -613,6 +620,7 @@ VersusGameServerSlotReservationHandler._reserve_slot = function (self, party_slo
 	slot.reserved = true
 	slot.peer_id = peer_id
 	slot.reserver = is_reserver
+	self._reserved_peers_map[peer_id] = true
 
 	Managers.state.event:trigger("game_server_reserve_party_slot", index, peer_id, is_reserver)
 end
@@ -622,6 +630,8 @@ VersusGameServerSlotReservationHandler._unreserve_party_slot = function (self, p
 
 	self:_dump_assert(slot.reserved, "Trying to unreserve slot that was not reserved")
 	clear_party_slot(slot)
+
+	self._reserved_peers_map[peer_id] = nil
 
 	if not unit_test then
 		Managers.state.event:trigger("game_server_unreserve_party_slot", slot_index, peer_id)
@@ -969,4 +979,8 @@ VersusGameServerSlotReservationHandler.handle_slot_reservation_for_connecting_pe
 	if not DEDICATED_SERVER or not script_data.flexmatch_matchmaking then
 		return SlotReservationConnectStatus.SUCCEEDED
 	end
+end
+
+VersusGameServerSlotReservationHandler.poll_sync_lobby_data_required = function (self)
+	return false
 end

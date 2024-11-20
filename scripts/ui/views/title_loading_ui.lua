@@ -918,7 +918,10 @@ TitleLoadingUI.init = function (self, world, params, force_done)
 
 	if title_settings and title_settings.video_override then
 		first_time_video = title_settings.video_override
-		first_time_video.subtitle_template_settings = local_require(first_time_video.subtitle_template_settings_path)
+
+		if first_time_video.subtitle_template_settings_path then
+			first_time_video.subtitle_template_settings = local_require(first_time_video.subtitle_template_settings_path)
+		end
 	end
 
 	if params.is_prologue then

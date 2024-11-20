@@ -319,11 +319,11 @@ weapon_template.actions = {
 
 				return true
 			end,
-			enter_function = function (attacker_unit)
-				Managers.state.entity:system("weapon_system"):change_synced_weapon_state(attacker_unit, "targeting", true)
+			enter_function = function (attacker_unit, _, _, weapon_extension)
+				weapon_extension:change_synced_state("targeting", true)
 			end,
-			finish_function = function (attacker_unit)
-				Managers.state.entity:system("weapon_system"):change_synced_weapon_state(attacker_unit, nil, true)
+			finish_function = function (attacker_unit, _, weapon_extension)
+				weapon_extension:change_synced_state(nil, true)
 			end,
 			zoom_thresholds = {
 				"zoom_in_trueflight",
@@ -604,7 +604,7 @@ weapon_template.on_wield = function (weapon_unit_extension, hand, owner_unit, is
 		return
 	end
 
-	Managers.state.entity:system("weapon_system"):change_synced_weapon_state(owner_unit, "wielding", true)
+	weapon_unit_extension:change_synced_state("wielding", true)
 end
 
 local fingers_r_1p = {
@@ -658,7 +658,7 @@ weapon_template.synced_states = {
 
 			state_data.timer = 0.7
 		end,
-		update = function (self, owner_unit, weapon_unit, state_data, is_local_player, world, dt)
+		update = function (self, owner_unit, weapon_unit, state_data, is_local_player, world, dt, weapon_extension)
 			if not state_data.timer then
 				return
 			end
@@ -666,7 +666,7 @@ weapon_template.synced_states = {
 			state_data.timer = state_data.timer - dt
 
 			if state_data.timer < 0 then
-				Managers.state.entity:system("weapon_system"):change_synced_weapon_state(owner_unit, nil, true)
+				weapon_extension:change_synced_state(nil, true)
 			end
 		end,
 		leave = function (self, owner_unit, weapon_unit, state_data, is_local_player, world, next_state, is_destroy)

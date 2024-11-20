@@ -87,7 +87,9 @@ PeerStates.Connecting = {
 			else
 				local match_handler = self.server:get_match_handler()
 
-				match_handler:register_pending_peer(self.peer_id, self.server.my_peer_id)
+				if not match_handler:has_peer_data(self.peer_id) then
+					match_handler:register_pending_peer(self.peer_id, self.server.my_peer_id)
+				end
 			end
 		end
 
@@ -477,6 +479,10 @@ PeerStates.Disconnecting = {
 	on_enter = function (self, previous_state)
 		printf("[PSM] Disconnecting peer %s", self.peer_id)
 		Network.write_dump_tag(string.format("%s disconnecting", self.peer_id))
+
+		local match_handler = self.server:get_match_handler()
+
+		match_handler:client_disconnected(self.peer_id)
 
 		self.is_ingame = nil
 

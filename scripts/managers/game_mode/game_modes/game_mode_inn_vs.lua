@@ -28,6 +28,10 @@ GameModeInnVs.init = function (self, settings, world, network_server, ...)
 	if self._is_server then
 		self._lobby_host = network_server.lobby_host
 	end
+
+	if self._mechanism:is_hosting_versus_custom_game() then
+		self._mechanism:set_is_hosting_versus_custom_game(false)
+	end
 end
 
 GameModeInnVs.destroy = function (self)
@@ -88,6 +92,21 @@ GameModeInnVs.local_player_game_starts = function (self, player, loading_context
 		else
 			LevelHelper:flow_event(self._world, "level_start_local_player_spawned")
 		end
+	end
+
+	if not DEDICATED_SERVER and Development.parameter("vs_auto_search") then
+		Managers.mechanism:request_vote({
+			private_game = false,
+			dedicated_servers_aws = true,
+			player_hosted = false,
+			dedicated_servers_win = false,
+			request_type = "versus_quickplay",
+			matchmaking_type = "standard",
+			mechanism = "versus",
+			quick_game = true,
+			difficulty = "versus_base",
+			join_method = "party"
+		})
 	end
 end
 
@@ -190,7 +209,7 @@ GameModeInnVs.get_initial_inventory = function (self, healthkit, potion, grenade
 
 	if profile.affiliation == "heroes" then
 		initial_inventory = {
-			slot_packmaster_claw = "packmaster_claw",
+			slot_packmaster_claw = "packmaster_claw_combo",
 			slot_healthkit = healthkit,
 			slot_potion = potion,
 			slot_grenade = grenade,
@@ -236,6 +255,12 @@ GameModeInnVs.server_update = function (self, t, dt)
 
 			self._simple_spawning:update(t, dt, party)
 		end
+	end
+
+	local reservation_handler = self._mechanism:get_slot_reservation_handler()
+
+	if reservation_handler and reservation_handler.handle_dangling_peers then
+		reservation_handler:handle_dangling_peers()
 	end
 end
 
@@ -321,6 +346,7 @@ GameModeInnVs._set_auto_force_start_time = function (self)
 	local t = Managers.time:time("game")
 
 	self._auto_force_start_time = t + start_after_seconds
+	self._check_all_players_reserved_time = t + 2
 
 	printf("[GameModeInnVS:_set_auto_force_start_time]: Automatic force start in %s seconds if teams remain unchanged", settings.start_after_seconds)
 end

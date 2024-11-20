@@ -381,18 +381,20 @@ SimpleInventoryExtension.add_equipment_by_category = function (self, category)
 			local slot_name = slot.name
 			local item = BackendUtils.get_loadout_item(career_name, slot_name, self.is_bot)
 			local item_data
+			local item_name = self.initial_inventory[slot_name]
+			local backend_id
 
 			if item then
 				item_data = table.clone(item.data)
-				item_data.backend_id = item.backend_id
+				backend_id = item.backend_id
+				item_data.backend_id = backend_id
 			else
-				local item_name = self.initial_inventory[slot_name]
-
 				item_data = rawget(ItemMasterList, item_name)
 
 				if not item_data then
 					if slot.stored_in_backend then
-						local backend_id = BackendUtils.get_loadout_item_id(career_name, slot_name, self.is_bot)
+						backend_id = BackendUtils.get_loadout_item_id(career_name, slot_name, self.is_bot)
+
 						local backend_id_string = backend_id and tostring(backend_id) or "No backend ID"
 						local backend_items = Managers.backend:get_interface("items")
 						local item_string = "No item"
@@ -684,6 +686,21 @@ SimpleInventoryExtension.wield = function (self, slot_name)
 		self:show_first_person_inventory(self._show_first_person)
 		self:show_first_person_inventory_lights(self._show_first_person_lights)
 		self:show_third_person_inventory(self._show_third_person)
+
+		if slot_name == "slot_packmaster_claw" then
+			local status_extension = ScriptUnit.extension(self._unit, "status_system")
+			local grabber_unit = status_extension:get_pack_master_grabber()
+			local grabber_player = Managers.player:unit_owner(grabber_unit)
+			local cosmetic_slot = CosmeticUtils.get_cosmetic_slot(grabber_player, "slot_skin")
+
+			if cosmetic_slot then
+				if cosmetic_slot.item_name ~= "skaven_pack_master_skin_1001" then
+					Unit.flow_event(self._equipment.right_hand_wielded_unit_3p, "lua_wield_0000")
+				else
+					Unit.flow_event(self._equipment.right_hand_wielded_unit_3p, "lua_wield_1001")
+				end
+			end
+		end
 	end
 
 	local network_manager = Managers.state.network

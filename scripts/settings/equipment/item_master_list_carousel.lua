@@ -100,6 +100,27 @@ ItemMasterList.vs_chaos_troll_axe = {
 		"versus"
 	}
 }
+ItemMasterList.vs_rat_ogre_hands = {
+	description = "dw_1h_axe_skin_01_description",
+	rarity = "plentiful",
+	right_hand_unit = "units/weapons/player/wpn_invisible_weapon",
+	inventory_icon = "icon_wpn_dw_axe_01_t1",
+	slot_type = "melee",
+	display_name = "dw_1h_axe_skin_01_name",
+	left_hand_unit = "units/weapons/player/wpn_invisible_weapon",
+	has_power_level = true,
+	template = "vs_rat_ogre_hands",
+	property_table_name = "melee",
+	item_type = "dr_1h_axes",
+	hud_icon = "weapon_generic_icon_axe1h",
+	trait_table_name = "melee",
+	can_wield = {
+		"vs_rat_ogre"
+	},
+	mechanisms = {
+		"versus"
+	}
+}
 ItemMasterList.vs_gutter_runner_claws = {
 	description = "dw_1h_axe_skin_01_description",
 	rarity = "plentiful",
@@ -120,6 +141,15 @@ ItemMasterList.vs_gutter_runner_claws = {
 	mechanisms = {
 		"versus"
 	}
+}
+ItemMasterList.packmaster_claw_combo = {
+	temporary_template = "packmaster_claw",
+	right_hand_unit = "units/weapons/player/wpn_packmaster_claw_combo/wpn_packmaster_claw_combo",
+	is_local = true,
+	item_type = "inventory_item",
+	slot_type = "slot_packmaster_claw",
+	rarity = "plentiful",
+	can_wield = CanWieldAllItemTemplates
 }
 ItemMasterList.vs_es_1h_sword = {
 	description = "es_1h_sword_skin_01_description",
@@ -2313,6 +2343,22 @@ ItemMasterList.chaos_troll_skin_0000 = {
 		"vs_chaos_troll"
 	}
 }
+ItemMasterList.skaven_rat_ogre_skin_0000 = {
+	description = "description_skaven_rat_ogre_skin_0000",
+	temporary_template = "skaven_rat_ogre_skin_0000",
+	display_name = "skaven_rat_ogre_skin_0000",
+	name = "skaven_rat_ogre_skin_0000",
+	inventory_icon = "icon_skaven_rat_ogre_skin_0000",
+	slot_type = "skin",
+	information_text = "information_text_character_skin",
+	hud_icon = "unit_frame_portrait_witch_hunter",
+	rarity = "plentiful",
+	skin_type = "unit",
+	item_type = "skin",
+	can_wield = {
+		"vs_rat_ogre"
+	}
+}
 ItemMasterList.frame_globadier_01 = {
 	description = "frame_versus_portrait_globadier_01_description",
 	temporary_template = "frame_globadier_01",
@@ -2410,7 +2456,7 @@ ItemMasterList.frame_ratling_gunner_02 = {
 	can_wield = CanWieldAllItemTemplates
 }
 ItemMasterList.frame_troll_01 = {
-	description = "frame_versus_portrait_troll_01_description",
+	description = "frame_versus_portrait_bile_01_description",
 	temporary_template = "frame_troll_01",
 	display_name = "frame_versus_portrait_troll_01_name",
 	hud_icon = "unit_frame_02",
@@ -2422,7 +2468,7 @@ ItemMasterList.frame_troll_01 = {
 	can_wield = CanWieldAllItemTemplates
 }
 ItemMasterList.frame_troll_02 = {
-	description = "frame_versus_portrait_troll_02_description",
+	description = "frame_versus_portrait_bile_02_description",
 	temporary_template = "frame_troll_02",
 	display_name = "frame_versus_portrait_troll_02_name",
 	hud_icon = "unit_frame_02",
@@ -3594,3 +3640,4 @@ UpdateItemMasterList({}, "vs_ratling_gunner")
 UpdateItemMasterList({}, "vs_poison_wind_globadier")
 UpdateItemMasterList({}, "vs_gutter_runner")
 UpdateItemMasterList({}, "vs_chaos_troll")
+UpdateItemMasterList({}, "vs_rat_ogre")

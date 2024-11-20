@@ -149,7 +149,7 @@ EnemyCharacterState.update_movement = function (self, unit, t, dt, movement_spee
 	CharacterStateHelper.look(input_extension, self._player.viewport_name, first_person_extension, self._status_extension, self._inventory_extension)
 
 	if play_3p_anim or play_1p_anim then
-		local move_anim_3p, move_anim_1p = CharacterStateHelper.get_move_animation(self._locomotion_extension, input_extension, self._status_extension)
+		local move_anim_3p, move_anim_1p = CharacterStateHelper.get_move_animation(self._locomotion_extension, input_extension, self._status_extension, self.move_anim_3p)
 
 		if play_3p_anim and move_anim_3p ~= self.move_anim_3p then
 			CharacterStateHelper.play_animation_event(unit, move_anim_3p)

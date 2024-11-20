@@ -119,6 +119,12 @@ return function ()
 				"vs_gutter_runner"
 			},
 			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
+			},
+			{
 				"user_memory",
 				"time_since_spawning",
 				OP.TIMEDIFF,
@@ -683,7 +689,7 @@ return function ()
 				"user_context",
 				"friends_close",
 				OP.GTEQ,
-				1
+				2
 			},
 			{
 				"user_context",
@@ -694,6 +700,12 @@ return function ()
 			{
 				"user_context",
 				"is_in_ghost_mode",
+				OP.EQ,
+				0
+			},
+			{
+				"global_context",
+				"game_about_to_end",
 				OP.EQ,
 				0
 			},
@@ -764,7 +776,7 @@ return function ()
 				"user_context",
 				"friends_close",
 				OP.GTEQ,
-				1
+				2
 			},
 			{
 				"user_context",
@@ -775,6 +787,12 @@ return function ()
 			{
 				"user_context",
 				"is_in_ghost_mode",
+				OP.EQ,
+				0
+			},
+			{
+				"global_context",
+				"game_about_to_end",
 				OP.EQ,
 				0
 			},
@@ -1241,7 +1259,7 @@ return function ()
 				"user_context",
 				"friends_close",
 				OP.GTEQ,
-				1
+				2
 			},
 			{
 				"user_context",
@@ -1252,6 +1270,12 @@ return function ()
 			{
 				"user_context",
 				"is_in_ghost_mode",
+				OP.EQ,
+				0
+			},
+			{
+				"global_context",
+				"game_about_to_end",
 				OP.EQ,
 				0
 			},
@@ -1454,7 +1478,7 @@ return function ()
 				"user_context",
 				"friends_close",
 				OP.GTEQ,
-				1
+				2
 			},
 			{
 				"user_context",
@@ -1465,6 +1489,12 @@ return function ()
 			{
 				"user_context",
 				"is_in_ghost_mode",
+				OP.EQ,
+				0
+			},
+			{
+				"global_context",
+				"game_about_to_end",
 				OP.EQ,
 				0
 			},
@@ -1979,6 +2009,12 @@ return function ()
 				"player_profile",
 				OP.EQ,
 				"vs_poison_wind_globadier"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
 			},
 			{
 				"user_memory",
@@ -2505,6 +2541,12 @@ return function ()
 				0
 			},
 			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
+			},
+			{
 				"user_memory",
 				"vs_globadier_globe_thrown",
 				OP.EQ,
@@ -2562,6 +2604,12 @@ return function ()
 				0
 			},
 			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
+			},
+			{
 				"user_memory",
 				"vs_globadier_globe_thrown",
 				OP.EQ,
@@ -2615,6 +2663,12 @@ return function ()
 			{
 				"user_context",
 				"is_in_ghost_mode",
+				OP.EQ,
+				0
+			},
+			{
+				"global_context",
+				"game_about_to_end",
 				OP.EQ,
 				0
 			},
@@ -2805,7 +2859,7 @@ return function ()
 				"user_context",
 				"friends_close",
 				OP.GTEQ,
-				1
+				2
 			},
 			{
 				"user_context",
@@ -2816,6 +2870,12 @@ return function ()
 			{
 				"user_context",
 				"is_in_ghost_mode",
+				OP.EQ,
+				0
+			},
+			{
+				"global_context",
+				"game_about_to_end",
 				OP.EQ,
 				0
 			},
@@ -3150,7 +3210,7 @@ return function ()
 				"user_context",
 				"friends_close",
 				OP.GTEQ,
-				1
+				2
 			},
 			{
 				"user_context",
@@ -3161,6 +3221,12 @@ return function ()
 			{
 				"user_context",
 				"is_in_ghost_mode",
+				OP.EQ,
+				0
+			},
+			{
+				"global_context",
+				"game_about_to_end",
 				OP.EQ,
 				0
 			},
@@ -3319,7 +3385,7 @@ return function ()
 				"user_context",
 				"friends_close",
 				OP.GTEQ,
-				1
+				2
 			},
 			{
 				"user_context",
@@ -3330,6 +3396,12 @@ return function ()
 			{
 				"user_context",
 				"is_in_ghost_mode",
+				OP.EQ,
+				0
+			},
+			{
+				"global_context",
+				"game_about_to_end",
 				OP.EQ,
 				0
 			},
@@ -3400,7 +3472,7 @@ return function ()
 				"user_context",
 				"friends_close",
 				OP.GTEQ,
-				1
+				2
 			},
 			{
 				"user_context",
@@ -3411,6 +3483,12 @@ return function ()
 			{
 				"user_context",
 				"is_in_ghost_mode",
+				OP.EQ,
+				0
+			},
+			{
+				"global_context",
+				"game_about_to_end",
 				OP.EQ,
 				0
 			},
@@ -4348,6 +4426,12 @@ return function ()
 				"vs_packmaster"
 			},
 			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
+			},
+			{
 				"user_memory",
 				"time_since_spawning",
 				OP.TIMEDIFF,
@@ -4833,6 +4917,12 @@ return function ()
 				0
 			},
 			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
+			},
+			{
 				"user_memory",
 				"vs_globadier_globe_thrown",
 				OP.EQ,
@@ -4886,6 +4976,12 @@ return function ()
 			{
 				"user_context",
 				"is_in_ghost_mode",
+				OP.EQ,
+				0
+			},
+			{
+				"global_context",
+				"game_about_to_end",
 				OP.EQ,
 				0
 			},
@@ -5465,7 +5561,7 @@ return function ()
 				"user_context",
 				"friends_close",
 				OP.GTEQ,
-				1
+				2
 			},
 			{
 				"user_context",
@@ -5476,6 +5572,12 @@ return function ()
 			{
 				"user_context",
 				"is_in_ghost_mode",
+				OP.EQ,
+				0
+			},
+			{
+				"global_context",
+				"game_about_to_end",
 				OP.EQ,
 				0
 			},
@@ -5546,7 +5648,7 @@ return function ()
 				"user_context",
 				"friends_close",
 				OP.GTEQ,
-				1
+				2
 			},
 			{
 				"user_context",
@@ -5557,6 +5659,12 @@ return function ()
 			{
 				"user_context",
 				"is_in_ghost_mode",
+				OP.EQ,
+				0
+			},
+			{
+				"global_context",
+				"game_about_to_end",
 				OP.EQ,
 				0
 			},
@@ -5847,7 +5955,7 @@ return function ()
 				"user_context",
 				"friends_close",
 				OP.GTEQ,
-				1
+				2
 			},
 			{
 				"user_context",
@@ -5858,6 +5966,12 @@ return function ()
 			{
 				"user_context",
 				"is_in_ghost_mode",
+				OP.EQ,
+				0
+			},
+			{
+				"global_context",
+				"game_about_to_end",
 				OP.EQ,
 				0
 			},
@@ -5972,7 +6086,7 @@ return function ()
 				"user_context",
 				"friends_close",
 				OP.GTEQ,
-				1
+				2
 			},
 			{
 				"user_context",
@@ -5983,6 +6097,12 @@ return function ()
 			{
 				"user_context",
 				"is_in_ghost_mode",
+				OP.EQ,
+				0
+			},
+			{
+				"global_context",
+				"game_about_to_end",
 				OP.EQ,
 				0
 			},
@@ -6539,6 +6659,12 @@ return function ()
 				"vs_ratling_gunner"
 			},
 			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
+			},
+			{
 				"user_memory",
 				"time_since_spawning",
 				OP.TIMEDIFF,
@@ -7024,6 +7150,12 @@ return function ()
 				0
 			},
 			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
+			},
+			{
 				"user_memory",
 				"vs_globadier_globe_thrown",
 				OP.EQ,
@@ -7077,6 +7209,12 @@ return function ()
 			{
 				"user_context",
 				"is_in_ghost_mode",
+				OP.EQ,
+				0
+			},
+			{
+				"global_context",
+				"game_about_to_end",
 				OP.EQ,
 				0
 			},
@@ -7386,7 +7524,7 @@ return function ()
 				"user_context",
 				"friends_close",
 				OP.GTEQ,
-				1
+				2
 			},
 			{
 				"user_context",
@@ -7397,6 +7535,12 @@ return function ()
 			{
 				"user_context",
 				"is_in_ghost_mode",
+				OP.EQ,
+				0
+			},
+			{
+				"global_context",
+				"game_about_to_end",
 				OP.EQ,
 				0
 			},
@@ -7467,7 +7611,7 @@ return function ()
 				"user_context",
 				"friends_close",
 				OP.GTEQ,
-				1
+				2
 			},
 			{
 				"user_context",
@@ -7478,6 +7622,12 @@ return function ()
 			{
 				"user_context",
 				"is_in_ghost_mode",
+				OP.EQ,
+				0
+			},
+			{
+				"global_context",
+				"game_about_to_end",
 				OP.EQ,
 				0
 			},
@@ -7548,7 +7698,7 @@ return function ()
 				"user_context",
 				"friends_close",
 				OP.GTEQ,
-				1
+				2
 			},
 			{
 				"user_context",
@@ -7559,6 +7709,12 @@ return function ()
 			{
 				"user_context",
 				"is_in_ghost_mode",
+				OP.EQ,
+				0
+			},
+			{
+				"global_context",
+				"game_about_to_end",
 				OP.EQ,
 				0
 			},
@@ -7629,7 +7785,7 @@ return function ()
 				"user_context",
 				"friends_close",
 				OP.GTEQ,
-				1
+				2
 			},
 			{
 				"user_context",
@@ -7640,6 +7796,12 @@ return function ()
 			{
 				"user_context",
 				"is_in_ghost_mode",
+				OP.EQ,
+				0
+			},
+			{
+				"global_context",
+				"game_about_to_end",
 				OP.EQ,
 				0
 			},
@@ -8752,6 +8914,12 @@ return function ()
 				"vs_warpfire_thrower"
 			},
 			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
+			},
+			{
 				"user_memory",
 				"time_since_spawning",
 				OP.TIMEDIFF,
@@ -9237,6 +9405,12 @@ return function ()
 				0
 			},
 			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
+			},
+			{
 				"user_memory",
 				"vs_globadier_globe_thrown",
 				OP.EQ,
@@ -9290,6 +9464,12 @@ return function ()
 			{
 				"user_context",
 				"is_in_ghost_mode",
+				OP.EQ,
+				0
+			},
+			{
+				"global_context",
+				"game_about_to_end",
 				OP.EQ,
 				0
 			},
@@ -9404,7 +9584,7 @@ return function ()
 				"user_context",
 				"friends_close",
 				OP.GTEQ,
-				1
+				2
 			},
 			{
 				"user_context",
@@ -9415,6 +9595,12 @@ return function ()
 			{
 				"user_context",
 				"is_in_ghost_mode",
+				OP.EQ,
+				0
+			},
+			{
+				"global_context",
+				"game_about_to_end",
 				OP.EQ,
 				0
 			},
@@ -9485,7 +9671,7 @@ return function ()
 				"user_context",
 				"friends_close",
 				OP.GTEQ,
-				1
+				2
 			},
 			{
 				"user_context",
@@ -9496,6 +9682,12 @@ return function ()
 			{
 				"user_context",
 				"is_in_ghost_mode",
+				OP.EQ,
+				0
+			},
+			{
+				"global_context",
+				"game_about_to_end",
 				OP.EQ,
 				0
 			},
@@ -10138,7 +10330,7 @@ return function ()
 				"user_context",
 				"friends_close",
 				OP.GTEQ,
-				1
+				2
 			},
 			{
 				"user_context",
@@ -10149,6 +10341,12 @@ return function ()
 			{
 				"user_context",
 				"is_in_ghost_mode",
+				OP.EQ,
+				0
+			},
+			{
+				"global_context",
+				"game_about_to_end",
 				OP.EQ,
 				0
 			},
@@ -10219,7 +10417,7 @@ return function ()
 				"user_context",
 				"friends_close",
 				OP.GTEQ,
-				1
+				2
 			},
 			{
 				"user_context",
@@ -10230,6 +10428,12 @@ return function ()
 			{
 				"user_context",
 				"is_in_ghost_mode",
+				OP.EQ,
+				0
+			},
+			{
+				"global_context",
+				"game_about_to_end",
 				OP.EQ,
 				0
 			},
@@ -12962,7 +13166,7 @@ return function ()
 			face_animations_n = 6,
 			database = "vs_player_vo_pactsworn",
 			sound_events_n = 6,
-			category = "player_feedback",
+			category = "activate_ability",
 			dialogue_animations_n = 6,
 			dialogue_animations = {
 				"dialogue_talk",
@@ -14948,7 +15152,7 @@ return function ()
 			face_animations_n = 6,
 			database = "vs_player_vo_pactsworn",
 			sound_events_n = 6,
-			category = "player_feedback",
+			category = "activate_ability",
 			dialogue_animations_n = 6,
 			dialogue_animations = {
 				"dialogue_talk",
@@ -16781,7 +16985,7 @@ return function ()
 			face_animations_n = 6,
 			database = "vs_player_vo_pactsworn",
 			sound_events_n = 6,
-			category = "player_feedback",
+			category = "activate_ability",
 			dialogue_animations_n = 6,
 			dialogue_animations = {
 				"dialogue_talk",
@@ -18591,7 +18795,7 @@ return function ()
 			face_animations_n = 6,
 			database = "vs_player_vo_pactsworn",
 			sound_events_n = 6,
-			category = "player_feedback",
+			category = "activate_ability",
 			dialogue_animations_n = 6,
 			dialogue_animations = {
 				"dialogue_talk",

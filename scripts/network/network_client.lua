@@ -88,7 +88,7 @@ NetworkClient.init = function (self, server_peer_id, wanted_profile_index, wante
 
 	self._eac_state_determined = false
 	self._eac_can_play = false
-	self._match_handler = NetworkMatchHandler:new(self, false, my_peer_id, self.server_peer_id)
+	self._match_handler = NetworkMatchHandler:new(self, false, my_peer_id, self.server_peer_id, lobby_client)
 end
 
 NetworkClient.destroy = function (self)

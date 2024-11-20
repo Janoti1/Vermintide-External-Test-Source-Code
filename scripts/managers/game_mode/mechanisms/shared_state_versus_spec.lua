@@ -17,6 +17,23 @@ local function encode_hero_cosmetics(cosmetics_data)
 	byte_array, index = ByteArray.write_uint16(byte_array, hero_skin_id, index)
 	byte_array, index = ByteArray.write_uint16(byte_array, hat_id, index)
 
+	local pactsworn_cosmetics = cosmetics_data.pactsworn_cosmetics
+	local num_cosmetics = table.size(pactsworn_cosmetics)
+
+	byte_array, index = ByteArray.write_uint8(byte_array, num_cosmetics, index)
+
+	for profile_name, ps_data in pairs(pactsworn_cosmetics) do
+		local profile_idx = PROFILES_BY_NAME[profile_name].index
+		local ps_weapon_slot_id = NetworkLookup.equipment_slots[ps_data.weapon_slot]
+		local pactsworn_skin_id = CosmeticUtils.get_cosmetic_id(ps_data.weapon_slot, ps_data.skin)
+		local pactsworn_weapon_id = CosmeticUtils.get_cosmetic_id(ps_data.weapon_slot, ps_data.weapon)
+
+		byte_array, index = ByteArray.write_uint8(byte_array, profile_idx, index)
+		byte_array, index = ByteArray.write_uint8(byte_array, ps_weapon_slot_id, index)
+		byte_array, index = ByteArray.write_uint16(byte_array, pactsworn_skin_id, index)
+		byte_array, index = ByteArray.write_uint16(byte_array, pactsworn_weapon_id, index)
+	end
+
 	local byte_array_string = ByteArray.read_string(byte_array)
 	local compressed_byte_array_string = LibDeflate:CompressDeflate(byte_array_string)
 
@@ -29,7 +46,8 @@ local function decode_hero_cosmetics(compressed_byte_array_string)
 
 	ByteArray.write_string(byte_array, byte_array_string)
 
-	local weapon_slot_id, weapon_id, weapon_pose_id, weapon_pose_skin_id, hero_skin_id, hat_id
+	local weapon_slot_id, weapon_id, weapon_pose_id, weapon_pose_skin_id, hero_skin_id, hat_id, num_cosmetics
+	local pactsworn_cosmetics = {}
 	local index = 1
 
 	weapon_slot_id, index = ByteArray.read_uint8(byte_array, index)
@@ -38,6 +56,27 @@ local function decode_hero_cosmetics(compressed_byte_array_string)
 	weapon_pose_skin_id, index = ByteArray.read_uint16(byte_array, index)
 	hero_skin_id, index = ByteArray.read_uint16(byte_array, index)
 	hat_id, index = ByteArray.read_uint16(byte_array, index)
+	num_cosmetics, index = ByteArray.read_uint8(byte_array, index)
+
+	for i = 1, num_cosmetics do
+		local profile_idx, ps_weapon_slot_id, pactsworn_skin_id, pactsworn_weapon_id
+
+		profile_idx, index = ByteArray.read_uint8(byte_array, index)
+		ps_weapon_slot_id, index = ByteArray.read_uint8(byte_array, index)
+		pactsworn_skin_id, index = ByteArray.read_uint16(byte_array, index)
+		pactsworn_weapon_id, index = ByteArray.read_uint16(byte_array, index)
+
+		local profile_name = SPProfiles[profile_idx].display_name
+		local ps_weapon_slot = NetworkLookup.equipment_slots[ps_weapon_slot_id]
+		local pactsworn_skin = CosmeticUtils.get_cosmetic_name(ps_weapon_slot, pactsworn_skin_id)
+		local pactsworn_weapon = CosmeticUtils.get_cosmetic_name(ps_weapon_slot, pactsworn_weapon_id)
+
+		pactsworn_cosmetics[profile_name] = {
+			skin = pactsworn_skin,
+			weapon = pactsworn_weapon,
+			weapon_slot = ps_weapon_slot
+		}
+	end
 
 	local weapon_slot = NetworkLookup.equipment_slots[weapon_slot_id]
 
@@ -47,7 +86,8 @@ local function decode_hero_cosmetics(compressed_byte_array_string)
 		weapon_pose = CosmeticUtils.get_cosmetic_name("slot_pose", weapon_pose_id),
 		weapon_pose_skin = CosmeticUtils.get_cosmetic_name("slot_pose_skin", weapon_pose_skin_id),
 		hero_skin = CosmeticUtils.get_cosmetic_name("slot_skin", hero_skin_id),
-		hat = CosmeticUtils.get_cosmetic_name("slot_hat", hat_id)
+		hat = CosmeticUtils.get_cosmetic_name("slot_hat", hat_id),
+		pactsworn_cosmetics = pactsworn_cosmetics
 	}
 end
 
@@ -75,7 +115,9 @@ local spec = {
 			composite_keys = {
 				local_player_id = true
 			},
-			default_value = {},
+			default_value = {
+				pactsworn_cosmetics = {}
+			},
 			encode = encode_hero_cosmetics,
 			decode = decode_hero_cosmetics
 		}

@@ -208,7 +208,11 @@ StartGameWindowVersusQuickplay._play_sound = function (self, event)
 end
 
 StartGameWindowVersusQuickplay._can_play = function (self)
-	return not script_data["eac-untrusted"]
+	if script_data["eac-untrusted"] then
+		return false
+	end
+
+	return true
 end
 
 StartGameWindowVersusQuickplay._option_selected = function (self, widget_name, button_name, t)

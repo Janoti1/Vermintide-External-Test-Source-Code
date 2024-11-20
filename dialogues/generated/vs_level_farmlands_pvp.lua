@@ -258,6 +258,55 @@ return function ()
 		}
 	})
 	define_rule({
+		response = "nde_vs_farmlands_set2_obj1_COMPLETED",
+		name = "nde_vs_farmlands_set2_obj1_COMPLETED",
+		probability = 1,
+		criterias = {
+			{
+				"query_context",
+				"concept",
+				OP.EQ,
+				"heard_speak_self"
+			},
+			{
+				"query_context",
+				"dialogue_name",
+				OP.EQ,
+				"nde_vs_objective_completed_agnostic_a"
+			},
+			{
+				"query_context",
+				"source_name",
+				OP.EQ,
+				"vs_heroes_mission_giver"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
+			},
+			{
+				"global_context",
+				"current_level",
+				OP.EQ,
+				"farmlands_pvp"
+			},
+			{
+				"global_context",
+				"current_set",
+				OP.EQ,
+				2
+			},
+			{
+				"global_context",
+				"current_objective",
+				OP.EQ,
+				"two"
+			}
+		}
+	})
+	define_rule({
 		response = "nde_vs_farmlands_set2_obj1_a",
 		name = "nde_vs_farmlands_set2_obj1_a",
 		probability = 1,
@@ -334,6 +383,49 @@ return function ()
 				"current_objective",
 				OP.EQ,
 				"one"
+			}
+		}
+	})
+	define_rule({
+		response = "nde_vs_farmlands_set2_obj2_reached",
+		name = "nde_vs_farmlands_set2_obj2_reached",
+		probability = 1,
+		criterias = {
+			{
+				"query_context",
+				"concept",
+				OP.EQ,
+				"vs_mg_heroes_objective_reached"
+			},
+			{
+				"query_context",
+				"source_name",
+				OP.EQ,
+				"vs_heroes_mission_giver"
+			},
+			{
+				"global_context",
+				"game_about_to_end",
+				OP.EQ,
+				0
+			},
+			{
+				"global_context",
+				"current_level",
+				OP.EQ,
+				"farmlands_pvp"
+			},
+			{
+				"global_context",
+				"current_set",
+				OP.EQ,
+				2
+			},
+			{
+				"global_context",
+				"current_objective",
+				OP.EQ,
+				"two"
 			}
 		}
 	})
@@ -2089,6 +2181,76 @@ return function ()
 				5.335000038147
 			}
 		},
+		nde_vs_farmlands_set2_obj1_COMPLETED = {
+			only_allies = true,
+			randomize_indexes_n = 0,
+			face_animations_n = 10,
+			database = "vs_level_farmlands_pvp",
+			sound_events_n = 10,
+			category = "npc_talk",
+			dialogue_animations_n = 10,
+			dialogue_animations = {
+				"dialogue_talk",
+				"dialogue_talk",
+				"dialogue_talk",
+				"dialogue_talk",
+				"dialogue_talk",
+				"dialogue_talk",
+				"dialogue_talk",
+				"dialogue_talk",
+				"dialogue_talk",
+				"dialogue_talk"
+			},
+			face_animations = {
+				"face_calm",
+				"face_calm",
+				"face_calm",
+				"face_calm",
+				"face_calm",
+				"face_calm",
+				"face_calm",
+				"face_calm",
+				"face_calm",
+				"face_calm"
+			},
+			localization_strings = {
+				"nde_vs_keep_moving_a_01",
+				"nde_vs_keep_moving_a_02",
+				"nde_vs_keep_moving_a_03",
+				"nde_vs_keep_moving_a_04",
+				"nde_vs_keep_moving_a_05",
+				"nde_vs_keep_moving_a_06",
+				"nde_vs_keep_moving_a_07",
+				"nde_vs_keep_moving_a_08",
+				"nde_vs_keep_moving_a_09",
+				"nde_vs_keep_moving_a_10"
+			},
+			randomize_indexes = {},
+			sound_events = {
+				"nde_vs_keep_moving_a_01",
+				"nde_vs_keep_moving_a_02",
+				"nde_vs_keep_moving_a_03",
+				"nde_vs_keep_moving_a_04",
+				"nde_vs_keep_moving_a_05",
+				"nde_vs_keep_moving_a_06",
+				"nde_vs_keep_moving_a_07",
+				"nde_vs_keep_moving_a_08",
+				"nde_vs_keep_moving_a_09",
+				"nde_vs_keep_moving_a_10"
+			},
+			sound_events_duration = {
+				2.8272707462311,
+				3.482937335968,
+				4.1608748435974,
+				2.2954792976379,
+				3.455020904541,
+				4.7318124771118,
+				3.6683125495911,
+				3.4177916049957,
+				4.1398334503174,
+				3.8463540077209
+			}
+		},
 		nde_vs_farmlands_set2_obj1_a = {
 			only_allies = true,
 			randomize_indexes_n = 0,
@@ -2125,6 +2287,56 @@ return function ()
 			}
 		},
 		nde_vs_farmlands_set2_obj1_reached = {
+			only_allies = true,
+			randomize_indexes_n = 0,
+			face_animations_n = 6,
+			database = "vs_level_farmlands_pvp",
+			sound_events_n = 6,
+			category = "npc_talk",
+			dialogue_animations_n = 6,
+			dialogue_animations = {
+				"dialogue_talk",
+				"dialogue_talk",
+				"dialogue_talk",
+				"dialogue_talk",
+				"dialogue_talk",
+				"dialogue_talk"
+			},
+			face_animations = {
+				"face_calm",
+				"face_calm",
+				"face_calm",
+				"face_calm",
+				"face_calm",
+				"face_calm"
+			},
+			localization_strings = {
+				"nde_vs_agnostic_capture_a_01",
+				"nde_vs_agnostic_capture_a_02",
+				"nde_vs_agnostic_capture_a_03",
+				"nde_vs_agnostic_capture_a_04",
+				"nde_vs_agnostic_capture_a_05",
+				"nde_vs_agnostic_capture_a_06"
+			},
+			randomize_indexes = {},
+			sound_events = {
+				"nde_vs_agnostic_capture_a_01",
+				"nde_vs_agnostic_capture_a_02",
+				"nde_vs_agnostic_capture_a_03",
+				"nde_vs_agnostic_capture_a_04",
+				"nde_vs_agnostic_capture_a_05",
+				"nde_vs_agnostic_capture_a_06"
+			},
+			sound_events_duration = {
+				3.7752499580383,
+				3.8846249580383,
+				3.7248332500458,
+				3.4297707080841,
+				2.9989998340607,
+				4.3700003623962
+			}
+		},
+		nde_vs_farmlands_set2_obj2_reached = {
 			only_allies = true,
 			randomize_indexes_n = 0,
 			face_animations_n = 3,

@@ -895,7 +895,7 @@ ScoreboardHelper.scoreboard_topic_stats_versus = {
 		display_text = "scoreboard_topic_damage_dealt_by_monster",
 		stat_types = {
 			{
-				"vs_damage_dealt_as_breed",
+				"state_damage_dealt_as_pactsworn_breed",
 				"vs_chaos_troll"
 			}
 		},
@@ -964,7 +964,7 @@ ScoreboardHelper.get_versus_stats = function (statistics_db, saved_scoreboard_st
 			local profile = SPProfiles[profile_index]
 			local careers = profile.careers
 			local career_settings = careers[career_index]
-			local weapon, weapon_pose, weapon_pose_skin, hero_skin, hat = mechanism:get_hero_cosmetics(player_peer_id, local_player_id)
+			local weapon, weapon_pose, weapon_pose_skin, hero_skin, hat, pactsworn_cosmetics = mechanism:get_hero_cosmetics(player_peer_id, local_player_id)
 
 			player_list[stats_id] = {
 				name = player_name,
@@ -987,6 +987,7 @@ ScoreboardHelper.get_versus_stats = function (statistics_db, saved_scoreboard_st
 				hat = {
 					item_name = hat
 				},
+				pactsworn_cosmetics = pactsworn_cosmetics,
 				scores = {}
 			}
 		until true

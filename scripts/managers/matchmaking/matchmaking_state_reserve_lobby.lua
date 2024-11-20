@@ -222,12 +222,13 @@ MatchmakingStateReserveLobby._start_search = function (self, party_members, opti
 	local optional_order_func = Managers.mechanism:get_custom_lobby_sort()
 	local optional_black_listed_servers = Managers.matchmaking:broken_server_map()
 	local allow_hotjoining_ongoing_game = not Managers.state.game_mode:setting("allow_hotjoining_ongoing_game")
+	local check_server_name = false
 	local user_data = {
 		soft_filters = {
 			filter_fully_reserved_servers = true,
 			hotjoin_disabled_game_states = true,
-			check_server_name = false,
-			remove_started_servers = allow_hotjoining_ongoing_game
+			remove_started_servers = allow_hotjoining_ongoing_game,
+			check_server_name = check_server_name
 		}
 	}
 

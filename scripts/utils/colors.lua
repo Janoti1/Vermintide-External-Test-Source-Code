@@ -1238,6 +1238,12 @@ Colors.color_definitions = {
 		123,
 		44
 	},
+	vs_rat_ogre = {
+		255,
+		204,
+		128,
+		128
+	},
 	vs_undecided = {
 		255,
 		255,
@@ -1297,6 +1303,12 @@ Colors.color_definitions = {
 		100,
 		65,
 		164
+	},
+	grenade_engineer = {
+		255,
+		240,
+		32,
+		0
 	},
 	grenade_frag_01 = {
 		255,

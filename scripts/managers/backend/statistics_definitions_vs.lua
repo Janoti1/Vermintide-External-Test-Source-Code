@@ -49,7 +49,7 @@ player.vs_badge_long_impact_per_breed = {}
 player.vs_badge_stealth_pounce_per_breed = {}
 player.vs_badge_mob_damage_per_breed = {}
 player.vs_badge_warpfire_ambush_per_breed = {}
-player.vs_damage_dealt_as_breed = {}
+player.state_damage_dealt_as_pactsworn_breed = {}
 
 for breed_name, breed in pairs(PlayerBreeds) do
 	player.vs_disables_per_breed[breed_name] = {
@@ -550,105 +550,65 @@ player[db_vs_hero_eliminations] = {
 	database_name = db_vs_hero_eliminations
 }
 
-local db_vs_packmaster_eliminations = "vs_packmaster_eliminations"
-
-player[db_vs_packmaster_eliminations] = {
-	value = 0,
-	source = "player_data",
-	database_name = db_vs_packmaster_eliminations
-}
-
-local db_vs_gutter_runner_eliminations = "vs_gutter_runner_eliminations"
-
-player[db_vs_gutter_runner_eliminations] = {
-	value = 0,
-	source = "player_data",
-	database_name = db_vs_gutter_runner_eliminations
-}
-
-local db_vs_poison_wind_globadier_eliminations = "vs_poison_wind_globadier_eliminations"
-
-player[db_vs_poison_wind_globadier_eliminations] = {
-	value = 0,
-	source = "player_data",
-	database_name = db_vs_poison_wind_globadier_eliminations
-}
-
-local db_vs_ratling_gunner_eliminations = "vs_ratling_gunner_eliminations"
-
-player[db_vs_ratling_gunner_eliminations] = {
-	value = 0,
-	source = "player_data",
-	database_name = db_vs_ratling_gunner_eliminations
-}
-
-local db_vs_warpfire_thrower_eliminations = "vs_warpfire_thrower_eliminations"
-
-player[db_vs_warpfire_thrower_eliminations] = {
-	value = 0,
-	source = "player_data",
-	database_name = db_vs_warpfire_thrower_eliminations
-}
-
-local db_vs_chaos_troll_eliminations = "vs_chaos_troll_eliminations"
-
-player[db_vs_chaos_troll_eliminations] = {
-	value = 0,
-	source = "player_data",
-	database_name = db_vs_chaos_troll_eliminations
-}
-
-local db_vs_packmaster_damage = "vs_packmaster_damage"
-
-player[db_vs_packmaster_damage] = {
-	value = 0,
-	source = "player_data",
-	database_name = db_vs_packmaster_damage
-}
-
-local db_vs_gutter_runner_damage = "vs_gutter_runner_damage"
-
-player[db_vs_gutter_runner_damage] = {
-	value = 0,
-	source = "player_data",
-	database_name = db_vs_gutter_runner_damage
-}
-
-local db_vs_poison_wind_globadier_damage = "vs_poison_wind_globadier_damage"
-
-player[db_vs_poison_wind_globadier_damage] = {
-	value = 0,
-	source = "player_data",
-	database_name = db_vs_poison_wind_globadier_damage
-}
-
-local db_vs_ratling_gunner_damage = "vs_ratling_gunner_damage"
-
-player[db_vs_ratling_gunner_damage] = {
-	value = 0,
-	source = "player_data",
-	database_name = db_vs_ratling_gunner_damage
-}
-
-local db_vs_warpfire_thrower_damage = "vs_warpfire_thrower_damage"
-
-player[db_vs_warpfire_thrower_damage] = {
-	value = 0,
-	source = "player_data",
-	database_name = db_vs_warpfire_thrower_damage
-}
-
-local db_vs_chaos_troll_damage = "vs_chaos_troll_damage"
-
-player[db_vs_chaos_troll_damage] = {
-	value = 0,
-	source = "player_data",
-	database_name = db_vs_chaos_troll_damage
-}
-
 for breed_name, breed in pairs(PlayerBreeds) do
-	player.vs_damage_dealt_as_breed[breed_name] = {
+	player.state_damage_dealt_as_pactsworn_breed[breed_name] = {
 		value = 0,
 		name = breed_name
 	}
 end
+
+player.vs_award_mvp = {
+	value = 0,
+	database_name = "vs_award_mvp",
+	source = "player_data"
+}
+player.vs_award_hero_killer = {
+	value = 0,
+	database_name = "vs_award_hero_killer",
+	source = "player_data"
+}
+player.vs_award_slayer = {
+	value = 0,
+	database_name = "vs_award_slayer",
+	source = "player_data"
+}
+player.vs_award_smiter = {
+	value = 0,
+	database_name = "vs_award_smiter",
+	source = "player_data"
+}
+player.vs_award_damage_dealer = {
+	value = 0,
+	database_name = "vs_award_damage_dealer",
+	source = "player_data"
+}
+player.vs_award_saviour = {
+	value = 0,
+	database_name = "vs_award_saviour",
+	source = "player_data"
+}
+player.vs_award_hero_napper = {
+	value = 0,
+	database_name = "vs_award_hero_napper",
+	source = "player_data"
+}
+player.vs_award_assassin = {
+	value = 0,
+	database_name = "vs_award_assassin",
+	source = "player_data"
+}
+player.vs_award_horde_killer = {
+	value = 0,
+	database_name = "vs_award_horde_killer",
+	source = "player_data"
+}
+player.vs_award_monster = {
+	value = 0,
+	database_name = "vs_award_monster",
+	source = "player_data"
+}
+player.vs_award_monster_killer = {
+	value = 0,
+	database_name = "vs_award_monster_killer",
+	source = "player_data"
+}

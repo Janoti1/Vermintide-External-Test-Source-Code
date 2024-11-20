@@ -23,6 +23,8 @@ end
 DLCS_TO_CHECK = {}
 ADDED_DLCS = {}
 
+local host_human_players = {}
+
 MatchmakingStateStartGame._verify_requirements = function (self)
 	table.clear(DLCS_TO_CHECK)
 	table.clear(ADDED_DLCS)
@@ -75,7 +77,14 @@ MatchmakingStateStartGame._verify_requirements = function (self)
 			end
 
 			if difficulty_settings.extra_requirement_name then
-				local players_not_meeting_requirements = DifficultyManager.players_locked_difficulty_rank(difficulty, human_players)
+				local players = human_players
+
+				if Managers.state.network.is_server then
+					host_human_players[1] = Managers.player:local_player()
+					players = host_human_players
+				end
+
+				local players_not_meeting_requirements = DifficultyManager.players_locked_difficulty_rank(difficulty, players)
 
 				if #players_not_meeting_requirements > 0 then
 					self._matchmaking_manager:cancel_matchmaking()

@@ -386,7 +386,7 @@ HeroWindowPanelConsole._handle_input = function (self, dt, t)
 
 		if not input_made and not self.parent.parent:input_blocked() then
 			local current_index = self._selected_index or 1
-			local max_index = 5
+			local max_index = #layout_name_by_index
 			local next_index
 
 			if input_service:get(INPUT_ACTION_PREVIOUS) then

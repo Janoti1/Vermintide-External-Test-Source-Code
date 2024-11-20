@@ -1808,6 +1808,7 @@ GenericStatusExtension.set_pack_master = function (self, grabbed_status, is_grab
 	local unit = self.unit
 
 	self.pack_master_grabber = is_grabbed and grabber_unit or nil
+	self.pack_master_player = Managers.player:owner(self.pack_master_grabber)
 
 	local previous_status = self.pack_master_status
 
@@ -1939,7 +1940,7 @@ GenericStatusExtension.set_pack_master = function (self, grabbed_status, is_grab
 		if self.is_server then
 			local horde_ability_system = Managers.state.entity:system("versus_horde_ability_system")
 
-			if horde_ability_system then
+			if horde_ability_system and grabber_player then
 				horde_ability_system:server_ability_recharge_boost(grabber_player.peer_id, "pack_master_hoist")
 			end
 
@@ -1974,6 +1975,10 @@ GenericStatusExtension.set_pack_master = function (self, grabbed_status, is_grab
 			locomotion:set_disabled(false, nil, nil, true)
 		end
 	end
+end
+
+GenericStatusExtension.query_pack_master_player = function (self)
+	return self.pack_master_player
 end
 
 GenericStatusExtension.hit_by_globadier_poison = function (self)

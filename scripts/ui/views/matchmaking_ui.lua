@@ -30,6 +30,7 @@ local WIND_COLORS = {
 	fire = Colors.get_table("fire"),
 	shadow = Colors.get_table("shadow")
 }
+local state_to_display_name_overrides = {}
 
 MatchmakingUI = class(MatchmakingUI)
 
@@ -774,30 +775,39 @@ MatchmakingUI._update_portraits = function (self, has_mission_vote)
 		end
 
 		for peer_id, _ in pairs(members) do
-			local portrait_index = self:_get_portrait_index(peer_id)
+			do
+				local portrait_index = self:_get_portrait_index(peer_id)
 
-			if not portrait_index then
-				portrait_index = self:_get_first_free_portrait_index()
-				portrait_index_table[portrait_index] = peer_id
-			end
+				if not portrait_index then
+					portrait_index = self:_get_first_free_portrait_index()
 
-			if has_mission_vote then
-				self:_set_player_is_voting(portrait_index, true)
-			else
-				self:_set_player_is_voting(portrait_index, false)
-			end
+					if not portrait_index then
+						goto label_23_0
+					end
 
-			local profile = profile_synchronizer:profile_by_peer(peer_id, 1)
-
-			if profile then
-				self:large_window_set_player_portrait(portrait_index, peer_id)
-
-				if player_manager:player_from_peer_id(peer_id) then
-					self:large_window_set_player_connecting(portrait_index, false)
+					portrait_index_table[portrait_index] = peer_id
 				end
-			else
-				self:large_window_set_player_connecting(portrait_index, true)
+
+				if has_mission_vote then
+					self:_set_player_is_voting(portrait_index, true)
+				else
+					self:_set_player_is_voting(portrait_index, false)
+				end
+
+				local profile = profile_synchronizer:profile_by_peer(peer_id, 1)
+
+				if profile then
+					self:large_window_set_player_portrait(portrait_index, peer_id)
+
+					if player_manager:player_from_peer_id(peer_id) then
+						self:large_window_set_player_connecting(portrait_index, false)
+					end
+				else
+					self:large_window_set_player_connecting(portrait_index, true)
+				end
 			end
+
+			::label_23_0::
 		end
 	end
 end
@@ -961,6 +971,7 @@ end
 MatchmakingUI._set_status_text = function (self, text)
 	local widget = self:_get_widget("status_text")
 
+	text = state_to_display_name_overrides[text] or text
 	widget.content.text = Localize(text)
 end
 

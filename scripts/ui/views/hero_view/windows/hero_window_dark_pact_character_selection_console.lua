@@ -163,8 +163,8 @@ HeroWindowDarkPactCharacterSelectionConsole._setup_dark_pact_loadut_data = funct
 		local stat_text = self._widgets_by_name["pactsworn_stat_" .. i]
 		local content = stat_text.content
 		local stat_id = dark_pact_stats[i]
-		local stat_value = self._statistics_db:get_persistent_stat(self._player_stats_id, stat_id)
-		local stat_name = Localize(settings.stats_string_lookup[stat_id])
+		local stat_value = math.round(self._statistics_db:get_persistent_stat(self._player_stats_id, unpack(stat_id)))
+		local stat_name = Localize(settings.stats_string_lookup[stat_id[1]])
 
 		content.text = "{#color(160,146,101,255)}" .. stat_name .. "{#reset()} : " .. stat_value
 
@@ -176,7 +176,7 @@ HeroWindowDarkPactCharacterSelectionConsole._setup_dark_pact_loadut_data = funct
 		local stat_icon = self._widgets_by_name["pactsworn_stat_" .. i .. "_icon"]
 		local content = stat_icon.content
 
-		content.texture_id = settings.stats_icons_lookup[stat_id]
+		content.texture_id = settings.stats_icons_lookup[stat_id[1]]
 	end
 
 	local description = self._widgets_by_name.pactsworn_description

@@ -50,12 +50,8 @@ DifficultyManager.set_difficulty = function (self, difficulty, tweak)
 	end
 end
 
-DifficultyManager.get_level_difficulties = function (self, level_key)
-	local level_settings = level_key and LevelSettings[level_key]
-	local difficulty_settings = level_settings and level_settings.difficulties
-	local starting_difficulty = level_settings and level_settings.starting_difficulty
-
-	return difficulty_settings or DefaultDifficulties, starting_difficulty or DefaultStartingDifficulty
+DifficultyManager.get_default_difficulties = function (self)
+	return DefaultDifficulties, DefaultStartingDifficulty
 end
 
 DifficultyManager.get_difficulty = function (self)

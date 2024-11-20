@@ -688,10 +688,11 @@ local settings = {
 	},
 	{
 		description = "Make the player unkillable.",
+		is_boolean = true,
 		setting_name = "player_invincible",
 		category = "Player mechanics recommended",
 		propagate_to_server = true,
-		is_boolean = true
+		never_save = true
 	},
 	{
 		description = "Make the player unkillable.",
@@ -1476,7 +1477,8 @@ local settings = {
 		end
 	},
 	{
-		description = "Ends a vs match. UI might get messed. Doesn't work with disable_game_mode_end",
+		description = "Ends a vs match. UI might get messed",
+		close_when_selected = true,
 		setting_name = "vs_end_match",
 		category = "Versus",
 		propagate_to_server = true,
@@ -1488,6 +1490,10 @@ local settings = {
 			local game_mode_manager = Managers.state.game_mode
 
 			game_mode_manager:round_started()
+
+			script_data.disable_gamemode_end = nil
+			script_data.disable_gamemode_end_hero_check = nil
+
 			Managers.mechanism:game_mechanism():win_conditions():debug_end_match()
 		end
 	},
@@ -2515,15 +2521,17 @@ local settings = {
 	},
 	{
 		description = "Find it annoying that the game ends every time you die? Well enable this setting then!",
-		is_boolean = true,
 		setting_name = "disable_gamemode_end",
-		category = "Gamemode/level"
+		category = "Gamemode/level",
+		propagate_to_server = true,
+		is_boolean = true
 	},
 	{
 		description = "Find it annoying that the game ends every time you die? Well enable this setting then!",
-		is_boolean = true,
 		setting_name = "disable_gamemode_end_hero_check",
-		category = "Gamemode/level"
+		category = "Gamemode/level",
+		propagate_to_server = true,
+		is_boolean = true
 	},
 	{
 		description = "Game will not end even though if all players die",
@@ -6284,6 +6292,12 @@ local settings = {
 		category = "Input"
 	},
 	{
+		description = "Set to false to disable cursor clipping.",
+		is_boolean = true,
+		setting_name = "clip_cursor",
+		category = "UI"
+	},
+	{
 		description = "Enables additional assertions to help catch errors in UI code. Only has an effect when DEBUG is enabled.",
 		is_boolean = true,
 		setting_name = "strict_ui_checks",
@@ -6381,11 +6395,10 @@ local settings = {
 		category = "UI"
 	},
 	{
-		description = "Cycles through available localizations",
-		category = "UI",
-		setting_name = "enable_localization_cycling",
-		callback = "enable_locale_cycling",
-		is_boolean = true
+		description = "Disables rainbow colorization of unlocalized strings to prevent eyesore.",
+		is_boolean = true,
+		setting_name = "disable_colorize_unlocalized_strings",
+		category = "UI"
 	},
 	{
 		description = "Turns off positive reinforcement UI",
@@ -7320,7 +7333,19 @@ local settings = {
 		category = "Versus",
 		func = function ()
 			Managers.state.game_mode:complete_level()
+
+			script_data.disable_gamemode_end = nil
+			script_data.disable_gamemode_end_hero_check = nil
 		end
+	},
+	{
+		description = "Automatically complete rounds",
+		never_save = true,
+		setting_name = "auto_complete_rounds",
+		category = "Versus",
+		propagate_to_server = true,
+		is_boolean = true,
+		close_when_selected = true
 	},
 	{
 		description = "Displays information about early win",
@@ -7960,7 +7985,7 @@ local settings = {
 		end
 	},
 	{
-		description = "Lists all items with functionality to add them to inventory.",
+		description = "Lists all items with functionality to add them to inventory. (hold left shift to add x10)",
 		setting_name = "Add Chest Items",
 		category = "Items",
 		item_source = {},
@@ -7980,10 +8005,16 @@ local settings = {
 		func = function (options, index)
 			local item_interface = Managers.backend:get_interface("items")
 			local item = options[index]
+			local amount = 1
+
+			if Keyboard.button(Keyboard.button_index("left shift")) > 0 then
+				amount = 10
+			end
 
 			add_items({
 				{
-					ItemName = item
+					ItemName = item,
+					Amount = amount
 				}
 			})
 		end
@@ -9707,9 +9738,6 @@ for _, settings_value in pairs(settings) do
 end
 
 local callbacks = {
-	enable_locale_cycling = function (option)
-		error("Broken (for now). Use the ImguiLocalization window instead.")
-	end,
 	visualize_sound_occlusion = function (option)
 		World.visualize_sound_occlusion()
 	end,

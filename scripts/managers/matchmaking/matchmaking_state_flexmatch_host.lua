@@ -203,9 +203,9 @@ MatchmakingStateFlexmatchHost._update_in_queue = function (self, dt, t)
 	end
 
 	if not self._matchmaking_check_in_progress and t >= self._tt_next_matchmaking_check then
-		Managers.backend:get_interface("versus"):fetch_matchmaking_session_data(callback(self, "_fetch_matchmaking_cb"))
-
 		self._matchmaking_check_in_progress = true
+
+		Managers.backend:get_interface("versus"):fetch_matchmaking_session_data(callback(self, "_fetch_matchmaking_cb"))
 	end
 end
 

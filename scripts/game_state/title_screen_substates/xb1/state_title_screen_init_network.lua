@@ -158,7 +158,7 @@ StateTitleScreenInitNetwork._update_lobby_client = function (self, dt, t)
 		local host = self._lobby_client:lobby_host()
 
 		if host ~= "0" then
-			self._network_client = NetworkClient:new(host)
+			self._network_client = NetworkClient:new(host, nil, nil, nil, self._lobby_client)
 			self._network_transmit = NetworkTransmit:new(false, self._network_client.server_peer_id)
 
 			self._network_transmit:set_network_event_delegate(self._network_event_delegate)

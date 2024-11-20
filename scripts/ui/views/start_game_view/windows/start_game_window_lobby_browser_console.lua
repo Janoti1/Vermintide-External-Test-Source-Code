@@ -429,7 +429,9 @@ StartGameWindowLobbyBrowserConsole._create_filter_requirements = function (self)
 end
 
 StartGameWindowLobbyBrowserConsole._join = function (self, lobby_data, join_params)
-	return
+	Managers.matchmaking:request_join_lobby(lobby_data, join_params)
+
+	self.join_lobby_data_id = lobby_data.id
 end
 
 StartGameWindowLobbyBrowserConsole._search = function (self, skip_populate)
@@ -604,7 +606,7 @@ StartGameWindowLobbyBrowserConsole.is_lobby_joinable = function (self, lobby_dat
 	end
 
 	if Managers.matchmaking:is_matchmaking_paused() then
-		return false, "matchmaking_paused"
+		return false, "painting_none_name"
 	end
 
 	local statistics_db = self._statistics_db

@@ -8,13 +8,15 @@ MatchmakingStatePartyJoins.init = function (self, params)
 end
 
 MatchmakingStatePartyJoins.terminate = function (self)
-	local lobby = self._state_context.reserved_lobby
+	local lobby_manager = Managers.lobby
 
-	if lobby ~= nil then
-		lobby:destroy()
-
-		self._state_context.reserved_lobby = nil
+	if lobby_manager:query_lobby("matchmaking_join_lobby") then
+		lobby_manager:destroy_lobby("matchmaking_join_lobby")
+	else
+		printf("[MatchmakingStatePartyJoins] WARNING: Lobby `matchmaking_join_lobby` does not exist. State is possibly inconsistent.")
 	end
+
+	self._state_context.reserved_lobby = nil
 end
 
 MatchmakingStatePartyJoins.destroy = function (self)
@@ -25,7 +27,7 @@ MatchmakingStatePartyJoins.on_enter = function (self, state_context)
 	self._state_context = state_context
 	self._peer_failed_to_follow = false
 
-	local reserved_lobby = state_context.reserved_lobby
+	local reserved_lobby = Managers.lobby:query_lobby("matchmaking_join_lobby")
 	local join_lobby_data = state_context.join_lobby_data
 	local search_config = state_context.search_config
 	local party_lobby_host = search_config.party_lobby_host
@@ -83,11 +85,14 @@ MatchmakingStatePartyJoins.update = function (self, dt, t)
 	if self:_all_clients_have_left_lobby() then
 		mm_printf("Clients have left the party lobby")
 
+		self._state_context.lobby_client = Managers.lobby:free_lobby("matchmaking_join_lobby")
+
 		return MatchmakingStateRequestProfiles, self._state_context
 	end
 
 	if self._time > MatchmakingStatePartyJoins.TIMEOUT or self._peer_failed_to_follow then
 		mm_printf("Timeout while waiting for clients to leave party lobby")
+		Managers.lobby:destroy_lobby("matchmaking_join_lobby")
 
 		return MatchmakingStateIdle, self._state_context
 	end

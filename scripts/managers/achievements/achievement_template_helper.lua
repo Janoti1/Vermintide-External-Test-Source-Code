@@ -61,7 +61,7 @@ AchievementTemplateHelper.check_level_difficulty = function (statistics_db, stat
 		return false
 	end
 
-	local difficulties = difficulty_manager:get_level_difficulties(level_id)
+	local difficulties = difficulty_manager:get_default_difficulties()
 	local difficulty_index
 
 	if not career then

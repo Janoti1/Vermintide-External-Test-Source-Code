@@ -511,7 +511,7 @@ HeroView.post_update_on_enter = function (self)
 	end
 end
 
-HeroView.post_update_on_exit = function (self)
+HeroView.post_update_on_exit = function (self, transition_params, view_in_use)
 	if self._machine then
 		self._machine:destroy()
 
@@ -520,7 +520,7 @@ HeroView.post_update_on_exit = function (self)
 
 	Managers.backend:commit()
 
-	if not self._force_ingame_menu then
+	if not view_in_use then
 		self:destroy_hdr_gui()
 	end
 end
@@ -571,12 +571,12 @@ HeroView._handle_view_popups = function (self)
 	end
 end
 
-HeroView.exit = function (self, return_to_game, ignore_sound)
+HeroView.exit = function (self, return_to_game, ignore_sound, no_fade)
 	local exit_transition = "exit_menu"
 
 	self.exiting = true
 
-	if self.is_in_inn and not self._force_ingame_menu then
+	if not no_fade and self.is_in_inn and not self._force_ingame_menu then
 		self.ingame_ui:transition_with_fade(exit_transition)
 	else
 		self.ingame_ui:handle_transition(exit_transition)
@@ -615,10 +615,10 @@ HeroView.unsuspend = function (self)
 	self.suspended = nil
 end
 
-HeroView.close_menu = function (self, return_to_main_screen, ignore_sound)
+HeroView.close_menu = function (self, return_to_main_screen, ignore_sound, no_fade)
 	local return_to_game = not return_to_main_screen
 
-	self:exit(return_to_game, ignore_sound)
+	self:exit(return_to_game, ignore_sound, no_fade)
 end
 
 HeroView.destroy = function (self)

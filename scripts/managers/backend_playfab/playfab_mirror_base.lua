@@ -866,9 +866,17 @@ PlayFabMirrorBase.handle_fix_data_ids_request_cb = function (self, result)
 
 	if new_user_read_only_data then
 		for key, value in pairs(new_user_read_only_data) do
-			local value_json = cjson.encode(value)
+			if type(value) == "table" then
+				local value_json = cjson.encode(value)
 
-			self:set_read_only_data(key, value_json, true)
+				self:set_read_only_data(key, value_json, true)
+			elseif value == "true" then
+				self:set_read_only_data(key, true, true)
+			elseif value == "false" then
+				self:set_read_only_data(key, false, true)
+			else
+				self:set_read_only_data(key, tonumber(value) or value, true)
+			end
 		end
 	end
 
@@ -876,9 +884,17 @@ PlayFabMirrorBase.handle_fix_data_ids_request_cb = function (self, result)
 
 	if new_user_data then
 		for key, value in pairs(new_user_data) do
-			local value_json = cjson.encode(value)
+			if type(value) == "table" then
+				local value_json = cjson.encode(value)
 
-			self:set_user_data(key, value_json, true)
+				self:set_user_data(key, value_json, true)
+			elseif value == "true" then
+				self:set_user_data(key, true, true)
+			elseif value == "false" then
+				self:set_user_data(key, false, true)
+			else
+				self:set_user_data(key, tonumber(value) or value, true)
+			end
 		end
 	end
 
@@ -1517,7 +1533,18 @@ PlayFabMirrorBase._set_inital_career_data = function (self, career_name, charact
 			else
 				local item = self._inventory_items[slot_item_value]
 
-				if not item then
+				if item then
+					local mechanism_name = Managers.mechanism:current_mechanism_name()
+
+					if mechanism_name == "versus" then
+						local custom_data = item.CustomData
+						local rarity = custom_data and custom_data.rarity
+
+						if rarity ~= "default" then
+							broken_slots[slot_name] = true
+						end
+					end
+				else
 					broken_slots[slot_name] = true
 				end
 			end

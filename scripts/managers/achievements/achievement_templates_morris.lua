@@ -5,7 +5,7 @@ local function check_journey_completed_difficulty(statistics_db, stats_id, journ
 		return false
 	end
 
-	local difficulties = difficulty_manager:get_level_difficulties()
+	local difficulties = difficulty_manager:get_default_difficulties()
 	local difficulty_index = LevelUnlockUtils.completed_journey_difficulty_index(statistics_db, stats_id, journey_name)
 
 	if not difficulty_index then
@@ -30,7 +30,7 @@ local function check_journey_dominant_god_completed_difficulty(statistics_db, st
 		return false
 	end
 
-	local difficulties = difficulty_manager:get_level_difficulties()
+	local difficulties = difficulty_manager:get_default_difficulties()
 	local difficulty_index = LevelUnlockUtils.completed_journey_dominant_god_difficulty_index(statistics_db, stats_id, dominant_god)
 
 	if not difficulty_index then
@@ -55,7 +55,7 @@ local function check_hero_journey_completed_difficulty(statistics_db, stats_id, 
 		return false
 	end
 
-	local difficulties = difficulty_manager:get_level_difficulties()
+	local difficulties = difficulty_manager:get_default_difficulties()
 	local difficulty_index = LevelUnlockUtils.completed_hero_journey_difficulty_index(statistics_db, stats_id, hero, journey_name)
 
 	if not difficulty_index then

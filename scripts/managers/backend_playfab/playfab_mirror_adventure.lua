@@ -152,6 +152,14 @@ PlayFabMirrorAdventure.versus_player_setup_cb = function (self, result)
 
 	self._num_items_to_load = self._num_items_to_load - 1
 
+	local unlocked_cosmetics = function_result.unlocked_cosmetics
+
+	if unlocked_cosmetics then
+		self:set_read_only_data("unlocked_cosmetics", unlocked_cosmetics, true)
+
+		self._unlocked_cosmetics = self:_parse_unlocked_cosmetics()
+	end
+
 	if num_items_granted > 0 then
 		self:_request_user_inventory()
 	else

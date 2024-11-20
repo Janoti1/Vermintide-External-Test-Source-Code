@@ -63,6 +63,9 @@ HealthSystem.init = function (self, entity_system_creation_context, system_name)
 	self.updateable_unit_extensions = {}
 	self.active_damage_buffer_index = 1
 	self.extension_init_context.system_data = self
+	self._recent_attackers_free_list = {
+		[0] = 0
+	}
 end
 
 HealthSystem.destroy = function (self)
@@ -182,6 +185,36 @@ HealthSystem.suicide = function (self, unit)
 	local health_extension = ScriptUnit.extension(unit, "health_system")
 
 	health_extension:die("forced")
+end
+
+HealthSystem.rent_recent_attacker = function (self, attacker_breed, t)
+	local free_list = self._recent_attackers_free_list
+	local recent_attacker_data
+	local num_free = free_list[0]
+
+	if num_free > 0 then
+		recent_attacker_data = free_list[num_free]
+		free_list[0] = num_free - 1
+	else
+		recent_attacker_data = {}
+	end
+
+	self:refresh_recent_attacker(recent_attacker_data, attacker_breed, t)
+
+	return recent_attacker_data
+end
+
+HealthSystem.refresh_recent_attacker = function (self, recent_attacker_data, attacker_breed, t)
+	recent_attacker_data.attacker_breed = attacker_breed
+	recent_attacker_data.t = t
+end
+
+HealthSystem.return_recent_attacker = function (self, recent_attacker_data)
+	local free_list = self._recent_attackers_free_list
+	local num_free = free_list[0] + 1
+
+	free_list[num_free] = recent_attacker_data
+	free_list[0] = num_free
 end
 
 local debug_units = {}

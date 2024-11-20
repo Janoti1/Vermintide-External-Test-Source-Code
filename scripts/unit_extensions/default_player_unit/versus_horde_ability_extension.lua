@@ -22,6 +22,7 @@ VersusHordeAbilityExtension.init = function (self, extension_init_context, unit,
 	self._audio_system = Managers.state.entity:system("audio_system")
 	self._cooldown = self._horde_ability_system:cooldown()
 	self._pause_sync_until = 0
+	self._own_peer_id = Network.peer_id()
 end
 
 VersusHordeAbilityExtension._activate = function (self, t)
@@ -48,6 +49,10 @@ VersusHordeAbilityExtension.extensions_ready = function (self, world, unit)
 end
 
 VersusHordeAbilityExtension.update = function (self, t)
+	if self._owner_peer_id ~= self._own_peer_id then
+		return
+	end
+
 	if t < self._pause_sync_until then
 		return
 	end
@@ -62,10 +67,10 @@ VersusHordeAbilityExtension.update = function (self, t)
 
 	local input_activated = self._input_extension and self._input_extension:get("versus_horde_ability")
 	local is_in_ghost_mode = self._ghost_mode_extension:is_in_ghost_mode()
-	local allowed_to_use = cooldown_ready and (self._settings.enable_activation_in_ghost_mode or not is_in_ghost_mode)
+	local is_activation_allowed = cooldown_ready and self._horde_ability_system:is_activation_allowed(is_in_ghost_mode)
 
 	if input_activated then
-		if allowed_to_use then
+		if is_activation_allowed then
 			self:_activate(t)
 		else
 			local wwise_world = Managers.world:wwise_world(self._world)
@@ -167,4 +172,11 @@ end
 
 VersusHordeAbilityExtension.unit = function (self)
 	return self._unit
+end
+
+VersusHordeAbilityExtension.game_object_initialized = function (self, unit, go_id)
+	local game_session = Managers.state.network:game()
+
+	self._go_id = go_id
+	self._owner_peer_id = GameSession.game_object_field(game_session, go_id, "owner_peer_id")
 end

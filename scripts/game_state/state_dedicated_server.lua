@@ -231,10 +231,7 @@ StateDedicatedServer.setup_chat_manager = function (self, game_server)
 	}
 
 	Managers.chat:setup_network_context(network_context)
-
-	if Managers.mechanism:game_mechanism().setup_chats then
-		Managers.mechanism:game_mechanism():setup_chats()
-	end
+	Managers.mechanism:mechanism_try_call("register_chats")
 
 	local function member_func()
 		return game_server:members():get_members()
@@ -289,10 +286,7 @@ StateDedicatedServer._destroy_network = function (self)
 	self.parent.loading_context = {}
 
 	Managers.chat:unregister_channel(1)
-
-	if Managers.mechanism:game_mechanism().unregister_chats then
-		Managers.mechanism:game_mechanism():unregister_chats()
-	end
+	Managers.mechanism:mechanism_try_call("unregister_chats")
 
 	if self._network_transmit then
 		self._network_transmit:destroy()

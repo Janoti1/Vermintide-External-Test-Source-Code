@@ -666,7 +666,9 @@ HeroViewStateOverview._handle_friend_joining = function (self)
 		local join_lobby_data = friends_component_ui:join_lobby_data()
 
 		if join_lobby_data and Managers.matchmaking:allowed_to_initiate_join_lobby() then
-			Managers.matchmaking:request_join_lobby(join_lobby_data)
+			Managers.matchmaking:request_join_lobby(join_lobby_data, {
+				friend_join = true
+			})
 			self:close_menu(true)
 
 			return true

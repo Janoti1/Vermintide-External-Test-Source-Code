@@ -78,9 +78,10 @@ local disable_for_mechanism_versus_disabled = {
 	}
 }
 local HANDBOOK_OPTION = {
+	force_ingame_menu = true,
 	display_name = "tutorial_menu_header",
 	force_open = true,
-	fade = true,
+	fade = false,
 	transition_state = "handbook",
 	transition = "hero_view",
 	disable_for_mechanism = default_disable_for_mechanism

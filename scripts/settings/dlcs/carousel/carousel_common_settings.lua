@@ -5,7 +5,6 @@ require("scripts/unit_extensions/weapons/area_damage/area_damage_templates_vs")
 settings.mechanism_settings = {
 	versus = {
 		num_bosses_to_spawn = 2,
-		keep_leaving_players_grace_period = 120,
 		display_name = "area_selection_carousel_name",
 		server_port = 27017,
 		close_start_menu_sound_event = "Play_vs_hud_play_menu_close",
@@ -45,10 +44,14 @@ settings.mechanism_settings = {
 		deny_outline_color_change_for_party = {
 			dark_pact = true
 		},
+		keep_leaving_players_grace_period = math.huge,
 		override_career_availability = {},
 		playable_boss_terror_events = {
 			vs_chaos_troll = {
 				"playable_boss_chaos_troll"
+			},
+			vs_rat_ogre = {
+				"playable_boss_rat_ogre"
 			}
 		},
 		override_item_availability = {},
@@ -248,6 +251,8 @@ settings.inventory_package_list = {
 	"units/beings/player/dark_pact_first_person_base/chaos_troll/chr_first_person_bot_base",
 	"units/beings/player/dark_pact_first_person_base/skaven_common/chr_first_person_base",
 	"units/beings/player/dark_pact_first_person_base/skaven_common/chr_first_person_bot_base",
+	"units/beings/player/dark_pact_first_person_base/skaven_rat_ogre/chr_first_person_base",
+	"units/beings/player/dark_pact_first_person_base/skaven_rat_ogre/chr_first_person_bot_base",
 	"units/beings/player/dark_pact_third_person_base/skaven_gutter_runner/chr_third_person_base",
 	"units/beings/player/dark_pact_third_person_base/skaven_gutter_runner/chr_third_person_base_husk",
 	"units/beings/player/dark_pact_skins/skaven_gutter_runner/skin_0000/first_person/chr_first_person_mesh",
@@ -272,6 +277,10 @@ settings.inventory_package_list = {
 	"units/beings/player/dark_pact_third_person_base/chaos_troll/chr_third_person_base_husk",
 	"units/beings/player/dark_pact_skins/chaos_troll/skin_0000/first_person/chr_first_person_mesh",
 	"units/beings/player/dark_pact_skins/chaos_troll/skin_0000/third_person/chr_third_person_mesh",
+	"units/beings/player/dark_pact_third_person_base/skaven_rat_ogre/chr_third_person_base",
+	"units/beings/player/dark_pact_third_person_base/skaven_rat_ogre/chr_third_person_base_husk",
+	"units/beings/player/dark_pact_skins/skaven_rat_ogre/skin_0000/first_person/chr_first_person_mesh",
+	"units/beings/player/dark_pact_skins/skaven_rat_ogre/skin_0000/third_person/chr_third_person_mesh",
 	"units/weapons/player/dark_pact/wpn_skaven_packmaster_claw/wpn_skaven_packmaster_claw",
 	"units/weapons/player/dark_pact/wpn_skaven_packmaster_claw/wpn_skaven_packmaster_claw_3p",
 	"units/weapons/player/dark_pact/wpn_poison_wind_globe/wpn_poison_wind_globe_3p",
@@ -294,6 +303,7 @@ settings.husk_lookup = {
 	"units/beings/player/dark_pact_third_person_base/skaven_ratlinggunner/chr_third_person_base_husk",
 	"units/beings/player/dark_pact_third_person_base/skaven_warpfire_thrower/chr_third_person_base_husk",
 	"units/beings/player/dark_pact_third_person_base/chaos_troll/chr_third_person_base_husk",
+	"units/beings/player/dark_pact_third_person_base/skaven_rat_ogre/chr_third_person_base_husk",
 	"units/gameplay/versus_volume_objective",
 	"units/gameplay/versus_capture_point_objective",
 	"units/gameplay/versus_mission_objective",

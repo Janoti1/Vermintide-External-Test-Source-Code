@@ -15,11 +15,6 @@ GameModeBase.init = function (self, settings, world, network_server, is_server, 
 	self._initial_peers_ready = false
 	self._level_key = level_key
 	self._statistics_db = statistics_db
-
-	if script_data.ai_specials_spawning_disabled == nil then
-		script_data.ai_specials_spawning_disabled = self._settings.ai_specials_spawning_disabled
-	end
-
 	self._player_spawners = {}
 	self._pending_bot_remove = {}
 	self._num_pending_bot_remove = 0

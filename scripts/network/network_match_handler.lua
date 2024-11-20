@@ -13,18 +13,20 @@ local RPCS = {
 	"rpc_network_match_changed",
 	"rpc_network_match_request_sync"
 }
+local VERBOSE_LOG = true
 
-NetworkMatchHandler.init = function (self, network_handler, is_server, peer_id, server_peer_id)
+NetworkMatchHandler.init = function (self, network_handler, is_server, peer_id, server_peer_id, lobby)
 	self._network_handler = network_handler
 	self._is_server = is_server
 	self._my_peer_id = peer_id
 	self._server_peer_id = server_peer_id
 	self._stored_data = {}
+	self._lobby = lobby
 	self._data_by_peer = {
 		[peer_id] = self:_create_data({
 			is_synced = true,
 			is_dedicated_server = DEDICATED_SERVER,
-			player_name = not DEDICATED_SERVER and PlayerUtils.player_name(peer_id) or nil,
+			player_name = not DEDICATED_SERVER and PlayerUtils.player_name(peer_id, lobby) or nil,
 			leader_peer_id = self._server_peer_id,
 			is_match_owner = is_server and true,
 			versus_level = not DEDICATED_SERVER and ExperienceSettings.get_versus_level() or nil
@@ -85,14 +87,19 @@ NetworkMatchHandler.poll_propagation_peer = function (self)
 		propagation_peer = joining_lobby:lobby_host()
 	end
 
-	local old_propagation_peer = self._propagate_peer_id
+	local old_join_peer = self._join_lobby_peer_id
+	local has_new_join_peer = propagation_peer ~= old_join_peer
 
-	if propagation_peer ~= old_propagation_peer then
-		printf("[NetworkMatchHandler] Propagation peer changed. Old: %s, New: %s", old_propagation_peer, propagation_peer)
+	if propagation_peer == nil and PEER_ID_TO_CHANNEL[old_join_peer] then
+		has_new_join_peer = false
+	end
 
-		self._propagate_peer_id = propagation_peer
+	if has_new_join_peer then
+		printf("[NetworkMatchHandler] Join lobby peer changed. Old: %s, New: %s", old_join_peer, propagation_peer)
 
-		if old_propagation_peer then
+		self._join_lobby_peer_id = propagation_peer
+
+		if old_join_peer then
 			self:_clear_non_session_peers()
 		end
 
@@ -100,8 +107,10 @@ NetworkMatchHandler.poll_propagation_peer = function (self)
 
 		if propagation_peer then
 			self:sync_data_up()
-			self:send_rpc_down("rpc_network_match_changed", self._propagate_peer_id)
+			self:send_rpc_down("rpc_network_match_changed", propagation_peer)
 			self:_request_sync()
+		elseif old_join_peer == self._propagate_peer_id then
+			self._propagate_peer_id = nil
 		end
 	end
 end
@@ -116,6 +125,18 @@ NetworkMatchHandler.rpc_network_match_sync_player_data = function (self, channel
 	peer_data.is_match_owner = is_match_owner
 	peer_data.is_synced = true
 
+	if peer_id == self._join_lobby_peer_id then
+		if is_match_owner then
+			self._propagate_peer_id = peer_id
+		else
+			self._data_by_peer[self._my_peer_id].leader_peer_id = peer_id
+		end
+	end
+
+	if VERBOSE_LOG then
+		printf("[NetworkMatchHandler] Sync data received for peer %s (%s). has_leader=%s, is_match_owner=%s", peer_id, player_name, leader_peer_id, is_match_owner)
+	end
+
 	local sender_peer_id = CHANNEL_TO_PEER_ID[channel_id]
 
 	self:propagate_rpc("rpc_network_match_sync_player_data", sender_peer_id, peer_id, player_name, leader_peer_id, is_match_owner, versus_level)
@@ -129,18 +150,13 @@ end
 
 NetworkMatchHandler.rpc_network_match_changed = function (self, channel_id, new_match_owner_peer_id)
 	self:_clear_non_session_peers()
-
-	local peer_data = self._data_by_peer[new_match_owner_peer_id]
-
-	if peer_data then
-		peer_data.is_match_owner = true
-	end
-
-	printf("[NetworkMatchHandler] Network match changed. New match owner: %s", new_match_owner_peer_id)
+	self:_network_match_changed(new_match_owner_peer_id)
 	self:send_rpc_down("rpc_network_match_changed", new_match_owner_peer_id)
 end
 
 NetworkMatchHandler._network_match_changed = function (self, new_match_owner_peer_id)
+	printf("[NetworkMatchHandler] Network match changed. New match owner: %s", new_match_owner_peer_id)
+
 	for peer_id, peer_data in pairs(self._data_by_peer) do
 		peer_data.is_match_owner = false
 	end
@@ -370,8 +386,12 @@ NetworkMatchHandler.propagate_rpc_if = function (self, rpc, source_peer_id, cond
 end
 
 NetworkMatchHandler._clear_non_session_peers = function (self)
+	local lobby = self._lobby
+	local members = lobby:members()
+	local members_map = members:members_map()
+
 	for peer_id in pairs(self._data_by_peer) do
-		if not self._network_handler:is_peer_hot_join_synced(peer_id) then
+		if not members_map[peer_id] then
 			self._data_by_peer[peer_id] = nil
 		end
 	end

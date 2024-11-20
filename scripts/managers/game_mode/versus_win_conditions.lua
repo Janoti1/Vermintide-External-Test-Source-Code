@@ -10,6 +10,7 @@ local RPCS = {
 
 VersusWinConditions.init = function (self, versus_mechanism)
 	self._current_round = 0
+	self._current_set = 0
 	self._win_data = {}
 	self.mechanism = versus_mechanism
 	self._round_almost_over_time_breakpoint = GameModeSettings.versus.round_almost_over_time_breakpoint
@@ -57,6 +58,7 @@ end
 
 VersusWinConditions.hot_join_sync = function (self, peer_id)
 	local current_round = self._current_round
+	local current_set = self._current_set
 	local channel_id = PEER_ID_TO_CHANNEL[peer_id]
 
 	for party_id, total_data in pairs(self._win_data) do
@@ -65,7 +67,7 @@ VersusWinConditions.hot_join_sync = function (self, peer_id)
 		for i = 1, #sets_data do
 			local data = sets_data[i]
 
-			RPC.rpc_versus_set_score(channel_id, party_id, data.claimed_points, i, current_round)
+			RPC.rpc_versus_set_score(channel_id, party_id, data.claimed_points, i, current_set, current_round)
 		end
 	end
 end
@@ -88,6 +90,11 @@ VersusWinConditions.setup_round = function (self, is_server)
 	self._is_server = is_server
 	self._round_timer = objective_settings.round_timer or 36000
 	self._current_round = self._current_round + 1
+
+	if self._current_round % 2 == 1 then
+		self._current_set = self._current_set + 1
+	end
+
 	self._final_round = self.mechanism:is_last_set() and self.mechanism:get_state() == "round_2"
 	self._round_over = false
 	self._level_id = objective_settings.level_id
@@ -430,7 +437,11 @@ VersusWinConditions._has_nested_parent_objectives = function (self, objective_da
 	return nested_parent_objective.sub_objectives, nested_parent_objective.sub_objectives and num_nested_objectives or nil
 end
 
-VersusWinConditions.rpc_versus_set_score = function (self, sender, party_id, points, set_number, current_round)
+VersusWinConditions.rpc_versus_set_score = function (self, sender, party_id, points, set_number, current_set, current_round)
+	if current_set ~= 0 then
+		self._current_set = current_set
+	end
+
 	if current_round ~= 0 then
 		self._current_round = current_round
 	end
@@ -472,7 +483,7 @@ VersusWinConditions.is_final_round = function (self)
 	return self._final_round
 end
 
-VersusWinConditions.num_rounds_played = function (self)
+VersusWinConditions.get_current_round = function (self)
 	return self._current_round
 end
 
@@ -578,11 +589,12 @@ VersusWinConditions._add_points_collected = function (self, party_id, score)
 		return
 	end
 
+	local current_set = self._current_set
 	local current_round = self._current_round
 
 	data.claimed_points = data.claimed_points + score
 
-	Managers.state.network.network_transmit:send_rpc_clients("rpc_versus_set_score", party_id, data.claimed_points, set_index, current_round)
+	Managers.state.network.network_transmit:send_rpc_clients("rpc_versus_set_score", party_id, data.claimed_points, set_index, current_set, current_round)
 end
 
 VersusWinConditions.save_points_collected = function (self, party_id, set_number, score)
@@ -733,7 +745,7 @@ VersusWinConditions.set_score = function (self, value)
 		local network_transmit = Managers.state.network.network_transmit
 		local set_number = self.mechanism:get_current_set()
 
-		network_transmit:send_rpc_clients("rpc_versus_set_score", self._hero_party_id, value, set_number, 0)
+		network_transmit:send_rpc_clients("rpc_versus_set_score", self._hero_party_id, value, set_number, 0, 0)
 	end
 end
 
@@ -813,4 +825,8 @@ end
 
 VersusWinConditions.update_testify = function (self, dt, t)
 	Testify:poll_requests_through_handler(versus_win_conditions_testify, self)
+end
+
+VersusWinConditions.get_current_set = function (self)
+	return self._current_set
 end

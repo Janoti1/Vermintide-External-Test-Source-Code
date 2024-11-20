@@ -468,3 +468,13 @@ local UNLOCKED_WEAPON_POSES = {}
 BackendInterfaceItemTutorial.get_unlocked_weapon_poses = function (self)
 	return UNLOCKED_WEAPON_POSES
 end
+
+local EQUIPPED_WEAPON_POSES = {}
+
+BackendInterfaceItemTutorial.get_equipped_weapon_pose_skins = function (self)
+	return EQUIPPED_WEAPON_POSES
+end
+
+BackendInterfaceItemTutorial.get_equipped_weapon_pose_skin = function (self, parent_item_name)
+	return nil
+end

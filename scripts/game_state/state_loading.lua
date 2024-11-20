@@ -270,7 +270,7 @@ StateLoading._setup_first_time_ui = function (self)
 
 		if IS_WINDOWS or IS_LINUX then
 			level_name = Development.parameter("attract_mode") and BenchmarkSettings.auto_host_level or level_name
-			level_name = check_bool_string(Development.parameter("auto_host_level")) or level_name
+			level_name = check_bool_string(Development.parameter("auto_host_level")) or Development.parameter("vs_auto_search") and "carousel_hub" or level_name
 
 			local level_settings = LevelSettings[level_name]
 
@@ -1039,15 +1039,16 @@ StateLoading._verify_joined_lobby = function (self, dt, t)
 
 				local required_power_level_localized = Localize("required_power_level")
 
-				difficulty_error_message = string.format("* %s: %s", required_power_level_localized, tostring(UIUtils.presentable_hero_power_level(difficulty_settings.required_power_level))) .. "\n"
+				difficulty_error_message = string.format("* %s: %s", required_power_level_localized, tostring(UIUtils.presentable_hero_power_level(difficulty_settings.required_power_level)))
 			end
 
 			if difficulty_settings.extra_requirement_name then
+				local joining_existing_game = true
 				local extra_requirement_data = ExtraDifficultyRequirements[difficulty_settings.extra_requirement_name]
 
-				if not extra_requirement_data.requirement_function() and (lobby_quick_game ~= "true" or lobby_mechanism ~= "weave") then
+				if not extra_requirement_data.requirement_function(joining_existing_game) and (lobby_quick_game ~= "true" or lobby_mechanism ~= "weave") then
 					has_unlocked_difficulty = false
-					difficulty_error_message = difficulty_error_message .. "* " .. Localize(extra_requirement_data.description_text)
+					difficulty_error_message = difficulty_error_message .. string.format("\n* %s", Localize(extra_requirement_data.description_text))
 				end
 			end
 		end
@@ -1061,7 +1062,7 @@ StateLoading._verify_joined_lobby = function (self, dt, t)
 		elseif not has_unlocked_difficulty then
 			self:_destroy_lobby_client()
 
-			local failure_start_join_server_difficulty_requirement_failed = Localize("failure_start_join_server_difficulty_requirements_failed")
+			local failure_start_join_server_difficulty_requirement_failed = "failure_start_join_server_difficulty_requirements_failed"
 
 			self:create_popup(failure_start_join_server_difficulty_requirement_failed, "popup_error_topic", "restart_as_server", "menu_accept", difficulty_error_message)
 		elseif client_network_hash == lobby_network_hash or Development.parameter("ignore_network_hash") or Managers.mechanism:setting("ignore_network_hash") then
@@ -2116,11 +2117,8 @@ StateLoading._destroy_network = function (self, application_shutdown)
 		LobbyInternal.shutdown_client()
 	end
 
-	if Managers.mechanism:game_mechanism().unregister_chats then
-		Managers.mechanism:game_mechanism():unregister_chats()
-	end
-
 	Managers.chat:unregister_channel(1)
+	Managers.mechanism:mechanism_try_call("unregister_chats")
 
 	self.parent.loading_context = {}
 
@@ -2424,10 +2422,7 @@ StateLoading.setup_chat_manager = function (self, lobby, host_peer_id, my_peer_i
 	}
 
 	Managers.chat:setup_network_context(network_context)
-
-	if Managers.mechanism:game_mechanism().setup_chats then
-		Managers.mechanism:game_mechanism():setup_chats()
-	end
+	Managers.mechanism:mechanism_try_call("register_chats")
 
 	local function member_func()
 		if DEDICATED_SERVER and Managers.level_transition_handler:in_hub_level() then

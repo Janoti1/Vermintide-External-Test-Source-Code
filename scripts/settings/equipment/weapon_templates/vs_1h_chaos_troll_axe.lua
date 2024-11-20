@@ -5,26 +5,18 @@ local planted_decrease_movement_settings = {
 	charge = {
 		{
 			start_time = 0,
-			external_multiplier = 0.4,
-			end_time = 0.4,
-			buff_name = "planted_decrease_movement"
-		},
-		{
-			start_time = 0.4,
-			external_multiplier = 0.6,
-			end_time = 0.6,
-			buff_name = "planted_decrease_movement"
-		},
-		{
-			start_time = 0.6,
-			external_multiplier = 0.4,
-			end_time = 0.8,
-			buff_name = "planted_decrease_movement"
-		},
-		{
-			start_time = 0.8,
 			external_multiplier = 0.2,
-			buff_name = "planted_decrease_movement"
+			buff_name = "planted_charging_decrease_movement"
+		},
+		{
+			start_time = 0,
+			external_value = 2,
+			buff_name = "set_rotation_limit"
+		},
+		{
+			start_time = 0,
+			external_multiplier = 0.75,
+			buff_name = "planted_decrease_rotation_speed"
 		}
 	},
 	light_attack_1 = {
@@ -38,24 +30,53 @@ local planted_decrease_movement_settings = {
 			start_time = 0.35,
 			external_multiplier = 0.6,
 			end_time = 0.7,
-			buff_name = "planted_decrease_movement"
+			buff_name = "planted_fast_decrease_movement"
 		},
 		{
 			start_time = 0.7,
 			external_multiplier = 1,
 			end_time = 1,
-			buff_name = "planted_decrease_movement"
+			buff_name = "planted_fast_decrease_movement"
 		},
 		{
 			start_time = 1,
 			external_multiplier = 0.4,
 			end_time = 1.2,
-			buff_name = "planted_decrease_movement"
+			buff_name = "planted_fast_decrease_movement"
 		},
 		{
 			start_time = 1.2,
-			external_multiplier = 0.6,
-			buff_name = "planted_decrease_movement"
+			buff_name = "planted_return_to_normal_walk_movement"
+		},
+		{
+			start_time = 0.6,
+			external_value = 1,
+			end_time = 1.3,
+			buff_name = "set_rotation_limit"
+		},
+		{
+			start_time = 0,
+			external_multiplier = 0.75,
+			end_time = 0.35,
+			buff_name = "planted_decrease_rotation_speed"
+		},
+		{
+			start_time = 0.35,
+			external_multiplier = 0.5,
+			end_time = 0.7,
+			buff_name = "planted_decrease_rotation_speed"
+		},
+		{
+			start_time = 0.7,
+			external_multiplier = 0.75,
+			end_time = 1,
+			buff_name = "planted_decrease_rotation_speed"
+		},
+		{
+			start_time = 1,
+			external_multiplier = 0.75,
+			end_time = 1.2,
+			buff_name = "planted_decrease_rotation_speed"
 		}
 	},
 	light_attack_2 = {
@@ -69,24 +90,53 @@ local planted_decrease_movement_settings = {
 			start_time = 0.35,
 			external_multiplier = 0.6,
 			end_time = 0.7,
-			buff_name = "planted_decrease_movement"
+			buff_name = "planted_fast_decrease_movement"
 		},
 		{
 			start_time = 0.7,
 			external_multiplier = 1,
 			end_time = 1,
-			buff_name = "planted_decrease_movement"
+			buff_name = "planted_fast_decrease_movement"
 		},
 		{
 			start_time = 1,
 			external_multiplier = 0.4,
 			end_time = 1.2,
-			buff_name = "planted_decrease_movement"
+			buff_name = "planted_fast_decrease_movement"
 		},
 		{
 			start_time = 1.2,
-			external_multiplier = 0.6,
-			buff_name = "planted_decrease_movement"
+			buff_name = "planted_return_to_normal_walk_movement"
+		},
+		{
+			start_time = 0.6,
+			external_value = 1,
+			end_time = 1.3,
+			buff_name = "set_rotation_limit"
+		},
+		{
+			start_time = 0,
+			external_multiplier = 0.75,
+			end_time = 0.35,
+			buff_name = "planted_decrease_rotation_speed"
+		},
+		{
+			start_time = 0.35,
+			external_multiplier = 0.5,
+			end_time = 0.7,
+			buff_name = "planted_decrease_rotation_speed"
+		},
+		{
+			start_time = 0.7,
+			external_multiplier = 0.75,
+			end_time = 1,
+			buff_name = "planted_decrease_rotation_speed"
+		},
+		{
+			start_time = 1,
+			external_multiplier = 0.75,
+			end_time = 1.2,
+			buff_name = "planted_decrease_rotation_speed"
 		}
 	},
 	heavy_attack = {
@@ -94,7 +144,7 @@ local planted_decrease_movement_settings = {
 			start_time = 0,
 			external_multiplier = 0.6,
 			end_time = 0.1,
-			buff_name = "planted_decrease_movement"
+			buff_name = "planted_fast_decrease_movement"
 		},
 		{
 			start_time = 0.1,
@@ -110,8 +160,31 @@ local planted_decrease_movement_settings = {
 		},
 		{
 			start_time = 1.1,
-			external_multiplier = 1,
-			buff_name = "planted_decrease_movement"
+			buff_name = "planted_return_to_normal_walk_movement"
+		},
+		{
+			start_time = 0,
+			external_value = 0.1,
+			end_time = 0.7,
+			buff_name = "set_rotation_limit"
+		},
+		{
+			start_time = 0,
+			external_multiplier = 0.5,
+			end_time = 0.1,
+			buff_name = "planted_decrease_rotation_speed"
+		},
+		{
+			start_time = 0.1,
+			external_multiplier = 0.5,
+			end_time = 0.7,
+			buff_name = "planted_decrease_rotation_speed"
+		},
+		{
+			start_time = 0.7,
+			external_multiplier = 0.75,
+			end_time = 1,
+			buff_name = "planted_decrease_rotation_speed"
 		}
 	}
 }

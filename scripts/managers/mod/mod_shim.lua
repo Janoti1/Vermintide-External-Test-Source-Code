@@ -194,6 +194,19 @@ ModShim.wedges = {
 						return mod_func(hooked_function, self, ...)
 					end
 				end
+			},
+			{
+				name = "OverchargeBarUI._update_overcharge",
+				func = function (vmf_mod, mod_func, mod_name, hooked_function, self, ...)
+					local player = Managers.player:local_player()
+					local party = player and player:get_party()
+
+					if party and party.name == "dark_pact" then
+						return hooked_function(self, ...)
+					else
+						return mod_func(hooked_function, self, ...)
+					end
+				end
 			}
 		}
 	}
@@ -342,7 +355,7 @@ ModShim._mod_wedges = function (self, mod_name, timestamp)
 		local wedge_date = self:_parse_timestamp(wedge.date)
 
 		if wedge_date < timestamp then
-			printf("[ModShim] <%s> Wedge ignored due to being outdated. Wedge created '%s' (%s), mod updated '%s' (%s)", mod_name, wedge.date, wedge_date, last_updated, last_updated_date)
+			printf("[ModShim] <%s> Wedge ignored due to being outdated. Wedge created '%s' (%s), mod updated '%s'", mod_name, wedge.date, wedge_date, timestamp)
 
 			return
 		end

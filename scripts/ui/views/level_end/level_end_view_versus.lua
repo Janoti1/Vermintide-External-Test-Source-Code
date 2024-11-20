@@ -125,6 +125,7 @@ LevelEndViewVersus._calculate_awards = function (self)
 
 	self._sorted_awards = sorted_awards
 
+	self:_save_award_stats()
 	table.dump(self._sorted_awards, "AWARDS", 3)
 
 	local scores = {}
@@ -140,6 +141,38 @@ LevelEndViewVersus._calculate_awards = function (self)
 
 	table.sort(scores, sort_func)
 	table.dump(scores, "SCORES", 2)
+end
+
+LevelEndViewVersus._save_award_stats = function (self)
+	local stats_interface = Managers.backend:get_interface("statistics")
+	local stats = stats_interface:get_stats()
+	local statistics_db = StatisticsDatabase:new()
+	local local_player_id = 1
+	local unique_id = PlayerUtils.unique_player_id(Network.peer_id(), local_player_id)
+
+	statistics_db:register(unique_id, "player", stats)
+
+	local awards
+
+	for _, award_data in ipairs(self._sorted_awards) do
+		if award_data.stats_id == unique_id then
+			awards = award_data.awards
+
+			break
+		end
+	end
+
+	if awards then
+		for _, award in ipairs(awards) do
+			local settings = award.award_settings
+			local stat_key = settings.stat_key
+
+			statistics_db:increment_stat(unique_id, stat_key)
+		end
+	end
+
+	stats_interface:save_explicit(unique_id, statistics_db)
+	Managers.backend:commit()
 end
 
 LevelEndViewVersus._calculate_mvp = function (self, awards, player_session_scores)
@@ -217,22 +250,24 @@ LevelEndViewVersus._calculate_mvp = function (self, awards, player_session_score
 
 	if mvp_stats_id then
 		table.insert(awards[mvp_stats_id], 1, {
-			sound = "Play_vs_hud_eom_parading_mvp",
 			award_mask_material = "mvp_award_mask",
+			sound = "Play_vs_hud_eom_parading_mvp",
 			header = "mvp",
 			value = 10,
-			award_material = "mvp_award"
+			award_material = "mvp_award",
+			award_settings = EndScreenAwardSettingsLookup.vs_award_mvp
 		})
 	else
 		mvp_stats_id = Network.peer_id() .. ":1"
 		awards[mvp_stats_id] = awards[mvp_stats_id] or {}
 
 		table.insert(awards[mvp_stats_id], 1, {
-			sound = "Play_vs_hud_eom_parading_mvp",
 			award_mask_material = "mvp_award_mask",
+			sound = "Play_vs_hud_eom_parading_mvp",
 			header = "mvp",
 			value = 10,
-			award_material = "mvp_award"
+			award_material = "mvp_award",
+			award_settings = EndScreenAwardSettingsLookup.vs_award_mvp
 		})
 	end
 
@@ -558,6 +593,10 @@ LevelEndViewVersus._handle_input = function (self, dt, t)
 
 		if UIUtils.is_button_pressed(continue_button) or gamepad_active and input_service:get("refresh") or not gamepad_active and input_service:get("confirm_press") then
 			self._parading_done = true
+
+			self:play_sound("play_gui_start_menu_button_click")
+		elseif UIUtils.is_button_hover_enter(continue_button) then
+			self:play_sound("Play_hud_hover")
 		end
 	end
 
@@ -847,13 +886,15 @@ LevelEndViewVersus.get_hero_from_score = function (self, player_data, award_data
 	self._random_seed = random_seed
 
 	local breed = breeds[random_number] or EMPTY_TABLE
-	local breed_gear = breed.default_gear or EMPTY_TABLE
-	local breed_weapon = breed_gear.slot_melee or breed_gear.slot_ranged
+	local breed_name = breed and breed.name
+	local pactsworn_cosmetics = breed and player_data.pactsworn_cosmetics and player_data.pactsworn_cosmetics[breed_name]
+	local breed_gear = pactsworn_cosmetics or breed.default_gear or EMPTY_TABLE
+	local breed_weapon = breed_gear.weapon or breed_gear.slot_melee or breed_gear.slot_ranged
 	local breed_weapon_item = breed_weapon and {
 		item_name = breed_weapon
 	} or nil
-	local breed_weapon_slot = not table.is_empty(breed_gear) and (breed_gear.slot_melee and "melee" or "ranged")
-	local breed_skin = breed_gear.slot_skin
+	local breed_weapon_slot = not table.is_empty(breed_gear) and (breed_gear.weapon_slot and breed_gear.weapon_slot == "slot_melee" and "melee" or "ranged" or breed_gear.slot_melee and "melee" or "ranged")
+	local breed_skin = breed_gear.skin or breed_gear.slot_skin
 
 	return {
 		stats_id = player_data.stats_id,
@@ -867,8 +908,6 @@ LevelEndViewVersus.get_hero_from_score = function (self, player_data, award_data
 		player_level = player_data.player_level,
 		award_material = award_settings.award_material or nil,
 		versus_player_level = player_data.versus_player_level,
-		weapon_slot = weapon_pose_slot or weapon_slot or nil,
-		weapon_slot = breed_weapon_slot or weapon_slot,
 		weapon_slot = breed_weapon_slot or weapon_pose_slot or weapon_slot,
 		breed = breed,
 		weapon_pose_anim_event = weapon_pose_anim_event,

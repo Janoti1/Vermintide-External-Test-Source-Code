@@ -804,6 +804,10 @@ end
 
 IngameUI._render_debug_ui = function (self, dt, t)
 	if not script_data.disable_debug_draw then
+		local disable_colorize_unlocalized_strings = script_data.disable_colorize_unlocalized_strings
+
+		script_data.disable_colorize_unlocalized_strings = true
+
 		if self.menu_active and GameSettingsDevelopment.show_version_info and not script_data.hide_version_info then
 			self:_render_version_info()
 		end
@@ -811,6 +815,8 @@ IngameUI._render_debug_ui = function (self, dt, t)
 		if GameSettingsDevelopment.show_fps and not script_data.hide_fps then
 			self:_render_fps(dt)
 		end
+
+		script_data.disable_colorize_unlocalized_strings = disable_colorize_unlocalized_strings
 	end
 end
 
@@ -894,7 +900,7 @@ IngameUI._post_handle_transition = function (self)
 
 	if old_view and old_view.post_update_on_exit then
 		printf("[IngameUI] menu view post_update_on_exit %s", old_view)
-		old_view:post_update_on_exit(transition_params)
+		old_view:post_update_on_exit(transition_params, self.new_transition_old_view == self.current_view)
 	end
 
 	local new_view = self.views[self.current_view]

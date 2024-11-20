@@ -1993,11 +1993,7 @@ StateIngame.on_exit = function (self, application_shutdown)
 		end
 
 		Managers.chat:unregister_channel(1)
-
-		if Managers.mechanism:game_mechanism().unregister_chats then
-			Managers.mechanism:game_mechanism():unregister_chats()
-		end
-
+		Managers.mechanism:mechanism_try_call("unregister_chats")
 		Managers.deed:network_context_destroyed()
 		level_transition_handler.enemy_package_loader:network_context_destroyed()
 		level_transition_handler.transient_package_loader:network_context_destroyed()

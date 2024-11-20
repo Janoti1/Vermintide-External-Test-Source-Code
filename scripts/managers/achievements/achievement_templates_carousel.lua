@@ -722,94 +722,21 @@ local values = {
 }
 
 for i = 1, #values do
-	local always_run = false
-	local events, event_func
-
-	if i == 1 then
-		always_run = true
-		events = {
-			"register_kill",
-			"register_knockdown"
-		}
-
-		function event_func(statistics_db, stats_id, template_data, event_name, event_data)
-			local current_mechanism_name = Managers.mechanism:current_mechanism_name()
-
-			if current_mechanism_name ~= "versus" then
-				return
-			end
-
-			local attacker_unit, victim_unit
-
-			if event_name == "register_knockdown" then
-				local attacker_player = event_data[register_knockdown_attacker_player]
-
-				attacker_unit = attacker_player.player_unit
-				victim_unit = event_data[register_knockdown_victim_unit]
-			else
-				local damage_data = event_data[register_kill_damage_data]
-
-				attacker_unit = damage_data[DamageDataIndex.ATTACKER]
-				victim_unit = event_data[register_kill_victim_unit]
-			end
-
-			local local_player = Managers.player:local_player()
-			local local_player_unit = local_player.player_unit
-			local health_ext = ScriptUnit.has_extension(victim_unit, "health_system")
-
-			if health_ext then
-				local local_player_unique_id = local_player:unique_id()
-				local is_recent_attacker = health_ext:was_attacked_by(local_player_unique_id)
-
-				if is_recent_attacker then
-					attacker_unit = local_player_unit
-				end
-			end
-
-			if not attacker_unit or local_player_unit ~= attacker_unit then
-				return
-			end
-
-			local attacker_breed = Unit.get_data(attacker_unit, "breed")
-
-			if attacker_breed.name ~= "vs_packmaster" then
-				return
-			end
-
-			local victim_breed
-
-			if event_name == "register_knockdown" then
-				victim_breed = event_data[register_knockdown_victim_breed]
-			else
-				victim_breed = event_data[register_kill_victim_breed]
-			end
-
-			if not victim_breed.is_hero then
-				return
-			end
-
-			statistics_db:increment_stat(stats_id, "vs_packmaster_eliminations")
-		end
-	end
-
 	achievements["vs_packmaster_eliminations_" .. string.format("%02d", i)] = {
-		group = "vs_packmaster_eliminations",
-		display_completion_ui = true,
 		required_dlc = "carousel",
+		display_completion_ui = true,
+		group = "vs_packmaster_eliminations",
 		name = "achv_packmaster_" .. string.format("%02d", i) .. "_vs_name",
 		desc = function ()
 			return string.format(Localize("achv_packmaster_" .. string.format("%02d", i) .. "_vs_desc"), values[i])
 		end,
 		icon = "packmaster_" .. i,
-		always_run = always_run,
-		events = events,
-		on_event = event_func,
 		completed = function (statistics_db, stats_id)
-			return statistics_db:get_persistent_stat(stats_id, "vs_packmaster_eliminations") >= values[i]
+			return statistics_db:get_persistent_stat(stats_id, "eliminations_as_breed", "vs_packmaster") >= values[i]
 		end,
 		progress = function (statistics_db, stats_id)
 			local total = values[i]
-			local count = math.min(statistics_db:get_persistent_stat(stats_id, "vs_packmaster_eliminations"), total)
+			local count = math.min(statistics_db:get_persistent_stat(stats_id, "eliminations_as_breed", "vs_packmaster"), total)
 
 			return {
 				count,
@@ -915,94 +842,21 @@ local values = {
 }
 
 for i = 1, #values do
-	local always_run = false
-	local events, event_func
-
-	if i == 1 then
-		always_run = true
-		events = {
-			"register_kill",
-			"register_knockdown"
-		}
-
-		function event_func(statistics_db, stats_id, template_data, event_name, event_data)
-			local current_mechanism_name = Managers.mechanism:current_mechanism_name()
-
-			if current_mechanism_name ~= "versus" then
-				return
-			end
-
-			local attacker_unit, victim_unit
-
-			if event_name == "register_knockdown" then
-				local attacker_player = event_data[register_knockdown_attacker_player]
-
-				attacker_unit = attacker_player.player_unit
-				victim_unit = event_data[register_knockdown_victim_unit]
-			else
-				local damage_data = event_data[register_kill_damage_data]
-
-				attacker_unit = damage_data[DamageDataIndex.ATTACKER]
-				victim_unit = event_data[register_kill_victim_unit]
-			end
-
-			local local_player = Managers.player:local_player()
-			local local_player_unit = local_player.player_unit
-			local health_ext = ScriptUnit.has_extension(victim_unit, "health_system")
-
-			if health_ext then
-				local local_player_unique_id = local_player:unique_id()
-				local is_recent_attacker = health_ext:was_attacked_by(local_player_unique_id)
-
-				if is_recent_attacker then
-					attacker_unit = local_player_unit
-				end
-			end
-
-			if not attacker_unit or local_player_unit ~= attacker_unit then
-				return
-			end
-
-			local attacker_breed = Unit.get_data(attacker_unit, "breed")
-
-			if attacker_breed.name ~= "vs_gutter_runner" then
-				return
-			end
-
-			local victim_breed
-
-			if event_name == "register_knockdown" then
-				victim_breed = event_data[register_knockdown_victim_breed]
-			else
-				victim_breed = event_data[register_kill_victim_breed]
-			end
-
-			if not victim_breed.is_hero then
-				return
-			end
-
-			statistics_db:increment_stat(stats_id, "vs_gutter_runner_eliminations")
-		end
-	end
-
 	achievements["vs_gutter_runner_eliminations_" .. string.format("%02d", i)] = {
-		group = "vs_gutter_runner_eliminations",
-		display_completion_ui = true,
 		required_dlc = "carousel",
+		display_completion_ui = true,
+		group = "vs_gutter_runner_eliminations",
 		name = "achv_gutter_runner_" .. string.format("%02d", i) .. "_vs_name",
 		desc = function ()
 			return string.format(Localize("achv_gutter_runner_" .. string.format("%02d", i) .. "_vs_desc"), values[i])
 		end,
 		icon = "gutter_runner_" .. i,
-		always_run = always_run,
-		events = events,
-		on_event = event_func,
 		completed = function (statistics_db, stats_id)
-			return statistics_db:get_persistent_stat(stats_id, "vs_gutter_runner_eliminations") >= values[i]
+			return statistics_db:get_persistent_stat(stats_id, "eliminations_as_breed", "vs_gutter_runner") >= values[i]
 		end,
 		progress = function (statistics_db, stats_id)
 			local total = values[i]
-			local count = math.min(statistics_db:get_persistent_stat(stats_id, "vs_gutter_runner_eliminations"), total)
+			local count = math.min(statistics_db:get_persistent_stat(stats_id, "eliminations_as_breed", "vs_gutter_runner"), total)
 
 			return {
 				count,
@@ -1151,69 +1005,21 @@ local values = {
 }
 
 for i = 1, #values do
-	local always_run = false
-	local events, event_func
-
-	if i == 1 then
-		always_run = true
-		events = {
-			"register_damage"
-		}
-
-		function event_func(statistics_db, stats_id, template_data, event_name, event_data)
-			local current_mechanism_name = Managers.mechanism:current_mechanism_name()
-
-			if current_mechanism_name ~= "versus" then
-				return
-			end
-
-			local damage_data = event_data[register_damage_damage_data]
-			local attacker_unit = damage_data[DamageDataIndex.ATTACKER]
-			local damage_amount = damage_data[DamageDataIndex.DAMAGE_AMOUNT]
-			local local_player_unit = Managers.player:local_player().player_unit
-
-			if not attacker_unit or local_player_unit ~= attacker_unit then
-				return
-			end
-
-			if damage_amount == 0 then
-				return
-			end
-
-			local attacker_breed = Unit.get_data(attacker_unit, "breed")
-
-			if attacker_breed.name ~= "vs_warpfire_thrower" then
-				return
-			end
-
-			local victim_breed = event_data[register_damage_target_breed]
-
-			if not victim_breed.is_hero then
-				return
-			end
-
-			statistics_db:modify_stat_by_amount(stats_id, "vs_warpfire_thrower_damage", damage_amount)
-		end
-	end
-
 	achievements["vs_warpfire_thrower_damage_" .. string.format("%02d", i)] = {
-		group = "vs_warpfire_thrower_damage",
-		display_completion_ui = true,
 		required_dlc = "carousel",
+		display_completion_ui = true,
+		group = "vs_warpfire_thrower_damage",
 		name = "achv_warpfire_thrower_" .. string.format("%02d", i) .. "_vs_name",
 		desc = function ()
 			return string.format(Localize("achv_warpfire_thrower_" .. string.format("%02d", i) .. "_vs_desc"), values[i])
 		end,
 		icon = "warpfire_thrower_" .. i,
-		always_run = always_run,
-		events = events,
-		on_event = event_func,
 		completed = function (statistics_db, stats_id)
-			return statistics_db:get_persistent_stat(stats_id, "vs_warpfire_thrower_damage") >= values[i]
+			return statistics_db:get_persistent_stat(stats_id, "damage_dealt_as_breed", "vs_warpfire_thrower") >= values[i]
 		end,
 		progress = function (statistics_db, stats_id)
 			local total = values[i]
-			local count = math.min(statistics_db:get_persistent_stat(stats_id, "vs_warpfire_thrower_damage"), total)
+			local count = math.min(statistics_db:get_persistent_stat(stats_id, "damage_dealt_as_breed", "vs_warpfire_thrower"), total)
 
 			return {
 				count,
@@ -1407,69 +1213,21 @@ local values = {
 }
 
 for i = 1, #values do
-	local always_run = false
-	local events, event_func
-
-	if i == 1 then
-		always_run = true
-		events = {
-			"register_damage"
-		}
-
-		function event_func(statistics_db, stats_id, template_data, event_name, event_data)
-			local current_mechanism_name = Managers.mechanism:current_mechanism_name()
-
-			if current_mechanism_name ~= "versus" then
-				return
-			end
-
-			local damage_data = event_data[register_damage_damage_data]
-			local attacker_unit = damage_data[DamageDataIndex.ATTACKER]
-			local damage_amount = damage_data[DamageDataIndex.DAMAGE_AMOUNT]
-			local local_player_unit = Managers.player:local_player().player_unit
-
-			if not attacker_unit or local_player_unit ~= attacker_unit then
-				return
-			end
-
-			if damage_amount == 0 then
-				return
-			end
-
-			local attacker_breed = Unit.get_data(attacker_unit, "breed")
-
-			if attacker_breed.name ~= "vs_ratling_gunner" then
-				return
-			end
-
-			local victim_breed = event_data[register_damage_target_breed]
-
-			if not victim_breed.is_hero then
-				return
-			end
-
-			statistics_db:modify_stat_by_amount(stats_id, "vs_ratling_gunner_damage", damage_amount)
-		end
-	end
-
 	achievements["vs_ratling_gunner_damage_" .. string.format("%02d", i)] = {
-		group = "vs_ratling_gunner_damage",
-		display_completion_ui = true,
 		required_dlc = "carousel",
+		display_completion_ui = true,
+		group = "vs_ratling_gunner_damage",
 		name = "achv_ratling_gunner_" .. string.format("%02d", i) .. "_vs_name",
 		desc = function ()
 			return string.format(Localize("achv_ratling_gunner_" .. string.format("%02d", i) .. "_vs_desc"), values[i])
 		end,
 		icon = "ratling_gunner_" .. i,
-		always_run = always_run,
-		events = events,
-		on_event = event_func,
 		completed = function (statistics_db, stats_id)
-			return statistics_db:get_persistent_stat(stats_id, "vs_ratling_gunner_damage") >= values[i]
+			return statistics_db:get_persistent_stat(stats_id, "damage_dealt_as_breed", "vs_ratling_gunner") >= values[i]
 		end,
 		progress = function (statistics_db, stats_id)
 			local total = values[i]
-			local count = math.min(statistics_db:get_persistent_stat(stats_id, "vs_ratling_gunner_damage"), total)
+			local count = math.min(statistics_db:get_persistent_stat(stats_id, "damage_dealt_as_breed", "vs_ratling_gunner"), total)
 
 			return {
 				count,
@@ -1600,75 +1358,21 @@ local values = {
 }
 
 for i = 1, #values do
-	local always_run = false
-	local events, event_func
-
-	if i == 1 then
-		always_run = true
-		events = {
-			"register_damage"
-		}
-
-		function event_func(statistics_db, stats_id, template_data, event_name, event_data)
-			local current_mechanism_name = Managers.mechanism:current_mechanism_name()
-
-			if current_mechanism_name ~= "versus" then
-				return
-			end
-
-			local damage_data = event_data[register_damage_damage_data]
-			local damage_type = damage_data[DamageDataIndex.DAMAGE_TYPE]
-			local damage_amount = damage_data[DamageDataIndex.DAMAGE_AMOUNT]
-
-			if damage_amount == 0 then
-				return
-			end
-
-			if damage_type ~= "gas" then
-				return
-			end
-
-			local attacker_player_unit = event_data[register_damage_attacker_unit]
-			local local_player_unit = Managers.player:local_player().player_unit
-
-			if not attacker_player_unit or local_player_unit ~= attacker_player_unit then
-				return
-			end
-
-			local attacker_breed = Unit.get_data(attacker_player_unit, "breed")
-
-			if attacker_breed.name ~= "vs_poison_wind_globadier" then
-				return
-			end
-
-			local victim_breed = event_data[register_damage_target_breed]
-
-			if not victim_breed.is_hero then
-				return
-			end
-
-			statistics_db:modify_stat_by_amount(stats_id, "vs_poison_wind_globadier_damage", damage_amount)
-		end
-	end
-
 	achievements["vs_poison_wind_globadier_damage_" .. string.format("%02d", i)] = {
-		group = "vs_poison_wind_globadier_damage",
-		display_completion_ui = true,
 		required_dlc = "carousel",
+		display_completion_ui = true,
+		group = "vs_poison_wind_globadier_damage",
 		name = "achv_globadier_" .. string.format("%02d", i) .. "_vs_name",
 		desc = function ()
 			return string.format(Localize("achv_globadier_" .. string.format("%02d", i) .. "_vs_desc"), values[i])
 		end,
 		icon = "globadier_" .. i,
-		always_run = always_run,
-		events = events,
-		on_event = event_func,
 		completed = function (statistics_db, stats_id)
-			return statistics_db:get_persistent_stat(stats_id, "vs_poison_wind_globadier_damage") >= values[i]
+			return statistics_db:get_persistent_stat(stats_id, "damage_dealt_as_breed", "vs_poison_wind_globadier") >= values[i]
 		end,
 		progress = function (statistics_db, stats_id)
 			local total = values[i]
-			local count = math.min(statistics_db:get_persistent_stat(stats_id, "vs_poison_wind_globadier_damage"), total)
+			local count = math.min(statistics_db:get_persistent_stat(stats_id, "damage_dealt_as_breed", "vs_poison_wind_globadier"), total)
 
 			return {
 				count,
@@ -1824,69 +1528,21 @@ local values = {
 }
 
 for i = 1, #values do
-	local always_run = false
-	local events, event_func
-
-	if i == 1 then
-		always_run = true
-		events = {
-			"register_damage"
-		}
-
-		function event_func(statistics_db, stats_id, template_data, event_name, event_data)
-			local current_mechanism_name = Managers.mechanism:current_mechanism_name()
-
-			if current_mechanism_name ~= "versus" then
-				return
-			end
-
-			local damage_data = event_data[register_damage_damage_data]
-			local attacker_unit = damage_data[DamageDataIndex.ATTACKER]
-			local damage_amount = damage_data[DamageDataIndex.DAMAGE_AMOUNT]
-			local local_player_unit = Managers.player:local_player().player_unit
-
-			if not attacker_unit or local_player_unit ~= attacker_unit then
-				return
-			end
-
-			if damage_amount == 0 then
-				return
-			end
-
-			local attacker_breed = Unit.get_data(attacker_unit, "breed")
-
-			if attacker_breed.name ~= "vs_chaos_troll" then
-				return
-			end
-
-			local victim_breed = event_data[register_damage_target_breed]
-
-			if not victim_breed.is_hero then
-				return
-			end
-
-			statistics_db:modify_stat_by_amount(stats_id, "vs_chaos_troll_damage", damage_amount)
-		end
-	end
-
 	achievements["vs_chaos_troll_damage_" .. string.format("%02d", i)] = {
-		group = "vs_chaos_troll_damage",
-		display_completion_ui = true,
 		required_dlc = "carousel",
+		display_completion_ui = true,
+		group = "vs_chaos_troll_damage",
 		name = "achv_bile_troll_" .. string.format("%02d", i) .. "_vs_name",
 		desc = function ()
 			return string.format(Localize("achv_bile_troll_" .. string.format("%02d", i) .. "_vs_desc"), values[i])
 		end,
 		icon = "bile_troll_" .. i,
-		always_run = always_run,
-		events = events,
-		on_event = event_func,
 		completed = function (statistics_db, stats_id)
-			return statistics_db:get_persistent_stat(stats_id, "vs_chaos_troll_damage") >= values[i]
+			return statistics_db:get_persistent_stat(stats_id, "damage_dealt_as_breed", "vs_chaos_troll") >= values[i]
 		end,
 		progress = function (statistics_db, stats_id)
 			local total = values[i]
-			local count = math.min(statistics_db:get_persistent_stat(stats_id, "vs_chaos_troll_damage"), total)
+			local count = math.min(statistics_db:get_persistent_stat(stats_id, "damage_dealt_as_breed", "vs_chaos_troll"), total)
 
 			return {
 				count,

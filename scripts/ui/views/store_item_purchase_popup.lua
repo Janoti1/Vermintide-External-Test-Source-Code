@@ -1612,9 +1612,25 @@ StoreItemPurchasePopup._populate_item_widget = function (self, widget, item, pro
 	local item_rarity_textures = UISettings.item_rarity_textures
 	local item_type_store_icons = UISettings.item_type_store_icons
 	local item_currency_settings = DLCSettings.store.currency_ui_settings
-	local inventory_icon, display_name, description = UIUtils.get_ui_information_from_item(item)
 	local item_data = item.data
-	local rarity = item.rarity or item_data.rarity
+	local parent_id
+	local has_parent = false
+	local inventory_icon, display_name, description, rarity
+
+	if item.data and item.data.parent then
+		local parent_item_data = ItemMasterList[item.data.parent]
+
+		inventory_icon = parent_item_data.inventory_icon
+		display_name = parent_item_data.display_name
+		description = parent_item_data.description
+		rarity = parent_item_data.rarity
+		parent_id = item.data.parent
+		has_parent = true
+	else
+		inventory_icon, display_name, description = UIUtils.get_ui_information_from_item(item)
+		rarity = item.rarity or item_data.rarity
+	end
+
 	local item_type = item_data.item_type
 	local content = widget.content
 	local style = widget.style
@@ -1691,7 +1707,8 @@ StoreItemPurchasePopup._populate_item_widget = function (self, widget, item, pro
 	self._reference_id = (self._reference_id or 0) + 1
 
 	local reference_name = "StoreItemPurchasePopup_" .. product_id .. "_" .. self._reference_id
-	local texture_name = "store_item_icon_" .. product_id
+	local package_product_id = has_parent and parent_id and parent_id or product_id
+	local texture_name = "store_item_icon_" .. package_product_id
 	local package_name = "resource_packages/store/item_icons/" .. texture_name
 	local package_available = Application.can_get("package", package_name)
 

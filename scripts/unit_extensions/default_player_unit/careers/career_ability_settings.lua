@@ -194,7 +194,12 @@ ActivatedAbilitySettings = {
 			display_name = "career_active_name_bw_1",
 			cooldown = 50,
 			icon = "sienna_scholar_activated_ability",
-			action_name = "action_career_bw_1"
+			action_name = "action_career_bw_1",
+			mechanism_overrides = {
+				versus = {
+					cooldown = 80
+				}
+			}
 		}
 	},
 	bw_2 = {

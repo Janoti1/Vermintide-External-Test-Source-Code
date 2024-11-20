@@ -100,6 +100,7 @@ Rewards._mission_results = function (self, game_won, extra_mission_results, end_
 	local difficulty_manager = Managers.state.difficulty
 	local difficulty = difficulty_manager:get_difficulty()
 	local difficulty_rank = difficulty_manager:get_difficulty_rank()
+	local allow_commendation = true
 
 	if game_won then
 		if game_mode_key == "weave" then
@@ -241,6 +242,8 @@ Rewards._mission_results = function (self, game_won, extra_mission_results, end_
 		local settings = Managers.state.game_mode:settings()
 		local experience_settings = settings.experience
 
+		allow_commendation = false
+
 		table.insert(mission_results, 1, {
 			text = "vs_match_completed",
 			affected_by_multipliers = true,
@@ -311,7 +314,7 @@ Rewards._mission_results = function (self, game_won, extra_mission_results, end_
 		end
 	end
 
-	local multipliers = self:_experience_multipliers()
+	local multipliers = self:_experience_multipliers(allow_commendation)
 	local num_multipliers = #multipliers
 
 	if num_multipliers > 0 then
@@ -602,7 +605,7 @@ Rewards.get_versus_level_end = function (self)
 	return ExperienceSettings.get_versus_level_from_experience(experience), experience
 end
 
-Rewards._experience_multipliers = function (self)
+Rewards._experience_multipliers = function (self, allow_commendation)
 	local multipliers = {}
 	local backend_manager = Managers.backend
 	local event_xp_multiplier = backend_manager:get_title_data("experience_multiplier") or 1
@@ -625,13 +628,15 @@ Rewards._experience_multipliers = function (self)
 		}
 	end
 
-	local hero_commendation = ExperienceSettings.hero_commendation_experience_multiplier()
+	if allow_commendation then
+		local hero_commendation = ExperienceSettings.hero_commendation_experience_multiplier()
 
-	if hero_commendation > 1 then
-		multipliers[#multipliers + 1] = {
-			text = "xp_multiplier_hero_commendation",
-			multiplier = hero_commendation
-		}
+		if hero_commendation > 1 then
+			multipliers[#multipliers + 1] = {
+				text = "xp_multiplier_hero_commendation",
+				multiplier = hero_commendation
+			}
+		end
 	end
 
 	return multipliers

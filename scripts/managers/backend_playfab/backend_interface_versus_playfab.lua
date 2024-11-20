@@ -63,8 +63,8 @@ BackendInterfaceVersusPlayFab.init = function (self, backend_mirror)
 
 	self._dirty = true
 	self._is_matchmaking = false
-	self._matchmaking_status = nil
 	self._backfilling_player_ids = {}
+	self._matchmaking_status = nil
 end
 
 BackendInterfaceVersusPlayFab._refresh = function (self)
@@ -90,12 +90,12 @@ BackendInterfaceVersusPlayFab.get_profile_data = function (self, key)
 	return self._profile_data[key]
 end
 
-BackendInterfaceVersusPlayFab.get_loadout_item_id = function (self, career_name, slot_name)
+BackendInterfaceVersusPlayFab.get_loadout_item_id = function (self, career_name, slot_name, is_bot)
 	if self._dirty then
 		self:_refresh()
 	end
 
-	return self._items_interface:get_loadout_item_id(career_name, slot_name)
+	return self._items_interface:get_loadout_item_id(career_name, slot_name, is_bot)
 end
 
 BackendInterfaceVersusPlayFab.set_loadout_item = function (self, item_id, career_name, slot_name)
@@ -320,7 +320,7 @@ BackendInterfaceVersusPlayFab.request_matchmaking_ticket = function (self, laten
 		FunctionParameter = {
 			alias_type = "mission",
 			matchmaking_type = "quickplay",
-			peer_id = Network.peer_id(),
+			peer_id = Steam.user_id(),
 			latency_list = latency_list,
 			network_hash = LobbySetup.network_hash()
 		}

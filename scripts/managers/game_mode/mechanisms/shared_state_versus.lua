@@ -47,7 +47,7 @@ SharedStateVersus.get_hero_cosmetics = function (self, peer_id, local_player_id)
 	return self._shared_state:get_peer(peer_id, key)
 end
 
-SharedStateVersus.set_hero_cosmetics = function (self, peer_id, local_player_id, weapon_slot, weapon, weapon_pose, weapon_pose_skin, hero_skin, hat)
+SharedStateVersus.set_hero_cosmetics = function (self, peer_id, local_player_id, weapon_slot, weapon, weapon_pose, weapon_pose_skin, hero_skin, hat, pactsworn_cosmetics)
 	local key = self._shared_state:get_key("hero_cosmetics", nil, local_player_id)
 
 	self._shared_state:set_peer(peer_id, key, {
@@ -56,7 +56,8 @@ SharedStateVersus.set_hero_cosmetics = function (self, peer_id, local_player_id,
 		weapon_pose = weapon_pose,
 		weapon_pose_skin = weapon_pose_skin,
 		hero_skin = hero_skin,
-		hat = hat
+		hat = hat,
+		pactsworn_cosmetics = pactsworn_cosmetics
 	})
 end
 

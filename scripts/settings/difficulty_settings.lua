@@ -364,8 +364,12 @@ end
 ExtraDifficultyRequirements = {
 	kill_all_lords_on_legend = {
 		description_text = "achv_scorpion_cataclysm_unlock_kill_all_lords_desc",
-		requirement_function = function ()
+		requirement_function = function (joining_existing_game)
 			if Development.parameter("unlock_all_difficulties") then
+				return true
+			end
+
+			if joining_existing_game then
 				return true
 			end
 

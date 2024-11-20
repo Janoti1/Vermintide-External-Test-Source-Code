@@ -247,13 +247,17 @@ EnemyCharacterStateWalking.common_movement = function (self, in_ghost_mode, dt)
 	CharacterStateHelper.ghost_mode(self._ghost_mode_extension, input_extension)
 	CharacterStateHelper.look(input_extension, self._player.viewport_name, first_person_extension, status_extension, inventory_extension)
 
-	local move_anim_3p, move_anim_1p = CharacterStateHelper.get_move_animation(locomotion_extension, input_extension, status_extension)
+	local move_anim_3p, move_anim_1p = CharacterStateHelper.get_move_animation(locomotion_extension, input_extension, status_extension, self.move_anim_3p)
 
-	if move_anim_3p ~= self.move_anim_3p or move_anim_1p ~= self.move_anim_1p then
-		CharacterStateHelper.play_animation_event(unit, move_anim_3p)
-		CharacterStateHelper.play_animation_event_first_person(first_person_extension, move_anim_1p)
+	if move_anim_3p ~= self.move_anim_3p then
+		CharacterStateHelper.play_animation_event(unit, move_anim_3p, true)
 
 		self.move_anim_3p = move_anim_3p
+	end
+
+	if move_anim_1p ~= self.move_anim_1p then
+		CharacterStateHelper.play_animation_event_first_person(first_person_extension, move_anim_1p)
+
 		self.move_anim_1p = move_anim_1p
 	end
 

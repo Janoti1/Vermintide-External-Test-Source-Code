@@ -178,8 +178,8 @@ ExplosionTemplates.engineer_grenade = {
 	is_grenade = true,
 	explosion = {
 		dont_rotate_fx = true,
-		radius = 2,
-		max_damage_radius = 0.5,
+		radius = 2.5,
+		max_damage_radius = 1,
 		alert_enemies_radius = 20,
 		sound_event_name = "player_combat_weapon_grenade_explosion",
 		attack_template = "grenade",
@@ -1519,6 +1519,69 @@ ExplosionTemplates.gutter_runner_foff = {
 		damage_profile = "ability_push",
 		power_level = 200,
 		effect_name = "fx/chr_gutter_foff"
+	}
+}
+ExplosionTemplates.vs_rat_ogre_leap_landing = {
+	explosion = {
+		allow_friendly_fire_override = true,
+		radius = 10,
+		max_damage_radius = 5,
+		catapult_players = true,
+		player_push_speed = 50,
+		no_prop_damage = true,
+		attack_template = "drakegun",
+		catapult_force_z = 1,
+		catapult_force = 10,
+		sound_event_name = "player_combat_weapon_grenade_explosion",
+		damage_profile = "fireball_charged_explosion",
+		power_level = 50,
+		ignore_attacker_unit = true,
+		effect_name = "fx/chr_rat_ogre_land_3p",
+		difficulty_power_level = {
+			easy = {
+				power_level_glance = 50,
+				power_level = 100
+			},
+			normal = {
+				power_level_glance = 100,
+				power_level = 200
+			},
+			hard = {
+				power_level_glance = 150,
+				power_level = 300
+			},
+			harder = {
+				power_level_glance = 200,
+				power_level = 400
+			},
+			hardest = {
+				power_level_glance = 250,
+				power_level = 500
+			},
+			cataclysm = {
+				power_level_glance = 550,
+				power_level = 1100
+			},
+			cataclysm_2 = {
+				power_level_glance = 575,
+				power_level = 1150
+			},
+			cataclysm_3 = {
+				power_level_glance = 600,
+				power_level = 1200
+			},
+			versus_base = {
+				power_level_glance = 200,
+				power_level = 400
+			}
+		},
+		camera_effect = {
+			near_distance = 5,
+			near_scale = 1,
+			shake_name = "frag_grenade_explosion",
+			far_scale = 0.15,
+			far_distance = 20
+		}
 	}
 }
 ExplosionTemplates.shadow_flare = {

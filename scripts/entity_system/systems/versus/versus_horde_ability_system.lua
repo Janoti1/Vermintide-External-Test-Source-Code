@@ -101,7 +101,12 @@ end
 
 VersusHordeAbilitySystem.on_round_started = function (self)
 	self._round_started = true
-	self._dark_pact_party_id = Managers.state.side:get_side_from_name("dark_pact").party.party_id
+end
+
+VersusHordeAbilitySystem.is_activation_allowed = function (self, is_in_ghost_mode)
+	local allowed_by_ghost_mode_settings = settings.enable_activation_in_ghost_mode or not is_in_ghost_mode
+
+	return allowed_by_ghost_mode_settings and self._round_started
 end
 
 VersusHordeAbilitySystem.activate_dark_pact_horde_ability = function (self)
