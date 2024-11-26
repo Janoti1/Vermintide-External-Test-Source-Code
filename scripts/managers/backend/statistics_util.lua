@@ -183,6 +183,7 @@ StatisticsUtil.register_kill = function (victim_unit, damage_data, statistics_db
 		local attacker_breed_name = recent_attack.attacker_breed.name
 
 		statistics_db:increment_stat(local_stats_id, "eliminations_as_breed", attacker_breed_name)
+		Managers.state.event:trigger("add_player_kill_confirmation", attacker_side:name(), victim_player)
 	end
 
 	if attacker_player and attacker_player ~= victim_player then
@@ -197,10 +198,6 @@ StatisticsUtil.register_kill = function (victim_unit, damage_data, statistics_db
 
 			if Breeds[breed_killed_name] or PlayerBreeds[breed_killed_name] and Managers.state.side:is_enemy_by_side(attacker_side, victim_side) then
 				statistics_db:increment_stat(stats_id, "kills_per_breed", breed_killed_name)
-
-				if victim_player and attacker_player == local_player then
-					Managers.state.event:trigger("add_player_kill_confirmation", attacker_side:name(), victim_player)
-				end
 			end
 
 			if killed_race_name then
@@ -330,6 +327,7 @@ StatisticsUtil.register_knockdown = function (victim_unit, damage_data, statisti
 
 			statistics_db:increment_stat(local_stats_id, "eliminations_as_breed", attacker_breed_name)
 			statistics_db:increment_stat(local_stats_id, "vs_knockdowns_per_breed", breed_killed_name)
+			Managers.state.event:trigger("add_player_knock_confirmation", local_player, victim_player)
 		end
 	end
 
@@ -351,10 +349,6 @@ StatisticsUtil.register_knockdown = function (victim_unit, damage_data, statisti
 
 			if victim_player and attacker_player then
 				Managers.state.achievement:trigger_event("register_knockdown", stats_id, victim_unit, attacker_player, breed_killed)
-
-				if attacker_player == local_player then
-					Managers.state.event:trigger("add_player_knock_confirmation", attacker_player, victim_player)
-				end
 			end
 		end
 	end

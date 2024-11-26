@@ -4,6 +4,10 @@ RatOgreStateFalling.init = function (self, character_state_init_context)
 	RatOgreStateFalling.super.init(self, character_state_init_context)
 end
 
+RatOgreStateFalling.on_enter = function (self, unit, input, dt, context, t, previous_state, params)
+	RatOgreStateFalling.super.on_enter(self, unit, input, dt, context, t, previous_state, params)
+end
+
 RatOgreStateFalling.update = function (self, unit, input, dt, context, t)
 	local ghost_mode_extension = self._ghost_mode_extension
 	local in_ghost_mode = ghost_mode_extension:is_in_ghost_mode()

@@ -22,49 +22,13 @@ local planted_decrease_movement_settings = {
 	light_attack = {
 		{
 			start_time = 0,
-			external_multiplier = 0.4,
+			external_multiplier = 0.8,
 			end_time = 0.6,
 			buff_name = "planted_decrease_movement"
 		},
 		{
-			start_time = 0.6,
-			external_multiplier = 1.2,
-			end_time = 0.65,
-			buff_name = "planted_fast_decrease_movement"
-		},
-		{
-			start_time = 1,
-			external_multiplier = 0.4,
-			end_time = 1.3,
-			buff_name = "planted_fast_decrease_movement"
-		},
-		{
 			start_time = 1.3,
 			buff_name = "planted_return_to_normal_walk_movement"
-		},
-		{
-			start_time = 0.6,
-			external_value = 1,
-			end_time = 1.3,
-			buff_name = "set_rotation_limit"
-		},
-		{
-			start_time = 0,
-			external_multiplier = 0.75,
-			end_time = 0.6,
-			buff_name = "planted_decrease_rotation_speed"
-		},
-		{
-			start_time = 0.6,
-			external_multiplier = 0.5,
-			end_time = 0.65,
-			buff_name = "planted_decrease_rotation_speed"
-		},
-		{
-			start_time = 1,
-			external_multiplier = 0.75,
-			end_time = 1.3,
-			buff_name = "planted_decrease_rotation_speed"
 		}
 	},
 	heavy_attack = {
@@ -102,28 +66,35 @@ local planted_decrease_movement_settings = {
 			end_time = 1,
 			buff_name = "planted_decrease_rotation_speed"
 		}
+	},
+	leap_charge = {
+		{
+			start_time = 0,
+			external_multiplier = 0,
+			buff_name = "planted_decrease_movement"
+		}
 	}
 }
 local knockback_tables = {
 	frenzy = {
-		player_catapult_speed_blocked = 12,
-		player_knockback_speed_blocked = 12,
-		player_knockback_speed = 10,
-		player_catapult_speed_blocked_z = 6,
-		player_catapult_speed_z = 6,
+		catapult_players = false,
 		catapult = false,
-		player_catapult_speed = 12,
-		catapult_players = false
+		player_knockback_speed = 12,
+		player_knockback_speed_blocked = 12
 	},
 	scrambler = {
-		player_catapult_speed_blocked = 12,
-		player_knockback_speed_blocked = 12,
+		player_catapult_speed_blocked = 6,
+		catapult_players = true,
+		player_catapult_speed = 6,
+		player_catapult_speed_blocked_z = 4,
+		player_catapult_speed_z = 4,
+		catapult = true
+	},
+	slam = {
+		catapult_players = false,
+		catapult = false,
 		player_knockback_speed = 10,
-		player_catapult_speed_blocked_z = 6,
-		player_catapult_speed_z = 6,
-		catapult = true,
-		player_catapult_speed = 12,
-		catapult_players = true
+		player_knockback_speed_blocked = 14
 	}
 }
 
@@ -142,8 +113,10 @@ weapon_template.actions = {
 			condition_func = function (action_user, input_extension, ammo_extension, current_action_extension)
 				local ghost_mode_extenstion = ScriptUnit.has_extension(action_user, "ghost_mode_system")
 				local is_in_ghost_mode = ghost_mode_extenstion:is_in_ghost_mode()
+				local career_extension = ScriptUnit.has_extension(action_user, "career_system")
+				local ability_data = career_extension:get_activated_ability_data(1)
 
-				return not is_in_ghost_mode
+				return not is_in_ghost_mode and not ability_data.is_priming
 			end,
 			total_time = math.huge,
 			buff_data = planted_decrease_movement_settings.charge,
@@ -182,6 +155,7 @@ weapon_template.actions = {
 			}
 		},
 		default_2 = {
+			disallow_ghost_mode = true,
 			anim_end_event = "attack_finished",
 			kind = "melee_start",
 			attack_hold_input = "action_one_hold",
@@ -227,41 +201,42 @@ weapon_template.actions = {
 			}
 		},
 		attack_swing_right = {
-			damage_window_start = 0.85,
+			damage_window_start = 0.54,
 			anim_end_event = "attack_finished",
-			range_mod = 1.2,
 			kind = "sweep",
 			first_person_hit_anim = "shake_hit",
-			disallow_ghost_mode = true,
+			range_mod = 1.2,
 			width_mod = 50,
-			hit_effect = "melee_hit_axes_1h",
+			hit_effect = "vs_chaos_troll_axe_light",
 			weapon_action_hand = "right",
 			no_damage_impact_sound_event = "blunt_hit_armour",
 			damage_profile = "rat_ogre_sweep",
 			use_precision_sweep = false,
-			damage_window_end = 0.95,
-			impact_sound_event = "axe_1h_hit",
+			damage_window_end = 0.65,
+			impact_sound_event = "blunt_hit",
 			damage_profile_outer = "light_push",
+			disallow_ghost_mode = true,
+			aim_assist_ramp_multiplier = 0.4,
 			aim_assist_max_ramp_multiplier = 0.8,
 			aim_assist_ramp_decay_delay = 0,
 			dedicated_target_range = 2,
-			aim_assist_ramp_multiplier = 0.4,
+			uninterruptible = true,
 			anim_event = "attack_swing_right",
 			damage_profile_inner = "medium_push",
 			total_time = 2.17,
 			anim_end_event_condition_func = function (unit, end_reason)
 				return end_reason ~= "new_interupting_action" and end_reason ~= "action_complete"
 			end,
+			buff_data = planted_decrease_movement_settings.light_attack,
 			anim_time_scale = time_mod * 1.15,
 			sweep_rotation_offset = {
 				roll = math.pi * 0.5
 			},
 			knockback_data = knockback_tables.frenzy,
-			buff_data = planted_decrease_movement_settings.light_attack,
 			allowed_chain_actions = {
 				{
 					sub_action = "default_2",
-					start_time = 1.3,
+					start_time = 1.1,
 					action = "action_one",
 					end_time = 1.8,
 					input = "action_one"
@@ -276,20 +251,20 @@ weapon_template.actions = {
 		},
 		attack_swing_left = {
 			damage_window_start = 0.8,
-			range_mod = 1.2,
-			anim_end_event = "attack_finished",
+			disallow_ghost_mode = true,
 			kind = "sweep",
 			first_person_hit_anim = "shake_hit",
+			range_mod = 1.2,
 			width_mod = 50,
-			hit_effect = "melee_hit_axes_1h",
+			hit_effect = "vs_chaos_troll_axe_light",
 			weapon_action_hand = "left",
 			no_damage_impact_sound_event = "blunt_hit_armour",
 			additional_critical_strike_chance = 0.1,
 			use_precision_sweep = false,
-			damage_window_end = 0.95,
-			impact_sound_event = "axe_1h_hit",
+			damage_window_end = 0.87,
+			impact_sound_event = "blunt_hit",
 			charge_value = "action_push",
-			disallow_ghost_mode = true,
+			anim_end_event = "attack_finished",
 			damage_profile = "rat_ogre_sweep",
 			dedicated_target_range = 2,
 			uninterruptible = true,
@@ -298,11 +273,12 @@ weapon_template.actions = {
 			anim_end_event_condition_func = function (unit, end_reason)
 				return end_reason ~= "new_interupting_action" and end_reason ~= "action_complete"
 			end,
-			anim_time_scale = time_mod * 1.15,
+			buff_data = planted_decrease_movement_settings.light_attack,
+			anim_time_scale = time_mod * 2.15,
 			sweep_rotation_offset = {
 				roll = math.pi * 0.5
 			},
-			knockback_data = knockback_tables.frenzy,
+			knockback_data = knockback_tables.scrambler,
 			buff_data = planted_decrease_movement_settings.light_attack,
 			allowed_chain_actions = {
 				{
@@ -310,6 +286,13 @@ weapon_template.actions = {
 					start_time = 1.8,
 					action = "action_one",
 					input = "action_one"
+				},
+				{
+					sub_action = "default",
+					start_time = 1.4,
+					action = "action_one",
+					release_required = "action_one_hold",
+					input = "action_one_hold"
 				}
 			}
 		},
@@ -322,11 +305,11 @@ weapon_template.actions = {
 			first_person_hit_anim = "shake_hit",
 			width_mod = 100,
 			hit_stop_anim = "attack_hit",
-			hit_effect = "melee_hit_axes_1h",
+			hit_effect = "vs_chaos_troll_axe_heavy",
 			weapon_action_hand = "both",
 			no_damage_impact_sound_event = "blunt_hit_armour",
 			damage_window_end = 0.225,
-			impact_sound_event = "axe_1h_hit",
+			impact_sound_event = "blunt_hit",
 			additional_critical_strike_chance = 0.1,
 			use_precision_sweep = false,
 			damage_profile_left = "rat_ogre_slam",
@@ -343,7 +326,7 @@ weapon_template.actions = {
 			sweep_rotation_offset = {
 				roll = math.pi * 0.5
 			},
-			knockback_data = knockback_tables.frenzy,
+			knockback_data = knockback_tables.slam,
 			buff_data = planted_decrease_movement_settings.heavy_attack,
 			allowed_chain_actions = {
 				{
@@ -364,7 +347,6 @@ weapon_template.actions = {
 			disallow_ghost_mode = true,
 			anim_end_event = "attack_jump_air",
 			kind = "dummy",
-			uninterruptible = true,
 			anim_event = "attack_jump",
 			anim_end_event_condition_func = function (unit, end_reason)
 				return end_reason ~= "new_interupting_action" and end_reason ~= "action_complete"
@@ -374,14 +356,11 @@ weapon_template.actions = {
 				local is_in_ghost_mode = ghost_mode_extenstion:is_in_ghost_mode()
 				local career_extension = ScriptUnit.has_extension(action_user, "career_system")
 				local can_use_ability = career_extension:can_use_activated_ability(1)
+				local meet_conditions = not is_in_ghost_mode and can_use_ability
 
-				if can_use_ability then
-					-- Nothing
-				else
+				if not meet_conditions then
 					career_extension:stop_ability("cooldown", 1)
 				end
-
-				local meet_conditions = not is_in_ghost_mode and can_use_ability
 
 				return meet_conditions
 			end,
@@ -399,11 +378,10 @@ weapon_template.actions = {
 			finish_function = function (owner_unit, reason, weapon_extension)
 				if reason ~= "new_interupting_action" then
 					local career_extension = ScriptUnit.has_extension(owner_unit, "career_system")
-					local was_triggered = career_extension:ability_was_triggered(1)
 				end
 			end,
 			total_time = math.huge,
-			buff_data = planted_decrease_movement_settings.heavy_attack,
+			buff_data = planted_decrease_movement_settings.leap_charge,
 			allowed_chain_actions = {}
 		}
 	},

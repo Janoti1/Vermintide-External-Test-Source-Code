@@ -1035,7 +1035,18 @@ StoreWindowItemPreview._create_dlc_bundle_layout = function (self, settings, pro
 	local item_row = #layout + 1
 	local num_items = #bundle_contains
 
-	if num_items == 2 then
+	if num_items == 1 then
+		layout[item_row] = {
+			type = "spacing",
+			settings = {
+				size = {
+					260,
+					0
+				}
+			}
+		}
+		item_row = item_row + 1
+	elseif num_items == 2 then
 		layout[item_row] = {
 			type = "spacing",
 			settings = {

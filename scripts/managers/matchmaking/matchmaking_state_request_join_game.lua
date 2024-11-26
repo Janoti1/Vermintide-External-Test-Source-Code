@@ -276,7 +276,9 @@ MatchmakingStateRequestJoinGame.update = function (self, dt, t)
 
 			local friend_join = false
 
-			if IS_PS4 then
+			if IS_WINDOWS or IS_LINUX then
+				friend_join = not not self.state_context.friend_join
+			elseif IS_PS4 then
 				friend_join = not not self.state_context.friend_join
 			end
 

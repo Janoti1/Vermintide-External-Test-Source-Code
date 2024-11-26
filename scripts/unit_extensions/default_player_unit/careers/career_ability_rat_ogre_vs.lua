@@ -70,6 +70,29 @@ CareerAbilityRatOgreJump.init = function (self, extension_init_context, unit, ex
 	self._last_valid_landing_position = nil
 end
 
+local rat_ogre_jump_data = {
+	hit_indicator_raidus = 3,
+	min_pitch = 60,
+	max_pitch = -10,
+	lerp_data = {
+		zero_distance = 0,
+		slow_distance = 0.8,
+		start_accel_distance = 0.15,
+		glide_distance = 0.7,
+		full_distance = 1,
+		end_accel_distance = 0.4
+	},
+	movement_settings = {
+		jump_speed = 24,
+		slam_speed = 36,
+		max_slam_speed = 100,
+		move_speed = 28,
+		vertical_height = 2,
+		player_speed_scale = 1,
+		max_move_speed = 100
+	}
+}
+
 CareerAbilityRatOgreJump.extensions_ready = function (self, world, unit)
 	self._first_person_extension = ScriptUnit.has_extension(unit, "first_person_system")
 	self._status_extension = ScriptUnit.extension(unit, "status_system")
@@ -77,11 +100,12 @@ CareerAbilityRatOgreJump.extensions_ready = function (self, world, unit)
 	self._ability_id = self._career_extension:ability_id("ogre_jump")
 	self._ability_data = self._career_extension:get_activated_ability_data(self._ability_id)
 	self._ability_input = self._ability_data.input_action
-	self._jump_data = self._ability_data.jump_ability_data
+	self._jump_data = rat_ogre_jump_data or self._ability_data.jump_ability_data
 	self._prime_time = self._ability_data.prime_time
 	self._buff_extension = ScriptUnit.extension(unit, "buff_system")
 	self._locomotion_extension = ScriptUnit.extension(unit, "locomotion_system")
 	self._input_extension = ScriptUnit.has_extension(unit, "input_system")
+	self._inventory_extension = ScriptUnit.extension(unit, "inventory_system")
 	self._breed = Unit.get_data(unit, "breed")
 
 	if self._first_person_extension then
@@ -124,16 +148,15 @@ CareerAbilityRatOgreJump.update = function (self, unit, input, dt, context, t)
 		return
 	end
 
-	if not self._is_priming then
-		-- Nothing
-	elseif self._is_priming then
+	if self._is_priming then
 		local cancel_input = input_extension:get("action_one") or input_extension:get("jump") or input_extension:get("jump_only") or input_extension:get("weapon_reload") or input_extension:get("action_two_release") and not self._done_priming or not input_extension:get("action_two_hold") and not self._done_priming
 
 		if cancel_input then
-			self:_stop_priming()
+			self._career_extension:stop_ability("aborted")
 			self._career_extension:start_activated_ability_cooldown(self._ability_id, 0.9)
 			Managers.state.network:anim_event(unit, "interrupt")
 			CharacterStateHelper.play_animation_event_first_person(self._first_person_extension, "interrupt")
+			self:debug_curve(true, dt)
 
 			return
 		end
@@ -142,7 +165,7 @@ CareerAbilityRatOgreJump.update = function (self, unit, input, dt, context, t)
 
 		local result, new_landing_position, leap_distance = self:_calculate_leap_position()
 
-		if result and new_landing_position then
+		if result and new_landing_position and leap_distance > 0.1 then
 			if self._last_valid_landing_position then
 				self._last_valid_landing_position:store(new_landing_position)
 			else
@@ -161,12 +184,8 @@ CareerAbilityRatOgreJump.update = function (self, unit, input, dt, context, t)
 		if released_input and self._done_priming then
 			if result and self._last_valid_landing_position then
 				self:_set_priming_progress(0)
-
-				if leap_distance <= MIN_DISTANCE_FOR_LEAP then
-					self:_do_stomp(t)
-				else
-					self:_do_leap()
-				end
+				self:_do_leap()
+				self:_stop_priming()
 			else
 				self:_stop_priming()
 			end
@@ -175,8 +194,19 @@ CareerAbilityRatOgreJump.update = function (self, unit, input, dt, context, t)
 end
 
 CareerAbilityRatOgreJump.stop = function (self, reason)
-	if reason ~= "pushed" and reason ~= "stunned" and self._is_priming then
+	if self._is_priming then
 		self:_stop_priming()
+	end
+
+	if reason == "aborted" then
+		Unit.animation_event(self._owner_unit, "idle")
+		self._first_person_extension:play_animation_event("idle")
+	end
+
+	local _, right_hand_weapon_extension, left_hand_weapon_extension = CharacterStateHelper.get_item_data_and_weapon_extensions(self._inventory_extension)
+
+	if right_hand_weapon_extension then
+		right_hand_weapon_extension:stop_action("interrupted")
 	end
 end
 
@@ -237,9 +267,10 @@ CareerAbilityRatOgreJump._calculate_leap_position = function (self)
 	local raycast_rotation = Quaternion.multiply(yaw_rotation, pitch_rotation)
 	local raycast_direction = Quaternion.forward(raycast_rotation)
 	local speed = self._jump_data.movement_settings.jump_speed
-	local velocity = raycast_direction * speed
+	local initial_jump_vector = Vector3.up() * 0.3
+	local velocity = (initial_jump_vector + raycast_direction) * speed
 	local gravity = Vector3(0, 0, -11)
-	local result, new_landing_position = WeaponHelper:ground_target(physics_world, self._owner_unit, POSITION_LOOKUP[self._owner_unit], velocity, gravity, collision_filter)
+	local result, new_landing_position = self:get_leap_data2(physics_world, self._owner_unit, player_position, velocity, gravity, collision_filter)
 	local leap_distance
 
 	if result then
@@ -280,31 +311,6 @@ CareerAbilityRatOgreJump._do_common_stuff = function (self)
 	local network_manager = self._network_manager
 	local network_transmit = network_manager.network_transmit
 	local career_extension = self._career_extension
-	local buffs = {
-		"bardin_slayer_activated_ability"
-	}
-	local unit_object_id = network_manager:unit_game_object_id(owner_unit)
-
-	if is_server then
-		local buff_extension = self._buff_extension
-
-		for i = 1, #buffs do
-			local buff_name = buffs[i]
-			local buff_template_name_id = NetworkLookup.buff_templates[buff_name]
-
-			buff_extension:add_buff(buff_name, {
-				attacker_unit = owner_unit
-			})
-			network_transmit:send_rpc_clients("rpc_add_buff", unit_object_id, buff_template_name_id, unit_object_id, 0, false)
-		end
-	else
-		for i = 1, #buffs do
-			local buff_name = buffs[i]
-			local buff_template_name_id = NetworkLookup.buff_templates[buff_name]
-
-			network_transmit:send_rpc_server("rpc_add_buff", unit_object_id, buff_template_name_id, unit_object_id, 0, true)
-		end
-	end
 
 	if is_server and bot_player or local_player then
 		local first_person_extension = self._first_person_extension
@@ -363,7 +369,6 @@ CareerAbilityRatOgreJump._do_leap = function (self)
 
 	locomotion_extension:set_external_velocity_enabled(false)
 	status_extension:reset_move_speed_multiplier()
-	status_extension:set_noclip(true, "skill_slayer")
 
 	local physics_world = World.get_data(world, "physics_world")
 	local direction, speed, hit_pos = get_leap_data(physics_world, POSITION_LOOKUP[owner_unit], landing_position)
@@ -442,13 +447,15 @@ CareerAbilityRatOgreJump._do_leap = function (self)
 					area_damage_system:create_explosion(unit, final_position, rotation, explosion_template, scale, "career_ability", career_power_level, false)
 				end
 
-				local buff_extension = ScriptUnit.has_extension(unit_3p, "buff_system")
+				local _, right_hand_weapon_extension, left_hand_weapon_extension = CharacterStateHelper.get_item_data_and_weapon_extensions(parent._inventory_extension)
+				local _, current_action_extension, _ = CharacterStateHelper.get_current_action_data(left_hand_weapon_extension, right_hand_weapon_extension)
 
-				if self._uninterruptible_buff_id then
-					buff_extension:remove_buff(self._uninterruptible_buff_id)
+				right_hand_weapon_extension:stop_action("interrupted")
 
-					self._uninterruptible_buff_id = nil
-				end
+				local status_ext = ScriptUnit.extension(unit, "status_system")
+
+				status_ext:set_noclip(false, "skill_slayer")
+				self._career_extension:stop_ability()
 			end
 		}
 	}
@@ -460,4 +467,144 @@ CareerAbilityRatOgreJump._play_vo = function (self)
 	local event_data = FrameTable.alloc_table()
 
 	dialogue_input:trigger_networked_dialogue_event("activate_ability", event_data)
+end
+
+local GROUND_TARGET_MAX_STEPS = 30
+local GROUND_TARGET_MAX_TIME = 3
+local EPSILON = 0.0001
+local MAX_HITS = 10
+
+CareerAbilityRatOgreJump.get_leap_data2 = function (self, physics_world, fitting_unit, origin, velocity, gravity, collision_filter)
+	local time_step = GROUND_TARGET_MAX_TIME / GROUND_TARGET_MAX_STEPS
+	local position = origin
+	local mover = Unit.mover(fitting_unit)
+	local mover_raidus = Mover.radius(mover)
+	local unit_fit_offset_vector = Vector3(0, 0, 0.1)
+
+	for i = 1, GROUND_TARGET_MAX_STEPS do
+		local new_position = position + velocity * time_step
+		local delta = new_position - position
+		local direction = Vector3.normalize(delta)
+		local distance = Vector3.length(delta)
+
+		QuickDrawer:sphere(new_position, 0.6, Colors.get("green"))
+		QuickDrawer:line(position, new_position, Colors.get("green"))
+
+		local result = PhysicsWorld.linear_sphere_sweep(physics_world, position, new_position, mover_raidus, MAX_HITS, "collision_filter", collision_filter)
+
+		if result then
+			local hit = result[1]
+			local hit_position = hit.position
+			local hit_normal = hit.normal
+			local good_landing = true
+			local hit_wall = Vector3.dot(hit_normal, Vector3.up()) < 0.95
+
+			if not hit_wall then
+				local fits_at_landing_pos, fitted_position = Unit.mover_fits_at(fitting_unit, "standing", hit_position + unit_fit_offset_vector, 1)
+
+				if fits_at_landing_pos then
+					hit_position = fitted_position
+				else
+					good_landing = false
+				end
+			end
+
+			if hit_wall or not good_landing then
+				local flat_velocity = Vector3.length(Vector3.flat(velocity))
+
+				for j = 1, GROUND_TARGET_MAX_STEPS do
+					local step_back_distance = j == 1 and 0.5 or 1
+					local step_back_t = flat_velocity <= EPSILON and 0 or step_back_distance / flat_velocity
+					local step_back_position
+
+					if step_back_t > 0 then
+						step_back_position = hit_position - velocity * step_back_t - gravity * (step_back_t * step_back_t * 0.5)
+					else
+						step_back_position = origin
+					end
+
+					local new_result, new_hit_position, _, _, _ = PhysicsWorld.immediate_raycast(physics_world, step_back_position, Vector3.down(), 10, "closest", "collision_filter", collision_filter)
+
+					if new_result then
+						local fits_at_landing_pos, fitted_position = Unit.mover_fits_at(fitting_unit, "standing", new_hit_position + unit_fit_offset_vector, 1)
+
+						if fits_at_landing_pos then
+							new_hit_position = fitted_position
+
+							return true, new_hit_position
+						else
+							hit_position = step_back_position
+						end
+					end
+
+					if false then
+						-- Nothing
+					end
+				end
+			end
+
+			return true, hit_position
+		end
+
+		if false then
+			-- Nothing
+		end
+
+		velocity = velocity + gravity * time_step
+		position = new_position
+	end
+
+	return false, position
+end
+
+CareerAbilityRatOgreJump.debug_curve = function (self, release, dt)
+	local debug_speed = 20
+	local DEBUG_GROUND_TARGET_MAX_STEPS = 1000
+	local DEBUG_GROUND_TARGET_MAX_TIME = 1
+	local DEBUG_EPSILON = 0.0001
+	local DEBUG_MAX_HITS = 10
+	local DEBUG_GRAV_MULT = 1.25
+	local time_step = DEBUG_GROUND_TARGET_MAX_TIME / DEBUG_GROUND_TARGET_MAX_STEPS
+	local unit = self._owner_unit
+	local player_start_position = self._first_person_extension:current_position()
+	local player_rotation = self._first_person_extension:current_rotation()
+	local position = player_start_position
+	local min_pitch = math.degrees_to_radians(self._jump_data.min_pitch)
+	local max_pitch = math.degrees_to_radians(15)
+	local yaw = Quaternion.yaw(player_rotation)
+	local pitch = math.clamp(Quaternion.pitch(player_rotation), -min_pitch, max_pitch)
+	local yaw_rotation = Quaternion(Vector3.up(), yaw)
+	local pitch_rotation = Quaternion(Vector3.right(), pitch)
+	local raycast_rotation = Quaternion.multiply(yaw_rotation, pitch_rotation)
+	local raycast_direction = Quaternion.forward(raycast_rotation)
+	local initial_jump_vector = Vector3.up()
+	local speed = debug_speed
+	local velocity = (initial_jump_vector * 0.6 + raycast_direction) * speed
+	local gravity = Vector3(0, 0, -11)
+	local world = self._world
+	local physics_world = World.get_data(world, "physics_world")
+
+	for i = 1, DEBUG_GROUND_TARGET_MAX_STEPS do
+		local new_position = position + velocity * time_step
+		local delta = new_position - position
+		local direction = Vector3.normalize(delta)
+		local distance = Vector3.length(delta)
+
+		if release then
+			if i == 1 then
+				QuickDrawerStay:vector(player_start_position, Vector3.normalize(velocity), Colors.get("green"))
+			end
+
+			QuickDrawerStay:line(position, new_position, Colors.get("blue"))
+		else
+			QuickDrawer:line(position, new_position, Colors.get("blue"))
+
+			if i == 1 then
+				QuickDrawer:vector(position, Vector3.normalize(raycast_direction), Colors.get("red"))
+			end
+		end
+
+		velocity = velocity + gravity * DEBUG_GRAV_MULT * time_step
+		position = new_position
+	end
 end

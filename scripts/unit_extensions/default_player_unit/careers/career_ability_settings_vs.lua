@@ -201,8 +201,8 @@ ActivatedAbilitySettings.vs_chaos_troll = {
 
 local rat_ogre_jump_data = {
 	hit_indicator_raidus = 3,
-	min_pitch = 45,
-	max_pitch = 17.5,
+	min_pitch = 60,
+	max_pitch = -10,
 	lerp_data = {
 		zero_distance = 0,
 		slow_distance = 0.8,
@@ -212,10 +212,10 @@ local rat_ogre_jump_data = {
 		end_accel_distance = 0.4
 	},
 	movement_settings = {
-		jump_speed = 20.5,
-		slam_speed = 100,
+		jump_speed = 24,
+		slam_speed = 36,
 		max_slam_speed = 100,
-		move_speed = 25.5,
+		move_speed = 28,
 		vertical_height = 2,
 		player_speed_scale = 1,
 		max_move_speed = 100

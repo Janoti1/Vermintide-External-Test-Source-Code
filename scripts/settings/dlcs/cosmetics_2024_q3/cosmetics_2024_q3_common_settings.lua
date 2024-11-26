@@ -26,6 +26,10 @@ settings.unlock_settings_xb1 = {
 		id = "36474E39-5A36-3053-C046-47484E343E00",
 		backend_reward_id = "bountyhunter_skin_0001",
 		class = "UnlockDlc"
+	},
+	five_career_bundle_0008 = {
+		class = "UnlockDlc",
+		id = "34544D39-3842-3047-C030-545047351F00"
 	}
 }
 settings.unlock_settings_ps4 = {
@@ -59,6 +63,11 @@ settings.unlock_settings_ps4 = {
 			product_label = "V2USCOUNTBORISTO",
 			class = "UnlockDlc",
 			backend_reward_id = "bountyhunter_skin_0001"
+		},
+		five_career_bundle_0008 = {
+			id = "00000000000000000000000000000000",
+			product_label = "V2USMYTHICMASQUE",
+			class = "UnlockDlc"
 		}
 	},
 	CUSA13645_00 = {
@@ -91,6 +100,11 @@ settings.unlock_settings_ps4 = {
 			product_label = "V2EUCOUNTBORISTO",
 			class = "UnlockDlc",
 			backend_reward_id = "bountyhunter_skin_0001"
+		},
+		five_career_bundle_0008 = {
+			id = "00000000000000000000000000000000",
+			product_label = "V2EUMYTHICMASQUE",
+			class = "UnlockDlc"
 		}
 	}
 }

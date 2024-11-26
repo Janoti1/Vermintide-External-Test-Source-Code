@@ -12,11 +12,11 @@ settings.achievement_outline = {
 					"termite1_bell_challenge",
 					"termite1_towers_challenge",
 					"termite1_waystone_timer_challenge_easy",
-					"achv_termite1_complete_cataclysm",
-					"achv_termite1_complete_champion",
-					"achv_termite1_complete_legend",
-					"achv_termite1_complete_recruit",
-					"achv_termite1_complete_veteran",
+					"termite1_complete_recruit",
+					"termite1_complete_veteran",
+					"termite1_complete_champion",
+					"termite1_complete_legend",
+					"termite1_complete_cataclysm",
 					"termite1_all_challenges"
 				}
 			}

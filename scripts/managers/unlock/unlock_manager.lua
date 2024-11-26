@@ -468,7 +468,9 @@ UnlockManager.get_installed_dlcs = function (self)
 	local installed_unlocks = {}
 
 	for unlock_name, unlock in pairs(unlocks) do
-		if unlock:installed() then
+		local installed = unlock:installed()
+
+		if installed then
 			installed_unlocks[#installed_unlocks + 1] = unlock_name
 		end
 	end

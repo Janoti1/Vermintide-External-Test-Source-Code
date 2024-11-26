@@ -288,8 +288,8 @@ local function create_team_widget(scenegraph_id, team_definition, team_color)
 					0
 				},
 				offset = {
-					94,
-					-4,
+					91,
+					-1,
 					0
 				}
 			},

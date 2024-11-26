@@ -3092,6 +3092,44 @@ return function ()
 	})
 	define_rule({
 		probability = 1,
+		name = "pdr_temple_lake_crossing_second_conversation_elf_01_c",
+		response = "pdr_temple_lake_crossing_second_conversation_elf_01_c",
+		criterias = {
+			{
+				"query_context",
+				"concept",
+				OP.EQ,
+				"heard_speak"
+			},
+			{
+				"query_context",
+				"dialogue_name_nopre",
+				OP.EQ,
+				"temple_lake_crossing_second_conversation_elf_01_b"
+			},
+			{
+				"user_context",
+				"player_profile",
+				OP.EQ,
+				"dwarf_ranger"
+			},
+			{
+				"user_context",
+				"enemies_close",
+				OP.LT,
+				7
+			}
+		},
+		on_done = {
+			{
+				"faction_memory",
+				"time_since_conversation",
+				OP.TIMESET
+			}
+		}
+	})
+	define_rule({
+		probability = 1,
 		name = "pdr_temple_lake_crossing_second_conversation_elf_02_c",
 		response = "pdr_temple_lake_crossing_second_conversation_elf_02_c",
 		criterias = {
@@ -4608,44 +4646,6 @@ return function ()
 				OP.ADD,
 				1
 			},
-			{
-				"faction_memory",
-				"time_since_conversation",
-				OP.TIMESET
-			}
-		}
-	})
-	define_rule({
-		probability = 1,
-		name = "pes_temple_lake_crossing_second_conversation_elf_01_c",
-		response = "pes_temple_lake_crossing_second_conversation_elf_01_c",
-		criterias = {
-			{
-				"query_context",
-				"concept",
-				OP.EQ,
-				"heard_speak"
-			},
-			{
-				"query_context",
-				"dialogue_name_nopre",
-				OP.EQ,
-				"temple_lake_crossing_second_conversation_elf_01_b"
-			},
-			{
-				"user_context",
-				"player_profile",
-				OP.EQ,
-				"empire_soldier"
-			},
-			{
-				"user_context",
-				"enemies_close",
-				OP.LT,
-				7
-			}
-		},
-		on_done = {
 			{
 				"faction_memory",
 				"time_since_conversation",
@@ -9337,6 +9337,28 @@ return function ()
 				[1] = 5.210458278656
 			}
 		},
+		pdr_temple_lake_crossing_second_conversation_elf_01_c = {
+			sound_events_n = 1,
+			face_animations_n = 1,
+			database = "hero_conversations_dlc_termite_1",
+			category = "story_talk",
+			dialogue_animations_n = 1,
+			dialogue_animations = {
+				[1] = "dialogue_talk"
+			},
+			face_animations = {
+				[1] = "face_neutral"
+			},
+			localization_strings = {
+				[1] = "pdr_temple_lake_crossing_second_conversation_elf_01_c_01"
+			},
+			sound_events = {
+				[1] = "pdr_temple_lake_crossing_second_conversation_elf_01_c_01"
+			},
+			sound_events_duration = {
+				[1] = 5.4923543930054
+			}
+		},
 		pdr_temple_lake_crossing_second_conversation_elf_02_c = {
 			sound_events_n = 1,
 			face_animations_n = 1,
@@ -10105,28 +10127,6 @@ return function ()
 			},
 			sound_events_duration = {
 				[1] = 4.6180000305176
-			}
-		},
-		pes_temple_lake_crossing_second_conversation_elf_01_c = {
-			sound_events_n = 1,
-			face_animations_n = 1,
-			database = "hero_conversations_dlc_termite_1",
-			category = "story_talk",
-			dialogue_animations_n = 1,
-			dialogue_animations = {
-				[1] = "dialogue_talk"
-			},
-			face_animations = {
-				[1] = "face_neutral"
-			},
-			localization_strings = {
-				[1] = "pes_temple_lake_crossing_second_conversation_elf_01_c_01"
-			},
-			sound_events = {
-				[1] = "pes_temple_lake_crossing_second_conversation_elf_01_c_01"
-			},
-			sound_events_duration = {
-				[1] = 5.4923543930054
 			}
 		},
 		pes_temple_lake_crossing_second_conversation_elf_02_a = {

@@ -310,6 +310,7 @@ DLCSettings = DLCSettings or {
 		}
 	},
 	gotwf_2024 = {
+		localization = "localization/gotwf_2024",
 		package_name = "resource_packages/dlcs/gotwf_2024",
 		additional_settings = {
 			common = "scripts/settings/dlcs/gotwf/gotwf_2024_common_settings"
@@ -444,6 +445,18 @@ DLCSettings = DLCSettings or {
 			common = "scripts/settings/dlcs/premium_career_bundle/premium_career_bundle_common_settings"
 		}
 	},
+	legacy_bundle = {
+		package_name = "resource_packages/dlcs/legacy_bundle",
+		additional_settings = {
+			common = "scripts/settings/dlcs/legacy_bundle/legacy_bundle_common_settings"
+		}
+	},
+	ultimate_bundle = {
+		package_name = "resource_packages/dlcs/ultimate_bundle",
+		additional_settings = {
+			common = "scripts/settings/dlcs/ultimate_bundle/ultimate_bundle_common_settings"
+		}
+	},
 	carousel = {
 		package_name = "resource_packages/dlcs/carousel",
 		localization = "localization/carousel",
@@ -488,8 +501,18 @@ DLCSettings = DLCSettings or {
 		package_name = "resource_packages/dlcs/termite_part_1",
 		additional_settings = {
 			common = "scripts/settings/dlcs/termite/termite_common_settings_part_1",
+			achievements = "scripts/settings/dlcs/termite/termite_achievements_settings_part_1",
 			sound = "scripts/settings/dlcs/termite/termite_sound_settings_part_1",
 			level = "scripts/settings/dlcs/termite/termite_level_settings_part_1"
+		}
+	},
+	termite_part_2 = {
+		localization = "localization/termite_2",
+		package_name = "resource_packages/dlcs/termite_part_2",
+		additional_settings = {
+			common = "scripts/settings/dlcs/termite/termite_common_settings_part_2",
+			sound = "scripts/settings/dlcs/termite/termite_sound_settings_part_2",
+			level = "scripts/settings/dlcs/termite/termite_level_settings_part_2"
 		}
 	},
 	handbook = {

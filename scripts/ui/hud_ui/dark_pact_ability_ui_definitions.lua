@@ -1629,6 +1629,11 @@ local profile_ability_templates = {
 	},
 	vs_rat_ogre = {
 		{
+			widget_definitions = {
+				ability_icon = create_dark_pact_hud_ability_icon_widget()
+			}
+		},
+		{
 			ability_name = "ogre_jump",
 			widget_definitions = {
 				ability_icon = create_dark_pact_hud_ability_icon_widget(),
@@ -1636,6 +1641,15 @@ local profile_ability_templates = {
 			},
 			update_functions = {
 				priming = pre_defined_widgets.priming.update_function
+			}
+		},
+		{
+			ability_name = "horde_ability",
+			widget_definitions = {
+				ability = pre_defined_widgets.ability.definition
+			},
+			update_functions = {
+				ability = pre_defined_widgets.ability.update_function
 			}
 		}
 	},

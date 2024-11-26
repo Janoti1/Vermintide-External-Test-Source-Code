@@ -1535,6 +1535,14 @@ UISettings.dlc_order_data = {
 		display_name = "store_shovel_upgrade_title"
 	},
 	{
+		dlc = "legacy_bundle",
+		display_name = "legacy_bundle_display_name"
+	},
+	{
+		dlc = "ultimate_bundle",
+		display_name = "ultimate_bundle_display_name"
+	},
+	{
 		dlc = "premium_career_bundle",
 		display_name = "display_name_premium_career_bundle"
 	},
@@ -1565,6 +1573,26 @@ UISettings.dlc_order_data = {
 	{
 		dlc = "five_career_bundle_0007",
 		display_name = "display_name_five_career_bundle_0007"
+	},
+	{
+		dlc = "slayer_skin_0001",
+		display_name = "display_name_skin_dr_slayer_1003"
+	},
+	{
+		dlc = "sister_of_the_thorn_skin_0001",
+		display_name = "display_name_skin_ww_thornsister_1001"
+	},
+	{
+		dlc = "mercenary_skin_0001",
+		display_name = "display_name_skin_es_mercenary_1003"
+	},
+	{
+		dlc = "pyromancer_skin_0001",
+		display_name = "display_name_skin_bw_scholar_1003"
+	},
+	{
+		dlc = "bountyhunter_skin_0001",
+		display_name = "display_name_skin_wh_bountyhunter_1003"
 	}
 }
 

@@ -691,27 +691,19 @@ CareerSettings.vs_rat_ogre = {
 	override_available_for_mechanism = local_override_available_for_mechanism,
 	career_info_settings = {
 		{
-			description = "vs_htp_troll_melee_description_line1",
+			description = "vs_htp_rat_ogre_melee_description_line1",
 			input_action = "action_one",
-			icon = "troll_01",
+			icon = "rat_ogre_01",
 			gamepad_input = "action_one",
-			title = "vs_htp_troll_melee"
+			title = "vs_htp_rat_ogre_melee"
 		},
 		{
-			description = "vs_htp_troll_vomit_description_line1",
+			description = "vs_htp_rat_ogre_leap_description_line1",
 			name = "ogre_jump",
-			icon = "troll_02",
+			icon = "rat_ogre_02",
 			input_action = "action_two",
 			gamepad_input = "action_two",
-			title = "vs_htp_troll_vomit"
-		},
-		{
-			description = "vs_htp_troll_regen_description_line1",
-			name = "triple_slam",
-			icon = "troll_03",
-			input_action = "weapon_reload",
-			gamepad_input = "weapon_reload_input",
-			title = "vs_htp_troll_regen"
+			title = "vs_htp_rat_ogre_leap"
 		}
 	},
 	loadout_equipment_slots = {

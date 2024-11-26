@@ -211,7 +211,7 @@ StartGameWindowVersusPlayerHostedLobby._update_avatars = function (self)
 end
 
 StartGameWindowVersusPlayerHostedLobby._update_can_play = function (self)
-	local can_play, reason = false, "tutorial_no_text"
+	local can_play, reason = true, "tutorial_no_text"
 	local is_player_hosting = self._matchmaking_manager:is_player_hosting()
 
 	if is_player_hosting then
@@ -496,11 +496,9 @@ StartGameWindowVersusPlayerHostedLobby._update_custom_lobby_slots = function (se
 
 		if slot_data then
 			-- Nothing
+		elseif not match_handler:query_peer_data(peer_id, "is_synced") then
+			-- Nothing
 		else
-			if not match_handler:query_peer_data(peer_id, "is_synced") then
-				return
-			end
-
 			local party_id, slot_id = slot_reservation_handler:get_peer_reserved_indices(peer_id)
 
 			if not party_id then
@@ -525,7 +523,11 @@ StartGameWindowVersusPlayerHostedLobby._update_custom_lobby_slots = function (se
 
 				local player_name = match_handler:query_peer_data(peer_id, "player_name")
 
-				widget.content.player_name = player_name and UIRenderer.crop_text(player_name, 18) or "n/a"
+				if not player_name or player_name == "" then
+					player_name = PlayerUtils.player_name(peer_id, nil)
+				end
+
+				widget.content.player_name = UIRenderer.crop_text(player_name, 18)
 				slot_data.has_avatar = not HAS_AVATARS
 
 				self:_apply_team_color(widget, party_id == 1 and team_1_color or team_2_color)
@@ -614,6 +616,14 @@ StartGameWindowVersusPlayerHostedLobby._update_mission_option = function (self)
 
 		selected_level_id = lobby and lobby:lobby_data("selected_mission_id")
 	end
+
+	selected_level_id = selected_level_id or "any"
+
+	if selected_level_id == self._selected_level_id then
+		return
+	end
+
+	self._selected_level_id = selected_level_id
 
 	local level_settings = selected_level_id and selected_level_id ~= "any" and LevelSettings[selected_level_id] or DummyAnyLevel
 	local display_name = level_settings.display_name
