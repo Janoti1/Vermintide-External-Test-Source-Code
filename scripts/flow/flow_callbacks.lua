@@ -5662,12 +5662,6 @@ function flow_callback_whaling_village_elevator_speedrun(params)
 	achievement_manager:trigger_event("dwarf_elevator_speedrun")
 end
 
-function flow_callback_termite_part_1_speedrun_challenge(params)
-	local achievement_manager = Managers.state.achievement
-
-	achievement_manager:trigger_event("termite1_speedrun_challenge")
-end
-
 function flow_callback_termite_part_1_skaven_markings_challenge(params)
 	local achievement_manager = Managers.state.achievement
 

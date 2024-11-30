@@ -53,9 +53,21 @@ EnemyCharacterStateLeaping.on_exit = function (self, unit, input, dt, context, t
 
 	locomotion_extension:set_mover_filter_property("enemy_leap_state", false)
 
-	local movement_settings_table = PlayerUnitMovementSettings.get_movement_settings_table(unit)
+	local player_position = Vector3.copy(POSITION_LOOKUP[unit])
+	local end_position = self._leap_data.projected_hit_pos:unbox()
 
-	movement_settings_table.gravity_acceleration = PlayerUnitMovementSettings.gravity_acceleration
+	if player_position.z < end_position.z then
+		player_position.z = end_position.z + 0.1
+
+		locomotion_extension:teleport_to(player_position)
+		locomotion_extension:set_forced_velocity(Vector3.zero())
+		locomotion_extension:set_wanted_velocity(Vector3.zero())
+	end
+
+	local player_movement_settings_table = PlayerUnitMovementSettings.get_movement_settings_table(unit)
+
+	player_movement_settings_table.move_speed = PlayerUnitMovementSettings.move_speed
+	player_movement_settings_table.gravity_acceleration = PlayerUnitMovementSettings.gravity_acceleration
 
 	if next_state == "walking" or next_state == "standing" then
 		ScriptUnit.extension(unit, "whereabouts_system"):set_landed()
@@ -256,6 +268,8 @@ EnemyCharacterStateLeaping._move_in_air = function (self, unit, dt, t)
 
 		speed = speed * speed_multiplier
 
+		locomotion_extension:set_mover_filter_property("enemy_leap_state", false)
+
 		local gravity_multiplier = 1
 
 		movement_settings_table.gravity_acceleration = PlayerUnitMovementSettings.gravity_acceleration * gravity_multiplier
@@ -352,13 +366,12 @@ EnemyCharacterStateLeaping._finish = function (self, unit, t)
 		self._played_landing_event = true
 	end
 
-	local movement_settings_table = PlayerUnitMovementSettings.get_movement_settings_table(unit)
+	local player_movement_settings_table = PlayerUnitMovementSettings.get_movement_settings_table(unit)
 
-	movement_settings_table.gravity_acceleration = PlayerUnitMovementSettings.gravity_acceleration
+	player_movement_settings_table.gravity_acceleration = PlayerUnitMovementSettings.gravity_acceleration
 
 	locomotion_extension:set_forced_velocity(Vector3.zero())
 	locomotion_extension:set_wanted_velocity(Vector3.zero())
-	locomotion_extension:reset_maximum_upwards_velocity()
 
 	if self._leap_data.leap_events.finished then
 		local final_position = POSITION_LOOKUP[unit]

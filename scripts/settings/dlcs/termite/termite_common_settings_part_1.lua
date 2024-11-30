@@ -24,5 +24,6 @@ settings.statistics_lookup = {
 	"termite1_skaven_markings_challenge",
 	"termite1_bell_challenge",
 	"termite1_towers_challenge",
-	"termite1_waystone_timer_challenge_easy"
+	"termite1_waystone_timer_challenge_easy",
+	"termite1_waystone_timer_challenge_hard"
 }

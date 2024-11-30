@@ -5,13 +5,14 @@ settings.achievement_outline = {
 		entries = {},
 		categories = {
 			{
-				sorting = 8,
+				sorting = 9,
 				name = "area_selection_termite_name",
 				entries = {
 					"termite1_skaven_markings_challenge",
 					"termite1_bell_challenge",
 					"termite1_towers_challenge",
 					"termite1_waystone_timer_challenge_easy",
+					"termite1_waystone_timer_challenge_hard",
 					"termite1_complete_recruit",
 					"termite1_complete_veteran",
 					"termite1_complete_champion",

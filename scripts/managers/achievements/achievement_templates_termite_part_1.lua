@@ -81,14 +81,15 @@ achievements.termite1_towers_challenge = {
 	end
 }
 
-local WAYSTONE_CHALLENGE_TIME_LIMIT = 180
+local WAYSTONE_CHALLENGE_TIME_LIMIT_EASY = 180
+local WAYSTONE_CHALLENGE_TIME_LIMIT_HARD = 90
 
 achievements.termite1_waystone_timer_challenge_easy = {
 	name = "achv_termite1_waystone_timer_easy_name",
 	display_completion_ui = true,
 	icon = "achv_termite1_waystone_timer_easy_icon",
 	desc = function ()
-		return string.format(Localize("achv_termite1_waystone_timer_easy_desc"), WAYSTONE_CHALLENGE_TIME_LIMIT)
+		return string.format(Localize("achv_termite1_waystone_timer_easy_desc"), WAYSTONE_CHALLENGE_TIME_LIMIT_EASY)
 	end,
 	events = {
 		"termite1_waystone_timer_challenge_easy"
@@ -98,6 +99,23 @@ achievements.termite1_waystone_timer_challenge_easy = {
 	end,
 	on_event = function (statistics_db, stats_id, template_data, event_name, event_data)
 		statistics_db:increment_stat(stats_id, "termite1_waystone_timer_challenge_easy")
+	end
+}
+achievements.termite1_waystone_timer_challenge_hard = {
+	name = "achv_termite1_waystone_timer_hard_name",
+	display_completion_ui = true,
+	icon = "achv_termite1_waystone_timer_hard_icon",
+	desc = function ()
+		return string.format(Localize("achv_termite1_waystone_timer_hard_desc"), WAYSTONE_CHALLENGE_TIME_LIMIT_HARD)
+	end,
+	events = {
+		"termite1_waystone_timer_challenge_hard"
+	},
+	completed = function (statistics_db, stats_id, template_data)
+		return statistics_db:get_persistent_stat(stats_id, "termite1_waystone_timer_challenge_hard") >= 1
+	end,
+	on_event = function (statistics_db, stats_id, template_data, event_name, event_data)
+		statistics_db:increment_stat(stats_id, "termite1_waystone_timer_challenge_hard")
 	end
 }
 termite1_all_challenges = table.clone(all_difficulties)

@@ -219,20 +219,27 @@ local rat_ogre_jump_data = {
 		vertical_height = 2,
 		player_speed_scale = 1,
 		max_move_speed = 100
+	},
+	priming_buffs = {
+		{
+			buff_template = "planted_decrease_movement",
+			external_optional_multiplier = 0.1
+		}
 	}
 }
 
 ActivatedAbilitySettings.vs_rat_ogre = {
 	{
-		description = "career_active_desc_dr_2_2",
-		input_action = "action_two_hold",
+		cost = 1,
+		name = "ogre_jump",
 		display_name = "career_active_name_dr_2",
 		start_paused = true,
-		cooldown = 10,
-		prime_time = 0.5,
-		name = "ogre_jump",
+		cooldown = 24,
+		input_action = "action_two_hold",
+		prime_time = 2,
 		unpause_on_leave_ghost_mode = true,
 		spawn_cooldown_percent = 0.1,
+		description = "career_active_desc_dr_2_2",
 		icon = "bardin_slayer_activated_ability",
 		ability_class = CareerAbilityRatOgreJump,
 		jump_ability_data = rat_ogre_jump_data

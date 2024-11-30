@@ -70,7 +70,7 @@ local planted_decrease_movement_settings = {
 	leap_charge = {
 		{
 			start_time = 0,
-			external_multiplier = 0,
+			external_multiplier = 1,
 			buff_name = "planted_decrease_movement"
 		}
 	}
@@ -104,7 +104,6 @@ weapon_template.actions = {
 			disallow_ghost_mode = true,
 			anim_end_event = "attack_finished",
 			kind = "melee_start",
-			attack_hold_input = "action_one_hold",
 			uninterruptible = true,
 			anim_event = "attack_ogre_slam_charge",
 			anim_end_event_condition_func = function (unit, end_reason)
@@ -115,6 +114,11 @@ weapon_template.actions = {
 				local is_in_ghost_mode = ghost_mode_extenstion:is_in_ghost_mode()
 				local career_extension = ScriptUnit.has_extension(action_user, "career_system")
 				local ability_data = career_extension:get_activated_ability_data(1)
+
+				if ability_data.is_priming then
+					input_extension:clear_input_buffer()
+					input_extension:reset_release_input()
+				end
 
 				return not is_in_ghost_mode and not ability_data.is_priming
 			end,
@@ -210,19 +214,17 @@ weapon_template.actions = {
 			hit_effect = "vs_chaos_troll_axe_light",
 			weapon_action_hand = "right",
 			no_damage_impact_sound_event = "blunt_hit_armour",
-			damage_profile = "rat_ogre_sweep",
+			damage_profile = "rat_ogre_light_1",
 			use_precision_sweep = false,
 			damage_window_end = 0.65,
 			impact_sound_event = "blunt_hit",
-			damage_profile_outer = "light_push",
-			disallow_ghost_mode = true,
 			aim_assist_ramp_multiplier = 0.4,
+			disallow_ghost_mode = true,
 			aim_assist_max_ramp_multiplier = 0.8,
 			aim_assist_ramp_decay_delay = 0,
 			dedicated_target_range = 2,
 			uninterruptible = true,
 			anim_event = "attack_swing_right",
-			damage_profile_inner = "medium_push",
 			total_time = 2.17,
 			anim_end_event_condition_func = function (unit, end_reason)
 				return end_reason ~= "new_interupting_action" and end_reason ~= "action_complete"
@@ -265,7 +267,7 @@ weapon_template.actions = {
 			impact_sound_event = "blunt_hit",
 			charge_value = "action_push",
 			anim_end_event = "attack_finished",
-			damage_profile = "rat_ogre_sweep",
+			damage_profile = "rat_ogre_light_2",
 			dedicated_target_range = 2,
 			uninterruptible = true,
 			anim_event = "attack_swing_left",
@@ -338,62 +340,6 @@ weapon_template.actions = {
 				}
 			},
 			enter_function = function (attacker_unit, input_extension)
-				return input_extension:reset_release_input()
-			end
-		}
-	},
-	action_two = {
-		default = {
-			disallow_ghost_mode = true,
-			anim_end_event = "attack_jump_air",
-			kind = "dummy",
-			anim_event = "attack_jump",
-			anim_end_event_condition_func = function (unit, end_reason)
-				return end_reason ~= "new_interupting_action" and end_reason ~= "action_complete"
-			end,
-			condition_func = function (action_user, input_extension, ammo_extension, current_action_extension)
-				local ghost_mode_extenstion = ScriptUnit.has_extension(action_user, "ghost_mode_system")
-				local is_in_ghost_mode = ghost_mode_extenstion:is_in_ghost_mode()
-				local career_extension = ScriptUnit.has_extension(action_user, "career_system")
-				local can_use_ability = career_extension:can_use_activated_ability(1)
-				local meet_conditions = not is_in_ghost_mode and can_use_ability
-
-				if not meet_conditions then
-					career_extension:stop_ability("cooldown", 1)
-				end
-
-				return meet_conditions
-			end,
-			enter_function = function (owner_unit, input_extension, remaining_time, weapon_extension)
-				input_extension:clear_input_buffer()
-				input_extension:reset_release_input()
-
-				local career_extension = ScriptUnit.has_extension(owner_unit, "career_system")
-				local can_use_ability = career_extension:can_use_activated_ability(1)
-
-				if can_use_ability and career_extension:ability_was_triggered(1) then
-					print("enter ability")
-				end
-			end,
-			finish_function = function (owner_unit, reason, weapon_extension)
-				if reason ~= "new_interupting_action" then
-					local career_extension = ScriptUnit.has_extension(owner_unit, "career_system")
-				end
-			end,
-			total_time = math.huge,
-			buff_data = planted_decrease_movement_settings.leap_charge,
-			allowed_chain_actions = {}
-		}
-	},
-	action_three = {
-		default = {
-			weapon_action_hand = "left",
-			kind = "career_dummy",
-			total_time = 0,
-			allowed_chain_actions = {},
-			enter_function = function (attacker_unit, input_extension)
-				input_extension:clear_input_buffer()
-
 				return input_extension:reset_release_input()
 			end
 		}

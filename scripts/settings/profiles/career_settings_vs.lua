@@ -659,7 +659,7 @@ CareerSettings.vs_rat_ogre = {
 	icon = "icons_placeholder",
 	base_skin = "skaven_rat_ogre_skin_0000",
 	picking_image = "medium_unit_frame_portrait_ratogre",
-	picking_image_square = "pactsworn_portrait_diamond_gutter_runner",
+	picking_image_square = "pactsworn_portrait_diamond_rat_ogre",
 	preview_wield_slot = "melee",
 	playfab_name = "vs_rat_ogre",
 	category_image = "icons_placeholder",
@@ -743,7 +743,6 @@ CareerSettings.vs_rat_ogre = {
 	additional_character_states_list = {
 		"RatOgreStateStanding",
 		"RatOgreStateWalking",
-		"RatOgreStateJumpAbilityPriming",
 		"RatOgreStateJumping",
 		"RatOgreStateFalling"
 	}

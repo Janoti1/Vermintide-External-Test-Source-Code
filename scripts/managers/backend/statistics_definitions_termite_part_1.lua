@@ -4,6 +4,7 @@ local database_names = {
 	"termite1_bell_challenge",
 	"termite1_towers_challenge",
 	"termite1_waystone_timer_challenge_easy",
+	"termite1_waystone_timer_challenge_hard",
 	"termite1_all_challenges"
 }
 

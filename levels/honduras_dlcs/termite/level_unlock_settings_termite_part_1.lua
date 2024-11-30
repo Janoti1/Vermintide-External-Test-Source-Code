@@ -4,12 +4,12 @@ AreaSettings.termite = {
 	display_name = "area_selection_termite_name",
 	description_text = "area_selection_termite_description",
 	store_page_url = "https://store.steampowered.com/app/552500/Warhammer_Vermintide_2/",
-	level_image = "area_icon_drachenfels",
+	level_image = "area_icon_termite",
 	dlc_name = "termite",
 	sort_order = 7,
 	video_settings = {
-		material_name = "area_video_bogenhafen",
-		resource = "video/area_videos/penny/area_video_penny"
+		material_name = "area_video_termite",
+		resource = "video/area_videos/termite/area_video_termite"
 	},
 	acts = {
 		"act_termite"

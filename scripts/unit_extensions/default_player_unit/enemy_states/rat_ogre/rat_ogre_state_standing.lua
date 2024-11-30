@@ -19,10 +19,6 @@ RatOgreStateStanding.update = function (self, unit, input, dt, context, t)
 	local ghost_mode_extension = self._ghost_mode_extension
 	local in_ghost_mode = ghost_mode_extension:is_in_ghost_mode()
 
-	if not in_ghost_mode and career_extension:ability_was_triggered(self._ogre_jump_ability_id) then
-		return
-	end
-
 	self:_update_taunt_dialogue(t)
 
 	handled = self:common_movement(t)

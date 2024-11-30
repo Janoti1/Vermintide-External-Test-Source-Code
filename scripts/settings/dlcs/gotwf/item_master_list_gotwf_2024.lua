@@ -7,7 +7,7 @@ ItemMasterList.bw_necromancy_staff_skin_02_runed_05 = {
 	slot_type = "weapon_skin",
 	information_text = "information_weapon_skin",
 	template = "staff_death",
-	required_dlc = "shovel_upgrade",
+	required_dlc = "shovel",
 	hud_icon = "hud_icon_default",
 	item_type = "weapon_skin",
 	matching_item_key = "bw_necromancy_staff",
@@ -40,7 +40,7 @@ ItemMasterList.dr_2h_cog_hammer_skin_02_runed_05 = {
 	inventory_icon = "icon_dr_2h_cog_hammer_skin_02_runed_05",
 	slot_type = "weapon_skin",
 	information_text = "information_weapon_skin",
-	required_dlc = "cog_upgrade",
+	required_dlc = "cog",
 	hud_icon = "weapon_generic_icon_hammer2h",
 	item_type = "weapon_skin",
 	matching_item_key = "dr_2h_cog_hammer",
@@ -74,7 +74,7 @@ ItemMasterList.es_bastard_sword_skin_03_runed_05 = {
 	inventory_icon = "icon_es_bastard_sword_skin_03_runed_05",
 	slot_type = "weapon_skin",
 	information_text = "information_weapon_skin",
-	required_dlc = "lake_upgrade",
+	required_dlc = "lake",
 	template = "bastard_sword_template",
 	item_type = "weapon_skin",
 	matching_item_key = "es_bastard_sword",
@@ -167,6 +167,33 @@ ItemMasterList.wh_crossbow_skin_02_runed_05 = {
 		"wh_zealot",
 		"wh_bountyhunter",
 		"wh_captain"
+	}
+}
+ItemMasterList.cosmetic_bundle_hat_1010 = {
+	description = "description_huntsman_hat_1006",
+	rarity = "promo",
+	display_name = "display_name_huntsman_hat_1006",
+	slot_type = "bundle",
+	information_text = "hat_bundle_gotwf_2024_description_text",
+	name = "cosmetic_hat_bundle_1010",
+	template = "",
+	hud_icon = "",
+	item_type = "bundle",
+	can_wield = CanWieldAllItemTemplates,
+	bundle = {
+		BundledItems = {
+			"adept_hat_1010",
+			"bountyhunter_hat_1010",
+			"huntsman_hat_1010",
+			"maidenguard_hat_1010",
+			"ranger_hat_1010",
+			"shade_hat_1010",
+			"slayer_hat_1010",
+			"waywatcher_hat_1010",
+			"zealot_hat_1010",
+			"thornsister_hat_1010",
+			"bw_necromancer_hat_1010"
+		}
 	}
 }
 ItemMasterList.frame_gotwf_2024 = {

@@ -19,36 +19,6 @@ local function get_leap_data(physics_world, own_position, target_position)
 	return direction, jump_speed, hit_pos
 end
 
-CareerAbilityRatOgreJump.was_triggered = function (self)
-	local input_extension = self._input_extension
-
-	if not input_extension then
-		return false
-	end
-
-	if not self._is_priming then
-		if not self:_ability_available() then
-			return false
-		end
-
-		if input_extension:get(self._ability_input) then
-			self:_start()
-
-			return true
-		end
-	end
-
-	return false
-end
-
-CareerAbilityRatOgreJump._ability_available = function (self)
-	local career_extension = self._career_extension
-	local status_extension = self._status_extension
-	local locomotion_extension = self._locomotion_extension
-
-	return career_extension:can_use_activated_ability() and not status_extension:is_disabled() and locomotion_extension:is_on_ground()
-end
-
 CareerAbilityRatOgreJump.init = function (self, extension_init_context, unit, extension_init_data)
 	self._owner_unit = unit
 	self._world = extension_init_context.world
@@ -68,30 +38,8 @@ CareerAbilityRatOgreJump.init = function (self, extension_init_context, unit, ex
 	self._effect_id = nil
 	self._is_priming = false
 	self._last_valid_landing_position = nil
+	self._buff_data = {}
 end
-
-local rat_ogre_jump_data = {
-	hit_indicator_raidus = 3,
-	min_pitch = 60,
-	max_pitch = -10,
-	lerp_data = {
-		zero_distance = 0,
-		slow_distance = 0.8,
-		start_accel_distance = 0.15,
-		glide_distance = 0.7,
-		full_distance = 1,
-		end_accel_distance = 0.4
-	},
-	movement_settings = {
-		jump_speed = 24,
-		slam_speed = 36,
-		max_slam_speed = 100,
-		move_speed = 28,
-		vertical_height = 2,
-		player_speed_scale = 1,
-		max_move_speed = 100
-	}
-}
 
 CareerAbilityRatOgreJump.extensions_ready = function (self, world, unit)
 	self._first_person_extension = ScriptUnit.has_extension(unit, "first_person_system")
@@ -100,17 +48,54 @@ CareerAbilityRatOgreJump.extensions_ready = function (self, world, unit)
 	self._ability_id = self._career_extension:ability_id("ogre_jump")
 	self._ability_data = self._career_extension:get_activated_ability_data(self._ability_id)
 	self._ability_input = self._ability_data.input_action
-	self._jump_data = rat_ogre_jump_data or self._ability_data.jump_ability_data
+	self._jump_data = self._ability_data.jump_ability_data
 	self._prime_time = self._ability_data.prime_time
 	self._buff_extension = ScriptUnit.extension(unit, "buff_system")
 	self._locomotion_extension = ScriptUnit.extension(unit, "locomotion_system")
 	self._input_extension = ScriptUnit.has_extension(unit, "input_system")
 	self._inventory_extension = ScriptUnit.extension(unit, "inventory_system")
+	self._ghost_mode_extension = ScriptUnit.extension(unit, "ghost_mode_system")
 	self._breed = Unit.get_data(unit, "breed")
 
 	if self._first_person_extension then
 		self._first_person_unit = self._first_person_extension:get_first_person_unit()
 	end
+end
+
+CareerAbilityRatOgreJump.was_triggered = function (self)
+	local input_extension = self._input_extension
+
+	if not input_extension then
+		return false
+	end
+
+	if not self._is_priming then
+		if not self:_ability_available() then
+			return false
+		end
+
+		if input_extension:get(self._ability_input) and not self._ghost_mode_extension:is_in_ghost_mode() then
+			self:_start()
+
+			return true
+		end
+	end
+
+	return false
+end
+
+CareerAbilityRatOgreJump._ability_available = function (self)
+	local ghost_mode_extenstion = ScriptUnit.has_extension(self._owner_unit, "ghost_mode_system")
+	local is_in_ghost_mode = ghost_mode_extenstion:is_in_ghost_mode()
+	local career_extension = self._career_extension
+	local status_extension = self._status_extension
+	local locomotion_extension = self._locomotion_extension
+	local can_use_ability = career_extension:can_use_activated_ability()
+	local is_disabled = status_extension:is_disabled()
+	local is_grounded = locomotion_extension:is_on_ground()
+	local ability_available = not is_in_ghost_mode and can_use_ability and not is_disabled and is_grounded
+
+	return ability_available
 end
 
 CareerAbilityRatOgreJump.destroy = function (self)
@@ -119,15 +104,59 @@ end
 
 CareerAbilityRatOgreJump._start = function (self)
 	print("ability start")
+
+	local _, right_hand_weapon_extension, _ = CharacterStateHelper.get_item_data_and_weapon_extensions(self._inventory_extension)
+
+	if right_hand_weapon_extension then
+		right_hand_weapon_extension:stop_action("interrupted")
+	end
+
+	self._jump_data = self._career_extension:get_activated_ability_data(self._ability_id).jump_ability_data
+
 	self:_start_calculate_leap_position()
 
 	self._priming_charged = Managers.time:time("game") + self._prime_time
+
+	if self._jump_data.priming_buffs then
+		self:_add_ability_buffs(self._jump_data.priming_buffs)
+	end
+
+	self._first_person_extension:play_animation_event("attack_jump")
+	Unit.animation_event(self._owner_unit, "attack_jump")
 end
 
-CareerAbilityRatOgreJump._set_priming_progress = function (self, time_fraction)
-	local ability_data = self._career_extension:get_activated_ability_data(self._ability_id)
+CareerAbilityRatOgreJump._add_ability_buffs = function (self, priming_buffs)
+	for i = 1, #priming_buffs do
+		local buff = priming_buffs[i]
+		local buff_template = buff and buff.buff_template
 
-	ability_data.priming_progress = time_fraction
+		assert(buff_template, "need a buff_template to add a buff")
+
+		local params = {}
+
+		params.external_optional_multiplier = buff and buff.external_optional_multiplier
+
+		local id, sub_buffs_added, first_buff = self._buff_extension:add_buff(buff_template, params)
+
+		self._buff_data[#self._buff_data + 1] = {
+			id,
+			sub_buffs_added,
+			first_buff
+		}
+	end
+end
+
+CareerAbilityRatOgreJump._remove_ability_buffs = function (self)
+	if not self._buff_data then
+		return
+	end
+
+	for i = #self._buff_data, 1, -1 do
+		local id = self._buff_data[i][1]
+
+		self._buff_extension:remove_buff(id, true)
+		table.swap_delete(self._buff_data, i)
+	end
 end
 
 CareerAbilityRatOgreJump._update_priming = function (self, unit, input, dt, context, t)
@@ -148,6 +177,12 @@ CareerAbilityRatOgreJump.update = function (self, unit, input, dt, context, t)
 		return
 	end
 
+	local was_triggered = self:was_triggered()
+
+	if was_triggered then
+		-- Nothing
+	end
+
 	if self._is_priming then
 		local cancel_input = input_extension:get("action_one") or input_extension:get("jump") or input_extension:get("jump_only") or input_extension:get("weapon_reload") or input_extension:get("action_two_release") and not self._done_priming or not input_extension:get("action_two_hold") and not self._done_priming
 
@@ -156,7 +191,6 @@ CareerAbilityRatOgreJump.update = function (self, unit, input, dt, context, t)
 			self._career_extension:start_activated_ability_cooldown(self._ability_id, 0.9)
 			Managers.state.network:anim_event(unit, "interrupt")
 			CharacterStateHelper.play_animation_event_first_person(self._first_person_extension, "interrupt")
-			self:debug_curve(true, dt)
 
 			return
 		end
@@ -301,6 +335,8 @@ CareerAbilityRatOgreJump._stop_priming = function (self)
 	self._is_priming = false
 	self._ability_data.is_priming = false
 	self._last_valid_landing_position = nil
+
+	self:_remove_ability_buffs()
 end
 
 CareerAbilityRatOgreJump._do_common_stuff = function (self)
@@ -422,9 +458,9 @@ CareerAbilityRatOgreJump._do_leap = function (self)
 		leap_events = {
 			start = function (parent)
 				local unit_3p = parent.unit
-				local buff_extension = ScriptUnit.has_extension(unit_3p, "buff_system")
 
-				self._uninterruptible_buff_id = buff_extension:add_buff("bardin_slayer_passive_uninterruptible_leap")
+				parent._first_person_extension:play_animation_event("attack_jump")
+				Unit.animation_event(unit_3p, "attack_jump")
 			end,
 			finished = function (parent, unit, aborted, final_position)
 				local unit_3p = parent.unit
@@ -454,7 +490,6 @@ CareerAbilityRatOgreJump._do_leap = function (self)
 
 				local status_ext = ScriptUnit.extension(unit, "status_system")
 
-				status_ext:set_noclip(false, "skill_slayer")
 				self._career_extension:stop_ability()
 			end
 		}
@@ -607,4 +642,10 @@ CareerAbilityRatOgreJump.debug_curve = function (self, release, dt)
 		velocity = velocity + gravity * DEBUG_GRAV_MULT * time_step
 		position = new_position
 	end
+end
+
+CareerAbilityRatOgreJump._set_priming_progress = function (self, time_fraction)
+	local ability_data = self._career_extension:get_activated_ability_data(self._ability_id)
+
+	ability_data.priming_progress = time_fraction
 end
