@@ -551,7 +551,7 @@ UIPlayerPortraitFrameSettings = {
 	},
 	frame_termite_01 = {
 		{
-			texture = "portrait_frame_termite_01_child",
+			texture = "portrait_frame_termite_01",
 			layer = 10,
 			color = {
 				255,

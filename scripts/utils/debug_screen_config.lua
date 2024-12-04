@@ -7565,6 +7565,7 @@ local settings = {
 				local hero_attributes = backend_manager:get_interface("hero_attributes")
 
 				hero_attributes:set(display_name, "experience", function_result.data[display_name .. "_experience"])
+				hero_attributes:set(display_name, "experience_pool", function_result.data[display_name .. "_experience_pool"])
 			end
 
 			local request = {

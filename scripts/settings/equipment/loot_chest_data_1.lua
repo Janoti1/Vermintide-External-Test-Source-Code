@@ -62,6 +62,9 @@ local power_level_scratch = {
 
 LootChestData.calculate_power_level = function (level, pivot_data)
 	power_level_scratch[1], power_level_scratch[2] = pivot_data.low, pivot_data.hi
+
+	local raw_level = level
+
 	level = math.min(level, LootChestData.LEVEL_USED_FOR_POOL_LEVELS)
 
 	local loot_interface = Managers.backend:get_interface("loot")
@@ -97,6 +100,12 @@ LootChestData.calculate_power_level = function (level, pivot_data)
 			local un_eased = math.lerp(0, math.min(max, pivot_power) - min, level_pivot_t) + min
 
 			eased = eased + (un_eased - eased) * (1 - easing_power)
+		end
+
+		local overflow_pl = sub_data.raise_by_overflow_level
+
+		if overflow_pl then
+			eased = eased + math.max(0, overflow_pl * (raw_level - LootChestData.LEVEL_USED_FOR_POOL_LEVELS))
 		end
 
 		power_level_scratch[i] = math.clamp(eased, min, max)
