@@ -6,11 +6,11 @@ local planted_decrease_movement_settings = {
 		{
 			start_time = 0,
 			external_multiplier = 0.2,
-			buff_name = "planted_charging_decrease_movement"
+			buff_name = "planted_decrease_movement"
 		},
 		{
 			start_time = 0,
-			external_value = 2,
+			external_value = 1.5,
 			buff_name = "set_rotation_limit"
 		},
 		{
@@ -34,7 +34,7 @@ local planted_decrease_movement_settings = {
 	heavy_attack = {
 		{
 			start_time = 0,
-			external_multiplier = 1.2,
+			external_multiplier = 1,
 			end_time = 0.3,
 			buff_name = "planted_fast_decrease_movement"
 		},
@@ -82,14 +82,6 @@ local knockback_tables = {
 		player_knockback_speed = 12,
 		player_knockback_speed_blocked = 12
 	},
-	scrambler = {
-		player_catapult_speed_blocked = 6,
-		catapult_players = true,
-		player_catapult_speed = 6,
-		player_catapult_speed_blocked_z = 4,
-		player_catapult_speed_z = 4,
-		catapult = true
-	},
 	slam = {
 		catapult_players = false,
 		catapult = false,
@@ -101,8 +93,8 @@ local knockback_tables = {
 weapon_template.actions = {
 	action_one = {
 		default = {
-			disallow_ghost_mode = true,
 			anim_end_event = "attack_finished",
+			disallow_ghost_mode = true,
 			kind = "melee_start",
 			uninterruptible = true,
 			anim_event = "attack_ogre_slam_charge",
@@ -123,6 +115,7 @@ weapon_template.actions = {
 				return not is_in_ghost_mode and not ability_data.is_priming
 			end,
 			total_time = math.huge,
+			anim_time_scale = time_mod * 1.15,
 			buff_data = planted_decrease_movement_settings.charge,
 			allowed_chain_actions = {
 				{
@@ -169,6 +162,7 @@ weapon_template.actions = {
 				return end_reason ~= "new_interupting_action" and end_reason ~= "action_complete"
 			end,
 			total_time = math.huge,
+			anim_time_scale = time_mod * 1.15,
 			buff_data = planted_decrease_movement_settings.charge,
 			allowed_chain_actions = {
 				{
@@ -211,7 +205,7 @@ weapon_template.actions = {
 			first_person_hit_anim = "shake_hit",
 			range_mod = 1.2,
 			width_mod = 50,
-			hit_effect = "vs_chaos_troll_axe_light",
+			hit_effect = "vs_rat_ogre_light",
 			weapon_action_hand = "right",
 			no_damage_impact_sound_event = "blunt_hit_armour",
 			damage_profile = "rat_ogre_light_1",
@@ -258,7 +252,7 @@ weapon_template.actions = {
 			first_person_hit_anim = "shake_hit",
 			range_mod = 1.2,
 			width_mod = 50,
-			hit_effect = "vs_chaos_troll_axe_light",
+			hit_effect = "vs_rat_ogre_light",
 			weapon_action_hand = "left",
 			no_damage_impact_sound_event = "blunt_hit_armour",
 			additional_critical_strike_chance = 0.1,
@@ -276,11 +270,11 @@ weapon_template.actions = {
 				return end_reason ~= "new_interupting_action" and end_reason ~= "action_complete"
 			end,
 			buff_data = planted_decrease_movement_settings.light_attack,
-			anim_time_scale = time_mod * 2.15,
+			anim_time_scale = time_mod * 1.15,
 			sweep_rotation_offset = {
 				roll = math.pi * 0.5
 			},
-			knockback_data = knockback_tables.scrambler,
+			knockback_data = knockback_tables.frenzy,
 			buff_data = planted_decrease_movement_settings.light_attack,
 			allowed_chain_actions = {
 				{
@@ -300,23 +294,23 @@ weapon_template.actions = {
 		},
 		attack_slam = {
 			damage_window_start = 0.1,
-			disallow_ghost_mode = true,
 			range_mod = 0.85,
 			anim_end_event = "attack_finished",
 			kind = "sweep",
 			first_person_hit_anim = "shake_hit",
 			width_mod = 100,
 			hit_stop_anim = "attack_hit",
-			hit_effect = "vs_chaos_troll_axe_heavy",
+			hit_effect = "vs_rat_ogre_heavy",
 			weapon_action_hand = "both",
 			no_damage_impact_sound_event = "blunt_hit_armour",
 			damage_window_end = 0.225,
 			impact_sound_event = "blunt_hit",
+			disallow_ghost_mode = true,
 			additional_critical_strike_chance = 0.1,
 			use_precision_sweep = false,
-			damage_profile_left = "rat_ogre_slam",
 			damage_profile_right = "rat_ogre_slam",
 			dedicated_target_range = 2,
+			damage_profile_left = "rat_ogre_slam",
 			uninterruptible = true,
 			anim_event = "attack_slam",
 			height_mod = 5,
@@ -325,6 +319,11 @@ weapon_template.actions = {
 				return end_reason ~= "new_interupting_action" and end_reason ~= "action_complete"
 			end,
 			anim_time_scale = time_mod * 1.15,
+			lunge_settings = {
+				initial_speed = 20,
+				duration = 0.32,
+				falloff_to_speed = 5
+			},
 			sweep_rotation_offset = {
 				roll = math.pi * 0.5
 			},

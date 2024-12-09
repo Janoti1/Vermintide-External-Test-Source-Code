@@ -2,6 +2,7 @@ require("scripts/unit_extensions/default_player_unit/careers/career_ability_dark
 require("scripts/unit_extensions/default_player_unit/careers/career_ability_dark_pact_horde")
 require("scripts/unit_extensions/default_player_unit/careers/career_ability_chaos_troll_vomit")
 require("scripts/unit_extensions/default_player_unit/careers/career_ability_rat_ogre_vs")
+require("scripts/unit_extensions/default_player_unit/careers/passive_ability_rat_ogre")
 require("scripts/unit_extensions/default_player_unit/careers/career_ability_corruptor_grab")
 require("scripts/unit_extensions/default_player_unit/careers/career_ability_corruptor_teleport")
 require("scripts/unit_extensions/default_player_unit/careers/career_ability_gutter_runner_foff")
@@ -200,22 +201,23 @@ ActivatedAbilitySettings.vs_chaos_troll = {
 }
 
 local rat_ogre_jump_data = {
-	hit_indicator_raidus = 3,
+	min_jump_dist = 5,
 	min_pitch = 60,
+	hit_indicator_raidus = 3,
 	max_pitch = -10,
 	lerp_data = {
 		zero_distance = 0,
 		slow_distance = 0.8,
-		start_accel_distance = 0.15,
+		start_accel_distance = 0.05,
 		glide_distance = 0.7,
 		full_distance = 1,
-		end_accel_distance = 0.4
+		end_accel_distance = 0.5
 	},
 	movement_settings = {
 		jump_speed = 24,
-		slam_speed = 36,
+		slam_speed = 48,
 		max_slam_speed = 100,
-		move_speed = 28,
+		move_speed = 36,
 		vertical_height = 2,
 		player_speed_scale = 1,
 		max_move_speed = 100
@@ -235,7 +237,7 @@ ActivatedAbilitySettings.vs_rat_ogre = {
 		display_name = "career_active_name_dr_2",
 		start_paused = true,
 		cooldown = 24,
-		input_action = "action_two_hold",
+		input_action = "action_two",
 		prime_time = 2,
 		unpause_on_leave_ghost_mode = true,
 		spawn_cooldown_percent = 0.1,
@@ -314,7 +316,13 @@ PassiveAbilitySettings.vs_rat_ogre = {
 	display_name = "career_passive_name_dr_2",
 	icon = "bardin_slayer_passive",
 	buffs = {},
-	perks = {}
+	perks = {},
+	passive_ability_classes = {
+		{
+			name = "vs_rat_ogre",
+			ability_class = PassiveAbilityRatOgre
+		}
+	}
 }
 
 for ability_id, ability_list in pairs(ActivatedAbilitySettings) do

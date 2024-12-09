@@ -1087,6 +1087,11 @@ UISettings.hero_hat_camera_position_by_character = {
 		x = 0,
 		y = -2.1
 	},
+	vs_rat_ogre = {
+		z = 0.6,
+		x = 1.2,
+		y = 0.5
+	},
 	vs_chaos_troll = {
 		z = 1.4,
 		x = 0.8,
@@ -1153,6 +1158,11 @@ UISettings.hero_skin_camera_position_by_character = {
 		z = 0.25,
 		x = 0,
 		y = -1.2
+	},
+	vs_rat_ogre = {
+		z = 0.6,
+		x = 1.2,
+		y = 0.5
 	},
 	vs_chaos_troll = {
 		z = 1.4,
@@ -1533,6 +1543,14 @@ UISettings.dlc_order_data = {
 	{
 		dlc = "shovel_upgrade",
 		display_name = "store_shovel_upgrade_title"
+	},
+	{
+		dlc = "legacy_bundle",
+		display_name = "legacy_bundle_display_name"
+	},
+	{
+		dlc = "ultimate_bundle",
+		display_name = "ultimate_bundle_display_name"
 	},
 	{
 		dlc = "premium_career_bundle",

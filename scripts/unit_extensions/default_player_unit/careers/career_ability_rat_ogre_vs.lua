@@ -1,7 +1,7 @@
 CareerAbilityRatOgreJump = class(CareerAbilityRatOgreJump)
 
 local MIN_DISTANCE_FOR_LEAP = 2
-local JUMP_ANGLE = math.degrees_to_radians(45)
+local JUMP_ANGLE = math.degrees_to_radians(75)
 local SECTIONS = 8
 local ACCEPTABLE_ACCURACY = 0.1
 local segment_list = {}
@@ -32,10 +32,8 @@ CareerAbilityRatOgreJump.init = function (self, extension_init_context, unit, ex
 	self._bot_player = player.bot_player
 	self._network_manager = Managers.state.network
 	self._input_manager = Managers.input
-	self._effect_name = "fx/chr_slayer_jump"
 	self._indicator_fx_unit_name = "fx/units/aoe_globadier"
 	self._indicator_unit = nil
-	self._effect_id = nil
 	self._is_priming = false
 	self._last_valid_landing_position = nil
 	self._buff_data = {}
@@ -47,6 +45,7 @@ CareerAbilityRatOgreJump.extensions_ready = function (self, world, unit)
 	self._career_extension = ScriptUnit.extension(unit, "career_system")
 	self._ability_id = self._career_extension:ability_id("ogre_jump")
 	self._ability_data = self._career_extension:get_activated_ability_data(self._ability_id)
+	self._passive_ability_extension = self._career_extension:get_passive_ability()
 	self._ability_input = self._ability_data.input_action
 	self._jump_data = self._ability_data.jump_ability_data
 	self._prime_time = self._ability_data.prime_time
@@ -99,12 +98,13 @@ CareerAbilityRatOgreJump._ability_available = function (self)
 end
 
 CareerAbilityRatOgreJump.destroy = function (self)
-	return
+	if self._local_player then
+		self._first_person_extension:play_hud_sound_event("Stop_vs_rat_ogre_jump_charge_vce_1p")
+		self._first_person_extension:play_remote_unit_sound_event("Stop_vs_rat_ogre_jump_charge_vce_3p", self._owner_unit, 0)
+	end
 end
 
 CareerAbilityRatOgreJump._start = function (self)
-	print("ability start")
-
 	local _, right_hand_weapon_extension, _ = CharacterStateHelper.get_item_data_and_weapon_extensions(self._inventory_extension)
 
 	if right_hand_weapon_extension then
@@ -121,8 +121,13 @@ CareerAbilityRatOgreJump._start = function (self)
 		self:_add_ability_buffs(self._jump_data.priming_buffs)
 	end
 
+	if self._local_player then
+		self._first_person_extension:play_hud_sound_event("Play_vs_rat_ogre_jump_charge_vce_1p")
+		self._first_person_extension:play_remote_unit_sound_event("Play_vs_rat_ogre_jump_charge_vce_3p", self._owner_unit, 0)
+	end
+
 	self._first_person_extension:play_animation_event("attack_jump")
-	Unit.animation_event(self._owner_unit, "attack_jump")
+	CharacterStateHelper.play_animation_event(self._owner_unit, "attack_jump")
 end
 
 CareerAbilityRatOgreJump._add_ability_buffs = function (self, priming_buffs)
@@ -183,13 +188,21 @@ CareerAbilityRatOgreJump.update = function (self, unit, input, dt, context, t)
 		-- Nothing
 	end
 
+	local is_staggered = CharacterStateHelper.is_staggered(self._status_extension)
+
+	if is_staggered then
+		self._career_extension:stop_ability("staggered")
+
+		return
+	end
+
 	if self._is_priming then
 		local cancel_input = input_extension:get("action_one") or input_extension:get("jump") or input_extension:get("jump_only") or input_extension:get("weapon_reload") or input_extension:get("action_two_release") and not self._done_priming or not input_extension:get("action_two_hold") and not self._done_priming
 
 		if cancel_input then
 			self._career_extension:stop_ability("aborted")
-			self._career_extension:start_activated_ability_cooldown(self._ability_id, 0.9)
-			Managers.state.network:anim_event(unit, "interrupt")
+			self._career_extension:start_activated_ability_cooldown(self._ability_id, 1)
+			self._network_manager:anim_event(unit, "interrupt")
 			CharacterStateHelper.play_animation_event_first_person(self._first_person_extension, "interrupt")
 
 			return
@@ -199,11 +212,14 @@ CareerAbilityRatOgreJump.update = function (self, unit, input, dt, context, t)
 
 		local result, new_landing_position, leap_distance = self:_calculate_leap_position()
 
-		if result and new_landing_position and leap_distance > 0.1 then
+		if result and new_landing_position and leap_distance > self._jump_data.min_jump_dist then
 			if self._last_valid_landing_position then
 				self._last_valid_landing_position:store(new_landing_position)
+				self:_handel_hit_indicator(new_landing_position)
 			else
 				self._last_valid_landing_position = Vector3Box(new_landing_position)
+
+				self:_handel_hit_indicator(new_landing_position)
 			end
 		end
 
@@ -219,7 +235,6 @@ CareerAbilityRatOgreJump.update = function (self, unit, input, dt, context, t)
 			if result and self._last_valid_landing_position then
 				self:_set_priming_progress(0)
 				self:_do_leap()
-				self:_stop_priming()
 			else
 				self:_stop_priming()
 			end
@@ -233,9 +248,15 @@ CareerAbilityRatOgreJump.stop = function (self, reason)
 	end
 
 	if reason == "aborted" then
-		Unit.animation_event(self._owner_unit, "idle")
+		self._network_manager:anim_event(self._owner_unit, "idle")
 		self._first_person_extension:play_animation_event("idle")
 	end
+
+	if reason == "staggered" then
+		self._career_extension:start_activated_ability_cooldown(self._ability_id, 1)
+	end
+
+	self:stop_passive_ability()
 
 	local _, right_hand_weapon_extension, left_hand_weapon_extension = CharacterStateHelper.get_item_data_and_weapon_extensions(self._inventory_extension)
 
@@ -245,13 +266,6 @@ CareerAbilityRatOgreJump.stop = function (self, reason)
 end
 
 CareerAbilityRatOgreJump._start_calculate_leap_position = function (self)
-	if self._local_player then
-		local world = self._world
-		local effect_name = self._effect_name
-
-		self._effect_id = World.create_particles(world, effect_name, Vector3.zero())
-	end
-
 	self._last_valid_landing_position = nil
 	self._done_priming = false
 	self._is_priming = true
@@ -285,7 +299,6 @@ CareerAbilityRatOgreJump._handel_hit_indicator = function (self, new_landing_pos
 end
 
 CareerAbilityRatOgreJump._calculate_leap_position = function (self)
-	local effect_id = self._effect_id
 	local world = self._world
 	local physics_world = World.get_data(world, "physics_world")
 	local first_person_extension = self._first_person_extension
@@ -309,12 +322,6 @@ CareerAbilityRatOgreJump._calculate_leap_position = function (self)
 
 	if result then
 		leap_distance = Vector3.length(new_landing_position - player_position)
-
-		self:_handel_hit_indicator(new_landing_position)
-
-		if effect_id and new_landing_position then
-			World.move_particles(world, effect_id, new_landing_position)
-		end
 	else
 		new_landing_position = nil
 	end
@@ -323,14 +330,13 @@ CareerAbilityRatOgreJump._calculate_leap_position = function (self)
 end
 
 CareerAbilityRatOgreJump._stop_priming = function (self)
-	if self._effect_id then
-		World.destroy_particles(self._world, self._effect_id)
-
-		self._effect_id = nil
-	end
-
 	self:_destroy_indicator_unit()
 	self:_set_priming_progress(0)
+
+	if self._local_player then
+		self._first_person_extension:play_hud_sound_event("Stop_vs_rat_ogre_jump_charge_vce_1p")
+		self._first_person_extension:play_remote_unit_sound_event("Stop_vs_rat_ogre_jump_charge_vce_3p", self._owner_unit, 0)
+	end
 
 	self._is_priming = false
 	self._ability_data.is_priming = false
@@ -351,36 +357,11 @@ CareerAbilityRatOgreJump._do_common_stuff = function (self)
 	if is_server and bot_player or local_player then
 		local first_person_extension = self._first_person_extension
 
-		first_person_extension:play_hud_sound_event("Play_career_ability_bardin_slayer_enter")
-		first_person_extension:play_remote_unit_sound_event("Play_career_ability_bardin_slayer_enter", owner_unit, 0)
-		first_person_extension:play_hud_sound_event("Play_career_ability_bardin_slayer_loop")
+		first_person_extension:play_hud_sound_event("Play_vs_rat_ogre_jump_1p")
+		first_person_extension:play_remote_unit_sound_event("Play_vs_rat_ogre_jump_3p", owner_unit, 0)
 	end
 
-	career_extension:start_activated_ability_cooldown()
-end
-
-CareerAbilityRatOgreJump._do_stomp = function (self, t)
-	self:_stop_priming()
-
-	if not self._locomotion_extension:is_on_ground() then
-		return
-	end
-
-	self:_do_common_stuff()
-
-	local owner_unit = self._owner_unit
-	local local_player = self._local_player
-	local career_extension = self._career_extension
-	local position = POSITION_LOOKUP[owner_unit]
-	local rotation = Quaternion.identity()
-	local scale = 1
-
-	if local_player then
-		local first_person_extension = self._first_person_extension
-
-		first_person_extension:play_unit_sound_event("Play_career_ability_bardin_slayer_impact", owner_unit, 0, true)
-		first_person_extension:play_camera_effect_sequence("leap_stomp", t)
-	end
+	career_extension:start_activated_ability_cooldown(self._ability_id)
 end
 
 CareerAbilityRatOgreJump._do_leap = function (self)
@@ -407,8 +388,9 @@ CareerAbilityRatOgreJump._do_leap = function (self)
 	status_extension:reset_move_speed_multiplier()
 
 	local physics_world = World.get_data(world, "physics_world")
-	local direction, speed, hit_pos = get_leap_data(physics_world, POSITION_LOOKUP[owner_unit], landing_position)
-	local distance = Vector3.distance(POSITION_LOOKUP[owner_unit], landing_position)
+	local current_position = POSITION_LOOKUP[owner_unit]
+	local direction, speed, hit_pos = get_leap_data(physics_world, current_position, landing_position)
+	local distance = Vector3.distance(current_position, landing_position)
 	local ability_lerp_data = self._jump_data.lerp_data
 	local movement_settings = self._jump_data.movement_settings
 	local zero_dist = ability_lerp_data and ability_lerp_data.zero_distance
@@ -418,21 +400,14 @@ CareerAbilityRatOgreJump._do_leap = function (self)
 	local slow_dist = ability_lerp_data and ability_lerp_data.slow_distance
 	local full_dist = ability_lerp_data and ability_lerp_data.full_distance
 	local jump_speed = movement_settings and movement_settings.jump_speed
-	local vertical_height = movement_settings and movement_settings.vertical_height
-	local vertical_speed_modifier = math.clamp(distance * vertical_height, 0, 50)
 
 	speed = jump_speed
 	status_extension.do_leap = {
-		move_function = "leap",
 		camera_effect_sequence_start = "jump",
+		move_function = "leap",
 		camera_effect_sequence_land = "landed_leap",
-		anim_finish_event_3p = "attack_jump_land",
-		anim_start_event_3p = "attack_jump_air",
-		anim_finish_event_1p = "attack_jump_land",
-		anim_start_event_1p = "attack_jump_air",
 		direction = Vector3Box(direction),
 		speed = speed,
-		initial_vertical_speed = (jump_speed or PlayerUnitMovementSettings.leap.jump_speed) * vertical_speed_modifier,
 		projected_hit_pos = Vector3Box(hit_pos),
 		lerp_data = {
 			zero_distance = zero_dist or 0,
@@ -445,22 +420,12 @@ CareerAbilityRatOgreJump._do_leap = function (self)
 		movement_settings = movement_settings,
 		update_leap_anim_variable = function (parent, unit)
 			local anim_variable = "jump_rotation"
-			local anim_value = math.clamp(parent._percentage_done * 2, 0, 2)
-
-			parent._first_person_extension:animation_set_variable(anim_variable, anim_value)
-
-			local variable_index = Unit.animation_find_variable(unit, anim_variable)
-
-			Unit.animation_set_variable(unit, variable_index, anim_value)
 		end,
-		sfx_event_jump = local_player and "Play_career_ability_bardin_slayer_jump",
-		sfx_event_land = local_player and "Play_career_ability_bardin_slayer_impact",
 		leap_events = {
 			start = function (parent)
 				local unit_3p = parent.unit
 
 				parent._first_person_extension:play_animation_event("attack_jump")
-				Unit.animation_event(unit_3p, "attack_jump")
 			end,
 			finished = function (parent, unit, aborted, final_position)
 				local unit_3p = parent.unit
@@ -480,7 +445,7 @@ CareerAbilityRatOgreJump._do_leap = function (self)
 					local career_power_level = 50
 					local area_damage_system = Managers.state.entity:system("area_damage_system")
 
-					area_damage_system:create_explosion(unit, final_position, rotation, explosion_template, scale, "career_ability", career_power_level, false)
+					area_damage_system:create_explosion(unit, final_position, rotation, explosion_template, scale, "vs_rat_ogre_hands", career_power_level, false)
 				end
 
 				local _, right_hand_weapon_extension, left_hand_weapon_extension = CharacterStateHelper.get_item_data_and_weapon_extensions(parent._inventory_extension)
@@ -494,6 +459,12 @@ CareerAbilityRatOgreJump._do_leap = function (self)
 			end
 		}
 	}
+
+	self._passive_ability_extension:start_leap(current_position, landing_position, distance)
+end
+
+CareerAbilityRatOgreJump.stop_passive_ability = function (self)
+	self._passive_ability_extension:stop_leap()
 end
 
 CareerAbilityRatOgreJump._play_vo = function (self)
@@ -521,10 +492,6 @@ CareerAbilityRatOgreJump.get_leap_data2 = function (self, physics_world, fitting
 		local delta = new_position - position
 		local direction = Vector3.normalize(delta)
 		local distance = Vector3.length(delta)
-
-		QuickDrawer:sphere(new_position, 0.6, Colors.get("green"))
-		QuickDrawer:line(position, new_position, Colors.get("green"))
-
 		local result = PhysicsWorld.linear_sphere_sweep(physics_world, position, new_position, mover_raidus, MAX_HITS, "collision_filter", collision_filter)
 
 		if result then

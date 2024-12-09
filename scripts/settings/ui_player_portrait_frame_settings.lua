@@ -3203,6 +3203,30 @@ UIPlayerPortraitFrameSettings = {
 				0
 			}
 		}
+	},
+	frame_rat_ogre_01 = {
+		{
+			texture = "portrait_frame_rat_ogre_01",
+			layer = 10,
+			color = {
+				255,
+				255,
+				255,
+				255
+			}
+		}
+	},
+	frame_rat_ogre_02 = {
+		{
+			texture = "portrait_frame_rat_ogre_02",
+			layer = 10,
+			color = {
+				255,
+				255,
+				255,
+				255
+			}
+		}
 	}
 }
 

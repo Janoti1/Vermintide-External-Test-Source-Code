@@ -489,6 +489,16 @@ settings.hero_window_mood_settings = {
 	pactsworn = "menu_versus"
 }
 settings.hero_window_pactsworn_stats_by_name = {
+	vs_rat_ogre = {
+		{
+			"eliminations_as_breed",
+			"vs_rat_ogre"
+		},
+		{
+			"damage_dealt_as_breed",
+			"vs_rat_ogre"
+		}
+	},
 	vs_chaos_troll = {
 		{
 			"eliminations_as_breed",

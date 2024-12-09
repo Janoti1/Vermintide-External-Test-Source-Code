@@ -1123,6 +1123,12 @@ local settings = {
 		category = "Player mechanics"
 	},
 	{
+		description = "Show movement settings as they are written to the local player unit",
+		is_boolean = true,
+		setting_name = "debug_movement_settings",
+		category = "Player mechanics"
+	},
+	{
 		description = "Show animation events called for selected unit.",
 		is_boolean = true,
 		setting_name = "debug_selected_unit_anim_events",
@@ -1529,6 +1535,12 @@ local settings = {
 
 			win_conditions:debug_add_score(value)
 		end
+	},
+	{
+		description = "Draws sphere cast on ratogers ability",
+		is_boolean = true,
+		setting_name = "debug_vs_ratogre_ability",
+		category = "Versus"
 	},
 	{
 		description = "Unhoists local player",

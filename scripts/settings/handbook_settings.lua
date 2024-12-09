@@ -1173,29 +1173,36 @@ HandbookSettings.pages = {
 	},
 	tutorial_rat_ogre_01 = {
 		{
-			texture = "tutorial_playable_monsters_01",
+			texture = "tutorial_rat_ogre_01",
 			type = "image"
 		},
 		{
 			text = "tutorial_rat_ogre_text_01",
-			type = "text"
+			type = "text",
+			inputs = {
+				"action_one",
+				"action_one"
+			}
 		},
 		display_name = "tutorial_rat_ogre_header"
 	},
 	tutorial_rat_ogre_02 = {
 		{
-			texture = "tutorial_playable_monsters_01",
+			texture = "tutorial_rat_ogre_01",
 			type = "image"
 		},
 		{
 			text = "tutorial_rat_ogre_text_02",
-			type = "text"
+			type = "text",
+			inputs = {
+				"action_two"
+			}
 		},
 		display_name = "tutorial_rat_ogre_header"
 	},
 	tutorial_rat_ogre_03 = {
 		{
-			texture = "tutorial_playable_monsters_01",
+			texture = "tutorial_rat_ogre_01",
 			type = "image"
 		},
 		{

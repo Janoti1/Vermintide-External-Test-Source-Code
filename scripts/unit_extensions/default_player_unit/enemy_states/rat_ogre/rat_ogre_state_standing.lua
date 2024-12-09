@@ -6,6 +6,10 @@ RatOgreStateStanding.init = function (self, character_state_init_context)
 	self._ogre_jump_ability_id = self._career_extension:ability_id("ogre_jump")
 end
 
+RatOgreStateStanding.on_enter = function (self, unit, input, dt, context, t, previous_state, params)
+	RatOgreStateStanding.super.on_enter(self, unit, input, dt, context, t, previous_state, params)
+end
+
 RatOgreStateStanding.update = function (self, unit, input, dt, context, t)
 	local handled = self:common_state_changes()
 

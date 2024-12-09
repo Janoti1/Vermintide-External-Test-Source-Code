@@ -445,6 +445,18 @@ DLCSettings = DLCSettings or {
 			common = "scripts/settings/dlcs/premium_career_bundle/premium_career_bundle_common_settings"
 		}
 	},
+	legacy_bundle = {
+		package_name = "resource_packages/dlcs/legacy_bundle",
+		additional_settings = {
+			common = "scripts/settings/dlcs/legacy_bundle/legacy_bundle_common_settings"
+		}
+	},
+	ultimate_bundle = {
+		package_name = "resource_packages/dlcs/ultimate_bundle",
+		additional_settings = {
+			common = "scripts/settings/dlcs/ultimate_bundle/ultimate_bundle_common_settings"
+		}
+	},
 	carousel = {
 		package_name = "resource_packages/dlcs/carousel",
 		localization = "localization/carousel",

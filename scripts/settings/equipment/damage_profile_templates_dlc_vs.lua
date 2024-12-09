@@ -242,7 +242,7 @@ local damage_templates = {
 		}
 	},
 	playable_boss_melee_frenzy_slam_vs = {
-		charge_value = "light_attack",
+		charge_value = "heavy_attack",
 		fatigue_type = "chaos_cleave",
 		critical_strike = {},
 		armor_modifier = {

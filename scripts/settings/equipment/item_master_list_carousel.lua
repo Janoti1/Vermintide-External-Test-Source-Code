@@ -2531,6 +2531,34 @@ ItemMasterList.frame_versus_02 = {
 	item_type = "frame",
 	can_wield = CanWieldAllItemTemplates
 }
+ItemMasterList.frame_rat_ogre_01 = {
+	description = "frame_rat_ogre_01_description",
+	temporary_template = "frame_rat_ogre_01",
+	display_name = "frame_rat_ogre_01_name",
+	hud_icon = "unit_frame_02",
+	inventory_icon = "icon_portrait_frame_rat_ogre_01",
+	slot_type = "frame",
+	information_text = "information_text_frame",
+	rarity = "promo",
+	selection = "versus",
+	display_unit = "units/weapons/weapon_display/display_portrait_frame",
+	item_type = "frame",
+	can_wield = CanWieldAllItemTemplates
+}
+ItemMasterList.frame_rat_ogre_02 = {
+	description = "frame_rat_ogre_02_description",
+	temporary_template = "frame_rat_ogre_02",
+	display_name = "frame_rat_ogre_02_name",
+	hud_icon = "unit_frame_02",
+	inventory_icon = "icon_portrait_frame_rat_ogre_02",
+	slot_type = "frame",
+	information_text = "information_text_frame",
+	rarity = "promo",
+	selection = "versus",
+	display_unit = "units/weapons/weapon_display/display_portrait_frame",
+	item_type = "frame",
+	can_wield = CanWieldAllItemTemplates
+}
 ItemMasterList.weapon_pose_pack_kerillian_dual_wield = {
 	description = "weapon_pose_pack_kerillian_dual_wield_description",
 	rarity = "promo",

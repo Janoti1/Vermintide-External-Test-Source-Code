@@ -1596,7 +1596,8 @@ NetworkLookup.sound_events = {
 	"Play_boon_aoe_zone_explode_cooldown",
 	"Play_boon_aoe_zone_explode_crit",
 	"Play_boon_aoe_zone_explode_healing",
-	"Play_boon_aoe_zone_explode_power"
+	"Play_boon_aoe_zone_explode_power",
+	"Play_vs_rat_ogre_jump_3p"
 }
 
 do

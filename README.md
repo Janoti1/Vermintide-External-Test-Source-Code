@@ -8,6 +8,7 @@ Warhammer: Vermintide 2 External Test - Source Code
 
 Date        |  Patch  | Notes
 ----------: | :-----: | :--------------
+06-12-2024  | Test #8 | Polish of Rat Orge
 04-12-2024  | Test #7 | Fixes
 30-11-2024  | Test #6 | New Playable Character, 2nd Map Removed
 26-11-2024  | Test #5 | 2nd New Map

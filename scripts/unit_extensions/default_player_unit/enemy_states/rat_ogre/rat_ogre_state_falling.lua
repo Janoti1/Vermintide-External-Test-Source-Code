@@ -4,6 +4,10 @@ RatOgreStateFalling.init = function (self, character_state_init_context)
 	RatOgreStateFalling.super.init(self, character_state_init_context)
 end
 
+RatOgreStateFalling.on_exit = function (self, unit, input, dt, context, t, previous_state, params)
+	RatOgreStateFalling.super.on_exit(self, unit, input, dt, context, t, previous_state, params)
+end
+
 RatOgreStateFalling.on_enter = function (self, unit, input, dt, context, t, previous_state, params)
 	RatOgreStateFalling.super.on_enter(self, unit, input, dt, context, t, previous_state, params)
 end
